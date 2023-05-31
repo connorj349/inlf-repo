@@ -1,0 +1,202 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://scenes/Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
+[ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
+[ext_resource path="res://inventory/inventory_interface.gd" type="Script" id=3]
+[ext_resource path="res://inventory/inventory_slot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://inventory/Storage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://raw_assets/skybox_02.png" type="Texture" id=6]
+[ext_resource path="res://item/pick_up/Pickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://item/items/repair.tres" type="Resource" id=8]
+[ext_resource path="res://inventory/slot_data.gd" type="Script" id=9]
+[ext_resource path="res://scenes/Misc/metastabilizer.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Misc/autostitcher.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Misc/rot_telecom.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Misc/vendor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Misc/bloater.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/Misc/tumor.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/Resource Nodes/boulder.tscn" type="PackedScene" id=16]
+[ext_resource path="res://item/items/pda.tres" type="Resource" id=17]
+[ext_resource path="res://item/items/ammo.tres" type="Resource" id=18]
+[ext_resource path="res://raw_assets/tilesets/blocks-mesh-lib.tres" type="MeshLibrary" id=38]
+[ext_resource path="res://raw_assets/tilesets/buildings-mesh-lib.tres" type="MeshLibrary" id=39]
+[ext_resource path="res://raw_assets/tilesets/objects-mesh-lib.tres" type="MeshLibrary" id=40]
+[ext_resource path="res://raw_assets/tilesets/ground-mesh-lib.tres" type="MeshLibrary" id=41]
+[ext_resource path="res://scenes/Interactables/OBJ/OBJ_Sawblade.tscn" type="PackedScene" id=42]
+[ext_resource path="res://scenes/Misc/resource_node_spawner.tscn" type="PackedScene" id=44]
+[ext_resource path="res://scenes/Machines/lunch_machine.tscn" type="PackedScene" id=47]
+[ext_resource path="res://scenes/Resource Nodes/skin_tree.tscn" type="PackedScene" id=53]
+
+[sub_resource type="PanoramaSky" id=366]
+panorama = ExtResource( 6 )
+
+[sub_resource type="Environment" id=2]
+background_sky = SubResource( 366 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Resource" id=369]
+script = ExtResource( 9 )
+item_data = ExtResource( 17 )
+quantity = 1
+
+[sub_resource type="Resource" id=370]
+script = ExtResource( 9 )
+item_data = ExtResource( 18 )
+quantity = 50
+
+[sub_resource type="Resource" id=367]
+script = ExtResource( 9 )
+item_data = ExtResource( 8 )
+quantity = 1
+
+[sub_resource type="Resource" id=368]
+script = ExtResource( 9 )
+item_data = ExtResource( 8 )
+quantity = 1
+
+[node name="Main" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 12, 0 )
+
+[node name="GridMaps" type="Spatial" parent="."]
+
+[node name="stone" type="GridMap" parent="GridMaps" groups=["ground_stone"]]
+mesh_library = ExtResource( 41 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 9, 9, 3, 65535, 9, 3, 9, 19, 3, 9, 65525, 3, 65525, 65525, 3, 65535, 65525, 3, 65535, 65535, 3 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="transition" type="GridMap" parent="GridMaps" groups=["ground_transition"]]
+mesh_library = ExtResource( 41 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 65525, 9, 5, 65525, 65515, 5 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="buildings" type="GridMap" parent="GridMaps"]
+mesh_library = ExtResource( 39 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 65520, 4, 0, 65510, 14, 0, 65520, 24, 3, 65525, 24, 2, 65535, 24, 3, 65520, 25, 3, 65510, 65530, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="walls" type="GridMap" parent="GridMaps"]
+mesh_library = ExtResource( 38 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 14, 24, 655381, 327694, 24, 655374, 13, 65530, 655383, 327693, 65530, 655384 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="fencing" type="GridMap" parent="GridMaps"]
+mesh_library = ExtResource( 40 )
+cell_size = Vector3( 1, 1, 1 )
+data = {
+"cells": PoolIntArray( 14, 4, 1441796, 14, 9, 1441796, 14, 14, 1441796, 14, 19, 1441796, 65520, 65510, 1441796, 65525, 65510, 655364, 65530, 65510, 655364, 65530, 65514, 1048580, 65520, 65515, 1441796, 12, 65520, 1048576, 14, 65520, 1441796, 17, 65520, 655364, 14, 65525, 1441796 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="player_role_spawns" type="Spatial" parent="."]
+
+[node name="OBJ_Sawblade" parent="player_role_spawns" instance=ExtResource( 42 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 11, 0 )
+
+[node name="resource_spawners" type="Spatial" parent="."]
+
+[node name="resource_node_spawner" parent="resource_spawners" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.4, 9 )
+node_to_spawn = ExtResource( 53 )
+
+[node name="resource_node_spawner2" parent="resource_spawners" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3, 1.2, -20 )
+node_to_spawn = ExtResource( 16 )
+
+[node name="machines" type="Spatial" parent="."]
+
+[node name="lunch_machine" parent="machines" instance=ExtResource( 47 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.95425, 1.5, 3 )
+input_item_id = SubResource( 369 )
+output_item_id = SubResource( 370 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 60.0
+margin_bottom = 60.0
+
+[node name="EquipInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
+margin_left = 500.0
+margin_top = 30.0
+margin_right = 530.0
+margin_bottom = 60.0
+
+[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
+margin_left = 1200.0
+margin_top = 400.0
+margin_right = 1230.0
+margin_bottom = 430.0
+
+[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource( 4 )]
+visible = false
+modulate = Color( 1, 1, 1, 0.439216 )
+self_modulate = Color( 1, 1, 1, 0 )
+
+[node name="Storage" parent="." instance=ExtResource( 5 )]
+transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 5, 10.5, 4 )
+
+[node name="Test Item - Pickup" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 11, 2 )
+slot_data = SubResource( 367 )
+
+[node name="metastabilizer" parent="." instance=ExtResource( 10 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1.5, 3 )
+repair_item = SubResource( 368 )
+
+[node name="autostitcher" parent="." instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 2.5, -4 )
+
+[node name="rot_telecom" parent="." instance=ExtResource( 12 )]
+transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -7, 2, -5.5 )
+
+[node name="vendor" parent="." instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0.5, 0 )
+
+[node name="bloater" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.6, 19 )
+incubation_increase_amount = 1
+incubation_frequency_amount = 10.0
+
+[node name="tumor" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.7, 9 )
+
+[connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
+[connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://item/item_data_consumable.gd" type="Script" id=1]
+[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 19
+atlas = ExtResource( 2 )
+region = Rect2( 852, 3248, 52, 56 )
+
+[resource]
+script = ExtResource( 1 )
+name = "Syringe"
+description = "Strong syringe that will pump more blood into your veins."
+stackable = true
+texture = SubResource( 1 )
+heal_value = 25
