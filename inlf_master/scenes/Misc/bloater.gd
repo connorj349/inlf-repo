@@ -8,7 +8,6 @@ extends HintObject
 export(int) var incubation_increase_amount = 5
 export(float) var incubation_frequency_amount = 1
 
-onready var anim_player = $AnimationPlayer
 onready var health = $Health
 onready var hp_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var incu_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar2
@@ -40,9 +39,3 @@ func _on_Timer_timeout():
 	if incubation >= 100:
 		Gamestate.rot_modify(25) #increaes rot
 		on_death()
-
-func _display_info(): #override, can even add sounds to this as it's not played dozens of times
-	anim_player.play("fade_in")
-
-func _hide_info(): #play animation in reverse
-	anim_player.play_backwards("fade_in")

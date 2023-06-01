@@ -11,7 +11,6 @@ export(int) var rot_inrease_frequency = 1
 
 onready var health = $Health
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-onready var anim_player = $AnimationPlayer
 onready var hurt_area = $HurtArea
 
 var item_prefab = preload("res://item/pick_up/Pickup.tscn")
@@ -40,12 +39,6 @@ func on_death():
 	#death_sound.play() #play death sound
 	#if !death_sound.is_playing(): #when done playing, destroy
 	queue_free()
-
-func _display_info(): #override, can even add sounds to this as it's not played dozens of times
-	anim_player.play("fade_in")
-
-func _hide_info(): #play animation in reverse
-	anim_player.play_backwards("fade_in")
 
 func _on_RotTimer_timeout():
 	Gamestate.rot_modify(rot_increase_amount)

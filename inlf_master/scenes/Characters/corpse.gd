@@ -9,7 +9,6 @@ onready var health = $Health
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var state_text = $CanvasLayer/Info/VBoxContainer/ProgressBar/Label
 onready var movement = $Movement
-onready var anim_player = $AnimationPlayer
 
 func _ready():
 	movement.init(self)
@@ -34,9 +33,3 @@ func _on_DecayTimer_timeout(): #updates corpse state text on UI
 	elif health.health <= 0:
 		state_text.text = "Husk"
 		queue_free() #remove husk for early dev purposes
-
-func _display_info(): #override, can even add sounds to this as it's not played dozens of times
-	anim_player.play("fade_in")
-
-func _hide_info(): #play animation in reverse
-	anim_player.play_backwards("fade_in")

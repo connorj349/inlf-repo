@@ -10,8 +10,6 @@ onready var health = $Health
 onready var name_plate = $CanvasLayer/Info/VBoxContainer/Label
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 
-onready var anim_player = $AnimationPlayer
-
 var item_prefab = preload("res://item/pick_up/Pickup.tscn")
 
 func _ready():
@@ -34,9 +32,3 @@ func on_death(): #spawn item, delete self
 
 func on_hurt(amount):
 	health.hurt(amount)
-
-func _display_info(): #override, can even add sounds to this as it's not played dozens of times
-	anim_player.play("fade_in")
-
-func _hide_info(): #play animation in reverse
-	anim_player.play_backwards("fade_in")

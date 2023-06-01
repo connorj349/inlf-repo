@@ -7,7 +7,6 @@ export(Resource) var output_item_id #output item
 export(String) var machine_name = "NULL"
 export(float) var production_time = 3 #time it takes to make item
 
-onready var anim_player = $AnimationPlayer
 onready var timer = $ManufactureTimer
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var name_plate = $CanvasLayer/Info/VBoxContainer/Label
@@ -33,9 +32,3 @@ func _on_ManufactureTimer_timeout():
 	timer.stop()
 	Gamestate.merchant_inventory.add_item(output_item_id)
 	#stop machine loop sound
-
-func _display_info(): #override, can even add sounds to this as it's not played dozens of times
-	anim_player.play("fade_in")
-
-func _hide_info(): #play animation in reverse
-	anim_player.play_backwards("fade_in")

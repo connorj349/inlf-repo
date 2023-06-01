@@ -9,13 +9,5 @@ signal toggle_inventory(external_inventory_owner)
 
 export(Resource) var inventory_data
 
-onready var anim_player = $AnimationPlayer
-
 func _interact(_actor):
 	emit_signal("toggle_inventory", self)
-
-func _display_info(): #override, can even add sounds to this as it's not played dozens of times
-	anim_player.play("fade_in")
-
-func _hide_info(): #play animation in reverse
-	anim_player.play_backwards("fade_in")
