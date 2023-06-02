@@ -50,6 +50,7 @@ func use_slot_data(index): #use up the item, then apply effects to player
 		return
 	
 	if slot_data.item_data is ItemDataConsumable:
+		#need to find way to play sounds for using items
 		slot_data.quantity -= 1
 		if slot_data.quantity < 1:
 			slot_datas[index] = null
@@ -80,14 +81,15 @@ func add_item(slot_data): #search inv if it has item, then merge or add item to 
 				emit_signal("inventory_updated", self)
 				return
 		else:
-			slot_datas[index] = slot_data #create a new slot
+			var new_slot = slot_data.duplicate()
+			slot_datas[index] = new_slot #create a new slot
 			return
 
 func take_item(slot_data): #take a specific item from the player's inventory
 	for index in slot_datas.size():
 		if slot_datas[index]: #not sure why, but these line needs to be here or it crashes
-			if slot_datas[index].item_data == slot_data.item_data:
-				slot_datas[index].quantity -= 1
+			if slot_datas[index].item_data == slot_data.item_data and slot_datas[index].quantity >= slot_data.quantity:
+				slot_datas[index].quantity -= slot_data.quantity
 				if slot_datas[index].quantity < 1:
 					slot_datas[index] = null
 				emit_signal("inventory_updated", self)

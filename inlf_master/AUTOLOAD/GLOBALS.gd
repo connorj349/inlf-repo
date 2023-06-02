@@ -23,10 +23,13 @@ func _process(_delta):
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 
-func create_pickup(slot_data):
+func create_pickup(slot_data, object = false):
 	var _pickup = pickup.instance()
 	_pickup.slot_data = slot_data
 	get_tree().get_root().add_child(_pickup)
+	if object:
+		_pickup.global_transform.origin = object.global_transform.origin
+		return
 	_pickup.global_transform.origin = Globals.current_player.get_drop_position()
 
 func toggle_inventory_interface(external_inventory_owner = null):

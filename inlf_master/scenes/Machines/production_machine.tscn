@@ -1,18 +1,21 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://scenes/Machines/Machine.gd" type="Script" id=1]
-[ext_resource path="res://raw_assets/themes/hint_object_theme.tres" type="Theme" id=2]
-[ext_resource path="res://raw_assets/fonts/scribbles.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://raw_assets/fonts/scribbles.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://raw_assets/models/production_machine.glb" type="PackedScene" id=2]
+[ext_resource path="res://raw_assets/themes/hint_object_theme.tres" type="Theme" id=3]
 [ext_resource path="res://scenes/UI/ui_bar.gd" type="Script" id=4]
-[ext_resource path="res://raw_assets/models/production_machine.glb" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Machines/Machine.gd" type="Script" id=5]
+[ext_resource path="res://raw_assets/sounds/machine/machine_loop.wav" type="AudioStream" id=6]
+[ext_resource path="res://raw_assets/sounds/machine/machine_accept_item.wav" type="AudioStream" id=7]
 
 [sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.5, 1, 0.5 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 40
-font_data = ExtResource( 3 )
+font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.768627, 0, 0, 0 )
 border_width_left = 5
 border_width_top = 5
@@ -20,14 +23,14 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 35
-font_data = ExtResource( 3 )
+font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:custom_colors/font_color")
@@ -78,7 +81,7 @@ tracks/3/keys = {
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "value"
@@ -130,13 +133,14 @@ tracks/3/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.196078 ) ]
 }
 
-[node name="lunch_machine" type="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-script = ExtResource( 1 )
-machine_name = "Lunch Machine"
+[node name="production_machine" type="StaticBody"]
+script = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
+
+[node name="production_machine" parent="." instance=ExtResource( 2 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -162,7 +166,7 @@ margin_bottom = 67.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "Resource Name"
 align = 1
 valign = 1
@@ -173,9 +177,9 @@ margin_right = 416.0
 margin_bottom = 138.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 2 )
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 5 )
+theme = ExtResource( 3 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
 value = 50.0
 percent_visible = false
 script = ExtResource( 4 )
@@ -184,18 +188,23 @@ script = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "Progress"
 align = 1
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 7 )
-anims/fade_in = SubResource( 8 )
+anims/RESET = SubResource( 6 )
+anims/fade_in = SubResource( 7 )
 
 [node name="ManufactureTimer" type="Timer" parent="."]
 
-[node name="production_machine" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+[node name="AcceptSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
+stream = ExtResource( 7 )
+
+[node name="MachineLoop" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
+stream = ExtResource( 6 )
 
 [connection signal="timeout" from="ManufactureTimer" to="." method="_on_ManufactureTimer_timeout"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tumor_hit.wav-6822470a30c3544bc68efee7e25fb660.sample"
+
+[deps]
+
+source_file="res://raw_assets/sounds/tumor/tumor_hit.wav"
+dest_files=[ "res://.import/tumor_hit.wav-6822470a30c3544bc68efee7e25fb660.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

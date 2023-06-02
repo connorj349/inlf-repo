@@ -18,13 +18,13 @@
 [ext_resource path="res://scenes/Resource Nodes/boulder.tscn" type="PackedScene" id=16]
 [ext_resource path="res://item/items/pda.tres" type="Resource" id=17]
 [ext_resource path="res://item/items/ammo.tres" type="Resource" id=18]
+[ext_resource path="res://scenes/Machines/production_machine.tscn" type="PackedScene" id=19]
 [ext_resource path="res://raw_assets/tilesets/blocks-mesh-lib.tres" type="MeshLibrary" id=38]
 [ext_resource path="res://raw_assets/tilesets/buildings-mesh-lib.tres" type="MeshLibrary" id=39]
 [ext_resource path="res://raw_assets/tilesets/objects-mesh-lib.tres" type="MeshLibrary" id=40]
 [ext_resource path="res://raw_assets/tilesets/ground-mesh-lib.tres" type="MeshLibrary" id=41]
 [ext_resource path="res://scenes/Interactables/OBJ/OBJ_Sawblade.tscn" type="PackedScene" id=42]
 [ext_resource path="res://scenes/Misc/resource_node_spawner.tscn" type="PackedScene" id=44]
-[ext_resource path="res://scenes/Machines/lunch_machine.tscn" type="PackedScene" id=47]
 [ext_resource path="res://scenes/Resource Nodes/skin_tree.tscn" type="PackedScene" id=53]
 
 [sub_resource type="PanoramaSky" id=366]
@@ -36,13 +36,13 @@ ambient_light_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="Resource" id=369]
 script = ExtResource( 9 )
-item_data = ExtResource( 17 )
-quantity = 1
+item_data = ExtResource( 18 )
+quantity = 50
 
 [sub_resource type="Resource" id=370]
 script = ExtResource( 9 )
-item_data = ExtResource( 18 )
-quantity = 50
+item_data = ExtResource( 17 )
+quantity = 1
 
 [sub_resource type="Resource" id=367]
 script = ExtResource( 9 )
@@ -133,10 +133,12 @@ node_to_spawn = ExtResource( 16 )
 
 [node name="machines" type="Spatial" parent="."]
 
-[node name="lunch_machine" parent="machines" instance=ExtResource( 47 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.95425, 1.5, 3 )
+[node name="production_machine" parent="machines" instance=ExtResource( 19 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.9, 0.5, 2.9 )
 input_item_id = SubResource( 369 )
 output_item_id = SubResource( 370 )
+machine_name = "PDA Machine"
+production_time = 5.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2

@@ -1,6 +1,5 @@
 extends HintObject
 
-# add death sounds
 # change Globals.create_item so that it accepts an object to spawn the item at so we can get rid
 # of the spawning that is done in this object
 
@@ -32,13 +31,13 @@ func on_hurt(amount):
 				body.on_hurt(damage) #deal damage to all things around tumor when it's hurt
 
 func on_death():
+	# spawn tumor bloody pop effect
+	yield(health.death_sound, "finished")
 	var spawned_item = item_prefab.instance()
 	spawned_item.global_transform = global_transform
 	spawned_item.slot_data = slot_data
 	get_tree().get_root().add_child(spawned_item)
-	#death_sound.play() #play death sound
-	#if !death_sound.is_playing(): #when done playing, destroy
-	queue_free()
+	queue_free() # delete this
 
 func _on_RotTimer_timeout():
 	Gamestate.rot_modify(rot_increase_amount)

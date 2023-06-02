@@ -203,4 +203,11 @@ autostart = true
 [node name="metastabilizer" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.917171, 0.398493, 0, -0.398493, 0.917171, 0, 1.11646, 3 )
+light_color = Color( 0, 0.905882, 1, 1 )
+light_energy = 5.0
+spot_range = 4.292
+spot_angle = 41.69
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

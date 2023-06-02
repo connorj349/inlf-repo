@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/autostitcher_heal_loop.wav-1c38c3a7da55a01ff17a9cc2d770c173.sample"
+
+[deps]
+
+source_file="res://raw_assets/sounds/autostitcher/autostitcher_heal_loop.wav"
+dest_files=[ "res://.import/autostitcher_heal_loop.wav-1c38c3a7da55a01ff17a9cc2d770c173.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

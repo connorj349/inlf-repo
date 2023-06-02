@@ -10,6 +10,8 @@ export(float) var production_time = 3 #time it takes to make item
 onready var timer = $ManufactureTimer
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var name_plate = $CanvasLayer/Info/VBoxContainer/Label
+onready var accept_input = $AcceptSound
+onready var machine_loop = $MachineLoop
 
 func _ready():
 	timer.wait_time = production_time #setup timer limit
@@ -22,13 +24,14 @@ func _process(_delta): #update the manufacture progress bar onscreen
 
 func _interact(_actor):
 	if can_interact:
-		if Gamestate.player_inventory.take_item(input_item_id): #take item needed from player
+		if Gamestate.player_inventory.take_item(input_item_id): #take item and count needed from player
+			accept_input.play()
 			can_interact = false
 			timer.start()
-			#play machine loop sound
+			machine_loop.play()
 
 func _on_ManufactureTimer_timeout():
 	can_interact = true #enable interaction
 	timer.stop()
+	machine_loop.stop()
 	Gamestate.merchant_inventory.add_item(output_item_id)
-	#stop machine loop sound

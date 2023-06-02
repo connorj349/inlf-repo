@@ -11,6 +11,7 @@ export(int) var heal_amount = 25
 onready var health = $Health
 onready var bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var status_label = $CanvasLayer/Info/VBoxContainer/Label
+onready var spot_light = $SpotLight
 
 var active = true
 
@@ -24,8 +25,12 @@ func _ready():
 func _interact(_actor):
 	if Gamestate.player_inventory.take_item(repair_item):
 		health.heal(heal_amount)
+		if not active:
+			active = true
+			spot_light.light_color = Color(0, 0.9, 1, 1)
 
 func on_disable():
+	spot_light.light_color = Color(1, 0, 0, 1)
 	active = false
 	status_label.text = "Status: disabled"
 
