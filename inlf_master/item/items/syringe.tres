@@ -14,4 +14,5 @@ name = "Syringe"
 description = "Strong syringe that will pump more blood into your veins."
 stackable = true
 texture = SubResource( 1 )
+price = 10
 heal_value = 25

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scenes/Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://item/items/pda.tres" type="Resource" id=17]
 [ext_resource path="res://item/items/ammo.tres" type="Resource" id=18]
 [ext_resource path="res://scenes/Machines/production_machine.tscn" type="PackedScene" id=19]
+[ext_resource path="res://raw_assets/fonts/scribbles.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://scenes/UI/Notifications.gd" type="Script" id=21]
+[ext_resource path="res://item/items/shotgun.tres" type="Resource" id=22]
 [ext_resource path="res://raw_assets/tilesets/blocks-mesh-lib.tres" type="MeshLibrary" id=38]
 [ext_resource path="res://raw_assets/tilesets/buildings-mesh-lib.tres" type="MeshLibrary" id=39]
 [ext_resource path="res://raw_assets/tilesets/objects-mesh-lib.tres" type="MeshLibrary" id=40]
@@ -44,9 +47,16 @@ script = ExtResource( 9 )
 item_data = ExtResource( 17 )
 quantity = 1
 
+[sub_resource type="StyleBoxFlat" id=371]
+bg_color = Color( 0, 0, 0, 0.180392 )
+
+[sub_resource type="DynamicFont" id=372]
+size = 35
+font_data = ExtResource( 20 )
+
 [sub_resource type="Resource" id=367]
 script = ExtResource( 9 )
-item_data = ExtResource( 8 )
+item_data = ExtResource( 22 )
 quantity = 1
 
 [sub_resource type="Resource" id=368]
@@ -139,9 +149,37 @@ input_item_id = SubResource( 369 )
 output_item_id = SubResource( 370 )
 machine_name = "PDA Machine"
 production_time = 5.0
+payday = 5
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="Notifications" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 21 )
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/Notifications"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -99.0
+margin_right = 500.0
+custom_styles/panel = SubResource( 371 )
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Notifications/PanelContainer"]
+margin_right = 500.0
+margin_bottom = 99.0
+
+[node name="Label" type="Label" parent="UI/Notifications/PanelContainer/MarginContainer"]
+margin_right = 500.0
+margin_bottom = 99.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 372 )
+text = "testing text
+testing text
+testing text"
 
 [node name="InventoryInterface" type="Control" parent="UI"]
 visible = false
@@ -161,7 +199,14 @@ margin_top = 30.0
 margin_right = 530.0
 margin_bottom = 60.0
 
+[node name="WeaponInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
+margin_left = 500.0
+margin_top = 120.0
+margin_right = 530.0
+margin_bottom = 150.0
+
 [node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
+visible = false
 margin_left = 1200.0
 margin_top = 400.0
 margin_right = 1230.0
@@ -173,7 +218,7 @@ modulate = Color( 1, 1, 1, 0.439216 )
 self_modulate = Color( 1, 1, 1, 0 )
 
 [node name="Storage" parent="." instance=ExtResource( 5 )]
-transform = Transform( -0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 5, 10.5, 4 )
+transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, -5, 0.5, 1 )
 
 [node name="Test Item - Pickup" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 11, 2 )

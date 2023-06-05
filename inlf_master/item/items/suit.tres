@@ -14,4 +14,5 @@ name = "Suit"
 description = "Light suit that protects the wearer."
 stackable = false
 texture = SubResource( 1 )
-defence = 0
+price = 50
+defence = 1

@@ -23,6 +23,7 @@ var item_prefab = preload("res://item/pick_up/Pickup.tscn")
 	#name_plate.text = _name
 	#health.max_health = _max_health
 	#health.init() #setup health
+	#prog_bar.init(health.health, health.max_health)
 
 func _ready():
 	health.init()
@@ -39,4 +40,5 @@ func on_death(): #spawn item, delete self
 	queue_free() #destroy
 
 func on_hurt(amount):
-	health.hurt(amount)
+	if !health.death_sound.is_playing():
+		health.hurt(amount)

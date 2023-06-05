@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Characters/Movement.tscn" type="PackedScene" id=2]
@@ -15,11 +15,22 @@
 [ext_resource path="res://scenes/Characters/Health.tscn" type="PackedScene" id=13]
 [ext_resource path="res://raw_assets/sounds/death/prole.wav" type="AudioStream" id=14]
 [ext_resource path="res://raw_assets/sounds/spawn/role_prole.wav" type="AudioStream" id=15]
+[ext_resource path="res://item/items/shotgun.tres" type="Resource" id=16]
 [ext_resource path="res://raw_assets/textures/shotgun-sheet.png" type="Texture" id=17]
+[ext_resource path="res://item/item_data_weapon.gd" type="Script" id=18]
 
 [sub_resource type="CapsuleShape" id=1]
 
 [sub_resource type="BoxShape" id=2]
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 18 )
+name = "wep_fists"
+description = "debug"
+stackable = false
+price = 0
+damage = 5
+max_ammo = 0
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -168,7 +179,7 @@ script = ExtResource( 8 )
 [node name="wep_fists" type="Spatial" parent="Head/Camera/WeaponManager"]
 script = ExtResource( 7 )
 is_melee = true
-damage = 10
+item_weapon_data = SubResource( 16 )
 
 [node name="RangeRayCast" type="RayCast" parent="Head/Camera/WeaponManager/wep_fists"]
 enabled = true
@@ -195,8 +206,7 @@ hframes = 4
 
 [node name="wep_shotgun" type="Spatial" parent="Head/Camera/WeaponManager"]
 script = ExtResource( 7 )
-damage = 45
-weapon_item_id = "10005"
+item_weapon_data = ExtResource( 16 )
 
 [node name="RangeRayCast" type="RayCast" parent="Head/Camera/WeaponManager/wep_shotgun"]
 enabled = true

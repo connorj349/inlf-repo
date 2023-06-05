@@ -11,6 +11,7 @@ onready var state_text = $CanvasLayer/Info/VBoxContainer/ProgressBar/Label
 onready var movement = $Movement
 
 func _ready():
+	# spawn gib effects and blood effects to simulate corpse explosion after death
 	movement.init(self)
 	health.init()
 	health.connect("health_changed", prog_bar, "update_bar")
@@ -19,9 +20,11 @@ func _ready():
 
 func on_hurt(amount): #damages corpse
 	health.hurt(amount)
+	#drops organ
 
 func _interact(_actor): #just removes the corpse for now
 	queue_free()
+	#eats corpse
 
 func _on_DecayTimer_timeout(): #updates corpse state text on UI
 	on_hurt(1)

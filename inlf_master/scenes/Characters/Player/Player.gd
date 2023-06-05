@@ -4,8 +4,6 @@ extends KinematicBody
 
 export var mouse_sensitivity = 0.1
 
-export(Resource) var inventory_data
-
 onready var head = $Head
 onready var camera = $Head/Camera
 onready var interact_area = $Head/Camera/InteractArea
@@ -23,7 +21,6 @@ var footstep_time = 0 #move footsteps to a component so NPCs can have this funct
 var footstep_freq = 25
 
 var player_dead_prefab = preload("res://scenes/Characters/Player/Player_Dead.tscn") #for player view while dead
-var corpse_prefab = preload("res://scenes/Characters/corpse.tscn") #for harvesting/interacting with after respawn
 
 func _ready():
 	movement.init(self) #allow motion
@@ -67,6 +64,9 @@ func _process(delta):
 		#weapon switching
 		if Input.is_action_just_pressed("switch_weapons"):
 			weapon_manager.switch_to_next_weapon()
+		#reloading
+		if Input.is_action_just_pressed("reload"):
+			weapon_manager.reload()
 		#jumping
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 				movement.jump()
@@ -108,15 +108,19 @@ func use_slot_data(slot_data): #use functionality of items
 	slot_data.item_data.use(self) #activate the use function on the item's data, passing the player
 
 func kill(): #move this functionality to a component, then hook up health "death" signal to kill component
+	#remove the below and make a better way to drop/remove player items
+	Gamestate.equip_player_inventory.slot_datas[0] = null
+	Gamestate.equip_player_inventory.emit_signal("inventory_updated", Gamestate.equip_player_inventory)
+	Gamestate.weapon_player_inventory.slot_datas[0] = null
+	Gamestate.weapon_player_inventory.emit_signal("inventory_updated", Gamestate.weapon_player_inventory)
+	
 	Globals.current_ui.visible = false #hides the player's inventory screen on death
 	if Globals.current_ui.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #hide player mouse if visible
 	var player_dead = player_dead_prefab.instance() #create the death view
 	get_tree().get_root().add_child(player_dead)
-	var corpse = corpse_prefab.instance() #create the corpse object
-	get_tree().get_root().add_child(corpse)
 	player_dead.global_transform = Globals.current_player.global_transform
-	corpse.global_transform = Globals.current_player.global_transform
+	var corpse = Globals.create_corpse(self)
 	player_dead.get_node("PlayerSpawnTimer").wait_time = corpse.get_node("DecayTimer").wait_time #reset spawn time
 	player_dead.play_death_sound(self)
 	queue_free() #remove this player object

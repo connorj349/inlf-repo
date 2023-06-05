@@ -1,26 +1,22 @@
 extends Spatial
 
-# update how being able to equip weapon works
-
-onready var weapons = get_children()
-onready var fists = $wep_fists
+onready var weapons = get_children() #represents all weapons that can exist on player
+onready var fists = $wep_fists #starting weapon
 
 var curr_slot = 0
 var curr_weapon = null
 
 func _ready():
-	fists.is_owned = true #sets fists to always being active
-	switch_to_weapon_slot(0)
+	switch_to_weapon_slot(0) #default setup
 
 func attack():
-	#check ammo if not melee
 	if curr_weapon:
-		curr_weapon.on_attack()
+		if curr_weapon.ammo > 0 or curr_weapon.is_melee:
+			curr_weapon.on_attack()
 
-func enable_weapon(item_id): #change this to SlotData instead
-	for weapon in weapons:
-		if weapon.weapon_item_id == item_id:
-			weapon.is_owned = true
+func reload():
+	if curr_weapon != fists:
+		curr_weapon.reload(Gamestate.player_inventory) # pass the player's inventory to look for ammo, maybe change to ammo pouch inventory?
 
 func switch_to_next_weapon():
 	curr_slot = (curr_slot + 1) % weapons.size()
@@ -31,17 +27,19 @@ func switch_to_next_weapon():
 		#play weapon switch sounds
 
 func switch_to_weapon_slot(slot_id: int):
-	if !weapons[slot_id].is_owned:
-		switch_to_next_weapon()
+	if !Gamestate.weapon_player_inventory.slot_datas[0] or weapons[slot_id] == fists: # if the player has no weapon equipped or they are switching to fists, switch to fists
+		disable_all_weapons()
+		curr_weapon = fists #equip fists
+		curr_weapon.show()
 		return
-	if slot_id < 0 or slot_id >= weapons.size():
+	if weapons[slot_id].item_weapon_data != Gamestate.weapon_player_inventory.slot_datas[0].item_data: # if the weapon's data doesn't match the player's weapon's data, discontinue
 		return
-	if !weapons[slot_id]:
+	if !weapons[slot_id]: #if a weapon doesn't exist dont continue
 		return
 	disable_all_weapons()
 	curr_weapon = weapons[slot_id]
 	curr_weapon.show()
 
-func disable_all_weapons():
+func disable_all_weapons(): #hides visual elements of all weapons
 	for weapon in weapons:
 		weapon.hide()

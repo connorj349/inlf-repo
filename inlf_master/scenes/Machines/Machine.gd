@@ -6,6 +6,7 @@ export(Resource) var input_item_id #input item
 export(Resource) var output_item_id #output item
 export(String) var machine_name = "NULL"
 export(float) var production_time = 3 #time it takes to make item
+export(int) var payday = 0
 
 onready var timer = $ManufactureTimer
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
@@ -25,6 +26,7 @@ func _process(_delta): #update the manufacture progress bar onscreen
 func _interact(_actor):
 	if can_interact:
 		if Gamestate.player_inventory.take_item(input_item_id): #take item and count needed from player
+			Gamestate.bones_updated(payday)
 			accept_input.play()
 			can_interact = false
 			timer.start()

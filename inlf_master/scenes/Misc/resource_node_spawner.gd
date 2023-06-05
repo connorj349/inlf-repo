@@ -1,9 +1,5 @@
 extends Spatial
 
-# add a noise on spawn
-# change how this spawns resource nodes by making this spawner hold the variables that it will
-# change at runtime to spawn the correct type of resource node
-
 export(PackedScene) var node_to_spawn
 export(float) var spawn_frequency = 60
 
@@ -15,6 +11,7 @@ func _ready():
 	timer.wait_time = spawn_frequency
 
 func _on_Timer_timeout():
+	# spawn a temporal portal effect
 	if node_to_spawn != null: #only spawn if we have set the node to spawn an item
 		for body in area.get_overlapping_bodies(): #if there is an object in the way, dont spawn
 			if body is Interactable:

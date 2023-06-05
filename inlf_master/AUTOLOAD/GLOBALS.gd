@@ -3,12 +3,15 @@ extends Node
 # change create_pickup to accept an object to adjust where it places the new created pickup
 
 const pickup = preload("res://item/pick_up/Pickup.tscn")
+const corpse = preload("res://scenes/Characters/corpse.tscn")
 
 var current_player #allows other objects to reference the player like setting target/etc.
 var current_ui #player inventory global reference for other scripts
 
 # warning-ignore:unused_signal
 signal on_inventory_toggle
+# warning-ignore:unused_signal
+signal on_pop_notification
 
 func _ready():
 	#begin game with mouse mode captured
@@ -23,7 +26,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 
-func create_pickup(slot_data, object = false):
+func create_pickup(slot_data, object = false): #create an item, if object then create at that object's pos instead
 	var _pickup = pickup.instance()
 	_pickup.slot_data = slot_data
 	get_tree().get_root().add_child(_pickup)
@@ -32,7 +35,13 @@ func create_pickup(slot_data, object = false):
 		return
 	_pickup.global_transform.origin = Globals.current_player.get_drop_position()
 
-func toggle_inventory_interface(external_inventory_owner = null):
+func create_corpse(object): #create a corpse at object pos
+	var _corpse = corpse.instance()
+	get_tree().get_root().add_child(_corpse)
+	_corpse.global_transform.origin = object.global_transform.origin
+	return _corpse #return so that the corpse can be modified by other objects if needed
+
+func toggle_inventory_interface(external_inventory_owner = null): #is_vendor = false
 	if current_ui:
 		current_ui.visible = !current_ui.visible #toggle current ui
 	
@@ -42,6 +51,6 @@ func toggle_inventory_interface(external_inventory_owner = null):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if external_inventory_owner and current_ui.visible:
-		current_ui.set_external_inventory(external_inventory_owner)
+		current_ui.set_external_inventory(external_inventory_owner) #remove func_ref if does not work
 	else:
 		current_ui.clear_external_inventory()

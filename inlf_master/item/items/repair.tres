@@ -14,3 +14,4 @@ name = "Metastabilizer Repair Kit"
 description = "A repair kit for the metastabilizers. Interact with a metastabilizer with this in your inventory to repair the device."
 stackable = false
 texture = SubResource( 1 )
+price = 0

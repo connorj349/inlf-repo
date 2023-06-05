@@ -6,6 +6,7 @@ onready var player_inventory = $PlayerInventory
 onready var grabbed_slot = $GrabbedSlot
 onready var external_inventory = $ExternalInventory
 onready var equip_inventory = $EquipInventory
+onready var weapon_inventory = $WeaponInventory
 
 var grabbed_slot_data: SlotData = null
 var external_inventory_owner
@@ -14,6 +15,7 @@ func _ready():
 	Globals.current_ui = self
 	set_player_inventory_data(Gamestate.player_inventory)
 	set_equip_inventory_data(Gamestate.equip_player_inventory)
+	set_weapon_inventory_data(Gamestate.weapon_player_inventory)
 # warning-ignore:return_value_discarded
 	connect("drop_slot_data", Globals, "create_pickup")
 
@@ -21,15 +23,22 @@ func _physics_process(_delta): #update the position of the grabbed_slot on the u
 	if grabbed_slot.visible:
 		grabbed_slot.rect_global_position = get_global_mouse_position() + Vector2(5, 5)
 
+# all three of the below methods can be modified into one, take a inventoryui as arg instead
 func set_player_inventory_data(inventory_data: InventoryData): #setup and hookup signals for player inventorydata
 # warning-ignore:return_value_discarded
 	inventory_data.connect("inventory_interact", self, "on_inventory_interact")
+	#this would be where the invui arg is used
 	player_inventory.set_inventory_data(inventory_data)
 
 func set_equip_inventory_data(inventory_data: InventoryData): #setup and hookup signals for player equip inventorydata
 # warning-ignore:return_value_discarded
 	inventory_data.connect("inventory_interact", self, "on_inventory_interact")
 	equip_inventory.set_inventory_data(inventory_data)
+
+func set_weapon_inventory_data(inventory_data: InventoryData): #setup and hookup signals for player equip inventorydata
+# warning-ignore:return_value_discarded
+	inventory_data.connect("inventory_interact", self, "on_inventory_interact")
+	weapon_inventory.set_inventory_data(inventory_data)
 
 func set_external_inventory(_external_inventory_owner): #attaches external inventorydata to the ui
 	external_inventory_owner = _external_inventory_owner
