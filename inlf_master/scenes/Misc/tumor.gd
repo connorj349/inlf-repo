@@ -3,7 +3,7 @@ extends HintObject
 # change Globals.create_item so that it accepts an object to spawn the item at so we can get rid
 # of the spawning that is done in this object
 
-export(Resource) var slot_data # cancer item to spawn for player
+#export(Resource) var slot_data # cancer item to spawn for player
 #export(int) var damage = 10 # this will be removed and changed to number_of_roaches_to_spawn
 export(int) var rot_increase_amount = 1
 export(int) var rot_inrease_frequency = 1
@@ -11,8 +11,6 @@ export(int) var rot_inrease_frequency = 1
 onready var health = $Health
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var hurt_area = $HurtArea
-
-var item_prefab = preload("res://item/pick_up/Pickup.tscn")
 
 func _ready():
 	health.init()
@@ -30,8 +28,9 @@ func on_hurt(amount):
 
 func on_death():
 	# spawn tumor bloody pop effect
+	# spawn rotroach hive(this hive spawns 3 roaches, then dissapears)
 	yield(health.death_sound, "finished")
-	Globals.create_pickup(slot_data, self)
+	#Globals.create_pickup(slot_data, self)
 	queue_free() # delete this object
 
 func _on_RotTimer_timeout():

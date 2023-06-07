@@ -28,7 +28,8 @@ func _process(_delta):
 
 func create_pickup(slot_data, object = false): #create an item, if object then create at that object's pos instead
 	var _pickup = pickup.instance()
-	_pickup.slot_data = slot_data
+	_pickup.slot_data = SlotData.new()
+	_pickup.slot_data.item_data = slot_data.item_data
 	get_tree().get_root().add_child(_pickup)
 	if object:
 		_pickup.global_transform.origin = object.global_transform.origin

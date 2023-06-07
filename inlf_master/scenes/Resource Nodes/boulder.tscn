@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/Characters/Health.tscn" type="PackedScene" id=1]
 [ext_resource path="res://raw_assets/themes/hint_object_theme.tres" type="Theme" id=2]
@@ -7,7 +7,14 @@
 [ext_resource path="res://raw_assets/sounds/rock/rock_break.wav" type="AudioStream" id=5]
 [ext_resource path="res://scenes/UI/ui_bar.gd" type="Script" id=6]
 [ext_resource path="res://raw_assets/models/rock.glb" type="PackedScene" id=7]
+[ext_resource path="res://item/items/metal_frag.tres" type="Resource" id=8]
+[ext_resource path="res://inventory/slot_data.gd" type="Script" id=9]
 [ext_resource path="res://raw_assets/sounds/rock/rock_hit.wav" type="AudioStream" id=10]
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 9 )
+item_data = ExtResource( 8 )
+quantity = 1
 
 [sub_resource type="BoxShape" id=1]
 
@@ -136,6 +143,7 @@ tracks/3/keys = {
 [node name="boulder" type="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 script = ExtResource( 4 )
+slot_data = SubResource( 8 )
 display_name = "boulder"
 
 [node name="rock" parent="." instance=ExtResource( 7 )]

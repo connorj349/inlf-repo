@@ -6,12 +6,13 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
 atlas = ExtResource( 2 )
-region = Rect2( 356, 148, 40, 52 )
+region = Rect2( 148, 1852, 52, 36 )
 
 [resource]
 script = ExtResource( 1 )
-name = "PDA"
-description = "A small device used to read data."
-stackable = false
+name = "slop skull"
+description = "skull with rancid slime oozing from the eyes, used in food production."
+stackable = true
 texture = SubResource( 1 )
-price = 10
+price = 0
+drop_on_death = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/Characters/Movement.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Characters/Health.tscn" type="PackedScene" id=2]
@@ -7,6 +7,26 @@
 [ext_resource path="res://scenes/Characters/corpse.gd" type="Script" id=5]
 [ext_resource path="res://scenes/UI/ui_bar.gd" type="Script" id=6]
 [ext_resource path="res://raw_assets/textures/slop_skull.png" type="Texture" id=7]
+[ext_resource path="res://inventory/slot_data.gd" type="Script" id=8]
+[ext_resource path="res://role/roles/cultist.tres" type="Resource" id=9]
+[ext_resource path="res://item/items/ancient_brain.tres" type="Resource" id=10]
+[ext_resource path="res://item/items/vile_gut.tres" type="Resource" id=11]
+[ext_resource path="res://item/items/evil_eye.tres" type="Resource" id=12]
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 8 )
+item_data = ExtResource( 11 )
+quantity = 1
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 8 )
+item_data = ExtResource( 12 )
+quantity = 1
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 8 )
+item_data = ExtResource( 10 )
+quantity = 1
 
 [sub_resource type="BoxShape" id=1]
 
@@ -133,7 +153,12 @@ tracks/3/keys = {
 }
 
 [node name="corpse" type="KinematicBody"]
+collision_layer = 64
 script = ExtResource( 5 )
+harvest_role = ExtResource( 9 )
+common_organ = SubResource( 8 )
+uncommon_organ = SubResource( 9 )
+rare_organ = SubResource( 10 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )

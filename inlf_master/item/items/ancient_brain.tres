@@ -6,12 +6,13 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
 atlas = ExtResource( 2 )
-region = Rect2( 400, 2748, 52, 52 )
+region = Rect2( 648, 1848, 56, 44 )
 
 [resource]
 script = ExtResource( 1 )
-name = "Metastabilizer Repair Kit"
-description = "A repair kit for the metastabilizers. Interact with a metastabilizer with this in your inventory to repair the device."
+name = "ancient brain"
+description = "aged brain riddled with dementia, used in the most vile rituals."
 stackable = false
 texture = SubResource( 1 )
-price = 0
+price = 100
+drop_on_death = false

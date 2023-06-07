@@ -2,26 +2,27 @@
 
 [ext_resource path="res://item/item_data_weapon.gd" type="Script" id=1]
 [ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
-[ext_resource path="res://item/items/ammo.tres" type="Resource" id=3]
+[ext_resource path="res://item/items/shells.tres" type="Resource" id=3]
 [ext_resource path="res://inventory/slot_data.gd" type="Script" id=4]
 
-[sub_resource type="Resource" id=2]
+[sub_resource type="Resource" id=1]
 script = ExtResource( 4 )
 item_data = ExtResource( 3 )
 quantity = 1
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=2]
 flags = 19
 atlas = ExtResource( 2 )
-region = Rect2( 1000, 1550, 250, 50 )
+region = Rect2( 2204, 3050, 196, 48 )
 
 [resource]
 script = ExtResource( 1 )
-name = "Shotgun"
-description = "A powerful shotgun."
+name = "pump shotgun"
+description = "simple lead thrower that holds a couple shells, shreds and peppers the target with lead."
 stackable = false
-texture = SubResource( 1 )
-price = 30
-damage = 50
-max_ammo = 8
-ammo_slot = SubResource( 2 )
+texture = SubResource( 2 )
+price = 350
+drop_on_death = true
+damage = 80
+max_ammo = 4
+ammo_slot = SubResource( 1 )

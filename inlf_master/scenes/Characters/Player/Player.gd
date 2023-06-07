@@ -100,10 +100,12 @@ func use_slot_data(slot_data): #use functionality of items
 
 func kill(): #move this functionality to a component, then hook up health "death" signal to kill component
 	#remove the below and make a better way to drop/remove player items
-	Gamestate.equip_player_inventory.slot_datas[0] = null
-	Gamestate.equip_player_inventory.emit_signal("inventory_updated", Gamestate.equip_player_inventory)
-	Gamestate.weapon_player_inventory.slot_datas[0] = null
-	Gamestate.weapon_player_inventory.emit_signal("inventory_updated", Gamestate.weapon_player_inventory)
+	Gamestate.equip_player_inventory.take_item(Gamestate.equip_player_inventory.slot_datas[0])
+	Gamestate.weapon_player_inventory.take_item(Gamestate.weapon_player_inventory.slot_datas[0])
+	for slot_data in Gamestate.player_inventory.slot_datas: # take items from inventory
+		if slot_data:
+			if slot_data.item_data.drop_on_death:
+				Gamestate.player_inventory.take_item(slot_data)
 	
 	Globals.current_ui.visible = false #hides the player's inventory screen on death
 	if Globals.current_ui.visible:

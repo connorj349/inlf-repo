@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://item/item_data.gd" type="Script" id=1]
+[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 19
+atlas = ExtResource( 2 )
+region = Rect2( 452, 2300, 48, 48 )
+
+[resource]
+script = ExtResource( 1 )
+name = "metal fragment"
+description = "tiny metal fragment collected from boulders, used in production"
+stackable = true
+texture = SubResource( 1 )
+price = 0
+drop_on_death = false

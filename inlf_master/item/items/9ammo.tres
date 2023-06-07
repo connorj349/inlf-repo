@@ -6,12 +6,13 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
 atlas = ExtResource( 2 )
-region = Rect2( 2774, 1098, 74, 48 )
+region = Rect2( 2748, 158, 54, 40 )
 
 [resource]
 script = ExtResource( 1 )
-name = "Shells"
-description = "Box of shotgun shells."
+name = "9mm parabellum"
+description = "ammunition manufactured for smaller personal defence weapons."
 stackable = true
 texture = SubResource( 1 )
-price = 15
+price = 1
+drop_on_death = false

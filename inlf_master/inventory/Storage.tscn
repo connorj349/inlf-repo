@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://inventory/Storage.gd" type="Script" id=1]
-[ext_resource path="res://inventory/test_storage_inventory.tres" type="Resource" id=2]
+[ext_resource path="res://inventory/inventory_data.gd" type="Script" id=2]
 [ext_resource path="res://raw_assets/models/locker.glb" type="PackedScene" id=3]
 [ext_resource path="res://raw_assets/fonts/scribbles.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 2 )
+slot_datas = [ null, null, null, null, null, null ]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 1.5, 0.5 )
@@ -45,7 +49,7 @@ tracks/0/keys = {
 
 [node name="Storage" type="StaticBody" groups=["external_inventory"]]
 script = ExtResource( 1 )
-inventory_data = ExtResource( 2 )
+inventory_data = SubResource( 5 )
 
 [node name="locker" parent="." instance=ExtResource( 3 )]
 

@@ -6,13 +6,14 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
 atlas = ExtResource( 2 )
-region = Rect2( 5300, 600, 100, 148 )
+region = Rect2( 4108, 206, 84, 86 )
 
 [resource]
 script = ExtResource( 1 )
-name = "Suit"
-description = "Light suit that protects the wearer."
+name = "worker uniform"
+description = "dingy uniform, poor production quality, helps the bad guys know you can't defend yourself."
 stackable = false
 texture = SubResource( 1 )
-price = 50
+price = 15
+drop_on_death = false
 defence = 1

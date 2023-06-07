@@ -1,9 +1,11 @@
 extends Interactable # maybe corpse could be a storage, holding organs/flesh inside instead of other items
 
-# want to make this so that anyone dying spawns a corpse, maybe use Globals/Gamestate to spawn corpses just like
-# items are spawned?
-# ADD the ability to cannibalize
-# ADD the ability to harvest organs for cultists' rituals
+#must be role resource
+export(Resource) var harvest_role # could be an array in future, for cultist/korpsman/misfit
+# needs to be slot data
+export(Resource) var common_organ
+export(Resource) var uncommon_organ
+export(Resource) var rare_organ
 
 onready var health = $Health
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
@@ -11,6 +13,7 @@ onready var state_text = $CanvasLayer/Info/VBoxContainer/ProgressBar/Label
 onready var movement = $Movement
 
 func _ready():
+	randomize()
 	# spawn gib effects and blood effects to simulate corpse explosion after death
 	movement.init(self)
 	health.init()
@@ -21,12 +24,14 @@ func _ready():
 
 func on_hurt(amount): #damages corpse
 	health.hurt(amount)
-	#drops organ
 
 func _interact(_actor): # what does this do to actually help the non-cultist player?
-	queue_free()
-	#eats corpse
-	#if cultist, harvest organs instead?(do we want cultists to lose this ability)
+	if _actor.role == harvest_role:
+		spawn_organ()
+		destroy()
+	else:
+		_actor.on_heal(25)
+		destroy()
 
 func _on_DecayTimer_timeout(): #updates corpse state text on UI
 	on_hurt(1)
@@ -35,6 +40,20 @@ func _on_DecayTimer_timeout(): #updates corpse state text on UI
 		state_text.text = "Fresh"
 	elif health.health < 75 and health.health > 25:
 		state_text.text = "Rotting"
-	elif health.health <= 0:
+	elif health.health < 25:
 		state_text.text = "Husk"
-		queue_free() #remove husk for early dev purposes
+	else:
+		destroy()
+
+func destroy():
+	# play destroy corpse effect(blood splatters/gibs
+	queue_free() # remove this object
+
+func spawn_organ():
+	var random_result = randf()
+	if random_result < 0.8:
+		Globals.create_pickup(common_organ, self)
+	elif random_result < 0.95:
+		Globals.create_pickup(uncommon_organ, self)
+	else:
+		Globals.create_pickup(rare_organ, self)

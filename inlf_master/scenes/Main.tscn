@@ -7,7 +7,7 @@
 [ext_resource path="res://inventory/Storage.tscn" type="PackedScene" id=5]
 [ext_resource path="res://raw_assets/skybox_02.png" type="Texture" id=6]
 [ext_resource path="res://item/pick_up/Pickup.tscn" type="PackedScene" id=7]
-[ext_resource path="res://item/items/repair.tres" type="Resource" id=8]
+[ext_resource path="res://item/items/metal_frag.tres" type="Resource" id=8]
 [ext_resource path="res://inventory/slot_data.gd" type="Script" id=9]
 [ext_resource path="res://scenes/Misc/metastabilizer.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Misc/autostitcher.tscn" type="PackedScene" id=11]
@@ -16,13 +16,13 @@
 [ext_resource path="res://scenes/Misc/bloater.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/Misc/tumor.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Resource Nodes/boulder.tscn" type="PackedScene" id=16]
-[ext_resource path="res://item/items/pda.tres" type="Resource" id=17]
-[ext_resource path="res://item/items/ammo.tres" type="Resource" id=18]
+[ext_resource path="res://item/items/shells.tres" type="Resource" id=17]
 [ext_resource path="res://scenes/Machines/production_machine.tscn" type="PackedScene" id=19]
 [ext_resource path="res://raw_assets/fonts/scribbles.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://scenes/UI/Notifications.gd" type="Script" id=21]
 [ext_resource path="res://item/items/shotgun.tres" type="Resource" id=22]
-[ext_resource path="res://role/roles/cultist.tres" type="Resource" id=23]
+[ext_resource path="res://role/roles/proletariat.tres" type="Resource" id=23]
+[ext_resource path="res://role/roles/cultist.tres" type="Resource" id=24]
 [ext_resource path="res://raw_assets/tilesets/blocks-mesh-lib.tres" type="MeshLibrary" id=38]
 [ext_resource path="res://raw_assets/tilesets/buildings-mesh-lib.tres" type="MeshLibrary" id=39]
 [ext_resource path="res://raw_assets/tilesets/objects-mesh-lib.tres" type="MeshLibrary" id=40]
@@ -40,13 +40,13 @@ ambient_light_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="Resource" id=369]
 script = ExtResource( 9 )
-item_data = ExtResource( 18 )
-quantity = 50
+item_data = ExtResource( 8 )
+quantity = 1
 
 [sub_resource type="Resource" id=370]
 script = ExtResource( 9 )
 item_data = ExtResource( 17 )
-quantity = 1
+quantity = 10
 
 [sub_resource type="StyleBoxFlat" id=371]
 bg_color = Color( 0, 0, 0, 0.180392 )
@@ -62,7 +62,6 @@ quantity = 1
 
 [sub_resource type="Resource" id=368]
 script = ExtResource( 9 )
-item_data = ExtResource( 8 )
 quantity = 1
 
 [node name="Main" type="Spatial"]
@@ -130,7 +129,11 @@ __meta__ = {
 [node name="player_role_spawns" type="Spatial" parent="."]
 
 [node name="OBJ_Sawblade" parent="player_role_spawns" instance=ExtResource( 42 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 11, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 11, 0 )
+role = ExtResource( 24 )
+
+[node name="OBJ_Sawblade2" parent="player_role_spawns" instance=ExtResource( 42 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 11, 0 )
 role = ExtResource( 23 )
 
 [node name="resource_spawners" type="Spatial" parent="."]
@@ -149,7 +152,7 @@ node_to_spawn = ExtResource( 16 )
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.9, 0.5, 2.9 )
 input_item_id = SubResource( 369 )
 output_item_id = SubResource( 370 )
-machine_name = "PDA Machine"
+machine_name = "ammo machine"
 production_time = 5.0
 payday = 5
 

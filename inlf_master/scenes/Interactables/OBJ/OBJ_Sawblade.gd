@@ -1,5 +1,8 @@
 extends Spatial
 
+# add ability to spawn the player with certian items/spells
+# change itemdata to have var drop_on_death, on player death loop through inv and remove items with true on this var
+
 export var instructions = "none" # generic talk to give the item a mood
 export var condition = "nothing" # change this to a custom resource maybe that returns true/false based on params
 export(Resource) var role

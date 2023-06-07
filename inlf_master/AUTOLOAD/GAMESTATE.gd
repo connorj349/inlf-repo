@@ -3,7 +3,7 @@ extends Node
 # need to finish the 'end game' when rot reaches 100
 
 # player's inventory
-var player_inventory = preload("res://inventory/test_inventory.tres")
+var player_inventory = preload("res://inventory/player_inventory.tres")
 # player's clothing equipment slot
 var equip_player_inventory = preload("res://inventory/player_equipment_inventory.tres")
 # player's weapon slot
