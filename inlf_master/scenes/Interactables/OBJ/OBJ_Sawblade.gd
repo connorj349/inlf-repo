@@ -1,31 +1,36 @@
 extends Spatial
 
-# IDEAS
-# -setup player permissions so that the player is only allowed to do certain things w/ certain roles
-# -instead of permissions, start the player off with certain gear?(need to generate a way to lose this gear on death)
-
-export var role_name = ""
-export var instructions = ""
-export var description = ""
-export var pay_option = ""
+export var instructions = "none" # generic talk to give the item a mood
+export var condition = "nothing" # change this to a custom resource maybe that returns true/false based on params
+export(Resource) var role
 
 onready var role_label = $Viewport/VBoxContainer/RoleLabel
 onready var instruction_label = $Viewport/VBoxContainer/InstrucLabel
 onready var description_label = $Viewport/VBoxContainer/DescLabel
-onready var pay_label = $Viewport/VBoxContainer/PayLabel #optional for early development
+onready var pay_label = $Viewport/VBoxContainer/PayLabel
+onready var cooldown_timer = $Timer
 
 var player_prefab = preload("res://scenes/Characters/Player/Player.tscn") #player base prefab
 
 func _ready():
-	role_label.text = role_name
-	instruction_label.text = instructions
-	description_label.text = description
-	pay_label.text = pay_option
+	if role:
+		cooldown_timer.wait_time = role.cooldown # needs to be greater than 0
+		role_label.text = role.name
+		instruction_label.text = instructions
+		description_label.text = role.description
+		pay_label.text = "You may either wait for %s or pay %s stem cells to become this role." % [condition, role.stem_cells_required]
 
-func _on_Area_body_entered(body): #maybe change this to some kind of interaction instead
-	if body.is_in_group("Ghost"):
-		var player = player_prefab.instance()
-		get_tree().get_root().add_child(player)
-		player.global_transform = global_transform
-		player.add_to_group("other_dev") #for dev testing
-		body.queue_free() #delete player ghost
+func _on_Area_body_entered(body): #change this into interact
+	if role: # prevent any annoying errors
+		#if Gamestate.modify_stem_cells(role.stem_cells_required): # if remove stem cells from player
+		if cooldown_timer.time_left <= 0:
+			if body.is_in_group("Ghost"):
+				cooldown_timer.start()
+				var player = player_prefab.instance()
+				get_tree().get_root().add_child(player)
+				player.global_transform = global_transform
+				player.set_role(role)
+				body.queue_free() #delete player ghost
+
+func _on_Timer_timeout(): #maybe use the regular not 3d playsound
+	pass #nothing for now, maybe play a special distant sound to alert the player subconsiously when a role is available

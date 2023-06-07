@@ -11,14 +11,13 @@ onready var movement = $Movement
 onready var health = $Health
 onready var hint_raycast = $Head/Camera/HintObjRayCast
 onready var weapon_manager = $Head/Camera/WeaponManager
-onready var ground_cast = $GroundRayCast
 
 onready var health_bar = $UI/Bars/health_bar
 
-var cam_accel = 40
+onready var portrait_image = $UI/CharacterPortrait/margin_container/portrait_image
+var role
 
-var footstep_time = 0 #move footsteps to a component so NPCs can have this functionality
-var footstep_freq = 25
+var cam_accel = 40
 
 var player_dead_prefab = preload("res://scenes/Characters/Player/Player_Dead.tscn") #for player view while dead
 
@@ -37,6 +36,15 @@ func on_hurt(amount): #used by all other objects that want to hurt the player
 func on_heal(amount): #mainly used by slotdataconsumable and autostitcher
 	health.heal(amount)
 
+func set_role(_role): # setup role; maybe add sound to it?
+	role = _role # for use with checking if player can use certain machines/objects
+	portrait_image.texture = role.portrait_image # cosmetic
+
+func spawn_circle_of_blood(): # only can be done if cultist role
+	#if role == preload("res://role/roles/cultist.tres"): #find better way of comparing resources
+		#print("success")
+		pass # spawn circle of blood object at player feet; remove health from the player
+
 func _input(event):
 	if !player_is_in_menu(): #only move player head while not in a menu
 		if event is InputEventMouseMotion:
@@ -50,6 +58,8 @@ func _process(delta):
 	#toggle inventory menu
 	if Input.is_action_just_pressed("inventory"):
 		Globals.emit_signal("on_inventory_toggle")
+	if Input.is_action_just_pressed("draw_circle"):
+		spawn_circle_of_blood()
 	#interacting
 	if Input.is_action_just_pressed("interact") and !player_is_in_menu():#change this so it's a raycast instead of area
 		if interact_area.monitoring:
@@ -76,12 +86,6 @@ func _process(delta):
 		var h_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		direction = Vector3(h_input, 0, f_input)
 		movement.set_move_vector(direction)
-		#footsteps move this to it's own component
-		if is_on_floor() and direction.length() > 0: #footstep calculating
-			footstep_time += direction.length()
-			if footstep_time >= footstep_freq:
-				footstep_time = 0
-				footstep()
 	else:
 		movement.set_move_vector(Vector3.ZERO) #set movement to zero when in menu
 	camera_physics_interpolation(delta) #camera smoothing from tutorial
@@ -90,19 +94,6 @@ func _physics_process(_delta): #only used for hintobject
 	var coll = hint_raycast.get_collider()
 	if hint_raycast.is_colliding() and coll.has_method("_look_at"): #shows the info from the hintobject onscreen
 		coll._look_at()
-
-func footstep(): #check the tile, play the sound, all timing is done in _process
-	var coll_tileset = ground_cast.get_collider()
-	if ground_cast.is_colliding():
-		if coll_tileset.is_in_group("ground_stone"):
-			$step_stone.pitch_scale = rand_range(0.7, 1.3)
-			$step_stone.play()
-		elif coll_tileset.is_in_group("ground_transition"):
-			$step_transition.pitch_scale = rand_range(0.7, 1.3)
-			$step_transition.play()
-		elif coll_tileset.is_in_group("ground_mud"):
-			$step_mud.pitch_scale = rand_range(0.7, 1.3)
-			$step_mud.play()
 
 func use_slot_data(slot_data): #use functionality of items
 	slot_data.item_data.use(self) #activate the use function on the item's data, passing the player

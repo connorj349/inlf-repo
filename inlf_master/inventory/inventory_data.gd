@@ -97,8 +97,6 @@ func add_item(slot_data): #search inv if it has item, then merge or add item to 
 				slot_datas[index].fully_merge_with(slot_data)
 				emit_signal("inventory_updated", self)
 				return
-			#else:
-				#pass #nothing, continue with loop
 		else:
 			var new_slot = slot_data.duplicate()
 			slot_datas[index] = new_slot #create a new slot

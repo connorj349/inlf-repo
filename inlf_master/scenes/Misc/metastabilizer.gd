@@ -1,7 +1,6 @@
 extends Interactable
 
 # add a repair sound
-# add a semi-quiet looping operating sound, so the player can tell by sound alone this is functional
 # add a sound that triggers when rot is reduced/additional sound for when rot is increased on infected
 # add infected capabilities
 
@@ -23,11 +22,18 @@ func _ready():
 	status_label.text = "Status: operational"
 
 func _interact(_actor):
+	#if _actor.role == repair_role:
 	if Gamestate.player_inventory.take_item(repair_item):
 		health.heal(heal_amount)
 		if not active:
 			active = true
 			spot_light.light_color = Color(0, 0.9, 1, 1)
+	#elif _actor.role == infect_role:
+		#if Gamestate.player_inventory.take_item(infect_item):
+		#health.heal(heal_amount)
+		#if not active:
+			#active = true
+			#spot_light.light_color = Color(0, 0.9, 1, 1) #change to orange
 
 func on_disable():
 	spot_light.light_color = Color(1, 0, 0, 1)

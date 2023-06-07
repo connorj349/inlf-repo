@@ -55,6 +55,11 @@ _global_script_classes=[ {
 "path": "res://item/item_data_weapon.gd"
 }, {
 "base": "Resource",
+"class": "Role",
+"language": "GDScript",
+"path": "res://role/Role.gd"
+}, {
+"base": "Resource",
 "class": "SlotData",
 "language": "GDScript",
 "path": "res://inventory/slot_data.gd"
@@ -74,6 +79,7 @@ _global_script_class_icons={
 "ItemDataConsumable": "",
 "ItemDataEquip": "",
 "ItemDataWeapon": "",
+"Role": "",
 "SlotData": "",
 "Storage": ""
 }
@@ -164,6 +170,11 @@ switch_weapons={
 reload={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+draw_circle={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

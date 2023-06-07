@@ -11,8 +11,7 @@ func _ready():
 	timer.wait_time = spawn_frequency
 
 func _on_Timer_timeout():
-	# spawn a temporal portal effect
-	if node_to_spawn != null: #only spawn if we have set the node to spawn an item
+	if node_to_spawn: #only spawn if we have set the node to spawn an item
 		for body in area.get_overlapping_bodies(): #if there is an object in the way, dont spawn
 			if body is Interactable:
 				return
@@ -20,3 +19,4 @@ func _on_Timer_timeout():
 		get_tree().get_root().add_child(new_spawn)
 		new_spawn.global_transform = global_transform
 		spawn_sound.play()
+		# spawn a temporal portal effect
