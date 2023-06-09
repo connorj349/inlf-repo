@@ -23,12 +23,14 @@ func on_attack():
 				col.on_hurt(item_weapon_data.damage)
 
 func reload(inventory_data: InventoryData): #need to play sound somewhere
-	var ammo_needed = item_weapon_data.max_ammo - ammo
-	for i in ammo_needed:
-		if inventory_data.take_item(item_weapon_data.ammo_slot):
-			ammo += 1
-		else:
-			return #stop trying to take ammo
+	if item_weapon_data:
+		if !anim_player.is_playing():
+			var ammo_needed = item_weapon_data.max_ammo - ammo
+			for i in ammo_needed:
+				if inventory_data.take_item(item_weapon_data.ammo_slot):
+					ammo += 1
+				else:
+					return #stop trying to take ammo
 
 func hide():
 	sprite.visible = false

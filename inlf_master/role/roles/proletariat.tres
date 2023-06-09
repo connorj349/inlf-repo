@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Proletariat"
+name = "proletariat"
 description = "The lifeblood of liver failure"
 stem_cells_required = 0
 portrait_image = ExtResource( 2 )

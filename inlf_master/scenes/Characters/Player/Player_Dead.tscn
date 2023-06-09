@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape" id=1]
 
 [node name="Player_Dead" type="KinematicBody"]
-collision_layer = 32
+collision_layer = 64
 script = ExtResource( 1 )
 
 [node name="OuterGimbal" type="Spatial" parent="."]

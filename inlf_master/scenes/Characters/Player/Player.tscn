@@ -28,6 +28,7 @@ name = "wep_fists"
 description = "debug"
 stackable = false
 price = 0
+drop_on_death = false
 damage = 5
 max_ammo = 0
 
@@ -171,7 +172,7 @@ cull_mask = 1048543
 
 [node name="HintObjRayCast" type="RayCast" parent="Head/Camera"]
 enabled = true
-cast_to = Vector3( 0, 0, -999 )
+cast_to = Vector3( 0, 0, -5 )
 
 [node name="InteractArea" type="Area" parent="Head/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )

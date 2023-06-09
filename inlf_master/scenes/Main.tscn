@@ -13,16 +13,16 @@
 [ext_resource path="res://scenes/Misc/autostitcher.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/Misc/rot_telecom.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/Misc/vendor.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/Misc/bloater.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/Misc/tumor.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Resource Nodes/boulder.tscn" type="PackedScene" id=16]
 [ext_resource path="res://item/items/shells.tres" type="Resource" id=17]
+[ext_resource path="res://scenes/Zone/Zone.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scenes/Machines/production_machine.tscn" type="PackedScene" id=19]
 [ext_resource path="res://raw_assets/fonts/scribbles.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://scenes/UI/Notifications.gd" type="Script" id=21]
 [ext_resource path="res://item/items/shotgun.tres" type="Resource" id=22]
 [ext_resource path="res://role/roles/proletariat.tres" type="Resource" id=23]
 [ext_resource path="res://role/roles/cultist.tres" type="Resource" id=24]
+[ext_resource path="res://scenes/Zone/Room.tscn" type="PackedScene" id=25]
 [ext_resource path="res://raw_assets/tilesets/blocks-mesh-lib.tres" type="MeshLibrary" id=38]
 [ext_resource path="res://raw_assets/tilesets/buildings-mesh-lib.tres" type="MeshLibrary" id=39]
 [ext_resource path="res://raw_assets/tilesets/objects-mesh-lib.tres" type="MeshLibrary" id=40]
@@ -240,13 +240,21 @@ transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -7, 2, -5
 [node name="vendor" parent="." instance=ExtResource( 13 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0.5, 0 )
 
-[node name="bloater" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.6, 19 )
-incubation_increase_amount = 1
-incubation_frequency_amount = 10.0
+[node name="Zone" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -14 )
+zone_name = "Test Zone"
+chance_to_infect = 1.0
+bounds = Vector3( 15, 5, 8 )
 
-[node name="tumor" parent="." instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.7, 9 )
+[node name="Room" parent="Zone" instance=ExtResource( 25 )]
+
+[node name="resource_node_spawner" parent="Zone/Room" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -5.3, 0 )
+
+[node name="resource_node_spawner2" parent="Zone/Room" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -5.3, 0 )
 
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
+
+[editable path="Zone/Room"]

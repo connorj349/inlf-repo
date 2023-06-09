@@ -22,12 +22,13 @@ func reload():
 		curr_weapon.reload(Gamestate.player_inventory) # pass the player's inventory to look for ammo, maybe change to ammo pouch inventory?
 
 func switch_to_next_weapon():
-	curr_slot = (curr_slot + 1) % weapons.size()
-	if !weapons[curr_slot]:
-		switch_to_next_weapon()
-	else:
-		switch_to_weapon_slot(curr_slot)
-		#play weapon switch sounds
+	if !curr_weapon.anim_player.is_playing():
+		curr_slot = (curr_slot + 1) % weapons.size()
+		if !weapons[curr_slot]:
+			switch_to_next_weapon()
+		else:
+			switch_to_weapon_slot(curr_slot)
+			#play weapon switch sounds
 
 func switch_to_weapon_slot(slot_id: int):
 	if !Gamestate.weapon_player_inventory.slot_datas[0] or weapons[slot_id] == fists: # if the player has no weapon equipped or they are switching to fists, switch to fists

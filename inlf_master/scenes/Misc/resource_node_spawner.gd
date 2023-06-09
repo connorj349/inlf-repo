@@ -8,15 +8,20 @@ onready var area = $Area
 onready var spawn_sound = $spawn_noise
 
 func _ready():
-	timer.wait_time = spawn_frequency
+	if spawn_frequency <= 0: #if the spawn frequency is zero, don't use a timer
+		timer.queue_free()
+	else:
+		timer.wait_time = spawn_frequency
 
-func _on_Timer_timeout():
+func spawn():
 	if node_to_spawn: #only spawn if we have set the node to spawn an item
-		for body in area.get_overlapping_bodies(): #if there is an object in the way, dont spawn
-			if body is Interactable:
-				return
+		if area.get_overlapping_bodies().size() > 0:
+			return
 		var new_spawn = node_to_spawn.instance()
 		get_tree().get_root().add_child(new_spawn)
 		new_spawn.global_transform = global_transform
 		spawn_sound.play()
 		# spawn a temporal portal effect
+
+func _on_Timer_timeout():
+	spawn()

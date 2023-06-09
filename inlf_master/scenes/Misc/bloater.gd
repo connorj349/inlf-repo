@@ -40,4 +40,4 @@ func _on_Timer_timeout():
 	incu_bar.update_bar(incubation)
 	if incubation >= 100:
 		Gamestate.rot_modify(25) #increaes rot
-		on_death()
+		on_hurt(999)

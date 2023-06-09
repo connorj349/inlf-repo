@@ -20,6 +20,7 @@ var role
 var cam_accel = 40
 
 var player_dead_prefab = preload("res://scenes/Characters/Player/Player_Dead.tscn") #for player view while dead
+var blood_circle_prefab = preload("res://scenes/Misc/blood_circle.tscn")
 
 func _ready():
 	movement.init(self) #allow motion
@@ -41,9 +42,15 @@ func set_role(_role): # setup role; maybe add sound to it?
 	portrait_image.texture = role.portrait_image # cosmetic
 
 func spawn_circle_of_blood(): # only can be done if cultist role
-	#if role == preload("res://role/roles/cultist.tres"): #find better way of comparing resources
-		#print("success")
-		pass # spawn circle of blood object at player feet; remove health from the player
+	#needs a cooldown so the player cannot commit suicide easily
+	if role.name == "cultist":
+		Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
+		on_hurt(health.max_health / 2)
+		var circle = blood_circle_prefab.instance()
+		get_tree().get_root().add_child(circle)
+		circle.global_transform.origin = hint_raycast.get_collision_point()
+	else:
+		Globals.emit_signal("on_pop_notification", "Why would I cut my skin open?")
 
 func _input(event):
 	if !player_is_in_menu(): #only move player head while not in a menu
