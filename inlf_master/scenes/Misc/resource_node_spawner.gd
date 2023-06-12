@@ -1,7 +1,7 @@
 extends Spatial
 
 export(PackedScene) var node_to_spawn
-export(float) var spawn_frequency = 60
+export(float) var spawn_frequency = 60.0
 
 onready var timer = $Timer
 onready var area = $Area

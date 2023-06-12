@@ -7,7 +7,7 @@ extends HintObject
 # create init method so this can be spawned by infestations
 
 export(int) var incubation_increase_amount = 5
-export(float) var incubation_frequency_amount = 1
+export(float) var incubation_frequency_amount = 1.0
 
 onready var health = $Health
 onready var hp_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar

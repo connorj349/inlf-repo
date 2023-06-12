@@ -2,11 +2,11 @@ extends Spatial
 tool
 
 export(String) var zone_name = ""
-export(float) var show_time = 2
+export(float) var show_time = 2.0
 export(int) var rot_percentage_needed_to_infect = 50
 export(float) var chance_to_infect = 0.8 # 0.8 is 80% chance to infect
 export(Vector3) var bounds = Vector3(5, 5, 5)
-export(float) var try_infection_frequency = 60
+export(float) var try_infection_frequency = 60.0
 
 onready var zone_label = $CanvasLayer/Control/background/zone_label
 onready var anim_player = $AnimationPlayer

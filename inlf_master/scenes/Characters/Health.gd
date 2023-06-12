@@ -3,6 +3,7 @@ extends Spatial
 export(int) var max_health = 1
 export(AudioStream) var hurt_audio_stream
 export(AudioStream) var death_audio_stream
+export(PackedScene) var hit_effect = preload("res://scenes/effects/blood_spray.tscn")
 
 onready var hurt_sound = $hurt_sound
 onready var death_sound = $death_sound
@@ -21,6 +22,10 @@ func init():
 	emit_signal("health_changed", health)
 
 func hurt(amount):
+	if hit_effect:
+		var hit = hit_effect.instance()
+		get_tree().get_root().add_child(hit)
+		hit.global_transform.origin = self.global_transform.origin
 	health = clamp(health - amount, 0, max_health)
 	hurt_sound.play()
 	emit_signal("hurt", health)

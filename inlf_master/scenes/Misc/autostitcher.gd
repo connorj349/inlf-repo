@@ -1,8 +1,6 @@
 extends Interactable
 
-# purely cosmetic changes that need to be applied
 # add an animation to the stitchers on the machine
-# add blood particles that spawn randomly as the machine is running
 
 #export(int) var heal_cost = 50 #how many bones to heal
 export(int) var heal_amount = 5 #amount to heal player per tick
@@ -14,6 +12,7 @@ onready var healing_loop = $HealingLoop
 onready var hit_sound = $HitSound
 
 var charges = 3 #start with three
+var blood_effect = preload("res://scenes/effects/blood_spray.tscn")
 
 func _ready():
 	heal_area.connect("body_exited", self, "stop_healing") #stop the healing process if anything leaves area
@@ -56,7 +55,9 @@ func change_charge_count(amount): # negative amounts are subtraction, positive a
 	charges_nameplate.text = "charges: " + str(charges)
 
 func _on_Timer_timeout(): # this technically heals ALL bodies within the vicinity
-	# spawn blood splatter particle effects
 	for body in heal_area.get_overlapping_bodies():
 		if body.has_method("on_heal") and body != self:
 			body.on_heal(heal_amount)
+			var heal_effect = blood_effect.instance()
+			get_tree().get_root().add_child(heal_effect)
+			heal_effect.global_transform.origin = body.global_transform.origin
