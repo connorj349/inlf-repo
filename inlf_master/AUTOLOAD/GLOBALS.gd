@@ -1,7 +1,5 @@
 extends Node
 
-# change create_pickup to accept an object to adjust where it places the new created pickup
-
 const pickup = preload("res://item/pick_up/Pickup.tscn")
 const corpse = preload("res://scenes/Characters/corpse.tscn")
 
@@ -18,8 +16,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 # warning-ignore:return_value_discarded
 	connect("on_inventory_toggle", self, "toggle_inventory_interface")
-	for node in get_tree().get_nodes_in_group("external_inventory"):
-		node.connect("toggle_inventory", self, "toggle_inventory_interface")
+	#for node in get_tree().get_nodes_in_group("external_inventory"): #currently making each indv storage do this
+		#node.connect("toggle_inventory", self, "toggle_inventory_interface")
 
 func _process(_delta):
 	#debug close out
@@ -42,9 +40,9 @@ func create_corpse(object): #create a corpse at object pos
 	_corpse.global_transform.origin = object.global_transform.origin
 	return _corpse #return so that the corpse can be modified by other objects if needed
 
-func toggle_inventory_interface(external_inventory_owner = null): #is_vendor = false
+func toggle_inventory_interface(external_inventory_owner = null):
 	if current_ui:
-		current_ui.visible = !current_ui.visible #toggle current ui
+		current_ui.visible = !current_ui.visible #toggle player inventory menu
 	
 	if current_ui.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
@@ -52,6 +50,6 @@ func toggle_inventory_interface(external_inventory_owner = null): #is_vendor = f
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if external_inventory_owner and current_ui.visible:
-		current_ui.set_external_inventory(external_inventory_owner) #remove func_ref if does not work
+		current_ui.set_external_inventory(external_inventory_owner)
 	else:
 		current_ui.clear_external_inventory()

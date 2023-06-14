@@ -1,10 +1,8 @@
 extends HintObject
 
 # drop an item on death
-# add death sound
 # add looping 'gestation' sounds to clue player to this items' location
 # clean up UI
-# create init method so this can be spawned by infestations
 
 export(int) var incubation_increase_amount = 5
 export(float) var incubation_frequency_amount = 1.0
@@ -38,6 +36,7 @@ func on_death():
 func _on_Timer_timeout():
 	incubation = clamp(incubation + incubation_increase_amount, 0, 100)
 	incu_bar.update_bar(incubation)
-	if incubation >= 100:
+	if incubation == 100:
 		Gamestate.rot_modify(25) #increaes rot
 		on_hurt(999)
+		timer.stop() # prevents rot from being modified more than once before death

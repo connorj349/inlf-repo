@@ -33,7 +33,7 @@ instructions = "use the sawblade to cut your ectoplasm on it and become mortal a
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.25, 0 )
-layers = 32
+layers = 4
 texture = ExtResource( 2 )
 
 [node name="Area" type="Area" parent="."]
@@ -96,7 +96,7 @@ valign = 1
 
 [node name="Sprite3DText" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
-layers = 32
+layers = 4
 offset = Vector2( 0, 100 )
 pixel_size = 0.007
 billboard = 1

@@ -1,12 +1,14 @@
 extends Interactable
 
-#update this so we can just have a single machine that is changed at runtime by altering variables
+# 1 input material
+# array of output items
+# on_interact, remove the input, randomly add output to vendor inv
 
-export(Resource) var input_item_id #input item
-export(Resource) var output_item_id #output item
+export(Resource) var input_item_slot #input item
+export(Array, Resource) var out_item_slots #output item
 export(String) var machine_name = "NULL"
-export(float) var production_time = 3.0 #time it takes to make item
-export(int) var payday = 0
+export(float) var production_time = 3.0 # time it takes to make item
+export(int) var payday = 0 # how much the player is paid out
 
 onready var timer = $ManufactureTimer
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
@@ -15,11 +17,13 @@ onready var accept_input = $AcceptSound
 onready var machine_loop = $MachineLoop
 
 var required_role = preload("res://role/roles/proletariat.tres")
+var rng = RandomNumberGenerator.new()
 
 func _ready():
-	timer.wait_time = production_time #setup timer limit
-	name_plate.text = machine_name #setup nameplate
-	prog_bar.init(0, production_time)
+	timer.wait_time = production_time # setup timer limit
+	name_plate.text = machine_name # setup nameplate
+	prog_bar.init(0, production_time) # init progress bar
+	rng.randomize()
 
 func _process(_delta): #update the manufacture progress bar onscreen
 	if timer.time_left > 0:
@@ -28,7 +32,7 @@ func _process(_delta): #update the manufacture progress bar onscreen
 func _interact(_actor):
 	if _actor.role == required_role: # only enable interacting if correct role
 		if can_interact:
-			if Gamestate.player_inventory.take_item(input_item_id): #take item and count needed from player
+			if Gamestate.player_inventory.take_item(input_item_slot): #take item and count needed from player
 				Gamestate.bones_updated(payday)
 				accept_input.play()
 				can_interact = false
@@ -38,7 +42,8 @@ func _interact(_actor):
 		Globals.emit_signal("on_pop_notification", "I don't know how to use this machine.")
 
 func _on_ManufactureTimer_timeout():
-	can_interact = true #enable interaction
+	var random_index = rng.randi_range(0, out_item_slots.size() - 1)
+	can_interact = true # enable interaction
 	timer.stop()
 	machine_loop.stop()
-	Gamestate.merchant_inventory.add_item(output_item_id)
+	Gamestate.merchant_inventory.add_item(out_item_slots[random_index])

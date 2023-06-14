@@ -50,7 +50,7 @@ func spawn_circle_of_blood(): # only can be done if cultist role
 		get_tree().get_root().add_child(circle)
 		# need a better way of spawning the blood circle
 		# play blood splatter/drip noise
-		circle.global_transform.origin = hint_raycast.get_collision_point()
+		circle.global_transform = $feet.global_transform
 	else:
 		Globals.emit_signal("on_pop_notification", "Why would I cut my skin open?")
 

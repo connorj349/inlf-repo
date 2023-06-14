@@ -16,6 +16,8 @@ stream = ExtResource( 2 )
 pitch_scale = 0.8
 
 [node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 10
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

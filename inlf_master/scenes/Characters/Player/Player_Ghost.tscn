@@ -10,6 +10,7 @@
 [sub_resource type="SphereShape" id=1]
 
 [node name="Player_Ghost" type="KinematicBody"]
+collision_layer = 4
 script = ExtResource( 1 )
 possible_noises = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ) ]
 

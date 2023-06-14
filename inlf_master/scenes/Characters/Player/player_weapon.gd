@@ -12,6 +12,11 @@ onready var sprite = $CanvasLayer/Control/Sprite
 
 var ammo = 0
 
+func _ready():
+	# set collision masks to 1, 2, and NPC
+	# raycast.collision_mask
+	pass
+
 func on_attack():
 	if item_weapon_data:
 		if !anim_player.is_playing(): #this allows the animplayer to be kinda like the attackspeed

@@ -48,6 +48,8 @@ tracks/0/keys = {
 }
 
 [node name="Storage" type="StaticBody" groups=["external_inventory"]]
+collision_layer = 2
+collision_mask = 8
 script = ExtResource( 1 )
 inventory_data = SubResource( 5 )
 

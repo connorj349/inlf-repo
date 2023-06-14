@@ -1,10 +1,9 @@
 extends Spatial
 
 # add ability to spawn the player with certian items/spells
-# change itemdata to have var drop_on_death, on player death loop through inv and remove items with true on this var
 
 export var instructions = "none" # generic talk to give the item a mood
-export var condition = "nothing" # change this to a custom resource maybe that returns true/false based on params
+export var condition = "nothing" # change to rot %
 export(Resource) var role
 
 onready var role_label = $Viewport/VBoxContainer/RoleLabel
@@ -24,8 +23,7 @@ func _ready():
 		pay_label.text = "You may either wait for %s or pay %s stem cells to become this role." % [condition, role.stem_cells_required]
 
 func _on_Area_body_entered(body): #change this into interact
-	if role: # prevent any annoying errors
-		#if Gamestate.modify_stem_cells(role.stem_cells_required): # if remove stem cells from player
+	if role: # prevent any errors
 		if cooldown_timer.time_left <= 0:
 			if body.is_in_group("Ghost"):
 				cooldown_timer.start()

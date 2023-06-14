@@ -21,8 +21,9 @@ func rot_modify(amount):
 	rot = clamp(rot + amount, 0, 100)
 	emit_signal("rot_changed")
 	if rot >= 100:
-		#change scene to end of game cutscene; this scene will show restart button
 		pass
+		#spawn dementia
+		#call active_effects on brain melter
 
 func can_afford(amount):
 	return bones >= amount

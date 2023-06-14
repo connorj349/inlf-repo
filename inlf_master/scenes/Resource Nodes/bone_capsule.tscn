@@ -140,6 +140,8 @@ tracks/3/keys = {
 
 [node name="bone_capsule" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 2
+collision_mask = 9
 script = ExtResource( 4 )
 slot_data = SubResource( 8 )
 display_name = "bone capsule"

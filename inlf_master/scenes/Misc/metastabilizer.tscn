@@ -141,12 +141,15 @@ tracks/3/keys = {
 
 [node name="metastabilizer" type="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 2
+collision_mask = 8
 script = ExtResource( 4 )
 repair_item = SubResource( 9 )
 heal_amount = 40
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
 max_health = 100
+hit_effect = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

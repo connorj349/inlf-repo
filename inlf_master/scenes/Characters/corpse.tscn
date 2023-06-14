@@ -153,7 +153,7 @@ tracks/3/keys = {
 }
 
 [node name="corpse" type="KinematicBody"]
-collision_layer = 32
+collision_layer = 2
 script = ExtResource( 5 )
 harvest_role = ExtResource( 9 )
 common_organ = SubResource( 8 )

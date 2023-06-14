@@ -142,6 +142,8 @@ tracks/3/keys = {
 
 [node name="boulder" type="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 2
+collision_mask = 8
 script = ExtResource( 4 )
 slot_data = SubResource( 8 )
 display_name = "boulder"

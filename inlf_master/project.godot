@@ -88,7 +88,7 @@ _global_script_class_icons={
 
 config/name="Industrial Nightmare: Liver Failure"
 config/description="Post apocalyptic role playing game with roguelite elements."
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -180,8 +180,11 @@ draw_circle={
 
 [layer_names]
 
-3d_render/layer_6="Invisible"
-3d_render/layer_7="Dead"
+3d_render/layer_1="ground"
+3d_render/layer_2="interactable"
+3d_render/layer_3="dead"
+3d_render/layer_4="player"
+3d_render/layer_6="nodraw"
 
 [physics]
 
