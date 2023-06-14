@@ -19,11 +19,6 @@ func _ready():
 	#for node in get_tree().get_nodes_in_group("external_inventory"): #currently making each indv storage do this
 		#node.connect("toggle_inventory", self, "toggle_inventory_interface")
 
-func _process(_delta):
-	#debug close out
-	if Input.is_action_just_pressed("escape"):
-		get_tree().quit()
-
 func create_pickup(slot_data, object = false): #create an item, if object then create at that object's pos instead
 	var _pickup = pickup.instance()
 	_pickup.slot_data = SlotData.new()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://raw_assets/fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/UI/LoadingScreen.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://raw_assets/tilesets/objects-mesh-lib.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=5]
 [ext_resource path="res://raw_assets/skybox_02.png" type="Texture" id=6]
+[ext_resource path="res://scenes/UI/Options.tscn" type="PackedScene" id=7]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 6 )
@@ -113,8 +114,12 @@ rect_min_size = Vector2( 0, 75 )
 custom_fonts/font = SubResource( 3 )
 text = "Exit"
 
+[node name="Options" parent="CanvasLayer" instance=ExtResource( 7 )]
+visible = false
+
 [node name="LoadingScreen" parent="CanvasLayer" instance=ExtResource( 2 )]
 visible = false
 
 [connection signal="button_down" from="CanvasLayer/StartButton" to="." method="_on_StartButton_button_down"]
+[connection signal="pressed" from="CanvasLayer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_ExitButton_pressed"]
