@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://raw_assets/fonts/scribbles.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://item/item_atlas.tres" type="Texture" id=2]
 [ext_resource path="res://item/pick_up/Pickup.gd" type="Script" id=3]
 

@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Characters/Player/Player_Ghost.gd" type="Script" id=1]
+[ext_resource path="res://raw_assets/sounds/ghost/ghost_ambience.ogg" type="AudioStream" id=2]
+[ext_resource path="res://raw_assets/sounds/ghost/ghost_ambient/ghost4.ogg" type="AudioStream" id=3]
+[ext_resource path="res://raw_assets/sounds/ghost/ghost_ambient/ghost1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://raw_assets/sounds/ghost/ghost_ambient/ghost3.ogg" type="AudioStream" id=5]
+[ext_resource path="res://raw_assets/sounds/ghost/ghost_ambient/ghost2.ogg" type="AudioStream" id=6]
+
+[sub_resource type="SphereShape" id=1]
+
+[node name="Player_Ghost" type="KinematicBody"]
+collision_layer = 4
+script = ExtResource( 1 )
+possible_noises = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ) ]
+
+[node name="Head" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Head"]
+
+[node name="CollisionShape" type="CollisionShape" parent="." groups=["Ghost"]]
+shape = SubResource( 1 )
+
+[node name="GhostAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -10.487
+pitch_scale = 0.77
+autoplay = true
+
+[node name="GhostNoises" type="AudioStreamPlayer" parent="."]
+volume_db = -12.236
+pitch_scale = 0.75
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

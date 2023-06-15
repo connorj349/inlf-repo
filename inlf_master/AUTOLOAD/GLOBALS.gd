@@ -1,7 +1,7 @@
 extends Node
 
 const pickup = preload("res://item/pick_up/Pickup.tscn")
-const corpse = preload("res://scenes/Characters/corpse.tscn")
+const corpse = preload("res://Characters/corpse.tscn")
 
 var current_player #allows other objects to reference the player like setting target/etc.
 var current_ui #player inventory global reference for other scripts

@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "HintObject",
 "language": "GDScript",
-"path": "res://scenes/Interactables/HintObject.gd"
+"path": "res://gameobjects/Interactables/HintObject.gd"
 }, {
 "base": "HintObject",
 "class": "Interactable",
 "language": "GDScript",
-"path": "res://scenes/Interactables/Interactable.gd"
+"path": "res://gameobjects/Interactables/Interactable.gd"
 }, {
 "base": "Resource",
 "class": "InventoryData",
@@ -64,6 +64,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://inventory/slot_data.gd"
 }, {
+"base": "Spatial",
+"class": "SoundPool",
+"language": "GDScript",
+"path": "res://sound/SoundPool.gd"
+}, {
+"base": "Node",
+"class": "SoundQueue",
+"language": "GDScript",
+"path": "res://sound/SoundQueue.gd"
+}, {
+"base": "Spatial",
+"class": "SoundQueue3D",
+"language": "GDScript",
+"path": "res://sound/SoundQueue3D.gd"
+}, {
 "base": "Interactable",
 "class": "Storage",
 "language": "GDScript",
@@ -81,6 +96,9 @@ _global_script_class_icons={
 "ItemDataWeapon": "",
 "Role": "",
 "SlotData": "",
+"SoundPool": "",
+"SoundQueue": "",
+"SoundQueue3D": "",
 "Storage": ""
 }
 
@@ -91,10 +109,15 @@ config/description="Post apocalyptic role playing game with roguelite elements."
 run/main_scene="res://scenes/Menu.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+default_bus_layout="res://sound/default_bus_layout.tres"
+
 [autoload]
 
 Globals="*res://AUTOLOAD/GLOBALS.gd"
 Gamestate="*res://AUTOLOAD/GAMESTATE.gd"
+SoundManager="*res://sound/SoundManager.tscn"
 
 [display]
 
@@ -193,4 +216,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://skybox/default_env.tres"

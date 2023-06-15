@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://raw_assets/fonts/scribbles.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scenes/UI/LoadingScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://raw_assets/tilesets/buildings-mesh-lib.tres" type="MeshLibrary" id=3]
 [ext_resource path="res://raw_assets/tilesets/objects-mesh-lib.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=5]
-[ext_resource path="res://raw_assets/skybox_02.png" type="Texture" id=6]
-[ext_resource path="res://scenes/UI/Options.tscn" type="PackedScene" id=7]
+[ext_resource path="res://skybox/skybox_02.png" type="Texture" id=6]
+[ext_resource path="res://UI/Options.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sound/SoundQueue.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sound/UI/buttonrelease.wav" type="AudioStream" id=9]
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 6 )
@@ -119,6 +121,12 @@ visible = false
 
 [node name="LoadingScreen" parent="CanvasLayer" instance=ExtResource( 2 )]
 visible = false
+
+[node name="SoundQueue" parent="." instance=ExtResource( 8 )]
+Count = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundQueue"]
+stream = ExtResource( 9 )
 
 [connection signal="button_down" from="CanvasLayer/StartButton" to="." method="_on_StartButton_button_down"]
 [connection signal="pressed" from="CanvasLayer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
