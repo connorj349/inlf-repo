@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://raw_assets/textures/sawblade.png" type="Texture" id=2]
@@ -17,10 +17,6 @@ size = 35
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 35
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=6]
 size = 35
 font_data = ExtResource( 1 )
 
@@ -80,17 +76,6 @@ size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.0588235, 1, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "You will reincarnate with the flesh and blood of a role"
-align = 1
-valign = 1
-
-[node name="PayLabel" type="Label" parent="Viewport/VBoxContainer"]
-margin_top = 109.0
-margin_right = 970.0
-margin_bottom = 140.0
-size_flags_horizontal = 3
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
-text = "You can spend X stem cells to become a role if rot is above X%"
 align = 1
 valign = 1
 

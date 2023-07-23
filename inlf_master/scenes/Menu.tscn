@@ -121,6 +121,7 @@ visible = false
 
 [node name="LoadingScreen" parent="CanvasLayer" instance=ExtResource( 2 )]
 visible = false
+tips = [ "tumors produce rot over time. destroy them", "cultists can create a circle of blood by pressing the Z key", "you can harvest a resource like a tree or boulder by hitting it" ]
 
 [node name="SoundQueue" parent="." instance=ExtResource( 8 )]
 Count = 2

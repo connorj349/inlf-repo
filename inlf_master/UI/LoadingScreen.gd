@@ -6,6 +6,7 @@ export(Array, String, MULTILINE) var tips # array of tips to display
 var rng = RandomNumberGenerator.new() # random tips
 
 func change_scene(path): # need to pass current scene to remove it
+	rng.randomize()
 	show()
 	var loader = ResourceLoader.load_interactive(path)
 	

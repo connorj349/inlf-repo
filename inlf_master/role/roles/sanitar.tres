@@ -10,3 +10,4 @@ description = "protectors from rot"
 stem_cells_required = 0
 portrait_image = ExtResource( 2 )
 cooldown = 1.0
+role_type = 1

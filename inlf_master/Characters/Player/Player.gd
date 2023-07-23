@@ -43,7 +43,7 @@ func set_role(_role): # setup role; maybe add sound to it?
 
 func spawn_circle_of_blood(): # only can be done if cultist role
 	#needs a cooldown so the player cannot commit suicide easily
-	if role.name == "cultist": #UPDATE THIS TO ROLE_ANTAGONIST
+	if role.role_type == Role.Role_Type.ANTAGONIST:
 		Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
 		on_hurt(health.max_health / 2)
 		var circle = blood_circle_prefab.instance()
@@ -107,8 +107,7 @@ func _physics_process(_delta): #only used for hintobject
 func use_slot_data(slot_data): #use functionality of items
 	slot_data.item_data.use(self) #activate the use function on the item's data, passing the player
 
-func kill(): #move this functionality to a component, then hook up health "death" signal to kill component
-	#remove the below and make a better way to drop/remove player items
+func kill():
 	Gamestate.equip_player_inventory.take_item(Gamestate.equip_player_inventory.slot_datas[0])
 	Gamestate.weapon_player_inventory.take_item(Gamestate.weapon_player_inventory.slot_datas[0])
 	for slot_data in Gamestate.player_inventory.slot_datas: # take items from inventory

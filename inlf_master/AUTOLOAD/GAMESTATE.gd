@@ -1,6 +1,7 @@
 extends Node
 
 # need to finish the 'end game' when rot reaches 100
+# at end of game, reward player additional stem cells if they are an antagonist
 
 # player's inventory
 var player_inventory = preload("res://inventory/player_inventory.tres")
