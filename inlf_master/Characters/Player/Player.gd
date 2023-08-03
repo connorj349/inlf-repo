@@ -1,7 +1,5 @@
 extends KinematicBody
 
-# update how damage calculation is done depending on the armor being work in player_equipment_inventory
-
 export var mouse_sensitivity = 0.1
 
 onready var head = $Head
@@ -9,50 +7,93 @@ onready var camera = $Head/Camera
 onready var interact_area = $Head/Camera/InteractArea
 onready var movement = $Movement
 onready var health = $Health
+onready var magick = $Magick
+onready var armor = $Armor
 onready var hint_raycast = $Head/Camera/HintObjRayCast
 onready var weapon_manager = $Head/Camera/WeaponManager
 
 onready var health_bar = $UI/Bars/health_bar
-
+onready var magick_amount_left = $UI/MagickLabel
 onready var portrait_image = $UI/CharacterPortrait/margin_container/portrait_image
-var role
+var role # player role
 
 var cam_accel = 40
 
+var blood_circle_active = false
+
 var player_dead_prefab = preload("res://Characters/Player/Player_Dead.tscn") #for player view while dead
-var blood_circle_prefab = preload("res://gameobjects/blood_circle.tscn")
+var blood_circle_prefab = preload("res://gameobjects/blood_circle.tscn") #to spawn when player is cultist
 
 func _ready():
 	movement.init(self) #allow motion
 	#health.connect("hurt", something, "play_hurt_effects") #enable effects when player is damaged like sound/hud
 	health.init() #setup sarting health
 	health.connect("health_changed", health_bar, "update_bar") #setup healthbar connection
-	health.connect("dead", self, "kill")
+	health.connect("dead", self, "kill") # setup death functionality
 	health_bar.init(health.health, health.max_health)
+	armor.init()
+	armor.connect("damage_dealt", self, "deal_damage")
+	armor.connect("armor_changed", self, "update_armor_image")
 	Globals.current_player = self
+# warning-ignore:return_value_discarded
+	Globals.connect("blood_circle_removed", self, "on_blood_circle_removed")
+	yield(get_tree(), "idle_frame") # prevents errors for next part
+	if role.role_type == Role.Role_Type.ANTAGONIST:
+		magick.init(2) # only provide the player mana if they are an antagonist
+		magick_amount_left.text = str(magick.curr_magick)
+	else:
+		magick.init(0)
+		magick_amount_left.visible = false
+	magick.connect("magick_changed", self, "on_magick_changed")
 
 func on_hurt(amount): #used by all other objects that want to hurt the player
+	armor.calc_damage(amount) # calc actual damage dealt, then call deal_damage
+
+func deal_damage(amount): # used by armor to actually deal damage to the player
 	health.hurt(amount)
 
 func on_heal(amount): #mainly used by slotdataconsumable and autostitcher
 	health.heal(amount)
 
+func give_armor(amount): # used by some consumables/armor
+	armor.add_armor(amount)
+
+func update_armor_image(armor_remaining): # REWORK, include multi images
+	if armor_remaining > 0:
+		$UI/CharacterPortrait/margin_container/skin_image.texture = preload("res://raw_assets/textures/exoskeleton/layer_exo.jpg")
+	else:
+		$UI/CharacterPortrait/margin_container/skin_image.texture = preload("res://raw_assets/textures/exoskeleton/layer_skin.jpg")
+
+func on_blood_circle_removed():
+	blood_circle_active = false
+
+func on_use_organ(organ):
+	if blood_circle_active:
+		Globals.emit_signal("cast_spell", organ)
+	else:
+		# handle role specific cases(i.e. if cultist or prole)
+		magick.modify_magick(organ.mana_regen)
+		# play eat organ noise(2D)
+
 func set_role(_role): # setup role; maybe add sound to it?
 	role = _role # for use with checking if player can use certain machines/objects
 	portrait_image.texture = role.portrait_image # cosmetic
 
+func on_magick_changed(curr_magick): # update UI for magic remaining
+	magick_amount_left.text = str(curr_magick)
+
 func spawn_circle_of_blood(): # only can be done if cultist role
-	#needs a cooldown so the player cannot commit suicide easily
-	if role.role_type == Role.Role_Type.ANTAGONIST:
-		Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
-		on_hurt(health.max_health / 2)
-		var circle = blood_circle_prefab.instance()
-		get_tree().get_root().add_child(circle)
-		# need a better way of spawning the blood circle
-		# play blood splatter/drip noise
-		circle.global_transform = $feet.global_transform
-	else:
-		Globals.emit_signal("on_pop_notification", "Why would I cut my skin open?")
+	if !blood_circle_active:
+		if role.role_type == Role.Role_Type.ANTAGONIST:
+			Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
+			on_hurt(health.max_health / 2)
+			var circle = blood_circle_prefab.instance()
+			get_tree().get_root().add_child(circle)
+			# play blood splatter/drip noise and play player cut_self noise
+			circle.global_transform = $feet.global_transform
+			blood_circle_active = true
+		else:
+			Globals.emit_signal("on_pop_notification", "Why would I cut my skin open?")
 
 func _input(event):
 	if !player_is_in_menu(): #only move player head while not in a menu

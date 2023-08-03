@@ -8,22 +8,22 @@
 [ext_resource path="res://UI/ui_bar.gd" type="Script" id=6]
 [ext_resource path="res://inventory/slot_data.gd" type="Script" id=7]
 [ext_resource path="res://role/roles/cultist.tres" type="Resource" id=8]
-[ext_resource path="res://item/items/ancient_brain.tres" type="Resource" id=9]
-[ext_resource path="res://item/items/vile_gut.tres" type="Resource" id=10]
+[ext_resource path="res://item/items/organ_ancientbrain.tres" type="Resource" id=9]
+[ext_resource path="res://item/items/organ_evileyes.tres" type="Resource" id=10]
 [ext_resource path="res://raw_assets/models/flesh_pile.material" type="Material" id=11]
-[ext_resource path="res://item/items/evil_eye.tres" type="Resource" id=12]
+[ext_resource path="res://item/items/organ_vilegut.tres" type="Resource" id=12]
 
-[sub_resource type="Resource" id=8]
-script = ExtResource( 7 )
-item_data = ExtResource( 10 )
-quantity = 1
-
-[sub_resource type="Resource" id=9]
+[sub_resource type="Resource" id=14]
 script = ExtResource( 7 )
 item_data = ExtResource( 12 )
 quantity = 1
 
-[sub_resource type="Resource" id=10]
+[sub_resource type="Resource" id=15]
+script = ExtResource( 7 )
+item_data = ExtResource( 10 )
+quantity = 1
+
+[sub_resource type="Resource" id=16]
 script = ExtResource( 7 )
 item_data = ExtResource( 9 )
 quantity = 1
@@ -186,9 +186,9 @@ surfaces/0 = {
 collision_layer = 2
 script = ExtResource( 5 )
 harvest_role = ExtResource( 8 )
-common_organ = SubResource( 8 )
-uncommon_organ = SubResource( 9 )
-rare_organ = SubResource( 10 )
+common_organ = SubResource( 14 )
+uncommon_organ = SubResource( 15 )
+rare_organ = SubResource( 16 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.7, 0 )

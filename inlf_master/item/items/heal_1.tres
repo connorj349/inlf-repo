@@ -17,3 +17,4 @@ texture = SubResource( 1 )
 price = 25
 drop_on_death = false
 heal_value = 10
+consumable_type = 1

@@ -15,8 +15,8 @@ var merchant_inventory = preload("res://inventory/merchant_inventory.tres")
 signal rot_changed
 signal bones_changed
 
-var rot = 0 #world rot percentage
-var bones = 0 #player money
+var rot = 0 # world rot percentage
+var bones = 0 # player money
 
 func rot_modify(amount):
 	rot = clamp(rot + amount, 0, 100)

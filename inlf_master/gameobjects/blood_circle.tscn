@@ -101,7 +101,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="BoxShape" id=13]
-extents = Vector3( 5, 5, 5 )
+extents = Vector3( 7, 2, 7 )
 
 [node name="blood_circle" type="StaticBody"]
 collision_layer = 2
@@ -159,7 +159,7 @@ margin_right = 416.0
 margin_bottom = 138.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
 custom_fonts/font = SubResource( 10 )
-text = "purchase evil items to cause rot and chaos"
+text = "unholy circle used to sew  chaos"
 align = 1
 valign = 1
 autowrap = true
@@ -171,7 +171,7 @@ anims/fade_in = SubResource( 12 )
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 13 )
 
 [connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

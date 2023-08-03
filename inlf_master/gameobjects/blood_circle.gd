@@ -2,18 +2,21 @@ extends Interactable
 
 var altar = preload("res://gameobjects/dark_altar.tscn")
 
-# instead of spawning an altar, when the player consumes an organ while within the blood circle, create
-# a spell effect using the player as the origin
-
 func _ready():
+	Globals.connect("cast_spell", self, "_cast_spell")
 	anim_player.play("RESET")
 	anim_player.seek(0, true)
-	# start a timer that will destroy this object after timeup instead of if player leaves circle
 
 func _interact(_actor):
-	Globals.emit_signal("on_pop_notification", "I touch the blood circle, seeing the rot.")
-	queue_free() # remove the blood circle
+	Globals.emit_signal("on_pop_notification", "Consume organs to cast spells.")
 
-func _on_Area_body_exited(body): # REMOVE
+func _cast_spell(organ): # create the spell effect; effect will immediately fire
+	if organ.magic_effect: # prevent errors
+		var spell_effect = organ.magic_effect.instance()
+		get_tree().get_root().add_child(spell_effect)
+		spell_effect.global_transform.origin = global_transform.origin
+
+func _on_Area_body_exited(body): # cleanup for the blood circle
 	if body == Globals.current_player:
-		queue_free()
+		Globals.emit_signal("blood_circle_removed")
+		queue_free() # replace with a method that plays an effect showing the ritual circle is dissapating

@@ -1,7 +1,5 @@
 extends Interactable
 
-# on interact, begin random ritual
-# on ritual complete, award +1 maximum magick
 export(Array, Resource) var possible_materials # the materials that could be required for a ritual
 
 onready var label = $CanvasLayer/Info/VBoxContainer/Label2 # display ritual requirements
@@ -16,12 +14,12 @@ func _interact(_actor): # can only use if player is an antagonist
 	if _actor.role.role_type == Role.Role_Type.ANTAGONIST:
 		if current_active_required_mat:
 			if Gamestate.player_inventory.take_item(current_active_required_mat):
-				# increase player max magick
-				Gamestate.rot_modify(1)
+				Globals.current_player.magick.increase_max_magick(1) # increase max magick +1
+				Gamestate.rot_modify(1) # increase rot
 				Globals.emit_signal("on_pop_notification", "My knowledge in the arcane has increased")
 				Globals.emit_signal("on_pop_notification", "The rot grows")
 				label.text = "interact with to start a gruesome ritual"
-				current_active_required_mat = null
+				current_active_required_mat = null # remove reference
 		else:
 			if possible_materials.size() > 0:
 				var random_index = rng.randi_range(0, possible_materials.size() - 1)
