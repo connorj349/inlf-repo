@@ -49,7 +49,7 @@ func use_slot_data(index): #use up the item, then apply effects to player
 	if not slot_data:
 		return
 	
-	if slot_data.item_data is ItemDataConsumable:
+	if slot_data.item_data.consume_on_use: # used to be slot_data.item_data is ItemDataConsumable
 		slot_data.quantity -= 1
 		if slot_data.quantity < 1:
 			slot_datas[index] = null

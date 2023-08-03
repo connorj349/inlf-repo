@@ -16,4 +16,5 @@ stackable = false
 texture = SubResource( 1 )
 price = 100
 drop_on_death = false
+consume_on_use = true
 mana_regen = 4

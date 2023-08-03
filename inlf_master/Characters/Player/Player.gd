@@ -69,7 +69,9 @@ func on_blood_circle_removed():
 
 func on_use_organ(organ):
 	if blood_circle_active:
-		Globals.emit_signal("cast_spell", organ)
+		if magick.curr_magick > organ.mana_regen:
+			Globals.emit_signal("cast_spell", organ)
+			# take organ from player
 	else:
 		# handle role specific cases(i.e. if cultist or prole)
 		magick.modify_magick(organ.mana_regen)
