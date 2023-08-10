@@ -69,12 +69,13 @@ func on_blood_circle_removed():
 
 func on_use_organ(organ):
 	if blood_circle_active:
-		if magick.curr_magick > organ.mana_regen:
+		if magick.curr_magick >= organ.mana_regen:
 			Globals.emit_signal("cast_spell", organ)
-			# take organ from player
 	else:
-		# handle role specific cases(i.e. if cultist or prole)
-		magick.modify_magick(organ.mana_regen)
+		if role.role_type == Role.Role_Type.ANTAGONIST:
+			magick.modify_magick(organ.mana_regen)
+		else:
+			deal_damage(15) # arbituary amount, could make this a global or based on the item consumed
 		# play eat organ noise(2D)
 
 func set_role(_role): # setup role; maybe add sound to it?
@@ -88,7 +89,7 @@ func spawn_circle_of_blood(): # only can be done if cultist role
 	if !blood_circle_active:
 		if role.role_type == Role.Role_Type.ANTAGONIST:
 			Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
-			on_hurt(health.max_health / 2)
+			deal_damage(health.max_health / 2)
 			var circle = blood_circle_prefab.instance()
 			get_tree().get_root().add_child(circle)
 			# play blood splatter/drip noise and play player cut_self noise

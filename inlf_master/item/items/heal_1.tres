@@ -16,6 +16,5 @@ stackable = true
 texture = SubResource( 1 )
 price = 25
 drop_on_death = false
-consume_on_use = true
 heal_value = 10
 consumable_type = 1

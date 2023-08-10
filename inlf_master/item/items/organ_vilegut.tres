@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://item/item_data_organ.gd" type="Script" id=1]
 [ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
+[ext_resource path="res://effects/spell effects/spell_effect_viletouch.tscn" type="PackedScene" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
@@ -16,5 +17,5 @@ stackable = false
 texture = SubResource( 1 )
 price = 10
 drop_on_death = false
-consume_on_use = true
 mana_regen = 2
+magic_effect = ExtResource( 3 )

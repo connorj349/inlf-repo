@@ -33,7 +33,7 @@ description = "debug"
 stackable = false
 price = 0
 drop_on_death = false
-consume_on_use = false
+consume_on_use = null
 damage = 5
 max_ammo = 0
 
