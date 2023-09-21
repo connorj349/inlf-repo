@@ -5,7 +5,7 @@
 [ext_resource path="res://raw_assets/sounds/ambience/music/new_area.wav" type="AudioStream" id=3]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 15, 5, 5 )
+extents = Vector3( 15, 5, 8 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0, 0, 0 )
@@ -103,7 +103,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 1, 1, 0 )
 custom_fonts/font = SubResource( 4 )
-text = "zone name"
 align = 1
 valign = 1
 
@@ -115,6 +114,7 @@ anims/show = SubResource( 6 )
 stream = ExtResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
 autostart = true
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

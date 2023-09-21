@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -26,15 +26,12 @@
 [ext_resource path="res://role/roles/cultist.tres" type="Resource" id=24]
 [ext_resource path="res://zone/Room.tscn" type="PackedScene" id=25]
 [ext_resource path="res://item/items/heal_1.tres" type="Resource" id=26]
+[ext_resource path="res://Tilesets/industrial_nightmare_level_mesh_library.tres" type="MeshLibrary" id=27]
 [ext_resource path="res://gameobjects/brain_melter.tscn" type="PackedScene" id=28]
 [ext_resource path="res://UI/PauseMenu.gd" type="Script" id=29]
 [ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=30]
 [ext_resource path="res://UI/Options.tscn" type="PackedScene" id=31]
 [ext_resource path="res://gameobjects/dark_altar.tscn" type="PackedScene" id=32]
-[ext_resource path="res://raw_assets/tilesets/blocks-mesh-lib.tres" type="MeshLibrary" id=38]
-[ext_resource path="res://raw_assets/tilesets/buildings-mesh-lib.tres" type="MeshLibrary" id=39]
-[ext_resource path="res://raw_assets/tilesets/objects-mesh-lib.tres" type="MeshLibrary" id=40]
-[ext_resource path="res://raw_assets/tilesets/ground-mesh-lib.tres" type="MeshLibrary" id=41]
 [ext_resource path="res://gameobjects/sawblade.tscn" type="PackedScene" id=42]
 [ext_resource path="res://gameobjects/resource_node_spawner.tscn" type="PackedScene" id=44]
 [ext_resource path="res://gameobjects/resource_nodes/skin_tree.tscn" type="PackedScene" id=53]
@@ -47,6 +44,7 @@ background_mode = 2
 background_sky = SubResource( 366 )
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 2.0
+ambient_light_sky_contribution = 0.0
 fog_color = Color( 0.87451, 0.72549, 0.45098, 1 )
 fog_depth_begin = 0.0
 fog_depth_end = 175.0
@@ -118,64 +116,25 @@ quantity = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
-[node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 12, 0 )
-
 [node name="GridMaps" type="Spatial" parent="."]
 
-[node name="stone" type="GridMap" parent="GridMaps" groups=["ground_stone"]]
-mesh_library = ExtResource( 41 )
+[node name="Base" type="GridMap" parent="GridMaps"]
+mesh_library = ExtResource( 27 )
 cell_size = Vector3( 1, 1, 1 )
+cell_octant_size = 100
 data = {
-"cells": PoolIntArray( 9, 9, 3, 65535, 9, 3, 9, 19, 3, 9, 65525, 3, 65525, 65525, 3, 65535, 65525, 3, 65535, 65535, 3 )
-}
-__meta__ = {
-"_editor_clip_": 0
-}
-
-[node name="transition" type="GridMap" parent="GridMaps" groups=["ground_transition"]]
-mesh_library = ExtResource( 41 )
-cell_size = Vector3( 1, 1, 1 )
-data = {
-"cells": PoolIntArray( 65525, 9, 5, 65525, 65515, 5 )
-}
-__meta__ = {
-"_editor_clip_": 0
-}
-
-[node name="buildings" type="GridMap" parent="GridMaps"]
-mesh_library = ExtResource( 39 )
-cell_size = Vector3( 1, 1, 1 )
-data = {
-"cells": PoolIntArray( 65520, 4, 0, 65510, 14, 0, 65520, 24, 3, 65525, 24, 2, 65535, 24, 3, 65520, 25, 3, 65510, 65530, 0 )
-}
-__meta__ = {
-"_editor_clip_": 0
-}
-
-[node name="walls" type="GridMap" parent="GridMaps"]
-mesh_library = ExtResource( 38 )
-cell_size = Vector3( 1, 1, 1 )
-data = {
-"cells": PoolIntArray( 14, 24, 655381, 327694, 24, 655374, 13, 65530, 655383, 327693, 65530, 655384 )
+"cells": PoolIntArray( 9, 1, 3, 19, 1, 1441795, 65535, 1, 3, 24, 4, 1048602, 4, 6, 655377, 9, 11, 655363, 22, 16, 1048596, 8, 65507, 655434, 327684, 65508, 1441867, 13, 65512, 655434, 327689, 65513, 1441867, 9, 65517, 3, 13, 65517, 655435, 65535, 65517, 3, 327693, 65517, 655435, 15, 65521, 1441827, 65530, 65522, 26, 327683, 65522, 655437, 327694, 65523, 1441869, 18, 65524, 655393, 14, 65526, 1441854, 9, 65527, 3, 19, 65527, 1441795, 65535, 65527, 79, 327683, 65527, 655433, 393214, 65527, 655437, 24, 65528, 1441868, 327694, 65528, 1441869, 16, 65529, 1441816, 14, 65531, 1441868, 19, 65531, 1441868, 327695, 65531, 1441868, 327700, 65531, 1441868, 65530, 65532, 79, 65535, 65532, 80 )
 }
 __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, 0, 0 )
 }
 
-[node name="fencing" type="GridMap" parent="GridMaps"]
-mesh_library = ExtResource( 40 )
-cell_size = Vector3( 1, 1, 1 )
-data = {
-"cells": PoolIntArray( 14, 4, 1441796, 14, 9, 1441796, 14, 14, 1441796, 14, 19, 1441796, 65520, 65510, 1441796, 65525, 65510, 655364, 65530, 65510, 655364, 65530, 65514, 1048580, 65520, 65515, 1441796, 12, 65520, 1048576, 14, 65520, 1441796, 17, 65520, 655364, 14, 65525, 1441796 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
-}
+[node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="player_role_spawns" type="Spatial" parent="."]
+visible = false
 
 [node name="OBJ_Sawblade" parent="player_role_spawns" instance=ExtResource( 42 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 11, 0 )
@@ -186,6 +145,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 11, 0 )
 role = ExtResource( 23 )
 
 [node name="resource_spawners" type="Spatial" parent="."]
+visible = false
 
 [node name="resource_node_spawner" parent="resource_spawners" instance=ExtResource( 44 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.4, 9 )
@@ -196,6 +156,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3, 1.2, -20 )
 node_to_spawn = ExtResource( 16 )
 
 [node name="machines" type="Spatial" parent="."]
+visible = false
 
 [node name="production_machine" parent="machines" instance=ExtResource( 19 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.9, 0.5, 2.9 )
@@ -357,6 +318,7 @@ visible = false
 
 [node name="Zone" parent="." instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -14 )
+visible = false
 zone_name = "Test Zone"
 chance_to_infect = 1.0
 bounds = Vector3( 15, 5, 8 )
@@ -371,30 +333,38 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -5.3, 0 )
 
 [node name="Storage" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, -5, 0.5, 1 )
+visible = false
 items = [ SubResource( 379 ) ]
 
 [node name="Test Item - Pickup" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 11, 2 )
+visible = false
 slot_data = SubResource( 367 )
 
 [node name="metastabilizer" parent="." instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1.5, 3 )
+visible = false
 repair_item = SubResource( 368 )
 
 [node name="autostitcher" parent="." instance=ExtResource( 11 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 2.5, -4 )
+visible = false
 
 [node name="rot_telecom" parent="." instance=ExtResource( 12 )]
 transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -7, 2, -5.5 )
+visible = false
 
 [node name="vendor" parent="." instance=ExtResource( 13 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0.5, 0 )
+visible = false
 
 [node name="brain_melter" parent="." instance=ExtResource( 28 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 14 )
+visible = false
 
 [node name="dark_altar" parent="." instance=ExtResource( 32 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, 8 )
+visible = false
 
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]

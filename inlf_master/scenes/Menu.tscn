@@ -1,9 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=2]
-[ext_resource path="res://raw_assets/tilesets/buildings-mesh-lib.tres" type="MeshLibrary" id=3]
-[ext_resource path="res://raw_assets/tilesets/objects-mesh-lib.tres" type="MeshLibrary" id=4]
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=5]
 [ext_resource path="res://skybox/skybox_02.png" type="Texture" id=6]
 [ext_resource path="res://UI/Options.tscn" type="PackedScene" id=7]
@@ -25,58 +23,10 @@ font_data = ExtResource( 1 )
 [node name="Menu" type="Spatial"]
 script = ExtResource( 5 )
 
-[node name="buildings" type="GridMap" parent="."]
-mesh_library = ExtResource( 3 )
-cell_size = Vector3( 1, 1, 1 )
-data = {
-"cells": PoolIntArray( 0, 0, 2, 65520, 0, 5, 458731, 0, 3, 524298, 2, 7, 393231, 65513, 1048576, 458747, 65515, 1048576, 589829, 65515, 1048576, 458732, 65517, 3, 393201, 65525, 0, 65520, 65526, 0, 65530, 65526, 0, 458731, 65526, 3, 524292, 65526, 9 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 6, 0 )
-}
-
-[node name="props" type="GridMap" parent="."]
-mesh_library = ExtResource( 4 )
-cell_size = Vector3( 1, 1, 1 )
-data = {
-"cells": PoolIntArray( 1114111, 65515, 1048577, 720897, 65522, 655368, 1048567, 65523, 34, 458752, 65525, 655364, 458757, 65525, 655364, 1048565, 65525, 20, 851962, 65526, 1048577, 655361, 65534, 5, 524283, 65535, 5, 589810, 65535, 5, 655368, 65535, 1048581 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 11, 0 )
-}
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
 [node name="Lights" type="Spatial" parent="."]
-
-[node name="SpotLight" type="SpotLight" parent="Lights"]
-transform = Transform( 1, 0, 0, 0, 0.360094, -0.932916, 0, 0.932916, 0.360094, -8.4, 13.8452, -8.8574 )
-light_energy = 5.11
-spot_range = 7.903
-spot_angle = 31.79
-
-[node name="OmniLight" type="OmniLight" parent="Lights"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -15 )
-light_color = Color( 0.596078, 0.458824, 0.196078, 1 )
-omni_range = 10.306
-
-[node name="OmniLight2" type="OmniLight" parent="Lights"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 9, -5 )
-light_color = Color( 0.596078, 0.458824, 0.196078, 1 )
-omni_range = 10.306
-
-[node name="OmniLight3" type="OmniLight" parent="Lights"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 12, -5 )
-light_color = Color( 0.25098, 0.592157, 0.560784, 1 )
-omni_range = 6.52
-
-[node name="OmniLight4" type="OmniLight" parent="Lights"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 12, -3 )
-light_color = Color( 0.517647, 0.592157, 0.25098, 1 )
-omni_range = 6.52
 
 [node name="Sounds" type="Spatial" parent="."]
 
@@ -85,7 +35,7 @@ omni_range = 6.52
 [node name="Ambience" type="AudioStreamPlayer" parent="Sounds"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.994551, -0.0949871, -0.0429658, 0.089887, 0.990064, -0.108135, 0.0528103, 0.103684, 0.993207, -3, 10, 7 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

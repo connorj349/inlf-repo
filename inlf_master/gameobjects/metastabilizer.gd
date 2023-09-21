@@ -1,9 +1,5 @@
 extends Interactable
 
-# add a repair sound
-# add a sound that triggers when rot is reduced/additional sound for when rot is increased on infected
-# add infected capabilities
-
 export(Resource) var repair_item
 export(int) var heal_amount = 25
 
@@ -24,6 +20,7 @@ func _ready():
 func _interact(_actor):
 	#if _actor.role == repair_role:
 	if Gamestate.player_inventory.take_item(repair_item):
+		# give stem cells or bones?
 		health.heal(heal_amount)
 		if not active:
 			active = true
@@ -35,15 +32,16 @@ func _interact(_actor):
 			#active = true
 			#spot_light.light_color = Color(0, 0.9, 1, 1) #change to orange
 
+func on_hurt(amount):
+	health.hurt(amount)
+
 func on_disable():
 	spot_light.light_color = Color(1, 0, 0, 1)
 	active = false
 	status_label.text = "Status: disabled"
 
 func _on_Timer_timeout():
-	# if infected, increase rot; if repaired, decrease rot
 	if active:
-		health.hurt(1) #decrease health constantly
 		if health.health > 0:
 			status_label.text = "Status: operational"
 			Gamestate.rot_modify(-1)

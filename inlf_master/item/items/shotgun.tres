@@ -23,7 +23,6 @@ stackable = false
 texture = SubResource( 2 )
 price = 350
 drop_on_death = true
-consume_on_use = false
 damage = 80
 max_ammo = 4
 ammo_slot = SubResource( 1 )
