@@ -35,7 +35,6 @@ environment = SubResource( 2 )
 [node name="Ambience" type="AudioStreamPlayer" parent="Sounds"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

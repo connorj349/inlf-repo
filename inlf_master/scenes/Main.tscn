@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -27,11 +27,12 @@
 [ext_resource path="res://zone/Room.tscn" type="PackedScene" id=25]
 [ext_resource path="res://item/items/heal_1.tres" type="Resource" id=26]
 [ext_resource path="res://Tilesets/industrial_nightmare_level_mesh_library.tres" type="MeshLibrary" id=27]
-[ext_resource path="res://gameobjects/brain_melter.tscn" type="PackedScene" id=28]
+[ext_resource path="res://item/items/fetid_wood.tres" type="Resource" id=28]
 [ext_resource path="res://UI/PauseMenu.gd" type="Script" id=29]
 [ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=30]
 [ext_resource path="res://UI/Options.tscn" type="PackedScene" id=31]
 [ext_resource path="res://gameobjects/dark_altar.tscn" type="PackedScene" id=32]
+[ext_resource path="res://item/items/cultist_suit.tres" type="Resource" id=33]
 [ext_resource path="res://gameobjects/sawblade.tscn" type="PackedScene" id=42]
 [ext_resource path="res://gameobjects/resource_node_spawner.tscn" type="PackedScene" id=44]
 [ext_resource path="res://gameobjects/resource_nodes/skin_tree.tscn" type="PackedScene" id=53]
@@ -44,7 +45,6 @@ background_mode = 2
 background_sky = SubResource( 366 )
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 2.0
-ambient_light_sky_contribution = 0.0
 fog_color = Color( 0.87451, 0.72549, 0.45098, 1 )
 fog_depth_begin = 0.0
 fog_depth_end = 175.0
@@ -77,6 +77,21 @@ quantity = 1
 [sub_resource type="Resource" id=378]
 script = ExtResource( 9 )
 item_data = ExtResource( 14 )
+quantity = 1
+
+[sub_resource type="Resource" id=383]
+script = ExtResource( 9 )
+item_data = ExtResource( 28 )
+quantity = 1
+
+[sub_resource type="Resource" id=384]
+script = ExtResource( 9 )
+item_data = ExtResource( 33 )
+quantity = 1
+
+[sub_resource type="Resource" id=385]
+script = ExtResource( 9 )
+item_data = ExtResource( 26 )
 quantity = 1
 
 [sub_resource type="StyleBoxFlat" id=371]
@@ -121,49 +136,53 @@ environment = SubResource( 2 )
 [node name="Base" type="GridMap" parent="GridMaps"]
 mesh_library = ExtResource( 27 )
 cell_size = Vector3( 1, 1, 1 )
-cell_octant_size = 100
+cell_octant_size = 200
 data = {
-"cells": PoolIntArray( 9, 1, 3, 19, 1, 1441795, 65535, 1, 3, 24, 4, 1048602, 4, 6, 655377, 9, 11, 655363, 22, 16, 1048596, 8, 65507, 655434, 327684, 65508, 1441867, 13, 65512, 655434, 327689, 65513, 1441867, 9, 65517, 3, 13, 65517, 655435, 65535, 65517, 3, 327693, 65517, 655435, 15, 65521, 1441827, 65530, 65522, 26, 327683, 65522, 655437, 327694, 65523, 1441869, 18, 65524, 655393, 14, 65526, 1441854, 9, 65527, 3, 19, 65527, 1441795, 65535, 65527, 79, 327683, 65527, 655433, 393214, 65527, 655437, 24, 65528, 1441868, 327694, 65528, 1441869, 16, 65529, 1441816, 14, 65531, 1441868, 19, 65531, 1441868, 327695, 65531, 1441868, 327700, 65531, 1441868, 65530, 65532, 79, 65535, 65532, 80 )
+"cells": PoolIntArray( 0, 0, 3, 6, 0, 73, 65526, 0, 3, 393222, 0, 1441862, 65485, 3, 1048606, 65543, 4, 74, 6, 5, 73, 10, 5, 655378, -262218, 5, 90, -262208, 5, 90, -262198, 5, 91, -262188, 5, 90, -262179, 5, 26, -262178, 5, 85, -262174, 5, 26, -262168, 5, 87, -262229, 6, 1441882, -262169, 6, 1441877, 65526, 9, 1048652, 65531, 9, 1048652, 393206, 9, 1048653, 393211, 9, 1048653, -65593, 9, 1179688, -60, 9, 1179696, 0, 10, 1048579, 65521, 10, 1048639, 65530, 10, 655436, 65531, 10, 1441855, 393210, 10, 655437, -262214, 10, 9, -262204, 10, 1441800, -262194, 10, 1441802, -262184, 10, 9, -262174, 10, 1441805, -262169, 10, 1441818, -65600, 12, 1179688, -67, 12, 1179696, -65566, 13, 458816, 65526, 14, 1048652, 393206, 14, 1048653, 5, 15, 1441809, 65506, 15, 26, 65511, 15, 1441818, 65525, 15, 655434, -262180, 15, 655450, -262229, 16, 1441882, -262169, 16, 1441879, 65503, 17, 655421, 0, 20, 3, 65525, 20, 655434, 65531, 20, 1048604, 393208, 20, 72, 655375, 20, 655438, -262214, 20, 655373, -262204, 20, 655370, -262194, 20, 1441805, 393211, 23, 1048648, 65526, 24, 1048645, 393211, 24, 1048615, -262169, 24, 1048664, 65506, 25, 655386, 65511, 25, 655386, 65516, 25, 655386, 65521, 25, 655386, 65531, 25, 1048604, 393206, 25, 1048654, 720889, 25, 655432, 65521, 26, 1441882, 720891, 27, 1441864, 655365, 28, 1048648, 0, 30, 3, 720891, 32, 1441864, 655365, 33, 1048648, 15, 34, 1048666, 262151, 34, 458803, 655375, 35, 1048654, 720889, 35, 655432, -262218, 35, 90, -262208, 35, 90, -262198, 35, 90, 458761, 37, 983091, 8, 38, 58, 327685, 38, 1048647, 15, 39, 1048651, 0, 40, 1441795, 10, 40, 1048579, 65526, 40, 1441795, 327695, 40, 655438, 655375, 40, 655438, 10, 44, 1048651, 65531, 44, 1441853, 393197, 44, 22, 0, 45, 63, 65521, 45, 1441810, 65526, 45, 63, 65531, 45, 1441810, 327695, 45, 1048654, 655375, 45, 1048654, 65515, 47, 22, 393191, 65492, 1441869, 393196, 65492, 1441869, 65481, 65496, 1441810, 65491, 65496, 1441810, 65515, 65496, 655436, 65520, 65496, 655436, 393195, 65496, 393284, 393196, 65497, 1441869, 65513, 65499, 1441856, 5, 65501, 1441820, 65485, 65501, 655377, 65491, 65501, 655382, 65501, 65501, 81, 65516, 65501, 655423, 65521, 65501, 21, 393181, 65501, 78, 393194, 65501, 655425, 589801, 65501, 458792, 11, 65505, 655378, 16, 65505, 1048594, 0, 65506, 1048579, 5, 65506, 1441820, 65496, 65506, 1048582, 65501, 65506, 1048604, 65506, 65506, 655363, 65516, 65506, 3, 65521, 65506, 655378, 65522, 65506, 1048600, 65524, 65506, 1048600, 65526, 65506, 1048579, 65531, 65506, 1441820, 65494, 65507, 16, 65528, 65508, 1048634, 65530, 65509, 1048612, 524268, 65509, 196672, 5, 65511, 1441820, 65496, 65511, 28, 65501, 65511, 1048604, 65512, 65511, 74, 65521, 65511, 1441810, 393192, 65511, 74, 524267, 65511, 262193, 65485, 65513, 655382, 21, 65515, 1048594, 0, 65516, 1441795, 65496, 65516, 1048577, 65506, 65516, 655363, 65511, 65516, 1048602, 65521, 65516, 26, 65526, 65516, 26, 65531, 65516, 1441818, 327690, 65516, 1441870, 327695, 65516, 655438, 524268, 65518, 1245225, 524274, 65518, 589873, 589817, 65519, 917553, 65486, 65521, 26, 65491, 65521, 1441818, 65496, 65521, 655388, 65511, 65521, 1048602, 65531, 65521, 655375, 524265, 65521, 1441815, 524276, 65521, 1441815, 458747, 65523, 655383, 65486, 65524, 0, 0, 65526, 3, 6, 65526, 82, 65491, 65526, 1441818, 65496, 65526, 4, 65506, 65526, 655363, 393222, 65527, 1441837, 393222, 65528, 1441862, 65499, 65529, 1441853, 458727, 65529, 23, 6, 65531, 73, 65511, 65531, 15, 458736, 65531, 1048599, 458746, 65531, 1048599, 65543, 65532, 74, -262229, 65532, 1441882, 393222, 65535, 1441834 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, 5, 0 )
 }
 
 [node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, 0 )
 
 [node name="player_role_spawns" type="Spatial" parent="."]
-visible = false
 
 [node name="OBJ_Sawblade" parent="player_role_spawns" instance=ExtResource( 42 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 11, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 11, 28 )
 role = ExtResource( 24 )
 
 [node name="OBJ_Sawblade2" parent="player_role_spawns" instance=ExtResource( 42 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 11, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 0 )
 role = ExtResource( 23 )
 
 [node name="resource_spawners" type="Spatial" parent="."]
-visible = false
 
 [node name="resource_node_spawner" parent="resource_spawners" instance=ExtResource( 44 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.4, 9 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0.4, 21 )
 node_to_spawn = ExtResource( 53 )
 
 [node name="resource_node_spawner2" parent="resource_spawners" instance=ExtResource( 44 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3, 1.2, -20 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3, 1.7, -18 )
 node_to_spawn = ExtResource( 16 )
 
 [node name="machines" type="Spatial" parent="."]
-visible = false
 
 [node name="production_machine" parent="machines" instance=ExtResource( 19 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.9, 0.5, 2.9 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.9, 0.5, 43.9 )
 input_item_slot = SubResource( 373 )
 out_item_slots = [ SubResource( 374 ), SubResource( 375 ), SubResource( 376 ), SubResource( 377 ), SubResource( 378 ) ]
 machine_name = "metalwork machine"
 production_time = 5.0
+payday = 5
+
+[node name="production_machine2" parent="machines" instance=ExtResource( 19 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0.5, 42 )
+input_item_slot = SubResource( 383 )
+out_item_slots = [ SubResource( 384 ), SubResource( 385 ) ]
+machine_name = "woodwork machine"
 payday = 5
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -317,54 +336,43 @@ visible = false
 visible = false
 
 [node name="Zone" parent="." instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -14 )
-visible = false
-zone_name = "Test Zone"
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 6, 14 )
+zone_name = "Rotten Canal"
 chance_to_infect = 1.0
-bounds = Vector3( 15, 5, 8 )
+bounds = Vector3( 30, 10, 15 )
 
 [node name="Room" parent="Zone" instance=ExtResource( 25 )]
 
 [node name="resource_node_spawner" parent="Zone/Room" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -5.3, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -10.3, 7 )
 
 [node name="resource_node_spawner2" parent="Zone/Room" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -5.3, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -10.3, -4 )
 
 [node name="Storage" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, -5, 0.5, 1 )
-visible = false
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -43, 0.5, -29 )
 items = [ SubResource( 379 ) ]
 
 [node name="Test Item - Pickup" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 11, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 1 )
 visible = false
 slot_data = SubResource( 367 )
 
 [node name="metastabilizer" parent="." instance=ExtResource( 10 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1.5, 3 )
-visible = false
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -33, 1.5, -3 )
 repair_item = SubResource( 368 )
 
 [node name="autostitcher" parent="." instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 2.5, -4 )
-visible = false
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 2.5, -7 )
 
 [node name="rot_telecom" parent="." instance=ExtResource( 12 )]
-transform = Transform( -1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -7, 2, -5.5 )
-visible = false
+transform = Transform( 1.33118e-07, 0, -1, 0, 1, 0, 1, 0, 1.33118e-07, -24.5, 2, -11.5 )
 
 [node name="vendor" parent="." instance=ExtResource( 13 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0.5, 0 )
-visible = false
-
-[node name="brain_melter" parent="." instance=ExtResource( 28 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 14 )
-visible = false
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0.5, -8 )
 
 [node name="dark_altar" parent="." instance=ExtResource( 32 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, 8 )
-visible = false
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -72, -4.5, 8 )
 
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
