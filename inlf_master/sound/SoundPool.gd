@@ -1,5 +1,5 @@
 extends Spatial
-class_name SoundPool # this class can only handle SoundQueue3D, not regular Soundqueues(screenspace)
+class_name SoundPool
 
 var sounds: Array
 var rng = RandomNumberGenerator.new()
@@ -7,7 +7,7 @@ var last_index
 
 func _ready():
 	for child in get_children():
-		if child is SoundQueue3D:
+		if child is SoundQueue3D or child is SoundQueue:
 			sounds.append(child)
 
 func PlayRandomSound():

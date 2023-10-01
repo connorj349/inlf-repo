@@ -1,7 +1,6 @@
 extends Node
 
-# need to finish the 'end game' when rot reaches 100
-# at end of game, reward player additional stem cells if they are an antagonist
+# have game end and reset to main menu when rot reaches 100%, maybe have something play on screen
 
 # player's inventory
 var player_inventory = preload("res://inventory/player_inventory.tres")
@@ -15,20 +14,23 @@ var merchant_inventory = preload("res://inventory/merchant_inventory.tres")
 signal rot_changed
 signal bones_changed
 
-var rot = 0 # world rot percentage
+var rot = 0 # world rot count
 var bones = 0 # player money
 
 func rot_modify(amount):
-	rot = clamp(rot + amount, 0, 100)
+	rot = clamp(rot + amount, 0, Globals.rot_max_value)
 	emit_signal("rot_changed")
-	if rot >= 100:
+	if rot >= Globals.rot_max_value:
 		pass
-		#spawn dementia
-		#call active_effects on brain melter
+		#end the game
 
 func can_afford(amount):
 	return bones >= amount
 
 func bones_updated(amount):
+	if amount < 0:
+		Globals.emit_signal("on_pop_notification", "I have lost %s bones." % amount)
+	else:
+		Globals.emit_signal("on_pop_notification", "I received %s bones." % amount)
 	bones = clamp(bones + amount, 0, 9999)
 	emit_signal("bones_changed")

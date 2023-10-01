@@ -6,7 +6,7 @@ export var speed = 15
 export var accel = 7
 
 onready var head = $Head
-onready var noises = $GhostNoises
+onready var noises = $SoundPool
 
 var movement : Vector3
 var velocity : Vector3
@@ -40,5 +40,4 @@ func _physics_process(delta):
 
 
 func _on_Timer_timeout():
-	noises.stream = possible_noises[randi() % possible_noises.size()]
-	noises.play()
+	noises.PlayRandomSound()

@@ -1,7 +1,5 @@
 extends Control
 
-onready var sound_queue = $SoundQueue
-
 func _ready():
 	$Panel/MarginContainer/VBoxContainer/fullscreen_check.pressed = OS.window_fullscreen
 	$Panel/MarginContainer/VBoxContainer/borderless_check2.pressed = OS.window_borderless
@@ -11,20 +9,20 @@ func _ready():
 	$Panel/MarginContainer/VBoxContainer/video_sliders/sliders/sfx_slider.value = AudioServer.get_bus_volume_db(2)
 
 func _on_Button_pressed():
-	sound_queue.PlaySound() # maybe make this a different sound queue to play a diff noise for closing out
+	SoundManager.Play_UI_ButtonPress() # maybe make this a different sound queue to play a diff noise for closing out
 	visible = false # turn visibility off to "go back" to prev window
 
 func _on_fullscreen_check_toggled(button_pressed):
 	OS.window_fullscreen = button_pressed
-	sound_queue.PlaySound()
+	SoundManager.Play_UI_ButtonPress()
 
 func _on_borderless_check2_toggled(button_pressed):
 	OS.window_borderless = button_pressed
-	sound_queue.PlaySound()
+	SoundManager.Play_UI_ButtonPress()
 
 func _on_vsync_check3_toggled(button_pressed):
 	OS.vsync_enabled = button_pressed
-	sound_queue.PlaySound()
+	SoundManager.Play_UI_ButtonPress()
 
 func _on_master_slider_value_changed(value):
 	volume(0, value)

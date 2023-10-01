@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://gameobjects/autostitcher.gd" type="Script" id=1]
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://raw_assets/models/autostitcher.glb" type="PackedScene" id=3]
 [ext_resource path="res://raw_assets/sounds/autostitcher/autostitcher_heal_loop.wav" type="AudioStream" id=4]
 [ext_resource path="res://raw_assets/sounds/autostitcher/autostitcher_hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://sound/SoundQueue3D.tscn" type="PackedScene" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 0.5, 0.5 )
@@ -101,11 +102,16 @@ anims/fade_in = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
 
 [node name="HealingLoop" type="AudioStreamPlayer3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.628223 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.02822 )
 stream = ExtResource( 4 )
+bus = "SoundFX"
 
-[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.629029 )
+[node name="SoundQueue3D" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+Count = 4
+
+[node name="HitSound" type="AudioStreamPlayer3D" parent="SoundQueue3D"]
 stream = ExtResource( 5 )
+bus = "SoundFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://gameobjects/rot_telecom.gd" type="Script" id=2]
@@ -11,31 +11,15 @@ extents = Vector3( 1, 1, 0.25 )
 size = 40
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 35
-font_data = ExtResource( 1 )
-
 [sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/CancersCount:custom_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/RotPercentage:custom_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/RotPercentage:custom_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -46,24 +30,12 @@ tracks/1/keys = {
 resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/CancersCount:custom_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/RotPercentage:custom_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/RotPercentage:custom_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -99,22 +71,12 @@ margin_bottom = 69.0
 
 [node name="RotPercentage" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
 margin_right = 416.0
-margin_bottom = 103.0
+margin_bottom = 138.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 1, 1, 0 )
 custom_fonts/font = SubResource( 3 )
 text = "Rot: 100%"
-align = 1
-valign = 1
-
-[node name="CancersCount" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-margin_top = 107.0
-margin_right = 416.0
-margin_bottom = 138.0
-custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 4 )
-text = "Cancers: 999"
 align = 1
 valign = 1
 

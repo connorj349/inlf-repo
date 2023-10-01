@@ -26,5 +26,6 @@ shape = SubResource( 1 )
 [node name="Movement" parent="." instance=ExtResource( 2 )]
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
+bus = "SoundFX"
 
 [connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_PlayerSpawnTimer_timeout"]

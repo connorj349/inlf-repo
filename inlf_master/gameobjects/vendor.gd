@@ -12,12 +12,13 @@ func _ready():
 
 func _interact(_actor):
 	panel.show()
+	Globals.current_ui.show()
 	if panel.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 func toggle_window():
-	if Globals.current_ui.visible:
-		panel.hide()
+	#if Globals.current_ui.visible:
+	panel.hide()
 
 func set_inventory_data(inventory_data: InventoryData):
 # warning-ignore:return_value_discarded

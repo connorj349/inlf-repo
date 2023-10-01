@@ -17,9 +17,8 @@ func _input(event):
 		inner_gimbal.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity))
 		inner_gimbal.rotation.x = clamp(inner_gimbal.rotation.x, deg2rad(-89), deg2rad(0))
 
-func play_death_sound(player):
-	if player.is_in_group("role_prole"):
-		death.stream = load("res://raw_assets/sounds/death/prole.wav")
+func play_death_sound():
+	# play generic death sound from SoundManager
 	death.play()
 
 func _on_PlayerSpawnTimer_timeout():

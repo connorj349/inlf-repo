@@ -194,6 +194,7 @@ stream = ExtResource( 4 )
 unit_size = 10.0
 pitch_scale = 0.75
 autoplay = true
+bus = "SoundFX"
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

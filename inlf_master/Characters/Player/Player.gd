@@ -14,7 +14,6 @@ onready var weapon_manager = $Head/Camera/WeaponManager
 
 onready var health_bar = $UI/Bars/health_bar
 onready var magick_amount_left = $UI/MagickLabel
-onready var portrait_image = $UI/CharacterPortrait/margin_container/portrait_image
 var role # player role
 
 var cam_accel = 40
@@ -33,7 +32,7 @@ func _ready():
 	health_bar.init(health.health, health.max_health)
 	armor.init()
 	armor.connect("damage_dealt", self, "deal_damage")
-	armor.connect("armor_changed", self, "update_armor_image")
+	#armor.connect("armor_changed", self, "update_armor_bar")
 	Globals.current_player = self
 # warning-ignore:return_value_discarded
 	Globals.connect("blood_circle_removed", self, "on_blood_circle_removed")
@@ -58,12 +57,6 @@ func on_heal(amount): #mainly used by slotdataconsumable and autostitcher
 func give_armor(amount): # used by some consumables/armor
 	armor.add_armor(amount)
 
-func update_armor_image(armor_remaining): # REWORK, include multi images
-	if armor_remaining > 0:
-		$UI/CharacterPortrait/margin_container/skin_image.texture = preload("res://raw_assets/textures/exoskeleton/layer_exo.jpg")
-	else:
-		$UI/CharacterPortrait/margin_container/skin_image.texture = preload("res://raw_assets/textures/exoskeleton/layer_skin.jpg")
-
 func on_blood_circle_removed():
 	blood_circle_active = false
 
@@ -71,16 +64,17 @@ func on_use_organ(organ):
 	if blood_circle_active:
 		if magick.curr_magick >= organ.mana_regen:
 			Globals.emit_signal("cast_spell", organ)
+			# SoundManager.play_castspell
 	else:
 		if role.role_type == Role.Role_Type.ANTAGONIST:
 			magick.modify_magick(organ.mana_regen)
+			# SoundManager.play_manaregen
 		else:
 			deal_damage(15) # arbituary amount, could make this a global or based on the item consumed
-		# play eat organ noise(2D)
+		# SoundManager.use_organeat
 
 func set_role(_role): # setup role; maybe add sound to it?
 	role = _role # for use with checking if player can use certain machines/objects
-	portrait_image.texture = role.portrait_image # cosmetic
 
 func on_magick_changed(curr_magick): # update UI for magic remaining
 	magick_amount_left.text = str(curr_magick)
@@ -92,7 +86,7 @@ func spawn_circle_of_blood(): # only can be done if cultist role
 			deal_damage(health.max_health / 2)
 			var circle = blood_circle_prefab.instance()
 			get_tree().get_root().add_child(circle)
-			# play blood splatter/drip noise and play player cut_self noise
+			# SoundManager.other_bloodcircle_spawn
 			circle.global_transform = $feet.global_transform
 			blood_circle_active = true
 		else:
@@ -154,7 +148,7 @@ func use_slot_data(slot_data): #use functionality of items
 func kill():
 	Gamestate.equip_player_inventory.take_item(Gamestate.equip_player_inventory.slot_datas[0])
 	Gamestate.weapon_player_inventory.take_item(Gamestate.weapon_player_inventory.slot_datas[0])
-	for slot_data in Gamestate.player_inventory.slot_datas: # take items from inventory
+	for slot_data in Gamestate.player_inventory.slot_datas: # take items from inventory if checked
 		if slot_data:
 			if slot_data.item_data.drop_on_death:
 				Gamestate.player_inventory.take_item(slot_data)
@@ -167,7 +161,7 @@ func kill():
 	player_dead.global_transform = Globals.current_player.global_transform
 	var corpse = Globals.create_corpse(self)
 	player_dead.get_node("PlayerSpawnTimer").wait_time = corpse.get_node("DecayTimer").wait_time #reset spawn time
-	player_dead.play_death_sound(self)
+	player_dead.play_death_sound()
 	queue_free() #remove this player object
 
 func get_drop_position(): #where to drop items relative to player looking position

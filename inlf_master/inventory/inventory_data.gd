@@ -22,9 +22,11 @@ func drop_slot_data(grabbed_slot_data, index): #dropping the grabbed item into a
 	var return_slot_data: SlotData = null
 	if slot_data and slot_data.can_fully_merge_with(grabbed_slot_data):
 		slot_data.fully_merge_with(grabbed_slot_data)
+		# SoundManager.play_merge
 	else:
 		slot_datas[index] = grabbed_slot_data
 		return_slot_data = slot_data
+		# SoundManager.play_drop_new_slot
 	
 	emit_signal("inventory_updated", self)
 	return return_slot_data
@@ -57,7 +59,7 @@ func use_slot_data(index): #use up the item, then apply effects to player
 	Globals.current_player.use_slot_data(slot_data) #use the item on the player
 	emit_signal("inventory_updated", self)
 
-func buy_slot_data(index):
+func buy_slot_data(index): # use money to put item from vendor inv directly into player inventory
 	var slot_data = slot_datas[index]
 	var new_added_slot_data
 	
@@ -72,8 +74,10 @@ func buy_slot_data(index):
 		slot_data.quantity -= 1 #reducing what's left in the actual inventory
 		if slot_data.quantity < 1:
 			slot_datas[index] = null
-		Gamestate.player_inventory.add_item(new_added_slot_data) # adding the new item to player inv
+		Gamestate.player_inventory.pick_up_slot_data(new_added_slot_data) # adding the new item to player inv
 		emit_signal("inventory_updated", self) #updating the merchant inventory list ui menu
+	else:
+		Globals.emit_signal("on_pop_notification", "I cant afford %s right now." % slot_data.item_data.name)
 
 func pick_up_slot_data(slot_data): #pickup and put into inventorydata; returns true/false
 	for index in slot_datas.size():
@@ -90,14 +94,14 @@ func pick_up_slot_data(slot_data): #pickup and put into inventorydata; returns t
 	
 	return false
 
-func add_item(slot_data): #search inv if it has item, then merge or add item to next open slot
+func add_item(slot_data): # DEPRECIATED
 	for index in slot_datas.size():
-		if slot_datas[index]:
+		if slot_datas[index]: # if the item already exists within the inventory
 			if slot_datas[index].can_fully_merge_with(slot_data): #try to merge with existing data
 				slot_datas[index].fully_merge_with(slot_data)
 				emit_signal("inventory_updated", self)
 				return
-		else:
+		else: # if there is an open spot available
 			var new_slot = slot_data.duplicate()
 			slot_datas[index] = new_slot #create a new slot
 			emit_signal("inventory_updated", self)

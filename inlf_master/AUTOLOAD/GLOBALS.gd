@@ -3,6 +3,9 @@ extends Node
 const pickup = preload("res://item/pick_up/Pickup.tscn")
 const corpse = preload("res://Characters/corpse.tscn")
 
+const rot_max_value = 1000 # global value that may be able to be changed by the player at runtime for diff setting?
+const max_rot_allowed_for_antagonist_join = 500
+
 var current_player #allows other objects to reference the player like setting target/etc.
 var current_ui #player inventory global reference for other scripts
 
@@ -27,6 +30,7 @@ func create_pickup(slot_data, object = false): #create an item, if object then c
 	var _pickup = pickup.instance()
 	_pickup.slot_data = SlotData.new()
 	_pickup.slot_data.item_data = slot_data.item_data
+	_pickup.slot_data.quantity = slot_data.quantity
 	get_tree().get_root().add_child(_pickup)
 	if object:
 		_pickup.global_transform.origin = object.global_transform.origin

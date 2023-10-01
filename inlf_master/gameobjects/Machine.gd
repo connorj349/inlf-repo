@@ -1,9 +1,5 @@
 extends Interactable
 
-# 1 input material
-# array of output items
-# on_interact, remove the input, randomly add output to vendor inv
-
 export(Resource) var input_item_slot #input item
 export(Array, Resource) var out_item_slots #output item
 export(String) var machine_name = "NULL"
@@ -46,4 +42,4 @@ func _on_ManufactureTimer_timeout():
 	can_interact = true # enable interaction
 	timer.stop()
 	machine_loop.stop()
-	Gamestate.merchant_inventory.add_item(out_item_slots[random_index])
+	Gamestate.merchant_inventory.pick_up_slot_data(out_item_slots[random_index])

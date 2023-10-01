@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Movement.tscn" type="PackedScene" id=2]
@@ -17,8 +17,6 @@
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=15]
 [ext_resource path="res://raw_assets/themes/player_hud_bars_theme.tres" type="Theme" id=16]
 [ext_resource path="res://Characters/Magick.tscn" type="PackedScene" id=17]
-[ext_resource path="res://raw_assets/textures/exoskeleton/layer_skin.jpg" type="Texture" id=18]
-[ext_resource path="res://raw_assets/textures/portraits/prole_portrait.png" type="Texture" id=19]
 [ext_resource path="res://Characters/Armor.tscn" type="PackedScene" id=20]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -33,7 +31,6 @@ description = "debug"
 stackable = false
 price = 0
 drop_on_death = false
-consume_on_use = null
 damage = 5
 max_ammo = 0
 
@@ -299,53 +296,26 @@ margin_top = 30.0
 margin_right = 60.0
 margin_bottom = 60.0
 
-[node name="CharacterPortrait" type="PanelContainer" parent="UI"]
+[node name="Notifications" type="Control" parent="UI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -250.0
-margin_right = 250.0
-mouse_filter = 2
-
-[node name="margin_container" type="MarginContainer" parent="UI/CharacterPortrait"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 243.0
-margin_bottom = 243.0
-
-[node name="skin_image" type="TextureRect" parent="UI/CharacterPortrait/margin_container"]
-margin_right = 236.0
-margin_bottom = 236.0
-texture = ExtResource( 18 )
-expand = true
-
-[node name="portrait_image" type="TextureRect" parent="UI/CharacterPortrait/margin_container"]
-margin_right = 236.0
-margin_bottom = 236.0
-texture = ExtResource( 19 )
-expand = true
-
-[node name="Notifications" type="Control" parent="UI"]
-margin_left = 250.0
-margin_top = 1075.0
-margin_right = 250.0
-margin_bottom = 1075.0
 mouse_filter = 2
 script = ExtResource( 12 )
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/Notifications"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -99.0
-margin_right = 500.0
+margin_top = -200.0
+margin_right = 700.0
 custom_styles/panel = SubResource( 17 )
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Notifications/PanelContainer"]
-margin_right = 500.0
-margin_bottom = 99.0
+margin_right = 700.0
+margin_bottom = 200.0
 
 [node name="Label" type="Label" parent="UI/Notifications/PanelContainer/MarginContainer"]
-margin_right = 500.0
-margin_bottom = 99.0
+margin_right = 700.0
+margin_bottom = 200.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 18 )

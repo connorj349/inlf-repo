@@ -146,6 +146,7 @@ margin_bottom = 23.0
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer"]
 margin_right = 16.0
 margin_bottom = 16.0
+mouse_filter = 0
 columns = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

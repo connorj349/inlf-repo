@@ -18,19 +18,12 @@ func _ready():
 	status_label.text = "Status: operational"
 
 func _interact(_actor):
-	#if _actor.role == repair_role:
 	if Gamestate.player_inventory.take_item(repair_item):
 		# give stem cells or bones?
 		health.heal(heal_amount)
 		if not active:
 			active = true
 			spot_light.light_color = Color(0, 0.9, 1, 1)
-	#elif _actor.role == infect_role:
-		#if Gamestate.player_inventory.take_item(infect_item):
-		#health.heal(heal_amount)
-		#if not active:
-			#active = true
-			#spot_light.light_color = Color(0, 0.9, 1, 1) #change to orange
 
 func on_hurt(amount):
 	health.hurt(amount)

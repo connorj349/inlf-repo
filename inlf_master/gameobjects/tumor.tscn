@@ -146,7 +146,7 @@ rot_increase_amount = 2
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-billboard = 1
+billboard = 2
 texture = ExtResource( 5 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]

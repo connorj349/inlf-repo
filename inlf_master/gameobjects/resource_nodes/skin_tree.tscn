@@ -148,7 +148,7 @@ slot_data = SubResource( 8 )
 display_name = "skin tree"
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32598, 0.227377 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6372, 0.227377 )
 max_health = 100
 hurt_audio_stream = ExtResource( 10 )
 death_audio_stream = ExtResource( 5 )

@@ -1,10 +1,10 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=115 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
 [ext_resource path="res://inventory/inventory_interface.gd" type="Script" id=3]
 [ext_resource path="res://inventory/inventory_slot.tscn" type="PackedScene" id=4]
-[ext_resource path="res://inventory/Storage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://raw_assets/models/locker.glb" type="PackedScene" id=5]
 [ext_resource path="res://skybox/skybox_01.png" type="Texture" id=6]
 [ext_resource path="res://item/pick_up/Pickup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://item/items/metal_frag.tres" type="Resource" id=8]
@@ -14,85 +14,37 @@
 [ext_resource path="res://gameobjects/rot_telecom.tscn" type="PackedScene" id=12]
 [ext_resource path="res://gameobjects/vendor.tscn" type="PackedScene" id=13]
 [ext_resource path="res://item/items/prole_suit.tres" type="Resource" id=14]
-[ext_resource path="res://item/items/9ammo.tres" type="Resource" id=15]
+[ext_resource path="res://inventory/inventory_data.gd" type="Script" id=15]
 [ext_resource path="res://gameobjects/resource_nodes/boulder.tscn" type="PackedScene" id=16]
 [ext_resource path="res://item/items/shells.tres" type="Resource" id=17]
-[ext_resource path="res://zone/Zone.tscn" type="PackedScene" id=18]
-[ext_resource path="res://gameobjects/production_machine.tscn" type="PackedScene" id=19]
+[ext_resource path="res://item/items/organ_vilegut.tres" type="Resource" id=18]
+[ext_resource path="res://raw_assets/models/production_machine.glb" type="PackedScene" id=19]
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://UI/Notifications.gd" type="Script" id=21]
 [ext_resource path="res://item/items/shotgun.tres" type="Resource" id=22]
 [ext_resource path="res://role/roles/proletariat.tres" type="Resource" id=23]
 [ext_resource path="res://role/roles/cultist.tres" type="Resource" id=24]
-[ext_resource path="res://zone/Room.tscn" type="PackedScene" id=25]
+[ext_resource path="res://item/items/slop_skull.tres" type="Resource" id=25]
 [ext_resource path="res://item/items/heal_1.tres" type="Resource" id=26]
 [ext_resource path="res://Tilesets/industrial_nightmare_level_mesh_library.tres" type="MeshLibrary" id=27]
-[ext_resource path="res://item/items/fetid_wood.tres" type="Resource" id=28]
+[ext_resource path="res://gameobjects/resource_nodes/bitumeat.tscn" type="PackedScene" id=28]
 [ext_resource path="res://UI/PauseMenu.gd" type="Script" id=29]
 [ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=30]
 [ext_resource path="res://UI/Options.tscn" type="PackedScene" id=31]
 [ext_resource path="res://gameobjects/dark_altar.tscn" type="PackedScene" id=32]
-[ext_resource path="res://item/items/cultist_suit.tres" type="Resource" id=33]
+[ext_resource path="res://gameobjects/tumor.tscn" type="PackedScene" id=33]
+[ext_resource path="res://raw_assets/sounds/machine/machine_loop.wav" type="AudioStream" id=34]
+[ext_resource path="res://raw_assets/sounds/machine/machine_accept_item.wav" type="AudioStream" id=35]
+[ext_resource path="res://raw_assets/themes/hint_object_theme.tres" type="Theme" id=36]
+[ext_resource path="res://UI/ui_bar.gd" type="Script" id=37]
+[ext_resource path="res://item/items/organ_ancientbrain.tres" type="Resource" id=38]
+[ext_resource path="res://inventory/Storage.tscn" type="PackedScene" id=39]
+[ext_resource path="res://item/items/organ_evileyes.tres" type="Resource" id=40]
+[ext_resource path="res://item/items/meta_repair.tres" type="Resource" id=41]
 [ext_resource path="res://gameobjects/sawblade.tscn" type="PackedScene" id=42]
+[ext_resource path="res://item/items/sanitar_suit.tres" type="Resource" id=43]
 [ext_resource path="res://gameobjects/resource_node_spawner.tscn" type="PackedScene" id=44]
 [ext_resource path="res://gameobjects/resource_nodes/skin_tree.tscn" type="PackedScene" id=53]
-
-[sub_resource type="PanoramaSky" id=366]
-panorama = ExtResource( 6 )
-
-[sub_resource type="Environment" id=2]
-background_mode = 2
-background_sky = SubResource( 366 )
-ambient_light_color = Color( 1, 1, 1, 1 )
-ambient_light_energy = 2.0
-fog_color = Color( 0.87451, 0.72549, 0.45098, 1 )
-fog_depth_begin = 0.0
-fog_depth_end = 175.0
-
-[sub_resource type="Resource" id=373]
-script = ExtResource( 9 )
-item_data = ExtResource( 8 )
-quantity = 1
-
-[sub_resource type="Resource" id=374]
-script = ExtResource( 9 )
-item_data = ExtResource( 15 )
-quantity = 3
-
-[sub_resource type="Resource" id=375]
-script = ExtResource( 9 )
-item_data = ExtResource( 26 )
-quantity = 1
-
-[sub_resource type="Resource" id=376]
-script = ExtResource( 9 )
-item_data = ExtResource( 17 )
-quantity = 2
-
-[sub_resource type="Resource" id=377]
-script = ExtResource( 9 )
-item_data = ExtResource( 22 )
-quantity = 1
-
-[sub_resource type="Resource" id=378]
-script = ExtResource( 9 )
-item_data = ExtResource( 14 )
-quantity = 1
-
-[sub_resource type="Resource" id=383]
-script = ExtResource( 9 )
-item_data = ExtResource( 28 )
-quantity = 1
-
-[sub_resource type="Resource" id=384]
-script = ExtResource( 9 )
-item_data = ExtResource( 33 )
-quantity = 1
-
-[sub_resource type="Resource" id=385]
-script = ExtResource( 9 )
-item_data = ExtResource( 26 )
-quantity = 1
 
 [sub_resource type="StyleBoxFlat" id=371]
 bg_color = Color( 0, 0, 0, 0.180392 )
@@ -112,10 +64,391 @@ font_data = ExtResource( 20 )
 size = 35
 font_data = ExtResource( 20 )
 
-[sub_resource type="Resource" id=379]
+[sub_resource type="PanoramaSky" id=366]
+panorama = ExtResource( 6 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 366 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 2.0
+fog_color = Color( 0.87451, 0.72549, 0.45098, 1 )
+fog_depth_begin = 0.0
+fog_depth_end = 175.0
+
+[sub_resource type="GDScript" id=419]
+script/source = "extends Interactable
+
+# 1 input material
+# array of output items
+# on_interact, remove the input, randomly add output to vendor inv
+
+export(Resource) var input_item_slot #input item
+export(Array, Resource) var out_item_slots #output item
+export(String) var machine_name = \"NULL\"
+export(float) var production_time = 3.0 # time it takes to make item
+export(int) var payday = 0 # how much the player is paid out
+export(Role.Role_Type) var required_role = Role.Role_Type.OTHER
+
+onready var timer = $ManufactureTimer
+onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
+onready var name_plate = $CanvasLayer/Info/VBoxContainer/Label
+onready var accept_input = $AcceptSound
+onready var machine_loop = $MachineLoop
+
+var rng = RandomNumberGenerator.new()
+
+func _ready():
+	timer.wait_time = production_time # setup timer limit
+	name_plate.text = machine_name # setup nameplate
+	prog_bar.init(0, production_time) # init progress bar
+	rng.randomize()
+
+func _process(_delta): #update the manufacture progress bar onscreen
+	if timer.time_left > 0:
+		prog_bar.update_bar(timer.time_left)
+
+func _interact(_actor):
+	if _actor.role.role_type == required_role: # only enable interacting if correct role UPDATE TO ROLE_WORKER
+		if can_interact:
+			if Gamestate.player_inventory.take_item(input_item_slot): #take item and count needed from player
+				Gamestate.bones_updated(payday)
+				accept_input.play()
+				can_interact = false
+				timer.start()
+				machine_loop.play()
+	else:
+		Globals.emit_signal(\"on_pop_notification\", \"I don't know how to use this machine.\")
+
+func _on_ManufactureTimer_timeout():
+	var random_index = rng.randi_range(0, out_item_slots.size() - 1)
+	can_interact = true # enable interaction
+	timer.stop()
+	machine_loop.stop()
+	Gamestate.merchant_inventory.add_item(out_item_slots[random_index])
+"
+
+[sub_resource type="Resource" id=421]
+script = ExtResource( 9 )
+item_data = ExtResource( 25 )
+quantity = 1
+
+[sub_resource type="Resource" id=422]
 script = ExtResource( 9 )
 item_data = ExtResource( 26 )
 quantity = 1
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.5, 1, 0.5 )
+
+[sub_resource type="DynamicFont" id=420]
+size = 40
+font_data = ExtResource( 20 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.768627, 0, 0, 0 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 35
+font_data = ExtResource( 20 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/fg:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.768627, 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/bg:bg_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/fg:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.768627, 0, 0, 0 ), Color( 0.768627, 0, 0, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/bg:bg_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.196078 ) ]
+}
+
+[sub_resource type="GDScript" id=423]
+script/source = "extends Interactable
+
+# 1 input material
+# array of output items
+# on_interact, remove the input, randomly add output to vendor inv
+
+export(Resource) var input_item_slot #input item
+export(Array, Resource) var out_item_slots #output item
+export(String) var machine_name = \"NULL\"
+export(float) var production_time = 3.0 # time it takes to make item
+export(int) var payday = 0 # how much the player is paid out
+export(Role.Role_Type) var required_role = Role.Role_Type.OTHER
+
+onready var timer = $ManufactureTimer
+onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
+onready var name_plate = $CanvasLayer/Info/VBoxContainer/Label
+onready var accept_input = $AcceptSound
+onready var machine_loop = $MachineLoop
+
+var rng = RandomNumberGenerator.new()
+
+func _ready():
+	timer.wait_time = production_time # setup timer limit
+	name_plate.text = machine_name # setup nameplate
+	prog_bar.init(0, production_time) # init progress bar
+	rng.randomize()
+
+func _process(_delta): #update the manufacture progress bar onscreen
+	if timer.time_left > 0:
+		prog_bar.update_bar(timer.time_left)
+
+func _interact(_actor):
+	if _actor.role.role_type == required_role: # only enable interacting if correct role UPDATE TO ROLE_WORKER
+		if can_interact:
+			if Gamestate.player_inventory.take_item(input_item_slot): #take item and count needed from player
+				Gamestate.bones_updated(payday)
+				accept_input.play()
+				can_interact = false
+				timer.start()
+				machine_loop.play()
+	else:
+		Globals.emit_signal(\"on_pop_notification\", \"I don't know how to use this machine.\")
+
+func _on_ManufactureTimer_timeout():
+	var random_index = rng.randi_range(0, out_item_slots.size() - 1)
+	can_interact = true # enable interaction
+	timer.stop()
+	machine_loop.stop()
+	Gamestate.merchant_inventory.add_item(out_item_slots[random_index])
+"
+
+[sub_resource type="Resource" id=431]
+script = ExtResource( 9 )
+item_data = ExtResource( 8 )
+quantity = 1
+
+[sub_resource type="Resource" id=432]
+script = ExtResource( 9 )
+item_data = ExtResource( 22 )
+quantity = 1
+
+[sub_resource type="BoxShape" id=424]
+extents = Vector3( 0.5, 1, 0.5 )
+
+[sub_resource type="DynamicFont" id=425]
+size = 40
+font_data = ExtResource( 20 )
+
+[sub_resource type="StyleBoxFlat" id=426]
+bg_color = Color( 0.768627, 0, 0, 0 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=427]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="DynamicFont" id=428]
+size = 35
+font_data = ExtResource( 20 )
+
+[sub_resource type="Animation" id=429]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/fg:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.768627, 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/bg:bg_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=430]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/fg:bg_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.768627, 0, 0, 0 ), Color( 0.768627, 0, 0, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/bg:bg_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.196078 ) ]
+}
 
 [sub_resource type="Resource" id=367]
 script = ExtResource( 9 )
@@ -124,66 +457,483 @@ quantity = 1
 
 [sub_resource type="Resource" id=368]
 script = ExtResource( 9 )
+item_data = ExtResource( 41 )
+quantity = 1
+
+[sub_resource type="GDScript" id=400]
+script/source = "extends Spatial
+tool
+
+export(String) var zone_name = \"\"
+export(float) var show_time = 2.0
+export(Vector3) var bounds = Vector3(5, 5, 5)
+
+onready var zone_label = $CanvasLayer/Control/background/zone_label
+onready var anim_player = $AnimationPlayer
+
+func _ready():
+	zone_label.text = zone_name
+	anim_player.play(\"RESET\")
+	$Area/CollisionShape.shape.extents = bounds
+
+func _process(_delta):
+	if Engine.is_editor_hint():
+		$Area/CollisionShape.shape.extents = bounds
+
+func _on_Area_body_entered(body): # handle on_enter effects and zone name displaying
+	if body == Globals.current_player and !anim_player.is_playing() and !SoundManager.soundqueues_by_name[\"zone_enter_tone\"].audio_stream_players[0].playing:
+		SoundManager.Play_ZONE_EnterTone()
+		var t = Timer.new()
+		t.wait_time = show_time
+		t.one_shot = true
+		self.add_child(t)
+		t.start()
+		anim_player.play(\"show\")
+		yield(t, \"timeout\")
+		anim_player.play_backwards(\"show\")
+"
+
+[sub_resource type="BoxShape" id=414]
+extents = Vector3( 10, 10, 20 )
+
+[sub_resource type="StyleBoxFlat" id=415]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="DynamicFont" id=416]
+size = 70
+font_data = ExtResource( 20 )
+
+[sub_resource type="Animation" id=417]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/background:custom_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Control/background/zone_label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=418]
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/background:custom_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Control/background/zone_label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="GDScript" id=401]
+script/source = "extends Spatial
+tool
+
+export(String) var zone_name = \"\"
+export(float) var show_time = 2.0
+export(Vector3) var bounds = Vector3(5, 5, 5)
+
+onready var zone_label = $CanvasLayer/Control/background/zone_label
+onready var anim_player = $AnimationPlayer
+
+func _ready():
+	zone_label.text = zone_name
+	anim_player.play(\"RESET\")
+	$Area/CollisionShape.shape.extents = bounds
+
+func _process(_delta):
+	if Engine.is_editor_hint():
+		$Area/CollisionShape.shape.extents = bounds
+
+func _on_Area_body_entered(body): # handle on_enter effects and zone name displaying
+	if body == Globals.current_player and !anim_player.is_playing() and !SoundManager.soundqueues_by_name[\"zone_enter_tone\"].audio_stream_players[0].playing:
+		SoundManager.Play_ZONE_EnterTone()
+		var t = Timer.new()
+		t.wait_time = show_time
+		t.one_shot = true
+		self.add_child(t)
+		t.start()
+		anim_player.play(\"show\")
+		yield(t, \"timeout\")
+		anim_player.play_backwards(\"show\")
+"
+
+[sub_resource type="BoxShape" id=402]
+extents = Vector3( 20, 5, 15 )
+
+[sub_resource type="StyleBoxFlat" id=403]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="DynamicFont" id=404]
+size = 70
+font_data = ExtResource( 20 )
+
+[sub_resource type="Animation" id=405]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/background:custom_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Control/background/zone_label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=406]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/background:custom_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Control/background/zone_label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="GDScript" id=407]
+script/source = "extends Spatial
+tool
+
+export(String) var zone_name = \"\"
+export(float) var show_time = 2.0
+export(Vector3) var bounds = Vector3(5, 5, 5)
+
+onready var zone_label = $CanvasLayer/Control/background/zone_label
+onready var anim_player = $AnimationPlayer
+
+func _ready():
+	zone_label.text = zone_name
+	anim_player.play(\"RESET\")
+	$Area/CollisionShape.shape.extents = bounds
+
+func _process(_delta):
+	if Engine.is_editor_hint():
+		$Area/CollisionShape.shape.extents = bounds
+
+func _on_Area_body_entered(body): # handle on_enter effects and zone name displaying
+	if body == Globals.current_player and !anim_player.is_playing() and !SoundManager.soundqueues_by_name[\"zone_enter_tone\"].audio_stream_players[0].playing:
+		SoundManager.Play_ZONE_EnterTone()
+		var t = Timer.new()
+		t.wait_time = show_time
+		t.one_shot = true
+		self.add_child(t)
+		t.start()
+		anim_player.play(\"show\")
+		yield(t, \"timeout\")
+		anim_player.play_backwards(\"show\")
+"
+
+[sub_resource type="BoxShape" id=408]
+extents = Vector3( 15, 5, 15 )
+
+[sub_resource type="StyleBoxFlat" id=409]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="DynamicFont" id=410]
+size = 70
+font_data = ExtResource( 20 )
+
+[sub_resource type="Animation" id=411]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/background:custom_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Control/background/zone_label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=412]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Control/background:custom_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Control/background/zone_label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="GDScript" id=433]
+script/source = "extends Interactable
+class_name Storage
+
+# add a subset of storages that can has a chance to \"lose/have stolen\" from after set amount of time
+# after not being interacted with
+# make it so that storages can auto-populate with items/random loot
+
+signal toggle_inventory(external_inventory_owner)
+
+export(Resource) var inventory_data
+export(Array, Resource) var items
+
+func _ready():
+# warning-ignore:return_value_discarded
+	connect(\"toggle_inventory\", Globals, \"toggle_inventory_interface\") # need to do this or else wont work on lvl chg
+	if items.size() <= inventory_data.slot_datas.size():
+		for item in items:
+			if item:
+				inventory_data.add_item(item)
+
+func _interact(_actor):
+	emit_signal(\"toggle_inventory\", self)
+"
+
+[sub_resource type="Resource" id=434]
+script = ExtResource( 15 )
+slot_datas = [ null, null, null ]
+
+[sub_resource type="Resource" id=435]
+script = ExtResource( 9 )
+item_data = ExtResource( 22 )
+quantity = 1
+
+[sub_resource type="BoxShape" id=436]
+extents = Vector3( 1, 1.5, 0.5 )
+
+[sub_resource type="DynamicFont" id=437]
+size = 40
+font_data = ExtResource( 20 )
+
+[sub_resource type="Animation" id=438]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Name:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=439]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Name:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="GDScript" id=440]
+script/source = "extends Interactable
+class_name Storage
+
+# add a subset of storages that can has a chance to \"lose/have stolen\" from after set amount of time
+# after not being interacted with
+# make it so that storages can auto-populate with items/random loot
+
+signal toggle_inventory(external_inventory_owner)
+
+export(Resource) var inventory_data
+export(Array, Resource) var items
+
+func _ready():
+# warning-ignore:return_value_discarded
+	connect(\"toggle_inventory\", Globals, \"toggle_inventory_interface\") # need to do this or else wont work on lvl chg
+	if items.size() <= inventory_data.slot_datas.size():
+		for item in items:
+			if item:
+				inventory_data.add_item(item)
+
+func _interact(_actor):
+	emit_signal(\"toggle_inventory\", self)
+"
+
+[sub_resource type="Resource" id=441]
+script = ExtResource( 15 )
+slot_datas = [ null, null, null ]
+
+[sub_resource type="Resource" id=442]
+script = ExtResource( 9 )
+item_data = ExtResource( 38 )
+quantity = 1
+
+[sub_resource type="Resource" id=443]
+script = ExtResource( 9 )
+item_data = ExtResource( 40 )
+quantity = 1
+
+[sub_resource type="Resource" id=444]
+script = ExtResource( 9 )
+item_data = ExtResource( 18 )
+quantity = 1
+
+[sub_resource type="BoxShape" id=445]
+extents = Vector3( 1, 1.5, 0.5 )
+
+[sub_resource type="DynamicFont" id=446]
+size = 40
+font_data = ExtResource( 20 )
+
+[sub_resource type="Animation" id=447]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Name:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=448]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Name:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Resource" id=449]
+script = ExtResource( 9 )
+item_data = ExtResource( 8 )
+quantity = 1
+
+[sub_resource type="Resource" id=450]
+script = ExtResource( 9 )
+item_data = ExtResource( 14 )
+quantity = 1
+
+[sub_resource type="Resource" id=451]
+script = ExtResource( 9 )
+item_data = ExtResource( 17 )
+quantity = 2
+
+[sub_resource type="Resource" id=454]
+script = ExtResource( 15 )
+slot_datas = [ null, null, null, null, null, null ]
+
+[sub_resource type="Resource" id=452]
+script = ExtResource( 9 )
+item_data = ExtResource( 41 )
+quantity = 1
+
+[sub_resource type="Resource" id=453]
+script = ExtResource( 9 )
+item_data = ExtResource( 43 )
 quantity = 1
 
 [node name="Main" type="Spatial"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
-
-[node name="GridMaps" type="Spatial" parent="."]
-
-[node name="Base" type="GridMap" parent="GridMaps"]
-mesh_library = ExtResource( 27 )
-cell_size = Vector3( 1, 1, 1 )
-cell_octant_size = 200
-data = {
-"cells": PoolIntArray( 0, 0, 3, 6, 0, 73, 65526, 0, 3, 393222, 0, 1441862, 65485, 3, 1048606, 65543, 4, 74, 6, 5, 73, 10, 5, 655378, -262218, 5, 90, -262208, 5, 90, -262198, 5, 91, -262188, 5, 90, -262179, 5, 26, -262178, 5, 85, -262174, 5, 26, -262168, 5, 87, -262229, 6, 1441882, -262169, 6, 1441877, 65526, 9, 1048652, 65531, 9, 1048652, 393206, 9, 1048653, 393211, 9, 1048653, -65593, 9, 1179688, -60, 9, 1179696, 0, 10, 1048579, 65521, 10, 1048639, 65530, 10, 655436, 65531, 10, 1441855, 393210, 10, 655437, -262214, 10, 9, -262204, 10, 1441800, -262194, 10, 1441802, -262184, 10, 9, -262174, 10, 1441805, -262169, 10, 1441818, -65600, 12, 1179688, -67, 12, 1179696, -65566, 13, 458816, 65526, 14, 1048652, 393206, 14, 1048653, 5, 15, 1441809, 65506, 15, 26, 65511, 15, 1441818, 65525, 15, 655434, -262180, 15, 655450, -262229, 16, 1441882, -262169, 16, 1441879, 65503, 17, 655421, 0, 20, 3, 65525, 20, 655434, 65531, 20, 1048604, 393208, 20, 72, 655375, 20, 655438, -262214, 20, 655373, -262204, 20, 655370, -262194, 20, 1441805, 393211, 23, 1048648, 65526, 24, 1048645, 393211, 24, 1048615, -262169, 24, 1048664, 65506, 25, 655386, 65511, 25, 655386, 65516, 25, 655386, 65521, 25, 655386, 65531, 25, 1048604, 393206, 25, 1048654, 720889, 25, 655432, 65521, 26, 1441882, 720891, 27, 1441864, 655365, 28, 1048648, 0, 30, 3, 720891, 32, 1441864, 655365, 33, 1048648, 15, 34, 1048666, 262151, 34, 458803, 655375, 35, 1048654, 720889, 35, 655432, -262218, 35, 90, -262208, 35, 90, -262198, 35, 90, 458761, 37, 983091, 8, 38, 58, 327685, 38, 1048647, 15, 39, 1048651, 0, 40, 1441795, 10, 40, 1048579, 65526, 40, 1441795, 327695, 40, 655438, 655375, 40, 655438, 10, 44, 1048651, 65531, 44, 1441853, 393197, 44, 22, 0, 45, 63, 65521, 45, 1441810, 65526, 45, 63, 65531, 45, 1441810, 327695, 45, 1048654, 655375, 45, 1048654, 65515, 47, 22, 393191, 65492, 1441869, 393196, 65492, 1441869, 65481, 65496, 1441810, 65491, 65496, 1441810, 65515, 65496, 655436, 65520, 65496, 655436, 393195, 65496, 393284, 393196, 65497, 1441869, 65513, 65499, 1441856, 5, 65501, 1441820, 65485, 65501, 655377, 65491, 65501, 655382, 65501, 65501, 81, 65516, 65501, 655423, 65521, 65501, 21, 393181, 65501, 78, 393194, 65501, 655425, 589801, 65501, 458792, 11, 65505, 655378, 16, 65505, 1048594, 0, 65506, 1048579, 5, 65506, 1441820, 65496, 65506, 1048582, 65501, 65506, 1048604, 65506, 65506, 655363, 65516, 65506, 3, 65521, 65506, 655378, 65522, 65506, 1048600, 65524, 65506, 1048600, 65526, 65506, 1048579, 65531, 65506, 1441820, 65494, 65507, 16, 65528, 65508, 1048634, 65530, 65509, 1048612, 524268, 65509, 196672, 5, 65511, 1441820, 65496, 65511, 28, 65501, 65511, 1048604, 65512, 65511, 74, 65521, 65511, 1441810, 393192, 65511, 74, 524267, 65511, 262193, 65485, 65513, 655382, 21, 65515, 1048594, 0, 65516, 1441795, 65496, 65516, 1048577, 65506, 65516, 655363, 65511, 65516, 1048602, 65521, 65516, 26, 65526, 65516, 26, 65531, 65516, 1441818, 327690, 65516, 1441870, 327695, 65516, 655438, 524268, 65518, 1245225, 524274, 65518, 589873, 589817, 65519, 917553, 65486, 65521, 26, 65491, 65521, 1441818, 65496, 65521, 655388, 65511, 65521, 1048602, 65531, 65521, 655375, 524265, 65521, 1441815, 524276, 65521, 1441815, 458747, 65523, 655383, 65486, 65524, 0, 0, 65526, 3, 6, 65526, 82, 65491, 65526, 1441818, 65496, 65526, 4, 65506, 65526, 655363, 393222, 65527, 1441837, 393222, 65528, 1441862, 65499, 65529, 1441853, 458727, 65529, 23, 6, 65531, 73, 65511, 65531, 15, 458736, 65531, 1048599, 458746, 65531, 1048599, 65543, 65532, 74, -262229, 65532, 1441882, 393222, 65535, 1441834 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 5, 0 )
-}
-
-[node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, 0 )
-
-[node name="player_role_spawns" type="Spatial" parent="."]
-
-[node name="OBJ_Sawblade" parent="player_role_spawns" instance=ExtResource( 42 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 11, 28 )
-role = ExtResource( 24 )
-
-[node name="OBJ_Sawblade2" parent="player_role_spawns" instance=ExtResource( 42 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 0 )
-role = ExtResource( 23 )
-
-[node name="resource_spawners" type="Spatial" parent="."]
-
-[node name="resource_node_spawner" parent="resource_spawners" instance=ExtResource( 44 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0.4, 21 )
-node_to_spawn = ExtResource( 53 )
-
-[node name="resource_node_spawner2" parent="resource_spawners" instance=ExtResource( 44 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3, 1.7, -18 )
-node_to_spawn = ExtResource( 16 )
-
-[node name="machines" type="Spatial" parent="."]
-
-[node name="production_machine" parent="machines" instance=ExtResource( 19 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.9, 0.5, 43.9 )
-input_item_slot = SubResource( 373 )
-out_item_slots = [ SubResource( 374 ), SubResource( 375 ), SubResource( 376 ), SubResource( 377 ), SubResource( 378 ) ]
-machine_name = "metalwork machine"
-production_time = 5.0
-payday = 5
-
-[node name="production_machine2" parent="machines" instance=ExtResource( 19 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0.5, 42 )
-input_item_slot = SubResource( 383 )
-out_item_slots = [ SubResource( 384 ), SubResource( 385 ) ]
-machine_name = "woodwork machine"
-payday = 5
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
@@ -335,27 +1085,226 @@ visible = false
 [node name="LoadingScreen" parent="UI/PauseMenu" instance=ExtResource( 30 )]
 visible = false
 
-[node name="Zone" parent="." instance=ExtResource( 18 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 6, 14 )
-zone_name = "Rotten Canal"
-chance_to_infect = 1.0
-bounds = Vector3( 30, 10, 15 )
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
 
-[node name="Room" parent="Zone" instance=ExtResource( 25 )]
+[node name="GridMaps" type="Spatial" parent="."]
 
-[node name="resource_node_spawner" parent="Zone/Room" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -10.3, 7 )
+[node name="Base" type="GridMap" parent="GridMaps" groups=["ground_stone"]]
+mesh_library = ExtResource( 27 )
+cell_size = Vector3( 1, 1, 1 )
+cell_octant_size = 200
+data = {
+"cells": PoolIntArray( 0, 0, 3, 6, 0, 73, 65526, 0, 3, 393222, 0, 1441862, 65485, 3, 1048606, 65543, 4, 74, 6, 5, 73, 10, 5, 655378, -262218, 5, 90, -262208, 5, 90, -262198, 5, 91, -262188, 5, 90, -262179, 5, 26, -262178, 5, 85, -262174, 5, 26, -262168, 5, 87, -262229, 6, 1441882, -262169, 6, 1441877, 65526, 9, 1048652, 65531, 9, 1048652, 393206, 9, 1048653, 393211, 9, 1048653, -65593, 9, 1179688, -60, 9, 1179696, 0, 10, 1048579, 65521, 10, 1048639, 65530, 10, 655436, 65531, 10, 1441855, 393210, 10, 655437, -262214, 10, 9, -262204, 10, 1441800, -262194, 10, 1441802, -262184, 10, 9, -262174, 10, 1441805, -262169, 10, 1441818, -65600, 12, 1179688, -67, 12, 1179696, -65566, 13, 458816, 65526, 14, 1048652, 393206, 14, 1048653, 5, 15, 1441809, 65506, 15, 26, 65511, 15, 1441818, 65525, 15, 655434, -262180, 15, 655450, -262229, 16, 1441882, -262169, 16, 1441879, 65503, 17, 655421, 0, 20, 3, 65525, 20, 655434, 65531, 20, 1048604, 393208, 20, 72, 655375, 20, 655438, -262214, 20, 655373, -262204, 20, 655370, -262194, 20, 1441805, 393211, 23, 1048648, 65526, 24, 1048645, 393211, 24, 1048615, -262169, 24, 1048664, 65506, 25, 655386, 65511, 25, 655386, 65516, 25, 655386, 65521, 25, 655386, 65531, 25, 1048604, 393206, 25, 1048654, 720889, 25, 655432, 65521, 26, 1441882, 720891, 27, 1441864, 655365, 28, 1048648, 0, 30, 3, 720891, 32, 1441864, 655365, 33, 1048648, 15, 34, 1048666, 262151, 34, 458803, 655375, 35, 1048654, 720889, 35, 655432, -262218, 35, 90, -262208, 35, 90, -262198, 35, 90, 458761, 37, 983091, 8, 38, 58, 327685, 38, 1048647, 15, 39, 1048651, 0, 40, 1441795, 10, 40, 1048579, 65526, 40, 1441795, 327695, 40, 655438, 655375, 40, 655438, 10, 44, 1048651, 65531, 44, 1441853, 393197, 44, 22, 0, 45, 63, 65521, 45, 1441810, 65526, 45, 63, 65531, 45, 1441810, 327695, 45, 1048654, 655375, 45, 1048654, 65515, 47, 22, 393191, 65492, 1441869, 393196, 65492, 1441869, 65481, 65496, 1441810, 65491, 65496, 1441810, 65515, 65496, 655436, 65520, 65496, 655436, 393195, 65496, 393284, 393196, 65497, 1441869, 65513, 65499, 1441856, 5, 65501, 1441820, 65485, 65501, 655377, 65491, 65501, 655382, 65501, 65501, 81, 65516, 65501, 655423, 65521, 65501, 21, 393181, 65501, 78, 393194, 65501, 655425, 589801, 65501, 458792, 11, 65505, 655378, 16, 65505, 1048594, 0, 65506, 1048579, 5, 65506, 1441820, 65496, 65506, 1048582, 65501, 65506, 1048604, 65506, 65506, 655363, 65516, 65506, 3, 65521, 65506, 655378, 65522, 65506, 1048600, 65524, 65506, 1048600, 65526, 65506, 1048579, 65531, 65506, 1441820, 65494, 65507, 16, 65528, 65508, 1048634, 65530, 65509, 1048612, 524268, 65509, 196672, 5, 65511, 1441820, 65496, 65511, 28, 65501, 65511, 1048604, 65512, 65511, 74, 65521, 65511, 1441810, 393192, 65511, 74, 524267, 65511, 262193, 65485, 65513, 655382, 21, 65515, 1048594, 0, 65516, 1441795, 65496, 65516, 1048577, 65506, 65516, 655363, 65511, 65516, 1048602, 65521, 65516, 26, 65526, 65516, 26, 65531, 65516, 1441818, 327690, 65516, 1441870, 327695, 65516, 655438, 524268, 65518, 1245225, 524274, 65518, 589873, 589817, 65519, 917553, 65486, 65521, 26, 65491, 65521, 1441818, 65496, 65521, 655388, 65511, 65521, 1048602, 65531, 65521, 655375, 524265, 65521, 1441815, 524276, 65521, 1441815, 458747, 65523, 655383, 65486, 65524, 0, 0, 65526, 3, 6, 65526, 82, 65491, 65526, 1441818, 65496, 65526, 4, 65506, 65526, 655363, 393222, 65527, 1441837, 393222, 65528, 1441862, 65499, 65529, 1441853, 458727, 65529, 23, 6, 65531, 73, 65511, 65531, 15, 458736, 65531, 1048599, 458746, 65531, 1048599, 65543, 65532, 74, -262229, 65532, 1441882, 393222, 65535, 1441834 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 5, 0 )
+}
 
-[node name="resource_node_spawner2" parent="Zone/Room" index="1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -10.3, -4 )
+[node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, 0 )
 
-[node name="Storage" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -43, 0.5, -29 )
-items = [ SubResource( 379 ) ]
+[node name="player_role_spawns" type="Spatial" parent="."]
+
+[node name="OBJ_Sawblade" parent="player_role_spawns" instance=ExtResource( 42 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 11, 28 )
+role = ExtResource( 24 )
+
+[node name="OBJ_Sawblade2" parent="player_role_spawns" instance=ExtResource( 42 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.1, 0 )
+role = ExtResource( 23 )
+
+[node name="resource_spawners" type="Spatial" parent="."]
+
+[node name="resource_node_spawner" parent="resource_spawners" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0.4, 21 )
+node_to_spawn = ExtResource( 53 )
+
+[node name="resource_node_spawner2" parent="resource_spawners" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3, 1.7, -18 )
+node_to_spawn = ExtResource( 16 )
+
+[node name="resource_node_spawner3" parent="resource_spawners" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59, -4, 23 )
+node_to_spawn = ExtResource( 28 )
+
+[node name="resource_node_spawner4" parent="resource_spawners" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -69, -4.4, 21 )
+node_to_spawn = ExtResource( 33 )
+
+[node name="machines" type="Spatial" parent="."]
+
+[node name="production_machine" type="StaticBody" parent="machines"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0.5, 34 )
+collision_layer = 2
+collision_mask = 8
+script = SubResource( 419 )
+input_item_slot = SubResource( 421 )
+out_item_slots = [ SubResource( 422 ) ]
+machine_name = "lunch machine"
+production_time = 2.0
+payday = 10
+
+[node name="CollisionShape" type="CollisionShape" parent="machines/production_machine"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="production_machine" parent="machines/production_machine" instance=ExtResource( 19 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="machines/production_machine"]
+
+[node name="Info" type="Control" parent="machines/production_machine/CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="machines/production_machine/CanvasLayer/Info"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -208.0
+margin_top = -69.0
+margin_right = 208.0
+margin_bottom = 69.0
+
+[node name="Label" type="Label" parent="machines/production_machine/CanvasLayer/Info/VBoxContainer"]
+margin_right = 416.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 420 )
+text = "Resource Name"
+align = 1
+valign = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="machines/production_machine/CanvasLayer/Info/VBoxContainer"]
+margin_top = 71.0
+margin_right = 416.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 36 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+value = 50.0
+percent_visible = false
+script = ExtResource( 37 )
+
+[node name="Label" type="Label" parent="machines/production_machine/CanvasLayer/Info/VBoxContainer/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 5 )
+text = "Progress"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="machines/production_machine"]
+anims/RESET = SubResource( 6 )
+anims/fade_in = SubResource( 7 )
+
+[node name="ManufactureTimer" type="Timer" parent="machines/production_machine"]
+
+[node name="AcceptSound" type="AudioStreamPlayer3D" parent="machines/production_machine"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
+stream = ExtResource( 35 )
+bus = "SoundFX"
+
+[node name="MachineLoop" type="AudioStreamPlayer3D" parent="machines/production_machine"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
+stream = ExtResource( 34 )
+bus = "SoundFX"
+
+[node name="production_machine2" type="StaticBody" parent="machines"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0.5, 31 )
+collision_layer = 2
+collision_mask = 8
+script = SubResource( 423 )
+input_item_slot = SubResource( 431 )
+out_item_slots = [ SubResource( 432 ) ]
+machine_name = "weapon plant"
+production_time = 5.0
+payday = 10
+
+[node name="CollisionShape" type="CollisionShape" parent="machines/production_machine2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 424 )
+
+[node name="production_machine" parent="machines/production_machine2" instance=ExtResource( 19 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="machines/production_machine2"]
+
+[node name="Info" type="Control" parent="machines/production_machine2/CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="machines/production_machine2/CanvasLayer/Info"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -208.0
+margin_top = -69.0
+margin_right = 208.0
+margin_bottom = 69.0
+
+[node name="Label" type="Label" parent="machines/production_machine2/CanvasLayer/Info/VBoxContainer"]
+margin_right = 416.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 425 )
+text = "Resource Name"
+align = 1
+valign = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="machines/production_machine2/CanvasLayer/Info/VBoxContainer"]
+margin_top = 71.0
+margin_right = 416.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 36 )
+custom_styles/fg = SubResource( 426 )
+custom_styles/bg = SubResource( 427 )
+value = 50.0
+percent_visible = false
+script = ExtResource( 37 )
+
+[node name="Label" type="Label" parent="machines/production_machine2/CanvasLayer/Info/VBoxContainer/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 428 )
+text = "Progress"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="machines/production_machine2"]
+anims/RESET = SubResource( 429 )
+anims/fade_in = SubResource( 430 )
+
+[node name="ManufactureTimer" type="Timer" parent="machines/production_machine2"]
+
+[node name="AcceptSound" type="AudioStreamPlayer3D" parent="machines/production_machine2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
+stream = ExtResource( 35 )
+bus = "SoundFX"
+
+[node name="MachineLoop" type="AudioStreamPlayer3D" parent="machines/production_machine2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
+stream = ExtResource( 34 )
+bus = "SoundFX"
 
 [node name="Test Item - Pickup" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 1 )
-visible = false
 slot_data = SubResource( 367 )
 
 [node name="metastabilizer" parent="." instance=ExtResource( 10 )]
@@ -374,11 +1323,261 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 0.
 [node name="dark_altar" parent="." instance=ExtResource( 32 )]
 transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -72, -4.5, 8 )
 
+[node name="Zones" type="Spatial" parent="."]
+
+[node name="Zone" type="Spatial" parent="Zones"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 30 )
+script = SubResource( 400 )
+zone_name = "Factories"
+bounds = Vector3( 10, 10, 20 )
+
+[node name="Area" type="Area" parent="Zones/Zone"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Zones/Zone/Area"]
+shape = SubResource( 414 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Zones/Zone"]
+
+[node name="Control" type="Control" parent="Zones/Zone/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="background" type="PanelContainer" parent="Zones/Zone/CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -375.0
+margin_top = -290.0
+margin_right = 375.0
+margin_bottom = -140.0
+rect_min_size = Vector2( 750, 150 )
+custom_styles/panel = SubResource( 415 )
+
+[node name="zone_label" type="Label" parent="Zones/Zone/CanvasLayer/Control/background"]
+margin_right = 750.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 416 )
+text = "Factories"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zones/Zone"]
+anims/RESET = SubResource( 417 )
+anims/show = SubResource( 418 )
+
+[node name="Zone2" type="Spatial" parent="Zones"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 0, 12 )
+script = SubResource( 401 )
+zone_name = "Rotten Canal"
+bounds = Vector3( 20, 5, 15 )
+
+[node name="Area" type="Area" parent="Zones/Zone2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Zones/Zone2/Area"]
+shape = SubResource( 402 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Zones/Zone2"]
+
+[node name="Control" type="Control" parent="Zones/Zone2/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="background" type="PanelContainer" parent="Zones/Zone2/CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -375.0
+margin_top = -290.0
+margin_right = 375.0
+margin_bottom = -140.0
+rect_min_size = Vector2( 750, 150 )
+custom_styles/panel = SubResource( 403 )
+
+[node name="zone_label" type="Label" parent="Zones/Zone2/CanvasLayer/Control/background"]
+margin_right = 750.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 404 )
+text = "Rotten Canal"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zones/Zone2"]
+anims/RESET = SubResource( 405 )
+anims/show = SubResource( 406 )
+
+[node name="Zone3" type="Spatial" parent="Zones"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 5, -24 )
+script = SubResource( 407 )
+zone_name = "alleyway"
+bounds = Vector3( 15, 5, 15 )
+
+[node name="Area" type="Area" parent="Zones/Zone3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Zones/Zone3/Area"]
+shape = SubResource( 408 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Zones/Zone3"]
+
+[node name="Control" type="Control" parent="Zones/Zone3/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="background" type="PanelContainer" parent="Zones/Zone3/CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -375.0
+margin_top = -290.0
+margin_right = 375.0
+margin_bottom = -140.0
+rect_min_size = Vector2( 750, 150 )
+custom_styles/panel = SubResource( 409 )
+
+[node name="zone_label" type="Label" parent="Zones/Zone3/CanvasLayer/Control/background"]
+margin_right = 750.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 410 )
+text = "alleyway"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Zones/Zone3"]
+anims/RESET = SubResource( 411 )
+anims/show = SubResource( 412 )
+
+[node name="Loot" type="Spatial" parent="."]
+
+[node name="Storage" type="StaticBody" parent="Loot" groups=["external_inventory"]]
+transform = Transform( 0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -43, 0.5, -29 )
+collision_layer = 2
+collision_mask = 8
+script = SubResource( 433 )
+inventory_data = SubResource( 434 )
+items = [ SubResource( 435 ) ]
+
+[node name="locker" parent="Loot/Storage" instance=ExtResource( 5 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="Loot/Storage"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5 )
+shape = SubResource( 436 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Loot/Storage"]
+
+[node name="Info" type="Control" parent="Loot/Storage/CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Loot/Storage/CanvasLayer/Info"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -208.0
+margin_top = -69.0
+margin_right = 208.0
+margin_bottom = 69.0
+
+[node name="Name" type="Label" parent="Loot/Storage/CanvasLayer/Info/VBoxContainer"]
+margin_right = 416.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 437 )
+text = "Storage"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Loot/Storage"]
+anims/RESET = SubResource( 438 )
+anims/fade_in = SubResource( 439 )
+
+[node name="Storage2" type="StaticBody" parent="Loot" groups=["external_inventory"]]
+transform = Transform( -0.0147545, 0.991481, 0.12941, 0.999254, 0.0192418, -0.0334936, -0.0356983, 0.128819, -0.991025, -9, 1.3, -29 )
+collision_layer = 2
+collision_mask = 8
+script = SubResource( 440 )
+inventory_data = SubResource( 441 )
+items = [ SubResource( 442 ), SubResource( 443 ), SubResource( 444 ) ]
+
+[node name="locker" parent="Loot/Storage2" instance=ExtResource( 5 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="Loot/Storage2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5 )
+shape = SubResource( 445 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Loot/Storage2"]
+
+[node name="Info" type="Control" parent="Loot/Storage2/CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Loot/Storage2/CanvasLayer/Info"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -208.0
+margin_top = -69.0
+margin_right = 208.0
+margin_bottom = 69.0
+
+[node name="Name" type="Label" parent="Loot/Storage2/CanvasLayer/Info/VBoxContainer"]
+margin_right = 416.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 446 )
+text = "Storage"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Loot/Storage2"]
+anims/RESET = SubResource( 447 )
+anims/fade_in = SubResource( 448 )
+
+[node name="Storage3" parent="Loot" instance=ExtResource( 39 )]
+transform = Transform( -0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 5, 0.5, 0 )
+items = [ SubResource( 449 ), SubResource( 450 ), SubResource( 451 ) ]
+does_reset = true
+
+[node name="Storage4" parent="Loot" instance=ExtResource( 39 )]
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 4, 0.5, -6 )
+inventory_data = SubResource( 454 )
+items = [ SubResource( 452 ), SubResource( 453 ) ]
+does_reset = true
+
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="timeout" from="machines/production_machine/ManufactureTimer" to="machines/production_machine" method="_on_ManufactureTimer_timeout"]
+[connection signal="timeout" from="machines/production_machine2/ManufactureTimer" to="machines/production_machine2" method="_on_ManufactureTimer_timeout"]
+[connection signal="body_entered" from="Zones/Zone/Area" to="Zones/Zone" method="_on_Area_body_entered"]
+[connection signal="body_entered" from="Zones/Zone2/Area" to="Zones/Zone2" method="_on_Area_body_entered"]
+[connection signal="body_entered" from="Zones/Zone3/Area" to="Zones/Zone3" method="_on_Area_body_entered"]
 
-[editable path="Zone/Room"]
+[editable path="Loot/Storage/locker"]
+[editable path="Loot/Storage2/locker"]

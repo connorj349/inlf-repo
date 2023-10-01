@@ -152,7 +152,7 @@ display_name = "boulder"
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477878, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0181818, 0 )
 max_health = 150
 hurt_audio_stream = ExtResource( 10 )
 death_audio_stream = ExtResource( 5 )

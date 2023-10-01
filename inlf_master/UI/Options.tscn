@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/Options.gd" type="Script" id=2]
-[ext_resource path="res://sound/SoundQueue.tscn" type="PackedScene" id=3]
-[ext_resource path="res://sound/UI/buttonrelease.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -187,12 +185,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 min_value = -80.0
 max_value = 0.0
-
-[node name="SoundQueue" parent="." instance=ExtResource( 3 )]
-Count = 3
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundQueue"]
-stream = ExtResource( 4 )
 
 [connection signal="pressed" from="Panel/BackButton" to="." method="_on_Button_pressed"]
 [connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/fullscreen_check" to="." method="_on_fullscreen_check_toggled"]

@@ -216,6 +216,7 @@ tracks/6/keys = {
 [node name="bloater" type="RigidBody"]
 collision_layer = 2
 collision_mask = 9
+mass = 50.0
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -232,7 +233,7 @@ death_audio_stream = ExtResource( 7 )
 shape = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -1, 0 )
 offset = Vector2( 0, 120 )
 billboard = 2
 double_sided = false

@@ -5,7 +5,7 @@ export(AudioStream) var hurt_audio_stream
 export(AudioStream) var death_audio_stream
 export(PackedScene) var hit_effect = preload("res://effects/blood_spray.tscn")
 
-onready var hurt_sound = $hurt_sound
+onready var hurt_sound = $SoundQueue3D
 onready var death_sound = $death_sound
 
 var health = 1
@@ -17,7 +17,8 @@ signal health_changed #sends 1 arg; remaining health
 
 func init():
 	health = max_health
-	hurt_sound.stream = hurt_audio_stream
+	for child in hurt_sound.get_children():
+		child.stream = hurt_audio_stream
 	death_sound.stream = death_audio_stream
 	emit_signal("health_changed", health)
 
@@ -27,7 +28,7 @@ func hurt(amount):
 		get_tree().get_root().add_child(hit)
 		hit.global_transform.origin = self.global_transform.origin
 	health = clamp(health - amount, 0, max_health)
-	hurt_sound.play()
+	hurt_sound.PlaySoundRange(0.85, 1.1)
 	emit_signal("hurt", health)
 	emit_signal("health_changed", health)
 	if health <= 0:

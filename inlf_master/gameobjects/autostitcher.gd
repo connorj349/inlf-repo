@@ -8,7 +8,7 @@ export(int) var heal_amount = 5 #amount to heal player per tick
 onready var heal_area = $Area
 onready var timer = $Timer
 onready var healing_loop = $HealingLoop
-onready var hit_sound = $HitSound
+onready var hit_sound = $SoundQueue3D
 
 var blood_effect = preload("res://effects/blood_spray.tscn")
 
@@ -17,11 +17,12 @@ func _ready():
 	randomize()
 
 func on_hurt(_amount): #if caught will be attacked by sanitars
-	hit_sound.play()
+	hit_sound.PlaySoundRange(0.9, 1.1)
 	#spawn spark particle effect
 	var random_hit_result = randf()
 	if random_hit_result < 0.8:
 		# 80% chance of being returned; nothing happens
+		# maybe make this 'want' the player automatically by the sanitar squad
 		pass
 	elif random_hit_result < 0.95:
 		# 15% chance of being returned

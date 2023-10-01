@@ -14,6 +14,7 @@ autostart = true
 [node name="spawn_noise" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
 pitch_scale = 0.8
+bus = "SoundFX"
 
 [node name="Area" type="Area" parent="."]
 collision_layer = 0
