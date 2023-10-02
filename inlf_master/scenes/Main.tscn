@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=2]
+[gd_scene load_steps=117 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://gameobjects/sawblade.tscn" type="PackedScene" id=42]
 [ext_resource path="res://item/items/sanitar_suit.tres" type="Resource" id=43]
 [ext_resource path="res://gameobjects/resource_node_spawner.tscn" type="PackedScene" id=44]
+[ext_resource path="res://gameobjects/bloater.tscn" type="PackedScene" id=45]
 [ext_resource path="res://gameobjects/resource_nodes/skin_tree.tscn" type="PackedScene" id=53]
 
 [sub_resource type="StyleBoxFlat" id=371]
@@ -904,6 +905,10 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Resource" id=455]
+script = ExtResource( 15 )
+slot_datas = [ null, null, null, null, null, null ]
+
 [sub_resource type="Resource" id=449]
 script = ExtResource( 9 )
 item_data = ExtResource( 8 )
@@ -965,8 +970,6 @@ custom_fonts/font = SubResource( 372 )
 
 [node name="InventoryInterface" type="Control" parent="UI"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
 script = ExtResource( 3 )
 
 [node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
@@ -1126,12 +1129,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3, 1.7, -18 )
 node_to_spawn = ExtResource( 16 )
 
 [node name="resource_node_spawner3" parent="resource_spawners" instance=ExtResource( 44 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59, -4, 23 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59, -3, 23 )
 node_to_spawn = ExtResource( 28 )
 
 [node name="resource_node_spawner4" parent="resource_spawners" instance=ExtResource( 44 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -69, -4.4, 21 )
 node_to_spawn = ExtResource( 33 )
+
+[node name="resource_node_spawner5" parent="resource_spawners" instance=ExtResource( 44 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 5, 3 )
+node_to_spawn = ExtResource( 45 )
 
 [node name="machines" type="Spatial" parent="."]
 
@@ -1558,7 +1565,9 @@ anims/fade_in = SubResource( 448 )
 
 [node name="Storage3" parent="Loot" instance=ExtResource( 39 )]
 transform = Transform( -0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 5, 0.5, 0 )
+inventory_data = SubResource( 455 )
 items = [ SubResource( 449 ), SubResource( 450 ), SubResource( 451 ) ]
+reset_time = 5.0
 does_reset = true
 
 [node name="Storage4" parent="Loot" instance=ExtResource( 39 )]

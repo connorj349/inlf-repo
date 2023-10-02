@@ -74,7 +74,7 @@ func buy_slot_data(index): # use money to put item from vendor inv directly into
 		slot_data.quantity -= 1 #reducing what's left in the actual inventory
 		if slot_data.quantity < 1:
 			slot_datas[index] = null
-		Gamestate.player_inventory.pick_up_slot_data(new_added_slot_data) # adding the new item to player inv
+		Gamestate.player_inventory.add_item(new_added_slot_data) # adding the new item to player inv
 		emit_signal("inventory_updated", self) #updating the merchant inventory list ui menu
 	else:
 		Globals.emit_signal("on_pop_notification", "I cant afford %s right now." % slot_data.item_data.name)
@@ -94,16 +94,16 @@ func pick_up_slot_data(slot_data): #pickup and put into inventorydata; returns t
 	
 	return false
 
-func add_item(slot_data): # DEPRECIATED
-	for index in slot_datas.size():
-		if slot_datas[index]: # if the item already exists within the inventory
+func add_item(slot_data):
+	for index in slot_datas.size(): #iterate X times where X is the inventories' size
+		if slot_datas[index]: # if the item already exists within this inventory
 			if slot_datas[index].can_fully_merge_with(slot_data): #try to merge with existing data
-				slot_datas[index].fully_merge_with(slot_data)
-				emit_signal("inventory_updated", self)
-				return
+				slot_datas[index].fully_merge_with(slot_data) #merge
+				emit_signal("inventory_updated", self) #emit signals
+				return #immediately stop
 		else: # if there is an open spot available
-			var new_slot = slot_data.duplicate()
-			slot_datas[index] = new_slot #create a new slot
+			var new_slot = slot_data.duplicate() #duplicate the data
+			slot_datas[index] = new_slot #create a new slot equal to the data
 			emit_signal("inventory_updated", self)
 			return
 

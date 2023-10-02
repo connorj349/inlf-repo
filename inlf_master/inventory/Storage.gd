@@ -29,6 +29,6 @@ func _on_Timer_timeout():
 		var random_amount = randi() % items.size()
 		for _i in range(0, random_amount):
 			var random_item = items[randi() % items.size()] # choose a random item
-			inventory_data.pick_up_slot_data(random_item)
+			inventory_data.add_item(random_item)
 	else:
 		$Timer.one_shot = true

@@ -42,4 +42,4 @@ func _on_ManufactureTimer_timeout():
 	can_interact = true # enable interaction
 	timer.stop()
 	machine_loop.stop()
-	Gamestate.merchant_inventory.pick_up_slot_data(out_item_slots[random_index])
+	Gamestate.merchant_inventory.add_item(out_item_slots[random_index])

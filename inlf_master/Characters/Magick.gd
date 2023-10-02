@@ -13,7 +13,7 @@ func init(_max): # call this in the player's _ready()
 
 func modify_magick(amount):
 	if curr_magick >= amount:
-		curr_magick = clamp(curr_magick - amount, 0, max_magick)
+		curr_magick = clamp(curr_magick + amount, 0, max_magick)
 		emit_signal("magick_changed", curr_magick)
 
 func increase_max_magick(amount):

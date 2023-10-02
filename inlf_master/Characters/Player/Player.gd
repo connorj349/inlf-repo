@@ -64,6 +64,7 @@ func on_use_organ(organ):
 	if blood_circle_active:
 		if magick.curr_magick >= organ.mana_regen:
 			Globals.emit_signal("cast_spell", organ)
+			magick.modify_magick(-organ.mana_regen)
 			# SoundManager.play_castspell
 	else:
 		if role.role_type == Role.Role_Type.ANTAGONIST:
@@ -71,7 +72,7 @@ func on_use_organ(organ):
 			# SoundManager.play_manaregen
 		else:
 			deal_damage(15) # arbituary amount, could make this a global or based on the item consumed
-		# SoundManager.use_organeat
+			# SoundManager.use_organeat
 
 func set_role(_role): # setup role; maybe add sound to it?
 	role = _role # for use with checking if player can use certain machines/objects
