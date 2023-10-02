@@ -2,7 +2,7 @@ extends Control
 
 const MAX_LINES = 5
 
-onready var notifications_text = $PanelContainer/MarginContainer/Label
+onready var notifications_text = $PanelContainer/MarginContainer/RichTextLabel
 
 var info = []
 var remove_info_timer : Timer
@@ -29,6 +29,6 @@ func remove_notification():
 	update_notifications()
 
 func update_notifications():
-	notifications_text.text = ""
+	notifications_text.bbcode_text = ""
 	for text in info:
-		notifications_text.text += text + "\n"
+		notifications_text.append_bbcode(text + "\n")

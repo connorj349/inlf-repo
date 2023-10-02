@@ -10,7 +10,6 @@ export(Resource) var rare_organ
 onready var health = $Health
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var state_text = $CanvasLayer/Info/VBoxContainer/ProgressBar/Label
-onready var movement = $Movement
 onready var organ_spawn = $organ_spawnpoint
 
 onready var big_flesh = $flesh_large
@@ -19,7 +18,6 @@ var blood_spray = preload("res://effects/blood_spray.tscn")
 func _ready():
 	randomize()
 	# spawn gib effects and blood effects to simulate corpse explosion after death
-	movement.init(self)
 	health.init()
 	health.connect("health_changed", prog_bar, "update_bar")
 	health.connect("dead", self, "destroy")

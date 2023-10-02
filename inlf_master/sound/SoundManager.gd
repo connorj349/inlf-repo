@@ -20,3 +20,5 @@ func Play_UI_ButtonPress():
 
 func Play_ZONE_EnterTone():
 	soundqueues_by_name["zone_enter_tone"].PlaySound()
+	
+# func Play_ROLE_ROLENAME_Ready(): # this will be used when a role is ready to spawn as if special(crusader/vampire?)

@@ -17,6 +17,15 @@ signal bones_changed
 var rot = 0 # world rot count
 var bones = 0 # player money
 
+func reset_player_equipment():
+	equip_player_inventory.take_item(Gamestate.equip_player_inventory.slot_datas[0])
+	weapon_player_inventory.take_item(Gamestate.weapon_player_inventory.slot_datas[0])
+
+func reset_player_inventory():
+	for item in player_inventory.slot_datas.size():
+		if player_inventory.slot_datas[item]:
+			player_inventory.take_item(player_inventory.slot_datas[item])
+
 func rot_modify(amount):
 	rot = clamp(rot + amount, 0, Globals.rot_max_value)
 	emit_signal("rot_changed")

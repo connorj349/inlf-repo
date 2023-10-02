@@ -16,8 +16,8 @@ func _interact(_actor): # can only use if player is an antagonist
 			if Gamestate.player_inventory.take_item(current_active_required_mat):
 				Globals.current_player.magick.increase_max_magick(1) # increase max magick +1
 				Gamestate.rot_modify(1) # increase rot
-				Globals.emit_signal("on_pop_notification", "My knowledge in the arcane has increased")
-				Globals.emit_signal("on_pop_notification", "The rot grows")
+				Globals.emit_signal("on_pop_notification", "[color=#33FFF3]My knowledge in the arcane has increased[/color]")
+				Globals.emit_signal("on_pop_notification", "[color=red]The rot grows[/color]")
 				label.text = "interact with to start a gruesome ritual"
 				current_active_required_mat = null # remove reference
 		else:

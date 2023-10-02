@@ -46,7 +46,6 @@ tracks/0/keys = {
 
 [node name="Pickup" type="RigidBody"]
 collision_layer = 2
-mass = 100.0
 gravity_scale = 3.0
 contacts_reported = 1
 contact_monitor = true

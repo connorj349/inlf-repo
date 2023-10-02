@@ -147,8 +147,7 @@ func use_slot_data(slot_data): #use functionality of items
 	slot_data.item_data.use(self) #activate the use function on the item's data, passing the player
 
 func kill():
-	Gamestate.equip_player_inventory.take_item(Gamestate.equip_player_inventory.slot_datas[0])
-	Gamestate.weapon_player_inventory.take_item(Gamestate.weapon_player_inventory.slot_datas[0])
+	Gamestate.reset_player_equipment() # remove weapon and armor from player
 	for slot_data in Gamestate.player_inventory.slot_datas: # take items from inventory if checked
 		if slot_data:
 			if slot_data.item_data.drop_on_death:

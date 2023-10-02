@@ -29,7 +29,9 @@ func on_hurt(amount):
 		health.hurt(amount)
 
 func on_death():
+	anim_player.play("pop")
 	yield(health.death_sound, "finished") #wait until the death sound is finished
+	yield(anim_player, "animation_finished")
 	#drop random cancer item
 	queue_free()
 

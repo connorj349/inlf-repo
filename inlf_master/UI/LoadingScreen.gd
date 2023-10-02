@@ -24,6 +24,9 @@ func change_scene(path): # need to pass current scene to remove it
 	var level_name_without_ext = level_name[1].rsplit(".", true, 1)
 	$Control/VBoxContainer/LevelName.text = level_name_without_ext[0] # level_list_with_ext[0]
 	
+	Gamestate.reset_player_equipment() # reset player equipment
+	Gamestate.reset_player_inventory() # reset player inventory
+	
 	while OS.get_ticks_msec() - t < max_load_time: # run loop until max_load_time has been reached(loading takes too long)
 		var err = loader.poll()
 		var root_node = get_tree().get_root()
