@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LoadingScreen.gd" type="Script" id=2]
@@ -22,6 +22,10 @@ size = 60
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 50
 font_data = ExtResource( 1 )
 
@@ -88,4 +92,5 @@ margin_left = 166.0
 margin_top = -165.0
 margin_right = -132.0
 margin_bottom = -112.0
+custom_fonts/font = SubResource( 6 )
 value = 50.0

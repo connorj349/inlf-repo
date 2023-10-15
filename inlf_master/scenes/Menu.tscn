@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://raw_assets/sounds/ambience/music/menu_music.wav" type="AudioStream" id=3]
+[ext_resource path="res://UI/themes/main_menu_theme.tres" type="Theme" id=4]
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=5]
 [ext_resource path="res://skybox/skybox_02.png" type="Texture" id=6]
 [ext_resource path="res://UI/Options.tscn" type="PackedScene" id=7]
@@ -40,29 +41,40 @@ bus = "Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StartButton" type="Button" parent="CanvasLayer"]
-margin_left = 741.5
-margin_top = 404.0
-margin_right = 1178.5
-margin_bottom = 479.0
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -164.5
+margin_top = -116.5
+margin_right = 164.5
+margin_bottom = 116.5
+theme = ExtResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+margin_right = 329.0
+margin_bottom = 233.0
+
+[node name="StartButton" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+margin_right = 329.0
+margin_bottom = 75.0
 rect_min_size = Vector2( 0, 75 )
 custom_fonts/font = SubResource( 3 )
 text = "Start Game"
 
-[node name="OptionsButton" type="Button" parent="CanvasLayer"]
-margin_left = 742.0
-margin_top = 522.0
-margin_right = 1179.0
-margin_bottom = 597.0
+[node name="OptionsButton" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+margin_top = 79.0
+margin_right = 329.0
+margin_bottom = 154.0
 rect_min_size = Vector2( 0, 75 )
 custom_fonts/font = SubResource( 3 )
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="CanvasLayer"]
-margin_left = 742.0
-margin_top = 638.0
-margin_right = 1179.0
-margin_bottom = 713.0
+[node name="ExitButton" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+margin_top = 158.0
+margin_right = 329.0
+margin_bottom = 233.0
 rect_min_size = Vector2( 0, 75 )
 custom_fonts/font = SubResource( 3 )
 text = "Exit"
@@ -74,6 +86,6 @@ visible = false
 visible = false
 tips = [ "tumors produce rot over time. destroy them", "cultists can create a circle of blood by pressing the Z key", "you can harvest a resource like a tree or boulder by hitting it" ]
 
-[connection signal="button_down" from="CanvasLayer/StartButton" to="." method="_on_StartButton_button_down"]
-[connection signal="pressed" from="CanvasLayer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="button_down" from="CanvasLayer/PanelContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_button_down"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

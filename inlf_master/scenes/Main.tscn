@@ -937,6 +937,8 @@ layer = 2
 
 [node name="InventoryInterface" type="Control" parent="UI"]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 3 )
 
 [node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
@@ -1547,8 +1549,8 @@ does_reset = true
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="timeout" from="machines/production_machine/ManufactureTimer" to="machines/production_machine" method="_on_ManufactureTimer_timeout"]
 [connection signal="timeout" from="machines/production_machine2/ManufactureTimer" to="machines/production_machine2" method="_on_ManufactureTimer_timeout"]
 [connection signal="body_entered" from="Zones/Zone/Area" to="Zones/Zone" method="_on_Area_body_entered"]

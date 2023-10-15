@@ -8,7 +8,7 @@
 extents = Vector3( 1, 1, 0.25 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 40
+size = 50
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=5]

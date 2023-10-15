@@ -18,7 +18,7 @@ func attack():
 			curr_weapon.on_attack()
 
 func reload():
-	if curr_weapon != fists:
+	if curr_weapon != fists or !curr_weapon.is_melee:
 		curr_weapon.reload(Gamestate.player_inventory) # pass the player's inventory to look for ammo, maybe change to ammo pouch inventory?
 
 func switch_to_next_weapon():
