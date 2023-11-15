@@ -19,8 +19,8 @@ func _ready():
 
 func _interact(_actor):
 	if Gamestate.player_inventory.take_item(repair_item):
-		# give stem cells or bones?
-		health.heal(heal_amount)
+		Gamestate.bones_updated(Globals.meta_repair_reward_amount) # reward bones; maybe make stemcells
+		health.heal(heal_amount) # maybe make this a global const value
 		if not active:
 			active = true
 			spot_light.light_color = Color(0, 0.9, 1, 1)
@@ -37,4 +37,4 @@ func _on_Timer_timeout():
 	if active:
 		if health.health > 0:
 			status_label.text = "Status: operational"
-			Gamestate.rot_modify(-1)
+			Gamestate.rot_modify(-1) # maybe make this a global const value

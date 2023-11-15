@@ -1,7 +1,5 @@
 extends Node
 
-# have game end and reset to main menu when rot reaches 100%, maybe have something play on screen
-
 # player's inventory
 var player_inventory = preload("res://inventory/player_inventory.tres")
 # player's clothing equipment slot

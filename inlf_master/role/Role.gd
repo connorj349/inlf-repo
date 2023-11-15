@@ -2,8 +2,9 @@ extends Resource
 class_name Role
 
 enum Role_Type {
-	ANTAGONIST,
-	PROTAGONIST,
+	Worker,
+	Police,
+	Cultist,
 	OTHER
 }
 

@@ -2,7 +2,6 @@ extends Interactable
 
 export(Resource) var slot_data #resource item to drop on death
 export(String) var display_name = "NULL" #what to display on nameplate
-# export an on_hit effect like wood shattering, rock bits, blood
 
 onready var health = $Health
 onready var name_plate = $CanvasLayer/Info/VBoxContainer/Label

@@ -1,8 +1,5 @@
 extends Spatial
 
-# BUG: when player unequips a weapon, it doesn't go away until they attempt to switch again, then fixes itself
-# WORKAROUND: maybe remove the player weapon slot, but totally remove the weapon from the inventory on use?
-
 onready var weapons = get_children() #represents all weapons that can exist on player
 onready var fists = $wep_fists #starting weapon
 

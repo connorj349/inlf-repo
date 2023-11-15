@@ -18,6 +18,7 @@ func _interact(_actor):
 
 func toggle_window():
 	#if Globals.current_ui.visible:
+	#SoundManager.PlayVendorUI_Open
 	panel.hide()
 
 func set_inventory_data(inventory_data: InventoryData):

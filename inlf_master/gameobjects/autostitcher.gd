@@ -1,7 +1,5 @@
 extends Interactable
 
-# add an animation to the stitchers on the machine
-
 export(int) var heal_cost = 25 #how many bones to heal
 export(int) var heal_amount = 5 #amount to heal player per tick
 
@@ -19,6 +17,7 @@ func _ready():
 func on_hurt(_amount): #if caught will be attacked by sanitars
 	hit_sound.PlaySoundRange(0.9, 1.1)
 	#spawn spark particle effect
+	# add an animation to the stitchers on the machine
 	var random_hit_result = randf()
 	if random_hit_result < 0.8:
 		# 80% chance of being returned; nothing happens

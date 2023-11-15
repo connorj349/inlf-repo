@@ -7,4 +7,4 @@ script = ExtResource( 1 )
 name = "proletariat"
 description = "The lifeblood of liver failure"
 cooldown = 0.5
-role_type = 2
+role_type = 0

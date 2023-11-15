@@ -1,8 +1,5 @@
 extends HintObject
 
-# change Globals.create_item so that it accepts an object to spawn the item at so we can get rid
-# of the spawning that is done in this object
-
 #export(Resource) var slot_data # cancer item to spawn for player
 #export(int) var number_of_roaches_to_spawn = 3
 export(int) var rot_increase_amount = 1
@@ -34,4 +31,4 @@ func on_death():
 	queue_free() # delete this object
 
 func _on_RotTimer_timeout():
-	Gamestate.rot_modify(rot_increase_amount)
+	Gamestate.rot_modify(rot_increase_amount) # make global const var

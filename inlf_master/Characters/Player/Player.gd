@@ -1,6 +1,6 @@
 extends KinematicBody
 
-export var mouse_sensitivity = 0.1
+export var mouse_sensitivity = 0.1 # make this into global variable
 
 onready var head = $Head
 onready var camera = $Head/Camera
@@ -37,7 +37,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	Globals.connect("blood_circle_removed", self, "on_blood_circle_removed")
 	yield(get_tree(), "idle_frame") # prevents errors for next part
-	if role.role_type == Role.Role_Type.ANTAGONIST:
+	if role.role_type == Role.Role_Type.Cultist:
 		magick.init(2) # only provide the player mana if they are an antagonist
 		magick_amount_left.text = str(magick.curr_magick)
 	else:
@@ -54,8 +54,15 @@ func deal_damage(amount): # used by armor to actually deal damage to the player
 func on_heal(amount): #mainly used by slotdataconsumable and autostitcher
 	health.heal(amount)
 
-func give_armor(amount): # used by some consumables/armor
-	armor.add_armor(amount)
+func give_armor(amount): # used by some consumables
+	var armor_to_give_player = 0 # begin at zero
+	if Gamestate.equip_player_inventory:
+		var total_base_allowed = Gamestate.equip_player_inventory.armor_added + Globals.player_base_armor
+		armor_to_give_player = clamp(armor_to_give_player + amount, 0, total_base_allowed)
+		armor.add_armor(armor_to_give_player)
+	else:
+		armor_to_give_player = clamp(armor_to_give_player + amount, 0, Globals.player_base_armor)
+		armor.add_armor(armor_to_give_player)
 
 func on_blood_circle_removed():
 	blood_circle_active = false
@@ -67,7 +74,7 @@ func on_use_organ(organ):
 			magick.modify_magick(-organ.mana_regen)
 			# SoundManager.play_castspell
 	else:
-		if role.role_type == Role.Role_Type.ANTAGONIST:
+		if role.role_type == Role.Role_Type.Cultist:
 			magick.modify_magick(organ.mana_regen)
 			# SoundManager.play_manaregen
 		else:
@@ -82,7 +89,7 @@ func on_magick_changed(curr_magick): # update UI for magic remaining
 
 func spawn_circle_of_blood(): # only can be done if cultist role
 	if !blood_circle_active:
-		if role.role_type == Role.Role_Type.ANTAGONIST:
+		if role.role_type == Role.Role_Type.Cultist:
 			Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
 			deal_damage(health.max_health / 2)
 			var circle = blood_circle_prefab.instance()
@@ -106,6 +113,7 @@ func _process(delta):
 	#toggle inventory menu
 	if Input.is_action_just_pressed("inventory"):
 		Globals.emit_signal("on_inventory_toggle")
+	# spawn blood circle
 	if Input.is_action_just_pressed("draw_circle"):
 		spawn_circle_of_blood()
 	#interacting

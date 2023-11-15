@@ -16,4 +16,4 @@ stackable = false
 texture = SubResource( 1 )
 price = 15
 drop_on_death = false
-defence = 1
+armor_added = 0

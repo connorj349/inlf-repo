@@ -20,8 +20,8 @@ func _ready():
 		description_label.text = role.description
 
 func _on_Area_body_entered(body):
-	if role.role_type == Role.Role_Type.ANTAGONIST and Gamestate.rot > Globals.max_rot_allowed_for_antagonist_join: #maybe make this a GLOBAL const
-		return # if the rot is above a certain amount, the player cannot become this role
+	if role.role_type == Role.Role_Type.Cultist and Gamestate.rot > Globals.max_rot_allowed_for_antagonist_join: #maybe make this a GLOBAL const
+		return # if the rot is above a certain amount, the player cannot become this role; maybe remove this?
 
 	if role: # prevent any errors
 		if cooldown_timer.time_left <= 0:

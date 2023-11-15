@@ -1,8 +1,5 @@
 extends Spatial
 
-# ADD current magazine size and max magazine size for attacking
-# ADD calibers, damage types(maybe)
-
 export(bool) var is_melee = false #determines if we need to play onhit sounds
 export(Resource) var item_weapon_data = null
 

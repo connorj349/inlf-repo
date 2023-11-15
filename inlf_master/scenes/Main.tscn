@@ -1121,6 +1121,7 @@ out_item_slots = [ SubResource( 422 ) ]
 machine_name = "lunch machine"
 production_time = 2.0
 payday = 10
+required_role = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="machines/production_machine"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -1205,6 +1206,7 @@ out_item_slots = [ SubResource( 432 ) ]
 machine_name = "weapon plant"
 production_time = 5.0
 payday = 10
+required_role = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="machines/production_machine2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

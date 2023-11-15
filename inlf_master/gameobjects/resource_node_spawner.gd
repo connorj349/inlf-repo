@@ -8,7 +8,7 @@ onready var area = $Area
 onready var spawn_sound = $spawn_noise
 
 func _ready():
-	if spawn_frequency <= 0: #if the spawn frequency is zero, don't use a timer
+	if spawn_frequency <= 0: #if the spawn frequency is zero, don't use a timer(represents a 1-time spawn)
 		timer.queue_free()
 	else:
 		timer.wait_time = spawn_frequency
