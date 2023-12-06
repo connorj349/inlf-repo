@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "Damage",
+"language": "GDScript",
+"path": "res://Data/Damage.gd"
+}, {
 "base": "Spatial",
 "class": "HintObject",
 "language": "GDScript",
@@ -90,6 +95,7 @@ _global_script_classes=[ {
 "path": "res://inventory/Storage.gd"
 } ]
 _global_script_class_icons={
+"Damage": "",
 "HintObject": "",
 "Interactable": "",
 "InventoryData": "",

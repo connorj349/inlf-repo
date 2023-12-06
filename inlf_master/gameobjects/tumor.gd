@@ -4,12 +4,16 @@ extends HintObject
 #export(int) var number_of_roaches_to_spawn = 3
 export(int) var rot_increase_amount = 1
 export(int) var rot_inrease_frequency = 1
+export(Resource) var tumor_damage # the damage type of the tumor to reflect when attacked
 
 onready var health = $Health
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var hurt_area = $HurtArea
 
+var dead = false
+
 func _ready():
+	randomize()
 	health.init()
 	health.connect("dead", self, "on_death")
 	health.connect("health_changed", prog_bar, "update_bar")
@@ -18,12 +22,21 @@ func _ready():
 	anim_player.play("RESET")
 	anim_player.seek(0, true)
 
-func on_hurt(amount):
-	if !health.death_sound.is_playing():
-		health.hurt(amount)
-		# spawn a Rotroach(s) that immediately attack the player
+func on_hurt(damage):
+	if dead:
+		return
+	match(damage):
+		Damage.DamageType.Fists:
+			Globals.current_player.on_hurt(tumor_damage) # damage the player back when struck
+			var random_result = randf()
+			if random_result < .5:
+				health.hurt(damage.amount) # takes damage half the time from fists
+		_:
+			health.hurt(damage.amount) # takes damage in all cases
+	# spawn a Rotroach(s) that immediately attack the player
 
 func on_death():
+	dead = true
 	# spawn tumor bloody pop effect
 	# spawn rotroach hive(this hive spawns 3 roaches, then dissapears)
 	yield(health.death_sound, "finished")

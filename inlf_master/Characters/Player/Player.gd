@@ -45,10 +45,10 @@ func _ready():
 		magick_amount_left.visible = false
 	magick.connect("magick_changed", self, "on_magick_changed")
 
-func on_hurt(amount): #used by all other objects that want to hurt the player
-	armor.calc_damage(amount) # calc actual damage dealt, then call deal_damage
+func on_hurt(damage): #used by all other objects that want to hurt the player
+	armor.calc_damage(damage.amount) # calc actual damage dealt, then call deal_damage
 
-func deal_damage(amount): # used by armor to actually deal damage to the player
+func deal_damage(amount): # used by armor to actually deal damage to the player, does this when no more armor
 	health.hurt(amount)
 
 func on_heal(amount): #mainly used by slotdataconsumable and autostitcher

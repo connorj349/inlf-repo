@@ -1,7 +1,6 @@
 extends Interactable
 
 export(Resource) var repair_item
-export(int) var heal_amount = 25
 
 onready var health = $Health
 onready var bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
@@ -20,13 +19,14 @@ func _ready():
 func _interact(_actor):
 	if Gamestate.player_inventory.take_item(repair_item):
 		Gamestate.bones_updated(Globals.meta_repair_reward_amount) # reward bones; maybe make stemcells
-		health.heal(heal_amount) # maybe make this a global const value
+		health.heal(Globals.meta_repair_amount)
 		if not active:
 			active = true
 			spot_light.light_color = Color(0, 0.9, 1, 1)
 
-func on_hurt(amount):
-	health.hurt(amount)
+func on_hurt(damage):
+	if damage.type != Damage.DamageType.Fists:
+		health.hurt(damage.amount) # take damage from non Fists sources
 
 func on_disable():
 	spot_light.light_color = Color(1, 0, 0, 1)

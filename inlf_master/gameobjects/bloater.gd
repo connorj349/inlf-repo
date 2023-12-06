@@ -14,6 +14,8 @@ onready var timer = $Timer
 
 var incubation = 0
 
+var dead = false
+
 func _ready():
 	health.init()
 	health.connect("health_changed", hp_bar, "update_bar")
@@ -24,11 +26,13 @@ func _ready():
 	anim_player.play("RESET")
 	anim_player.seek(0, true)
 
-func on_hurt(amount):
-	if !health.death_sound.is_playing():
-		health.hurt(amount)
+func on_hurt(damage):
+	if dead:
+		return
+	health.hurt(damage.amount) # just take damage, no additional calculations required
 
 func on_death():
+	dead = true
 	anim_player.play("pop")
 	yield(health.death_sound, "finished") #wait until the death sound is finished
 	yield(anim_player, "animation_finished")
@@ -39,6 +43,6 @@ func _on_Timer_timeout():
 	incubation = clamp(incubation + incubation_increase_amount, 0, 100)
 	incu_bar.update_bar(incubation)
 	if incubation == 100:
-		Gamestate.rot_modify(25) #increaes rot
+		Gamestate.rot_modify(5) #increaes rot
 		on_hurt(999)
 		timer.stop() # prevents rot from being modified more than once before death
