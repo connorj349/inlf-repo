@@ -108,7 +108,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -186,7 +186,7 @@ collision_layer = 8
 script = ExtResource( 15 )
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
-max_health = 100
+max_health = 10
 hurt_audio_stream = ExtResource( 11 )
 death_audio_stream = ExtResource( 10 )
 
@@ -285,6 +285,7 @@ hframes = 5
 
 [node name="muzzle_flash" type="OmniLight" parent="Head/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3 )
+visible = false
 light_color = Color( 1, 0.87451, 0.572549, 1 )
 light_energy = 5.0
 omni_range = 10.0

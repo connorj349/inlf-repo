@@ -150,7 +150,7 @@ repair_item = SubResource( 9 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
-max_health = 100
+max_health = 10
 hurt_audio_stream = ExtResource( 9 )
 death_audio_stream = ExtResource( 9 )
 hit_effect = null

@@ -325,7 +325,7 @@ script = ExtResource( 4 )
 incubation_increase_amount = 2
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
-max_health = 100
+max_health = 3
 hurt_audio_stream = ExtResource( 8 )
 death_audio_stream = ExtResource( 7 )
 
@@ -336,6 +336,7 @@ shape = SubResource( 1 )
 transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.902, 0.05 )
 offset = Vector2( 0, 120 )
 billboard = 2
+shaded = true
 double_sided = false
 texture = ExtResource( 6 )
 

@@ -149,10 +149,10 @@ collision_mask = 9
 script = ExtResource( 4 )
 slot_data = SubResource( 8 )
 display_name = "bitumeat buldge"
-blocked_damage_types = [ 0, 1 ]
+blocked_damage_types = [ 1 ]
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
-max_health = 80
+max_health = 3
 hurt_audio_stream = ExtResource( 10 )
 death_audio_stream = ExtResource( 9 )
 
@@ -161,6 +161,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 2
+shaded = true
 texture = ExtResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

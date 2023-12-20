@@ -151,11 +151,12 @@ tumor_damage = ExtResource( 8 )
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 billboard = 2
+shaded = true
 texture = ExtResource( 5 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23512, 0 )
-max_health = 100
+max_health = 5
 hurt_audio_stream = ExtResource( 9 )
 death_audio_stream = ExtResource( 10 )
 hit_effect = ExtResource( 7 )
