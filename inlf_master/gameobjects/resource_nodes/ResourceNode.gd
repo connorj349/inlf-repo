@@ -13,7 +13,6 @@ var item_prefab = preload("res://item/pick_up/Pickup.tscn")
 var dead = false
 
 func _ready():
-	randomize()
 	health.init()
 	health.connect("dead", self, "on_death")
 	health.connect("health_changed", prog_bar, "update_bar")
@@ -21,6 +20,7 @@ func _ready():
 	name_plate.text = display_name
 	anim_player.play("RESET")
 	anim_player.seek(0, true)
+	randomize()
 
 func on_death(): #spawn item, delete self
 	dead = true

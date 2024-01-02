@@ -16,7 +16,7 @@ colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
 gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=4]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.481481, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.972222, 0.00454545 ), -2.56126, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.481481, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.56126, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=5]
 curve = SubResource( 4 )
@@ -39,17 +39,18 @@ emitting = false
 amount = 16
 one_shot = true
 explosiveness = 0.76
+fixed_fps = 60
 local_coords = false
 process_material = SubResource( 6 )
 draw_pass_1 = SubResource( 7 )
 
 [node name="DestroyTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 2.0
 one_shot = true
 autostart = true
 
 [node name="StartTimer" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 0.06
 one_shot = true
 autostart = true
 
