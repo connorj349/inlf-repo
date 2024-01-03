@@ -2,7 +2,7 @@
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LoadingScreen.gd" type="Script" id=2]
-[ext_resource path="res://raw_assets/textures/main_level_background.png" type="Texture" id=3]
+[ext_resource path="res://UI/main_level_background.png" type="Texture" id=3]
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 3 )

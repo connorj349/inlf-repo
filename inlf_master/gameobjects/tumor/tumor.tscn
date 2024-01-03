@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://raw_assets/sounds/tumor/tumor_death.wav" type="AudioStream" id=1]
-[ext_resource path="res://raw_assets/textures/pustile-light.png" type="Texture" id=2]
-[ext_resource path="res://raw_assets/sounds/tumor/tumor_hit.wav" type="AudioStream" id=3]
+[ext_resource path="res://sound/sounds/tumor/tumor_death.wav" type="AudioStream" id=1]
+[ext_resource path="res://sound/sounds/tumor/tumor_hit.wav" type="AudioStream" id=3]
 [ext_resource path="res://Data/dmg_tumor_react.tres" type="Resource" id=4]
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://UI/ui_bar.gd" type="Script" id=6]
@@ -151,7 +150,6 @@ tumor_damage = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 billboard = 2
 shaded = true
-texture = ExtResource( 2 )
 
 [node name="Health" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23512, 0 )

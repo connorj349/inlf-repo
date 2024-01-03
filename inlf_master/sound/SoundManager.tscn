@@ -4,7 +4,8 @@
 [ext_resource path="res://sound/SoundQueue.gd" type="Script" id=2]
 [ext_resource path="res://sound/UI/buttonrelease.wav" type="AudioStream" id=3]
 [ext_resource path="res://sound/SoundQueue.tscn" type="PackedScene" id=4]
-[ext_resource path="res://raw_assets/sounds/ambience/music/new_area.wav" type="AudioStream" id=5]
+[ext_resource path="res://sound/sounds/ambience/music/new_area.wav" type="AudioStream" id=5]
+
 
 [node name="SoundManager" type="Node"]
 script = ExtResource( 1 )

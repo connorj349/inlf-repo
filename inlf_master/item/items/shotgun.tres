@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://item/item_data_weapon.gd" type="Script" id=1]
-[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
+[ext_resource path="res://item/ui-icon-equipment.png" type="Texture" id=2]
 [ext_resource path="res://item/items/shells.tres" type="Resource" id=3]
 [ext_resource path="res://inventory/slot_data.gd" type="Script" id=4]
 [ext_resource path="res://Data/dmg_shotgun.tres" type="Resource" id=5]
