@@ -7,8 +7,6 @@ onready var camera = $Head/Camera
 onready var interact_area = $Head/Camera/InteractArea
 onready var movement = $Movement
 onready var health = $Health
-onready var magick = $Magick
-onready var armor = $Armor
 onready var hint_raycast = $Head/Camera/HintObjRayCast
 onready var weapon_manager = $Head/Camera/WeaponManager
 
@@ -18,10 +16,7 @@ var role # player role
 
 var cam_accel = 40
 
-var blood_circle_active = false
-
 var player_dead_prefab = preload("res://Characters/Player/Player_Dead.tscn") #for player view while dead
-var blood_circle_prefab = preload("res://gameobjects/blood_circle.tscn") #to spawn when player is cultist
 
 func _ready():
 	movement.init(self) #allow motion
@@ -30,75 +25,16 @@ func _ready():
 	health.connect("health_changed", health_bar, "update_bar") #setup healthbar connection
 	health.connect("dead", self, "kill") # setup death functionality
 	health_bar.init(health.health, health.max_health)
-	armor.init()
-	armor.connect("damage_dealt", self, "deal_damage")
-	#armor.connect("armor_changed", self, "update_armor_bar")
 	Globals.current_player = self
-# warning-ignore:return_value_discarded
-	Globals.connect("blood_circle_removed", self, "on_blood_circle_removed")
-	yield(get_tree(), "idle_frame") # prevents errors for next part
-	if role.role_type == Role.Role_Type.Cultist:
-		magick.init(2) # only provide the player mana if they are an antagonist
-		magick_amount_left.text = str(magick.curr_magick)
-	else:
-		magick.init(0)
-		magick_amount_left.visible = false
-	magick.connect("magick_changed", self, "on_magick_changed")
 
 func on_hurt(damage): #used by all other objects that want to hurt the player
-	armor.calc_damage(damage.amount) # calc actual damage dealt, then call deal_damage
-
-func deal_damage(amount): # used by armor to actually deal damage to the player, does this when no more armor
-	health.hurt(amount)
+	health.hurt(damage.amount) # calc actual damage dealt, then call deal_damage
 
 func on_heal(amount): #mainly used by slotdataconsumable and autostitcher
 	health.heal(amount)
 
-func give_armor(amount): # used by some consumables
-	var armor_to_give_player = 0 # begin at zero
-	if Gamestate.equip_player_inventory:
-		var total_base_allowed = Gamestate.equip_player_inventory.armor_added + Globals.player_base_armor
-		armor_to_give_player = clamp(armor_to_give_player + amount, 0, total_base_allowed)
-		armor.add_armor(armor_to_give_player)
-	else:
-		armor_to_give_player = clamp(armor_to_give_player + amount, 0, Globals.player_base_armor)
-		armor.add_armor(armor_to_give_player)
-
-func on_blood_circle_removed():
-	blood_circle_active = false
-
-func on_use_organ(organ):
-	if blood_circle_active:
-		if magick.curr_magick >= organ.mana_regen:
-			Globals.emit_signal("cast_spell", organ)
-			magick.modify_magick(-organ.mana_regen)
-			# SoundManager.play_castspell
-	else:
-		if role.role_type == Role.Role_Type.Cultist:
-			magick.modify_magick(organ.mana_regen)
-			# SoundManager.play_manaregen
-		else:
-			deal_damage(15) # arbituary amount, could make this a global or based on the item consumed
-			# SoundManager.use_organeat
-
 func set_role(_role): # setup role; maybe add sound to it?
 	role = _role # for use with checking if player can use certain machines/objects
-
-func on_magick_changed(curr_magick): # update UI for magic remaining
-	magick_amount_left.text = str(curr_magick)
-
-func spawn_circle_of_blood(): # only can be done if cultist role
-	if !blood_circle_active:
-		if role.role_type == Role.Role_Type.Cultist:
-			Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
-			deal_damage(health.max_health / 2)
-			var circle = blood_circle_prefab.instance()
-			get_tree().get_root().add_child(circle)
-			# SoundManager.other_bloodcircle_spawn
-			circle.global_transform = $feet.global_transform
-			blood_circle_active = true
-		else:
-			Globals.emit_signal("on_pop_notification", "Why would I cut my skin open?")
 
 func _input(event):
 	if !player_is_in_menu(): #only move player head while not in a menu
@@ -113,9 +49,6 @@ func _process(delta):
 	#toggle inventory menu
 	if Input.is_action_just_pressed("inventory"):
 		Globals.emit_signal("on_inventory_toggle")
-	# spawn blood circle
-	if Input.is_action_just_pressed("draw_circle"):
-		spawn_circle_of_blood()
 	#interacting
 	if Input.is_action_just_pressed("interact") and !player_is_in_menu():#change this so it's a raycast instead of area
 		if interact_area.monitoring:

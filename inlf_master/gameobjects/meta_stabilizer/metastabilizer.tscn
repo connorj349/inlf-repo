@@ -1,27 +1,27 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=2]
-[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://gameobjects/resource_nodes/ResourceNode.gd" type="Script" id=4]
-[ext_resource path="res://raw_assets/sounds/rot_tree/tree_destroy.wav" type="AudioStream" id=5]
-[ext_resource path="res://UI/ui_bar.gd" type="Script" id=6]
-[ext_resource path="res://item/items/fetid_wood.tres" type="Resource" id=8]
-[ext_resource path="res://inventory/slot_data.gd" type="Script" id=9]
-[ext_resource path="res://raw_assets/sounds/rot_tree/tree_hit.wav" type="AudioStream" id=10]
+[ext_resource path="res://UI/ui_bar.gd" type="Script" id=3]
+[ext_resource path="res://gameobjects/meta_stabilizer/metastabilizer.gd" type="Script" id=4]
+[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://inventory/slot_data.gd" type="Script" id=7]
+[ext_resource path="res://item/items/meta_repair.tres" type="Resource" id=8]
+[ext_resource path="res://raw_assets/sounds/autostitcher/autostitcher_hit.wav" type="AudioStream" id=9]
 
-[sub_resource type="Resource" id=8]
-script = ExtResource( 9 )
+[sub_resource type="Resource" id=9]
+script = ExtResource( 7 )
 item_data = ExtResource( 8 )
 quantity = 1
 
 [sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.5, 1, 0.5 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 40
-font_data = ExtResource( 3 )
+font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 resource_local_to_scene = true
 bg_color = Color( 0.768627, 0, 0, 0 )
 border_width_left = 5
@@ -30,15 +30,15 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=5]
 resource_local_to_scene = true
 bg_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 35
-font_data = ExtResource( 3 )
+font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:custom_colors/font_color")
@@ -89,7 +89,7 @@ tracks/3/keys = {
 "values": [ Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "value"
@@ -141,23 +141,20 @@ tracks/3/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.196078 ) ]
 }
 
-[node name="skin_tree" type="StaticBody"]
+[node name="metastabilizer" type="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 2
 collision_mask = 8
 script = ExtResource( 4 )
-slot_data = SubResource( 8 )
-display_name = "skin tree"
-blocked_damage_types = [ 1, 2 ]
-punching_hurts = true
+repair_item = SubResource( 9 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6372, 0.227377 )
-max_health = 5
-hurt_audio_stream = ExtResource( 10 )
-death_audio_stream = ExtResource( 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
+max_health = 10
+hurt_audio_stream = ExtResource( 9 )
+death_audio_stream = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 2, 0 )
 shape = SubResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -179,38 +176,50 @@ margin_right = 208.0
 margin_bottom = 69.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-margin_right = 416.0
+margin_right = 573.0
 margin_bottom = 67.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 2 )
-text = "Resource Name"
+custom_fonts/font = SubResource( 3 )
+text = "STATUS:operationial/disabled/infected"
 align = 1
 valign = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Info/VBoxContainer"]
 margin_top = 71.0
-margin_right = 416.0
+margin_right = 573.0
 margin_bottom = 138.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
 value = 50.0
 percent_visible = false
-script = ExtResource( 6 )
+script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer/ProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Integrity"
 align = 1
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 6 )
-anims/fade_in = SubResource( 7 )
+anims/RESET = SubResource( 7 )
+anims/fade_in = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.917171, 0.398493, 0, -0.398493, 0.917171, 0, 1.11646, 3 )
+light_color = Color( 0, 0.905882, 1, 1 )
+light_energy = 5.0
+spot_range = 4.292
+spot_angle = 41.69
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://raw_assets/themes/hint_object_theme.tres" type="Theme" id=1]
+[ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=1]
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Characters/corpse.gd" type="Script" id=5]

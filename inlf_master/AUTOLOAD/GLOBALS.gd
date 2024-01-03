@@ -16,10 +16,6 @@ var current_ui #player inventory global reference for other scripts
 signal on_inventory_toggle
 # warning-ignore:unused_signal
 signal on_pop_notification
-# warning-ignore:unused_signal
-signal blood_circle_removed
-# warning-ignore:unused_signal
-signal cast_spell
 
 func _ready():
 	#begin game with mouse mode captured
