@@ -26,7 +26,6 @@ func on_death(): #spawn item, delete self
 	dead = true
 	# play the break effect
 	# turn model visible = false
-	yield(health.death_sound, "finished") #wait until the death sound is finished
 	Globals.create_pickup(slot_data, self)
 	queue_free() #destroy
 

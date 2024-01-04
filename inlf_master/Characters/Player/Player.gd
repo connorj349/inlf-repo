@@ -55,14 +55,7 @@ func on_heal(amount): #mainly used by slotdataconsumable and autostitcher
 	health.heal(amount)
 
 func give_armor(amount): # used by some consumables
-	var armor_to_give_player = 0 # begin at zero
-	if Gamestate.equip_player_inventory:
-		var total_base_allowed = Gamestate.equip_player_inventory.armor_added + Globals.player_base_armor
-		armor_to_give_player = clamp(armor_to_give_player + amount, 0, total_base_allowed)
-		armor.add_armor(armor_to_give_player)
-	else:
-		armor_to_give_player = clamp(armor_to_give_player + amount, 0, Globals.player_base_armor)
-		armor.add_armor(armor_to_give_player)
+	armor.add_armor(amount)
 
 func on_blood_circle_removed():
 	blood_circle_active = false
