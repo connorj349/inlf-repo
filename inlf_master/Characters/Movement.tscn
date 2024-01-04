@@ -1,11 +1,12 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Characters/Movement.gd" type="Script" id=1]
-[ext_resource path="res://raw_assets/sounds/footsteps/mud.wav" type="AudioStream" id=2]
-[ext_resource path="res://raw_assets/sounds/footsteps/stone.wav" type="AudioStream" id=3]
-[ext_resource path="res://raw_assets/sounds/footsteps/broken_tile.wav" type="AudioStream" id=4]
+[ext_resource path="res://sound/sounds/footsteps/mud.wav" type="AudioStream" id=2]
+[ext_resource path="res://sound/sounds/footsteps/stone.wav" type="AudioStream" id=3]
+[ext_resource path="res://sound/sounds/footsteps/broken_tile.wav" type="AudioStream" id=4]
 [ext_resource path="res://sound/SoundPool.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sound/SoundQueue3D.tscn" type="PackedScene" id=6]
+
 
 [node name="Movement" type="Spatial"]
 script = ExtResource( 1 )

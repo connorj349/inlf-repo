@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Movement.tscn" type="PackedScene" id=2]
@@ -9,13 +9,11 @@
 [ext_resource path="res://raw_assets/textures/shotgun-sheet.png" type="Texture" id=7]
 [ext_resource path="res://inventory/HotBarInventory.tscn" type="PackedScene" id=8]
 [ext_resource path="res://raw_assets/textures/punch-sheet.png" type="Texture" id=9]
-[ext_resource path="res://raw_assets/sounds/death/prole.wav" type="AudioStream" id=10]
-[ext_resource path="res://raw_assets/sounds/spawn/role_prole.wav" type="AudioStream" id=11]
 [ext_resource path="res://UI/Notifications.gd" type="Script" id=12]
 [ext_resource path="res://Characters/Player/player_weapon.gd" type="Script" id=13]
 [ext_resource path="res://Characters/Player/player_weapon_manager.gd" type="Script" id=14]
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=15]
-[ext_resource path="res://raw_assets/themes/player_hud_bars_theme.tres" type="Theme" id=16]
+[ext_resource path="res://UI/themes/player_hud_bars_theme.tres" type="Theme" id=16]
 [ext_resource path="res://Characters/Magick.tscn" type="PackedScene" id=17]
 [ext_resource path="res://UI/elements/ui_button_2.png" type="Texture" id=18]
 [ext_resource path="res://Data/dmg_fists.tres" type="Resource" id=19]
@@ -187,8 +185,6 @@ script = ExtResource( 15 )
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
 max_health = 10
-hurt_audio_stream = ExtResource( 11 )
-death_audio_stream = ExtResource( 10 )
 
 [node name="Magick" parent="." instance=ExtResource( 17 )]
 

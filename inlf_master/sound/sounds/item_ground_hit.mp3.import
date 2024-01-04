@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/item_ground_hit.mp3-9e56fedf287c169432a3e053320c50eb.mp3str"
+
+[deps]
+
+source_file="res://sound/sounds/item_ground_hit.mp3"
+dest_files=[ "res://.import/item_ground_hit.mp3-9e56fedf287c169432a3e053320c50eb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

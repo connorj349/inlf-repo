@@ -1,15 +1,16 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=1]
-[ext_resource path="res://raw_assets/themes/hint_object_theme.tres" type="Theme" id=2]
+[ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=2]
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://gameobjects/resource_nodes/ResourceNode.gd" type="Script" id=4]
-[ext_resource path="res://raw_assets/sounds/rock/rock_break.wav" type="AudioStream" id=5]
+[ext_resource path="res://sound/sounds/rock/rock_break.wav" type="AudioStream" id=5]
 [ext_resource path="res://UI/ui_bar.gd" type="Script" id=6]
 [ext_resource path="res://raw_assets/models/rock.glb" type="PackedScene" id=7]
 [ext_resource path="res://item/items/metal_frag.tres" type="Resource" id=8]
 [ext_resource path="res://inventory/slot_data.gd" type="Script" id=9]
-[ext_resource path="res://raw_assets/sounds/rock/rock_hit.wav" type="AudioStream" id=10]
+[ext_resource path="res://sound/sounds/rock/rock_hit.wav" type="AudioStream" id=10]
+
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 9 )

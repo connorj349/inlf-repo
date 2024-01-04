@@ -2,11 +2,12 @@
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=2]
-[ext_resource path="res://raw_assets/sounds/ambience/music/menu_music.wav" type="AudioStream" id=3]
+[ext_resource path="res://sound/sounds/ambience/music/menu_music.wav" type="AudioStream" id=3]
 [ext_resource path="res://UI/themes/main_menu_theme.tres" type="Theme" id=4]
 [ext_resource path="res://scenes/Menu.gd" type="Script" id=5]
 [ext_resource path="res://skybox/skybox_02.png" type="Texture" id=6]
 [ext_resource path="res://UI/Options.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 6 )

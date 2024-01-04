@@ -1,12 +1,6 @@
 extends Spatial
 
 export(int) var max_health = 1
-export(AudioStream) var hurt_audio_stream
-export(AudioStream) var death_audio_stream
-export(PackedScene) var hit_effect = preload("res://effects/blood_spray.tscn")
-
-onready var hurt_sound = $SoundQueue3D
-onready var death_sound = $death_sound
 
 var health = 1
 
@@ -17,22 +11,13 @@ signal health_changed #sends 1 arg; remaining health
 
 func init():
 	health = max_health
-	for child in hurt_sound.get_children():
-		child.stream = hurt_audio_stream
-	death_sound.stream = death_audio_stream
 	emit_signal("health_changed", health)
 
 func hurt(amount):
-	if hit_effect:
-		var hit = hit_effect.instance()
-		get_tree().get_root().add_child(hit)
-		hit.global_transform.origin = self.global_transform.origin
 	health = clamp(health - amount, 0, max_health)
-	hurt_sound.PlaySoundRange(0.85, 1.1)
 	emit_signal("hurt", health)
 	emit_signal("health_changed", health)
 	if health <= 0:
-		death_sound.play()
 		emit_signal("dead")
 
 func heal(amount):
