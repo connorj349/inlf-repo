@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game_end/game_end_money.gd" type="Script" id=1]
+
+[node name="game_end_money" type="Spatial"]
+script = ExtResource( 1 )

@@ -9,7 +9,6 @@
 [ext_resource path="res://sound/SoundPool.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sound/SoundQueue.tscn" type="PackedScene" id=8]
 
-
 [sub_resource type="SphereShape" id=1]
 
 [node name="Player_Ghost" type="KinematicBody"]
@@ -20,6 +19,7 @@ possible_noises = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtRes
 [node name="Head" type="Spatial" parent="."]
 
 [node name="Camera" type="Camera" parent="Head"]
+far = 50.0
 
 [node name="CollisionShape" type="CollisionShape" parent="." groups=["Ghost"]]
 shape = SubResource( 1 )
