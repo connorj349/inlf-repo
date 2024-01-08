@@ -2,15 +2,11 @@ extends Interactable
 
 export(int) var money_required_to_end_game = 1000
 
-# this will be a physical object/place the player must interact with to end the game
-# 	this object needs a collision shape/model
-# the rot_gameover will be an ending that is 'triggered' when rot reaches max
+onready var loading_screen = $LoadingScreen
 
 func _ready():
-	pass # display notification that the player can win the game with enough money in chatbox
+	Globals.emit_signal("on_pop_notification", "[color=red]I can escape this city with " + str(money_required_to_end_game) + " bones.[/color")
 
-func _interact(_actor):
+func _interact(_actor): # end the game
 	if Gamestate.can_afford(money_required_to_end_game):
-		pass # end the game
-		# change level back to main screen
-		# award stem cells?
+		loading_screen.change_scene("res://scenes/Main.tscn")

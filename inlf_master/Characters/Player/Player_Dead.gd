@@ -18,7 +18,6 @@ func _input(event):
 		inner_gimbal.rotation.x = clamp(inner_gimbal.rotation.x, deg2rad(-89), deg2rad(0))
 
 func play_death_sound():
-	# play generic death sound from SoundManager
 	death.play()
 
 func _on_PlayerSpawnTimer_timeout():

@@ -10,6 +10,7 @@ var weapon_player_inventory = preload("res://inventory/player_weapon_inventory.t
 var merchant_inventory = preload("res://inventory/merchant_inventory.tres")
 
 signal rot_changed
+signal on_rot_reached_max
 signal bones_changed
 
 var rot = 0 # world rot count
@@ -28,8 +29,7 @@ func rot_modify(amount):
 	rot = clamp(rot + amount, 0, Globals.rot_max_value)
 	emit_signal("rot_changed")
 	if rot >= Globals.rot_max_value:
-		pass
-		#end the game
+		emit_signal("on_rot_reached_max")
 
 func can_afford(amount):
 	return bones >= amount
