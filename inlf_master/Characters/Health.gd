@@ -1,26 +1,37 @@
 extends Spatial
 
-export(int) var max_health = 1
+export(int) var allowed_max_health = 1
 
-var health = 1
+var pox = 0 setget set_pox
 
-signal hurt #sends 1 arg; remaning health to update uis
-signal heal #sends 1 arg; reamining health
-signal dead
-signal health_changed #sends 1 arg; remaining health
+func set_pox(val):
+	pox = clamp(val, 0, allowed_max_health)
+	max_health = max_health
+	emit_signal("pox_changed", pox)
 
-func init():
-	health = max_health
-	emit_signal("health_changed", health)
+var parasite # need to create parasite Resource
+# need to create timer that will perform actions based on parasite player has
 
-func hurt(amount):
-	health = clamp(health - amount, 0, max_health)
-	emit_signal("hurt", health)
+var max_health = 1 setget set_max_health
+
+func set_max_health(val):
+	max_health = clamp(val - pox, 0, allowed_max_health)
+	if health > max_health:
+		health = max_health
+
+var health = 1 setget set_health
+
+func set_health(val):
+	health = clamp(val, 0, max_health)
 	emit_signal("health_changed", health)
 	if health <= 0:
 		emit_signal("dead")
 
-func heal(amount):
-	health = clamp(health + amount, 0, max_health)
-	emit_signal("heal", health)
-	emit_signal("health_changed", health)
+signal dead
+signal health_changed
+signal pox_changed
+
+func init():
+	max_health = allowed_max_health
+	health = max_health
+	pox = 0

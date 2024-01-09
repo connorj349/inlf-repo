@@ -184,7 +184,7 @@ collision_layer = 8
 script = ExtResource( 15 )
 
 [node name="Health" parent="." instance=ExtResource( 3 )]
-max_health = 10
+allowed_max_health = 100
 
 [node name="Magick" parent="." instance=ExtResource( 17 )]
 

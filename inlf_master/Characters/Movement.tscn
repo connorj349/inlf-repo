@@ -7,7 +7,6 @@
 [ext_resource path="res://sound/SoundPool.tscn" type="PackedScene" id=5]
 [ext_resource path="res://sound/SoundQueue3D.tscn" type="PackedScene" id=6]
 
-
 [node name="Movement" type="Spatial"]
 script = ExtResource( 1 )
 

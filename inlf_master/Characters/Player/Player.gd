@@ -14,7 +14,7 @@ onready var weapon_manager = $Head/Camera/WeaponManager
 
 onready var health_bar = $UI/Bars/health_bar
 onready var magick_amount_left = $UI/MagickLabel
-var role # player role
+var role
 
 var cam_accel = 40
 
@@ -31,7 +31,6 @@ func _ready():
 	health.connect("dead", self, "kill") # setup death functionality
 	health_bar.init(health.health, health.max_health)
 	armor.init()
-	armor.connect("damage_dealt", self, "deal_damage")
 	#armor.connect("armor_changed", self, "update_armor_bar")
 	Globals.current_player = self
 # warning-ignore:return_value_discarded
@@ -46,16 +45,23 @@ func _ready():
 	magick.connect("magick_changed", self, "on_magick_changed")
 
 func on_hurt(damage): #used by all other objects that want to hurt the player
-	armor.calc_damage(damage.amount) # calc actual damage dealt, then call deal_damage
+	if armor > 0:
+		armor -= damage.amount
+	else:
+		deal_damage(damage)
+	# play armor damaged noises
 
-func deal_damage(amount): # used by armor to actually deal damage to the player, does this when no more armor
-	health.hurt(amount)
+func deal_damage(damage): # used by armor to actually deal damage to the player, does this when no more armor
+	health.health -= damage.amount
+	# play player hurt noises
 
 func on_heal(amount): #mainly used by slotdataconsumable and autostitcher
-	health.heal(amount)
+	health.health += amount
+	# play player healed noises
 
 func give_armor(amount): # used by some consumables
-	armor.add_armor(amount)
+	armor.armor += amount
+	# play armor given noises
 
 func on_blood_circle_removed():
 	blood_circle_active = false
