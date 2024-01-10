@@ -36,13 +36,13 @@ func _ready():
 # warning-ignore:return_value_discarded
 	Globals.connect("blood_circle_removed", self, "on_blood_circle_removed")
 	yield(get_tree(), "idle_frame") # prevents errors for next part
+	magick.connect("magick_changed", self, "on_magick_changed")
 	if role.role_type == Role.Role_Type.Cultist:
 		magick.init(2) # only provide the player mana if they are an antagonist
 		magick_amount_left.text = str(magick.curr_magick)
 	else:
 		magick.init(0)
 		magick_amount_left.visible = false
-	magick.connect("magick_changed", self, "on_magick_changed")
 
 func on_hurt(damage): #used by all other objects that want to hurt the player
 	if armor > 0:
@@ -70,27 +70,30 @@ func on_use_organ(organ):
 	if blood_circle_active:
 		if magick.curr_magick >= organ.mana_regen:
 			Globals.emit_signal("cast_spell", organ)
-			magick.modify_magick(-organ.mana_regen)
+			magick.curr_magick -= organ.mana_regen
 			# SoundManager.play_castspell
 	else:
 		if role.role_type == Role.Role_Type.Cultist:
-			magick.modify_magick(organ.mana_regen)
+			magick.curr_magick += organ.mana_regen
 			# SoundManager.play_manaregen
 		else:
-			deal_damage(15) # arbituary amount, could make this a global or based on the item consumed
+			deal_damage(15) # need a damage_type to deal to player
 			# SoundManager.use_organeat
 
 func set_role(_role): # setup role; maybe add sound to it?
 	role = _role # for use with checking if player can use certain machines/objects
 
 func on_magick_changed(curr_magick): # update UI for magic remaining
-	magick_amount_left.text = str(curr_magick)
+	if magick.max_magick > 0:
+		magick_amount_left.text = "magick: " + str(curr_magick)
+	else:
+		magick_amount_left.text = ""
 
 func spawn_circle_of_blood(): # only can be done if cultist role
 	if !blood_circle_active:
 		if role.role_type == Role.Role_Type.Cultist:
 			Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
-			deal_damage(health.max_health / 2)
+			deal_damage(health.max_health / 2) # need a damage_type to deal to player
 			var circle = blood_circle_prefab.instance()
 			get_tree().get_root().add_child(circle)
 			# SoundManager.other_bloodcircle_spawn
