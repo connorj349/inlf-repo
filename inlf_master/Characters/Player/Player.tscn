@@ -288,6 +288,7 @@ light_energy = 5.0
 omni_range = 10.0
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="Bars" type="VBoxContainer" parent="UI"]
 anchor_left = 0.25

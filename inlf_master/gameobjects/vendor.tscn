@@ -82,7 +82,7 @@ shape = SubResource( 1 )
 [node name="metastabilizer" parent="." instance=ExtResource( 4 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 3
+layer = 2
 
 [node name="Info" type="Control" parent="CanvasLayer"]
 anchor_left = 0.5

@@ -11,6 +11,8 @@ var factor = 1
 func _ready():
 	sprite_3d.texture = slot_data.item_data.texture
 	name_plate.text = slot_data.item_data.name
+	if !is_in_group("pickup"):
+		add_to_group("pickup")
 
 func _interact(_actor):
 	if Gamestate.player_inventory.pick_up_slot_data(slot_data):
