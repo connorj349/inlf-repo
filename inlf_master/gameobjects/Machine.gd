@@ -35,19 +35,21 @@ func _ready():
 	rng.randomize()
 # warning-ignore:return_value_discarded
 	Globals.connect("on_inventory_toggle", panel, "hide")
+	if !is_in_group("machine"):
+		add_to_group("machine")
 
 func _process(_delta): #update the manufacture progress bar onscreen
 	if timer.time_left > 0:
 		prog_bar.update_bar(timer.time_left)
 
 func _interact(actor):
-	if actor.role.role_type == required_role: # only enable interacting if correct role
-		if can_interact:
+	if can_interact:
+		if actor.role.role_type == required_role:
 			panel.show()
-		if panel.visible:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	else:
-		Globals.emit_signal("on_pop_notification", "I don't know how to use this machine.")
+			if panel.visible:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		else:
+			Globals.emit_signal("on_pop_notification", "I don't know how to use this machine.")
 
 func button_press(index):
 	if materials > 0:
