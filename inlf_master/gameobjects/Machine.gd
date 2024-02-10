@@ -52,6 +52,9 @@ func _interact(actor):
 			Globals.emit_signal("on_pop_notification", "I don't know how to use this machine.")
 
 func button_press(index):
+	if !can_interact:
+		panel.hide()
+		return
 	if materials > 0:
 		if index == current_index:
 			button_presses_remaining -= 1

@@ -138,6 +138,13 @@ func _process(delta):
 		#jumping
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 				movement.jump()
+		#crouching
+		if Input.is_action_just_pressed("crouch") and is_on_floor():
+				$CrouchAnimationPlayer.play("crouch")
+				movement.speed = 7
+		if Input.is_action_just_released("crouch") and is_on_floor():
+				$CrouchAnimationPlayer.play_backwards("crouch")
+				movement.speed = 15
 		#movement
 		var direction = Vector3.ZERO
 		var f_input = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")

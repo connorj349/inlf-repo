@@ -136,7 +136,6 @@ tracks/3/keys = {
 [sub_resource type="BoxShape" id=8]
 
 [sub_resource type="BoxShape" id=9]
-extents = Vector3( 5, 1, 5 )
 
 [node name="Generator" type="StaticBody"]
 collision_layer = 2
@@ -218,6 +217,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1 )
 shape = SubResource( 8 )
 
 [node name="CheckForMachinesArea" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 10
 
 [node name="CollisionShape" type="CollisionShape" parent="CheckForMachinesArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

@@ -213,6 +213,11 @@ draw_circle={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+crouch={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [layer_names]
 
@@ -220,6 +225,7 @@ draw_circle={
 3d_render/layer_2="interactable"
 3d_render/layer_3="dead"
 3d_render/layer_4="player"
+3d_render/layer_5="water"
 3d_render/layer_6="nodraw"
 
 [physics]

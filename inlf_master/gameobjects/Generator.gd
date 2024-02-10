@@ -16,8 +16,9 @@ signal on_fuel_changed
 func _ready():
 # warning-ignore:return_value_discarded
 	connect("on_fuel_changed", prog_bar, "update_bar")
-	prog_bar.init(0, 100)
+	prog_bar.init(0, 100.0)
 	$CheckForMachinesArea/CollisionShape.shape.extents = bounds
+	yield(get_tree(), "idle_frame")
 	change_active_status_of_machines(false)
 
 func _process(_delta):
@@ -39,9 +40,8 @@ func _interact(_actor):
 
 func change_active_status_of_machines(is_active):
 	for body in connected_machines.get_overlapping_bodies():
-			if body.is_in_group("machine"):
-				print(body) # NOT DETECTING MACHINES ATM
-				body.can_interact = is_active
+		if body.is_in_group("machine"):
+			body.can_interact = is_active
 
 func set_fuel(value):
 	fuel = clamp(value, 0, 100)
