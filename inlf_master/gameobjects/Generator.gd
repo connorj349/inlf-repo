@@ -14,9 +14,9 @@ var is_on = false
 signal on_fuel_changed
 
 func _ready():
+	prog_bar.init(0, 100)
 # warning-ignore:return_value_discarded
 	connect("on_fuel_changed", prog_bar, "update_bar")
-	prog_bar.init(0, 100.0)
 	$CheckForMachinesArea/CollisionShape.shape.extents = bounds
 	yield(get_tree(), "idle_frame")
 	change_active_status_of_machines(false)

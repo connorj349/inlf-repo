@@ -1,0 +1,297 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://gameobjects/Amoeba.gd" type="Script" id=1]
+[ext_resource path="res://raw_assets/textures/ameoba.png" type="Texture" id=2]
+[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://UI/ui_bar.gd" type="Script" id=4]
+[ext_resource path="res://item/item_deposit/ItemDeposit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/WaterHandler.tscn" type="PackedScene" id=6]
+[ext_resource path="res://item/items/slop_skull.tres" type="Resource" id=7]
+[ext_resource path="res://item/items/plastic.tres" type="Resource" id=8]
+[ext_resource path="res://item/items/metal_frag.tres" type="Resource" id=9]
+[ext_resource path="res://item/items/fetid_wood.tres" type="Resource" id=10]
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.75, 0.75, 0.75 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.75, 0.75, 0.75 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+resource_local_to_scene = true
+bg_color = Color( 0.768627, 0, 0, 0 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+resource_local_to_scene = true
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/VBoxContainer/BioProgressBar/Label:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/VBoxContainer/HydrationProgressBar/Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/VBoxContainer/Label:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/VBoxContainer/HydrationProgressBar:custom_styles/bg:bg_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/VBoxContainer/HydrationProgressBar:custom_styles/fg:bg_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.768627, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Control/VBoxContainer/BioProgressBar/Label:custom_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Control/VBoxContainer/HydrationProgressBar/Label:custom_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/VBoxContainer/Label:custom_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/VBoxContainer/HydrationProgressBar:custom_styles/bg:bg_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.196078 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/VBoxContainer/HydrationProgressBar:custom_styles/fg:bg_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.768627, 0, 0, 0 ), Color( 0.768627, 0, 0, 1 ) ]
+}
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 0.75, 0.75, 0.75 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.75, 0.75, 0.75 )
+
+[node name="Amoeba" type="RigidBody"]
+collision_layer = 2
+collision_mask = 9
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 1 )
+accepted_biomass_item_data = ExtResource( 7 )
+dropped_seeds = [ ExtResource( 10 ), ExtResource( 9 ) ]
+slime_item_data = ExtResource( 8 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+texture = ExtResource( 2 )
+
+[node name="SpriteAnimationPlayer" type="AnimationPlayer" parent="Sprite3D"]
+autoplay = "idle"
+playback_speed = 0.5
+anims/idle = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 7 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -34.0
+margin_right = 200.0
+margin_bottom = 34.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 8 )
+text = "amoeba"
+align = 1
+valign = 1
+
+[node name="HydrationProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer"]
+margin_top = 48.0
+margin_right = 400.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 400, 50 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+percent_visible = false
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HydrationProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "hydration"
+align = 1
+valign = 1
+
+[node name="BioProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer"]
+margin_top = 102.0
+margin_right = 400.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 400, 50 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+percent_visible = false
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/BioProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "biomass"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer")
+anims/RESET = SubResource( 9 )
+anims/fade_in = SubResource( 10 )
+
+[node name="WaterHandler" parent="." instance=ExtResource( 6 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="WaterHandler"]
+shape = SubResource( 11 )
+
+[node name="HydrationTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="ItemDeposit" parent="." instance=ExtResource( 5 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="ItemDeposit"]
+shape = SubResource( 12 )
+
+[connection signal="submerged_status_changed" from="WaterHandler" to="." method="_on_WaterHandler_submerged_status_changed"]
+[connection signal="timeout" from="HydrationTimer" to="." method="_on_HydrationTimer_timeout"]
+[connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]
