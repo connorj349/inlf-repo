@@ -60,6 +60,11 @@ _global_script_classes=[ {
 "path": "res://item/item_data_organ.gd"
 }, {
 "base": "ItemData",
+"class": "ItemDataSeed",
+"language": "GDScript",
+"path": "res://item/item_data_seed.gd"
+}, {
+"base": "ItemData",
 "class": "ItemDataWeapon",
 "language": "GDScript",
 "path": "res://item/item_data_weapon.gd"
@@ -105,6 +110,7 @@ _global_script_class_icons={
 "ItemDataConsumable": "",
 "ItemDataEquip": "",
 "ItemDataOrgan": "",
+"ItemDataSeed": "",
 "ItemDataWeapon": "",
 "Role": "",
 "SlotData": "",

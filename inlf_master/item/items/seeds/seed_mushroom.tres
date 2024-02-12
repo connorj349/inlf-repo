@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://item/item_data_seed.gd" type="Script" id=1]
+[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
+[ext_resource path="res://item/items/slop_skull.tres" type="Resource" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 19
+atlas = ExtResource( 2 )
+region = Rect2( 304, 1856, 32, 32 )
+
+[resource]
+script = ExtResource( 1 )
+name = "Test Mushroom"
+description = "This is a test mushroom.
+
+Blood - 1
+Water - 1
+Fertilizer - 1"
+stackable = true
+texture = SubResource( 1 )
+price = 100
+drop_on_death = false
+blood = 1
+water = 1
+fertilizer = 1
+exotic = 0
+output_item_data = [ ExtResource( 3 ) ]
+growth_needed = 0
