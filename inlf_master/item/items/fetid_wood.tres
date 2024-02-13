@@ -16,3 +16,4 @@ stackable = true
 texture = SubResource( 1 )
 price = 0
 drop_on_death = false
+item_type = 4

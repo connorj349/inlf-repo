@@ -1,5 +1,9 @@
 extends HintObject
 
+# player will drop biomass or cropses(illegal) into this machine
+# need to hookup generator to this
+# when generator is on, this machine will passively create fertilizer if biomass has been inserted
+
 func _ready():
 	pass
 

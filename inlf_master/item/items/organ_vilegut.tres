@@ -17,5 +17,6 @@ stackable = false
 texture = SubResource( 1 )
 price = 10
 drop_on_death = false
+item_type = 4
 mana_regen = 2
 magic_effect = ExtResource( 3 )

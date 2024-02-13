@@ -18,3 +18,4 @@ texture = SubResource( 1 )
 price = 0
 drop_on_death = false
 processed_item_data = ExtResource( 3 )
+item_type = 4
