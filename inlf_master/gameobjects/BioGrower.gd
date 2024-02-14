@@ -69,7 +69,7 @@ func _on_GrowTimer_timeout():
 	current_growing_seed_item_data = null
 	self.growth = 0
 
-func _on_ResourceConsumeTimer_timeout():
+func _on_ResourceConsumeTimer_timeout(): # also counts the vars that are not needed to increase growth like exotic
 	if blood >= current_growing_seed_item_data.blood:
 		self.blood -= current_growing_seed_item_data.blood
 		self.growth += 1

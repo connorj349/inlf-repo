@@ -1,21 +1,19 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://item/item_data_consumable.gd" type="Script" id=1]
+[ext_resource path="res://item/item_data.gd" type="Script" id=1]
 [ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
 atlas = ExtResource( 2 )
-region = Rect2( 304, 3302, 48, 50 )
+region = Rect2( 0, 1520, 48, 64 )
 
 [resource]
 script = ExtResource( 1 )
-name = "dirty syringe"
-description = "a nasty dirty needle used to pump blood into your system, keeping you alive."
+name = "fertilizer"
+description = "used in biogrowing and to grow amoebas and moldstooling. can be made at a fertilizier in the growing shack."
 stackable = true
 texture = SubResource( 1 )
-price = 25
+price = 100
 drop_on_death = false
-item_type = 4
-heal_value = 10
-consumable_type = 1
+item_type = 1

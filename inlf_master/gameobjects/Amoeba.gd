@@ -29,8 +29,9 @@ func _on_ItemDeposit_body_entered(body):
 		return
 	if body.is_in_group("pickup"):
 		if accepted_biomass_item_data and body.slot_data.item_data == accepted_biomass_item_data:
+			for n in body.slot_data.quantity:
+				self.current_biomass += 2
 			body.queue_free()
-			self.current_biomass += 2
 
 func _on_HydrationTimer_timeout():
 	if current_biomass >= 10:
