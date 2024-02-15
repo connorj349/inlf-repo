@@ -29,6 +29,7 @@ func _on_Area_body_entered(body):
 				player.global_transform = global_transform
 				player.set_role(role)
 				body.queue_free() #delete player ghost
+				Gamestate.emit_signal("on_player_spawn", role.stem_cell_cost)
 
 func _on_Timer_timeout(): #maybe use the regular not 3d playsound
 	pass #nothing for now, maybe play a special distant sound to alert the player subconsiously when a role is available

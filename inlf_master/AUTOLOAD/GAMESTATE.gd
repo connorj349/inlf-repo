@@ -12,6 +12,12 @@ var merchant_inventory = preload("res://inventory/merchant_inventory.tres")
 signal rot_changed
 signal on_rot_reached_max
 signal bones_changed
+# warning-ignore:unused_signal
+signal on_player_death
+# warning-ignore:unused_signal
+signal on_player_spawn
+# warning-ignore:unused_signal
+signal on_stem_cells_changed
 
 var rot = 0 # world rot count
 var bones = 0 # player money

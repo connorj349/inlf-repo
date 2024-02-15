@@ -8,3 +8,4 @@ name = "cultist"
 description = "harbingers and spreaders of rot"
 cooldown = 10.0
 role_type = 2
+stem_cell_cost = 1

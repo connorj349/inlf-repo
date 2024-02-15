@@ -8,3 +8,4 @@ name = "proletariat"
 description = "The lifeblood of liver failure"
 cooldown = 0.5
 role_type = 0
+stem_cell_cost = 1

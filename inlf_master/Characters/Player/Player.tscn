@@ -31,6 +31,7 @@ description = "debug"
 stackable = false
 price = 0
 drop_on_death = false
+item_type = 4
 damage = ExtResource( 19 )
 max_ammo = 0
 
