@@ -47,17 +47,20 @@ func _on_ItemDeposit_body_entered(body):
 			return
 		match(body.slot_data.item_data.item_type):
 			ItemData.ItemType.Fertilizer:
-				self.fertilizer += 10
+				for i in body.slot_data.quantity:
+					self.fertilizer += 10
 				body.queue_free()
 			ItemData.ItemType.Water:
-				self.water += 10
+				for i in body.slot_data.quantity:
+					self.water += 10
 				body.queue_free()
 			ItemData.ItemType.Exotic:
-				self.exotic += 10
+				for i in body.slot_data.quantity:
+					self.exotic += 10
 				body.queue_free()
 
 func _on_GrowTimer_timeout():
-	if growth > current_growing_seed_item_data.growth_needed:
+	if growth >= current_growing_seed_item_data.growth_needed:
 		for item_data in current_growing_seed_item_data.output_item_data:
 			var new_slot = SlotData.new()
 			new_slot.item_data = item_data
@@ -74,22 +77,22 @@ func _on_ResourceConsumeTimer_timeout(): # also counts the vars that are not nee
 		self.blood -= current_growing_seed_item_data.blood
 		self.growth += 1
 	else:
-		self.growth -= 1
+		self.growth -= 2
 	if water >= current_growing_seed_item_data.water:
 		self.water -= current_growing_seed_item_data.water
 		self.growth += 1
 	else:
-		self.growth -= 1
+		self.growth -= 2
 	if fertilizer >= current_growing_seed_item_data.fertilizer:
 		self.fertilizer -= current_growing_seed_item_data.fertilizer
 		self.growth += 1
 	else:
-		self.growth -= 1
+		self.growth -= 2
 	if exotic >= current_growing_seed_item_data.exotic:
 		self.exotic -= current_growing_seed_item_data.exotic
 		self.growth += 1
 	else:
-		self.growth -= 1
+		self.growth -= 2
 
 func set_blood(value):
 	blood = clamp(value, 0, 100)

@@ -17,7 +17,7 @@ description = "This is a test mushroom.
 Blood - 1
 Water - 1
 Fertilizer - 1"
-stackable = true
+stackable = false
 texture = SubResource( 1 )
 price = 100
 drop_on_death = false
@@ -27,4 +27,4 @@ water = 1
 fertilizer = 1
 exotic = 0
 output_item_data = [ ExtResource( 3 ) ]
-growth_needed = 0
+growth_needed = 35
