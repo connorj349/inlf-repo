@@ -8,11 +8,13 @@ onready var raycast = $RangeRayCast
 onready var sprite = $CanvasLayer/Control/Sprite
 
 var ammo = 0
+var item_weapon_damage = Damage.new()
 
 func _ready():
 	# set collision masks to 1, 2, and NPC
 	# raycast.collision_mask
-	pass
+	item_weapon_damage.type = item_weapon_data.damage_type
+	item_weapon_damage.amount = item_weapon_data.damage
 
 func on_attack():
 	if item_weapon_data:
@@ -22,7 +24,7 @@ func on_attack():
 			# play weapon sounds
 			var col = raycast.get_collider()
 			if raycast.is_colliding() and col.has_method("on_hurt"):
-				col.on_hurt(item_weapon_data.damage)
+				col.on_hurt(item_weapon_damage)
 
 func reload(inventory_data: InventoryData): #need to play sound somewhere
 	if item_weapon_data:

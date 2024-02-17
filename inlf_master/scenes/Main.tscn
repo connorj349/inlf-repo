@@ -88,16 +88,16 @@ margin_right = 60.0
 margin_bottom = 60.0
 
 [node name="EquipInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
-margin_left = 500.0
+margin_left = 600.0
 margin_top = 30.0
-margin_right = 530.0
-margin_bottom = 60.0
+margin_right = 666.0
+margin_bottom = 96.0
 
 [node name="WeaponInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
-margin_left = 500.0
-margin_top = 120.0
-margin_right = 530.0
-margin_bottom = 150.0
+margin_left = 600.0
+margin_top = 200.0
+margin_right = 666.0
+margin_bottom = 266.0
 
 [node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
 visible = false

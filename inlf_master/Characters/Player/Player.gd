@@ -77,7 +77,8 @@ func on_use_organ(organ):
 			magick.curr_magick += organ.mana_regen
 			# SoundManager.play_manaregen
 		else:
-			deal_damage(15) # need a damage_type to deal to player
+			pass
+			#deal_damage(15) # need a damage_type to deal to player
 			# SoundManager.use_organeat
 
 func set_role(_role): # setup role; maybe add sound to it?

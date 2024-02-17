@@ -4,15 +4,16 @@ extends HintObject
 #export(int) var number_of_roaches_to_spawn = 3
 export(int) var rot_increase_amount = 1
 export(int) var rot_inrease_frequency = 1
-export(Resource) var tumor_damage # the damage type of the tumor to reflect when attacked
 
 onready var health = $Health
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var hurt_area = $HurtArea
 
 var dead = false
+var tumor_damage = Damage.new()
 
 func _ready():
+	tumor_damage.amount = 5
 	randomize()
 	health.init()
 	health.connect("dead", self, "on_death")

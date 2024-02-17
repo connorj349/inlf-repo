@@ -12,7 +12,6 @@
 [ext_resource path="res://raw_assets/models/flesh_pile.material" type="Material" id=11]
 [ext_resource path="res://item/items/organ_vilegut.tres" type="Resource" id=12]
 
-
 [sub_resource type="Resource" id=14]
 script = ExtResource( 7 )
 item_data = ExtResource( 12 )
@@ -195,8 +194,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.7, 0 )
 shape = SubResource( 1 )
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
-max_health = 100
-hit_effect = null
+allowed_max_health = 10
 
 [node name="DecayTimer" type="Timer" parent="."]
 autostart = true

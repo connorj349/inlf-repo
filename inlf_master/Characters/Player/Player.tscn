@@ -9,6 +9,7 @@
 [ext_resource path="res://raw_assets/textures/shotgun-sheet.png" type="Texture" id=7]
 [ext_resource path="res://inventory/HotBarInventory.tscn" type="PackedScene" id=8]
 [ext_resource path="res://raw_assets/textures/punch-sheet.png" type="Texture" id=9]
+[ext_resource path="res://UI/elements/ui_panel.png" type="Texture" id=10]
 [ext_resource path="res://UI/Notifications.gd" type="Script" id=12]
 [ext_resource path="res://Characters/Player/player_weapon.gd" type="Script" id=13]
 [ext_resource path="res://Characters/Player/player_weapon_manager.gd" type="Script" id=14]
@@ -16,7 +17,6 @@
 [ext_resource path="res://UI/themes/player_hud_bars_theme.tres" type="Theme" id=16]
 [ext_resource path="res://Characters/Magick.tscn" type="PackedScene" id=17]
 [ext_resource path="res://UI/elements/ui_button_2.png" type="Texture" id=18]
-[ext_resource path="res://Data/dmg_fists.tres" type="Resource" id=19]
 [ext_resource path="res://Characters/Armor.tscn" type="PackedScene" id=20]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -24,16 +24,17 @@
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
-[sub_resource type="Resource" id=16]
+[sub_resource type="Resource" id=25]
 script = ExtResource( 4 )
-name = "wep_fists"
-description = "debug"
+name = "fists"
+description = ""
 stackable = false
 price = 0
 drop_on_death = false
 item_type = 4
-damage = ExtResource( 19 )
 max_ammo = 0
+damage = 1
+damage_type = 0
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -248,8 +249,13 @@ texture = ExtResource( 18 )
 region_rect = Rect2( 0, 0, 256, 81 )
 modulate_color = Color( 0, 0, 0, 0.705882 )
 
-[sub_resource type="StyleBoxFlat" id=17]
-bg_color = Color( 0, 0, 0, 0.180392 )
+[sub_resource type="StyleBoxTexture" id=26]
+texture = ExtResource( 10 )
+region_rect = Rect2( 10, 30, 490, 410 )
+margin_left = 30.0
+margin_right = 32.0
+margin_bottom = 20.0
+modulate_color = Color( 0, 0, 0, 0.196078 )
 
 [sub_resource type="DynamicFont" id=20]
 size = 45
@@ -306,7 +312,7 @@ script = ExtResource( 14 )
 [node name="wep_fists" type="Spatial" parent="Head/Camera/WeaponManager"]
 script = ExtResource( 13 )
 is_melee = true
-item_weapon_data = SubResource( 16 )
+item_weapon_data = SubResource( 25 )
 
 [node name="RangeRayCast" type="RayCast" parent="Head/Camera/WeaponManager/wep_fists"]
 enabled = true
@@ -396,7 +402,8 @@ margin_bottom = 35.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 16 )
-value = 25.0
+min_value = 100.0
+value = 100.0
 percent_visible = false
 script = ExtResource( 5 )
 
@@ -482,15 +489,16 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -200.0
 margin_right = 700.0
-custom_styles/panel = SubResource( 17 )
+custom_styles/panel = SubResource( 26 )
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Notifications/PanelContainer"]
-margin_right = 700.0
-margin_bottom = 200.0
+margin_left = 30.0
+margin_right = 668.0
+margin_bottom = 180.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/Notifications/PanelContainer/MarginContainer"]
-margin_right = 700.0
-margin_bottom = 200.0
+margin_right = 638.0
+margin_bottom = 180.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/normal_font = SubResource( 20 )

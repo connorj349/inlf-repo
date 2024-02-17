@@ -1,9 +1,5 @@
 extends HintObject
 
-# drop an item on death
-# add looping 'gestation' sounds to clue player to this items' location
-# clean up UI
-
 export(int) var incubation_increase_amount = 5
 export(float) var incubation_frequency_amount = 1.0
 

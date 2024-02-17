@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LoadingScreen.gd" type="Script" id=2]
 [ext_resource path="res://raw_assets/textures/main_level_background.png" type="Texture" id=3]
+[ext_resource path="res://UI/elements/ui_panel.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 3 )
@@ -28,6 +29,16 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=6]
 size = 50
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 512, 467 )
+modulate_color = Color( 1, 0, 0, 0.705882 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 512, 467 )
+modulate_color = Color( 0.552941, 0, 0, 1 )
 
 [node name="LoadingScreen" type="Control"]
 anchor_right = 1.0
@@ -93,4 +104,6 @@ margin_top = -165.0
 margin_right = -132.0
 margin_bottom = -112.0
 custom_fonts/font = SubResource( 6 )
+custom_styles/fg = SubResource( 7 )
+custom_styles/bg = SubResource( 8 )
 value = 50.0

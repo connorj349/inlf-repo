@@ -14,8 +14,10 @@ onready var organ_spawn = $organ_spawnpoint
 
 onready var big_flesh = $flesh_large
 var blood_spray = preload("res://effects/blood_spray.tscn")
+var corpse_damage = Damage.new()
 
 func _ready():
+	corpse_damage.amount = 1
 	randomize()
 	# spawn gib effects and blood effects to simulate corpse explosion after death
 	health.init()
@@ -26,8 +28,8 @@ func _ready():
 	state_text.text = "Fresh"
 	spawn_blood()
 
-func on_hurt(amount): #damages corpse
-	health.hurt(amount)
+func on_hurt(damage):
+	health.health -= damage.amount
 
 func _interact(_actor): # what does this do to actually help the non-cultist player?
 	if can_interact:
@@ -47,7 +49,7 @@ func spawn_blood():
 	blood.global_transform.origin = self.global_transform.origin
 
 func _on_DecayTimer_timeout(): #updates corpse state text on UI
-	on_hurt(1)
+	on_hurt(corpse_damage)
 	Gamestate.rot_modify(1)
 	if health.health > 75:
 		state_text.text = "Fresh"

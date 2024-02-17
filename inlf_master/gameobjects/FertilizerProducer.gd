@@ -20,7 +20,8 @@ func _on_ItemDeposit_body_entered(body):
 	if body.is_in_group("pickup"):
 		if body.slot_data.item_data.item_type == ItemData.ItemType.Biomass:
 			body.queue_free()
-			self.biomass += 2
+			for i in body.slot_data.quantity:
+				self.biomass += 2
 			if biomass >= 10:
 				timer.start()
 

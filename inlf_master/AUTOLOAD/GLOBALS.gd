@@ -6,7 +6,6 @@ const corpse = preload("res://Characters/corpse.tscn")
 const rot_max_value = 1000 # global value that may be able to be changed by the player at runtime for diff setting?
 const meta_repair_reward_amount = 25 # how much money the player gets when repairing metastabilizers
 const meta_repair_amount = 40 # how much health metastabilizers get when they are repaired using a kit
-const player_base_armor = 25 # the amount of carapace the player can have without wearing armor
 
 var current_player #allows other objects to reference the player like setting target/etc.
 var current_ui #player inventory global reference for other scripts
