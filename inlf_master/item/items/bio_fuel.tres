@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://item/item_data.gd" type="Script" id=1]
+[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 19
+atlas = ExtResource( 2 )
+region = Rect2( 110, 1500, 80, 100 )
+
+[resource]
+script = ExtResource( 1 )
+name = "biofuel"
+description = "used to power generators"
+stackable = true
+texture = SubResource( 1 )
+price = 0
+drop_on_death = false
+item_type = 4

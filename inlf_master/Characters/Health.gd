@@ -10,6 +10,7 @@ var health = 1 setget set_health
 
 signal dead
 signal health_changed
+signal max_health_changed
 signal pox_changed
 
 func init():
@@ -26,6 +27,7 @@ func set_max_health(val):
 	max_health = clamp(val - pox, 0, allowed_max_health)
 	if health > max_health:
 		health = max_health
+	emit_signal("max_health_changed", max_health)
 
 func set_health(val):
 	health = clamp(val, 0, max_health)

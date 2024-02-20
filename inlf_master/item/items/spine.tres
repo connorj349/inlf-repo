@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://item/item_data.gd" type="Script" id=1]
+[ext_resource path="res://item/items/bio_fuel.tres" type="Resource" id=2]
+[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 19
+atlas = ExtResource( 3 )
+region = Rect2( 800, 1800, 50, 50 )
+
+[resource]
+script = ExtResource( 1 )
+name = "spine"
+description = "used to create biofuel, found in bone caspules"
+stackable = true
+texture = SubResource( 1 )
+price = 0
+drop_on_death = false
+processed_item_data = ExtResource( 2 )
+item_type = 4

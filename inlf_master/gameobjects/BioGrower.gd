@@ -21,6 +21,8 @@ var growth setget set_growth
 
 var current_growing_seed_item_data
 
+var player_use_damage = Damage.new()
+
 func _ready():
 	self.blood = 0
 	self.water = 0
@@ -31,10 +33,10 @@ func _ready():
 	water_prog_bar.init(0, 100)
 	fertilizer_prog_bar.init(0, 100)
 	exotic_prog_bar.init(0, 100)
+	player_use_damage.amount = 10
 
 func _interact(_actor):
-	# hurt the player
-	# Globals.current_player.hurt()
+	Globals.current_player.hurt(player_use_damage)
 	self.blood += 10
 
 func _on_ItemDeposit_body_entered(body):

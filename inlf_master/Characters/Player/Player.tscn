@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Movement.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://inventory/HotBarInventory.tscn" type="PackedScene" id=8]
 [ext_resource path="res://raw_assets/textures/punch-sheet.png" type="Texture" id=9]
 [ext_resource path="res://UI/elements/ui_panel.png" type="Texture" id=10]
+[ext_resource path="res://UI/elements/ui_bar_1.png" type="Texture" id=11]
 [ext_resource path="res://UI/Notifications.gd" type="Script" id=12]
 [ext_resource path="res://Characters/Player/player_weapon.gd" type="Script" id=13]
 [ext_resource path="res://Characters/Player/player_weapon_manager.gd" type="Script" id=14]
@@ -17,6 +18,7 @@
 [ext_resource path="res://UI/themes/player_hud_bars_theme.tres" type="Theme" id=16]
 [ext_resource path="res://Characters/Magick.tscn" type="PackedScene" id=17]
 [ext_resource path="res://UI/elements/ui_button_2.png" type="Texture" id=18]
+[ext_resource path="res://UI/textured_ui_bar.gd" type="Script" id=19]
 [ext_resource path="res://Characters/Armor.tscn" type="PackedScene" id=20]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -235,6 +237,9 @@ tracks/2/keys = {
 "values": [ 1.0, 0.5 ]
 }
 
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0, 0, 0, 0.705882 )
+
 [sub_resource type="DynamicFont" id=8]
 size = 40
 font_data = ExtResource( 1 )
@@ -242,7 +247,7 @@ font_data = ExtResource( 1 )
 [sub_resource type="StyleBoxTexture" id=21]
 texture = ExtResource( 18 )
 region_rect = Rect2( 0, 0, 256, 81 )
-modulate_color = Color( 0.640625, 0, 0, 0.705882 )
+modulate_color = Color( 0.639216, 0, 0, 0.705882 )
 
 [sub_resource type="StyleBoxTexture" id=22]
 texture = ExtResource( 18 )
@@ -297,6 +302,14 @@ far = 50.0
 enabled = true
 cast_to = Vector3( 0, 0, -5 )
 collision_mask = 2
+
+[node name="PickupRayCast" type="RayCast" parent="Head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -3 )
+collision_mask = 2
+
+[node name="HoldObjectPosition" type="Spatial" parent="Head/Camera/PickupRayCast"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -1.5 )
 
 [node name="InteractArea" type="Area" parent="Head/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
@@ -388,56 +401,67 @@ anchor_bottom = 0.025
 margin_right = 1100.0
 margin_bottom = 35.0
 
-[node name="health_pox" type="HBoxContainer" parent="UI/Bars"]
-visible = false
+[node name="health_pox" type="PanelContainer" parent="UI/Bars"]
 margin_right = 1100.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 1100, 35 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_styles/panel = SubResource( 27 )
 
-[node name="health_bar" type="ProgressBar" parent="UI/Bars/health_pox"]
-margin_right = 548.0
-margin_bottom = 35.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource( 16 )
-min_value = 100.0
-value = 100.0
-percent_visible = false
-script = ExtResource( 5 )
-
-[node name="Label" type="Label" parent="UI/Bars/health_pox/health_bar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 8 )
-text = "blood"
-align = 1
-valign = 1
-
-[node name="pox_bar" type="ProgressBar" parent="UI/Bars/health_pox"]
-margin_left = 552.0
+[node name="health_bar" type="TextureProgress" parent="UI/Bars/health_pox"]
 margin_right = 1100.0
 margin_bottom = 35.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 16 )
-min_value = 100.0
-value = 100.0
-percent_visible = false
-script = ExtResource( 5 )
+value = 35.0
+texture_progress = ExtResource( 11 )
+tint_progress = Color( 0.627451, 0.0901961, 0.0901961, 1 )
+nine_patch_stretch = true
+script = ExtResource( 19 )
+
+[node name="Label" type="Label" parent="UI/Bars/health_pox/health_bar"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -17.5
+margin_right = 1100.0
+margin_bottom = 17.5
+custom_fonts/font = SubResource( 8 )
+text = "blood"
+valign = 1
+
+[node name="pox_bar" type="TextureProgress" parent="UI/Bars/health_pox"]
+margin_right = 1100.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 16 )
+value = 44.0
+texture_progress = ExtResource( 11 )
+fill_mode = 1
+tint_progress = Color( 0.623529, 0.67451, 0, 1 )
+nine_patch_stretch = true
+script = ExtResource( 19 )
 
 [node name="Label" type="Label" parent="UI/Bars/health_pox/pox_bar"]
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+margin_left = -1086.0
+margin_top = -17.5
+margin_bottom = 17.5
 custom_fonts/font = SubResource( 8 )
 text = "POX"
-align = 1
+align = 2
 valign = 1
 
 [node name="health_bar" type="ProgressBar" parent="UI/Bars"]
+visible = false
+margin_top = 39.0
 margin_right = 1100.0
-margin_bottom = 35.0
+margin_bottom = 74.0
 rect_min_size = Vector2( 1100, 35 )
 theme = ExtResource( 16 )
 custom_styles/fg = SubResource( 21 )
@@ -514,3 +538,9 @@ custom_fonts/font = SubResource( 19 )
 text = "5"
 align = 1
 valign = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Health" method="set_pox" binds= [ 50 ]]

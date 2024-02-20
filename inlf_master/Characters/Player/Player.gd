@@ -10,15 +10,18 @@ onready var health = $Health
 onready var magick = $Magick
 onready var armor = $Armor
 onready var hint_raycast = $Head/Camera/HintObjRayCast
+onready var pickup_raycast = $Head/Camera/PickupRayCast
+onready var hold_object_pos = $Head/Camera/PickupRayCast/HoldObjectPosition
 onready var weapon_manager = $Head/Camera/WeaponManager
 
-onready var health_bar = $UI/Bars/health_bar
+onready var health_bar = $UI/Bars/health_pox/health_bar # $UI/Bars/health_bar
+onready var pox_bar = $UI/Bars/health_pox/pox_bar
 onready var magick_amount_left = $UI/MagickLabel
+
 var role
-
 var cam_accel = 40
-
 var blood_circle_active = false
+var pickup_object = null
 
 var player_dead_prefab = preload("res://Characters/Player/Player_Dead.tscn") #for player view while dead
 var blood_circle_prefab = preload("res://gameobjects/blood_circle.tscn") #to spawn when player is cultist
@@ -28,8 +31,11 @@ func _ready():
 	#health.connect("hurt", something, "play_hurt_effects") #enable effects when player is damaged like sound/hud
 	health.init() #setup sarting health
 	health.connect("health_changed", health_bar, "update_bar") #setup healthbar connection
+	health.connect("max_health_changed", health_bar, "init", [health.health, health.max_health])
+	health.connect("pox_changed", pox_bar, "update_bar")
 	health.connect("dead", self, "kill") # setup death functionality
 	health_bar.init(health.health, health.max_health)
+	pox_bar.init(health.pox, 100)
 	armor.init()
 	#armor.connect("armor_changed", self, "update_armor_bar")
 	Globals.current_player = self
@@ -121,6 +127,8 @@ func _process(delta):
 		spawn_circle_of_blood()
 	#interacting
 	if Input.is_action_just_pressed("interact") and !player_is_in_menu():#change this so it's a raycast instead of area
+		if pickup_object:
+			pickup_object = null
 		if interact_area.monitoring:
 			for body in interact_area.get_overlapping_bodies():
 				if body.is_in_group("interactable"):
@@ -130,6 +138,18 @@ func _process(delta):
 		#attacking
 		if Input.is_action_just_pressed("left_click"):
 			weapon_manager.attack()
+		#picking up interactable physicsbodies, later add alternate firemodes for weapons
+		if Input.is_action_just_pressed("right_click"):
+			if pickup_object:
+				pickup_object.mode = RigidBody.MODE_RIGID
+				pickup_object.collision_mask = 1 | 2
+				pickup_object = null
+			elif pickup_raycast.get_collider() and pickup_raycast.get_collider() is RigidBody:
+				pickup_object = pickup_raycast.get_collider()
+				pickup_object.mode = RigidBody.MODE_KINEMATIC
+				pickup_object.collision_mask = 0
+		if pickup_object:
+			pickup_object.global_transform.origin = hold_object_pos.global_transform.origin
 		#weapon switching
 		if Input.is_action_just_pressed("switch_weapons"):
 			weapon_manager.switch_to_next_weapon()

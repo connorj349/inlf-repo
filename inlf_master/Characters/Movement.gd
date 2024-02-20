@@ -32,13 +32,25 @@ var movement = Vector3()
 # time since last footstep
 var footstep_time = 0
 
+#ladder
+var ladder_array = []
+var current_state = State.NORMAL
+enum State {
+	NORMAL,
+	LADDER
+}
+
 func init(_body : KinematicBody):
 	body = _body
 
 func set_move_vector(_move_vec : Vector3):
-	direction = _move_vec.normalized()
+	if current_state == State.LADDER:
+		direction = Vector3(_move_vec.x, _move_vec.z * -1, 0).normalized()
+	else:
+		direction = _move_vec.normalized()
 
 func jump():
+	current_state = State.NORMAL
 	is_jumping = true
 
 func _process(_delta): # calculate footsteps
@@ -63,6 +75,10 @@ func _physics_process(delta):
 		snap = Vector3.DOWN
 		accel = ACCEL_AIR
 		gravity_vec += Vector3.DOWN * gravity * delta
+	if current_state == State.LADDER:
+		gravity_vec = Vector3.ZERO
+		snap = Vector3.ZERO
+		accel = 20
 	if is_jumping:
 		snap = Vector3.ZERO
 		gravity_vec = Vector3.UP * jump_power

@@ -14,12 +14,12 @@ var is_on = false
 signal on_fuel_changed
 
 func _ready():
+	prog_bar.init(0, 100)
 # warning-ignore:return_value_discarded
 	connect("on_fuel_changed", prog_bar, "update_bar")
 	$CheckForMachinesArea/CollisionShape.shape.extents = bounds
 	yield(get_tree(), "idle_frame")
 	change_active_status_of_machines(false)
-	prog_bar.init(0, 100)
 
 func _process(_delta):
 	if Engine.is_editor_hint():

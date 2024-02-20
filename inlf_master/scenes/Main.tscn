@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -21,7 +21,10 @@
 [ext_resource path="res://gameobjects/IndustrialSink.tscn" type="PackedScene" id=19]
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://game_end/game_end_stem_cells.tscn" type="PackedScene" id=21]
+[ext_resource path="res://gameobjects/Ladder.tscn" type="PackedScene" id=22]
 [ext_resource path="res://role/roles/proletariat.tres" type="Resource" id=23]
+[ext_resource path="res://gameobjects/Generator.tscn" type="PackedScene" id=24]
+[ext_resource path="res://item/items/spine.tres" type="Resource" id=25]
 [ext_resource path="res://UI/PauseMenu.gd" type="Script" id=29]
 [ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=30]
 [ext_resource path="res://UI/Options.tscn" type="PackedScene" id=31]
@@ -69,6 +72,20 @@ albedo_color = Color( 0.0470588, 0, 1, 1 )
 
 [sub_resource type="ConcavePolygonShape" id=388]
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="QuadMesh" id=389]
+size = Vector2( 2, 6 )
+
+[sub_resource type="CubeMesh" id=390]
+size = Vector3( 4, 6, 2 )
+
+[sub_resource type="ConcavePolygonShape" id=391]
+data = PoolVector3Array( -2, 3, 1, 2, 3, 1, -2, -3, 1, 2, 3, 1, 2, -3, 1, -2, -3, 1, 2, 3, -1, -2, 3, -1, 2, -3, -1, -2, 3, -1, -2, -3, -1, 2, -3, -1, 2, 3, 1, 2, 3, -1, 2, -3, 1, 2, 3, -1, 2, -3, -1, 2, -3, 1, -2, 3, -1, -2, 3, 1, -2, -3, -1, -2, 3, 1, -2, -3, 1, -2, -3, -1, 2, 3, 1, -2, 3, 1, 2, 3, -1, -2, 3, 1, -2, 3, -1, 2, 3, -1, -2, -3, 1, 2, -3, 1, -2, -3, -1, 2, -3, 1, 2, -3, -1, -2, -3, -1 )
+
+[sub_resource type="Resource" id=392]
+script = ExtResource( 7 )
+item_data = ExtResource( 25 )
+quantity = 5
 
 [node name="Main" type="Spatial"]
 
@@ -269,6 +286,31 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 10 )
 [node name="game_end_money" parent="." instance=ExtResource( 14 )]
 
 [node name="game_end_stem_cells" parent="." instance=ExtResource( 21 )]
+
+[node name="Ladder" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -10 )
+bounds = Vector3( 1, 3, 0.5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ladder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4 )
+mesh = SubResource( 389 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -12 )
+mesh = SubResource( 390 )
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance2"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance2/StaticBody"]
+shape = SubResource( 391 )
+
+[node name="Generator" parent="." instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7 )
+bounds = Vector3( 5, 1, 5 )
+
+[node name="Pickup2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2 )
+slot_data = SubResource( 392 )
 
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
