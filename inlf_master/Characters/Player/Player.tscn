@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Movement.tscn" type="PackedScene" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=15]
 [ext_resource path="res://UI/themes/player_hud_bars_theme.tres" type="Theme" id=16]
 [ext_resource path="res://Characters/Magick.tscn" type="PackedScene" id=17]
-[ext_resource path="res://UI/elements/ui_button_2.png" type="Texture" id=18]
 [ext_resource path="res://UI/textured_ui_bar.gd" type="Script" id=19]
 [ext_resource path="res://Characters/Armor.tscn" type="PackedScene" id=20]
 
@@ -244,16 +243,6 @@ bg_color = Color( 0, 0, 0, 0.705882 )
 size = 40
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=21]
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 256, 81 )
-modulate_color = Color( 0.639216, 0, 0, 0.705882 )
-
-[sub_resource type="StyleBoxTexture" id=22]
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 256, 81 )
-modulate_color = Color( 0, 0, 0, 0.705882 )
-
 [sub_resource type="StyleBoxTexture" id=26]
 texture = ExtResource( 10 )
 region_rect = Rect2( 10, 30, 490, 410 )
@@ -457,27 +446,6 @@ text = "POX"
 align = 2
 valign = 1
 
-[node name="health_bar" type="ProgressBar" parent="UI/Bars"]
-visible = false
-margin_top = 39.0
-margin_right = 1100.0
-margin_bottom = 74.0
-rect_min_size = Vector2( 1100, 35 )
-theme = ExtResource( 16 )
-custom_styles/fg = SubResource( 21 )
-custom_styles/bg = SubResource( 22 )
-value = 25.0
-percent_visible = false
-script = ExtResource( 5 )
-
-[node name="Label" type="Label" parent="UI/Bars/health_bar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = SubResource( 8 )
-text = "blood"
-align = 1
-valign = 1
-
 [node name="empty_bar" type="ProgressBar" parent="UI/Bars"]
 visible = false
 margin_top = 39.0
@@ -538,9 +506,3 @@ custom_fonts/font = SubResource( 19 )
 text = "5"
 align = 1
 valign = 1
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
-[connection signal="timeout" from="Timer" to="Health" method="set_pox" binds= [ 50 ]]

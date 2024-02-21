@@ -1,30 +1,30 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
 [ext_resource path="res://inventory/inventory_interface.gd" type="Script" id=3]
 [ext_resource path="res://inventory/inventory_slot.tscn" type="PackedScene" id=4]
-[ext_resource path="res://item/pick_up/Pickup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://skybox/skybox_02.png" type="Texture" id=6]
-[ext_resource path="res://inventory/slot_data.gd" type="Script" id=7]
 [ext_resource path="res://item/items/slop_skull.tres" type="Resource" id=8]
 [ext_resource path="res://gameobjects/production_machine.tscn" type="PackedScene" id=9]
 [ext_resource path="res://item/items/plastic.tres" type="Resource" id=10]
 [ext_resource path="res://gameobjects/vendor.tscn" type="PackedScene" id=11]
 [ext_resource path="res://item/items/heal_1.tres" type="Resource" id=12]
 [ext_resource path="res://gameobjects/processor.tscn" type="PackedScene" id=13]
-[ext_resource path="res://game_end/game_end_money.tscn" type="PackedScene" id=14]
+[ext_resource path="res://game_end/game_end_stem_cells.gd" type="Script" id=14]
 [ext_resource path="res://Characters/WaterArea.tscn" type="PackedScene" id=15]
 [ext_resource path="res://gameobjects/Amoeba.tscn" type="PackedScene" id=16]
 [ext_resource path="res://gameobjects/BioGrower.tscn" type="PackedScene" id=17]
 [ext_resource path="res://gameobjects/FertilizerProducer.tscn" type="PackedScene" id=18]
 [ext_resource path="res://gameobjects/IndustrialSink.tscn" type="PackedScene" id=19]
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=20]
-[ext_resource path="res://game_end/game_end_stem_cells.tscn" type="PackedScene" id=21]
+[ext_resource path="res://game_end/TicketMachine.tscn" type="PackedScene" id=21]
 [ext_resource path="res://gameobjects/Ladder.tscn" type="PackedScene" id=22]
 [ext_resource path="res://role/roles/proletariat.tres" type="Resource" id=23]
 [ext_resource path="res://gameobjects/Generator.tscn" type="PackedScene" id=24]
 [ext_resource path="res://item/items/spine.tres" type="Resource" id=25]
+[ext_resource path="res://item/items/bio_fuel.tres" type="Resource" id=26]
+[ext_resource path="res://item/items/shells.tres" type="Resource" id=27]
 [ext_resource path="res://UI/PauseMenu.gd" type="Script" id=29]
 [ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=30]
 [ext_resource path="res://UI/Options.tscn" type="PackedScene" id=31]
@@ -41,6 +41,26 @@ font_data = ExtResource( 20 )
 size = 35
 font_data = ExtResource( 20 )
 
+[sub_resource type="CubeMesh" id=390]
+size = Vector3( 4, 6, 2 )
+
+[sub_resource type="ConcavePolygonShape" id=391]
+data = PoolVector3Array( -2, 3, 1, 2, 3, 1, -2, -3, 1, 2, 3, 1, 2, -3, 1, -2, -3, 1, 2, 3, -1, -2, 3, -1, 2, -3, -1, -2, 3, -1, -2, -3, -1, 2, -3, -1, 2, 3, 1, 2, 3, -1, 2, -3, 1, 2, 3, -1, 2, -3, -1, 2, -3, 1, -2, 3, -1, -2, 3, 1, -2, -3, -1, -2, 3, 1, -2, -3, 1, -2, -3, -1, 2, 3, 1, -2, 3, 1, 2, 3, -1, -2, 3, 1, -2, 3, -1, 2, 3, -1, -2, -3, 1, 2, -3, 1, -2, -3, -1, 2, -3, 1, 2, -3, -1, -2, -3, -1 )
+
+[sub_resource type="CubeMesh" id=386]
+
+[sub_resource type="SpatialMaterial" id=387]
+albedo_color = Color( 0.0470588, 0, 1, 1 )
+
+[sub_resource type="ConcavePolygonShape" id=388]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="QuadMesh" id=383]
+size = Vector2( 25, 25 )
+
+[sub_resource type="ConcavePolygonShape" id=384]
+data = PoolVector3Array( -12.5, -12.5, 0, -12.5, 12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, 12.5, 12.5, 0, 12.5, -12.5, 0 )
+
 [sub_resource type="PanoramaSky" id=366]
 panorama = ExtResource( 6 )
 
@@ -54,40 +74,11 @@ fog_color = Color( 0.87451, 0.72549, 0.45098, 1 )
 fog_depth_begin = 0.0
 fog_depth_end = 175.0
 
-[sub_resource type="QuadMesh" id=383]
-size = Vector2( 25, 25 )
-
-[sub_resource type="ConcavePolygonShape" id=384]
-data = PoolVector3Array( -12.5, -12.5, 0, -12.5, 12.5, 0, 12.5, 12.5, 0, -12.5, -12.5, 0, 12.5, 12.5, 0, 12.5, -12.5, 0 )
-
-[sub_resource type="Resource" id=385]
-script = ExtResource( 7 )
-item_data = ExtResource( 8 )
-quantity = 10
-
-[sub_resource type="CubeMesh" id=386]
-
-[sub_resource type="SpatialMaterial" id=387]
-albedo_color = Color( 0.0470588, 0, 1, 1 )
-
-[sub_resource type="ConcavePolygonShape" id=388]
-data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
-
 [sub_resource type="QuadMesh" id=389]
 size = Vector2( 2, 6 )
 
-[sub_resource type="CubeMesh" id=390]
-size = Vector3( 4, 6, 2 )
-
-[sub_resource type="ConcavePolygonShape" id=391]
-data = PoolVector3Array( -2, 3, 1, 2, 3, 1, -2, -3, 1, 2, 3, 1, 2, -3, 1, -2, -3, 1, 2, 3, -1, -2, 3, -1, 2, -3, -1, -2, 3, -1, -2, -3, -1, 2, -3, -1, 2, 3, 1, 2, 3, -1, 2, -3, 1, 2, 3, -1, 2, -3, -1, 2, -3, 1, -2, 3, -1, -2, 3, 1, -2, -3, -1, -2, 3, 1, -2, -3, 1, -2, -3, -1, 2, 3, 1, -2, 3, 1, 2, 3, -1, -2, 3, 1, -2, 3, -1, 2, 3, -1, -2, -3, 1, 2, -3, 1, -2, -3, -1, 2, -3, 1, 2, -3, -1, -2, -3, -1 )
-
-[sub_resource type="Resource" id=392]
-script = ExtResource( 7 )
-item_data = ExtResource( 25 )
-quantity = 5
-
 [node name="Main" type="Spatial"]
+script = ExtResource( 14 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 3
@@ -217,104 +208,112 @@ visible = false
 [node name="LoadingScreen" parent="UI/PauseMenu" instance=ExtResource( 30 )]
 visible = false
 
-[node name="Lighting" type="Spatial" parent="."]
+[node name="LoadingScreen" parent="." instance=ExtResource( 30 )]
+visible = false
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="MiscObjects" type="Spatial" parent="."]
+
+[node name="LadderBackdrop" type="MeshInstance" parent="MiscObjects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -12 )
+mesh = SubResource( 390 )
+skeleton = NodePath("../..")
+
+[node name="StaticBody" type="StaticBody" parent="MiscObjects/LadderBackdrop"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MiscObjects/LadderBackdrop/StaticBody"]
+shape = SubResource( 391 )
+
+[node name="CrouchTest" type="MeshInstance" parent="MiscObjects"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 5 )
+mesh = SubResource( 386 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 387 )
+
+[node name="StaticBody" type="StaticBody" parent="MiscObjects/CrouchTest"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MiscObjects/CrouchTest/StaticBody"]
+shape = SubResource( 388 )
+
+[node name="TestGround" type="MeshInstance" parent="MiscObjects"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 383 )
+skeleton = NodePath("../..")
+
+[node name="StaticBody" type="StaticBody" parent="MiscObjects/TestGround"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MiscObjects/TestGround/StaticBody"]
+shape = SubResource( 384 )
+
+[node name="Environment" type="Spatial" parent="."]
+
+[node name="Lighting" type="Spatial" parent="Environment"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource( 2 )
-
-[node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 2, 0 )
 
 [node name="player_role_spawns" type="Spatial" parent="."]
 
 [node name="prole_spawn_01" parent="player_role_spawns" instance=ExtResource( 42 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.1, 0 )
 role = ExtResource( 23 )
+required_items = [ ExtResource( 8 ) ]
+optional_random_items = [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ]
+random_amount_of_items_to_give = 2
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
-mesh = SubResource( 383 )
+[node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 2, 0 )
 
-[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+[node name="GameObjects" type="Spatial" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
-shape = SubResource( 384 )
-
-[node name="production_machine" parent="." instance=ExtResource( 9 )]
+[node name="production_machine" parent="GameObjects" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
 input_item_datas = [ ExtResource( 8 ) ]
 output_item_datas = [ ExtResource( 10 ), ExtResource( 12 ) ]
 machine_name = "test machine"
 payday = 5
 
-[node name="Pickup" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-slot_data = SubResource( 385 )
-
-[node name="vendor" parent="." instance=ExtResource( 11 )]
+[node name="vendor" parent="GameObjects" instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3 )
 
-[node name="processor" parent="." instance=ExtResource( 13 )]
+[node name="processor" parent="GameObjects" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0 )
 
-[node name="WaterArea" parent="." instance=ExtResource( 15 )]
+[node name="WaterArea" parent="GameObjects" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8 )
 bounds = Vector3( 5, 1, 5 )
 
-[node name="crouch_test" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 5 )
-mesh = SubResource( 386 )
-material/0 = SubResource( 387 )
-
-[node name="StaticBody" type="StaticBody" parent="crouch_test"]
-
-[node name="CollisionShape" type="CollisionShape" parent="crouch_test/StaticBody"]
-shape = SubResource( 388 )
-
-[node name="Amoeba" parent="." instance=ExtResource( 16 )]
+[node name="Amoeba" parent="GameObjects" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -6 )
 
-[node name="BioGrower" parent="." instance=ExtResource( 17 )]
+[node name="BioGrower" parent="GameObjects" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 7 )
 
-[node name="FertilizerProducer" parent="." instance=ExtResource( 18 )]
+[node name="FertilizerProducer" parent="GameObjects" instance=ExtResource( 18 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, -9 )
 
-[node name="IndustrialSink" parent="." instance=ExtResource( 19 )]
+[node name="IndustrialSink" parent="GameObjects" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 10 )
 
-[node name="game_end_money" parent="." instance=ExtResource( 14 )]
-
-[node name="game_end_stem_cells" parent="." instance=ExtResource( 21 )]
-
-[node name="Ladder" parent="." instance=ExtResource( 22 )]
+[node name="Ladder" parent="GameObjects" instance=ExtResource( 22 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -10 )
 bounds = Vector3( 1, 3, 0.5 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Ladder"]
+[node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladder"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4 )
 mesh = SubResource( 389 )
 
-[node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -12 )
-mesh = SubResource( 390 )
-
-[node name="StaticBody" type="StaticBody" parent="MeshInstance2"]
-
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance2/StaticBody"]
-shape = SubResource( 391 )
-
-[node name="Generator" parent="." instance=ExtResource( 24 )]
+[node name="Generator" parent="GameObjects" instance=ExtResource( 24 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7 )
 bounds = Vector3( 5, 1, 5 )
 
-[node name="Pickup2" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2 )
-slot_data = SubResource( 392 )
+[node name="TicketMachine" parent="GameObjects" instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -4 )
+collision_layer = 2
+collision_mask = 10
 
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]

@@ -18,7 +18,7 @@ func _ready():
 	hydration_prog_bar.init(0, timer.wait_time)
 	bio_prog_bar.init(0, 10)
 	timer.paused = true
-	randomize()
+	rng.randomize()
 
 func _process(_delta):
 	if timer.time_left > 0:
