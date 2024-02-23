@@ -186,12 +186,6 @@ func use_slot_data(slot_data): #use functionality of items
 
 func kill():
 	Gamestate.emit_signal("on_player_death")
-	Gamestate.reset_player_equipment() # remove weapon and armor from player
-	for slot_data in Gamestate.player_inventory.slot_datas: # take items from inventory if checked
-		if slot_data:
-			if slot_data.item_data.drop_on_death:
-				Gamestate.player_inventory.take_item(slot_data)
-	
 	Globals.current_ui.visible = false #hides the player's inventory screen on death
 	if Globals.current_ui.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #hide player mouse if visible
@@ -199,6 +193,14 @@ func kill():
 	get_tree().get_root().add_child(player_dead)
 	player_dead.global_transform = Globals.current_player.global_transform
 	var corpse = Globals.create_corpse(self)
+	corpse.init_inventory_size(Gamestate.player_inventory.size() + Gamestate.equip_player_inventory.size() + Gamestate.weapon_player_inventory.size())
+	corpse.inventory.add_item(Gamestate.equip_player_inventory[0])
+	for wep in Gamestate.weapon_player_inventory:
+		corpse.inventory.add_item(wep)
+	for item in Gamestate.player_inventory:
+		corpse.inventory.add_item(item)
+	Gamestate.reset_player_equipment()
+	Gamestate.reset_player_inventory()
 	player_dead.get_node("PlayerSpawnTimer").wait_time = corpse.get_node("DecayTimer").wait_time #reset spawn time
 	player_dead.play_death_sound()
 	queue_free() #remove this player object
