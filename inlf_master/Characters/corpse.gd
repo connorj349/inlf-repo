@@ -1,7 +1,5 @@
 extends Interactable
 
-#must be role resource
-export(Resource) var harvest_role # could be an array in future, for cultist/korpsman/misfit
 # needs to be slot data
 export(Resource) var common_organ
 export(Resource) var uncommon_organ
@@ -18,6 +16,7 @@ var corpse_damage = Damage.new()
 
 func _ready():
 	corpse_damage.amount = 1
+	corpse_damage.type = Damage.DamageType.Blunt
 	randomize()
 	# spawn gib effects and blood effects to simulate corpse explosion after death
 	health.init()
@@ -29,16 +28,17 @@ func _ready():
 	spawn_blood()
 
 func on_hurt(damage):
-	health.health -= damage.amount
+	match(damage):
+		Damage.DamageType.Sharp:
+			spawn_organ()
+			big_flesh.visible = false
+		_:
+			health.health -= damage.amount
 
 func _interact(_actor): # what does this do to actually help the non-cultist player?
 	if can_interact:
-		if _actor.role == harvest_role:
-			spawn_organ()
-			big_flesh.visible = false
-		else:
-			_actor.on_heal(25)
-			big_flesh.visible = false
+		_actor.on_heal(25)
+		big_flesh.visible = false
 		spawn_blood()
 		on_hurt(75)
 		can_interact = false
