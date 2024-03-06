@@ -66,8 +66,8 @@ func buy_slot_data(index): # use money to put item from vendor inv directly into
 	if not slot_data:
 		return
 	
-	if Gamestate.can_afford(slot_data.item_data.price):
-		Gamestate.bones_updated(-slot_data.item_data.price)
+	if Gamestate.bones >= slot_data.item_data.price:
+		Gamestate.bones -= slot_data.item_data.price
 		Globals.emit_signal("on_pop_notification", "I bought %s, I now have %s bones." % [slot_data.item_data.name, Gamestate.bones])
 		new_added_slot_data = slot_data.duplicate() #creating a new item to be put into player inventory
 		new_added_slot_data.quantity = 1

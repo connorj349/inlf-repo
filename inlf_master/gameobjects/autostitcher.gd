@@ -31,9 +31,9 @@ func on_hurt(_amount): #if caught will be attacked by sanitars
 		pass
 
 func _interact(_actor):
-	if can_interact and Gamestate.can_afford(heal_cost):
+	if can_interact and Gamestate.bones >= heal_cost:
 		start_healing()
-		Gamestate.bones_updated(-heal_cost)
+		Gamestate.bones -= heal_cost
 
 func start_healing():
 	if timer.is_stopped():

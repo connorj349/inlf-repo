@@ -18,7 +18,7 @@ func _ready():
 
 func _interact(_actor):
 	if Gamestate.player_inventory.take_item(repair_item):
-		Gamestate.bones_updated(Globals.meta_repair_reward_amount) # reward bones; maybe make stemcells
+		Gamestate.bones += Globals.meta_repair_reward_amount # reward bones; maybe make stemcells
 		health.heal(Globals.meta_repair_amount)
 		if not active:
 			active = true

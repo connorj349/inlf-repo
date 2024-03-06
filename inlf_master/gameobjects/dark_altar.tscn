@@ -1,56 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://raw_assets/models/altar.glb" type="PackedScene" id=1]
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://item/items/organ_ancientbrain.tres" type="Resource" id=4]
-[ext_resource path="res://inventory/slot_data.gd" type="Script" id=5]
-[ext_resource path="res://item/items/organ_evileyes.tres" type="Resource" id=6]
-[ext_resource path="res://item/items/organ_vilegut.tres" type="Resource" id=7]
-
-[sub_resource type="GDScript" id=8]
-script/source = "extends Interactable
-
-export(Array, Resource) var possible_materials # the materials that could be required for a ritual
-
-onready var label = $CanvasLayer/Info/VBoxContainer/Label2 # display ritual requirements
-
-var current_active_required_mat
-var rng = RandomNumberGenerator.new()
-
-func _ready():
-	rng.randomize()
-
-func _interact(_actor): # can only use if player is an antagonist
-	if _actor.role.role_type == Role.Role_Type.Cultist:
-		if current_active_required_mat:
-			if Gamestate.player_inventory.take_item(current_active_required_mat):
-				Globals.current_player.magick.increase_max_magick(1) # increase max magick +1
-				Gamestate.rot_modify(1) # increase rot
-				Globals.emit_signal(\"on_pop_notification\", \"[color=#33FFF3]My knowledge in the arcane has increased[/color]\")
-				Globals.emit_signal(\"on_pop_notification\", \"[color=red]The rot grows[/color]\")
-				label.text = \"interact with to start a gruesome ritual\"
-				current_active_required_mat = null # remove reference
-		else:
-			if possible_materials.size() > 0:
-				var random_index = rng.randi_range(0, possible_materials.size() - 1)
-				current_active_required_mat = possible_materials[random_index]
-				label.text = \"offer a %s to the dark altar to complete the ritual\" % current_active_required_mat.item_data.name
-"
-
-[sub_resource type="Resource" id=5]
-script = ExtResource( 5 )
-item_data = ExtResource( 4 )
-quantity = 1
-
-[sub_resource type="Resource" id=6]
-script = ExtResource( 5 )
-item_data = ExtResource( 7 )
-quantity = 1
-
-[sub_resource type="Resource" id=7]
-script = ExtResource( 5 )
-item_data = ExtResource( 6 )
-quantity = 1
+[ext_resource path="res://gameobjects/dark_altar.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -116,8 +68,7 @@ tracks/1/keys = {
 [node name="dark_altar" type="StaticBody"]
 collision_layer = 2
 collision_mask = 8
-script = SubResource( 8 )
-possible_materials = [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ]
+script = ExtResource( 3 )
 
 [node name="altar" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )

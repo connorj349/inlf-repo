@@ -18,9 +18,13 @@ signal on_player_death
 signal on_player_spawn
 # warning-ignore:unused_signal
 signal on_stem_cells_changed
+signal infections_count_changed
 
-var rot = 0 # world rot count
-var bones = 0 # player money
+var rot = 0 setget set_rot
+var bones = 0 setget set_bones
+var bloaters = 0 setget set_bloaters
+var tumors = 0 setget set_tumors
+var infections setget , get_infections
 
 func reset_player_equipment():
 	equip_player_inventory.take_item(Gamestate.equip_player_inventory.slot_datas[0])
@@ -31,19 +35,28 @@ func reset_player_inventory():
 		if player_inventory.slot_datas[item]:
 			player_inventory.take_item(player_inventory.slot_datas[item])
 
-func rot_modify(amount):
-	rot = clamp(rot + amount, 0, Globals.rot_max_value)
-	emit_signal("rot_changed")
+func set_rot(value):
+	rot = clamp(value, 0, Globals.rot_max_value)
 	if rot >= Globals.rot_max_value:
 		emit_signal("on_rot_reached_max")
+		return
+	emit_signal("rot_changed", rot)
 
-func can_afford(amount):
-	return bones >= amount
+func set_bones(value):
+	bones = clamp(value, 0, 9999)
+	emit_signal("bones_changed", bones)
+	if value > 0:
+		Globals.emit_signal("on_pop_notification", "I received %s bones." % value)
+	elif value < 0:
+		Globals.emit_signal("on_pop_notification", "I have lost %s bones." % value)
 
-func bones_updated(amount):
-	if amount < 0:
-		Globals.emit_signal("on_pop_notification", "I have lost %s bones." % amount)
-	else:
-		Globals.emit_signal("on_pop_notification", "I received %s bones." % amount)
-	bones = clamp(bones + amount, 0, 9999)
-	emit_signal("bones_changed")
+func set_bloaters(value):
+	bloaters = clamp(value, 0, 9999)
+	emit_signal("infections_count_changed")
+
+func set_tumors(value):
+	tumors = clamp(value, 0, 9999)
+	emit_signal("infections_count_changed")
+
+func get_infections():
+	return bloaters + tumors

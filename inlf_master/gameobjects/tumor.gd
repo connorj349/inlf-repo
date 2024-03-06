@@ -22,6 +22,7 @@ func _ready():
 	$RotTimer.wait_time = rot_inrease_frequency #set frequency by which rot is increased
 	anim_player.play("RESET")
 	anim_player.seek(0, true)
+	Gamestate.tumors += 1
 
 func on_hurt(damage):
 	if dead:
@@ -37,6 +38,7 @@ func on_hurt(damage):
 	# spawn a Rotroach(s) that immediately attack the player
 
 func on_death():
+	Gamestate.tumors -= 1
 	dead = true
 	# spawn tumor bloody pop effect
 	# spawn rotroach hive(this hive spawns 3 roaches, then dissapears)

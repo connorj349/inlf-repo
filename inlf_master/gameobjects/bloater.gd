@@ -21,6 +21,7 @@ func _ready():
 	timer.wait_time = incubation_frequency_amount
 	anim_player.play("RESET")
 	anim_player.seek(0, true)
+	Gamestate.bloaters += 1
 
 func on_hurt(damage):
 	if dead:
@@ -28,6 +29,7 @@ func on_hurt(damage):
 	health.hurt(damage.amount) # just take damage, no additional calculations required
 
 func on_death():
+	Gamestate.bloaters -= 1
 	dead = true
 	anim_player.play("pop")
 	yield(health.death_sound, "finished") #wait until the death sound is finished

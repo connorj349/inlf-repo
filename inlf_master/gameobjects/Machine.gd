@@ -59,11 +59,11 @@ func button_press(index):
 		if index == current_index:
 			button_presses_remaining -= 1
 			self.materials -= 1
-			Gamestate.bones_updated(payday)
+			Gamestate.bones += payday
 			self.current_index = rng.randi_range(0, 2)
 			if button_presses_remaining <= 0:
 				button_presses_remaining = 5
-				Gamestate.bones_updated(payday * 2)
+				Gamestate.bones += payday * 2
 				queued_items += 1
 				timer.start()
 				machine_loop.play()
@@ -102,7 +102,7 @@ func _on_ItemDeposit_body_entered(body):
 		for item in input_item_datas:
 			if body.slot_data.item_data == item:
 				for i in body.slot_data.quantity:
-					Gamestate.bones_updated(payday)
+					Gamestate.bones += payday
 					self.materials += 1
 				accept_input.play()
 				body.queue_free()
