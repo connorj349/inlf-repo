@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://raw_assets/models/slumtown/slumtown.glb" type="PackedScene" id=1]
+
+[node name="slumtown_model" type="Spatial"]
+
+[node name="slumtown" parent="." instance=ExtResource( 1 )]

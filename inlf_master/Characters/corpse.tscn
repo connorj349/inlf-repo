@@ -192,7 +192,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.7, 0 )
 shape = SubResource( 1 )
 
 [node name="Health" parent="." instance=ExtResource( 4 )]
-allowed_max_health = 10
+allowed_max_health = 25
 
 [node name="DecayTimer" type="Timer" parent="."]
 autostart = true
@@ -256,11 +256,13 @@ anims/fade_in = SubResource( 7 )
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 mesh = SubResource( 12 )
 skeleton = NodePath("")
+material/0 = null
 
 [node name="flesh_large" type="MeshInstance" parent="."]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 mesh = SubResource( 13 )
 skeleton = NodePath("")
+material/0 = null
 
 [node name="organ_spawnpoint" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

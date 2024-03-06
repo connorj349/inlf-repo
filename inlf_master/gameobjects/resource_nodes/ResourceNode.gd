@@ -37,11 +37,11 @@ func on_hurt(damage):
 		if damage.type == Damage.DamageType.Fists:
 			if punching_hurts:
 				Globals.current_player.on_hurt(damage) #replace with damage from this object
-			health.hurt(damage.amount) #always damage the resource_node with fists, but hurt player
+			health.health -= damage.amount #always damage the resource_node with fists, but hurt player
 			return
 		elif damage.type == damage_type:
 			if random_result < 0.5: #fifty percent chance to deal damage to object
-				health.hurt(damage.amount)
+				health.health -= damage.amount
 				return
 		else:
-			health.hurt(damage.amount) #deal damage to object
+			health.health -= damage.amount #deal damage to object

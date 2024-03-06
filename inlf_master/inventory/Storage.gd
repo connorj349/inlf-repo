@@ -4,7 +4,7 @@ class_name Storage
 signal toggle_inventory(external_inventory_owner)
 
 export(Resource) var inventory_data
-export(Array, Resource) var items # change to loot_table
+export(Array, Resource) var item_datas # change to loot_table
 export(float) var reset_time = 300.0 # time until the inventory resets itself; default to 5 minutes
 export(bool) var does_reset = false # determines if this storage container will reset its inventory and repopulate with new
 
@@ -26,9 +26,11 @@ func _on_Timer_timeout():
 			if item:
 				inventory_data.take_item(item)
 		
-		var random_amount = randi() % items.size()
+		var random_amount = randi() % item_datas.size()
 		for _i in range(0, random_amount):
-			var random_item = items[randi() % items.size()] # choose a random item
-			inventory_data.add_item(random_item)
+			var new_slot = SlotData.new()
+			var random_item = item_datas[randi() % item_datas.size()] # choose a random item
+			new_slot.item_data = random_item
+			inventory_data.add_item(new_slot)
 	else:
 		$Timer.one_shot = true

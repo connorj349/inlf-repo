@@ -398,28 +398,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 27 )
 
-[node name="health_bar" type="TextureProgress" parent="UI/Bars/health_pox"]
-margin_right = 1100.0
-margin_bottom = 35.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource( 16 )
-value = 35.0
-texture_progress = ExtResource( 11 )
-tint_progress = Color( 0.627451, 0.0901961, 0.0901961, 1 )
-nine_patch_stretch = true
-script = ExtResource( 19 )
-
-[node name="Label" type="Label" parent="UI/Bars/health_pox/health_bar"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -17.5
-margin_right = 1100.0
-margin_bottom = 17.5
-custom_fonts/font = SubResource( 8 )
-text = "blood"
-valign = 1
-
 [node name="pox_bar" type="TextureProgress" parent="UI/Bars/health_pox"]
 margin_right = 1100.0
 margin_bottom = 35.0
@@ -433,17 +411,74 @@ tint_progress = Color( 0.623529, 0.67451, 0, 1 )
 nine_patch_stretch = true
 script = ExtResource( 19 )
 
-[node name="Label" type="Label" parent="UI/Bars/health_pox/pox_bar"]
-anchor_left = 1.0
-anchor_top = 0.5
+[node name="health_bar" type="TextureProgress" parent="UI/Bars/health_pox"]
+margin_right = 1100.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 16 )
+value = 35.0
+texture_progress = ExtResource( 11 )
+tint_progress = Color( 0.627451, 0.0901961, 0.0901961, 1 )
+nine_patch_stretch = true
+script = ExtResource( 19 )
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/Bars/health_pox/health_bar"]
 anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -1086.0
-margin_top = -17.5
-margin_bottom = 17.5
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="UI/Bars/health_pox/health_bar/VBoxContainer"]
+margin_right = 216.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
 custom_fonts/font = SubResource( 8 )
-text = "POX"
-align = 2
+text = "blood"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="UI/Bars/health_pox/health_bar/VBoxContainer"]
+margin_left = 220.0
+margin_right = 437.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 8 )
+text = "blood"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="UI/Bars/health_pox/health_bar/VBoxContainer"]
+margin_left = 441.0
+margin_right = 658.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 8 )
+text = "blood"
+align = 1
+valign = 1
+
+[node name="Label4" type="Label" parent="UI/Bars/health_pox/health_bar/VBoxContainer"]
+margin_left = 662.0
+margin_right = 879.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 8 )
+text = "blood"
+align = 1
+valign = 1
+
+[node name="Label5" type="Label" parent="UI/Bars/health_pox/health_bar/VBoxContainer"]
+margin_left = 883.0
+margin_right = 1100.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 8 )
+text = "blood"
+align = 1
 valign = 1
 
 [node name="empty_bar" type="ProgressBar" parent="UI/Bars"]

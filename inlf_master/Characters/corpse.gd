@@ -46,11 +46,14 @@ func _interact(_actor):
 			big_flesh.visible = false
 			spawn_blood()
 			on_hurt(75)
-		if inventory.slot_datas > 0:
-			Globals.create_pickup(inventory.slot_datas[0]) # choose random index, give item
-			inventory.take_item(inventory.slot_datas[0])
-			Globals.current_player.health.pox += 5
-			# Globals.current_player.dispair += 10
+		if inventory.slot_datas.size() > 0:
+			for item in inventory.slot_datas:
+				if item:
+					Globals.create_pickup(item) # choose random index, give item
+					inventory.take_item(item)
+					Globals.current_player.health.pox += 5
+					# Globals.current_player.dispair += 10
+					return
 
 func spawn_blood():
 	var blood = blood_spray.instance()
@@ -59,7 +62,7 @@ func spawn_blood():
 
 func _on_DecayTimer_timeout():
 	on_hurt(corpse_damage)
-	Gamestate.rot_modify(1)
+	Gamestate.rot += 1
 	if health.health > 75:
 		state_text.text = "Fresh"
 	elif health.health < 75 and health.health > 25:

@@ -32,7 +32,9 @@ func _ready():
 	health.init() #setup sarting health
 	health.connect("health_changed", health_bar, "update_bar") #setup healthbar connection
 	health.connect("max_health_changed", health_bar, "init", [health.health, health.max_health])
+	health.connect("max_health_changed", self, "update_health_and_pox_text_status")
 	health.connect("pox_changed", pox_bar, "update_bar")
+	health.connect("pox_changed", self, "update_health_and_pox_text_status")
 	health.connect("dead", self, "kill") # setup death functionality
 	health_bar.init(health.health, health.max_health)
 	pox_bar.init(health.pox, 100)
@@ -50,9 +52,16 @@ func _ready():
 		magick.init(0)
 		magick_amount_left.visible = false
 
+func update_health_and_pox_text_status(_health_or_pox):
+	for element in $UI/Bars/health_pox/health_bar/VBoxContainer:
+		element.set_visible(false)
+	#if health.max_health > certain_amount -> put healthtext on quadrant
+	# at certain thresholds, display the blood/POX text in different areas
+	# set the used elements to visible
+
 func on_hurt(damage): #used by all other objects that want to hurt the player
-	if armor > 0:
-		armor -= damage.amount
+	if armor.armor > 0:
+		armor.armor -= damage.amount
 	else:
 		deal_damage(damage)
 	# play armor damaged noises
@@ -193,12 +202,15 @@ func kill():
 	get_tree().get_root().add_child(player_dead)
 	player_dead.global_transform = Globals.current_player.global_transform
 	var corpse = Globals.create_corpse(self)
-	corpse.init_inventory_size(Gamestate.player_inventory.size() + Gamestate.equip_player_inventory.size() + Gamestate.weapon_player_inventory.size())
-	corpse.inventory.add_item(Gamestate.equip_player_inventory[0])
-	for wep in Gamestate.weapon_player_inventory:
-		corpse.inventory.add_item(wep)
-	for item in Gamestate.player_inventory:
-		corpse.inventory.add_item(item)
+	corpse.init_inventory_size(Gamestate.player_inventory.slot_datas.size() + Gamestate.equip_player_inventory.slot_datas.size() + Gamestate.weapon_player_inventory.slot_datas.size())
+	if Gamestate.equip_player_inventory.slot_datas[0]: # prevent errors
+		corpse.inventory.add_item(Gamestate.equip_player_inventory.slot_datas[0])
+	for wep in Gamestate.weapon_player_inventory.slot_datas:
+		if wep:
+			corpse.inventory.add_item(wep)
+	for item in Gamestate.player_inventory.slot_datas:
+		if item:
+			corpse.inventory.add_item(item)
 	Gamestate.reset_player_equipment()
 	Gamestate.reset_player_inventory()
 	player_dead.get_node("PlayerSpawnTimer").wait_time = corpse.get_node("DecayTimer").wait_time #reset spawn time
