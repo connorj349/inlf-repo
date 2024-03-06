@@ -32,9 +32,9 @@ func _ready():
 	health.init() #setup sarting health
 	health.connect("health_changed", health_bar, "update_bar") #setup healthbar connection
 	health.connect("max_health_changed", health_bar, "init", [health.health, health.max_health])
-	health.connect("max_health_changed", self, "update_health_and_pox_text_status")
+	health.connect("max_health_changed", self, "update_health_and_pox_text_placement")
 	health.connect("pox_changed", pox_bar, "update_bar")
-	health.connect("pox_changed", self, "update_health_and_pox_text_status")
+	health.connect("pox_changed", self, "update_health_and_pox_text_placement")
 	health.connect("dead", self, "kill") # setup death functionality
 	health_bar.init(health.health, health.max_health)
 	pox_bar.init(health.pox, 100)
@@ -52,12 +52,21 @@ func _ready():
 		magick.init(0)
 		magick_amount_left.visible = false
 
-func update_health_and_pox_text_status(_health_or_pox):
-	for element in $UI/Bars/health_pox/health_bar/VBoxContainer:
-		element.set_visible(false)
-	#if health.max_health > certain_amount -> put healthtext on quadrant
-	# at certain thresholds, display the blood/POX text in different areas
-	# set the used elements to visible
+func update_health_and_pox_text_placement(_passed_health_or_pox):
+	for element in $UI/Bars/health_pox/pox_bar/VBoxContainer.get_children():
+		element.text = ""
+	if health.max_health > health.allowed_max_health * .5:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label3.text = "blood"
+	elif health.max_health > health.allowed_max_health * .25:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label2.text = "blood"
+	elif health.max_health > 0:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label.text = "blood"
+	if health.pox > 50:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label3.text = "POX"
+	elif health.pox > 25:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label4.text = "POX"
+	elif health.pox > 0:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label5.text = "POX"
 
 func on_hurt(damage): #used by all other objects that want to hurt the player
 	if armor.armor > 0:

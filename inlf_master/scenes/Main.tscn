@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -35,6 +35,12 @@
 [ext_resource path="res://inventory/Storage.tscn" type="PackedScene" id=33]
 [ext_resource path="res://item/items/heal_1.tres" type="Resource" id=34]
 [ext_resource path="res://item/items/shotgun.tres" type="Resource" id=35]
+[ext_resource path="res://gameobjects/rot_telecom.tscn" type="PackedScene" id=36]
+[ext_resource path="res://gameobjects/autostitcher.tscn" type="PackedScene" id=37]
+[ext_resource path="res://gameobjects/Generator.tscn" type="PackedScene" id=38]
+[ext_resource path="res://item/items/9ammo.tres" type="Resource" id=39]
+[ext_resource path="res://gameobjects/resource_nodes/boulder.tscn" type="PackedScene" id=40]
+[ext_resource path="res://gameobjects/metastabilizer.tscn" type="PackedScene" id=41]
 [ext_resource path="res://gameobjects/sawblade.tscn" type="PackedScene" id=42]
 
 [sub_resource type="StyleBoxFlat" id=380]
@@ -255,7 +261,6 @@ bounds = Vector3( 0.5, 3, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1, 0 )
 mesh = SubResource( 383 )
-material/0 = null
 
 [node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7 )
@@ -263,7 +268,6 @@ bounds = Vector3( 1, 4, 0.25 )
 
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder2"]
 mesh = SubResource( 384 )
-material/0 = null
 
 [node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4 )
@@ -272,7 +276,6 @@ bounds = Vector3( 0.25, 4, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder3"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 385 )
-material/0 = null
 
 [node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6 )
@@ -281,7 +284,6 @@ bounds = Vector3( 0.5, 8, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder4"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 386 )
-material/0 = null
 
 [node name="WoodedArea" type="Spatial" parent="GameObjects"]
 
@@ -309,6 +311,10 @@ input_item_datas = [ ExtResource( 13 ) ]
 output_item_datas = [ ExtResource( 16 ), ExtResource( 15 ) ]
 machine_name = "tool factory"
 payday = 3
+
+[node name="Generator" parent="GameObjects/ToolFactory" instance=ExtResource( 38 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5.5, -23 )
+bounds = Vector3( 4, 1, 4 )
 
 [node name="Canal" type="Spatial" parent="GameObjects"]
 
@@ -348,6 +354,50 @@ inventory_data = SubResource( 387 )
 item_datas = [ ExtResource( 26 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 27 ), ExtResource( 13 ) ]
 reset_time = 120.0
 does_reset = true
+
+[node name="rot_telecom" parent="GameObjects/ProleSpawn" instance=ExtResource( 36 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55, 1, -35 )
+
+[node name="metastabilizer" parent="GameObjects/ProleSpawn" instance=ExtResource( 41 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 54, 1, -39 )
+
+[node name="MedicalArea" type="Spatial" parent="GameObjects"]
+
+[node name="autostitcher" parent="GameObjects/MedicalArea" instance=ExtResource( 37 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1.5, -24.5 )
+heal_cost = 50
+
+[node name="WeaponFactory" type="Spatial" parent="GameObjects"]
+
+[node name="production_machine" parent="GameObjects/WeaponFactory" instance=ExtResource( 19 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.7, 5.5, -30 )
+input_item_datas = [ ExtResource( 13 ) ]
+output_item_datas = [ ExtResource( 39 ), ExtResource( 27 ), ExtResource( 35 ) ]
+machine_name = "weapon factory"
+production_time = 5.0
+payday = 10
+
+[node name="Generator" parent="GameObjects/WeaponFactory" instance=ExtResource( 38 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 6, -25 )
+bounds = Vector3( 1, 1, 6 )
+
+[node name="Quarry" type="Spatial" parent="GameObjects"]
+
+[node name="RockSpawner" parent="GameObjects/Quarry" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -56, -15, -27 )
+node_to_spawn = ExtResource( 40 )
+spawn_frequency = 120.0
+
+[node name="Generator" parent="GameObjects/Quarry" instance=ExtResource( 38 )]
+transform = Transform( 0.98106, 0.0871557, -0.172987, -0.0858316, 0.996195, 0.0151344, 0.173648, 0, 0.984808, -42, -20.1, -29 )
+bounds = Vector3( 4, 1, 4 )
+
+[node name="production_machine" parent="GameObjects/Quarry" instance=ExtResource( 19 )]
+transform = Transform( 0.96225, -0.0871557, 0.257834, 0.084186, 0.996195, 0.0225576, -0.258819, 0, 0.965926, -46, -20.1, -28 )
+input_item_datas = [ ExtResource( 8 ) ]
+output_item_datas = [ ExtResource( 34 ) ]
+machine_name = "lunch factory"
+payday = 2
 
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]

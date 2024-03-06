@@ -37,4 +37,4 @@ func _on_Timer_timeout():
 	if active:
 		if health.health > 0:
 			status_label.text = "Status: operational"
-			Gamestate.rot_modify(-1) # maybe make this a global const value
+			Gamestate.rot -= 1 # maybe make this a global const value
