@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-slot_datas = [ null, null ]
+slot_datas = [ null ]

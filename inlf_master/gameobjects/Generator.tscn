@@ -9,6 +9,7 @@
 [ext_resource path="res://item/items/bio_fuel.tres" type="Resource" id=7]
 
 [sub_resource type="BoxShape" id=1]
+resource_local_to_scene = true
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
@@ -135,8 +136,10 @@ tracks/3/keys = {
 }
 
 [sub_resource type="BoxShape" id=8]
+resource_local_to_scene = true
 
 [sub_resource type="BoxShape" id=9]
+resource_local_to_scene = true
 
 [node name="Generator" type="StaticBody"]
 collision_layer = 2

@@ -261,6 +261,7 @@ bounds = Vector3( 0.5, 3, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1, 0 )
 mesh = SubResource( 383 )
+material/0 = null
 
 [node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7 )
@@ -268,6 +269,7 @@ bounds = Vector3( 1, 4, 0.25 )
 
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder2"]
 mesh = SubResource( 384 )
+material/0 = null
 
 [node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4 )
@@ -276,6 +278,7 @@ bounds = Vector3( 0.25, 4, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder3"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 385 )
+material/0 = null
 
 [node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6 )
@@ -284,6 +287,7 @@ bounds = Vector3( 0.5, 8, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder4"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 386 )
+material/0 = null
 
 [node name="WoodedArea" type="Spatial" parent="GameObjects"]
 
@@ -313,8 +317,8 @@ machine_name = "tool factory"
 payday = 3
 
 [node name="Generator" parent="GameObjects/ToolFactory" instance=ExtResource( 38 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5.5, -23 )
-bounds = Vector3( 4, 1, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 5.5, -23 )
+bounds = Vector3( 4, 1, 1 )
 
 [node name="Canal" type="Spatial" parent="GameObjects"]
 
@@ -378,7 +382,7 @@ production_time = 5.0
 payday = 10
 
 [node name="Generator" parent="GameObjects/WeaponFactory" instance=ExtResource( 38 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 6, -25 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 5.5, -25 )
 bounds = Vector3( 1, 1, 6 )
 
 [node name="Quarry" type="Spatial" parent="GameObjects"]

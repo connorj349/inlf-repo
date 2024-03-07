@@ -98,6 +98,11 @@ _global_script_classes=[ {
 "class": "Storage",
 "language": "GDScript",
 "path": "res://inventory/Storage.gd"
+}, {
+"base": "Node",
+"class": "ToolTip",
+"language": "GDScript",
+"path": "res://UI/ToolTip.gd"
 } ]
 _global_script_class_icons={
 "Damage": "",
@@ -117,7 +122,8 @@ _global_script_class_icons={
 "SoundPool": "",
 "SoundQueue": "",
 "SoundQueue3D": "",
-"Storage": ""
+"Storage": "",
+"ToolTip": ""
 }
 
 [application]

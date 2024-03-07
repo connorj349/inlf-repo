@@ -1,4 +1,5 @@
 extends ProgressBar
+tool
 
 func init(current_value, m_value):
 	self.max_value = m_value

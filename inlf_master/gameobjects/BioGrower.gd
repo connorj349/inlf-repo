@@ -36,7 +36,7 @@ func _ready():
 	player_use_damage.amount = 10
 
 func _interact(_actor):
-	Globals.current_player.hurt(player_use_damage)
+	Globals.current_player.on_hurt(player_use_damage)
 	self.blood += 10
 
 func _on_ItemDeposit_body_entered(body):

@@ -285,7 +285,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="Camera" type="Camera" parent="Head"]
 cull_mask = 1048571
-far = 50.0
+far = 75.0
 
 [node name="HintObjRayCast" type="RayCast" parent="Head/Camera"]
 enabled = true

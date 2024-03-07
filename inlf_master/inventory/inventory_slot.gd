@@ -8,7 +8,8 @@ onready var quantity_label = $QuantityLabel
 func set_slot_data(slot_data: SlotData):
 	var item_data = slot_data.item_data
 	texture_rect.texture = item_data.texture
-	hint_tooltip = "%s\n%s" % [item_data.name, item_data.description]
+	#hint_tooltip = "%s\n%s" % [item_data.name, item_data.description]
+	$ToolTip._visuals.get_node("Label").text = "%s\n%s" % [item_data.name, item_data.description]
 	
 	if slot_data.quantity > 1:
 		quantity_label.text = "x%s" % slot_data.quantity
