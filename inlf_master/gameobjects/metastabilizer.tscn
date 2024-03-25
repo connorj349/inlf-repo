@@ -1,15 +1,14 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=2]
-[ext_resource path="res://UI/ui_bar.gd" type="Script" id=3]
+[ext_resource path="res://UI/textured_ui_bar.gd" type="Script" id=3]
 [ext_resource path="res://gameobjects/metastabilizer.gd" type="Script" id=4]
-[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://raw_assets/models/metastabilizer.glb" type="PackedScene" id=6]
+[ext_resource path="res://UI/elements/bar_border.png" type="Texture" id=5]
+[ext_resource path="res://models/metastabilizer/mdl-metastabilizer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://inventory/slot_data.gd" type="Script" id=7]
 [ext_resource path="res://item/items/meta_repair.tres" type="Resource" id=8]
-[ext_resource path="res://sound/sounds/autostitcher/autostitcher_hit.wav" type="AudioStream" id=9]
-
+[ext_resource path="res://UI/elements/bar_fill.png" type="Texture" id=9]
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 7 )
@@ -17,28 +16,7 @@ item_data = ExtResource( 8 )
 quantity = 1
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.5, 1, 0.5 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 40
-font_data = ExtResource( 5 )
-
-[sub_resource type="StyleBoxFlat" id=4]
-resource_local_to_scene = true
-bg_color = Color( 0.768627, 0, 0, 0 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-resource_local_to_scene = true
-bg_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 35
-font_data = ExtResource( 5 )
+extents = Vector3( 0.75, 1, 0.75 )
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -67,7 +45,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/fg:bg_color")
+tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -76,10 +54,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.768627, 0, 0, 0 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/bg:bg_color")
+tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -88,7 +66,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 0, 0.733333, 0.666667, 0 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -119,7 +97,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/fg:bg_color")
+tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -128,10 +106,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.768627, 0, 0, 0 ), Color( 0.768627, 0, 0, 1 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ), Color( 0.227451, 0.227451, 0.227451, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/bg:bg_color")
+tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -140,24 +118,23 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.196078 ) ]
+"values": [ Color( 0, 0.733333, 0.666667, 0 ), Color( 0, 0.733333, 0.666667, 1 ) ]
 }
 
 [node name="metastabilizer" type="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 2
 collision_mask = 8
 script = ExtResource( 4 )
 repair_item = SubResource( 9 )
 
+[node name="mdl-metastabilizer" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )
+
 [node name="Health" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1 )
-max_health = 10
-hurt_audio_stream = ExtResource( 9 )
-death_audio_stream = ExtResource( 9 )
-hit_effect = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -167,46 +144,46 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+theme = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -208.0
-margin_top = -69.0
-margin_right = 208.0
-margin_bottom = 69.0
+margin_left = -75.0
+margin_top = -16.0
+margin_right = 75.0
+margin_bottom = 16.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-margin_right = 573.0
-margin_bottom = 67.0
+margin_right = 150.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 3 )
-text = "STATUS:operationial/disabled/infected"
+text = "STATUS"
 align = 1
 valign = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Info/VBoxContainer"]
-margin_top = 71.0
-margin_right = 573.0
-margin_bottom = 138.0
+[node name="ProgressBar" type="TextureProgress" parent="CanvasLayer/Info/VBoxContainer"]
+margin_top = 18.0
+margin_right = 150.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 2 )
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 5 )
 value = 50.0
-percent_visible = false
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 9 )
+tint_under = Color( 0.227451, 0.227451, 0.227451, 0 )
+tint_progress = Color( 0, 0.733333, 0.666667, 0 )
+nine_patch_stretch = true
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer/ProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 6 )
 text = "Integrity"
 align = 1
 valign = 1
@@ -217,9 +194,6 @@ anims/fade_in = SubResource( 8 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-
-[node name="metastabilizer" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.917171, 0.398493, 0, -0.398493, 0.917171, 0, 1.11646, 3 )

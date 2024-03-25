@@ -31,9 +31,7 @@ func on_hurt(damage):
 func on_death():
 	Gamestate.bloaters -= 1
 	dead = true
-	anim_player.play("pop")
 	yield(health.death_sound, "finished") #wait until the death sound is finished
-	yield(anim_player, "animation_finished")
 	#drop random cancer item
 	queue_free()
 

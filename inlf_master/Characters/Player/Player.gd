@@ -1,6 +1,6 @@
 extends KinematicBody
 
-export var mouse_sensitivity = 0.1 # make this into global variable
+export var mouse_sensitivity = 0.1
 
 onready var head = $Head
 onready var camera = $Head/Camera
@@ -211,6 +211,7 @@ func kill():
 	get_tree().get_root().add_child(player_dead)
 	player_dead.global_transform = Globals.current_player.global_transform
 	var corpse = Globals.create_corpse(self)
+	corpse.global_transform.origin = movement.ground_raycast.get_collision_point()
 	corpse.init_inventory_size(Gamestate.player_inventory.slot_datas.size() + Gamestate.equip_player_inventory.slot_datas.size() + Gamestate.weapon_player_inventory.slot_datas.size())
 	if Gamestate.equip_player_inventory.slot_datas[0]: # prevent errors
 		corpse.inventory.add_item(Gamestate.equip_player_inventory.slot_datas[0])

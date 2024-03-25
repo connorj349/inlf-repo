@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://inventory/Storage.gd" type="Script" id=1]
 [ext_resource path="res://inventory/inventory_data.gd" type="Script" id=2]
-[ext_resource path="res://raw_assets/models/locker.glb" type="PackedScene" id=3]
-[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://models/locker/mdl-locker.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=4]
 [ext_resource path="res://sound/SoundQueue.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Resource" id=5]
@@ -13,10 +13,6 @@ slot_datas = [ null, null, null, null, null, null ]
 
 [sub_resource type="BoxShape" id=454]
 extents = Vector3( 1, 1.5, 0.5 )
-
-[sub_resource type="DynamicFont" id=455]
-size = 40
-font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=456]
 length = 0.001
@@ -55,7 +51,8 @@ collision_mask = 8
 script = ExtResource( 1 )
 inventory_data = SubResource( 5 )
 
-[node name="locker" parent="." instance=ExtResource( 3 )]
+[node name="mdl-locker" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5 )
@@ -68,6 +65,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+theme = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
 anchor_left = 0.5
@@ -85,7 +83,6 @@ margin_bottom = 138.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 455 )
 text = "Storage"
 align = 1
 valign = 1
@@ -104,5 +101,3 @@ Count = 3
 bus = "SoundFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-
-[editable path="locker"]

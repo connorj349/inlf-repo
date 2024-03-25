@@ -1,68 +1,18 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://item/item_deposit/ItemDeposit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameobjects/BioGrower.gd" type="Script" id=2]
-[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://UI/ui_bar.gd" type="Script" id=4]
-[ext_resource path="res://raw_assets/models/processor.glb" type="PackedScene" id=5]
+[ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=3]
+[ext_resource path="res://UI/elements/window.png" type="Texture" id=4]
+[ext_resource path="res://UI/textured_ui_bar.gd" type="Script" id=6]
+[ext_resource path="res://UI/elements/panel_square.png" type="Texture" id=7]
+[ext_resource path="res://UI/elements/bar_fill.png" type="Texture" id=8]
+[ext_resource path="res://UI/elements/bar_border.png" type="Texture" id=9]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1.5, 1, 2.5 )
 
 [sub_resource type="BoxShape" id=2]
-
-[sub_resource type="DynamicFont" id=4]
-size = 40
-font_data = ExtResource( 3 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-resource_local_to_scene = true
-bg_color = Color( 0.768627, 0, 0, 0 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="StyleBoxFlat" id=7]
-resource_local_to_scene = true
-bg_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="StyleBoxFlat" id=8]
-resource_local_to_scene = true
-bg_color = Color( 0.156863, 0.207843, 1, 0 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="StyleBoxFlat" id=9]
-resource_local_to_scene = true
-bg_color = Color( 0.501961, 0.372549, 0.156863, 0 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-resource_local_to_scene = true
-bg_color = Color( 0.835294, 0.156863, 1, 0 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="StyleBoxFlat" id=11]
-resource_local_to_scene = true
-bg_color = Color( 0.419608, 0.666667, 0.352941, 0 )
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color( 0, 0, 0, 0 )
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -127,7 +77,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:custom_styles/fg:bg_color")
+tracks/5/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:tint_under")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -136,10 +86,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.768627, 0, 0, 0 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:custom_styles/bg:bg_color")
+tracks/6/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:tint_progress")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -148,10 +98,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 0.513726, 0, 0, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar:custom_styles/fg:bg_color")
+tracks/7/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar:tint_under")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -160,10 +110,10 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.156863, 0.207843, 1, 0 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar:custom_styles/fg:bg_color")
+tracks/8/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar:tint_progress")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -172,10 +122,10 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.501961, 0.372549, 0.156863, 0 ) ]
+"values": [ Color( 0, 0.905882, 1, 0 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar:custom_styles/fg:bg_color")
+tracks/9/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar:tint_under")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -184,10 +134,10 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.835294, 0.156863, 1, 0 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:custom_colors/font_color")
+tracks/10/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar:tint_progress")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -196,10 +146,10 @@ tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 0.65098, 0.458824, 0, 0 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:custom_styles/fg:bg_color")
+tracks/11/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar:tint_under")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -208,7 +158,43 @@ tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.419608, 0.666667, 0.352941, 0 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar:tint_progress")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.87451, 0, 1, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:tint_under")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:tint_progress")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.423529, 0.717647, 0.192157, 0 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -274,7 +260,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:custom_styles/fg:bg_color")
+tracks/5/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:tint_under")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -283,10 +269,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.768627, 0, 0, 0 ), Color( 0.768627, 0, 0, 1 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ), Color( 0.227451, 0.227451, 0.227451, 1 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:custom_styles/bg:bg_color")
+tracks/6/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:tint_progress")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -295,10 +281,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.196078 ) ]
+"values": [ Color( 0.513726, 0, 0, 0 ), Color( 0.513726, 0, 0, 1 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar:custom_styles/fg:bg_color")
+tracks/7/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar:tint_under")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -307,10 +293,10 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.156863, 0.207843, 1, 0 ), Color( 0.156863, 0.207843, 1, 1 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ), Color( 0.227451, 0.227451, 0.227451, 1 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar:custom_styles/fg:bg_color")
+tracks/8/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar:tint_progress")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -319,10 +305,10 @@ tracks/8/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.501961, 0.372549, 0.156863, 0 ), Color( 0.501961, 0.372549, 0.156863, 1 ) ]
+"values": [ Color( 0, 0.905882, 1, 0 ), Color( 0, 0.905882, 1, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar:custom_styles/fg:bg_color")
+tracks/9/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar:tint_under")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -331,10 +317,10 @@ tracks/9/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.835294, 0.156863, 1, 0 ), Color( 0.835294, 0.156863, 1, 1 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ), Color( 0.227451, 0.227451, 0.227451, 1 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:custom_colors/font_color")
+tracks/10/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar:tint_progress")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -343,10 +329,10 @@ tracks/10/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0.65098, 0.458824, 0, 0 ), Color( 0.65098, 0.458824, 0, 1 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:custom_styles/fg:bg_color")
+tracks/11/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar:tint_under")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -355,7 +341,43 @@ tracks/11/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.419608, 0.666667, 0.352941, 0 ), Color( 0.419608, 0.666667, 0.352941, 1 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ), Color( 0.227451, 0.227451, 0.227451, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar:tint_progress")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.87451, 0, 1, 0 ), Color( 0.87451, 0, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:tint_under")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ), Color( 0.227451, 0.227451, 0.227451, 1 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:tint_progress")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.423529, 0.717647, 0.192157, 0 ), Color( 0.423529, 0.717647, 0.192157, 1 ) ]
 }
 
 [node name="BioGrower" type="StaticBody"]
@@ -369,10 +391,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 1 )
-
-[node name="model" type="Spatial" parent="."]
-
-[node name="processor" parent="model" instance=ExtResource( 5 )]
 
 [node name="GrowTimer" type="Timer" parent="."]
 wait_time = 30.0
@@ -393,122 +411,134 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+theme = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -227.0
-margin_top = -125.5
-margin_right = 227.0
-margin_bottom = 125.5
+margin_left = -75.0
+margin_top = -48.0
+margin_right = 75.0
+margin_bottom = 48.0
 
 [node name="NameLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
-margin_right = 454.0
-margin_bottom = 35.0
+margin_right = 150.0
+margin_bottom = 9.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 4 )
 text = "biogrower"
 align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 39.0
-margin_right = 454.0
-margin_bottom = 251.0
+margin_top = 13.0
+margin_right = 150.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
-margin_right = 400.0
-margin_bottom = 212.0
+margin_right = 130.0
+margin_bottom = 83.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="BloodProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 400.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 400, 50 )
-custom_styles/fg = SubResource( 5 )
-custom_styles/bg = SubResource( 7 )
-percent_visible = false
-script = ExtResource( 4 )
+[node name="BloodProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 130.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+tint_under = Color( 0.227451, 0.227451, 0.227451, 0 )
+tint_progress = Color( 0.513726, 0, 0, 0 )
+nine_patch_stretch = true
+script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 4 )
 text = "blood"
 align = 1
 valign = 1
 
-[node name="WaterProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 54.0
-margin_right = 400.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 400, 50 )
-custom_styles/fg = SubResource( 8 )
-custom_styles/bg = SubResource( 7 )
-percent_visible = false
-script = ExtResource( 4 )
+[node name="WaterProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 21.0
+margin_right = 130.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+tint_under = Color( 0.227451, 0.227451, 0.227451, 0 )
+tint_progress = Color( 0, 0.905882, 1, 0 )
+nine_patch_stretch = true
+script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 4 )
 text = "water"
 align = 1
 valign = 1
 
-[node name="FertilizerProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 108.0
-margin_right = 400.0
-margin_bottom = 158.0
-rect_min_size = Vector2( 400, 50 )
-custom_styles/fg = SubResource( 9 )
-custom_styles/bg = SubResource( 7 )
-percent_visible = false
-script = ExtResource( 4 )
+[node name="FertilizerProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 43.0
+margin_right = 130.0
+margin_bottom = 61.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+tint_under = Color( 0.227451, 0.227451, 0.227451, 0 )
+tint_progress = Color( 0.65098, 0.458824, 0, 0 )
+nine_patch_stretch = true
+script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 4 )
 text = "fertilizer"
 align = 1
 valign = 1
 
-[node name="ExoticProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 162.0
-margin_right = 400.0
-margin_bottom = 212.0
-rect_min_size = Vector2( 400, 50 )
-custom_styles/fg = SubResource( 10 )
-custom_styles/bg = SubResource( 7 )
-percent_visible = false
-script = ExtResource( 4 )
+[node name="ExoticProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 65.0
+margin_right = 130.0
+margin_bottom = 83.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+tint_under = Color( 0.227451, 0.227451, 0.227451, 0 )
+tint_progress = Color( 0.87451, 0, 1, 0 )
+nine_patch_stretch = true
+script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 4 )
 text = "exotic"
 align = 1
 valign = 1
 
-[node name="GrowthProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
-margin_left = 404.0
-margin_right = 454.0
-margin_bottom = 212.0
-rect_min_size = Vector2( 50, 0 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 4 )
-custom_styles/fg = SubResource( 11 )
-custom_styles/bg = SubResource( 7 )
-script = ExtResource( 4 )
+[node name="GrowthProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_left = 134.0
+margin_right = 150.0
+margin_bottom = 83.0
+rect_min_size = Vector2( 16, 0 )
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 7 )
+fill_mode = 3
+tint_under = Color( 0.227451, 0.227451, 0.227451, 0 )
+tint_progress = Color( 0.423529, 0.717647, 0.192157, 0 )
+nine_patch_stretch = true
+script = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 6 )

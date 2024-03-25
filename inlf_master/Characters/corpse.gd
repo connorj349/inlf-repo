@@ -10,7 +10,6 @@ onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var state_text = $CanvasLayer/Info/VBoxContainer/ProgressBar/Label
 onready var organ_spawn = $organ_spawnpoint
 
-onready var big_flesh = $flesh_large
 var blood_spray = preload("res://effects/blood_spray.tscn")
 var corpse_damage = Damage.new()
 var inventory = InventoryData.new()
@@ -35,7 +34,6 @@ func on_hurt(damage):
 	match(damage):
 		Damage.DamageType.Sharp:
 			spawn_organ()
-			big_flesh.visible = false
 		_:
 			health.health -= damage.amount
 
@@ -43,7 +41,6 @@ func _interact(_actor):
 	if can_interact:
 		if health.health > 75:
 			_actor.on_heal(25)
-			big_flesh.visible = false
 			spawn_blood()
 			on_hurt(75)
 		if inventory.slot_datas.size() > 0:

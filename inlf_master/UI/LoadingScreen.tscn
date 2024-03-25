@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LoadingScreen.gd" type="Script" id=2]
 [ext_resource path="res://raw_assets/textures/main_level_background.png" type="Texture" id=3]
-[ext_resource path="res://UI/elements/ui_panel.png" type="Texture" id=4]
+[ext_resource path="res://UI/elements/bar_fill.png" type="Texture" id=4]
+[ext_resource path="res://UI/elements/bar_border.png" type="Texture" id=5]
+[ext_resource path="res://UI/themes/main_menu_theme.tres" type="Theme" id=6]
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 3 )
@@ -11,40 +13,27 @@ region_rect = Rect2( 0, 0, 1024, 1024 )
 modulate_color = Color( 0.482353, 0.478431, 0.478431, 1 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 120
+size = 25
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 50
+size = 15
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 60
+size = 25
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 50
+size = 15
 font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 50
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 512, 467 )
-modulate_color = Color( 1, 0, 0, 0.705882 )
-
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 512, 467 )
-modulate_color = Color( 0.552941, 0, 0, 1 )
 
 [node name="LoadingScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 6 )
 script = ExtResource( 2 )
-tips = [ "tumors produce rot over time. destroy them", "cultists can create a circle of blood by pressing the Z key" ]
+tips = [ "tumors produce rot over time. destroy them", "insert certain items in a processor to receive special material used in machines" ]
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
@@ -52,58 +41,60 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 5 )
 
 [node name="Control" type="Control" parent="."]
-margin_left = 160.0
-margin_top = 294.0
-margin_right = 977.0
-margin_bottom = 899.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-margin_right = 648.0
-margin_bottom = 228.0
+margin_right = 75.0
+margin_bottom = 39.0
 
 [node name="LoadingLabel" type="Label" parent="Control/VBoxContainer"]
-margin_right = 648.0
-margin_bottom = 104.0
+margin_right = 75.0
+margin_bottom = 22.0
 custom_fonts/font = SubResource( 1 )
 text = "Loading..."
 
 [node name="LevelName" type="Label" parent="Control/VBoxContainer"]
-margin_top = 108.0
-margin_right = 648.0
-margin_bottom = 152.0
+margin_top = 26.0
+margin_right = 75.0
+margin_bottom = 39.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Level Name"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_top = -261.0
-margin_right = 648.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -19.5
+margin_right = 43.0
+margin_bottom = 19.5
 
 [node name="TipLabel" type="Label" parent="Control/VBoxContainer2"]
-margin_right = 648.0
-margin_bottom = 52.0
+margin_right = 74.0
+margin_bottom = 22.0
 custom_fonts/font = SubResource( 3 )
 text = "Tip"
 
 [node name="TipValue" type="Label" parent="Control/VBoxContainer2"]
-margin_top = 56.0
-margin_right = 648.0
-margin_bottom = 100.0
+margin_top = 26.0
+margin_right = 74.0
+margin_bottom = 39.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "tip here"
+text = "tip goes here"
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgress" parent="."]
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 166.0
-margin_top = -165.0
-margin_right = -132.0
-margin_bottom = -112.0
-custom_fonts/font = SubResource( 6 )
-custom_styles/fg = SubResource( 7 )
-custom_styles/bg = SubResource( 8 )
+margin_left = -137.5
+margin_top = -40.0
+margin_right = 137.5
+margin_bottom = -15.0
 value = 50.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.164706, 0.164706, 0.164706, 1 )
+tint_progress = Color( 0.596078, 0, 0, 1 )
+nine_patch_stretch = true

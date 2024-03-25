@@ -1,36 +1,13 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=2]
-[ext_resource path="res://UI/ui_bar.gd" type="Script" id=3]
+[ext_resource path="res://UI/textured_ui_bar.gd" type="Script" id=3]
 [ext_resource path="res://gameobjects/bloater.gd" type="Script" id=4]
-[ext_resource path="res://raw_assets/textures/bitumeat.png" type="Texture" id=6]
-[ext_resource path="res://raw_assets/textures/effects/splatter.png" type="Texture" id=9]
+[ext_resource path="res://UI/elements/bar_fill.png" type="Texture" id=5]
+[ext_resource path="res://UI/elements/bar_border.png" type="Texture" id=7]
 
 [sub_resource type="CapsuleShape" id=1]
-
-[sub_resource type="StyleBoxFlat" id=17]
-bg_color = Color( 0.768627, 0, 0, 0 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.8, 0.8, 0.8, 0 )
-
-[sub_resource type="StyleBoxFlat" id=18]
-bg_color = Color( 0, 0, 0, 0 )
-
-[sub_resource type="StyleBoxFlat" id=6]
-resource_local_to_scene = true
-bg_color = Color( 0.721569, 0.376471, 0, 0 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.8, 0.8, 0.8, 0 )
-
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0, 0, 0, 0 )
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -59,7 +36,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/fg:bg_color")
+tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2/Label:custom_colors/font_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -68,10 +45,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.768627, 0, 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/bg:bg_color")
+tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -80,10 +57,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2:custom_styles/fg:bg_color")
+tracks/4/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -92,10 +69,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0.721569, 0.376471, 0, 0 ) ]
+"values": [ Color( 0.513726, 0, 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2:custom_styles/bg:bg_color")
+tracks/5/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2:tint_under")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -104,10 +81,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2/Label:custom_colors/font_color")
+tracks/6/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2:tint_progress")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -116,43 +93,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Sprite3D:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0.75, 0.75, 0.75 ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Sprite3D:translation")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, -0.902, 0.05 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("blood_spray/Particles:emitting")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
+"values": [ Color( 0.545098, 0.360784, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -183,7 +124,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/fg:bg_color")
+tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2/Label:custom_colors/font_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -192,10 +133,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.768627, 0, 0, 0 ), Color( 0.768627, 0, 0, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:custom_styles/bg:bg_color")
+tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -204,10 +145,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.196078 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ), Color( 0.227451, 0.227451, 0.227451, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2:custom_styles/fg:bg_color")
+tracks/4/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -216,10 +157,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.721569, 0.376471, 0, 0 ), Color( 0.721569, 0.376471, 0, 1 ) ]
+"values": [ Color( 0.513726, 0, 0, 0 ), Color( 0.513726, 0, 0, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2:custom_styles/bg:bg_color")
+tracks/5/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2:tint_under")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -228,10 +169,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.196078 ) ]
+"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ), Color( 0.227451, 0.227451, 0.227451, 1 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2/Label:custom_colors/font_color")
+tracks/6/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar2:tint_progress")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -240,76 +181,8 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0.545098, 0.360784, 0, 0 ), Color( 0.545098, 0.360784, 0, 1 ) ]
 }
-
-[sub_resource type="Animation" id=9]
-resource_name = "pop"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0.75, 0.75, 0.75 ), Vector3( 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite3D:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, -1, -0.01 ), Vector3( 0, -1, 0.01 ), Vector3( 0, -1, -0.01 ), Vector3( 0, -1, 0.01 ), Vector3( 0, -1, -0.01 ), Vector3( 0, -1, 0.01 ), Vector3( 0, -1, -0.01 ), Vector3( 0, -1, 0.01 ), Vector3( 0, -1, -0.01 ), Vector3( 0, -1, 0.01 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("blood_spray/Particles:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="SpatialMaterial" id=10]
-flags_transparent = true
-flags_unshaded = true
-vertex_color_use_as_albedo = true
-params_billboard_mode = 1
-albedo_texture = ExtResource( 9 )
-
-[sub_resource type="Gradient" id=11]
-colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
-
-[sub_resource type="GradientTexture" id=12]
-gradient = SubResource( 11 )
-
-[sub_resource type="Curve" id=13]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.481481, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.972222, 0.00454545 ), -2.56126, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=14]
-curve = SubResource( 13 )
-
-[sub_resource type="ParticlesMaterial" id=15]
-direction = Vector3( 0, 1, 0 )
-initial_velocity = 5.0
-scale = 0.2
-scale_curve = SubResource( 14 )
-color = Color( 0.109804, 0, 0, 1 )
-color_ramp = SubResource( 12 )
-
-[sub_resource type="QuadMesh" id=16]
 
 [node name="bloater" type="RigidBody"]
 collision_layer = 2
@@ -323,17 +196,10 @@ script = ExtResource( 4 )
 incubation_increase_amount = 2
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
+allowed_max_health = 10
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.902, 0.05 )
-offset = Vector2( 0, 120 )
-billboard = 2
-shaded = true
-double_sided = false
-texture = ExtResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -352,14 +218,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -208.0
-margin_top = -69.0
-margin_right = 208.0
-margin_bottom = 69.0
+margin_left = -75.0
+margin_top = -32.0
+margin_right = 75.0
+margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-margin_right = 416.0
-margin_bottom = 35.0
+margin_right = 150.0
+margin_bottom = 18.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 1, 1, 0 )
@@ -367,46 +233,45 @@ text = "bloater"
 align = 1
 valign = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Info/VBoxContainer"]
-margin_top = 39.0
-margin_right = 416.0
-margin_bottom = 89.0
-rect_min_size = Vector2( 400, 50 )
+[node name="ProgressBar" type="TextureProgress" parent="CanvasLayer/Info/VBoxContainer"]
+margin_top = 22.0
+margin_right = 150.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/fg = SubResource( 17 )
-custom_styles/bg = SubResource( 18 )
 value = 50.0
-percent_visible = false
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 5 )
+tint_under = Color( 0.227451, 0.227451, 0.227451, 0 )
+tint_progress = Color( 0.513726, 0, 0, 0 )
+nine_patch_stretch = true
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer/ProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 0 )
 text = "flesh"
 align = 1
 valign = 1
 
-[node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer/Info/VBoxContainer"]
-margin_top = 93.0
-margin_right = 416.0
-margin_bottom = 143.0
-rect_min_size = Vector2( 400, 50 )
+[node name="ProgressBar2" type="TextureProgress" parent="CanvasLayer/Info/VBoxContainer"]
+margin_top = 45.0
+margin_right = 150.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 2 )
-custom_styles/fg = SubResource( 6 )
-custom_styles/bg = SubResource( 19 )
 value = 50.0
-percent_visible = false
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 5 )
+tint_under = Color( 0.227451, 0.227451, 0.227451, 0 )
+tint_progress = Color( 0.545098, 0.360784, 0, 0 )
+nine_patch_stretch = true
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer/ProgressBar2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 0 )
 text = "incubation"
 align = 1
@@ -415,16 +280,5 @@ valign = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
 anims/fade_in = SubResource( 8 )
-anims/pop = SubResource( 9 )
-
-[node name="blood_spray" type="Spatial" parent="."]
-
-[node name="Particles" type="Particles" parent="blood_spray"]
-material_override = SubResource( 10 )
-one_shot = true
-explosiveness = 0.76
-randomness = 0.26
-process_material = SubResource( 15 )
-draw_pass_1 = SubResource( 16 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

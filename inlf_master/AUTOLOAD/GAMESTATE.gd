@@ -40,7 +40,7 @@ func set_rot(value):
 	if rot >= Globals.rot_max_value:
 		emit_signal("on_rot_reached_max")
 		return
-	emit_signal("rot_changed", rot)
+	emit_signal("rot_changed")
 
 func set_bones(value):
 	bones = clamp(value, 0, 9999)

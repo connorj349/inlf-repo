@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://models/tumor/mat-tumor.tres" type="Material" id=1]
+[ext_resource path="res://models/tumor/mdl-tumor.glb" type="PackedScene" id=2]
+
+[node name="mdl-tumor" instance=ExtResource( 2 )]
+
+[node name="obj-tumor" parent="." index="0"]
+material/0 = ExtResource( 1 )

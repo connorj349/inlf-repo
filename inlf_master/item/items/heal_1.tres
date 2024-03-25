@@ -18,4 +18,4 @@ price = 25
 drop_on_death = false
 item_type = 4
 heal_value = 10
-consumable_type = 1
+consumable_type = 0

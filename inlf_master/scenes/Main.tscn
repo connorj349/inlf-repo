@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -19,7 +19,7 @@
 [ext_resource path="res://gameobjects/resource_node_spawner.tscn" type="PackedScene" id=17]
 [ext_resource path="res://gameobjects/resource_nodes/bitumeat.tscn" type="PackedScene" id=18]
 [ext_resource path="res://gameobjects/production_machine.tscn" type="PackedScene" id=19]
-[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://UI/themes/main_menu_theme.tres" type="Theme" id=20]
 [ext_resource path="res://gameobjects/resource_nodes/skin_tree.tscn" type="PackedScene" id=21]
 [ext_resource path="res://gameobjects/Amoeba.tscn" type="PackedScene" id=22]
 [ext_resource path="res://role/roles/proletariat.tres" type="Resource" id=23]
@@ -42,24 +42,37 @@
 [ext_resource path="res://gameobjects/resource_nodes/boulder.tscn" type="PackedScene" id=40]
 [ext_resource path="res://gameobjects/metastabilizer.tscn" type="PackedScene" id=41]
 [ext_resource path="res://gameobjects/sawblade.tscn" type="PackedScene" id=42]
+[ext_resource path="res://UI/elements/panel_square.png" type="Texture" id=43]
+[ext_resource path="res://Addons/post-process/pp_dither-band.tres" type="Material" id=44]
+[ext_resource path="res://Addons/shaders/gaussian-blur.shader" type="Shader" id=45]
+[ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=46]
+[ext_resource path="res://gameobjects/tumor.tscn" type="PackedScene" id=47]
+
+[sub_resource type="StyleBoxTexture" id=392]
+texture = ExtResource( 43 )
+region_rect = Rect2( 0, 0, 128, 128 )
+modulate_color = Color( 0.266667, 1, 0.278431, 1 )
+
+[sub_resource type="StyleBoxTexture" id=393]
+texture = ExtResource( 43 )
+region_rect = Rect2( 0, 0, 128, 128 )
+modulate_color = Color( 1, 0.345098, 0.345098, 1 )
 
 [sub_resource type="StyleBoxFlat" id=380]
 bg_color = Color( 0, 0, 0, 0.270588 )
 
-[sub_resource type="DynamicFont" id=381]
-size = 25
-font_data = ExtResource( 20 )
-
-[sub_resource type="DynamicFont" id=382]
-size = 35
-font_data = ExtResource( 20 )
+[sub_resource type="ShaderMaterial" id=391]
+shader = ExtResource( 45 )
+shader_param/h = 1.0
+shader_param/v = 0.0
+shader_param/enabled = true
 
 [sub_resource type="PanoramaSky" id=366]
 panorama = ExtResource( 6 )
 
 [sub_resource type="Environment" id=2]
 background_sky = SubResource( 366 )
-ambient_light_color = Color( 0.807843, 0.807843, 0.807843, 1 )
+ambient_light_color = Color( 0.772549, 0.772549, 0.772549, 1 )
 fog_color = Color( 0.87451, 0.72549, 0.45098, 1 )
 fog_depth_begin = 0.0
 fog_depth_end = 175.0
@@ -91,32 +104,38 @@ layer = 3
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 46 )
 script = ExtResource( 3 )
 
 [node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
-margin_left = 30.0
-margin_top = 30.0
-margin_right = 60.0
-margin_bottom = 60.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 39.0
+margin_bottom = 39.0
 
 [node name="EquipInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
-margin_left = 600.0
-margin_top = 30.0
-margin_right = 666.0
-margin_bottom = 96.0
+margin_left = 5.0
+margin_top = 85.0
+margin_right = 21.0
+margin_bottom = 101.0
+custom_styles/panel = SubResource( 392 )
 
 [node name="WeaponInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
-margin_left = 600.0
-margin_top = 200.0
-margin_right = 666.0
-margin_bottom = 266.0
+margin_left = 40.0
+margin_top = 85.0
+margin_bottom = 101.0
+custom_styles/panel = SubResource( 393 )
 
 [node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
 visible = false
-margin_left = 1200.0
-margin_top = 400.0
-margin_right = 1230.0
-margin_bottom = 430.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -17.0
+margin_top = -17.0
+margin_right = 17.0
+margin_bottom = 17.0
 
 [node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource( 4 )]
 visible = false
@@ -129,6 +148,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
+theme = ExtResource( 20 )
 script = ExtResource( 29 )
 
 [node name="Panel" type="Panel" parent="UI/PauseMenu"]
@@ -137,73 +157,58 @@ anchor_bottom = 1.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 380 )
 
-[node name="PauseLabel" type="Label" parent="UI/PauseMenu"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -32.5
-margin_top = -11.0
-margin_right = 32.5
-margin_bottom = 11.0
-custom_fonts/font = SubResource( 381 )
-text = "paused"
-
 [node name="PanelContainer" type="PanelContainer" parent="UI/PauseMenu"]
-margin_left = 830.0
-margin_top = 573.0
-margin_right = 1082.0
-margin_bottom = 711.0
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+margin_left = -70.0
+margin_top = -146.0
+margin_right = 66.0
+margin_bottom = -44.0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/PauseMenu/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 245.0
-margin_bottom = 164.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 128.0
+margin_bottom = 92.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseMenu/PanelContainer/MarginContainer"]
-margin_right = 238.0
-margin_bottom = 157.0
+margin_right = 120.0
+margin_bottom = 84.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="PauseLabel" type="Label" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 120.0
+margin_bottom = 18.0
+text = "paused"
+align = 1
+valign = 1
 
 [node name="options_button" type="Button" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
-margin_right = 238.0
-margin_bottom = 37.0
+margin_top = 22.0
+margin_right = 120.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 382 )
 text = "options"
 
-[node name="spacer" type="Control" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 41.0
-margin_right = 238.0
-margin_bottom = 56.0
-rect_min_size = Vector2( 0, 15 )
-
 [node name="menu_exit_button" type="Button" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 60.0
-margin_right = 238.0
-margin_bottom = 97.0
+margin_top = 44.0
+margin_right = 120.0
+margin_bottom = 62.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 382 )
 text = "exit to menu"
 
-[node name="spacer2" type="Control" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 101.0
-margin_right = 238.0
-margin_bottom = 116.0
-rect_min_size = Vector2( 0, 15 )
-
 [node name="exit_button" type="Button" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 120.0
-margin_right = 238.0
-margin_bottom = 157.0
+margin_top = 66.0
+margin_right = 120.0
+margin_bottom = 84.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 382 )
 text = "exit to desktop"
 
 [node name="Options" parent="UI/PauseMenu" instance=ExtResource( 31 )]
@@ -215,15 +220,42 @@ visible = false
 [node name="LoadingScreen" parent="." instance=ExtResource( 30 )]
 visible = false
 
+[node name="HBlur" type="ViewportContainer" parent="."]
+visible = false
+material = SubResource( 391 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="Viewport" type="Viewport" parent="HBlur"]
+size = Vector2( 106, 80 )
+handle_input_locally = false
+render_target_update_mode = 0
+gui_disable_input = true
+
+[node name="DitherBand" type="ViewportContainer" parent="HBlur/Viewport"]
+material = ExtResource( 44 )
+margin_right = 320.0
+margin_bottom = 240.0
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="HBlur/Viewport/DitherBand"]
+size = Vector2( 320, 240 )
+handle_input_locally = false
+msaa = 2
+render_target_update_mode = 3
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+gui_disable_input = true
+
 [node name="Environment" type="Spatial" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource( 2 )
 
 [node name="slumtown_model" parent="Environment" instance=ExtResource( 5 )]
-
-[node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43, 2, -12 )
 
 [node name="GameObjects" type="Spatial" parent="."]
 
@@ -239,10 +271,10 @@ random_amount_of_items_to_give = 2
 [node name="BiogrowthObjects" type="Spatial" parent="GameObjects"]
 
 [node name="FertilizerProducer" parent="GameObjects/BiogrowthObjects" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 1, 6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 6.3 )
 
 [node name="IndustrialSink" parent="GameObjects/BiogrowthObjects" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 1, 19 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37, 0, 19.4 )
 
 [node name="BioGrower" parent="GameObjects/BiogrowthObjects" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 9 )
@@ -317,8 +349,8 @@ machine_name = "tool factory"
 payday = 3
 
 [node name="Generator" parent="GameObjects/ToolFactory" instance=ExtResource( 38 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 5.5, -23 )
-bounds = Vector3( 4, 1, 1 )
+transform = Transform( -0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 20, 5.5, -22 )
+bounds = Vector3( 3, 1, 5 )
 
 [node name="Canal" type="Spatial" parent="GameObjects"]
 
@@ -338,14 +370,17 @@ node_to_spawn = ExtResource( 18 )
 spawn_frequency = 500.0
 
 [node name="BoneCapsuleSpawner" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -5, -2 )
 node_to_spawn = ExtResource( 24 )
 spawn_frequency = 500.0
 
 [node name="BoneCapsuleSpawner2" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, -7 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47, -5, -7 )
 node_to_spawn = ExtResource( 24 )
 spawn_frequency = 500.0
+
+[node name="tumor" parent="GameObjects/Canal" instance=ExtResource( 47 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43, -5, -5 )
 
 [node name="ProleSpawn" type="Spatial" parent="GameObjects"]
 
@@ -363,7 +398,7 @@ does_reset = true
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55, 1, -35 )
 
 [node name="metastabilizer" parent="GameObjects/ProleSpawn" instance=ExtResource( 41 )]
-transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 54, 1, -39 )
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 53.5, 0, -38.5 )
 
 [node name="MedicalArea" type="Spatial" parent="GameObjects"]
 
@@ -382,8 +417,8 @@ production_time = 5.0
 payday = 10
 
 [node name="Generator" parent="GameObjects/WeaponFactory" instance=ExtResource( 38 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8, 5.5, -25 )
-bounds = Vector3( 1, 1, 6 )
+transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -7, 5.5, -34 )
+bounds = Vector3( 1, 1, 5 )
 
 [node name="Quarry" type="Spatial" parent="GameObjects"]
 
@@ -393,8 +428,8 @@ node_to_spawn = ExtResource( 40 )
 spawn_frequency = 120.0
 
 [node name="Generator" parent="GameObjects/Quarry" instance=ExtResource( 38 )]
-transform = Transform( 0.98106, 0.0871557, -0.172987, -0.0858316, 0.996195, 0.0151344, 0.173648, 0, 0.984808, -42, -20.1, -29 )
-bounds = Vector3( 4, 1, 4 )
+transform = Transform( -0.173648, -3.8097e-09, -0.984808, -0.0858316, 0.996195, 0.0151344, 0.98106, 0.0871557, -0.172987, -42, -20.3, -27 )
+bounds = Vector3( 2, 1, 5 )
 
 [node name="production_machine" parent="GameObjects/Quarry" instance=ExtResource( 19 )]
 transform = Transform( 0.96225, -0.0871557, 0.257834, 0.084186, 0.996195, 0.0225576, -0.258819, 0, 0.965926, -46, -20.1, -28 )
@@ -403,9 +438,12 @@ output_item_datas = [ ExtResource( 34 ) ]
 machine_name = "lunch factory"
 payday = 2
 
+[node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43, 2, -12 )
+
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]

@@ -1,23 +1,54 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=13 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/elements/bar_fill.png" type="Texture" id=2]
+[ext_resource path="res://UI/elements/bar_border.png" type="Texture" id=3]
+[ext_resource path="res://UI/elements/panel_rect.png" type="Texture" id=4]
+[ext_resource path="res://UI/elements/button.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=3]
-size = 40
+size = 10
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 0, 0, 0.431373 )
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 256, 32 )
+modulate_color = Color( 0, 0.278431, 0.0313726, 1 )
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.662745, 0, 0, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.8, 0.8, 0.8, 0 )
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 256, 32 )
+modulate_color = Color( 0, 0.337255, 0.0352941, 1 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 256, 32 )
+modulate_color = Color( 0, 0.188235, 0.0196078, 1 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 4 )
+region_rect = Rect2( 6, 8, 242, 110 )
+margin_left = 6.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 10.0
+modulate_color = Color( 0.227451, 0.227451, 0.227451, 1 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 256, 32 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 256, 32 )
 
 [resource]
+Button/fonts/font = SubResource( 3 )
+Button/styles/hover = SubResource( 6 )
+Button/styles/normal = SubResource( 7 )
+Button/styles/pressed = SubResource( 8 )
 Label/fonts/font = SubResource( 3 )
-ProgressBar/styles/bg = SubResource( 1 )
-ProgressBar/styles/fg = SubResource( 2 )
+PanelContainer/styles/panel = SubResource( 9 )
+ProgressBar/fonts/font = SubResource( 3 )
+ProgressBar/styles/bg = SubResource( 4 )
+ProgressBar/styles/fg = SubResource( 5 )

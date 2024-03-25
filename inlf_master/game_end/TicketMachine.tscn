@@ -1,16 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game_end/game_end_money.gd" type="Script" id=1]
 [ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="BoxShape" id=1]
-
-[sub_resource type="CubeMesh" id=2]
-size = Vector3( 1, 2, 2 )
-
-[sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 0.247059, 0.321569, 0.313726, 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 40
@@ -55,10 +49,6 @@ shape = SubResource( 1 )
 
 [node name="LoadingScreen" parent="." instance=ExtResource( 2 )]
 visible = false
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 2 )
-material/0 = SubResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

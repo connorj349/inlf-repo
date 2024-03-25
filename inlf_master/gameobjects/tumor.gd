@@ -32,9 +32,9 @@ func on_hurt(damage):
 			Globals.current_player.on_hurt(tumor_damage) # damage the player back when struck
 			var random_result = randf()
 			if random_result < .5:
-				health.hurt(damage.amount) # takes damage half the time from fists
+				health.health -= damage.amount # takes damage half the time from fists
 		_:
-			health.hurt(damage.amount) # takes damage in all cases
+			health.health -= damage.amount # takes damage in all cases
 	# spawn a Rotroach(s) that immediately attack the player
 
 func on_death():
@@ -42,9 +42,8 @@ func on_death():
 	dead = true
 	# spawn tumor bloody pop effect
 	# spawn rotroach hive(this hive spawns 3 roaches, then dissapears)
-	yield(health.death_sound, "finished")
 	#Globals.create_pickup(slot_data, self)
 	queue_free() # delete this object
 
 func _on_RotTimer_timeout():
-	Gamestate.rot_modify(rot_increase_amount) # make global const var
+	Gamestate.rot -= rot_increase_amount # make global const var

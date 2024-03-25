@@ -28,6 +28,8 @@ func _ready():
 	timer = Timer.new()
 	add_child(timer)
 	timer.connect("timeout", self, "_custom_show")
+# warning-ignore:return_value_discarded
+	Globals.connect("on_inventory_toggle", _visuals, "hide")
 
 func _process(_delta):
 	if _visuals.visible:
