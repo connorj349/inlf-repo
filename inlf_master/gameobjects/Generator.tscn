@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://gameobjects/Generator.gd" type="Script" id=1]
 [ext_resource path="res://UI/textured_ui_bar.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://item/item_deposit/ItemDeposit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://item/items/bio_fuel.tres" type="Resource" id=7]
 [ext_resource path="res://UI/elements/bar_fill.png" type="Texture" id=8]
+[ext_resource path="res://tools/ShowAreaBounds.gd" type="Script" id=9]
 
 [sub_resource type="BoxShape" id=1]
 resource_local_to_scene = true
@@ -128,6 +129,7 @@ collision_layer = 2
 collision_mask = 8
 script = ExtResource( 1 )
 fuel_item_data = ExtResource( 7 )
+bounds = Vector3( 1, 1, 1 )
 
 [node name="mdl-generator" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )
@@ -205,6 +207,7 @@ shape = SubResource( 8 )
 [node name="CheckForMachinesArea" type="Area" parent="."]
 collision_layer = 0
 collision_mask = 10
+script = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CheckForMachinesArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

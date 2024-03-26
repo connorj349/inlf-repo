@@ -12,6 +12,7 @@ onready var organ_spawn = $organ_spawnpoint
 
 var blood_spray = preload("res://effects/blood_spray.tscn")
 var corpse_damage = Damage.new()
+var corpse_eat_damage = Damage.new()
 var inventory = InventoryData.new()
 
 func _ready():
@@ -25,6 +26,7 @@ func _ready():
 	#maybe make a death blood explosion? this could be useful for the interact that will just call on_death
 	prog_bar.init(health.health, health.max_health)
 	state_text.text = "Fresh"
+	corpse_eat_damage.amount = health.max_health * 0.5
 	spawn_blood()
 
 func init_inventory_size(size):
@@ -36,13 +38,19 @@ func on_hurt(damage):
 			spawn_organ()
 		_:
 			health.health -= damage.amount
+	if health.health > health.max_health * 0.9:
+		state_text.text = "fresh"
+	elif health.health < health.max_health * 0.9 and health.health > health.max_health * 0.25:
+		state_text.text = "rotting"
+	elif health.health < health.max_health * 0.25:
+		state_text.text = "husk"
 
 func _interact(_actor):
 	if can_interact:
-		if health.health > 75:
+		if health.health > health.max_health * 0.5:
 			_actor.on_heal(25)
 			spawn_blood()
-			on_hurt(75)
+			on_hurt(corpse_eat_damage)
 		if inventory.slot_datas.size() > 0:
 			for item in inventory.slot_datas:
 				if item:
@@ -60,12 +68,6 @@ func spawn_blood():
 func _on_DecayTimer_timeout():
 	on_hurt(corpse_damage)
 	Gamestate.rot += 1
-	if health.health > 75:
-		state_text.text = "Fresh"
-	elif health.health < 75 and health.health > 25:
-		state_text.text = "Rotting"
-	elif health.health < 25:
-		state_text.text = "Husk"
 
 func spawn_organ():
 	var random_result = randf()

@@ -16,7 +16,6 @@ onready var weapon_manager = $Head/Camera/WeaponManager
 
 onready var health_bar = $UI/Bars/health_pox/health_bar # $UI/Bars/health_bar
 onready var pox_bar = $UI/Bars/health_pox/pox_bar
-onready var magick_amount_left = $UI/MagickLabel
 
 var role
 var cam_accel = 40
@@ -43,14 +42,6 @@ func _ready():
 	Globals.current_player = self
 # warning-ignore:return_value_discarded
 	Globals.connect("blood_circle_removed", self, "on_blood_circle_removed")
-	yield(get_tree(), "idle_frame") # prevents errors for next part
-	magick.connect("magick_changed", self, "on_magick_changed")
-	if role.role_type == Role.Role_Type.Cultist:
-		magick.init(2) # only provide the player mana if they are an antagonist
-		magick_amount_left.text = str(magick.curr_magick)
-	else:
-		magick.init(0)
-		magick_amount_left.visible = false
 
 func update_health_and_pox_text_placement(_passed_health_or_pox):
 	for element in $UI/Bars/health_pox/pox_bar/VBoxContainer.get_children():
@@ -90,29 +81,12 @@ func give_armor(amount): # used by some consumables
 func on_blood_circle_removed():
 	blood_circle_active = false
 
-func on_use_organ(organ):
-	if blood_circle_active:
-		if magick.curr_magick >= organ.mana_regen:
-			Globals.emit_signal("cast_spell", organ)
-			magick.curr_magick -= organ.mana_regen
-			# SoundManager.play_castspell
-	else:
-		if role.role_type == Role.Role_Type.Cultist:
-			magick.curr_magick += organ.mana_regen
-			# SoundManager.play_manaregen
-		else:
-			pass
-			#deal_damage(15) # need a damage_type to deal to player
-			# SoundManager.use_organeat
+func on_use_organ(_organ):
+	# when adding cultist, add organ abilities like seeing through walls, etc.
+	pass
 
 func set_role(_role): # setup role; maybe add sound to it?
 	role = _role # for use with checking if player can use certain machines/objects
-
-func on_magick_changed(curr_magick): # update UI for magic remaining
-	if magick.max_magick > 0:
-		magick_amount_left.text = "magick: " + str(curr_magick)
-	else:
-		magick_amount_left.text = ""
 
 func spawn_circle_of_blood(): # only can be done if cultist role
 	if !blood_circle_active:

@@ -1,8 +1,6 @@
 extends Interactable
-tool
 
 export(Resource) var fuel_item_data
-export(Vector3) var bounds = Vector3(1, 1, 1)
 
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 onready var timer = $FuelConsumeTimer
@@ -17,13 +15,8 @@ func _ready():
 	prog_bar.init(0, 100)
 # warning-ignore:return_value_discarded
 	connect("on_fuel_changed", prog_bar, "update_bar")
-	$CheckForMachinesArea/CollisionShape.shape.extents = bounds
 	yield(get_tree(), "idle_frame")
 	change_active_status_of_machines(false)
-
-func _process(_delta):
-	if Engine.is_editor_hint():
-		$CheckForMachinesArea/CollisionShape.shape.extents = bounds
 
 func _interact(_actor):
 	if fuel <= 0:

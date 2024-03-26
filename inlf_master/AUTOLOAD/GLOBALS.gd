@@ -16,8 +16,6 @@ signal on_inventory_toggle
 signal on_pop_notification
 # warning-ignore:unused_signal
 signal blood_circle_removed
-# warning-ignore:unused_signal
-signal cast_spell
 
 func _ready():
 	#begin game with mouse mode captured

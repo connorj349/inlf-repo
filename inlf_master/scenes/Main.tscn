@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -47,6 +47,7 @@
 [ext_resource path="res://Addons/shaders/gaussian-blur.shader" type="Shader" id=45]
 [ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=46]
 [ext_resource path="res://gameobjects/tumor.tscn" type="PackedScene" id=47]
+[ext_resource path="res://game_end/TicketMachine.tscn" type="PackedScene" id=48]
 
 [sub_resource type="StyleBoxTexture" id=392]
 texture = ExtResource( 43 )
@@ -89,10 +90,46 @@ size = Vector2( 1.5, 8 )
 [sub_resource type="QuadMesh" id=386]
 size = Vector2( 1.5, 14 )
 
+[sub_resource type="BoxShape" id=394]
+resource_local_to_scene = true
+extents = Vector3( 1.35, 1.5, 1.5 )
+
+[sub_resource type="BoxShape" id=395]
+resource_local_to_scene = true
+extents = Vector3( 2, 2, 2 )
+
+[sub_resource type="BoxShape" id=396]
+resource_local_to_scene = true
+extents = Vector3( 1, 1, 5 )
+
 [sub_resource type="Resource" id=387]
 resource_local_to_scene = true
 script = ExtResource( 32 )
 slot_datas = [ null, null, null, null, null, null ]
+
+[sub_resource type="BoxShape" id=397]
+resource_local_to_scene = true
+extents = Vector3( 1.35, 1.5, 1.5 )
+
+[sub_resource type="BoxShape" id=398]
+resource_local_to_scene = true
+extents = Vector3( 2, 2, 2 )
+
+[sub_resource type="BoxShape" id=399]
+resource_local_to_scene = true
+extents = Vector3( 1, 1, 5 )
+
+[sub_resource type="BoxShape" id=400]
+resource_local_to_scene = true
+extents = Vector3( 1.35, 1.5, 1.5 )
+
+[sub_resource type="BoxShape" id=401]
+resource_local_to_scene = true
+extents = Vector3( 2, 2, 2 )
+
+[sub_resource type="BoxShape" id=402]
+resource_local_to_scene = true
+extents = Vector3( 1, 1, 5 )
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 14 )
@@ -293,7 +330,6 @@ bounds = Vector3( 0.5, 3, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1, 0 )
 mesh = SubResource( 383 )
-material/0 = null
 
 [node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7 )
@@ -301,7 +337,6 @@ bounds = Vector3( 1, 4, 0.25 )
 
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder2"]
 mesh = SubResource( 384 )
-material/0 = null
 
 [node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4 )
@@ -310,7 +345,6 @@ bounds = Vector3( 0.25, 4, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder3"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 385 )
-material/0 = null
 
 [node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6 )
@@ -319,7 +353,6 @@ bounds = Vector3( 0.5, 8, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder4"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 386 )
-material/0 = null
 
 [node name="WoodedArea" type="Spatial" parent="GameObjects"]
 
@@ -350,7 +383,18 @@ payday = 3
 
 [node name="Generator" parent="GameObjects/ToolFactory" instance=ExtResource( 38 )]
 transform = Transform( -0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 20, 5.5, -22 )
-bounds = Vector3( 3, 1, 5 )
+
+[node name="CollisionShape" parent="GameObjects/ToolFactory/Generator" index="1"]
+shape = SubResource( 394 )
+
+[node name="CollisionShape" parent="GameObjects/ToolFactory/Generator/ItemDeposit" index="0"]
+shape = SubResource( 395 )
+
+[node name="CheckForMachinesArea" parent="GameObjects/ToolFactory/Generator" index="6"]
+bounds = Vector3( 1, 1, 5 )
+
+[node name="CollisionShape" parent="GameObjects/ToolFactory/Generator/CheckForMachinesArea" index="0"]
+shape = SubResource( 396 )
 
 [node name="Canal" type="Spatial" parent="GameObjects"]
 
@@ -418,7 +462,18 @@ payday = 10
 
 [node name="Generator" parent="GameObjects/WeaponFactory" instance=ExtResource( 38 )]
 transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -7, 5.5, -34 )
+
+[node name="CollisionShape" parent="GameObjects/WeaponFactory/Generator" index="1"]
+shape = SubResource( 397 )
+
+[node name="CollisionShape" parent="GameObjects/WeaponFactory/Generator/ItemDeposit" index="0"]
+shape = SubResource( 398 )
+
+[node name="CheckForMachinesArea" parent="GameObjects/WeaponFactory/Generator" index="6"]
 bounds = Vector3( 1, 1, 5 )
+
+[node name="CollisionShape" parent="GameObjects/WeaponFactory/Generator/CheckForMachinesArea" index="0"]
+shape = SubResource( 399 )
 
 [node name="Quarry" type="Spatial" parent="GameObjects"]
 
@@ -429,7 +484,18 @@ spawn_frequency = 120.0
 
 [node name="Generator" parent="GameObjects/Quarry" instance=ExtResource( 38 )]
 transform = Transform( -0.173648, -3.8097e-09, -0.984808, -0.0858316, 0.996195, 0.0151344, 0.98106, 0.0871557, -0.172987, -42, -20.3, -27 )
-bounds = Vector3( 2, 1, 5 )
+
+[node name="CollisionShape" parent="GameObjects/Quarry/Generator" index="1"]
+shape = SubResource( 400 )
+
+[node name="CollisionShape" parent="GameObjects/Quarry/Generator/ItemDeposit" index="0"]
+shape = SubResource( 401 )
+
+[node name="CheckForMachinesArea" parent="GameObjects/Quarry/Generator" index="6"]
+bounds = Vector3( 1, 1, 5 )
+
+[node name="CollisionShape" parent="GameObjects/Quarry/Generator/CheckForMachinesArea" index="0"]
+shape = SubResource( 402 )
 
 [node name="production_machine" parent="GameObjects/Quarry" instance=ExtResource( 19 )]
 transform = Transform( 0.96225, -0.0871557, 0.257834, 0.084186, 0.996195, 0.0225576, -0.258819, 0, 0.965926, -46, -20.1, -28 )
@@ -437,6 +503,11 @@ input_item_datas = [ ExtResource( 8 ) ]
 output_item_datas = [ ExtResource( 34 ) ]
 machine_name = "lunch factory"
 payday = 2
+
+[node name="GameEnd" type="Spatial" parent="GameObjects"]
+
+[node name="TicketMachine" parent="GameObjects/GameEnd" instance=ExtResource( 48 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23 )
 
 [node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43, 2, -12 )
@@ -447,3 +518,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43, 2, 
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
+
+[editable path="GameObjects/ToolFactory/Generator"]
+[editable path="GameObjects/WeaponFactory/Generator"]
+[editable path="GameObjects/Quarry/Generator"]
