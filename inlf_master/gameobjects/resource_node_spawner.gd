@@ -24,4 +24,4 @@ func spawn():
 		# spawn a temporal portal effect
 
 func _on_Timer_timeout():
-	spawn()
+	Gamestate.request_spawn(self)

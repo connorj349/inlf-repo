@@ -1,6 +1,6 @@
 extends Interactable
 
-export(Resource) var repair_item
+export(Resource) var repair_item_data
 
 onready var health = $Health
 onready var bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
@@ -16,17 +16,9 @@ func _ready():
 	health.connect("dead", self, "on_disable")
 	status_label.text = "Status: operational"
 
-func _interact(_actor):
-	if Gamestate.player_inventory.take_item(repair_item):
-		Gamestate.bones += Globals.meta_repair_reward_amount # reward bones; maybe make stemcells
-		health.heal(Globals.meta_repair_amount)
-		if not active:
-			active = true
-			spot_light.light_color = Color(0, 0.9, 1, 1)
-
 func on_hurt(damage):
 	if damage.type != Damage.DamageType.Fists:
-		health.hurt(damage.amount) # take damage from non Fists sources
+		health.health -= damage.amount # take damage from non Fists sources
 
 func on_disable():
 	spot_light.light_color = Color(1, 0, 0, 1)
@@ -37,4 +29,15 @@ func _on_Timer_timeout():
 	if active:
 		if health.health > 0:
 			status_label.text = "Status: operational"
-			Gamestate.rot -= 1 # maybe make this a global const value
+			Gamestate.rot -= 1
+			health.health -= 1
+
+func _on_ItemDeposit_body_entered(body):
+	if body.is_in_group("pickup"):
+		if body.slot_data.item_data == repair_item_data:
+			health.health += Globals.meta_repair_amount
+			Gamestate.bones += Globals.meta_repair_reward_amount
+			body.queue_free()
+			if not active:
+				active = true
+				spot_light.light_color = Color(0, 0.9, 1, 1)

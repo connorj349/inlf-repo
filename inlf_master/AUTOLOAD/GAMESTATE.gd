@@ -26,6 +26,27 @@ var bloaters = 0 setget set_bloaters
 var tumors = 0 setget set_tumors
 var infections setget , get_infections
 
+var spawn_queue = []
+var cache = {}
+
+func _physics_process(_delta):
+	dequeue_spawn_requests()
+
+func dequeue_spawn_requests():
+	if spawn_queue.size() == 0:
+		return
+	var spawn_request_info = spawn_queue.pop_front()
+	var spawner = spawn_request_info.spawner
+	spawner.spawn()
+	cache.erase(str(spawner))
+
+func request_spawn(spawner):
+	var key = str(spawner) # create a unique key per spawn request
+	if key in cache:
+		return
+	cache[key] = ""
+	spawn_queue.append({"spawner" : spawner})
+
 func reset_player_equipment():
 	equip_player_inventory.take_item(Gamestate.equip_player_inventory.slot_datas[0])
 	weapon_player_inventory.take_item(Gamestate.weapon_player_inventory.slot_datas[0])
