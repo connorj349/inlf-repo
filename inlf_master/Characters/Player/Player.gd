@@ -14,8 +14,9 @@ onready var pickup_raycast = $Head/Camera/PickupRayCast
 onready var hold_object_pos = $Head/Camera/PickupRayCast/HoldObjectPosition
 onready var weapon_manager = $Head/Camera/WeaponManager
 
-onready var health_bar = $UI/Bars/health_pox/health_bar # $UI/Bars/health_bar
+onready var health_bar = $UI/Bars/health_pox/health_bar
 onready var pox_bar = $UI/Bars/health_pox/pox_bar
+onready var armor_bar = $UI/Bars/health_pox/armor_bar
 
 var role
 var cam_accel = 40
@@ -38,7 +39,10 @@ func _ready():
 	health_bar.init(health.health, health.max_health)
 	pox_bar.init(health.pox, 100)
 	armor.init()
-	#armor.connect("armor_changed", self, "update_armor_bar")
+	armor_bar.init(armor.armor, armor.max_armor)
+	armor.connect("armor_changed", armor_bar, "update_bar")
+	armor.connect("armor_changed", self, "update_armor_bar_visibility")
+	update_armor_bar_visibility(armor.armor)
 	Globals.current_player = self
 # warning-ignore:return_value_discarded
 	Globals.connect("blood_circle_removed", self, "on_blood_circle_removed")
@@ -58,6 +62,12 @@ func update_health_and_pox_text_placement(_passed_health_or_pox):
 		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label4.text = "POX"
 	elif health.pox > 0:
 		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label5.text = "POX"
+
+func update_armor_bar_visibility(_val):
+	if armor.armor <= 0:
+		armor_bar.visible = false
+	else:
+		armor_bar.visible = true
 
 func on_hurt(damage): #used by all other objects that want to hurt the player
 	if armor.armor > 0:
@@ -163,6 +173,17 @@ func _process(delta):
 		var f_input = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 		var h_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		direction = Vector3(h_input, 0, f_input)
+		
+		#view lean during strafe movement
+		# this currently causes the camera to get out of sync with the head when moving against walls
+		head.rotation.z = clamp(head.rotation.z, -PI/100, PI/100)
+		var head_rotate_z = clamp(head.rotation.z, -PI/100, PI/100)
+		
+		head.rotate_z(-lerp_angle(0.0, h_input, delta * 0.2))
+		
+		if h_input == 0:
+			head.rotate_z(-lerp_angle(head_rotate_z, 0.0, delta * 45))
+		
 		movement.set_move_vector(direction)
 	else:
 		movement.set_move_vector(Vector3.ZERO) #set movement to zero when in menu

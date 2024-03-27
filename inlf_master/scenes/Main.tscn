@@ -330,6 +330,7 @@ bounds = Vector3( 0.5, 3, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1, 0 )
 mesh = SubResource( 383 )
+material/0 = null
 
 [node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7 )
@@ -337,6 +338,7 @@ bounds = Vector3( 1, 4, 0.25 )
 
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder2"]
 mesh = SubResource( 384 )
+material/0 = null
 
 [node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4 )
@@ -345,6 +347,7 @@ bounds = Vector3( 0.25, 4, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder3"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 385 )
+material/0 = null
 
 [node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6 )
@@ -353,6 +356,7 @@ bounds = Vector3( 0.5, 8, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder4"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 386 )
+material/0 = null
 
 [node name="WoodedArea" type="Spatial" parent="GameObjects"]
 

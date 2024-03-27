@@ -15,4 +15,4 @@ func init():
 
 func set_armor(val):
 	armor = clamp(val, 0, max_armor)
-	emit_signal("armor_changed")
+	emit_signal("armor_changed", armor)
