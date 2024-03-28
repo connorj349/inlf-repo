@@ -1,7 +1,7 @@
 extends Interactable
 
-export(int) var heal_cost = 25 #how many bones to heal
-export(int) var heal_amount = 5 #amount to heal player per tick
+export(int) var heal_cost = 50 #how many bones to heal
+export(int) var heal_amount = 1 #amount to heal player per tick
 
 onready var heal_area = $Area
 onready var timer = $Timer
@@ -34,14 +34,20 @@ func _interact(_actor):
 	if can_interact and Gamestate.bones >= heal_cost:
 		start_healing()
 		Gamestate.bones -= heal_cost
+	else:
+		if Gamestate.bones >= heal_cost:
+			Gamestate.bones -= heal_cost
+			Globals.current_player.health.pox = 0
 
 func start_healing():
 	if timer.is_stopped():
+		$mdl_autostitcher/AnimationPlayer.play("active")
 		healing_loop.play(0) #start the healing loop at the beginning
 		can_interact = false
 		timer.start()
 
 func stop_healing(_body):
+	$mdl_autostitcher/AnimationPlayer.play("idle", 1)
 	can_interact = true
 	timer.stop()
 	healing_loop.stop()

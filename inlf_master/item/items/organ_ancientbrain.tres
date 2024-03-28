@@ -16,7 +16,6 @@ description = "an ancient, decrepit brain. Used in rituals and provides plenty o
 stackable = false
 texture = SubResource( 1 )
 price = 100
-drop_on_death = false
 item_type = 4
 mana_regen = 4
 magic_effect = ExtResource( 3 )

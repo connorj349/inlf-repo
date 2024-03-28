@@ -15,5 +15,4 @@ description = "rotted wood from dying trees, used in production."
 stackable = false
 texture = SubResource( 1 )
 price = 0
-drop_on_death = false
 item_type = 4

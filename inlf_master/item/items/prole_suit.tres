@@ -15,6 +15,5 @@ description = "dingy uniform, poor production quality, helps the bad guys know y
 stackable = false
 texture = SubResource( 1 )
 price = 15
-drop_on_death = false
 item_type = 4
 armor_added = 0

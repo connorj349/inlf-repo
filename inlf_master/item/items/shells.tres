@@ -15,5 +15,4 @@ description = "shells filled with led, add some pepper to your flesh sandwich"
 stackable = true
 texture = SubResource( 1 )
 price = 2
-drop_on_death = false
 item_type = 4

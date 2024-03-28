@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -49,6 +49,8 @@
 [ext_resource path="res://gameobjects/tumor.tscn" type="PackedScene" id=47]
 [ext_resource path="res://game_end/TicketMachine.tscn" type="PackedScene" id=48]
 [ext_resource path="res://UI/update_player_stats.gd" type="Script" id=49]
+[ext_resource path="res://models/ladder/mdl-ladder-segment-end.tscn" type="PackedScene" id=50]
+[ext_resource path="res://models/ladder/mdl-ladder-segment.tscn" type="PackedScene" id=51]
 
 [sub_resource type="StyleBoxTexture" id=392]
 texture = ExtResource( 43 )
@@ -78,9 +80,6 @@ ambient_light_color = Color( 0.772549, 0.772549, 0.772549, 1 )
 fog_color = Color( 0.87451, 0.72549, 0.45098, 1 )
 fog_depth_begin = 0.0
 fog_depth_end = 175.0
-
-[sub_resource type="QuadMesh" id=383]
-size = Vector2( 1.5, 5 )
 
 [sub_resource type="QuadMesh" id=384]
 size = Vector2( 1.5, 7 )
@@ -358,9 +357,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -13 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9, 4, 11.2 )
 bounds = Vector3( 0.5, 3, 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder"]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1, 0 )
-mesh = SubResource( 383 )
+[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder" instance=ExtResource( 51 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -4, 0 )
+
+[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder" instance=ExtResource( 51 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -2, 0 )
+
+[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder" instance=ExtResource( 50 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7 )
@@ -368,6 +372,7 @@ bounds = Vector3( 1, 4, 0.25 )
 
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder2"]
 mesh = SubResource( 384 )
+material/0 = null
 
 [node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4 )
@@ -376,6 +381,7 @@ bounds = Vector3( 0.25, 4, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder3"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 385 )
+material/0 = null
 
 [node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6 )
@@ -384,6 +390,7 @@ bounds = Vector3( 0.5, 8, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder4"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 386 )
+material/0 = null
 
 [node name="WoodedArea" type="Spatial" parent="GameObjects"]
 
@@ -479,7 +486,6 @@ transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 5
 
 [node name="autostitcher" parent="GameObjects/MedicalArea" instance=ExtResource( 37 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1.5, -24.5 )
-heal_cost = 50
 
 [node name="WeaponFactory" type="Spatial" parent="GameObjects"]
 

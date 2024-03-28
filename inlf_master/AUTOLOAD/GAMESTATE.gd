@@ -47,15 +47,6 @@ func request_spawn(spawner):
 	cache[key] = ""
 	spawn_queue.append({"spawner" : spawner})
 
-func reset_player_equipment():
-	equip_player_inventory.take_item(Gamestate.equip_player_inventory.slot_datas[0])
-	weapon_player_inventory.take_item(Gamestate.weapon_player_inventory.slot_datas[0])
-
-func reset_player_inventory():
-	for item in player_inventory.slot_datas.size():
-		if player_inventory.slot_datas[item]:
-			player_inventory.take_item(player_inventory.slot_datas[item])
-
 func set_rot(value):
 	rot = clamp(value, 0, Globals.rot_max_value)
 	if rot >= Globals.rot_max_value:

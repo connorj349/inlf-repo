@@ -15,5 +15,4 @@ description = "used in biogrowing and to grow amoebas and moldstooling. can be m
 stackable = false
 texture = SubResource( 1 )
 price = 100
-drop_on_death = false
 item_type = 1

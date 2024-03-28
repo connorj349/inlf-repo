@@ -15,7 +15,6 @@ description = "a nasty dirty needle used to pump blood into your system, keeping
 stackable = false
 texture = SubResource( 1 )
 price = 25
-drop_on_death = false
 item_type = 4
 heal_value = 10
 consumable_type = 0

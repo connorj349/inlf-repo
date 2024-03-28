@@ -216,8 +216,6 @@ func kill():
 	for item in Gamestate.player_inventory.slot_datas:
 		if item:
 			corpse.inventory.add_item(item)
-	Gamestate.reset_player_equipment()
-	Gamestate.reset_player_inventory()
 	player_dead.get_node("PlayerSpawnTimer").wait_time = corpse.get_node("DecayTimer").wait_time #reset spawn time
 	player_dead.play_death_sound()
 	queue_free() #remove this player object

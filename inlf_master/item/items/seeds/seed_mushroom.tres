@@ -20,7 +20,6 @@ Fertilizer - 1"
 stackable = false
 texture = SubResource( 1 )
 price = 100
-drop_on_death = false
 item_type = 4
 blood = 1
 water = 1

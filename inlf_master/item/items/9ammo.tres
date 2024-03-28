@@ -15,5 +15,4 @@ description = "ammunition manufactured for smaller personal defence weapons."
 stackable = true
 texture = SubResource( 1 )
 price = 1
-drop_on_death = false
 item_type = 4
