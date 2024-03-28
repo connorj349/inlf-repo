@@ -8,6 +8,7 @@ var rng = RandomNumberGenerator.new() # random tips
 func change_scene(path): # need to pass current scene to remove it
 	rng.randomize()
 	show()
+	Gamestate.reset_gamestate()
 	var loader = ResourceLoader.load_interactive(path)
 	
 	if loader == null: # if the loader can't load anything

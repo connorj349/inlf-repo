@@ -66,22 +66,24 @@ text = "Level Name"
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -19.5
-margin_right = 43.0
-margin_bottom = 19.5
+margin_right = 320.0
+margin_bottom = 67.5
+rect_clip_content = true
 
 [node name="TipLabel" type="Label" parent="Control/VBoxContainer2"]
-margin_right = 74.0
+margin_right = 320.0
 margin_bottom = 22.0
 custom_fonts/font = SubResource( 3 )
 text = "Tip"
 
 [node name="TipValue" type="Label" parent="Control/VBoxContainer2"]
 margin_top = 26.0
-margin_right = 74.0
+margin_right = 320.0
 margin_bottom = 39.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "tip goes here"
+autowrap = true
 
 [node name="ProgressBar" type="TextureProgress" parent="."]
 anchor_left = 0.5

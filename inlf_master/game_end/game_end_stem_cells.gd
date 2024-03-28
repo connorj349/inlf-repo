@@ -22,4 +22,6 @@ func set_player_stem_cells(value):
 	Globals.emit_signal("on_pop_notification", "[color=red]Lost 1 stem cell.[/color]")
 	Gamestate.emit_signal("on_stem_cells_changed", player_stem_cells)
 	if player_stem_cells <= 0:
-		loading_screen.change_scene("res://scenes/Main.tscn")
+		Gamestate.emit_signal("game_over")
+		# fade out to black screen, display text: YOU RAN OUT OF STEM CELLS
+		loading_screen.change_scene("res://scenes/Menu.tscn")

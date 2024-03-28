@@ -46,4 +46,4 @@ func on_death():
 	queue_free() # delete this object
 
 func _on_RotTimer_timeout():
-	Gamestate.rot -= rot_increase_amount # make global const var
+	Gamestate.rot += rot_increase_amount # make global const var

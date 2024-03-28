@@ -10,7 +10,6 @@ var weapon_player_inventory = preload("res://inventory/player_weapon_inventory.t
 var merchant_inventory = preload("res://inventory/merchant_inventory.tres")
 
 signal rot_changed
-signal on_rot_reached_max
 signal bones_changed
 # warning-ignore:unused_signal
 signal on_player_death
@@ -19,6 +18,8 @@ signal on_player_spawn
 # warning-ignore:unused_signal
 signal on_stem_cells_changed
 signal infections_count_changed
+# warning-ignore:unused_signal
+signal game_over
 
 var rot = 0 setget set_rot
 var bones = 0 setget set_bones
@@ -28,6 +29,10 @@ var infections setget , get_infections
 
 var spawn_queue = []
 var cache = {}
+
+func _ready():
+# warning-ignore:return_value_discarded
+	connect("game_over", self, "reset_gamestate")
 
 func _physics_process(_delta):
 	dequeue_spawn_requests()
@@ -47,10 +52,24 @@ func request_spawn(spawner):
 	cache[key] = ""
 	spawn_queue.append({"spawner" : spawner})
 
+func reset_gamestate():
+	self.bones = 0
+	self.rot = 0
+	self.bloaters = 0
+	self.tumors = 0
+	for i in player_inventory.slot_datas:
+		player_inventory.take_item(i)
+	for i in equip_player_inventory.slot_datas:
+		equip_player_inventory.take_item(i)
+	for i in weapon_player_inventory.slot_datas:
+		weapon_player_inventory.take_item(i)
+	for i in merchant_inventory.slot_datas:
+		merchant_inventory.take_item(i)
+
 func set_rot(value):
 	rot = clamp(value, 0, Globals.rot_max_value)
 	if rot >= Globals.rot_max_value:
-		emit_signal("on_rot_reached_max")
+		# fade out to black screen, display text ROT CONSUMED THE WORLD
 		return
 	emit_signal("rot_changed")
 
