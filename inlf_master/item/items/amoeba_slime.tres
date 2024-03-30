@@ -6,13 +6,13 @@
 [sub_resource type="AtlasTexture" id=1]
 flags = 19
 atlas = ExtResource( 2 )
-region = Rect2( 2748, 158, 54, 40 )
+region = Rect2( 1454, 3658, 44, 36 )
 
 [resource]
 script = ExtResource( 1 )
-name = "9mm parabellum"
-description = "ammunition manufactured for smaller personal defence weapons."
-stackable = true
+name = "amoeba slime"
+description = "used as biomass in machine	"
+stackable = false
 texture = SubResource( 1 )
-price = 1
-item_type = 4
+price = 0
+item_type = 0
