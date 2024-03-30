@@ -17,7 +17,9 @@ func _on_options_button_pressed():
 
 func _on_menu_exit_button_pressed():
 	toggle()
+	Gamestate.reset_gamestate()
 	$LoadingScreen.change_scene("res://scenes/Menu.tscn")
 
 func _on_exit_button_pressed():
+	Gamestate.reset_gamestate()
 	get_tree().quit()

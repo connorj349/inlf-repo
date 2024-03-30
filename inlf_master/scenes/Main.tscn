@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -51,6 +51,7 @@
 [ext_resource path="res://UI/update_player_stats.gd" type="Script" id=49]
 [ext_resource path="res://models/ladder/mdl-ladder-segment-end.tscn" type="PackedScene" id=50]
 [ext_resource path="res://models/ladder/mdl-ladder-segment.tscn" type="PackedScene" id=51]
+[ext_resource path="res://gameobjects/ExplodingMushroom.tscn" type="PackedScene" id=52]
 
 [sub_resource type="StyleBoxTexture" id=392]
 texture = ExtResource( 43 )
@@ -460,6 +461,21 @@ spawn_frequency = 500.0
 
 [node name="tumor" parent="GameObjects/Canal" instance=ExtResource( 47 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43, -5, -5 )
+
+[node name="MushroomSpawner" parent="GameObjects/Canal" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -5, -9 )
+node_to_spawn = ExtResource( 52 )
+spawn_frequency = 30.0
+
+[node name="MushroomSpawner2" parent="GameObjects/Canal" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -4, 0 )
+node_to_spawn = ExtResource( 52 )
+spawn_frequency = 30.0
+
+[node name="MushroomSpawner3" parent="GameObjects/Canal" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -4, 0 )
+node_to_spawn = ExtResource( 52 )
+spawn_frequency = 30.0
 
 [node name="ProleSpawn" type="Spatial" parent="GameObjects"]
 
