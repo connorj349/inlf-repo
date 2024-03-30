@@ -66,6 +66,14 @@ func reset_gamestate():
 	for i in merchant_inventory.slot_datas:
 		merchant_inventory.take_item(i)
 
+func reset_player_state():
+	for i in player_inventory.slot_datas:
+		player_inventory.take_item(i)
+	for i in equip_player_inventory.slot_datas:
+		equip_player_inventory.take_item(i)
+	for i in weapon_player_inventory.slot_datas:
+		weapon_player_inventory.take_item(i)
+
 func set_rot(value):
 	rot = clamp(value, 0, Globals.rot_max_value)
 	if rot >= Globals.rot_max_value:
