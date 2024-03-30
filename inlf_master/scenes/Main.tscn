@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -51,6 +51,10 @@
 [ext_resource path="res://UI/update_player_stats.gd" type="Script" id=49]
 [ext_resource path="res://models/ladder/mdl-ladder-segment-end.tscn" type="PackedScene" id=50]
 [ext_resource path="res://models/ladder/mdl-ladder-segment.tscn" type="PackedScene" id=51]
+[ext_resource path="res://sound/SoundScape.tscn" type="PackedScene" id=52]
+[ext_resource path="res://sound/sounds/ambience/music/industrial-01.wav" type="AudioStream" id=53]
+[ext_resource path="res://sound/SoundQueue.tscn" type="PackedScene" id=54]
+[ext_resource path="res://sound/sounds/ambience/music/fallen.ogg" type="AudioStream" id=55]
 
 [sub_resource type="StyleBoxTexture" id=392]
 texture = ExtResource( 43 )
@@ -75,8 +79,10 @@ shader_param/enabled = true
 panorama = ExtResource( 6 )
 
 [sub_resource type="Environment" id=2]
+background_mode = 2
 background_sky = SubResource( 366 )
 ambient_light_color = Color( 0.772549, 0.772549, 0.772549, 1 )
+ambient_light_sky_contribution = 0.0
 fog_color = Color( 0.87451, 0.72549, 0.45098, 1 )
 fog_depth_begin = 0.0
 fog_depth_end = 175.0
@@ -130,6 +136,10 @@ extents = Vector3( 2, 2, 2 )
 [sub_resource type="BoxShape" id=402]
 resource_local_to_scene = true
 extents = Vector3( 1, 1, 5 )
+
+[sub_resource type="BoxShape" id=403]
+resource_local_to_scene = true
+extents = Vector3( 25, 10, 25 )
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 14 )
@@ -372,6 +382,7 @@ bounds = Vector3( 1, 4, 0.25 )
 
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder2"]
 mesh = SubResource( 384 )
+material/0 = null
 
 [node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4 )
@@ -380,6 +391,7 @@ bounds = Vector3( 0.25, 4, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder3"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 385 )
+material/0 = null
 
 [node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6 )
@@ -388,6 +400,7 @@ bounds = Vector3( 0.5, 8, 1 )
 [node name="MeshInstance" type="MeshInstance" parent="GameObjects/Ladders/Ladder4"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 386 )
+material/0 = null
 
 [node name="WoodedArea" type="Spatial" parent="GameObjects"]
 
@@ -543,6 +556,27 @@ payday = 2
 [node name="TicketMachine" parent="GameObjects/GameEnd" instance=ExtResource( 48 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23 )
 
+[node name="SoundScape" parent="GameObjects" instance=ExtResource( 52 )]
+
+[node name="Area" parent="GameObjects/SoundScape" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
+
+[node name="CollisionShape" parent="GameObjects/SoundScape/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 10, 10 )
+shape = SubResource( 403 )
+
+[node name="SoundQueue" parent="GameObjects/SoundScape/SoundPool" index="0" instance=ExtResource( 54 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameObjects/SoundScape/SoundPool/SoundQueue"]
+stream = ExtResource( 53 )
+bus = "Music"
+
+[node name="SoundQueue2" parent="GameObjects/SoundScape/SoundPool" index="1" instance=ExtResource( 54 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="GameObjects/SoundScape/SoundPool/SoundQueue2"]
+stream = ExtResource( 55 )
+bus = "Music"
+
 [node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43, 2, -12 )
 
@@ -556,3 +590,4 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43, 2, 
 [editable path="GameObjects/ToolFactory/Generator"]
 [editable path="GameObjects/WeaponFactory/Generator"]
 [editable path="GameObjects/Quarry/Generator"]
+[editable path="GameObjects/SoundScape"]

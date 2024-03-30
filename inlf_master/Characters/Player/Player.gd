@@ -172,18 +172,7 @@ func _process(delta):
 		var direction = Vector3.ZERO
 		var f_input = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
 		var h_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-		direction = Vector3(h_input, 0, f_input)
-		
-		#view lean during strafe movement
-		# this currently causes the camera to get out of sync with the head when moving against walls
-		head.rotation.z = clamp(head.rotation.z, -PI/100, PI/100)
-		var head_rotate_z = clamp(head.rotation.z, -PI/100, PI/100)
-		
-		head.rotate_z(-lerp_angle(0.0, h_input, delta * 0.2))
-		
-		if h_input == 0:
-			head.rotate_z(-lerp_angle(head_rotate_z, 0.0, delta * 45))
-		
+		direction = Vector3(h_input, 0, f_input)		
 		movement.set_move_vector(direction)
 	else:
 		movement.set_move_vector(Vector3.ZERO) #set movement to zero when in menu
@@ -216,6 +205,7 @@ func kill():
 	for item in Gamestate.player_inventory.slot_datas:
 		if item:
 			corpse.inventory.add_item(item)
+	Gamestate.reset_player_state()
 	player_dead.get_node("PlayerSpawnTimer").wait_time = corpse.get_node("DecayTimer").wait_time #reset spawn time
 	player_dead.play_death_sound()
 	queue_free() #remove this player object
