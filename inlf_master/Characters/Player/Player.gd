@@ -31,13 +31,13 @@ func _ready():
 	#health.connect("hurt", something, "play_hurt_effects") #enable effects when player is damaged like sound/hud
 	health.init() #setup sarting health
 	health.connect("health_changed", health_bar, "update_bar") #setup healthbar connection
-	health.connect("max_health_changed", health_bar, "init", [health.health, health.max_health])
+	health.connect("max_health_changed", health_bar, "init", [health.health])
 	health.connect("max_health_changed", self, "update_health_and_pox_text_placement")
 	health.connect("pox_changed", pox_bar, "update_bar")
 	health.connect("pox_changed", self, "update_health_and_pox_text_placement")
 	health.connect("dead", self, "kill") # setup death functionality
 	health_bar.init(health.health, health.max_health)
-	pox_bar.init(health.pox, 100)
+	pox_bar.init(health.pox, health.allowed_max_health)
 	armor.init()
 	armor_bar.init(armor.armor, armor.max_armor)
 	armor.connect("armor_changed", armor_bar, "update_bar")
@@ -47,7 +47,7 @@ func _ready():
 # warning-ignore:return_value_discarded
 	Globals.connect("blood_circle_removed", self, "on_blood_circle_removed")
 
-func update_health_and_pox_text_placement(_passed_health_or_pox):
+func update_health_and_pox_text_placement(_val):
 	for element in $UI/Bars/health_pox/pox_bar/VBoxContainer.get_children():
 		element.text = ""
 	if health.max_health > health.allowed_max_health * .5:

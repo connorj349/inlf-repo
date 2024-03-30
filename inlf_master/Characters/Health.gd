@@ -27,13 +27,13 @@ func set_max_health(val):
 	max_health = clamp(val, 0, allowed_max_health)
 	if health > self.max_health:
 		self.health = self.max_health
-	emit_signal("max_health_changed", max_health)
+	emit_signal("max_health_changed", self.max_health)
 
 func get_max_health():
 	return allowed_max_health - pox
 
 func set_health(val):
-	health = clamp(val, 0, max_health)
+	health = clamp(val, 0, self.max_health)
 	emit_signal("health_changed", health)
 	if health <= 0:
 		emit_signal("dead")
