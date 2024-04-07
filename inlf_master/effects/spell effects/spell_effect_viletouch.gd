@@ -17,3 +17,4 @@ func _on_TickTimer_timeout():
 	for body in area.get_overlapping_bodies():
 		if body == Globals.current_player:
 			Globals.current_player.health.pox += 2
+			return

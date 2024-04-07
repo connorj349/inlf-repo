@@ -50,15 +50,15 @@ func _ready():
 func update_health_and_pox_text_placement(_val):
 	for element in $UI/Bars/health_pox/pox_bar/VBoxContainer.get_children():
 		element.text = ""
-	if health.max_health > health.allowed_max_health * .5:
+	if health.max_health > health.allowed_max_health * 0.5:
 		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label3.text = "blood"
-	elif health.max_health > health.allowed_max_health * .25:
+	elif health.max_health > health.allowed_max_health * 0.25:
 		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label2.text = "blood"
 	elif health.max_health > 0:
 		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label.text = "blood"
-	if health.pox > 50:
+	if health.pox > health.allowed_max_health * 0.5:
 		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label3.text = "POX"
-	elif health.pox > 25:
+	elif health.pox > health.allowed_max_health * 0.25:
 		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label4.text = "POX"
 	elif health.pox > 0:
 		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label5.text = "POX"

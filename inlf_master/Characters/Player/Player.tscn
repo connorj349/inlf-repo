@@ -291,7 +291,7 @@ far = 75.0
 
 [node name="HintObjRayCast" type="RayCast" parent="Head/Camera"]
 enabled = true
-cast_to = Vector3( 0, 0, -5 )
+cast_to = Vector3( 0, 0, -3 )
 collision_mask = 2
 
 [node name="PickupRayCast" type="RayCast" parent="Head/Camera"]

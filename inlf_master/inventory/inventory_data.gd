@@ -108,6 +108,8 @@ func add_item(slot_data):
 			return
 
 func take_item(slot_data): #take a specific item from the player's inventory
+	if slot_data == null:
+		return
 	for index in slot_datas.size():
 		if slot_datas[index]: #if there is data in this slot per index
 			if slot_datas[index].item_data == slot_data.item_data and slot_datas[index].quantity >= slot_data.quantity:

@@ -1,11 +1,12 @@
 [gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://raw_assets/textures/summon_circle.png" type="Texture" id=2]
+[ext_resource path="res://effects/textures/summon_circle.png" type="Texture" id=2]
 [ext_resource path="res://gameobjects/blood_circle.gd" type="Script" id=3]
 [ext_resource path="res://sound/sounds/ambience/chant.wav" type="AudioStream" id=4]
-[ext_resource path="res://raw_assets/textures/effects/cloud_circle.png" type="Texture" id=5]
-[ext_resource path="res://raw_assets/textures/effects/skull.png" type="Texture" id=6]
+[ext_resource path="res://effects/textures/cloud_circle.png" type="Texture" id=5]
+[ext_resource path="res://effects/textures/skull.png" type="Texture" id=6]
+
 
 
 [sub_resource type="Gradient" id=1]
