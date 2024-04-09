@@ -15,6 +15,7 @@ func _ready():
 	# raycast.collision_mask
 	item_weapon_damage.type = item_weapon_data.damage_type
 	item_weapon_damage.amount = item_weapon_data.damage
+	item_weapon_damage.source = Globals.current_player
 
 func on_attack():
 	if item_weapon_data:
