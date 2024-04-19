@@ -268,17 +268,18 @@ margin_right = 64.0
 margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
-margin_right = 128.0
-margin_bottom = 9.0
+margin_right = 174.0
+margin_bottom = 21.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-text = "amoeba"
+text = "amoeba
+feed biomass and dunk in water to burst open"
 align = 1
 valign = 1
 
 [node name="HydrationProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 13.0
-margin_right = 128.0
-margin_bottom = 36.0
+margin_top = 25.0
+margin_right = 174.0
+margin_bottom = 42.0
 size_flags_vertical = 3
 texture_under = ExtResource( 11 )
 texture_progress = ExtResource( 10 )
@@ -296,8 +297,8 @@ align = 1
 valign = 1
 
 [node name="BioProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 40.0
-margin_right = 128.0
+margin_top = 46.0
+margin_right = 174.0
 margin_bottom = 64.0
 size_flags_vertical = 3
 texture_under = ExtResource( 11 )

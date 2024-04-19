@@ -429,14 +429,15 @@ margin_bottom = 48.0
 
 [node name="NameLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 margin_right = 150.0
-margin_bottom = 9.0
+margin_bottom = 21.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-text = "biogrower"
+text = "biogrower
+insert seeds to begin growing mushrooms"
 align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 13.0
+margin_top = 25.0
 margin_right = 150.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
@@ -444,13 +445,13 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
 margin_right = 130.0
-margin_bottom = 83.0
+margin_bottom = 71.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BloodProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_right = 130.0
-margin_bottom = 17.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_under = ExtResource( 9 )
@@ -469,9 +470,9 @@ align = 1
 valign = 1
 
 [node name="WaterProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 21.0
+margin_top = 18.0
 margin_right = 130.0
-margin_bottom = 39.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_under = ExtResource( 9 )
@@ -490,9 +491,9 @@ align = 1
 valign = 1
 
 [node name="FertilizerProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 43.0
+margin_top = 37.0
 margin_right = 130.0
-margin_bottom = 61.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_under = ExtResource( 9 )
@@ -511,9 +512,9 @@ align = 1
 valign = 1
 
 [node name="ExoticProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 65.0
+margin_top = 56.0
 margin_right = 130.0
-margin_bottom = 83.0
+margin_bottom = 71.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_under = ExtResource( 9 )
@@ -534,7 +535,7 @@ valign = 1
 [node name="GrowthProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
 margin_left = 134.0
 margin_right = 150.0
-margin_bottom = 83.0
+margin_bottom = 71.0
 rect_min_size = Vector2( 16, 0 )
 texture_under = ExtResource( 4 )
 texture_progress = ExtResource( 7 )

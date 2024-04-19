@@ -33,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
 script = ExtResource( 2 )
-tips = [ "tumors produce rot over time. destroy them", "insert certain items in a processor to receive special material used in machines" ]
+tips = [ "tumors produce rot over time. destroy them", "insert certain items in a processor to receive special material used in machines", "machines are used to create goods that are bought at the vendor", "get seeds from amoebas", "bones are the only way to leave the nightmare" ]
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
@@ -41,8 +41,10 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 5 )
 
 [node name="Control" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 margin_right = 75.0

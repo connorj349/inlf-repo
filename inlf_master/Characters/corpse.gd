@@ -51,12 +51,13 @@ func _interact(_actor):
 			_actor.on_heal(25)
 			spawn_blood()
 			on_hurt(corpse_eat_damage)
+			Globals.current_player.health.pox += 5
 		if inventory.slot_datas.size() > 0:
 			for item in inventory.slot_datas:
 				if item:
 					Globals.create_pickup(item) # choose random index, give item
 					inventory.take_item(item)
-					Globals.current_player.health.pox += 5
+					# Globals.current_player.health.pox += 5
 					# Globals.current_player.dispair += 10
 					return
 

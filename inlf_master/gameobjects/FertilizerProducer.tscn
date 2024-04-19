@@ -246,16 +246,17 @@ margin_bottom = 25.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 margin_right = 150.0
-margin_bottom = 9.0
+margin_bottom = 21.0
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-text = "fertilizier"
+text = "fertilizier
+insert biomass to turn into fertilizer"
 align = 1
 valign = 1
 
 [node name="ProgressBar" type="TextureProgress" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 13.0
+margin_top = 25.0
 margin_right = 150.0
-margin_bottom = 29.0
+margin_bottom = 35.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_under = ExtResource( 7 )
@@ -274,7 +275,7 @@ align = 1
 valign = 1
 
 [node name="ProductionProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 33.0
+margin_top = 39.0
 margin_right = 150.0
 margin_bottom = 50.0
 size_flags_horizontal = 3

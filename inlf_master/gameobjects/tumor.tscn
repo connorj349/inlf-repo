@@ -164,7 +164,8 @@ margin_bottom = 30.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 1, 1, 0 )
-text = "Tumor"
+text = "tumor
+spews harmful rot into the world"
 align = 1
 valign = 1
 
