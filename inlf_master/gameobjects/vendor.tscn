@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=1]
 [ext_resource path="res://gameobjects/vendor.gd" type="Script" id=2]
+[ext_resource path="res://models/distiller/mat-distiller.tres" type="Material" id=3]
+[ext_resource path="res://models/rot_telecom/mat-screen.tres" type="Material" id=4]
+[ext_resource path="res://models/ticket_machine/obj-ticket-machine.glb" type="PackedScene" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.5, 1, 0.5 )
@@ -70,6 +73,20 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
 
+[node name="obj-ticket-machine" parent="." instance=ExtResource( 5 )]
+
+[node name="obj-ticket_machine" parent="obj-ticket-machine" index="0"]
+material/0 = ExtResource( 4 )
+material/1 = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/fade_in = SubResource( 6 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1 )
+light_color = Color( 0.054902, 1, 0, 1 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Info" type="Control" parent="CanvasLayer"]
@@ -113,8 +130,10 @@ valign = 1
 autowrap = true
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
@@ -127,6 +146,7 @@ margin_left = -15.0
 margin_top = -15.0
 margin_right = 15.0
 margin_bottom = 15.0
+mouse_filter = 2
 theme = ExtResource( 1 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer"]
@@ -134,16 +154,11 @@ margin_left = 6.0
 margin_top = 8.0
 margin_right = 22.0
 margin_bottom = 20.0
+mouse_filter = 2
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer"]
 margin_right = 16.0
 margin_bottom = 12.0
 columns = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 5 )
-anims/fade_in = SubResource( 6 )
-
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1 )
-light_color = Color( 0.054902, 1, 0, 1 )
+[editable path="obj-ticket-machine"]

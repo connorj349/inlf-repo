@@ -4,106 +4,104 @@
 
 [node name="slumtown" instance=ExtResource( 1 )]
 
-[node name="ground_02" parent="." index="0" groups=["ground_stone"]]
+[node name="static_collision" parent="ground_02" index="0" groups=["ground_stone"]]
 
-[node name="ground_01" parent="." index="2" groups=["ground_stone"]]
+[node name="static_collision" parent="ground_01" index="0" groups=["ground_stone"]]
 
-[node name="ground_03" parent="." index="3" groups=["ground_stone"]]
+[node name="static_collision" parent="ground_03" index="0" groups=["ground_stone"]]
 
-[node name="ground_04" parent="." index="5" groups=["ground_stone"]]
+[node name="static_collision" parent="ground_04" index="0" groups=["ground_stone"]]
 
-[node name="woods" parent="." index="7" groups=["ground_stone"]]
+[node name="static_collision" parent="woods" index="0" groups=["ground_stone"]]
 
-[node name="slums_platform" parent="." index="8" groups=["ground_stone"]]
+[node name="static_collision" parent="slums_platform" index="0" groups=["ground_stone"]]
 
-[node name="split_wall" parent="." index="9" groups=["ground_stone"]]
+[node name="static_collision" parent="split_wall" index="0" groups=["ground_stone"]]
 
-[node name="nexus" parent="." index="10" groups=["ground_stone"]]
+[node name="static_collision" parent="nexus" index="0" groups=["ground_stone"]]
 
-[node name="prole_spawn" parent="." index="13" groups=["ground_stone"]]
+[node name="static_collision" parent="prole_spawn" index="0" groups=["ground_stone"]]
 
-[node name="apartment_rooms" parent="." index="15" groups=["ground_stone"]]
+[node name="static_collision" parent="apartment_rooms" index="0" groups=["ground_stone"]]
 
-[node name="canal_ground" parent="." index="16" groups=["ground_mud"]]
+[node name="static_collision" parent="canal_ground" index="0" groups=["ground_mud"]]
 
-[node name="south_wall_corridor" parent="." index="17" groups=["ground_stone"]]
+[node name="static_collision" parent="south_wall_corridor" index="0" groups=["ground_stone"]]
 
-[node name="split_wall_corridor" parent="." index="18" groups=["ground_transition"]]
+[node name="static_collision" parent="split_wall_corridor" index="0" groups=["ground_stone"]]
 
-[node name="shops" parent="." index="35" groups=["ground_stone"]]
+[node name="static_collision" parent="shops" index="0" groups=["ground_stone"]]
 
-[node name="tool_factory_walls_floor_01" parent="." index="38" groups=["ground_stone"]]
+[node name="static_collision" parent="tool_factory_floor_02" index="0" groups=["ground_stone"]]
 
-[node name="tool_factory_floor_02" parent="." index="39" groups=["ground_stone"]]
+[node name="static_collision" parent="tool_factory_floor_03" index="0" groups=["ground_stone"]]
 
-[node name="tool_factory_floor_03" parent="." index="41" groups=["ground_stone"]]
+[node name="static_collision" parent="tool_factory_roof" index="0" groups=["ground_stone"]]
 
-[node name="tool_factory_roof" parent="." index="42" groups=["ground_stone"]]
+[node name="static_collision" parent="tool_factory_floor_01" index="0" groups=["ground_transition"]]
 
-[node name="tool_factory_floor_01" parent="." index="44" groups=["ground_transition"]]
+[node name="static_collision" parent="wep_factory_roof_02" index="0" groups=["ground_stone"]]
 
-[node name="wep_factory_roof_02" parent="." index="46" groups=["ground_stone"]]
+[node name="static_collision" parent="wep_factory_roof_01" index="0" groups=["ground_stone"]]
 
-[node name="wep_factory_roof_01" parent="." index="47" groups=["ground_stone"]]
+[node name="static_collision" parent="wep_factory_floor_02" index="0" groups=["ground_stone"]]
 
-[node name="wep_factory_floor_02" parent="." index="50" groups=["ground_stone"]]
+[node name="static_collision" parent="wep_factory_catwalk" index="0" groups=["ground_stone"]]
 
-[node name="wep_factory_catwalk" parent="." index="51" groups=["ground_stone"]]
+[node name="static_collision" parent="wep_factor_floor_01" index="0" groups=["ground_stone"]]
 
-[node name="wep_factor_floor_01" parent="." index="52" groups=["ground_stone"]]
+[node name="static_collision" parent="catwalk_to_tool_factory" index="0" groups=["ground_stone"]]
 
-[node name="catwalk_to_tool_factory" parent="." index="53" groups=["ground_stone"]]
+[node name="static_collision" parent="scaffolding" index="0" groups=["ground_stone"]]
 
-[node name="scaffolding" parent="." index="54" groups=["ground_stone"]]
+[node name="static_collision" parent="scaffolding_platforms" index="0" groups=["ground_stone"]]
 
-[node name="scaffolding_platforms" parent="." index="55" groups=["ground_stone"]]
+[node name="static_collision" parent="garden_stairs" index="0" groups=["ground_stone"]]
 
-[node name="garden_stairs" parent="." index="56" groups=["ground_stone"]]
+[node name="static_collision" parent="woods_plank" index="0" groups=["ground_stone"]]
 
-[node name="woods_plank" parent="." index="66" groups=["ground_stone"]]
+[node name="static_collision" parent="sewer_scaffolding" index="0" groups=["ground_stone"]]
 
-[node name="sewer_scaffolding" parent="." index="67" groups=["ground_stone"]]
+[node name="static_collision" parent="sewer_platform" index="0" groups=["ground_stone"]]
 
-[node name="sewer_platform" parent="." index="68" groups=["ground_stone"]]
+[node name="static_collision" parent="sewer_plank" index="0" groups=["ground_stone"]]
 
-[node name="sewer_plank" parent="." index="69" groups=["ground_stone"]]
+[node name="static_collision" parent="plank_01" index="0" groups=["ground_stone"]]
 
-[node name="plank_01" parent="." index="70" groups=["ground_stone"]]
+[node name="static_collision" parent="plank_02" index="0" groups=["ground_stone"]]
 
-[node name="plank_02" parent="." index="71" groups=["ground_stone"]]
+[node name="static_collision" parent="grate" index="0" groups=["ground_stone"]]
 
-[node name="grate" parent="." index="72" groups=["ground_stone"]]
+[node name="static_collision" parent="bar_plank" index="0" groups=["ground_stone"]]
 
-[node name="bar_plank" parent="." index="73" groups=["ground_stone"]]
+[node name="static_collision" parent="quarry" index="0" groups=["ground_transition"]]
 
-[node name="quarry" parent="." index="74" groups=["ground_transition"]]
+[node name="static_collision" parent="factory-platform" index="0" groups=["ground_stone"]]
 
-[node name="factory-platform" parent="." index="76" groups=["ground_stone"]]
+[node name="static_collision" parent="tool_factory_underbelly" index="0" groups=["ground_mud"]]
 
-[node name="tool_factory_underbelly" parent="." index="95" groups=["ground_mud"]]
+[node name="static_collision" parent="misfit_spawn" index="0" groups=["ground_mud"]]
 
-[node name="misfit_spawn" parent="." index="96" groups=["ground_stone"]]
+[node name="static_collision" parent="channel_to_potential" index="0" groups=["ground_mud"]]
 
-[node name="channel_to_potential" parent="." index="97" groups=["ground_mud"]]
+[node name="static_collision" parent="potential_spawn" index="0" groups=["ground_mud"]]
 
-[node name="potential_spawn" parent="." index="98" groups=["ground_stone"]]
+[node name="static_collision" parent="potential_grate" index="0" groups=["ground_stone"]]
 
-[node name="potential_grate" parent="." index="99" groups=["ground_stone"]]
+[node name="static_collision" parent="channel_to_misfit_spawn" index="0" groups=["ground_stone"]]
 
-[node name="channel_to_misfit_spawn" parent="." index="100" groups=["ground_stone"]]
+[node name="static_collision" parent="channel_from_split" index="0" groups=["ground_mud"]]
 
-[node name="channel_from_split" parent="." index="101" groups=["ground_stone"]]
+[node name="static_collision" parent="channel_outside_sewers" index="0" groups=["ground_stone"]]
 
-[node name="channel_outside_sewers" parent="." index="103" groups=["ground_stone"]]
+[node name="static_collision" parent="extra_comp" index="0" groups=["ground_stone"]]
 
-[node name="extra_comp" parent="." index="104" groups=["ground_stone"]]
+[node name="static_collision" parent="secret_storage" index="0" groups=["ground_stone"]]
 
-[node name="secret_storage" parent="." index="105" groups=["ground_stone"]]
+[node name="static_collision" parent="channel_under_tool_factory" index="0" groups=["ground_stone"]]
 
-[node name="channel_under_tool_factory" parent="." index="106" groups=["ground_stone"]]
+[node name="static_collision" parent="minor_channel_01" index="0" groups=["ground_mud"]]
 
-[node name="minor_channel_01" parent="." index="107" groups=["ground_mud"]]
+[node name="static_collision" parent="pathway_to_secret" index="0" groups=["ground_stone"]]
 
-[node name="pathway_to_secret" parent="." index="108" groups=["ground_stone"]]
-
-[node name="tool_factory_exitgrate" parent="." index="109" groups=["ground_mud"]]
+[node name="static_collision" parent="tool_factory_exitgrate" index="0" groups=["ground_mud"]]

@@ -31,6 +31,7 @@ autoplay = true
 bus = "Music"
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Sounds"]
+bus = "Music"
 
 [node name="Camera" type="Camera" parent="."]
 
