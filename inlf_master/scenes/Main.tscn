@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -53,6 +53,7 @@
 [ext_resource path="res://models/ladder/mdl-ladder-segment.tscn" type="PackedScene" id=51]
 [ext_resource path="res://gameobjects/ExplodingMushroom.tscn" type="PackedScene" id=52]
 [ext_resource path="res://models/objects/objects_tileset.tres" type="MeshLibrary" id=53]
+[ext_resource path="res://Characters/WaterArea.tscn" type="PackedScene" id=54]
 
 [sub_resource type="Gradient" id=403]
 offsets = PoolRealArray( 0, 0.66879, 1 )
@@ -343,14 +344,18 @@ node_to_spawn = ExtResource( 52 )
 spawn_frequency = 120.0
 
 [node name="MushroomSpawner2" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -4, -1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -4.2, -1 )
 node_to_spawn = ExtResource( 52 )
 spawn_frequency = 120.0
 
 [node name="MushroomSpawner3" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -3, -1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -4.4, -1 )
 node_to_spawn = ExtResource( 52 )
 spawn_frequency = 120.0
+
+[node name="WaterArea" parent="GameObjects/Canal" instance=ExtResource( 54 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -4, -5 )
+bounds = Vector3( 40, 1, 5 )
 
 [node name="ProleSpawn" type="Spatial" parent="GameObjects"]
 
@@ -400,18 +405,22 @@ bounds = Vector3( 1, 1, 5 )
 [node name="CollisionShape" parent="GameObjects/WeaponFactory/Generator/CheckForMachinesArea" index="0"]
 shape = SubResource( 399 )
 
+[node name="WaterArea" parent="GameObjects/WeaponFactory" instance=ExtResource( 54 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4.5, -24 )
+bounds = Vector3( 2, 0.5, 15 )
+
 [node name="Quarry" type="Spatial" parent="GameObjects"]
 
 [node name="RockSpawner" parent="GameObjects/Quarry" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44, -15, -9 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44, -19.4, -25 )
 node_to_spawn = ExtResource( 40 )
 
 [node name="RockSpawner2" parent="GameObjects/Quarry" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -64, -15, -2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -18.5, -22 )
 node_to_spawn = ExtResource( 40 )
 
 [node name="RockSpawner3" parent="GameObjects/Quarry" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -15, 6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53, -19, -26 )
 node_to_spawn = ExtResource( 40 )
 
 [node name="Generator" parent="GameObjects/Quarry" instance=ExtResource( 38 )]
@@ -443,6 +452,12 @@ payday = 2
 
 [node name="TicketMachine" parent="GameObjects/GameEnd" instance=ExtResource( 48 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23 )
+
+[node name="Sewer" type="Spatial" parent="GameObjects"]
+
+[node name="WaterArea" parent="GameObjects/Sewer" instance=ExtResource( 54 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -11, -19 )
+bounds = Vector3( 8, 1, 30 )
 
 [node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 43, 2, -12 )
@@ -638,8 +653,8 @@ gui_disable_input = true
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 
 [editable path="GameObjects/ToolFactory/Generator"]
 [editable path="GameObjects/WeaponFactory/Generator"]

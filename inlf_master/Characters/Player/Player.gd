@@ -142,7 +142,7 @@ func _process(delta):
 			weapon_manager.attack()
 		#picking up interactable physicsbodies, later add alternate firemodes for weapons
 		if Input.is_action_just_pressed("right_click"):
-			if pickup_object:
+			if is_instance_valid(pickup_object):
 				pickup_object.mode = RigidBody.MODE_RIGID
 				pickup_object.collision_mask = 1 | 2
 				pickup_object = null
@@ -150,7 +150,7 @@ func _process(delta):
 				pickup_object = pickup_raycast.get_collider()
 				pickup_object.mode = RigidBody.MODE_KINEMATIC
 				pickup_object.collision_mask = 0
-		if pickup_object:
+		if is_instance_valid(pickup_object):
 			pickup_object.global_transform.origin = hold_object_pos.global_transform.origin
 		#weapon switching
 		if Input.is_action_just_pressed("switch_weapons"):

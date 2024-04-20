@@ -85,9 +85,9 @@ func set_bones(value):
 	bones = clamp(value, 0, 9999)
 	emit_signal("bones_changed", bones)
 	if value > 0:
-		Globals.emit_signal("on_pop_notification", "I received %s bones." % value)
+		Globals.emit_signal("on_pop_notification", "I received some bones.")
 	elif value < 0:
-		Globals.emit_signal("on_pop_notification", "I have lost %s bones." % value)
+		Globals.emit_signal("on_pop_notification", "I have lost some bones.")
 
 func set_bloaters(value):
 	bloaters = clamp(value, 0, 9999)

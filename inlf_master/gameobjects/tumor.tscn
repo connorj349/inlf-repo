@@ -157,6 +157,7 @@ margin_left = -75.0
 margin_top = -32.0
 margin_right = 75.0
 margin_bottom = 32.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
 margin_right = 150.0
@@ -173,6 +174,7 @@ valign = 1
 margin_top = 34.0
 margin_right = 150.0
 margin_bottom = 64.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 50.0

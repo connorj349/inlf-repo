@@ -76,6 +76,7 @@ margin_left = -208.0
 margin_top = -69.0
 margin_right = 208.0
 margin_bottom = 69.0
+mouse_filter = 2
 
 [node name="Name" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
 margin_right = 416.0
