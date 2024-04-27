@@ -10,6 +10,8 @@ func _ready():
 	Gamestate.connect("on_player_death", self, "on_death")
 # warning-ignore:return_value_discarded
 	Gamestate.connect("on_player_spawn", self, "on_spawn")
+# warning-ignore:return_value_discarded
+	Gamestate.connect("game_over", loading_screen, "change_scene", ["res://scenes/Menu.tscn"])
 
 func on_death():
 	self.player_stem_cells -= 1

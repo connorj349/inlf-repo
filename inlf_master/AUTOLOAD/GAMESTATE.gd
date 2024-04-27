@@ -77,8 +77,7 @@ func reset_player_state():
 func set_rot(value):
 	rot = clamp(value, 0, Globals.rot_max_value)
 	if rot >= Globals.rot_max_value:
-		# fade out to black screen, display text ROT CONSUMED THE WORLD
-		return
+		emit_signal("game_over")
 	emit_signal("rot_changed")
 
 func set_bones(value):
