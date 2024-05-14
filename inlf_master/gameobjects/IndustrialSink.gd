@@ -14,8 +14,10 @@ func _interact(_actor):
 		new_item.item_data = water_item_data
 		Globals.create_pickup(new_item, $SpawnPoint)
 		health = clamp(health - 10, 0, 100)
+		$UseSound.play()
 		if health <= 0:
 			self.is_broken = true
+			$BreakSound.play()
 	else:
 		var random_hit_result = randf()
 		if random_hit_result < 0.8:

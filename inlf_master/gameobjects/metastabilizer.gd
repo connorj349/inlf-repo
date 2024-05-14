@@ -38,6 +38,7 @@ func _on_ItemDeposit_body_entered(body):
 			health.health += Globals.meta_repair_amount
 			Gamestate.bones += Globals.meta_repair_reward_amount
 			body.queue_free()
+			$ItemAddedSound.play()
 			if not active:
 				active = true
 				spot_light.light_color = Color(0, 0.9, 1, 1)

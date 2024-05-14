@@ -22,9 +22,11 @@ func _on_ItemDeposit_body_entered(body):
 				count = body.slot_data.quantity
 				timer.start()
 				body.queue_free()
+				$ProcessingSound.play()
 
 func _on_ProcessTimer_timeout():
 	var new_slot_data = SlotData.new()
 	new_slot_data.item_data = current_item_data
 	new_slot_data.quantity = count
 	Globals.create_pickup(new_slot_data, item_spawn_point)
+	$ProcessingSound.stop()

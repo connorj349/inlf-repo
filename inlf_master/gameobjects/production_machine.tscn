@@ -226,6 +226,7 @@ margin_bottom = 64.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+step = 0.1
 value = 50.0
 texture_under = ExtResource( 9 )
 texture_progress = ExtResource( 10 )

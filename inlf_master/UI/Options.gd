@@ -23,15 +23,3 @@ func _on_borderless_check2_toggled(button_pressed):
 func _on_vsync_check3_toggled(button_pressed):
 	OS.vsync_enabled = button_pressed
 	SoundManager.Play_UI_ButtonPress()
-
-func _on_master_slider_value_changed(value):
-	volume(0, value)
-
-func volume(bus_index, value):
-	AudioServer.set_bus_volume_db(bus_index, value)
-
-func _on_music_slider_value_changed(value):
-	volume(1, value)
-
-func _on_sfx_slider_value_changed(value):
-	volume(2, value)

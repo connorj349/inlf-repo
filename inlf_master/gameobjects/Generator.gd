@@ -27,9 +27,11 @@ func _interact(_actor):
 		self.fuel -= 1
 		timer.start()
 		change_active_status_of_machines(true)
+		$LoopSound.play()
 	else:
 		timer.stop()
 		change_active_status_of_machines(false)
+		$LoopSound.stop()
 
 func change_active_status_of_machines(is_active):
 	for body in connected_machines.get_overlapping_bodies():

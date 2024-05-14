@@ -229,14 +229,14 @@ extents = Vector3( 1.5, 0.5, 1.5 )
 
 [node name="Amoeba" type="RigidBody"]
 collision_layer = 2
-collision_mask = 9
+collision_mask = 11
 script = ExtResource( 1 )
 accepted_biomass_item_data = ExtResource( 7 )
 dropped_seeds = [ ExtResource( 9 ) ]
 slime_item_data = ExtResource( 8 )
 
 [node name="mdl-amoeba" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.2, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="mdl-amoeba"]
 autoplay = "idle"
@@ -245,7 +245,6 @@ anims/RESET = SubResource( 13 )
 anims/idle = SubResource( 14 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
 shape = SubResource( 7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

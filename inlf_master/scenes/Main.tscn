@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -54,6 +54,7 @@
 [ext_resource path="res://gameobjects/ExplodingMushroom.tscn" type="PackedScene" id=52]
 [ext_resource path="res://models/objects/objects_tileset.tres" type="MeshLibrary" id=53]
 [ext_resource path="res://Characters/WaterArea.tscn" type="PackedScene" id=54]
+[ext_resource path="res://item/items/amoeba_slime.tres" type="Resource" id=55]
 
 [sub_resource type="Gradient" id=403]
 offsets = PoolRealArray( 0, 0.66879, 1 )
@@ -68,13 +69,17 @@ panorama = ExtResource( 6 )
 [sub_resource type="Environment" id=2]
 background_mode = 2
 background_sky = SubResource( 366 )
-ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_sky_contribution = 0.0
 fog_enabled = true
-fog_color = Color( 0.364706, 0.180392, 0, 1 )
-fog_depth_begin = 0.0
+fog_color = Color( 0.32549, 0.32549, 0.32549, 1 )
+fog_sun_color = Color( 0.254902, 0.145098, 0, 1 )
+fog_sun_amount = 1.0
+fog_depth_begin = 38.1
 dof_blur_far_distance = 75.0
+adjustment_enabled = true
 adjustment_brightness = 1.2
+adjustment_contrast = 1.23
+adjustment_saturation = 2.07
 adjustment_color_correction = SubResource( 404 )
 
 [sub_resource type="BoxShape" id=394]
@@ -163,6 +168,100 @@ __meta__ = {
 "_editor_clip_": 0,
 "_editor_floor_": Vector3( 0, -5, 0 )
 }
+
+[node name="Lighting" type="Spatial" parent="Environment"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0 )
+light_color = Color( 1, 0.976471, 0.858824, 1 )
+light_specular = 0.0
+shadow_enabled = true
+shadow_color = Color( 0.305882, 0.305882, 0.305882, 1 )
+
+[node name="OmniLight" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2, 13 )
+light_color = Color( 1, 0.94902, 0.168627, 1 )
+light_energy = 2.0
+omni_range = 10.0
+
+[node name="OmniLight12" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -20, 0 )
+light_color = Color( 0.254902, 1, 0.168627, 1 )
+light_energy = 4.798
+light_specular = 0.0
+omni_range = 21.461
+
+[node name="OmniLight10" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -18 )
+light_color = Color( 0.168627, 0.843137, 1, 1 )
+light_specular = 0.0
+omni_range = 17.473
+
+[node name="OmniLight5" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2, -26 )
+light_color = Color( 0.741176, 1, 0.168627, 1 )
+light_energy = 2.0
+omni_range = 10.0
+
+[node name="OmniLight6" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2, -36 )
+light_color = Color( 0.741176, 1, 0.168627, 1 )
+light_energy = 2.0
+omni_range = 10.0
+
+[node name="OmniLight7" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2, -47 )
+light_color = Color( 0.819608, 0.168627, 1, 1 )
+light_energy = 2.0
+
+[node name="OmniLight8" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -5, -35 )
+light_color = Color( 0.309804, 1, 0.168627, 1 )
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="OmniLight9" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -10, -45.3 )
+light_color = Color( 0.309804, 1, 0.168627, 1 )
+shadow_enabled = true
+omni_range = 3.0
+
+[node name="OmniLight2" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 8, 14 )
+light_color = Color( 1, 0.94902, 0.168627, 1 )
+light_energy = 0.5
+omni_range = 7.0
+
+[node name="OmniLight3" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -30 )
+light_color = Color( 0.996078, 1, 0.482353, 1 )
+light_energy = 2.0
+shadow_enabled = true
+shadow_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+omni_range = 15.0
+
+[node name="OmniLight11" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 8, -18 )
+light_color = Color( 1, 0.772549, 0.482353, 1 )
+light_energy = 2.0
+light_specular = 0.0
+shadow_enabled = true
+shadow_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+omni_range = 10.0
+
+[node name="OmniLight4" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 8, 35 )
+light_color = Color( 1, 0.482353, 0.482353, 1 )
+shadow_enabled = true
+shadow_color = Color( 0.392157, 0.392157, 0.392157, 1 )
+omni_range = 15.0
+
+[node name="OmniLight13" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 7, -32 )
+light_color = Color( 0.92549, 1, 0.611765, 1 )
+light_energy = 0.5
+omni_range = 20.0
 
 [node name="GameObjects" type="Spatial" parent="."]
 
@@ -296,7 +395,7 @@ shape = SubResource( 394 )
 [node name="CollisionShape" parent="GameObjects/ToolFactory/Generator/ItemDeposit" index="0"]
 shape = SubResource( 395 )
 
-[node name="CheckForMachinesArea" parent="GameObjects/ToolFactory/Generator" index="6"]
+[node name="CheckForMachinesArea" parent="GameObjects/ToolFactory/Generator" index="7"]
 bounds = Vector3( 1, 1, 5 )
 
 [node name="CollisionShape" parent="GameObjects/ToolFactory/Generator/CheckForMachinesArea" index="0"]
@@ -399,7 +498,7 @@ shape = SubResource( 397 )
 [node name="CollisionShape" parent="GameObjects/WeaponFactory/Generator/ItemDeposit" index="0"]
 shape = SubResource( 398 )
 
-[node name="CheckForMachinesArea" parent="GameObjects/WeaponFactory/Generator" index="6"]
+[node name="CheckForMachinesArea" parent="GameObjects/WeaponFactory/Generator" index="7"]
 bounds = Vector3( 1, 1, 5 )
 
 [node name="CollisionShape" parent="GameObjects/WeaponFactory/Generator/CheckForMachinesArea" index="0"]
@@ -435,7 +534,7 @@ shape = SubResource( 400 )
 [node name="CollisionShape" parent="GameObjects/Quarry/Generator/ItemDeposit" index="0"]
 shape = SubResource( 401 )
 
-[node name="CheckForMachinesArea" parent="GameObjects/Quarry/Generator" index="6"]
+[node name="CheckForMachinesArea" parent="GameObjects/Quarry/Generator" index="7"]
 bounds = Vector3( 1, 1, 5 )
 
 [node name="CollisionShape" parent="GameObjects/Quarry/Generator/CheckForMachinesArea" index="0"]
@@ -443,7 +542,7 @@ shape = SubResource( 402 )
 
 [node name="production_machine" parent="GameObjects/Quarry" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -71, 5, 21 )
-input_item_datas = [ ExtResource( 8 ) ]
+input_item_datas = [ ExtResource( 8 ), ExtResource( 55 ) ]
 output_item_datas = [ ExtResource( 34 ) ]
 machine_name = "lunch factory"
 payday = 2
@@ -653,8 +752,8 @@ gui_disable_input = true
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 
 [editable path="GameObjects/ToolFactory/Generator"]
 [editable path="GameObjects/WeaponFactory/Generator"]

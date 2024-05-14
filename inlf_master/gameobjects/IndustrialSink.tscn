@@ -121,3 +121,8 @@ custom_colors/font_color = Color( 1, 1, 1, 0 )
 text = "use to gather dirty water, may break and require fixing"
 align = 1
 valign = 1
+
+[node name="UseSound" type="AudioStreamPlayer3D" parent="."]
+bus = "SoundFX"
+
+[node name="BreakSound" type="AudioStreamPlayer3D" parent="."]
