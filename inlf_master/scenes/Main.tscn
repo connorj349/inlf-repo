@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -43,8 +43,6 @@
 [ext_resource path="res://gameobjects/metastabilizer.tscn" type="PackedScene" id=41]
 [ext_resource path="res://gameobjects/sawblade.tscn" type="PackedScene" id=42]
 [ext_resource path="res://UI/elements/panel_square.png" type="Texture" id=43]
-[ext_resource path="res://Addons/post-process/pp_dither-band.tres" type="Material" id=44]
-[ext_resource path="res://Addons/shaders/gaussian-blur.shader" type="Shader" id=45]
 [ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=46]
 [ext_resource path="res://gameobjects/tumor.tscn" type="PackedScene" id=47]
 [ext_resource path="res://game_end/TicketMachine.tscn" type="PackedScene" id=48]
@@ -69,12 +67,16 @@ panorama = ExtResource( 6 )
 [sub_resource type="Environment" id=2]
 background_mode = 2
 background_sky = SubResource( 366 )
+ambient_light_color = Color( 0.360784, 0.360784, 0.360784, 1 )
+ambient_light_energy = 3.02
 ambient_light_sky_contribution = 0.0
 fog_enabled = true
 fog_color = Color( 0.32549, 0.32549, 0.32549, 1 )
 fog_sun_color = Color( 0.254902, 0.145098, 0, 1 )
 fog_sun_amount = 1.0
 fog_depth_begin = 38.1
+tonemap_mode = 2
+tonemap_white = 16.0
 dof_blur_far_distance = 75.0
 adjustment_enabled = true
 adjustment_brightness = 1.2
@@ -141,12 +143,6 @@ modulate_color = Color( 1, 0.345098, 0.345098, 1 )
 [sub_resource type="StyleBoxFlat" id=380]
 bg_color = Color( 0, 0, 0, 0.270588 )
 
-[sub_resource type="ShaderMaterial" id=391]
-shader = ExtResource( 45 )
-shader_param/h = 1.0
-shader_param/v = 0.0
-shader_param/enabled = true
-
 [node name="Main" type="Spatial"]
 script = ExtResource( 14 )
 
@@ -162,11 +158,11 @@ mesh_library = ExtResource( 53 )
 cell_size = Vector3( 1, 1, 1 )
 cell_octant_size = 15
 data = {
-"cells": PoolIntArray( -1441841, 3, 458754, -1441857, 4, 196610, -393208, 9, 0, -393208, 11, 2, -393208, 13, 0, -262136, 13, 0, -851932, 65503, 2, -1441844, 65526, 983042, -393178, 65527, 1048576, -262106, 65527, 1048578, -1441849, 65528, 1, -393181, 65528, 1048576, -1441846, 65531, 196610, -1441858, 65532, 1 )
+"cells": PoolIntArray( -1441841, 3, 458754, -1441857, 4, 196610, -393208, 9, 0, -393208, 11, 2, -393208, 13, 0, -262136, 13, 0, -851932, 65503, 2, -1441844, 65526, 983042, -393178, 65527, 1048576, -262108, 65527, 0, -262106, 65527, 1048578, -1441849, 65528, 1, -393181, 65528, 1048576, -1441846, 65531, 196610, -1441858, 65532, 1 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, -5, 0 )
+"_editor_floor_": Vector3( 0, -6, 0 )
 }
 
 [node name="Lighting" type="Spatial" parent="Environment"]
@@ -176,12 +172,13 @@ transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0 )
 light_color = Color( 1, 0.976471, 0.858824, 1 )
 light_specular = 0.0
 shadow_enabled = true
-shadow_color = Color( 0.305882, 0.305882, 0.305882, 1 )
+shadow_color = Color( 0.235294, 0.235294, 0.235294, 1 )
 
 [node name="OmniLight" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2, 13 )
 light_color = Color( 1, 0.94902, 0.168627, 1 )
 light_energy = 2.0
+shadow_enabled = true
 omni_range = 10.0
 
 [node name="OmniLight12" type="OmniLight" parent="Environment/Lighting"]
@@ -195,35 +192,42 @@ omni_range = 21.461
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -18 )
 light_color = Color( 0.168627, 0.843137, 1, 1 )
 light_specular = 0.0
+shadow_enabled = true
 omni_range = 17.473
 
 [node name="OmniLight5" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2, -26 )
 light_color = Color( 0.741176, 1, 0.168627, 1 )
 light_energy = 2.0
+light_specular = 0.0
+shadow_enabled = true
 omni_range = 10.0
 
 [node name="OmniLight6" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2, -36 )
 light_color = Color( 0.741176, 1, 0.168627, 1 )
 light_energy = 2.0
+light_specular = 0.0
 omni_range = 10.0
 
 [node name="OmniLight7" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2, -47 )
 light_color = Color( 0.819608, 0.168627, 1, 1 )
 light_energy = 2.0
+light_specular = 0.0
 
 [node name="OmniLight8" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -5, -35 )
 light_color = Color( 0.309804, 1, 0.168627, 1 )
 light_energy = 5.0
+light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.0
 
 [node name="OmniLight9" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -10, -45.3 )
 light_color = Color( 0.309804, 1, 0.168627, 1 )
+light_specular = 0.0
 shadow_enabled = true
 omni_range = 3.0
 
@@ -231,15 +235,18 @@ omni_range = 3.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 8, 14 )
 light_color = Color( 1, 0.94902, 0.168627, 1 )
 light_energy = 0.5
+light_specular = 0.0
+shadow_enabled = true
 omni_range = 7.0
 
 [node name="OmniLight3" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -30 )
 light_color = Color( 0.996078, 1, 0.482353, 1 )
 light_energy = 2.0
+light_specular = 0.0
 shadow_enabled = true
 shadow_color = Color( 0.392157, 0.392157, 0.392157, 1 )
-omni_range = 15.0
+omni_range = 11.98
 
 [node name="OmniLight11" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 8, -18 )
@@ -253,7 +260,7 @@ omni_range = 10.0
 [node name="OmniLight4" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 8, 35 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
-shadow_enabled = true
+light_specular = 0.0
 shadow_color = Color( 0.392157, 0.392157, 0.392157, 1 )
 omni_range = 15.0
 
@@ -261,6 +268,7 @@ omni_range = 15.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 7, -32 )
 light_color = Color( 0.92549, 1, 0.611765, 1 )
 light_energy = 0.5
+light_specular = 0.0
 omni_range = 20.0
 
 [node name="GameObjects" type="Spatial" parent="."]
@@ -717,36 +725,6 @@ visible = false
 
 [node name="LoadingScreen" parent="." instance=ExtResource( 30 )]
 visible = false
-
-[node name="HBlur" type="ViewportContainer" parent="."]
-visible = false
-material = SubResource( 391 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-stretch = true
-stretch_shrink = 3
-
-[node name="Viewport" type="Viewport" parent="HBlur"]
-size = Vector2( 106, 80 )
-handle_input_locally = false
-render_target_update_mode = 0
-gui_disable_input = true
-
-[node name="DitherBand" type="ViewportContainer" parent="HBlur/Viewport"]
-material = ExtResource( 44 )
-margin_right = 320.0
-margin_bottom = 240.0
-stretch = true
-
-[node name="Viewport" type="Viewport" parent="HBlur/Viewport/DitherBand"]
-size = Vector2( 320, 240 )
-handle_input_locally = false
-msaa = 2
-render_target_update_mode = 3
-audio_listener_enable_2d = true
-audio_listener_enable_3d = true
-gui_disable_input = true
 
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]

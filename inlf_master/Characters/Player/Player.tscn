@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Characters/Movement.tscn" type="PackedScene" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://UI/elements/bar_border.png" type="Texture" id=18]
 [ext_resource path="res://UI/textured_ui_bar.gd" type="Script" id=19]
 [ext_resource path="res://Characters/Armor.tscn" type="PackedScene" id=20]
+[ext_resource path="res://sound/sounds/player/weapons/player_fists_swing.wav" type="AudioStream" id=21]
+[ext_resource path="res://sound/sounds/player/weapons/shotgun/player_shotgun_shot.wav" type="AudioStream" id=22]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -54,7 +56,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack"
-length = 0.5
+length = 0.25
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
@@ -63,10 +65,24 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.35, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.15, 0.25 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 3, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -139,6 +155,20 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -328,6 +358,10 @@ anims/RESET = SubResource( 3 )
 anims/attack = SubResource( 4 )
 anims/idle = SubResource( 5 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Camera/WeaponManager/wep_fists"]
+stream = ExtResource( 21 )
+bus = "SoundFX"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera/WeaponManager/wep_fists"]
 
 [node name="Control" type="Control" parent="Head/Camera/WeaponManager/wep_fists/CanvasLayer"]
@@ -349,6 +383,9 @@ item_weapon_data = ExtResource( 6 )
 enabled = true
 cast_to = Vector3( 0, 0, -10 )
 collision_mask = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Camera/WeaponManager/wep_shotgun"]
+stream = ExtResource( 22 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera/WeaponManager/wep_shotgun"]
 anims/RESET = SubResource( 13 )

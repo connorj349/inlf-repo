@@ -5,6 +5,7 @@ export(String) var display_name = "NULL" #what to display on nameplate
 export(Array, Damage.DamageType) var blocked_damage_types
 export(bool) var punching_hurts = false
 export(NodePath) var optional_item_spawn_point
+export(PackedScene) var hit_effect
 
 onready var health = $Health
 onready var name_plate = $CanvasLayer/Info/VBoxContainer/Label
@@ -38,6 +39,11 @@ func on_death(): #spawn item, delete self
 func on_hurt(damage):
 	if dead:
 		return
+	
+	var new_effect = hit_effect.instance()
+	get_tree().get_root().add_child(new_effect)
+	new_effect.global_transform.origin = global_transform.origin
+	
 	var random_result = randf()
 	for damage_type in blocked_damage_types:
 		if damage.type == Damage.DamageType.Fists:
