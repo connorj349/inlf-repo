@@ -1,5 +1,12 @@
 extends Node
 
+# warning-ignore:unused_signal
+signal on_inventory_toggle
+# warning-ignore:unused_signal
+signal on_pop_notification
+# warning-ignore:unused_signal
+signal blood_circle_removed
+
 const pickup = preload("res://item/pick_up/Pickup.tscn")
 const corpse = preload("res://Characters/corpse.tscn")
 
@@ -9,13 +16,6 @@ const meta_repair_amount = 40 # how much health metastabilizers get when they ar
 
 var current_player #allows other objects to reference the player like setting target/etc.
 var current_ui #player inventory global reference for other scripts
-
-# warning-ignore:unused_signal
-signal on_inventory_toggle
-# warning-ignore:unused_signal
-signal on_pop_notification
-# warning-ignore:unused_signal
-signal blood_circle_removed
 
 func _ready():
 	#begin game with mouse mode captured

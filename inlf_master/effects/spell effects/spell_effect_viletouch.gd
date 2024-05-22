@@ -4,7 +4,7 @@ onready var area = $Area
 
 func _on_Area_body_entered(body):
 	if body == Globals.current_player:
-		body.health.pox += 5
+		body.health.pox += 1
 
 func _on_Timer_timeout():
 	$cloud.emitting = false

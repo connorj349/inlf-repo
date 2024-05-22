@@ -3,7 +3,7 @@ extends HintObject
 #export(Resource) var slot_data # cancer item to spawn for player
 #export(int) var number_of_roaches_to_spawn = 3
 export(int) var rot_increase_amount = 1
-export(int) var rot_inrease_frequency = 1
+export(int) var rot_inrease_frequency = 5
 
 onready var health = $Health
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar

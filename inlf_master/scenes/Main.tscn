@@ -487,6 +487,9 @@ transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 5
 [node name="autostitcher" parent="GameObjects/MedicalArea" instance=ExtResource( 37 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1.5, -24.5 )
 
+[node name="metastabilizer2" parent="GameObjects/MedicalArea" instance=ExtResource( 41 )]
+transform = Transform( 0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 27.5, 0, -22.5 )
+
 [node name="WeaponFactory" type="Spatial" parent="GameObjects"]
 
 [node name="production_machine" parent="GameObjects/WeaponFactory" instance=ExtResource( 19 )]
@@ -730,8 +733,8 @@ visible = false
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 
 [editable path="GameObjects/ToolFactory/Generator"]
 [editable path="GameObjects/WeaponFactory/Generator"]

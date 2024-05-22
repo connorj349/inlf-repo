@@ -1,8 +1,8 @@
 extends Spatial
 
-onready var area = $Area
-
 const effect = preload("res://effects/spell effects/spell_effect_viletouch.tscn")
+
+onready var area = $Area
 
 func _on_Area_body_entered(body):
 	if body == Globals.current_player:

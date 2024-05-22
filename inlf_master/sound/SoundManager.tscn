@@ -1,11 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://sound/SoundManager.gd" type="Script" id=1]
 [ext_resource path="res://sound/SoundQueue.gd" type="Script" id=2]
 [ext_resource path="res://sound/UI/buttonrelease.wav" type="AudioStream" id=3]
-[ext_resource path="res://sound/SoundQueue.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sound/sounds/ambience/music/new_area.wav" type="AudioStream" id=5]
-
 
 [node name="SoundManager" type="Node"]
 script = ExtResource( 1 )
@@ -16,9 +13,3 @@ script = ExtResource( 2 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI_ButtonPress"]
 stream = ExtResource( 3 )
 bus = "SoundFX"
-
-[node name="Zone_EnterTone" parent="." instance=ExtResource( 4 )]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Zone_EnterTone"]
-stream = ExtResource( 5 )
-bus = "Music"

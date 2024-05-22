@@ -1,11 +1,11 @@
 extends Spatial
 
+signal magick_changed
+
 const maximum_magick_allowed = 5
 
 var curr_magick = 0 setget set_curr_magick
 var max_magick = 0 setget set_max_magick
-
-signal magick_changed
 
 func init(_max):
 	max_magick = _max

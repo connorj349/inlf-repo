@@ -1,7 +1,5 @@
 extends Interactable
 
-var altar = preload("res://gameobjects/dark_altar.tscn")
-
 func _ready():
 # warning-ignore:return_value_discarded
 	Globals.connect("cast_spell", self, "_cast_spell")

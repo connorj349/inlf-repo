@@ -1,14 +1,5 @@
 extends Node
 
-# player's inventory
-var player_inventory = preload("res://inventory/player_inventory.tres")
-# player's clothing equipment slot
-var equip_player_inventory = preload("res://inventory/player_equipment_inventory.tres")
-# player's weapon slot
-var weapon_player_inventory = preload("res://inventory/player_weapon_inventory.tres")
-# global merchant inventory for all vendors to reference
-var merchant_inventory = preload("res://inventory/merchant_inventory.tres")
-
 signal rot_changed
 signal bones_changed
 # warning-ignore:unused_signal
@@ -20,6 +11,15 @@ signal on_stem_cells_changed
 signal infections_count_changed
 # warning-ignore:unused_signal
 signal game_over
+
+# player's inventory
+var player_inventory = preload("res://inventory/player_inventory.tres")
+# player's clothing equipment slot
+var equip_player_inventory = preload("res://inventory/player_equipment_inventory.tres")
+# player's weapon slot
+var weapon_player_inventory = preload("res://inventory/player_weapon_inventory.tres")
+# global merchant inventory for all vendors to reference
+var merchant_inventory = preload("res://inventory/merchant_inventory.tres")
 
 var rot = 0 setget set_rot
 var bones = 0 setget set_bones

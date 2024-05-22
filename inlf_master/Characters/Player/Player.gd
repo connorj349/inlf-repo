@@ -47,70 +47,6 @@ func _ready():
 # warning-ignore:return_value_discarded
 	Globals.connect("blood_circle_removed", self, "on_blood_circle_removed")
 
-func update_health_and_pox_text_placement(_val):
-	for element in $UI/Bars/health_pox/pox_bar/VBoxContainer.get_children():
-		element.text = ""
-	if health.max_health > health.allowed_max_health * 0.5:
-		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label3.text = "blood"
-	elif health.max_health > health.allowed_max_health * 0.25:
-		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label2.text = "blood"
-	elif health.max_health > 0:
-		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label.text = "blood"
-	if health.pox > health.allowed_max_health * 0.5:
-		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label3.text = "POX"
-	elif health.pox > health.allowed_max_health * 0.25:
-		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label4.text = "POX"
-	elif health.pox > 0:
-		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label5.text = "POX"
-
-func update_armor_bar_visibility(_val):
-	if armor.armor <= 0:
-		armor_bar.visible = false
-	else:
-		armor_bar.visible = true
-
-func on_hurt(damage): #used by all other objects that want to hurt the player
-	if armor.armor > 0:
-		armor.armor -= damage.amount
-	else:
-		deal_damage(damage)
-	# play armor damaged noises
-
-func deal_damage(damage): # used by armor to actually deal damage to the player, does this when no more armor
-	health.health -= damage.amount
-	# play player hurt noises
-
-func on_heal(amount): #mainly used by slotdataconsumable and autostitcher
-	health.health += amount
-	# play player healed noises
-
-func give_armor(amount): # used by some consumables
-	armor.armor += amount
-	# play armor given noises
-
-func on_blood_circle_removed():
-	blood_circle_active = false
-
-func on_use_organ(_organ):
-	# when adding cultist, add organ abilities like seeing through walls, etc.
-	pass
-
-func set_role(_role): # setup role; maybe add sound to it?
-	role = _role # for use with checking if player can use certain machines/objects
-
-func spawn_circle_of_blood(): # only can be done if cultist role
-	if !blood_circle_active:
-		if role.role_type == Role.Role_Type.Cultist:
-			Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
-			deal_damage(health.max_health / 2) # need a damage_type to deal to player
-			var circle = blood_circle_prefab.instance()
-			get_tree().get_root().add_child(circle)
-			# SoundManager.other_bloodcircle_spawn
-			circle.global_transform = $feet.global_transform
-			blood_circle_active = true
-		else:
-			Globals.emit_signal("on_pop_notification", "Why would I cut my skin open?")
-
 func _input(event):
 	if !player_is_in_menu(): #only move player head while not in a menu
 		if event is InputEventMouseMotion:
@@ -182,6 +118,70 @@ func _physics_process(_delta): #only used for hintobject
 	var coll = hint_raycast.get_collider()
 	if hint_raycast.is_colliding() and coll.has_method("_look_at"): #shows the info from the hintobject onscreen
 		coll._look_at()
+
+func update_health_and_pox_text_placement(_val):
+	for element in $UI/Bars/health_pox/pox_bar/VBoxContainer.get_children():
+		element.text = ""
+	if health.max_health > health.allowed_max_health * 0.5:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label3.text = "blood"
+	elif health.max_health > health.allowed_max_health * 0.25:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label2.text = "blood"
+	elif health.max_health > 0:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label.text = "blood"
+	if health.pox > health.allowed_max_health * 0.5:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label3.text = "POX"
+	elif health.pox > health.allowed_max_health * 0.25:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label4.text = "POX"
+	elif health.pox > 0:
+		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label5.text = "POX"
+
+func update_armor_bar_visibility(_val):
+	if armor.armor <= 0:
+		armor_bar.visible = false
+	else:
+		armor_bar.visible = true
+
+func on_hurt(damage): #used by all other objects that want to hurt the player
+	if armor.armor > 0:
+		armor.armor -= damage.amount
+	else:
+		deal_damage(damage)
+	# play armor damaged noises
+
+func deal_damage(damage): # used by armor to actually deal damage to the player, does this when no more armor
+	health.health -= damage.amount
+	# play player hurt noises
+
+func on_heal(amount): #mainly used by slotdataconsumable and autostitcher
+	health.health += amount
+	# play player healed noises
+
+func give_armor(amount): # used by some consumables
+	armor.armor += amount
+	# play armor given noises
+
+func on_blood_circle_removed():
+	blood_circle_active = false
+
+func on_use_organ(_organ):
+	# when adding cultist, add organ abilities like seeing through walls, etc.
+	pass
+
+func set_role(_role): # setup role; maybe add sound to it?
+	role = _role # for use with checking if player can use certain machines/objects
+
+func spawn_circle_of_blood(): # only can be done if cultist role
+	if !blood_circle_active:
+		if role.role_type == Role.Role_Type.Cultist:
+			Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
+			deal_damage(health.max_health / 2) # need a damage_type to deal to player
+			var circle = blood_circle_prefab.instance()
+			get_tree().get_root().add_child(circle)
+			# SoundManager.other_bloodcircle_spawn
+			circle.global_transform = $feet.global_transform
+			blood_circle_active = true
+		else:
+			Globals.emit_signal("on_pop_notification", "Why would I cut my skin open?")
 
 func use_slot_data(slot_data): #use functionality of items
 	slot_data.item_data.use(self) #activate the use function on the item's data, passing the player

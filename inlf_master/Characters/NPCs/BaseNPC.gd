@@ -1,12 +1,13 @@
 extends KinematicBody
 
+enum STATE { IDLE, PATROL, ATTACK }
+
 export(Resource) var inventory_data
 export(Array, Resource) var loot_table
 export(bool) var will_retaliate = false
 
 onready var health = $Health
 
-enum STATE { IDLE, PATROL, ATTACK }
 var current_state = STATE.IDLE
 var target = null
 
@@ -29,16 +30,19 @@ func on_hurt(damage):
 	health.health -= damage.amount
 	if damage.source and will_retaliate:
 		target = damage.source
-	#update state to either ATTACK or RUN(from target)
+		current_state = STATE.ATTACK
 
+# warning-ignore:unused_argument
 func process_idle_state(delta):
 	# move to starting position
 	pass
 
+# warning-ignore:unused_argument
 func process_patrol_state(delta):
 	# choose random patrol point in PatrolPoints node and move to it
 	pass
 
+# warning-ignore:unused_argument
 func process_attack_state(delta):
 	# if target is valid, move within attack range and perform attack based on accuracy(if ranged)
 	pass
@@ -59,3 +63,6 @@ func randomize_loot():
 		var random_item = loot_table[randi() % loot_table.size()] # choose a random item
 		new_slot.item_data = random_item
 		inventory_data.add_item(new_slot)
+
+func _on_Area_body_entered(body):
+	target = body

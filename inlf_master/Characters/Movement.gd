@@ -1,5 +1,13 @@
 extends Spatial
 
+enum State {
+	NORMAL,
+	LADDER
+}
+
+const ACCEL_DEFAULT = 7
+const ACCEL_AIR = 1
+
 export var speed = 15
 export var gravity = 30
 export var jump_power = 10
@@ -7,9 +15,6 @@ export var ignore_rotation = false #used by npcs for correct movement
 
 # footstep public vars
 export var footstep_freq = 25 # how often to make footsteps happen
-
-const ACCEL_DEFAULT = 7
-const ACCEL_AIR = 1
 
 onready var accel = ACCEL_DEFAULT
 
@@ -35,23 +40,9 @@ var footstep_time = 0
 #ladder
 var ladder_array = []
 var current_state = State.NORMAL
-enum State {
-	NORMAL,
-	LADDER
-}
 
 func init(_body : KinematicBody):
 	body = _body
-
-func set_move_vector(_move_vec : Vector3):
-	if current_state == State.LADDER:
-		direction = Vector3(_move_vec.x, _move_vec.z * -1, 0).normalized()
-	else:
-		direction = _move_vec.normalized()
-
-func jump():
-	current_state = State.NORMAL
-	is_jumping = true
 
 func _process(_delta): # calculate footsteps
 	if body.is_on_floor() and direction.length() > 0: #footstep calculating
@@ -87,6 +78,16 @@ func _physics_process(delta):
 	movement = velocity + gravity_vec
 # warning-ignore:return_value_discarded
 	body.move_and_slide_with_snap(movement, snap, Vector3.UP)
+
+func set_move_vector(_move_vec : Vector3):
+	if current_state == State.LADDER:
+		direction = Vector3(_move_vec.x, _move_vec.z * -1, 0).normalized()
+	else:
+		direction = _move_vec.normalized()
+
+func jump():
+	current_state = State.NORMAL
+	is_jumping = true
 
 func footstep(): #check the tile, play the sound, all timing is done in _process
 	var coll_tileset = ground_raycast.get_collider()

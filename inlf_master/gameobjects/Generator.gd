@@ -1,5 +1,7 @@
 extends Interactable
 
+signal on_fuel_changed
+
 export(Resource) var fuel_item_data
 
 onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
@@ -8,8 +10,6 @@ onready var connected_machines = $CheckForMachinesArea
 
 var fuel = 0 setget set_fuel
 var is_on = false
-
-signal on_fuel_changed
 
 func _ready():
 	prog_bar.init(0, 100)
