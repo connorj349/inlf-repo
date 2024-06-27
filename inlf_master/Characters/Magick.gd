@@ -1,11 +1,11 @@
-extends Spatial
+extends Node3D
 
 signal magick_changed
 
 const maximum_magick_allowed = 5
 
-var curr_magick = 0 setget set_curr_magick
-var max_magick = 0 setget set_max_magick
+var curr_magick = 0: set = set_curr_magick
+var max_magick = 0: set = set_max_magick
 
 func init(_max):
 	max_magick = _max

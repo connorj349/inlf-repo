@@ -1,10 +1,10 @@
 extends Interactable
 
-export(Resource) var slot_data
+@export var slot_data: Resource
 
-onready var sprite_3d = $Sprite3D
-onready var name_plate = $CanvasLayer/Info/VBoxContainer/Name
-onready var sound_queue = $SoundQueue3D
+@onready var sprite_3d = $Sprite3D
+@onready var name_plate = $CanvasLayer/Info/VBoxContainer/Name
+@onready var sound_queue = $SoundQueue3D
 
 var factor = 1
 

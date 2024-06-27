@@ -9,19 +9,19 @@
 [ext_resource path="res://sound/SoundPool.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sound/SoundQueue.tscn" type="PackedScene" id=8]
 
-[sub_resource type="SphereShape" id=1]
+[sub_resource type="SphereShape3D" id=1]
 
-[node name="Player_Ghost" type="KinematicBody"]
+[node name="Player_Ghost" type="CharacterBody3D"]
 collision_layer = 4
 script = ExtResource( 1 )
 possible_noises = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ) ]
 mouse_sensitivity = 0.3
 
-[node name="Head" type="Spatial" parent="."]
+[node name="Head" type="Node3D" parent="."]
 
-[node name="Camera" type="Camera" parent="Head"]
+[node name="Camera3D" type="Camera3D" parent="Head"]
 
-[node name="CollisionShape" type="CollisionShape" parent="." groups=["Ghost"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Ghost"]]
 shape = SubResource( 1 )
 
 [node name="GhostAmbience" type="AudioStreamPlayer" parent="."]

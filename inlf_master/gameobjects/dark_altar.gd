@@ -1,8 +1,8 @@
 extends Interactable
 
-export(Array, Resource) var possible_materials # the materials that could be required for a ritual
+@export var possible_materials: Array[ItemData] # the materials that could be required for a ritual # (Array, Resource)
 
-onready var label = $CanvasLayer/Info/VBoxContainer/Label2 # display ritual requirements
+@onready var label = $CanvasLayer/Info/VBoxContainer/Label2 # display ritual requirements
 
 var current_active_required_mat
 var rng = RandomNumberGenerator.new()

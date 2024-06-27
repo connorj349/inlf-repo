@@ -1,8 +1,8 @@
-extends Spatial
+@tool
+extends Node3D
 class_name SoundQueue3D
-tool
 
-export(int) var Count = 1
+@export var Count: int = 1
 
 var next = 0
 var audio_stream_players: Array
@@ -17,9 +17,9 @@ func _ready():
 		audio_stream_players.append(child)
 		
 		for n in Count:
-			var duplicate = child.duplicate()
-			add_child(duplicate)
-			audio_stream_players.append(duplicate)
+			var _duplicate = child.duplicate()
+			add_child(_duplicate)
+			audio_stream_players.append(_duplicate)
 
 func PlaySound():
 	if !audio_stream_players[next].playing:
@@ -29,7 +29,7 @@ func PlaySound():
 
 func PlaySoundRange(_min, _max):
 	if !audio_stream_players[next].playing:
-		audio_stream_players[next].pitch_scale = rand_range(_min, _max)
+		audio_stream_players[next].pitch_scale = randf_range(_min, _max)
 		audio_stream_players[next].play()
 		next += 1
 		next %= audio_stream_players.size()

@@ -1,31 +1,31 @@
 [gd_scene load_steps=39 format=2]
 
-[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/scribbles.ttf" type="FontFile" id=1]
 [ext_resource path="res://Characters/Movement.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=3]
 [ext_resource path="res://item/item_data_weapon.gd" type="Script" id=4]
 [ext_resource path="res://UI/ui_bar.gd" type="Script" id=5]
 [ext_resource path="res://item/items/shotgun.tres" type="Resource" id=6]
-[ext_resource path="res://raw_assets/textures/shotgun-sheet.png" type="Texture" id=7]
+[ext_resource path="res://raw_assets/textures/shotgun-sheet.png" type="Texture2D" id=7]
 [ext_resource path="res://inventory/HotBarInventory.tscn" type="PackedScene" id=8]
-[ext_resource path="res://raw_assets/textures/punch-sheet.png" type="Texture" id=9]
-[ext_resource path="res://UI/elements/panel_rect.png" type="Texture" id=10]
-[ext_resource path="res://UI/elements/bar_fill.png" type="Texture" id=11]
+[ext_resource path="res://raw_assets/textures/punch-sheet.png" type="Texture2D" id=9]
+[ext_resource path="res://UI/elements/panel_rect.png" type="Texture2D" id=10]
+[ext_resource path="res://UI/elements/bar_fill.png" type="Texture2D" id=11]
 [ext_resource path="res://UI/Notifications.gd" type="Script" id=12]
 [ext_resource path="res://Characters/Player/player_weapon.gd" type="Script" id=13]
 [ext_resource path="res://Characters/Player/player_weapon_manager.gd" type="Script" id=14]
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=15]
 [ext_resource path="res://UI/themes/player_hud_bars_theme.tres" type="Theme" id=16]
 [ext_resource path="res://Characters/Magick.tscn" type="PackedScene" id=17]
-[ext_resource path="res://UI/elements/bar_border.png" type="Texture" id=18]
+[ext_resource path="res://UI/elements/bar_border.png" type="Texture2D" id=18]
 [ext_resource path="res://UI/textured_ui_bar.gd" type="Script" id=19]
 [ext_resource path="res://Characters/Armor.tscn" type="PackedScene" id=20]
 [ext_resource path="res://sound/sounds/player/weapons/player_fists_swing.wav" type="AudioStream" id=21]
 [ext_resource path="res://sound/sounds/player/weapons/shotgun/player_shotgun_shot.wav" type="AudioStream" id=22]
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="CapsuleShape3D" id=1]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape3D" id=2]
 extents = Vector3( 0.25, 0.25, 0.5 )
 
 [sub_resource type="Resource" id=25]
@@ -42,14 +42,14 @@ damage_type = 0
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0 ]
 }
@@ -59,14 +59,14 @@ resource_name = "attack"
 length = 0.25
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.15, 0.25 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 3, 0 ]
 }
@@ -77,8 +77,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [ 0.0 ],
 "method": "play"
@@ -89,14 +89,14 @@ tracks/1/keys = {
 resource_name = "idle"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -104,14 +104,14 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0 ]
 }
@@ -122,8 +122,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ false ]
 }
@@ -133,14 +133,14 @@ resource_name = "attack"
 length = 0.75
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.2, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.15, 0.2, 0.25, 0.5, 0.75 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 3, 4, 0, 4, 0 ]
 }
@@ -151,8 +151,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.05, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0.05, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -163,8 +163,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [ 0.0 ],
 "method": "play"
@@ -175,14 +175,14 @@ tracks/2/keys = {
 resource_name = "idle"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/Sprite:frame")
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -190,38 +190,38 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=23]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Head:translation")
+tracks/0/path = NodePath("Head:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionShape:shape:height")
+tracks/1/path = NodePath("CollisionShape3D:shape:height")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 1.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CollisionShape:shape:radius")
+tracks/2/path = NodePath("CollisionShape3D:shape:radius")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 1.0 ]
 }
@@ -230,38 +230,38 @@ tracks/2/keys = {
 resource_name = "crouch"
 length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath("Head:translation")
+tracks/0/path = NodePath("Head:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 1, 0 ), Vector3( 0, 0.25, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionShape:shape:height")
+tracks/1/path = NodePath("CollisionShape3D:shape:height")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.1 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CollisionShape:shape:radius")
+tracks/2/path = NodePath("CollisionShape3D:shape:radius")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.5 ]
 }
@@ -269,28 +269,28 @@ tracks/2/keys = {
 [sub_resource type="StyleBoxFlat" id=27]
 bg_color = Color( 0, 0, 0, 0.705882 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="FontFile" id=8]
 size = 15
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=28]
+[sub_resource type="FontFile" id=28]
 size = 15
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=29]
 texture = ExtResource( 10 )
 region_rect = Rect2( 6, 8, 240, 110 )
-margin_left = 6.0
-margin_right = 10.0
-margin_top = 8.0
-margin_bottom = 10.0
+offset_left = 6.0
+offset_right = 10.0
+offset_top = 8.0
+offset_bottom = 10.0
 modulate_color = Color( 0.0431373, 0.0431373, 0.0431373, 0.215686 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="FontFile" id=20]
 size = 10
 font_data = ExtResource( 1 )
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 8
 script = ExtResource( 15 )
 mouse_sensitivity = 0.3
@@ -305,108 +305,108 @@ max_armor = 25
 
 [node name="Movement" parent="." instance=ExtResource( 2 )]
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 1 )
 
-[node name="feet" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0 )
+[node name="feet" type="Node3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0 )
 
-[node name="Head" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
-[node name="Camera" type="Camera" parent="Head"]
+[node name="Camera3D" type="Camera3D" parent="Head"]
 cull_mask = 1048571
 far = 75.0
 
-[node name="HintObjRayCast" type="RayCast" parent="Head/Camera"]
+[node name="HintObjRayCast" type="RayCast3D" parent="Head/Camera3D"]
 enabled = true
-cast_to = Vector3( 0, 0, -3 )
+target_position = Vector3( 0, 0, -3 )
 collision_mask = 2
 
-[node name="PickupRayCast" type="RayCast" parent="Head/Camera"]
+[node name="PickupRayCast" type="RayCast3D" parent="Head/Camera3D"]
 enabled = true
-cast_to = Vector3( 0, 0, -3 )
+target_position = Vector3( 0, 0, -3 )
 collision_mask = 2
 
-[node name="HoldObjectPosition" type="Spatial" parent="Head/Camera/PickupRayCast"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -1.5 )
+[node name="HoldObjectPosition" type="Node3D" parent="Head/Camera3D/PickupRayCast"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -1.5 )
 
-[node name="InteractArea" type="Area" parent="Head/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+[node name="InteractArea" type="Area3D" parent="Head/Camera3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="Head/Camera/InteractArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/InteractArea"]
 shape = SubResource( 2 )
 
-[node name="WeaponManager" type="Spatial" parent="Head/Camera"]
+[node name="WeaponManager" type="Node3D" parent="Head/Camera3D"]
 script = ExtResource( 14 )
 
-[node name="wep_fists" type="Spatial" parent="Head/Camera/WeaponManager"]
+[node name="wep_fists" type="Node3D" parent="Head/Camera3D/WeaponManager"]
 script = ExtResource( 13 )
 is_melee = true
 item_weapon_data = SubResource( 25 )
 
-[node name="RangeRayCast" type="RayCast" parent="Head/Camera/WeaponManager/wep_fists"]
+[node name="RangeRayCast" type="RayCast3D" parent="Head/Camera3D/WeaponManager/wep_fists"]
 enabled = true
-cast_to = Vector3( 0, 0, -3 )
+target_position = Vector3( 0, 0, -3 )
 collision_mask = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera/WeaponManager/wep_fists"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/WeaponManager/wep_fists"]
 anims/RESET = SubResource( 3 )
 anims/attack = SubResource( 4 )
 anims/idle = SubResource( 5 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Camera/WeaponManager/wep_fists"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager/wep_fists"]
 stream = ExtResource( 21 )
 bus = "SoundFX"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera/WeaponManager/wep_fists"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera3D/WeaponManager/wep_fists"]
 
-[node name="Control" type="Control" parent="Head/Camera/WeaponManager/wep_fists/CanvasLayer"]
+[node name="Control" type="Control" parent="Head/Camera3D/WeaponManager/wep_fists/CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 
-[node name="Sprite" type="Sprite" parent="Head/Camera/WeaponManager/wep_fists/CanvasLayer/Control"]
+[node name="Sprite2D" type="Sprite2D" parent="Head/Camera3D/WeaponManager/wep_fists/CanvasLayer/Control"]
 position = Vector2( 0, -90 )
 texture = ExtResource( 9 )
 hframes = 4
 
-[node name="wep_shotgun" type="Spatial" parent="Head/Camera/WeaponManager"]
+[node name="wep_shotgun" type="Node3D" parent="Head/Camera3D/WeaponManager"]
 script = ExtResource( 13 )
 item_weapon_data = ExtResource( 6 )
 
-[node name="RangeRayCast" type="RayCast" parent="Head/Camera/WeaponManager/wep_shotgun"]
+[node name="RangeRayCast" type="RayCast3D" parent="Head/Camera3D/WeaponManager/wep_shotgun"]
 enabled = true
-cast_to = Vector3( 0, 0, -10 )
+target_position = Vector3( 0, 0, -10 )
 collision_mask = 3
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Camera/WeaponManager/wep_shotgun"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager/wep_shotgun"]
 stream = ExtResource( 22 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera/WeaponManager/wep_shotgun"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/WeaponManager/wep_shotgun"]
 anims/RESET = SubResource( 13 )
 anims/attack = SubResource( 14 )
 anims/idle = SubResource( 15 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera/WeaponManager/wep_shotgun"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera3D/WeaponManager/wep_shotgun"]
 
-[node name="Control" type="Control" parent="Head/Camera/WeaponManager/wep_shotgun/CanvasLayer"]
+[node name="Control" type="Control" parent="Head/Camera3D/WeaponManager/wep_shotgun/CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 
-[node name="Sprite" type="Sprite" parent="Head/Camera/WeaponManager/wep_shotgun/CanvasLayer/Control"]
+[node name="Sprite2D" type="Sprite2D" parent="Head/Camera3D/WeaponManager/wep_shotgun/CanvasLayer/Control"]
 position = Vector2( 0, -90 )
 texture = ExtResource( 7 )
 hframes = 5
 
-[node name="muzzle_flash" type="OmniLight" parent="Head/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3 )
+[node name="muzzle_flash" type="OmniLight3D" parent="Head/Camera3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3 )
 visible = false
 light_color = Color( 1, 0.87451, 0.572549, 1 )
 light_energy = 5.0
@@ -422,21 +422,21 @@ layer = 0
 [node name="Bars" type="VBoxContainer" parent="UI"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -140.0
-margin_top = 10.0
-margin_right = -12.0
-margin_bottom = 26.0
+offset_left = -140.0
+offset_top = 10.0
+offset_right = -12.0
+offset_bottom = 26.0
 
 [node name="health_pox" type="PanelContainer" parent="UI/Bars"]
-margin_right = 128.0
-margin_bottom = 16.0
+offset_right = 128.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 27 )
+theme_override_styles/panel = SubResource( 27 )
 
-[node name="health_bar" type="TextureProgress" parent="UI/Bars/health_pox"]
-margin_right = 128.0
-margin_bottom = 16.0
+[node name="health_bar" type="TextureProgressBar" parent="UI/Bars/health_pox"]
+offset_right = 128.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 16 )
@@ -448,9 +448,9 @@ tint_progress = Color( 0.627451, 0.0901961, 0.0901961, 1 )
 nine_patch_stretch = true
 script = ExtResource( 19 )
 
-[node name="pox_bar" type="TextureProgress" parent="UI/Bars/health_pox"]
-margin_right = 128.0
-margin_bottom = 16.0
+[node name="pox_bar" type="TextureProgressBar" parent="UI/Bars/health_pox"]
+offset_right = 128.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 16 )
@@ -466,58 +466,58 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="UI/Bars/health_pox/pox_bar/VBoxContainer"]
-margin_right = 21.0
-margin_bottom = 16.0
+offset_right = 21.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 8 )
+theme_override_fonts/font = SubResource( 8 )
 align = 1
 valign = 1
 
 [node name="Label2" type="Label" parent="UI/Bars/health_pox/pox_bar/VBoxContainer"]
-margin_left = 25.0
-margin_right = 46.0
-margin_bottom = 16.0
+offset_left = 25.0
+offset_right = 46.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 8 )
+theme_override_fonts/font = SubResource( 8 )
 align = 1
 valign = 1
 
 [node name="Label3" type="Label" parent="UI/Bars/health_pox/pox_bar/VBoxContainer"]
-margin_left = 50.0
-margin_right = 78.0
-margin_bottom = 16.0
+offset_left = 50.0
+offset_right = 78.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 28 )
+theme_override_fonts/font = SubResource( 28 )
 text = "blood"
 align = 1
 valign = 1
 
 [node name="Label4" type="Label" parent="UI/Bars/health_pox/pox_bar/VBoxContainer"]
-margin_left = 82.0
-margin_right = 103.0
-margin_bottom = 16.0
+offset_left = 82.0
+offset_right = 103.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 8 )
+theme_override_fonts/font = SubResource( 8 )
 align = 1
 valign = 1
 
 [node name="Label5" type="Label" parent="UI/Bars/health_pox/pox_bar/VBoxContainer"]
-margin_left = 107.0
-margin_right = 128.0
-margin_bottom = 16.0
+offset_left = 107.0
+offset_right = 128.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 8 )
+theme_override_fonts/font = SubResource( 8 )
 align = 1
 valign = 1
 
-[node name="armor_bar" type="TextureProgress" parent="UI/Bars/health_pox"]
-margin_right = 128.0
-margin_bottom = 16.0
+[node name="armor_bar" type="TextureProgressBar" parent="UI/Bars/health_pox"]
+offset_right = 128.0
+offset_bottom = 16.0
 value = 50.0
 texture_under = ExtResource( 18 )
 texture_progress = ExtResource( 11 )
@@ -529,16 +529,16 @@ script = ExtResource( 19 )
 [node name="Label" type="Label" parent="UI/Bars/health_pox/armor_bar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 8 )
+theme_override_fonts/font = SubResource( 8 )
 text = "carapace"
 align = 1
 valign = 1
 
 [node name="empty_bar" type="ProgressBar" parent="UI/Bars"]
 visible = false
-margin_top = 14.0
-margin_right = 128.0
-margin_bottom = 16.0
+offset_top = 14.0
+offset_right = 128.0
+offset_bottom = 16.0
 value = 50.0
 percent_visible = false
 script = ExtResource( 5 )
@@ -546,16 +546,16 @@ script = ExtResource( 5 )
 [node name="Label" type="Label" parent="UI/Bars/empty_bar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 8 )
+theme_override_fonts/font = SubResource( 8 )
 text = "nothing"
 align = 1
 valign = 1
 
 [node name="HotBarInventory" parent="UI" instance=ExtResource( 8 )]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 21.0
-margin_bottom = 21.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 21.0
+offset_bottom = 21.0
 
 [node name="Notifications" type="Control" parent="UI"]
 anchor_top = 1.0
@@ -566,21 +566,21 @@ script = ExtResource( 12 )
 [node name="PanelContainer" type="PanelContainer" parent="UI/Notifications"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -50.0
-margin_right = 100.0
-custom_styles/panel = SubResource( 29 )
+offset_top = -50.0
+offset_right = 100.0
+theme_override_styles/panel = SubResource( 29 )
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Notifications/PanelContainer"]
-margin_left = 6.0
-margin_top = 8.0
-margin_right = 90.0
-margin_bottom = 40.0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 90.0
+offset_bottom = 40.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/Notifications/PanelContainer/MarginContainer"]
-margin_right = 84.0
-margin_bottom = 32.0
+offset_right = 84.0
+offset_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/normal_font = SubResource( 20 )
+theme_override_fonts/normal_font = SubResource( 20 )
 bbcode_enabled = true
 fit_content_height = true

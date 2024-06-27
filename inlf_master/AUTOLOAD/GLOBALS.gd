@@ -21,10 +21,10 @@ func _ready():
 	#begin game with mouse mode captured
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 # warning-ignore:return_value_discarded
-	connect("on_inventory_toggle", self, "toggle_inventory_interface")
+	connect("on_inventory_toggle", Callable(self, "toggle_inventory_interface"))
 
 func create_pickup(slot_data, object = false): #create an item, if object then create at that object's pos instead
-	var _pickup = pickup.instance()
+	var _pickup = pickup.instantiate()
 	_pickup.slot_data = SlotData.new()
 	_pickup.slot_data.item_data = slot_data.item_data
 	_pickup.slot_data.quantity = slot_data.quantity
@@ -35,7 +35,7 @@ func create_pickup(slot_data, object = false): #create an item, if object then c
 	_pickup.global_transform.origin = Globals.current_player.get_drop_position()
 
 func create_corpse(object): #create a corpse at object pos
-	var _corpse = corpse.instance()
+	var _corpse = corpse.instantiate()
 	get_tree().get_root().add_child(_corpse)
 	_corpse.global_transform.origin = object.global_transform.origin
 	return _corpse #return so that the corpse can be modified by other objects if needed

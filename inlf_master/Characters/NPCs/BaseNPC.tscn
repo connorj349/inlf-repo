@@ -13,14 +13,14 @@ resource_local_to_scene = true
 script = ExtResource( 2 )
 slot_datas = [ null, null, null ]
 
-[sub_resource type="CapsuleShape" id=2]
+[sub_resource type="CapsuleShape3D" id=2]
 radius = 0.5
 height = 2.0
 
-[sub_resource type="SphereShape" id=3]
+[sub_resource type="SphereShape3D" id=3]
 radius = 2.0
 
-[node name="BaseNPC" type="KinematicBody"]
+[node name="BaseNPC" type="CharacterBody3D"]
 script = ExtResource( 4 )
 inventory_data = SubResource( 1 )
 loot_table = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
@@ -28,18 +28,18 @@ loot_table = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
 [node name="Health" parent="." instance=ExtResource( 1 )]
 allowed_max_health = 5
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, 0 )
 shape = SubResource( 2 )
 
 [node name="mdl-korpsman" parent="." instance=ExtResource( 3 )]
 
-[node name="Area" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource( 3 )
 
-[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_Area_body_entered"]

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/ghost_ambience.ogg-5c52ce0d5a5101c27b16c74a2dce4ab5.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c6ra4607ehcw7"
+path="res://.godot/imported/ghost_ambience.ogg-5c52ce0d5a5101c27b16c74a2dce4ab5.oggvorbisstr"
 
 [deps]
 
 source_file="res://sound/sounds/ghost/ghost_ambience.ogg"
-dest_files=[ "res://.import/ghost_ambience.ogg-5c52ce0d5a5101c27b16c74a2dce4ab5.oggstr" ]
+dest_files=["res://.godot/imported/ghost_ambience.ogg-5c52ce0d5a5101c27b16c74a2dce4ab5.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

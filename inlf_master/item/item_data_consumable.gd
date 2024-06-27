@@ -6,8 +6,8 @@ enum ConsumableType {
 	ARMOR
 }
 
-export(int) var heal_value
-export(ConsumableType) var consumable_type
+@export var heal_value: int
+@export var consumable_type: ConsumableType
 
 func use(target):
 	if heal_value != 0:

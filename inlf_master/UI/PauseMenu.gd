@@ -19,7 +19,7 @@ func _on_options_button_pressed():
 func _on_menu_exit_button_pressed():
 	toggle()
 	Gamestate.reset_gamestate()
-	$LoadingScreen.change_scene("res://scenes/Menu.tscn")
+	$LoadingScreen.change_scene_to_file("res://scenes/Menu.tscn")
 	SoundManager.Play_UI_ButtonPress()
 
 func _on_exit_button_pressed():

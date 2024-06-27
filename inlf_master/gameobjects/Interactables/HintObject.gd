@@ -1,13 +1,13 @@
-extends Spatial
+extends Node3D
 class_name HintObject
 
 # automatically toggle the animation player play from here in the baseclass
 # locate and set on runtime the reference to the animation player from the baseclass
 
+@export var anim_player: AnimationPlayer
+
 var is_viewing = false
 var should_display = true
-
-var anim_player
 
 func _ready(): #setup animation player reference in baseclass
 	for child in get_children():

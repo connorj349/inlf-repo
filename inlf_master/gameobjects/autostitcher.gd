@@ -1,17 +1,17 @@
 extends Interactable
 
-export(int) var heal_cost = 50 #how many bones to heal
-export(int) var heal_amount = 1 #amount to heal player per tick
+@export var heal_cost: int = 50 #how many bones to heal
+@export var heal_amount: int = 1 #amount to heal player per tick
 
-onready var heal_area = $Area
-onready var timer = $Timer
-onready var healing_loop = $HealingLoop
-onready var hit_sound = $SoundQueue3D
+@onready var heal_area = $Area3D
+@onready var timer = $Timer
+@onready var healing_loop = $HealingLoop
+@onready var hit_sound = $SoundQueue3D
 
 var blood_effect = preload("res://effects/blood_spray.tscn")
 
 func _ready():
-	heal_area.connect("body_exited", self, "stop_healing") #stop the healing process if anything leaves area
+	heal_area.connect("body_exited", Callable(self, "stop_healing")) #stop the healing process if anything leaves area
 	randomize()
 
 func on_hurt(_amount): #if caught will be attacked by sanitars
@@ -56,6 +56,6 @@ func _on_Timer_timeout(): # this technically heals ALL bodies within the vicinit
 	for body in heal_area.get_overlapping_bodies():
 		if body.has_method("on_heal") and body != self:
 			body.on_heal(heal_amount)
-			var heal_effect = blood_effect.instance()
+			var heal_effect = blood_effect.instantiate()
 			get_tree().get_root().add_child(heal_effect)
 			heal_effect.global_transform.origin = body.global_transform.origin

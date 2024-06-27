@@ -2,7 +2,7 @@ extends Interactable
 
 func _ready():
 # warning-ignore:return_value_discarded
-	Globals.connect("cast_spell", self, "_cast_spell")
+	Globals.connect("cast_spell", Callable(self, "_cast_spell"))
 	anim_player.play("RESET")
 	anim_player.seek(0, true)
 
@@ -11,7 +11,7 @@ func _interact(_actor):
 
 func _cast_spell(organ): # create the spell effect; effect will immediately fire
 	if organ.magic_effect: # prevent errors
-		var spell_effect = organ.magic_effect.instance()
+		var spell_effect = organ.magic_effect.instantiate()
 		get_tree().get_root().add_child(spell_effect)
 		spell_effect.global_transform.origin = global_transform.origin
 

@@ -1,16 +1,16 @@
 extends HintObject
 
-export(Resource) var accepted_biomass_item_data
-export(Array, Resource) var dropped_seeds
-export(Resource) var slime_item_data
+@export var accepted_biomass_item_data: Resource
+@export var dropped_seeds: Array[ItemData] # (Array, Resource)
+@export var slime_item_data: Resource
 
-onready var hydration_prog_bar = $CanvasLayer/Control/VBoxContainer/HydrationProgressBar
-onready var bio_prog_bar = $CanvasLayer/Control/VBoxContainer/BioProgressBar
-onready var timer = $HydrationTimer
+@onready var hydration_prog_bar = $CanvasLayer/Control/VBoxContainer/HydrationProgressBar
+@onready var bio_prog_bar = $CanvasLayer/Control/VBoxContainer/BioProgressBar
+@onready var timer = $HydrationTimer
 
-onready var water_handler = $WaterHandler
+@onready var water_handler = $WaterHandler
 
-var current_biomass = 0 setget set_current_biomass
+var current_biomass = 0: set = set_current_biomass
 
 var rng = RandomNumberGenerator.new()
 
@@ -34,16 +34,17 @@ func _on_ItemDeposit_body_entered(body):
 			body.queue_free()
 
 func _on_HydrationTimer_timeout():
+	var new_slot = SlotData.new()
+	
 	if current_biomass >= 10:
 		if dropped_seeds.size() > 0:
 			for i in 3:
 				var random_index = rng.randi_range(0, dropped_seeds.size() - 1)
-				var new_slot = SlotData.new()
 				new_slot.item_data = dropped_seeds[random_index]
 				Globals.create_pickup(new_slot, self)
 			queue_free()
 		return
-	var new_slot = SlotData.new()
+	
 	new_slot.item_data = slime_item_data
 	Globals.create_pickup(new_slot, self)
 	queue_free()

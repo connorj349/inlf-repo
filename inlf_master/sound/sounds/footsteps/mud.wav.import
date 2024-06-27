@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/mud.wav-337dc6dc94e5eda87c6166c57680f0ed.sample"
+type="AudioStreamWAV"
+uid="uid://6etyiwvj6pj"
+path="res://.godot/imported/mud.wav-337dc6dc94e5eda87c6166c57680f0ed.sample"
 
 [deps]
 
 source_file="res://sound/sounds/footsteps/mud.wav"
-dest_files=[ "res://.import/mud.wav-337dc6dc94e5eda87c6166c57680f0ed.sample" ]
+dest_files=["res://.godot/imported/mud.wav-337dc6dc94e5eda87c6166c57680f0ed.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

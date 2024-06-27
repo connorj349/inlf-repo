@@ -2,20 +2,20 @@ extends Interactable
 
 signal on_fuel_changed
 
-export(Resource) var fuel_item_data
+@export var fuel_item_data: Resource
 
-onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-onready var timer = $FuelConsumeTimer
-onready var connected_machines = $CheckForMachinesArea
+@onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
+@onready var timer = $FuelConsumeTimer
+@onready var connected_machines = $CheckForMachinesArea
 
-var fuel = 0 setget set_fuel
+var fuel = 0: set = set_fuel
 var is_on = false
 
 func _ready():
 	prog_bar.init(0, 100)
 # warning-ignore:return_value_discarded
-	connect("on_fuel_changed", prog_bar, "update_bar")
-	yield(get_tree(), "idle_frame")
+	connect("on_fuel_changed", Callable(prog_bar, "update_bar"))
+	await get_tree().process_frame
 	change_active_status_of_machines(false)
 
 func _interact(_actor):

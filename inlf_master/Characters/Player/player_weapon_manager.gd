@@ -1,7 +1,7 @@
-extends Spatial
+extends Node3D
 
-onready var weapons = get_children() #represents all weapons that can exist on player
-onready var fists = $wep_fists #starting weapon
+@onready var weapons = get_children() #represents all weapons that can exist on player
+@onready var fists = $wep_fists #starting weapon
 
 var curr_slot = 0
 var curr_weapon = null

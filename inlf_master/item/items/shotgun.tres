@@ -1,29 +1,28 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" script_class="ItemDataWeapon" load_steps=7 format=3 uid="uid://ct8lqjd8asf2c"]
 
-[ext_resource path="res://item/item_data_weapon.gd" type="Script" id=1]
-[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
-[ext_resource path="res://item/items/shells.tres" type="Resource" id=3]
-[ext_resource path="res://inventory/slot_data.gd" type="Script" id=4]
+[ext_resource type="Script" path="res://item/item_data_weapon.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bcv1hi0j6isel" path="res://raw_assets/textures/ui-icon-equipment.png" id="2"]
+[ext_resource type="Resource" uid="uid://bmlxg0rxh6idp" path="res://item/items/shells.tres" id="3"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="4"]
 
-[sub_resource type="Resource" id=1]
-script = ExtResource( 4 )
-item_data = ExtResource( 3 )
+[sub_resource type="Resource" id="1"]
+script = ExtResource("4")
+item_data = ExtResource("3")
 quantity = 1
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 19
-atlas = ExtResource( 2 )
-region = Rect2( 2204, 3050, 196, 48 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("2")
+region = Rect2(2204, 3050, 196, 48)
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 name = "pump shotgun"
 description = "simple lead thrower that holds a couple shells, shreds and peppers the target with lead."
 stackable = false
-texture = SubResource( 2 )
+texture = SubResource("2")
 price = 350
 item_type = 4
 max_ammo = 4
-ammo_slot = SubResource( 1 )
+ammo_slot = SubResource("1")
 damage = 5
 damage_type = 1

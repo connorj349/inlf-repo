@@ -1,8 +1,8 @@
 extends HintObject
 
-onready var timer = $ProcessTimer
-onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-onready var item_spawn_point = $ItemSpawnPoint
+@onready var timer = $ProcessTimer
+@onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
+@onready var item_spawn_point = $ItemSpawnPoint
 
 var current_item_data
 var count

@@ -1,12 +1,12 @@
 extends HintObject
 
-export(int) var incubation_increase_amount = 5
-export(float) var incubation_frequency_amount = 1.0
+@export var incubation_increase_amount: int = 5
+@export var incubation_frequency_amount: float = 1.0
 
-onready var health = $Health
-onready var hp_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-onready var incu_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar2
-onready var timer = $Timer
+@onready var health = $Health
+@onready var hp_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
+@onready var incu_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar2
+@onready var timer = $Timer
 
 var incubation = 0
 
@@ -14,8 +14,8 @@ var dead = false
 
 func _ready():
 	health.init()
-	health.connect("health_changed", hp_bar, "update_bar")
-	health.connect("dead", self, "on_death")
+	health.connect("health_changed", Callable(hp_bar, "update_bar"))
+	health.connect("dead", Callable(self, "on_death"))
 	hp_bar.init(health.health, health.max_health)
 	incu_bar.init(0, 100)
 	timer.wait_time = incubation_frequency_amount
@@ -31,7 +31,7 @@ func on_hurt(damage):
 func on_death():
 	Gamestate.bloaters -= 1
 	dead = true
-	yield(health.death_sound, "finished") #wait until the death sound is finished
+	await health.death_sound.finished #wait until the death sound is finished
 	#drop random cancer item
 	queue_free()
 

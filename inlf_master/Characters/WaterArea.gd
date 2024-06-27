@@ -1,9 +1,9 @@
-extends Area
-tool
+@tool
+extends Area3D
 
-export(Vector3) var bounds = Vector3(1, 1, 1)
+@export var bounds: Vector3 = Vector3(1, 1, 1)
 
-onready var collision_shape = $CollisionShape
+@onready var collision_shape = $CollisionShape3D
 
 func _ready():
 	collision_shape.shape.extents = bounds

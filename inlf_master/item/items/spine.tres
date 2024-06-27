@@ -1,20 +1,19 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://dtnywridk3h05"]
 
-[ext_resource path="res://item/item_data.gd" type="Script" id=1]
-[ext_resource path="res://item/items/bio_fuel.tres" type="Resource" id=2]
-[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=3]
+[ext_resource type="Script" path="res://item/item_data.gd" id="1"]
+[ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://item/items/bio_fuel.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://bcv1hi0j6isel" path="res://raw_assets/textures/ui-icon-equipment.png" id="3"]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 19
-atlas = ExtResource( 3 )
-region = Rect2( 800, 1800, 50, 50 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("3")
+region = Rect2(800, 1800, 50, 50)
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 name = "spine"
 description = "used to create biofuel, found in bone caspules"
 stackable = false
-texture = SubResource( 1 )
+texture = SubResource("1")
 price = 0
-processed_item_data = ExtResource( 2 )
+processed_item_data = ExtResource("2")
 item_type = 4

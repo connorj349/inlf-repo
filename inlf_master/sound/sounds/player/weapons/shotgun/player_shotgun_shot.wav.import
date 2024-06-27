@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/player_shotgun_shot.wav-6c2febb32585986a9f233db4ca943224.sample"
+type="AudioStreamWAV"
+uid="uid://s3aac53x8yi1"
+path="res://.godot/imported/player_shotgun_shot.wav-6c2febb32585986a9f233db4ca943224.sample"
 
 [deps]
 
 source_file="res://sound/sounds/player/weapons/shotgun/player_shotgun_shot.wav"
-dest_files=[ "res://.import/player_shotgun_shot.wav-6c2febb32585986a9f233db4ca943224.sample" ]
+dest_files=["res://.godot/imported/player_shotgun_shot.wav-6c2febb32585986a9f233db4ca943224.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

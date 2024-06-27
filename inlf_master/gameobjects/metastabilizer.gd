@@ -1,19 +1,19 @@
 extends Interactable
 
-export(Resource) var repair_item_data
+@export var repair_item_data: Resource
 
-onready var health = $Health
-onready var bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-onready var status_label = $CanvasLayer/Info/VBoxContainer/Label
-onready var spot_light = $SpotLight
+@onready var health = $Health
+@onready var bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
+@onready var status_label = $CanvasLayer/Info/VBoxContainer/Label
+@onready var spot_light = $SpotLight3D
 
 var active = true
 
 func _ready():
 	health.init()
 	bar.init(health.health, health.max_health)
-	health.connect("health_changed", bar, "update_bar")
-	health.connect("dead", self, "on_disable")
+	health.connect("health_changed", Callable(bar, "update_bar"))
+	health.connect("dead", Callable(self, "on_disable"))
 	status_label.text = "Status: operational"
 
 func on_hurt(damage):

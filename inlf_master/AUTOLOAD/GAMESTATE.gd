@@ -13,26 +13,26 @@ signal infections_count_changed
 signal game_over
 
 # player's inventory
-var player_inventory = preload("res://inventory/player_inventory.tres")
+var player_inventory = load("res://inventory/player_inventory.tres")
 # player's clothing equipment slot
-var equip_player_inventory = preload("res://inventory/player_equipment_inventory.tres")
+var equip_player_inventory = load("res://inventory/player_equipment_inventory.tres")
 # player's weapon slot
-var weapon_player_inventory = preload("res://inventory/player_weapon_inventory.tres")
+var weapon_player_inventory = load("res://inventory/player_weapon_inventory.tres")
 # global merchant inventory for all vendors to reference
-var merchant_inventory = preload("res://inventory/merchant_inventory.tres")
+var merchant_inventory = load("res://inventory/merchant_inventory.tres")
 
-var rot = 0 setget set_rot
-var bones = 0 setget set_bones
-var bloaters = 0 setget set_bloaters
-var tumors = 0 setget set_tumors
-var infections setget , get_infections
+var rot = 0: set = set_rot
+var bones = 0: set = set_bones
+var bloaters = 0: set = set_bloaters
+var tumors = 0: set = set_tumors
+var infections : get = get_infections
 
 var spawn_queue = []
 var cache = {}
 
 func _ready():
 # warning-ignore:return_value_discarded
-	connect("game_over", self, "reset_gamestate")
+	connect("game_over", Callable(self, "reset_gamestate"))
 
 func _physics_process(_delta):
 	dequeue_spawn_requests()

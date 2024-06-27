@@ -1,24 +1,23 @@
-extends KinematicBody
+extends CharacterBody3D
 
-export (Array, AudioStream) var possible_noises
-export var mouse_sensitivity = 0.1
-export var speed = 15
-export var accel = 7
+@export var possible_noises: Array[AudioStream]
+@export var mouse_sensitivity = 0.1
+@export var speed = 15
+@export var accel = 7
 
-onready var head = $Head
-onready var noises = $SoundPool
+@onready var head = $Head
+@onready var noises = $SoundPool
 
 var movement : Vector3
-var velocity : Vector3
 
 func _ready():
 	add_to_group("Ghost")
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(deg2rad(-event.relative.x * mouse_sensitivity))
-		head.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity))
-		head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
+		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
+		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
+		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -34,9 +33,10 @@ func _physics_process(delta):
 		direction.y += 1
 	if Input.is_action_pressed("descend"):
 		direction.y -= 1
-	velocity = velocity.linear_interpolate(direction * speed, accel * delta)
+	velocity = velocity.lerp(direction * speed, accel * delta)
 # warning-ignore:return_value_discarded
-	move_and_slide(velocity)
+	set_velocity(velocity)
+	move_and_slide()
 
 
 func _on_Timer_timeout():

@@ -1,6 +1,6 @@
 extends Interactable
 
-var is_broken = false setget set_is_broken
+var is_broken = false: set = set_is_broken
 var health = 100
 
 var water_item_data = preload("res://item/items/dirty_water.tres")

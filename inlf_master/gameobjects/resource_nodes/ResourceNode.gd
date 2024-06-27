@@ -1,23 +1,23 @@
 extends Interactable
 
-export(Resource) var item_data #resource item to drop on death
-export(String) var display_name = "NULL" #what to display on nameplate
-export(Array, Damage.DamageType) var blocked_damage_types
-export(bool) var punching_hurts = false
-export(NodePath) var optional_item_spawn_point
-export(PackedScene) var hit_effect
+@export var item_data: Resource #resource item to drop on death
+@export var display_name: String = "NULL" #what to display on nameplate
+@export var blocked_damage_types: Array[Damage.DamageType] # (Array, Damage.DamageType)
+@export var punching_hurts: bool = false
+@export var optional_item_spawn_point: NodePath
+@export var hit_effect: PackedScene
 
-onready var health = $Health
-onready var name_plate = $CanvasLayer/Info/VBoxContainer/Label
-onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
+@onready var health = $Health
+@onready var name_plate = $CanvasLayer/Info/VBoxContainer/Label
+@onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 
 var item_prefab = preload("res://item/pick_up/Pickup.tscn")
 var dead = false
 
 func _ready():
 	health.init()
-	health.connect("dead", self, "on_death")
-	health.connect("health_changed", prog_bar, "update_bar")
+	health.connect("dead", Callable(self, "on_death"))
+	health.connect("health_changed", Callable(prog_bar, "update_bar"))
 	prog_bar.init(health.health, health.max_health)
 	name_plate.text = display_name
 	anim_player.play("RESET")
@@ -38,7 +38,7 @@ func on_hurt(damage):
 	if dead:
 		return
 	
-	var new_effect = hit_effect.instance()
+	var new_effect = hit_effect.instantiate()
 	get_tree().get_root().add_child(new_effect)
 	new_effect.global_transform.origin = global_transform.origin
 	

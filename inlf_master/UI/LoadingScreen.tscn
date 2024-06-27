@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/scribbles.ttf" type="FontFile" id=1]
 [ext_resource path="res://UI/LoadingScreen.gd" type="Script" id=2]
-[ext_resource path="res://raw_assets/textures/background_01.png" type="Texture" id=3]
-[ext_resource path="res://UI/elements/bar_fill.png" type="Texture" id=4]
-[ext_resource path="res://UI/elements/bar_border.png" type="Texture" id=5]
+[ext_resource path="res://raw_assets/textures/background_01.png" type="Texture2D" id=3]
+[ext_resource path="res://UI/elements/bar_fill.png" type="Texture2D" id=4]
+[ext_resource path="res://UI/elements/bar_border.png" type="Texture2D" id=5]
 [ext_resource path="res://UI/themes/main_menu_theme.tres" type="Theme" id=6]
 
 [sub_resource type="StyleBoxTexture" id=5]
@@ -12,19 +12,19 @@ texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 256, 256 )
 modulate_color = Color( 0.482353, 0.478431, 0.478431, 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 25
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 15
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 size = 25
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="FontFile" id=4]
 size = 15
 font_data = ExtResource( 1 )
 
@@ -38,7 +38,7 @@ tips = [ "tumors produce rot over time. destroy them", "insert certain items in 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 5 )
+theme_override_styles/panel = SubResource( 5 )
 
 [node name="Control" type="Control" parent="."]
 anchor_left = 0.05
@@ -47,55 +47,55 @@ anchor_right = 0.95
 anchor_bottom = 0.95
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-margin_right = 75.0
-margin_bottom = 39.0
+offset_right = 75.0
+offset_bottom = 39.0
 
 [node name="LoadingLabel" type="Label" parent="Control/VBoxContainer"]
-margin_right = 75.0
-margin_bottom = 22.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 75.0
+offset_bottom = 22.0
+theme_override_fonts/font = SubResource( 1 )
 text = "Loading..."
 
 [node name="LevelName" type="Label" parent="Control/VBoxContainer"]
-margin_top = 26.0
-margin_right = 75.0
-margin_bottom = 39.0
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
+offset_top = 26.0
+offset_right = 75.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color( 1, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 2 )
 text = "Level Name"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_top = -19.5
-margin_right = 320.0
-margin_bottom = 67.5
-rect_clip_content = true
+offset_top = -19.5
+offset_right = 320.0
+offset_bottom = 67.5
+clip_contents = true
 
 [node name="TipLabel" type="Label" parent="Control/VBoxContainer2"]
-margin_right = 320.0
-margin_bottom = 22.0
-custom_fonts/font = SubResource( 3 )
+offset_right = 320.0
+offset_bottom = 22.0
+theme_override_fonts/font = SubResource( 3 )
 text = "Tip"
 
 [node name="TipValue" type="Label" parent="Control/VBoxContainer2"]
-margin_top = 26.0
-margin_right = 320.0
-margin_bottom = 39.0
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
+offset_top = 26.0
+offset_right = 320.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color( 1, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 4 )
 text = "tip goes here"
 autowrap = true
 
-[node name="ProgressBar" type="TextureProgress" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -137.5
-margin_top = -40.0
-margin_right = 137.5
-margin_bottom = -15.0
+offset_left = -137.5
+offset_top = -40.0
+offset_right = 137.5
+offset_bottom = -15.0
 value = 50.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 4 )

@@ -2,8 +2,8 @@ extends PanelContainer
 
 signal slot_clicked(index, button)
 
-onready var texture_rect = $MarginContainer/TextureRect
-onready var quantity_label = $QuantityLabel
+@onready var texture_rect = $MarginContainer/TextureRect
+@onready var quantity_label = $QuantityLabel
 
 func set_slot_data(slot_data: SlotData):
 	var item_data = slot_data.item_data
@@ -19,7 +19,7 @@ func set_slot_data(slot_data: SlotData):
 
 func _on_inventory_slot_gui_input(event: InputEvent):
 	if event is InputEventMouseButton \
-			and (event.button_index == BUTTON_LEFT \
-			or event.button_index == BUTTON_RIGHT) \
+			and (event.button_index == MOUSE_BUTTON_LEFT \
+			or event.button_index == MOUSE_BUTTON_RIGHT) \
 			and event.is_pressed():
 		emit_signal("slot_clicked", get_index(), event.button_index)

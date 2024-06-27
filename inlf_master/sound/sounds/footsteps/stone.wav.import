@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/stone.wav-b05ac0bf44672583672fd14cc3e72557.sample"
+type="AudioStreamWAV"
+uid="uid://cjc46l16nfmhc"
+path="res://.godot/imported/stone.wav-b05ac0bf44672583672fd14cc3e72557.sample"
 
 [deps]
 
 source_file="res://sound/sounds/footsteps/stone.wav"
-dest_files=[ "res://.import/stone.wav-b05ac0bf44672583672fd14cc3e72557.sample" ]
+dest_files=["res://.godot/imported/stone.wav-b05ac0bf44672583672fd14cc3e72557.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

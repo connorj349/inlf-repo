@@ -1,10 +1,10 @@
 extends HintObject
 
-onready var biomass_prog_bar = $CanvasLayer/Control/VBoxContainer/ProgressBar
-onready var production_prog_bar = $CanvasLayer/Control/VBoxContainer/ProductionProgressBar
-onready var timer = $CreateFertilizerTimer
+@onready var biomass_prog_bar = $CanvasLayer/Control/VBoxContainer/ProgressBar
+@onready var production_prog_bar = $CanvasLayer/Control/VBoxContainer/ProductionProgressBar
+@onready var timer = $CreateFertilizerTimer
 
-var biomass setget set_biomass
+var biomass : set = set_biomass
 var fertilizer_item_data = preload("res://item/items/fertilizer.tres")
 
 func _ready():

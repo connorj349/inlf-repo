@@ -1,11 +1,11 @@
-extends Spatial
+extends Node3D
 
 signal armor_changed
 
-export(int) var max_armor = 1
-export(bool) var start_with_armor = false
+@export var max_armor: int = 1
+@export var start_with_armor: bool = false
 
-var armor setget set_armor
+var armor : set = set_armor
 
 func init():
 	if start_with_armor:

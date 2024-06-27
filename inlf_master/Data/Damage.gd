@@ -8,6 +8,6 @@ enum DamageType {
 	Sharp
 }
 
-export(DamageType) var type # the type of damage
-export(int) var amount # the amount of damage to be dealt
+@export var type: DamageType # the type of damage
+@export var amount: int # the amount of damage to be dealt
 var source = null # set by the damage dealer

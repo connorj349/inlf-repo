@@ -1,810 +1,954 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=76 format=3 uid="uid://c0pk63nn4wv3b"]
 
-[ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
-[ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
-[ext_resource path="res://inventory/inventory_interface.gd" type="Script" id=3]
-[ext_resource path="res://inventory/inventory_slot.tscn" type="PackedScene" id=4]
-[ext_resource path="res://models/Maps/slumtown/mdl-slumtown.glb" type="PackedScene" id=5]
-[ext_resource path="res://skybox/skybox_apoc_01.png" type="Texture" id=6]
-[ext_resource path="res://gameobjects/FertilizerProducer.tscn" type="PackedScene" id=7]
-[ext_resource path="res://item/items/slop_skull.tres" type="Resource" id=8]
-[ext_resource path="res://gameobjects/BioGrower.tscn" type="PackedScene" id=9]
-[ext_resource path="res://gameobjects/IndustrialSink.tscn" type="PackedScene" id=10]
-[ext_resource path="res://gameobjects/vendor.tscn" type="PackedScene" id=11]
-[ext_resource path="res://gameobjects/Ladder.tscn" type="PackedScene" id=12]
-[ext_resource path="res://item/items/metal_frag.tres" type="Resource" id=13]
-[ext_resource path="res://game_end/game_end_stem_cells.gd" type="Script" id=14]
-[ext_resource path="res://item/items/prole_suit.tres" type="Resource" id=15]
-[ext_resource path="res://item/items/sanitar_suit.tres" type="Resource" id=16]
-[ext_resource path="res://gameobjects/resource_node_spawner.tscn" type="PackedScene" id=17]
-[ext_resource path="res://gameobjects/resource_nodes/bitumeat.tscn" type="PackedScene" id=18]
-[ext_resource path="res://gameobjects/production_machine.tscn" type="PackedScene" id=19]
-[ext_resource path="res://UI/themes/main_menu_theme.tres" type="Theme" id=20]
-[ext_resource path="res://gameobjects/resource_nodes/skin_tree.tscn" type="PackedScene" id=21]
-[ext_resource path="res://gameobjects/Amoeba.tscn" type="PackedScene" id=22]
-[ext_resource path="res://role/roles/proletariat.tres" type="Resource" id=23]
-[ext_resource path="res://gameobjects/resource_nodes/bone_capsule.tscn" type="PackedScene" id=24]
-[ext_resource path="res://item/items/spine.tres" type="Resource" id=25]
-[ext_resource path="res://item/items/bio_fuel.tres" type="Resource" id=26]
-[ext_resource path="res://item/items/shells.tres" type="Resource" id=27]
-[ext_resource path="res://gameobjects/processor.tscn" type="PackedScene" id=28]
-[ext_resource path="res://UI/PauseMenu.gd" type="Script" id=29]
-[ext_resource path="res://UI/LoadingScreen.tscn" type="PackedScene" id=30]
-[ext_resource path="res://UI/Options.tscn" type="PackedScene" id=31]
-[ext_resource path="res://inventory/inventory_data.gd" type="Script" id=32]
-[ext_resource path="res://inventory/Storage.tscn" type="PackedScene" id=33]
-[ext_resource path="res://item/items/heal_1.tres" type="Resource" id=34]
-[ext_resource path="res://item/items/shotgun.tres" type="Resource" id=35]
-[ext_resource path="res://gameobjects/rot_telecom.tscn" type="PackedScene" id=36]
-[ext_resource path="res://gameobjects/autostitcher.tscn" type="PackedScene" id=37]
-[ext_resource path="res://gameobjects/Generator.tscn" type="PackedScene" id=38]
-[ext_resource path="res://Characters/NPCs/BaseNPC.tscn" type="PackedScene" id=39]
-[ext_resource path="res://gameobjects/resource_nodes/boulder.tscn" type="PackedScene" id=40]
-[ext_resource path="res://gameobjects/metastabilizer.tscn" type="PackedScene" id=41]
-[ext_resource path="res://gameobjects/sawblade.tscn" type="PackedScene" id=42]
-[ext_resource path="res://UI/elements/panel_square.png" type="Texture" id=43]
-[ext_resource path="res://models/objects/gridmap_props_meshlib.tres" type="MeshLibrary" id=44]
-[ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=45]
-[ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=46]
-[ext_resource path="res://gameobjects/tumor.tscn" type="PackedScene" id=47]
-[ext_resource path="res://game_end/TicketMachine.tscn" type="PackedScene" id=48]
-[ext_resource path="res://UI/update_player_stats.gd" type="Script" id=49]
-[ext_resource path="res://models/ladder/mdl-ladder-segment-end.tscn" type="PackedScene" id=50]
-[ext_resource path="res://models/ladder/mdl-ladder-segment.tscn" type="PackedScene" id=51]
-[ext_resource path="res://gameobjects/ExplodingMushroom.tscn" type="PackedScene" id=52]
-[ext_resource path="res://Characters/WaterArea.tscn" type="PackedScene" id=54]
-[ext_resource path="res://item/items/amoeba_slime.tres" type="Resource" id=55]
+[ext_resource type="PackedScene" path="res://Characters/Player/Player_Ghost.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://inventory/Inventory.tscn" id="2"]
+[ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="3"]
+[ext_resource type="PackedScene" path="res://inventory/inventory_slot.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://csuicjdgh3olp" path="res://models/Maps/slumtown/mdl-slumtown.glb" id="5"]
+[ext_resource type="PackedScene" path="res://gameobjects/FertilizerProducer.tscn" id="7"]
+[ext_resource type="Resource" uid="uid://bfv04trnoslqs" path="res://item/items/slop_skull.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://gameobjects/BioGrower.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://djfc66jt8vqe2" path="res://gameobjects/IndustrialSink.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://diw2ptb001gas" path="res://gameobjects/vendor.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://gameobjects/Ladder.tscn" id="12"]
+[ext_resource type="Resource" uid="uid://uf65hp2jic1g" path="res://item/items/metal_frag.tres" id="13"]
+[ext_resource type="Script" path="res://game_end/game_end_stem_cells.gd" id="14"]
+[ext_resource type="Resource" uid="uid://bd4s2o2c603oo" path="res://item/items/prole_suit.tres" id="15"]
+[ext_resource type="Resource" uid="uid://d3xxh2xlpl08s" path="res://item/items/sanitar_suit.tres" id="16"]
+[ext_resource type="PackedScene" path="res://gameobjects/resource_node_spawner.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://p3pw5s5y3hqr" path="res://gameobjects/resource_nodes/bitumeat.tscn" id="18"]
+[ext_resource type="PackedScene" uid="uid://bsqr7oaxve8ba" path="res://gameobjects/production_machine.tscn" id="19"]
+[ext_resource type="Theme" uid="uid://cnq43lwu6wk48" path="res://UI/themes/main_menu_theme.tres" id="20"]
+[ext_resource type="PackedScene" uid="uid://qjy7yga6koi4" path="res://gameobjects/resource_nodes/skin_tree.tscn" id="21"]
+[ext_resource type="PackedScene" uid="uid://cow88ggfrlbxw" path="res://gameobjects/Amoeba.tscn" id="22"]
+[ext_resource type="Resource" path="res://role/roles/proletariat.tres" id="23"]
+[ext_resource type="PackedScene" uid="uid://b1k30jhststhn" path="res://gameobjects/resource_nodes/bone_capsule.tscn" id="24"]
+[ext_resource type="Resource" uid="uid://dtnywridk3h05" path="res://item/items/spine.tres" id="25"]
+[ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://item/items/bio_fuel.tres" id="26"]
+[ext_resource type="Resource" uid="uid://bmlxg0rxh6idp" path="res://item/items/shells.tres" id="27"]
+[ext_resource type="PackedScene" uid="uid://b7nxt2hc5tvjo" path="res://gameobjects/processor.tscn" id="28"]
+[ext_resource type="Script" path="res://UI/PauseMenu.gd" id="29"]
+[ext_resource type="PackedScene" path="res://UI/LoadingScreen.tscn" id="30"]
+[ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://UI/Options.tscn" id="31"]
+[ext_resource type="Script" path="res://inventory/inventory_data.gd" id="32"]
+[ext_resource type="PackedScene" path="res://inventory/Storage.tscn" id="33"]
+[ext_resource type="Resource" uid="uid://db0owt46j8wpd" path="res://item/items/heal_1.tres" id="34"]
+[ext_resource type="PackedScene" path="res://gameobjects/rot_telecom.tscn" id="36"]
+[ext_resource type="PackedScene" path="res://gameobjects/autostitcher.tscn" id="37"]
+[ext_resource type="PackedScene" uid="uid://r1okymmde6l8" path="res://gameobjects/Generator.tscn" id="38"]
+[ext_resource type="PackedScene" path="res://Characters/NPCs/BaseNPC.tscn" id="39"]
+[ext_resource type="PackedScene" uid="uid://b3gsycxg1xafb" path="res://gameobjects/resource_nodes/boulder.tscn" id="40"]
+[ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://gameobjects/metastabilizer.tscn" id="41"]
+[ext_resource type="PackedScene" path="res://gameobjects/sawblade.tscn" id="42"]
+[ext_resource type="Texture2D" uid="uid://byyhtjiwrhrv8" path="res://UI/elements/panel_square.png" id="43"]
+[ext_resource type="MeshLibrary" uid="uid://dpw65kax8agox" path="res://models/objects/gridmap_props_meshlib.tres" id="44"]
+[ext_resource type="PackedScene" path="res://Characters/Health.tscn" id="45"]
+[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://UI/themes/hint_object_theme.tres" id="46"]
+[ext_resource type="PackedScene" uid="uid://bu0ib6h238inm" path="res://gameobjects/tumor.tscn" id="47"]
+[ext_resource type="PackedScene" path="res://game_end/TicketMachine.tscn" id="48"]
+[ext_resource type="Script" path="res://UI/update_player_stats.gd" id="49"]
+[ext_resource type="PackedScene" path="res://models/ladder/mdl-ladder-segment-end.tscn" id="50"]
+[ext_resource type="PackedScene" path="res://models/ladder/mdl-ladder-segment.tscn" id="51"]
+[ext_resource type="PackedScene" uid="uid://dr8hsko7ayhd4" path="res://gameobjects/ExplodingMushroom.tscn" id="52"]
+[ext_resource type="PackedScene" path="res://Characters/WaterArea.tscn" id="54"]
+[ext_resource type="Resource" uid="uid://o0eqj1gg7bn4" path="res://item/items/amoeba_slime.tres" id="55"]
 
-[sub_resource type="Gradient" id=403]
-offsets = PoolRealArray( 0, 0.66879, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.562988, 0.509173, 0.268299, 1, 0.683179, 0.898926, 0.603966, 1 )
+[sub_resource type="Gradient" id="403"]
+offsets = PackedFloat32Array(0, 0.66879, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.562988, 0.509173, 0.268299, 1, 0.683179, 0.898926, 0.603966, 1)
 
-[sub_resource type="GradientTexture" id=404]
-gradient = SubResource( 403 )
+[sub_resource type="GradientTexture2D" id="404"]
+gradient = SubResource("403")
 
-[sub_resource type="PanoramaSky" id=366]
-panorama = ExtResource( 6 )
+[sub_resource type="Sky" id="366"]
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id="2"]
 background_mode = 2
-background_sky = SubResource( 366 )
-ambient_light_color = Color( 0.360784, 0.360784, 0.360784, 1 )
-ambient_light_energy = 3.02
+sky = SubResource("366")
+ambient_light_color = Color(0.360784, 0.360784, 0.360784, 1)
 ambient_light_sky_contribution = 0.0
-fog_enabled = true
-fog_color = Color( 0.32549, 0.32549, 0.32549, 1 )
-fog_sun_color = Color( 0.254902, 0.145098, 0, 1 )
-fog_sun_amount = 1.0
-fog_depth_begin = 38.1
+ambient_light_energy = 3.02
 tonemap_mode = 2
 tonemap_white = 16.0
-dof_blur_far_distance = 75.0
+fog_enabled = true
 adjustment_enabled = true
 adjustment_brightness = 1.2
 adjustment_contrast = 1.23
 adjustment_saturation = 2.07
-adjustment_color_correction = SubResource( 404 )
+adjustment_color_correction = SubResource("404")
 
-[sub_resource type="BoxShape" id=394]
+[sub_resource type="BoxShape3D" id="394"]
 resource_local_to_scene = true
-extents = Vector3( 1.35, 1.5, 1.5 )
+size = Vector3(2.7, 3, 3)
 
-[sub_resource type="BoxShape" id=395]
+[sub_resource type="Animation" id="6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Info/VBoxContainer/Name:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Info/VBoxContainer/ProgressBar:tint_under")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.227451, 0.227451, 0.227451, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Info/VBoxContainer/ProgressBar:tint_progress")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.901961, 0.784314, 0, 0)]
+}
+
+[sub_resource type="Animation" id="7"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Info/VBoxContainer/Name:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Info/VBoxContainer/ProgressBar:tint_under")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Info/VBoxContainer/ProgressBar:tint_progress")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.901961, 0.784314, 0, 0), Color(0.901961, 0.784314, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d44s8"]
+_data = {
+"RESET": SubResource("6"),
+"fade_in": SubResource("7")
+}
+
+[sub_resource type="BoxShape3D" id="395"]
 resource_local_to_scene = true
-extents = Vector3( 2, 2, 2 )
+size = Vector3(4, 4, 4)
 
-[sub_resource type="BoxShape" id=396]
+[sub_resource type="BoxShape3D" id="396"]
 resource_local_to_scene = true
-extents = Vector3( 1, 1, 5 )
+size = Vector3(2, 2, 10)
 
-[sub_resource type="Resource" id=387]
+[sub_resource type="Resource" id="387"]
 resource_local_to_scene = true
-script = ExtResource( 32 )
-slot_datas = [ null, null, null, null, null, null ]
+script = ExtResource("32")
+slot_datas = [null, null, null, null, null, null]
 
-[sub_resource type="BoxShape" id=397]
+[sub_resource type="BoxShape3D" id="397"]
 resource_local_to_scene = true
-extents = Vector3( 1.35, 1.5, 1.5 )
+size = Vector3(2.7, 3, 3)
 
-[sub_resource type="BoxShape" id=398]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_864li"]
+_data = {
+"RESET": SubResource("6"),
+"fade_in": SubResource("7")
+}
+
+[sub_resource type="BoxShape3D" id="398"]
 resource_local_to_scene = true
-extents = Vector3( 2, 2, 2 )
+size = Vector3(4, 4, 4)
 
-[sub_resource type="BoxShape" id=399]
+[sub_resource type="BoxShape3D" id="399"]
 resource_local_to_scene = true
-extents = Vector3( 1, 1, 5 )
+size = Vector3(2, 2, 10)
 
-[sub_resource type="BoxShape" id=400]
+[sub_resource type="BoxShape3D" id="400"]
 resource_local_to_scene = true
-extents = Vector3( 1.35, 1.5, 1.5 )
+size = Vector3(2.7, 3, 3)
 
-[sub_resource type="BoxShape" id=401]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xl0jl"]
+_data = {
+"RESET": SubResource("6"),
+"fade_in": SubResource("7")
+}
+
+[sub_resource type="BoxShape3D" id="401"]
 resource_local_to_scene = true
-extents = Vector3( 2, 2, 2 )
+size = Vector3(4, 4, 4)
 
-[sub_resource type="BoxShape" id=402]
+[sub_resource type="BoxShape3D" id="402"]
 resource_local_to_scene = true
-extents = Vector3( 1, 1, 5 )
+size = Vector3(2, 2, 10)
 
-[sub_resource type="Resource" id=405]
+[sub_resource type="Resource" id="405"]
 resource_local_to_scene = true
-script = ExtResource( 32 )
-slot_datas = [ null, null, null ]
+script = ExtResource("32")
+slot_datas = [null, null, null]
 
-[sub_resource type="StyleBoxTexture" id=392]
-texture = ExtResource( 43 )
-region_rect = Rect2( 0, 0, 128, 128 )
-modulate_color = Color( 0.266667, 1, 0.278431, 1 )
+[sub_resource type="StyleBoxTexture" id="392"]
+texture = ExtResource("43")
+region_rect = Rect2(0, 0, 128, 128)
+modulate_color = Color(0.266667, 1, 0.278431, 1)
 
-[sub_resource type="StyleBoxTexture" id=393]
-texture = ExtResource( 43 )
-region_rect = Rect2( 0, 0, 128, 128 )
-modulate_color = Color( 1, 0.345098, 0.345098, 1 )
+[sub_resource type="StyleBoxTexture" id="393"]
+texture = ExtResource("43")
+region_rect = Rect2(0, 0, 128, 128)
+modulate_color = Color(1, 0.345098, 0.345098, 1)
 
-[sub_resource type="StyleBoxFlat" id=380]
-bg_color = Color( 0, 0, 0, 0.270588 )
+[sub_resource type="StyleBoxFlat" id="380"]
+bg_color = Color(0, 0, 0, 0.270588)
 
-[node name="Main" type="Spatial"]
-script = ExtResource( 14 )
+[node name="Main" type="Node3D"]
+script = ExtResource("14")
 
-[node name="Environment" type="Spatial" parent="."]
+[node name="Environment" type="Node3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource( 2 )
+environment = SubResource("2")
 
 [node name="GridMap" type="GridMap" parent="Environment"]
-mesh_library = ExtResource( 44 )
-cell_size = Vector3( 1, 1, 1 )
+mesh_library = ExtResource("44")
+cell_size = Vector3(1, 1, 1)
 cell_octant_size = 15
 cell_center_x = false
 cell_center_y = false
 cell_center_z = false
 data = {
-"cells": PoolIntArray( -1376323, 1, 1, -1376297, 1, 851970, -1376322, 7, 589826, -1376307, 12, 1, -1376317, 13, 851970, 27, 16, 655362, -1376317, 16, 1, 65563, 17, 655369, -196581, 17, 655369, 29, 18, 655360, 65563, 18, 655368, -196581, 18, 655368, 131131, 65486, 458760, 131131, 65490, 458760, 57, 65491, 655364, 57, 65492, 1048582, 58, 65494, 4, 59, 65494, 655366, 131131, 65494, 458760, 57, 65496, 655362, 59, 65496, 1441797, 59, 65497, 6, 57, 65498, 655360, 65528, 65498, 655367, 131131, 65498, 458760, 327672, 65498, 655367, 589816, 65498, 655367, 851960, 65498, 655367, 1048564, 65498, 589831, 57, 65499, 655366, 59, 65499, 1441796, 65532, 65499, 655360, 65534, 65499, 655362, 57, 65500, 1441796, 1, 65501, 655360, 131131, 65502, 458760, 131073, 65503, 655360, -851932, 65503, 2, 1, 65504, 655360, 262204, 65504, 65543, 3, 65505, 655362, 1, 65506, 655362, 131131, 65506, 458760, 196610, 65506, 655361, 3, 65507, 655362, 262201, 65508, 851975, 131072, 65509, 589825, 327720, 65509, 655365, 131131, 65510, 458760, 327719, 65510, 6, 327721, 65510, 655366, 131128, 65511, 196616, 327718, 65511, 655364, 262201, 65512, 851975, 327719, 65512, 1048582, 131131, 65514, 458760, 131132, 65514, 65544, 262201, 65516, 851975, 327722, 65517, 655368, 589866, 65517, 655368, 40, 65519, 1441798, 327718, 65519, 655369, 589862, 65519, 655369, 13, 65520, 655362, 41, 65520, 1048581, 327719, 65520, 655369, 589863, 65520, 655369, -1376306, 65520, 1, 39, 65521, 6, 40, 65521, 1048582, 7, 65522, 655360, 9, 65522, 655362, 12, 65522, 655362, 37, 65522, 1441794, 39, 65522, 4, 41, 65522, 1441795, 11, 65523, 655369, 262155, 65523, 655369, 524299, 65523, 655369, 786443, 65523, 655369, 9, 65524, 655368, 12, 65524, 655368, 262153, 65524, 655368, 262156, 65524, 655368, 458752, 65524, 589832, 458756, 65524, 589832, 458760, 65524, 589832, 524300, 65524, 655368, 786444, 65524, 655368, 262116, 65526, 458761, 327651, 65526, 458760, -327644, 65527, 1441792, -327642, 65527, 1441792, -327640, 65527, 1441794, -196570, 65527, 1441792, -1376328, 65529, 589826, -1376323, 65529, 327682, 262116, 65530, 458761, 327651, 65530, 458760, -1376297, 65530, 65538, -1376313, 65532, 65538, 262116, 65534, 458761, 327651, 65534, 458760, -1376312, 65535, 327682 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"cells": PackedInt32Array(-1376323, 1, 1, -1376297, 1, 851970, -1376322, 7, 589826, -1376307, 12, 1, -1376317, 13, 851970, 27, 16, 655362, -1376317, 16, 1, 65563, 17, 655369, -196581, 17, 655369, 29, 18, 655360, 65563, 18, 655368, -196581, 18, 655368, 131131, 65486, 458760, 131131, 65490, 458760, 57, 65491, 655364, 57, 65492, 1048582, 58, 65494, 4, 59, 65494, 655366, 131131, 65494, 458760, 57, 65496, 655362, 59, 65496, 1441797, 59, 65497, 6, 57, 65498, 655360, 65528, 65498, 655367, 131131, 65498, 458760, 327672, 65498, 655367, 589816, 65498, 655367, 851960, 65498, 655367, 1048564, 65498, 589831, 57, 65499, 655366, 59, 65499, 1441796, 65532, 65499, 655360, 65534, 65499, 655362, 57, 65500, 1441796, 1, 65501, 655360, 131131, 65502, 458760, 131073, 65503, 655360, -851932, 65503, 2, 1, 65504, 655360, 262204, 65504, 65543, 3, 65505, 655362, 1, 65506, 655362, 131131, 65506, 458760, 196610, 65506, 655361, 3, 65507, 655362, 262201, 65508, 851975, 131072, 65509, 589825, 327720, 65509, 655365, 131131, 65510, 458760, 327719, 65510, 6, 327721, 65510, 655366, 131128, 65511, 196616, 327718, 65511, 655364, 262201, 65512, 851975, 327719, 65512, 1048582, 131131, 65514, 458760, 131132, 65514, 65544, 262201, 65516, 851975, 327722, 65517, 655368, 589866, 65517, 655368, 40, 65519, 1441798, 327718, 65519, 655369, 589862, 65519, 655369, 13, 65520, 655362, 41, 65520, 1048581, 327719, 65520, 655369, 589863, 65520, 655369, -1376306, 65520, 1, 39, 65521, 6, 40, 65521, 1048582, 7, 65522, 655360, 9, 65522, 655362, 12, 65522, 655362, 37, 65522, 1441794, 39, 65522, 4, 41, 65522, 1441795, 11, 65523, 655369, 262155, 65523, 655369, 524299, 65523, 655369, 786443, 65523, 655369, 9, 65524, 655368, 12, 65524, 655368, 262153, 65524, 655368, 262156, 65524, 655368, 458752, 65524, 589832, 458756, 65524, 589832, 458760, 65524, 589832, 524300, 65524, 655368, 786444, 65524, 655368, 262116, 65526, 458761, 327651, 65526, 458760, -327644, 65527, 1441792, -327642, 65527, 1441792, -327640, 65527, 1441794, -196570, 65527, 1441792, -1376328, 65529, 589826, -1376323, 65529, 327682, 262116, 65530, 458761, 327651, 65530, 458760, -1376297, 65530, 65538, -1376313, 65532, 65538, 262116, 65534, 458761, 327651, 65534, 458760, -1376312, 65535, 327682)
 }
 
-[node name="Lighting" type="Spatial" parent="Environment"]
+[node name="Lighting" type="Node3D" parent="Environment"]
 
-[node name="DirectionalLight" type="DirectionalLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0 )
-light_color = Color( 1, 0.976471, 0.858824, 1 )
-light_specular = 0.0
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+light_color = Color(1, 0.976471, 0.858824, 1)
 shadow_enabled = true
-shadow_color = Color( 0.235294, 0.235294, 0.235294, 1 )
 
-[node name="OmniLight" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2, 13 )
-light_color = Color( 1, 0.94902, 0.168627, 1 )
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2, 13)
+light_color = Color(1, 0.94902, 0.168627, 1)
 light_energy = 2.0
 shadow_enabled = true
 omni_range = 10.0
 
-[node name="OmniLight12" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -20, 0 )
-light_color = Color( 0.254902, 1, 0.168627, 1 )
+[node name="OmniLight12" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -20, 0)
+light_color = Color(0.254902, 1, 0.168627, 1)
 light_energy = 4.798
 light_specular = 0.0
 omni_range = 21.461
 
-[node name="OmniLight10" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -18 )
-light_color = Color( 0.168627, 0.843137, 1, 1 )
+[node name="OmniLight10" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -18)
+light_color = Color(0.168627, 0.843137, 1, 1)
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 17.473
 
-[node name="OmniLight5" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2, -26 )
-light_color = Color( 0.741176, 1, 0.168627, 1 )
+[node name="OmniLight5" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2, -26)
+light_color = Color(0.741176, 1, 0.168627, 1)
 light_energy = 2.0
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 10.0
 
-[node name="OmniLight6" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2, -36 )
-light_color = Color( 0.741176, 1, 0.168627, 1 )
+[node name="OmniLight6" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2, -36)
+light_color = Color(0.741176, 1, 0.168627, 1)
 light_energy = 2.0
 light_specular = 0.0
 omni_range = 10.0
 
-[node name="OmniLight7" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2, -47 )
-light_color = Color( 0.819608, 0.168627, 1, 1 )
+[node name="OmniLight7" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2, -47)
+light_color = Color(0.819608, 0.168627, 1, 1)
 light_energy = 2.0
 light_specular = 0.0
 
-[node name="OmniLight8" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -5, -35 )
-light_color = Color( 0.309804, 1, 0.168627, 1 )
+[node name="OmniLight8" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -5, -35)
+light_color = Color(0.309804, 1, 0.168627, 1)
 light_energy = 5.0
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.0
 
-[node name="OmniLight14" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -12, -24 )
-light_color = Color( 1, 0.168627, 0.168627, 1 )
+[node name="OmniLight14" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -12, -24)
+light_color = Color(1, 0.168627, 0.168627, 1)
 light_energy = 5.0
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.0
 
-[node name="OmniLight15" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -6, 6 )
-light_color = Color( 1, 0.168627, 0.168627, 1 )
+[node name="OmniLight15" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -6, 6)
+light_color = Color(1, 0.168627, 0.168627, 1)
 light_energy = 3.0
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 10.0
 
-[node name="OmniLight9" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -10, -45.3 )
-light_color = Color( 0.309804, 1, 0.168627, 1 )
+[node name="OmniLight9" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -10, -45.3)
+light_color = Color(0.309804, 1, 0.168627, 1)
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 3.0
 
-[node name="OmniLight2" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 8, 14 )
-light_color = Color( 1, 0.94902, 0.168627, 1 )
+[node name="OmniLight2" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 8, 14)
+light_color = Color(1, 0.94902, 0.168627, 1)
 light_energy = 0.5
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 7.0
 
-[node name="OmniLight16" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 7.7, -17.5 )
-light_color = Color( 0.858824, 0.168627, 1, 1 )
+[node name="OmniLight16" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 7.7, -17.5)
+light_color = Color(0.858824, 0.168627, 1, 1)
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 25.0
 
-[node name="OmniLight3" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -30 )
-light_color = Color( 0.996078, 1, 0.482353, 1 )
+[node name="OmniLight3" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -30)
+light_color = Color(0.996078, 1, 0.482353, 1)
 light_energy = 2.0
 light_specular = 0.0
 shadow_enabled = true
-shadow_color = Color( 0.392157, 0.392157, 0.392157, 1 )
 omni_range = 11.98
 
-[node name="OmniLight11" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 8, -18 )
-light_color = Color( 1, 0.772549, 0.482353, 1 )
+[node name="OmniLight11" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 8, -18)
+light_color = Color(1, 0.772549, 0.482353, 1)
 light_energy = 2.0
 light_specular = 0.0
 shadow_enabled = true
-shadow_color = Color( 0.392157, 0.392157, 0.392157, 1 )
 omni_range = 10.0
 
-[node name="OmniLight4" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 8, 35 )
-light_color = Color( 1, 0.482353, 0.482353, 1 )
+[node name="OmniLight4" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 8, 35)
+light_color = Color(1, 0.482353, 0.482353, 1)
 light_specular = 0.0
-shadow_color = Color( 0.392157, 0.392157, 0.392157, 1 )
 omni_range = 15.0
 
-[node name="OmniLight13" type="OmniLight" parent="Environment/Lighting"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 7, -32 )
-light_color = Color( 0.92549, 1, 0.611765, 1 )
+[node name="OmniLight13" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 7, -32)
+light_color = Color(0.92549, 1, 0.611765, 1)
 light_energy = 0.5
 light_specular = 0.0
 omni_range = 20.0
 
-[node name="mdl-slumtown" parent="Environment" instance=ExtResource( 5 )]
-
-[node name="Health" parent="Environment/mdl-slumtown/split_wall_corridor001" index="1" instance=ExtResource( 45 )]
-
-[node name="prole_spawn001" parent="Environment/mdl-slumtown" index="12"]
-layers = 3
-
-[node name="Health" parent="Environment/mdl-slumtown/prole_spawn001" index="1" instance=ExtResource( 45 )]
-
-[node name="canal_walls001" parent="Environment/mdl-slumtown" index="13"]
-layers = 3
-
-[node name="Health" parent="Environment/mdl-slumtown/canal_walls001" index="1" instance=ExtResource( 45 )]
-
-[node name="canal_walls002" parent="Environment/mdl-slumtown" index="14"]
-layers = 3
-
-[node name="Health" parent="Environment/mdl-slumtown/canal_walls002" index="1" instance=ExtResource( 45 )]
-allowed_max_health = 2
-
-[node name="Health" parent="Environment/mdl-slumtown/canal_walls003" index="1" instance=ExtResource( 45 )]
-
-[node name="canal_walls004" parent="Environment/mdl-slumtown" index="16"]
-layers = 3
-
-[node name="Health" parent="Environment/mdl-slumtown/canal_walls004" index="1" instance=ExtResource( 45 )]
+[node name="mdl-slumtown" parent="Environment" instance=ExtResource("5")]
 
 [node name="shops_grate" parent="Environment/mdl-slumtown" index="34"]
 layers = 3
 
-[node name="Health" parent="Environment/mdl-slumtown/shops_grate" index="1" instance=ExtResource( 45 )]
+[node name="Health" parent="Environment/mdl-slumtown/shops_grate" index="1" instance=ExtResource("45")]
 
-[node name="tool_factory_floor_02001" parent="Environment/mdl-slumtown" index="43"]
-layers = 3
+[node name="Environment_mdl-slumtown_tool_factory_floor_02002#Health" parent="." instance=ExtResource("45")]
 
-[node name="Health" parent="Environment/mdl-slumtown/tool_factory_floor_02001" index="1" instance=ExtResource( 45 )]
+[node name="Environment_mdl-slumtown_tool_factory_floor_02001#Health" parent="." instance=ExtResource("45")]
 
-[node name="tool_factory_floor_02002" parent="Environment/mdl-slumtown" index="44"]
-layers = 3
+[node name="Environment_mdl-slumtown_canal_walls004#Health" parent="." instance=ExtResource("45")]
 
-[node name="Health" parent="Environment/mdl-slumtown/tool_factory_floor_02002" index="1" instance=ExtResource( 45 )]
+[node name="Environment_mdl-slumtown_canal_walls003#Health" parent="." instance=ExtResource("45")]
 
-[node name="GameObjects" type="Spatial" parent="."]
+[node name="Environment_mdl-slumtown_canal_walls002#Health" parent="." instance=ExtResource("45")]
+allowed_max_health = 2
 
-[node name="player_role_spawns" type="Spatial" parent="GameObjects"]
+[node name="Environment_mdl-slumtown_canal_walls001#Health" parent="." instance=ExtResource("45")]
 
-[node name="prole_spawn_01" parent="GameObjects/player_role_spawns" instance=ExtResource( 42 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0.1, -40 )
-role = ExtResource( 23 )
-required_items = [ ExtResource( 8 ) ]
-optional_random_items = [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ]
+[node name="Environment_mdl-slumtown_prole_spawn001#Health" parent="." instance=ExtResource("45")]
+
+[node name="Environment_mdl-slumtown_split_wall_corridor001#Health" parent="." instance=ExtResource("45")]
+
+[node name="GameObjects" type="Node3D" parent="."]
+
+[node name="player_role_spawns" type="Node3D" parent="GameObjects"]
+
+[node name="prole_spawn_01" parent="GameObjects/player_role_spawns" instance=ExtResource("42")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0.1, -40)
+role = ExtResource("23")
+required_items = [ExtResource("8")]
+optional_random_items = [ExtResource("25"), ExtResource("26"), ExtResource("27")]
 random_amount_of_items_to_give = 2
 
-[node name="BiogrowthObjects" type="Spatial" parent="GameObjects"]
+[node name="BiogrowthObjects" type="Node3D" parent="GameObjects"]
 
-[node name="FertilizerProducer" parent="GameObjects/BiogrowthObjects" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 6.3 )
+[node name="FertilizerProducer" parent="GameObjects/BiogrowthObjects" instance=ExtResource("7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 6.3)
 
-[node name="IndustrialSink" parent="GameObjects/BiogrowthObjects" instance=ExtResource( 10 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37, 0, 19.4 )
+[node name="IndustrialSink" parent="GameObjects/BiogrowthObjects" instance=ExtResource("10")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37, 0, 19.4)
 
-[node name="BioGrower" parent="GameObjects/BiogrowthObjects" instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 9 )
+[node name="BioGrower" parent="GameObjects/BiogrowthObjects" instance=ExtResource("9")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 9)
 
-[node name="Store" type="Spatial" parent="GameObjects"]
+[node name="Store" type="Node3D" parent="GameObjects"]
 
-[node name="vendor" parent="GameObjects/Store" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -13 )
+[node name="vendor" parent="GameObjects/Store" instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -13)
 
-[node name="Ladders" type="Spatial" parent="GameObjects"]
+[node name="Ladders" type="Node3D" parent="GameObjects"]
 
-[node name="Ladder" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9, 4, 11.2 )
-bounds = Vector3( 0.5, 3, 1 )
+[node name="Ladder" parent="GameObjects/Ladders" instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9, 4, 11.2)
+bounds = Vector3(0.5, 3, 1)
 
-[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder" instance=ExtResource( 51 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -4, 0 )
+[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder" instance=ExtResource("51")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -4, 0)
 
-[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder" instance=ExtResource( 51 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -2, 0 )
+[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder" instance=ExtResource("51")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -2, 0)
 
-[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder" instance=ExtResource( 50 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder" instance=ExtResource("50")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7 )
-bounds = Vector3( 1, 4, 0.25 )
+[node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7)
+bounds = Vector3(1, 4, 0.25)
 
-[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder2" instance=ExtResource( 51 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -0.3 )
+[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder2" instance=ExtResource("51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -0.3)
 
-[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder2" instance=ExtResource( 51 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.3 )
+[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder2" instance=ExtResource("51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.3)
 
-[node name="mdl-ladder-segment3" parent="GameObjects/Ladders/Ladder2" instance=ExtResource( 51 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3 )
+[node name="mdl-ladder-segment3" parent="GameObjects/Ladders/Ladder2" instance=ExtResource("51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
 
-[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder2" instance=ExtResource( 50 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.3 )
+[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder2" instance=ExtResource("50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.3)
 
-[node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4 )
-bounds = Vector3( 0.25, 4, 1 )
+[node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4)
+bounds = Vector3(0.25, 4, 1)
 
-[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder3" instance=ExtResource( 51 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.200005, -3, 0 )
+[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder3" instance=ExtResource("51")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.200005, -3, 0)
 
-[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder3" instance=ExtResource( 51 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.200005, -1, 0 )
+[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder3" instance=ExtResource("51")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.200005, -1, 0)
 
-[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder3" instance=ExtResource( 50 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.200005, 1, 0 )
+[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder3" instance=ExtResource("50")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.200005, 1, 0)
 
-[node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6 )
-bounds = Vector3( 0.5, 8, 1 )
+[node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6)
+bounds = Vector3(0.5, 8, 1)
 
-[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder4" instance=ExtResource( 51 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -7, 0 )
+[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -7, 0)
 
-[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder4" instance=ExtResource( 51 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -5, 0 )
+[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -5, 0)
 
-[node name="mdl-ladder-segment3" parent="GameObjects/Ladders/Ladder4" instance=ExtResource( 51 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -3, 0 )
+[node name="mdl-ladder-segment3" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -3, 0)
 
-[node name="mdl-ladder-segment4" parent="GameObjects/Ladders/Ladder4" instance=ExtResource( 51 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -1, 0 )
+[node name="mdl-ladder-segment4" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -1, 0)
 
-[node name="mdl-ladder-segment5" parent="GameObjects/Ladders/Ladder4" instance=ExtResource( 51 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, 1, 0 )
+[node name="mdl-ladder-segment5" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, 1, 0)
 
-[node name="mdl-ladder-segment6" parent="GameObjects/Ladders/Ladder4" instance=ExtResource( 51 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, 3, 0 )
+[node name="mdl-ladder-segment6" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, 3, 0)
 
-[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder4" instance=ExtResource( 50 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, 5, 0 )
+[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("50")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, 5, 0)
 
-[node name="WoodedArea" type="Spatial" parent="GameObjects"]
+[node name="WoodedArea" type="Node3D" parent="GameObjects"]
 
-[node name="TreeSpawner" parent="GameObjects/WoodedArea" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -28 )
-node_to_spawn = ExtResource( 21 )
+[node name="TreeSpawner" parent="GameObjects/WoodedArea" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -28)
+node_to_spawn = ExtResource("21")
 
-[node name="TreeSpawner2" parent="GameObjects/WoodedArea" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, -36 )
-node_to_spawn = ExtResource( 21 )
+[node name="TreeSpawner2" parent="GameObjects/WoodedArea" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, -36)
+node_to_spawn = ExtResource("21")
 
-[node name="TreeSpawner3" parent="GameObjects/WoodedArea" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -28 )
-node_to_spawn = ExtResource( 21 )
+[node name="TreeSpawner3" parent="GameObjects/WoodedArea" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -28)
+node_to_spawn = ExtResource("21")
 
-[node name="AmoebaSpawner" parent="GameObjects/WoodedArea" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -31 )
-node_to_spawn = ExtResource( 22 )
+[node name="AmoebaSpawner" parent="GameObjects/WoodedArea" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -31)
+node_to_spawn = ExtResource("22")
 
-[node name="ToolFactory" type="Spatial" parent="GameObjects"]
+[node name="ToolFactory" type="Node3D" parent="GameObjects"]
 
-[node name="production_machine" parent="GameObjects/ToolFactory" instance=ExtResource( 19 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5.5, -23.9 )
-input_item_datas = [ ExtResource( 13 ) ]
-output_item_datas = [ ExtResource( 16 ), ExtResource( 15 ) ]
+[node name="production_machine" parent="GameObjects/ToolFactory" instance=ExtResource("19")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5.5, -23.9)
+input_item_datas = Array[Resource("res://item/item_data.gd")]([ExtResource("13")])
+output_item_datas = Array[Resource("res://item/item_data.gd")]([ExtResource("16"), ExtResource("15")])
 machine_name = "tool factory"
 payday = 3
 
-[node name="Generator" parent="GameObjects/ToolFactory" instance=ExtResource( 38 )]
-transform = Transform( -0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 20, 5.5, -22 )
+[node name="Generator" parent="GameObjects/ToolFactory" instance=ExtResource("38")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 20, 5.5, -22)
 
-[node name="CollisionShape" parent="GameObjects/ToolFactory/Generator" index="1"]
-shape = SubResource( 394 )
+[node name="CollisionShape3D" parent="GameObjects/ToolFactory/Generator" index="1"]
+shape = SubResource("394")
 
-[node name="CollisionShape" parent="GameObjects/ToolFactory/Generator/ItemDeposit" index="0"]
-shape = SubResource( 395 )
+[node name="LoopSound" parent="GameObjects/ToolFactory/Generator" index="2"]
+bus = &"SoundFX"
+
+[node name="Info" parent="GameObjects/ToolFactory/Generator/CanvasLayer" index="0"]
+layout_mode = 3
+anchors_preset = 8
+
+[node name="VBoxContainer" parent="GameObjects/ToolFactory/Generator/CanvasLayer/Info" index="0"]
+layout_mode = 0
+
+[node name="Name" parent="GameObjects/ToolFactory/Generator/CanvasLayer/Info/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="ProgressBar" parent="GameObjects/ToolFactory/Generator/CanvasLayer/Info/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Label" parent="GameObjects/ToolFactory/Generator/CanvasLayer/Info/VBoxContainer/ProgressBar" index="0"]
+layout_mode = 0
+
+[node name="AnimationPlayer" parent="GameObjects/ToolFactory/Generator" index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_d44s8")
+}
+
+[node name="CollisionShape3D" parent="GameObjects/ToolFactory/Generator/ItemDeposit" index="0"]
+shape = SubResource("395")
 
 [node name="CheckForMachinesArea" parent="GameObjects/ToolFactory/Generator" index="7"]
-bounds = Vector3( 1, 1, 5 )
+bounds = Vector3(1, 1, 5)
 
-[node name="CollisionShape" parent="GameObjects/ToolFactory/Generator/CheckForMachinesArea" index="0"]
-shape = SubResource( 396 )
+[node name="CollisionShape3D" parent="GameObjects/ToolFactory/Generator/CheckForMachinesArea" index="0"]
+shape = SubResource("396")
 
-[node name="Canal" type="Spatial" parent="GameObjects"]
+[node name="Canal" type="Node3D" parent="GameObjects"]
 
-[node name="BitumeatSpawner" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5 )
-node_to_spawn = ExtResource( 18 )
+[node name="BitumeatSpawner" parent="GameObjects/Canal" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5)
+node_to_spawn = ExtResource("18")
 spawn_frequency = 120.0
 
-[node name="BitumeatSpawner2" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -2 )
-node_to_spawn = ExtResource( 18 )
+[node name="BitumeatSpawner2" parent="GameObjects/Canal" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -2)
+node_to_spawn = ExtResource("18")
 spawn_frequency = 120.0
 
-[node name="BitumeatSpawner3" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, -8 )
-node_to_spawn = ExtResource( 18 )
+[node name="BitumeatSpawner3" parent="GameObjects/Canal" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, -8)
+node_to_spawn = ExtResource("18")
 spawn_frequency = 120.0
 
-[node name="BoneCapsuleSpawner" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -5, -2 )
-node_to_spawn = ExtResource( 24 )
+[node name="BoneCapsuleSpawner" parent="GameObjects/Canal" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -5, -2)
+node_to_spawn = ExtResource("24")
 spawn_frequency = 120.0
 
-[node name="BoneCapsuleSpawner2" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47, -5, -7 )
-node_to_spawn = ExtResource( 24 )
+[node name="BoneCapsuleSpawner2" parent="GameObjects/Canal" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, -5, -7)
+node_to_spawn = ExtResource("24")
 spawn_frequency = 120.0
 
-[node name="tumor" parent="GameObjects/Canal" instance=ExtResource( 47 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -13, -30 )
+[node name="tumor" parent="GameObjects/Canal" instance=ExtResource("47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -13, -30)
 
-[node name="tumor3" parent="GameObjects/Canal" instance=ExtResource( 47 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -11, -38 )
+[node name="tumor3" parent="GameObjects/Canal" instance=ExtResource("47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -11, -38)
 
-[node name="tumor2" parent="GameObjects/Canal" instance=ExtResource( 47 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -13, -28 )
+[node name="tumor2" parent="GameObjects/Canal" instance=ExtResource("47")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -13, -28)
 
-[node name="MushroomSpawner" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -9 )
-node_to_spawn = ExtResource( 52 )
+[node name="MushroomSpawner" parent="GameObjects/Canal" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -9)
+node_to_spawn = ExtResource("52")
 spawn_frequency = 120.0
 
-[node name="MushroomSpawner2" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -4.2, -1 )
-node_to_spawn = ExtResource( 52 )
+[node name="MushroomSpawner2" parent="GameObjects/Canal" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -4.2, -1)
+node_to_spawn = ExtResource("52")
 spawn_frequency = 120.0
 
-[node name="MushroomSpawner3" parent="GameObjects/Canal" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -4.4, -1 )
-node_to_spawn = ExtResource( 52 )
+[node name="MushroomSpawner3" parent="GameObjects/Canal" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -4.4, -1)
+node_to_spawn = ExtResource("52")
 spawn_frequency = 120.0
 
-[node name="WaterArea" parent="GameObjects/Canal" instance=ExtResource( 54 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -4, -5 )
-bounds = Vector3( 40, 1, 5 )
+[node name="WaterArea" parent="GameObjects/Canal" instance=ExtResource("54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -4, -5)
+bounds = Vector3(40, 1, 5)
 
-[node name="ProleSpawn" type="Spatial" parent="GameObjects"]
+[node name="ProleSpawn" type="Node3D" parent="GameObjects"]
 
-[node name="processor" parent="GameObjects/ProleSpawn" instance=ExtResource( 28 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 53, 0, -44 )
+[node name="processor" parent="GameObjects/ProleSpawn" instance=ExtResource("28")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 53, 0, -44)
 
-[node name="Storage" parent="GameObjects/ProleSpawn" instance=ExtResource( 33 )]
-transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 54, 0, -29 )
-inventory_data = SubResource( 387 )
-item_datas = [ ExtResource( 26 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 27 ), ExtResource( 13 ) ]
+[node name="Storage" parent="GameObjects/ProleSpawn" instance=ExtResource("33")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 54, 0, -29)
+inventory_data = SubResource("387")
 reset_time = 120.0
 does_reset = true
 
-[node name="rot_telecom" parent="GameObjects/ProleSpawn" instance=ExtResource( 36 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55, 1, -35 )
+[node name="rot_telecom" parent="GameObjects/ProleSpawn" instance=ExtResource("36")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55, 1, -35)
 
-[node name="metastabilizer" parent="GameObjects/ProleSpawn" instance=ExtResource( 41 )]
-transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 53.5, 0, -38.5 )
+[node name="metastabilizer" parent="GameObjects/ProleSpawn" instance=ExtResource("41")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 53.5, 0, -38.5)
 
-[node name="MedicalArea" type="Spatial" parent="GameObjects"]
+[node name="MedicalArea" type="Node3D" parent="GameObjects"]
 
-[node name="autostitcher" parent="GameObjects/MedicalArea" instance=ExtResource( 37 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1.5, -24.5 )
+[node name="autostitcher" parent="GameObjects/MedicalArea" instance=ExtResource("37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1.5, -24.5)
 
-[node name="metastabilizer2" parent="GameObjects/MedicalArea" instance=ExtResource( 41 )]
-transform = Transform( 0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 27.5, 0, -22.5 )
+[node name="metastabilizer2" parent="GameObjects/MedicalArea" instance=ExtResource("41")]
+transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 27.5, 0, -22.5)
 
-[node name="WeaponFactory" type="Spatial" parent="GameObjects"]
+[node name="WeaponFactory" type="Node3D" parent="GameObjects"]
 
-[node name="production_machine" parent="GameObjects/WeaponFactory" instance=ExtResource( 19 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.7, 5.5, -30 )
-input_item_datas = [ ExtResource( 13 ) ]
-output_item_datas = [ ExtResource( 27 ), ExtResource( 35 ) ]
+[node name="production_machine" parent="GameObjects/WeaponFactory" instance=ExtResource("19")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.7, 5.5, -30)
+input_item_datas = Array[Resource("res://item/item_data.gd")]([ExtResource("13")])
 machine_name = "weapon factory"
 production_time = 5.0
 payday = 10
 
-[node name="Generator" parent="GameObjects/WeaponFactory" instance=ExtResource( 38 )]
-transform = Transform( 0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -7, 5.5, -34 )
+[node name="Generator" parent="GameObjects/WeaponFactory" instance=ExtResource("38")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -7, 5.5, -34)
 
-[node name="CollisionShape" parent="GameObjects/WeaponFactory/Generator" index="1"]
-shape = SubResource( 397 )
+[node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator" index="1"]
+shape = SubResource("397")
 
-[node name="CollisionShape" parent="GameObjects/WeaponFactory/Generator/ItemDeposit" index="0"]
-shape = SubResource( 398 )
+[node name="LoopSound" parent="GameObjects/WeaponFactory/Generator" index="2"]
+bus = &"SoundFX"
+
+[node name="Info" parent="GameObjects/WeaponFactory/Generator/CanvasLayer" index="0"]
+layout_mode = 3
+anchors_preset = 8
+
+[node name="VBoxContainer" parent="GameObjects/WeaponFactory/Generator/CanvasLayer/Info" index="0"]
+layout_mode = 0
+
+[node name="Name" parent="GameObjects/WeaponFactory/Generator/CanvasLayer/Info/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="ProgressBar" parent="GameObjects/WeaponFactory/Generator/CanvasLayer/Info/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Label" parent="GameObjects/WeaponFactory/Generator/CanvasLayer/Info/VBoxContainer/ProgressBar" index="0"]
+layout_mode = 0
+
+[node name="AnimationPlayer" parent="GameObjects/WeaponFactory/Generator" index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_864li")
+}
+
+[node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator/ItemDeposit" index="0"]
+shape = SubResource("398")
 
 [node name="CheckForMachinesArea" parent="GameObjects/WeaponFactory/Generator" index="7"]
-bounds = Vector3( 1, 1, 5 )
+bounds = Vector3(1, 1, 5)
 
-[node name="CollisionShape" parent="GameObjects/WeaponFactory/Generator/CheckForMachinesArea" index="0"]
-shape = SubResource( 399 )
+[node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator/CheckForMachinesArea" index="0"]
+shape = SubResource("399")
 
-[node name="WaterArea" parent="GameObjects/WeaponFactory" instance=ExtResource( 54 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4.5, -24 )
-bounds = Vector3( 2, 0.5, 15 )
+[node name="WaterArea" parent="GameObjects/WeaponFactory" instance=ExtResource("54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4.5, -24)
+bounds = Vector3(2, 0.5, 15)
 
-[node name="Quarry" type="Spatial" parent="GameObjects"]
+[node name="Quarry" type="Node3D" parent="GameObjects"]
 
-[node name="RockSpawner" parent="GameObjects/Quarry" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44, -19.4, -25 )
-node_to_spawn = ExtResource( 40 )
+[node name="RockSpawner" parent="GameObjects/Quarry" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, -19.4, -25)
+node_to_spawn = ExtResource("40")
 
-[node name="RockSpawner2" parent="GameObjects/Quarry" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -18.5, -22 )
-node_to_spawn = ExtResource( 40 )
+[node name="RockSpawner2" parent="GameObjects/Quarry" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -18.5, -22)
+node_to_spawn = ExtResource("40")
 
-[node name="RockSpawner3" parent="GameObjects/Quarry" instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -53, -19, -26 )
-node_to_spawn = ExtResource( 40 )
+[node name="RockSpawner3" parent="GameObjects/Quarry" instance=ExtResource("17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, -19, -26)
+node_to_spawn = ExtResource("40")
 
-[node name="Generator" parent="GameObjects/Quarry" instance=ExtResource( 38 )]
-transform = Transform( -0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -66, 5, 22 )
+[node name="Generator" parent="GameObjects/Quarry" instance=ExtResource("38")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -66, 5, 22)
 
 [node name="mdl-generator" parent="GameObjects/Quarry/Generator" index="0"]
-transform = Transform( 0.75, 7.45058e-09, 0, 0, 0.75, -9.31323e-10, 1.49012e-08, 0, 0.75, 0, 0, 0 )
+transform = Transform3D(0.75, 7.45058e-09, 0, 0, 0.75, -9.31323e-10, 1.49012e-08, 0, 0.75, 0, 0, 0)
 
-[node name="CollisionShape" parent="GameObjects/Quarry/Generator" index="1"]
-shape = SubResource( 400 )
+[node name="CollisionShape3D" parent="GameObjects/Quarry/Generator" index="1"]
+shape = SubResource("400")
 
-[node name="CollisionShape" parent="GameObjects/Quarry/Generator/ItemDeposit" index="0"]
-shape = SubResource( 401 )
+[node name="LoopSound" parent="GameObjects/Quarry/Generator" index="2"]
+bus = &"SoundFX"
+
+[node name="Info" parent="GameObjects/Quarry/Generator/CanvasLayer" index="0"]
+layout_mode = 3
+anchors_preset = 8
+
+[node name="VBoxContainer" parent="GameObjects/Quarry/Generator/CanvasLayer/Info" index="0"]
+layout_mode = 0
+
+[node name="Name" parent="GameObjects/Quarry/Generator/CanvasLayer/Info/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="ProgressBar" parent="GameObjects/Quarry/Generator/CanvasLayer/Info/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Label" parent="GameObjects/Quarry/Generator/CanvasLayer/Info/VBoxContainer/ProgressBar" index="0"]
+layout_mode = 0
+
+[node name="AnimationPlayer" parent="GameObjects/Quarry/Generator" index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_xl0jl")
+}
+
+[node name="CollisionShape3D" parent="GameObjects/Quarry/Generator/ItemDeposit" index="0"]
+shape = SubResource("401")
 
 [node name="CheckForMachinesArea" parent="GameObjects/Quarry/Generator" index="7"]
-bounds = Vector3( 1, 1, 5 )
+bounds = Vector3(1, 1, 5)
 
-[node name="CollisionShape" parent="GameObjects/Quarry/Generator/CheckForMachinesArea" index="0"]
-shape = SubResource( 402 )
+[node name="CollisionShape3D" parent="GameObjects/Quarry/Generator/CheckForMachinesArea" index="0"]
+shape = SubResource("402")
 
-[node name="production_machine" parent="GameObjects/Quarry" instance=ExtResource( 19 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -71, 5, 21 )
-input_item_datas = [ ExtResource( 8 ), ExtResource( 55 ) ]
-output_item_datas = [ ExtResource( 34 ) ]
+[node name="production_machine" parent="GameObjects/Quarry" instance=ExtResource("19")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71, 5, 21)
+input_item_datas = Array[Resource("res://item/item_data.gd")]([ExtResource("8"), ExtResource("55")])
+output_item_datas = Array[Resource("res://item/item_data.gd")]([ExtResource("34")])
 machine_name = "lunch factory"
 payday = 2
 
-[node name="GameEnd" type="Spatial" parent="GameObjects"]
+[node name="GameEnd" type="Node3D" parent="GameObjects"]
 
-[node name="TicketMachine" parent="GameObjects/GameEnd" instance=ExtResource( 48 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23 )
+[node name="TicketMachine" parent="GameObjects/GameEnd" instance=ExtResource("48")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23)
 
-[node name="Sewer" type="Spatial" parent="GameObjects"]
+[node name="Sewer" type="Node3D" parent="GameObjects"]
 
-[node name="WaterArea" parent="GameObjects/Sewer" instance=ExtResource( 54 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -11, -19 )
-bounds = Vector3( 8, 1, 30 )
+[node name="WaterArea" parent="GameObjects/Sewer" instance=ExtResource("54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -11, -19)
+bounds = Vector3(8, 1, 30)
 
-[node name="Player_Ghost" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 43, 2, -12 )
+[node name="Player_Ghost" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 43, 2, -12)
 
-[node name="BaseNPC" parent="." instance=ExtResource( 39 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4 )
-inventory_data = SubResource( 405 )
+[node name="BaseNPC" parent="." instance=ExtResource("39")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4)
+inventory_data = SubResource("405")
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 3
 
 [node name="InventoryInterface" type="Control" parent="UI"]
 visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 46 )
-script = ExtResource( 3 )
+theme = ExtResource("46")
+script = ExtResource("3")
 
-[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 39.0
-margin_bottom = 39.0
+[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("2")]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 39.0
+offset_bottom = 39.0
 
-[node name="EquipInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
-margin_left = 5.0
-margin_top = 85.0
-margin_right = 21.0
-margin_bottom = 101.0
-custom_styles/panel = SubResource( 392 )
+[node name="EquipInventory" parent="UI/InventoryInterface" instance=ExtResource("2")]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 85.0
+offset_right = 21.0
+offset_bottom = 101.0
+theme_override_styles/panel = SubResource("392")
 
-[node name="WeaponInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
-margin_left = 40.0
-margin_top = 85.0
-margin_bottom = 101.0
-custom_styles/panel = SubResource( 393 )
+[node name="WeaponInventory" parent="UI/InventoryInterface" instance=ExtResource("2")]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 85.0
+offset_bottom = 101.0
+theme_override_styles/panel = SubResource("393")
 
-[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource( 2 )]
+[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("2")]
 visible = false
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -17.0
-margin_top = -15.0
-margin_right = 17.0
-margin_bottom = 19.0
+offset_left = -17.0
+offset_top = -15.0
+offset_right = 17.0
+offset_bottom = 19.0
 
-[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource( 4 )]
+[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("4")]
 visible = false
-modulate = Color( 1, 1, 1, 0.439216 )
-self_modulate = Color( 1, 1, 1, 0 )
+modulate = Color(1, 1, 1, 0.439216)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 
 [node name="PlayerStats" type="PanelContainer" parent="UI/InventoryInterface"]
+layout_mode = 0
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_top = 5.0
-margin_right = 66.0
-margin_bottom = 45.0
-theme = ExtResource( 46 )
-script = ExtResource( 49 )
+offset_top = 5.0
+offset_right = 66.0
+offset_bottom = 45.0
+theme = ExtResource("46")
+script = ExtResource("49")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/InventoryInterface/PlayerStats"]
-margin_left = 6.0
-margin_top = 8.0
-margin_right = 58.0
-margin_bottom = 30.0
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/InventoryInterface/PlayerStats/MarginContainer"]
-margin_right = 52.0
-margin_bottom = 22.0
+layout_mode = 2
 
 [node name="bones" type="Label" parent="UI/InventoryInterface/PlayerStats/MarginContainer/VBoxContainer"]
-margin_right = 52.0
-margin_bottom = 9.0
+layout_mode = 2
 text = "bones 999"
 
 [node name="stems" type="Label" parent="UI/InventoryInterface/PlayerStats/MarginContainer/VBoxContainer"]
-margin_top = 13.0
-margin_right = 52.0
-margin_bottom = 22.0
+layout_mode = 2
 text = "stem cells 999"
 
 [node name="PauseMenu" type="Control" parent="UI"]
-pause_mode = 2
+process_mode = 3
 visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-theme = ExtResource( 20 )
-script = ExtResource( 29 )
+theme = ExtResource("20")
+script = ExtResource("29")
 
 [node name="Panel" type="Panel" parent="UI/PauseMenu"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_styles/panel = SubResource( 380 )
+theme_override_styles/panel = SubResource("380")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/PauseMenu"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.9
 anchor_right = 0.5
 anchor_bottom = 0.9
-margin_left = -70.0
-margin_top = -146.0
-margin_right = 66.0
-margin_bottom = -44.0
+offset_left = -70.0
+offset_top = -146.0
+offset_right = 66.0
+offset_bottom = -44.0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/PauseMenu/PanelContainer"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 128.0
-margin_bottom = 92.0
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseMenu/PanelContainer/MarginContainer"]
-margin_right = 120.0
-margin_bottom = 84.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="PauseLabel" type="Label" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
-margin_right = 120.0
-margin_bottom = 18.0
+layout_mode = 2
 text = "paused"
-align = 1
-valign = 1
 
 [node name="options_button" type="Button" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 22.0
-margin_right = 120.0
-margin_bottom = 40.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "options"
 
 [node name="menu_exit_button" type="Button" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 44.0
-margin_right = 120.0
-margin_bottom = 62.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "exit to menu"
 
 [node name="exit_button" type="Button" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 66.0
-margin_right = 120.0
-margin_bottom = 84.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "exit to desktop"
 
-[node name="Options" parent="UI/PauseMenu" instance=ExtResource( 31 )]
+[node name="Options" parent="UI/PauseMenu" instance=ExtResource("31")]
 visible = false
+anchors_preset = 0
 
-[node name="LoadingScreen" parent="UI/PauseMenu" instance=ExtResource( 30 )]
+[node name="LoadingScreen" parent="UI/PauseMenu" instance=ExtResource("30")]
 visible = false
+anchors_preset = 0
 
-[node name="LoadingScreen" parent="." instance=ExtResource( 30 )]
+[node name="LoadingScreen" parent="." instance=ExtResource("30")]
 visible = false
+layout_mode = 3
+anchors_preset = 15
 
-[connection signal="dead" from="Environment/mdl-slumtown/split_wall_corridor001/Health" to="Environment/mdl-slumtown/split_wall_corridor001" method="queue_free"]
-[connection signal="dead" from="Environment/mdl-slumtown/prole_spawn001/Health" to="Environment/mdl-slumtown/prole_spawn001" method="queue_free"]
-[connection signal="dead" from="Environment/mdl-slumtown/canal_walls001/Health" to="Environment/mdl-slumtown/canal_walls001" method="queue_free"]
-[connection signal="dead" from="Environment/mdl-slumtown/canal_walls002/Health" to="Environment/mdl-slumtown/canal_walls002" method="queue_free"]
-[connection signal="dead" from="Environment/mdl-slumtown/canal_walls003/Health" to="Environment/mdl-slumtown/canal_walls003" method="queue_free"]
-[connection signal="dead" from="Environment/mdl-slumtown/canal_walls004/Health" to="Environment/mdl-slumtown/canal_walls004" method="queue_free"]
 [connection signal="dead" from="Environment/mdl-slumtown/shops_grate/Health" to="Environment/mdl-slumtown/shops_grate" method="queue_free"]
-[connection signal="dead" from="Environment/mdl-slumtown/tool_factory_floor_02001/Health" to="Environment/mdl-slumtown/tool_factory_floor_02001" method="queue_free"]
-[connection signal="dead" from="Environment/mdl-slumtown/tool_factory_floor_02002/Health" to="Environment/mdl-slumtown/tool_factory_floor_02002" method="queue_free"]
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]

@@ -1,11 +1,11 @@
-extends Spatial
+extends Node3D
 
-export(PackedScene) var node_to_spawn
-export(float) var spawn_frequency = 60.0
+@export var node_to_spawn: PackedScene
+@export var spawn_frequency: float = 60.0
 
-onready var timer = $Timer
-onready var area = $Area
-onready var spawn_sound = $spawn_noise
+@onready var timer = $Timer
+@onready var area = $Area3D
+@onready var spawn_sound = $spawn_noise
 
 func _ready():
 	if spawn_frequency <= 0: #if the spawn frequency is zero, don't use a timer(represents a 1-time spawn)
@@ -17,7 +17,7 @@ func spawn():
 	if node_to_spawn: #only spawn if we have set the node to spawn an item
 		if area.get_overlapping_bodies().size() > 0:
 			return
-		var new_spawn = node_to_spawn.instance()
+		var new_spawn = node_to_spawn.instantiate()
 		get_tree().get_root().add_child(new_spawn)
 		new_spawn.global_transform = global_transform
 		spawn_sound.play()

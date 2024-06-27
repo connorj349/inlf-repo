@@ -1,6 +1,6 @@
-extends Spatial
+extends Node3D
 
-onready var area = $Area
+@onready var area = $Area3D
 
 func _on_Area_body_entered(body):
 	if body == Globals.current_player:
@@ -9,8 +9,9 @@ func _on_Area_body_entered(body):
 func _on_Timer_timeout():
 	$cloud.emitting = false
 	$drips.emitting = false
-	while $cloud.emitting:
-		yield()
+	
+	await $cloud.finished
+	
 	queue_free()
 
 func _on_TickTimer_timeout():

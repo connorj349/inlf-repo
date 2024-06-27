@@ -1,18 +1,17 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://o0eqj1gg7bn4"]
 
-[ext_resource path="res://item/item_data.gd" type="Script" id=1]
-[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
+[ext_resource type="Script" path="res://item/item_data.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bcv1hi0j6isel" path="res://raw_assets/textures/ui-icon-equipment.png" id="2"]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 19
-atlas = ExtResource( 2 )
-region = Rect2( 1454, 3658, 44, 36 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("2")
+region = Rect2(1454, 3658, 44, 36)
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource("1")
 name = "amoeba slime"
 description = "used as biomass in machine	"
 stackable = false
-texture = SubResource( 1 )
+texture = SubResource("1")
 price = 0
 item_type = 0

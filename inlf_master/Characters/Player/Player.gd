@@ -1,22 +1,22 @@
-extends KinematicBody
+extends CharacterBody3D
 
-export var mouse_sensitivity = 0.1
+@export var mouse_sensitivity = 0.1
 
-onready var head = $Head
-onready var camera = $Head/Camera
-onready var interact_area = $Head/Camera/InteractArea
-onready var movement = $Movement
-onready var health = $Health
-onready var magick = $Magick
-onready var armor = $Armor
-onready var hint_raycast = $Head/Camera/HintObjRayCast
-onready var pickup_raycast = $Head/Camera/PickupRayCast
-onready var hold_object_pos = $Head/Camera/PickupRayCast/HoldObjectPosition
-onready var weapon_manager = $Head/Camera/WeaponManager
+@onready var head = $Head
+@onready var camera = $Head/Camera3D
+@onready var interact_area = $Head/Camera3D/InteractArea
+@onready var movement = $Movement
+@onready var health = $Health
+@onready var magick = $Magick
+@onready var armor = $Armor
+@onready var hint_raycast = $Head/Camera3D/HintObjRayCast
+@onready var pickup_raycast = $Head/Camera3D/PickupRayCast
+@onready var hold_object_pos = $Head/Camera3D/PickupRayCast/HoldObjectPosition
+@onready var weapon_manager = $Head/Camera3D/WeaponManager
 
-onready var health_bar = $UI/Bars/health_pox/health_bar
-onready var pox_bar = $UI/Bars/health_pox/pox_bar
-onready var armor_bar = $UI/Bars/health_pox/armor_bar
+@onready var health_bar = $UI/Bars/health_pox/health_bar
+@onready var pox_bar = $UI/Bars/health_pox/pox_bar
+@onready var armor_bar = $UI/Bars/health_pox/armor_bar
 
 var role
 var cam_accel = 40
@@ -30,29 +30,29 @@ func _ready():
 	movement.init(self) #allow motion
 	#health.connect("hurt", something, "play_hurt_effects") #enable effects when player is damaged like sound/hud
 	health.init() #setup sarting health
-	health.connect("health_changed", health_bar, "update_bar") #setup healthbar connection
-	health.connect("max_health_changed", health_bar, "init", [health.health])
-	health.connect("max_health_changed", self, "update_health_and_pox_text_placement")
-	health.connect("pox_changed", pox_bar, "update_bar")
-	health.connect("pox_changed", self, "update_health_and_pox_text_placement")
-	health.connect("dead", self, "kill") # setup death functionality
+	health.connect("health_changed", Callable(health_bar, "update_bar")) #setup healthbar connection
+	health.connect("max_health_changed", Callable(health_bar, "init").bind(health.health))
+	health.connect("max_health_changed", Callable(self, "update_health_and_pox_text_placement"))
+	health.connect("pox_changed", Callable(pox_bar, "update_bar"))
+	health.connect("pox_changed", Callable(self, "update_health_and_pox_text_placement"))
+	health.connect("dead", Callable(self, "kill")) # setup death functionality
 	health_bar.init(health.health, health.max_health)
 	pox_bar.init(health.pox, health.allowed_max_health)
 	armor.init()
 	armor_bar.init(armor.armor, armor.max_armor)
-	armor.connect("armor_changed", armor_bar, "update_bar")
-	armor.connect("armor_changed", self, "update_armor_bar_visibility")
+	armor.connect("armor_changed", Callable(armor_bar, "update_bar"))
+	armor.connect("armor_changed", Callable(self, "update_armor_bar_visibility"))
 	update_armor_bar_visibility(armor.armor)
 	Globals.current_player = self
 # warning-ignore:return_value_discarded
-	Globals.connect("blood_circle_removed", self, "on_blood_circle_removed")
+	Globals.connect("blood_circle_removed", Callable(self, "on_blood_circle_removed"))
 
 func _input(event):
 	if !player_is_in_menu(): #only move player head while not in a menu
 		if event is InputEventMouseMotion:
-			rotate_y(deg2rad(-event.relative.x * mouse_sensitivity))
-			head.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity))
-			head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
+			rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
+			head.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
+			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _process(delta):
 	if Input.is_action_just_pressed("debug_kill"): #debug kill
@@ -79,12 +79,12 @@ func _process(delta):
 		#picking up interactable physicsbodies, later add alternate firemodes for weapons
 		if Input.is_action_just_pressed("right_click"):
 			if is_instance_valid(pickup_object):
-				pickup_object.mode = RigidBody.MODE_RIGID
+				pickup_object.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
 				pickup_object.collision_mask = 1 | 2
 				pickup_object = null
-			elif pickup_raycast.get_collider() and pickup_raycast.get_collider() is RigidBody:
+			elif pickup_raycast.get_collider() and pickup_raycast.get_collider() is RigidBody3D:
 				pickup_object = pickup_raycast.get_collider()
-				pickup_object.mode = RigidBody.MODE_KINEMATIC
+				pickup_object.freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
 				pickup_object.collision_mask = 0
 		if is_instance_valid(pickup_object):
 			pickup_object.global_transform.origin = hold_object_pos.global_transform.origin
@@ -175,7 +175,7 @@ func spawn_circle_of_blood(): # only can be done if cultist role
 		if role.role_type == Role.Role_Type.Cultist:
 			Globals.emit_signal("on_pop_notification", "I cut open my skin, creating a blood circle.")
 			deal_damage(health.max_health / 2) # need a damage_type to deal to player
-			var circle = blood_circle_prefab.instance()
+			var circle = blood_circle_prefab.instantiate()
 			get_tree().get_root().add_child(circle)
 			# SoundManager.other_bloodcircle_spawn
 			circle.global_transform = $feet.global_transform
@@ -191,7 +191,7 @@ func kill():
 	Globals.current_ui.visible = false #hides the player's inventory screen on death
 	if Globals.current_ui.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) #hide player mouse if visible
-	var player_dead = player_dead_prefab.instance() #create the death view
+	var player_dead = player_dead_prefab.instantiate() #create the death view
 	get_tree().get_root().add_child(player_dead)
 	player_dead.global_transform = Globals.current_player.global_transform
 	var corpse = Globals.create_corpse(self)
@@ -222,11 +222,11 @@ func player_is_in_menu(): #returns true if the player's mouse is showing
 			return false
 
 func camera_physics_interpolation(delta): #followed tutorial for this
-	if Engine.get_frames_per_second() > Engine.iterations_per_second:
-		camera.set_as_toplevel(true)
-		camera.global_transform.origin = camera.global_transform.origin.linear_interpolate(head.global_transform.origin, cam_accel * delta)
+	if Engine.get_frames_per_second() > Engine.physics_ticks_per_second:
+		camera.set_as_top_level(true)
+		camera.global_transform.origin = camera.global_transform.origin.lerp(head.global_transform.origin, cam_accel * delta)
 		camera.rotation.y = rotation.y
 		camera.rotation.x = head.rotation.x
 	else:
-		camera.set_as_toplevel(false)
+		camera.set_as_top_level(false)
 		camera.global_transform = head.global_transform

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/new_area.wav-15359f6949b01c36f4a93b59ac87cf35.sample"
+type="AudioStreamWAV"
+uid="uid://cd0khr2a83qta"
+path="res://.godot/imported/new_area.wav-15359f6949b01c36f4a93b59ac87cf35.sample"
 
 [deps]
 
 source_file="res://sound/sounds/ambience/music/new_area.wav"
-dest_files=[ "res://.import/new_area.wav-15359f6949b01c36f4a93b59ac87cf35.sample" ]
+dest_files=["res://.godot/imported/new_area.wav-15359f6949b01c36f4a93b59ac87cf35.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

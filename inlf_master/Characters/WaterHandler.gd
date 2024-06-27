@@ -1,8 +1,8 @@
-extends Area
+extends Area3D
 
 signal submerged_status_changed
 
-var submerged = false setget set_submerged
+var submerged = false: set = set_submerged
 
 func set_submerged(value):
 	submerged = value

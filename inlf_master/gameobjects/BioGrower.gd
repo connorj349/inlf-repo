@@ -1,23 +1,23 @@
 extends Interactable
 
 # horizontal bars
-onready var blood_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar
-onready var water_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar
-onready var fertilizer_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar
-onready var exotic_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar
+@onready var blood_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar
+@onready var water_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar
+@onready var fertilizer_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar
+@onready var exotic_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar
 
 #vertical bar
-onready var growth_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar
+@onready var growth_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar
 
-onready var spawn_point = $SpawnPoint
+@onready var spawn_point = $SpawnPoint
 
-onready var resource_consume_timer = $ResourceConsumeTimer
+@onready var resource_consume_timer = $ResourceConsumeTimer
 
-var blood setget set_blood
-var water setget set_water
-var fertilizer setget set_fertilizer
-var exotic setget set_exotic
-var growth setget set_growth
+var blood : set = set_blood
+var water : set = set_water
+var fertilizer : set = set_fertilizer
+var exotic : set = set_exotic
+var growth : set = set_growth
 
 var current_growing_seed_item_data
 

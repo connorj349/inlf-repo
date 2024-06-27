@@ -1,129 +1,131 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://djfc66jt8vqe2"]
 
-[ext_resource path="res://gameobjects/IndustrialSink.gd" type="Script" id=1]
-[ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=2]
-[ext_resource path="res://models/industrial_sink/mdl-industrial_sink.tscn" type="PackedScene" id=3]
+[ext_resource type="Script" path="res://gameobjects/IndustrialSink.gd" id="1"]
+[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://UI/themes/hint_object_theme.tres" id="2"]
+[ext_resource type="PackedScene" path="res://models/industrial_sink/mdl-industrial_sink.tscn" id="3"]
 
-[sub_resource type="BoxShape" id=1]
-extents = Vector3( 2.5, 0.75, 1 )
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(5, 1.5, 2)
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/VBoxContainer/Label:custom_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/VBoxContainer/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Control/VBoxContainer/ActionLabel:custom_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/VBoxContainer/ActionLabel:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Control/VBoxContainer/Label:custom_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/VBoxContainer/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Control/VBoxContainer/ActionLabel:custom_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/VBoxContainer/ActionLabel:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[node name="IndustrialSink" type="StaticBody"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6lf13"]
+_data = {
+"RESET": SubResource("5"),
+"fade_in": SubResource("6")
+}
+
+[node name="IndustrialSink" type="StaticBody3D"]
 collision_layer = 2
 collision_mask = 8
-script = ExtResource( 1 )
+script = ExtResource("1")
 
-[node name="mdl-sink" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )
+[node name="mdl-sink" parent="." instance=ExtResource("3")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 1.1 )
-shape = SubResource( 1 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 1.1)
+shape = SubResource("1")
 
-[node name="SpawnPoint" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 1.5, 0.7 )
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 1.5, 0.7)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 5 )
-anims/fade_in = SubResource( 6 )
+libraries = {
+"": SubResource("AnimationLibrary_6lf13")
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-theme = ExtResource( 2 )
+theme = ExtResource("2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -103.5
-margin_top = -16.0
-margin_right = 103.5
-margin_bottom = 16.0
+offset_left = -103.5
+offset_top = -16.0
+offset_right = 103.5
+offset_bottom = 16.0
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
-margin_right = 207.0
-margin_bottom = 9.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_colors/font_color = Color( 1, 1, 1, 0 )
+theme_override_colors/font_color = Color(1, 1, 1, 0)
 text = "industrial sink"
-align = 1
-valign = 1
 
 [node name="ActionLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 13.0
-margin_right = 207.0
-margin_bottom = 34.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_colors/font_color = Color( 1, 1, 1, 0 )
+theme_override_colors/font_color = Color(1, 1, 1, 0)
 text = "use to gather dirty water, may break and require fixing"
-align = 1
-valign = 1
-autowrap = true
 
 [node name="UseSound" type="AudioStreamPlayer3D" parent="."]
-bus = "SoundFX"
+bus = &"SoundFX"
 
 [node name="BreakSound" type="AudioStreamPlayer3D" parent="."]

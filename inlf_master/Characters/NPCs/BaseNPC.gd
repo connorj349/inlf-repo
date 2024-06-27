@@ -1,12 +1,12 @@
-extends KinematicBody
+extends CharacterBody3D
 
 enum STATE { IDLE, PATROL, ATTACK }
 
-export(Resource) var inventory_data
-export(Array, Resource) var loot_table
-export(bool) var will_retaliate = false
+@export var inventory_data: Resource
+@export var loot_table: Array[ItemData] # (Array, Resource)
+@export var will_retaliate: bool = false
 
-onready var health = $Health
+@onready var health = $Health
 
 var current_state = STATE.IDLE
 var target = null
@@ -14,7 +14,7 @@ var target = null
 func _ready():
 	randomize()
 	health.init()
-	health.connect("dead", self, "kill")
+	health.connect("dead", Callable(self, "kill"))
 	randomize_loot()
 
 func _process(delta):
@@ -33,17 +33,17 @@ func on_hurt(damage):
 		current_state = STATE.ATTACK
 
 # warning-ignore:unused_argument
-func process_idle_state(delta):
+func process_idle_state(_delta):
 	# move to starting position
 	pass
 
 # warning-ignore:unused_argument
-func process_patrol_state(delta):
+func process_patrol_state(_delta):
 	# choose random patrol point in PatrolPoints node and move to it
 	pass
 
 # warning-ignore:unused_argument
-func process_attack_state(delta):
+func process_attack_state(_delta):
 	# if target is valid, move within attack range and perform attack based on accuracy(if ranged)
 	pass
 

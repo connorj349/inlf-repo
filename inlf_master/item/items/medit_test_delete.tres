@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://item/item_data_consumable.gd" type="Script" id=1]
-[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture" id=2]
+[ext_resource path="res://raw_assets/textures/ui-icon-equipment.png" type="Texture2D" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 19

@@ -1,14 +1,14 @@
 extends Interactable
 
 # needs to be slot data
-export(Resource) var common_organ
-export(Resource) var uncommon_organ
-export(Resource) var rare_organ
+@export var common_organ: Resource
+@export var uncommon_organ: Resource
+@export var rare_organ: Resource
 
-onready var health = $Health
-onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-onready var state_text = $CanvasLayer/Info/VBoxContainer/ProgressBar/Label
-onready var organ_spawn = $organ_spawnpoint
+@onready var health = $Health
+@onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
+@onready var state_text = $CanvasLayer/Info/VBoxContainer/ProgressBar/Label
+@onready var organ_spawn = $organ_spawnpoint
 
 var blood_spray = preload("res://effects/blood_spray.tscn")
 var corpse_damage = Damage.new()
@@ -21,8 +21,8 @@ func _ready():
 	randomize()
 	# spawn gib effects and blood effects to simulate corpse explosion after death
 	health.init()
-	health.connect("health_changed", prog_bar, "update_bar")
-	health.connect("dead", self, "queue_free")
+	health.connect("health_changed", Callable(prog_bar, "update_bar"))
+	health.connect("dead", Callable(self, "queue_free"))
 	#maybe make a death blood explosion? this could be useful for the interact that will just call on_death
 	prog_bar.init(health.health, health.max_health)
 	state_text.text = "Fresh"
@@ -62,7 +62,7 @@ func _interact(_actor):
 					return
 
 func spawn_blood():
-	var blood = blood_spray.instance()
+	var blood = blood_spray.instantiate()
 	add_child(blood)
 	blood.global_transform.origin = self.global_transform.origin
 

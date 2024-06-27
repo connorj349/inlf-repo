@@ -1,184 +1,142 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://cf510hosm884a"]
 
-[ext_resource path="res://UI/themes/main_menu_theme.tres" type="Theme" id=1]
-[ext_resource path="res://UI/Options.gd" type="Script" id=2]
-[ext_resource path="res://UI/elements/panel_rect.png" type="Texture" id=3]
-[ext_resource path="res://UI/audio_volume_slider.gd" type="Script" id=4]
+[ext_resource type="Theme" uid="uid://cnq43lwu6wk48" path="res://UI/themes/main_menu_theme.tres" id="1"]
+[ext_resource type="Script" path="res://UI/Options.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://br5grrh1ej20j" path="res://UI/elements/panel_rect.png" id="3"]
+[ext_resource type="Script" path="res://UI/audio_volume_slider.gd" id="4"]
 
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 3 )
-region_rect = Rect2( 6, 8, 242, 110 )
-margin_left = 8.0
-margin_right = 8.0
-margin_top = 8.0
-margin_bottom = 10.0
-modulate_color = Color( 0.227451, 0.227451, 0.227451, 1 )
+[sub_resource type="StyleBoxTexture" id="1"]
+texture = ExtResource("3")
+region_rect = Rect2(6, 8, 242, 110)
+modulate_color = Color(0.227451, 0.227451, 0.227451, 1)
 
 [node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+theme = ExtResource("1")
+script = ExtResource("2")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 anchor_left = 0.1
 anchor_right = 0.9
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource("1")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
-margin_right = 256.0
-margin_bottom = 240.0
+layout_mode = 2
 
 [node name="OptionsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
-margin_right = 256.0
-margin_bottom = 18.0
+layout_mode = 2
 text = "OPTIONS"
-align = 1
-valign = 1
 
 [node name="spacer" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
-margin_top = 22.0
-margin_right = 256.0
-margin_bottom = 74.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
-margin_top = 78.0
-margin_right = 256.0
-margin_bottom = 162.0
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 126.0
-margin_bottom = 84.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="AudioLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 126.0
-margin_bottom = 18.0
+layout_mode = 2
 text = "audio"
-align = 1
-valign = 1
 
 [node name="fullscreen_check" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 22.0
-margin_right = 126.0
-margin_bottom = 40.0
+layout_mode = 2
 text = "fullscreen"
 
 [node name="borderless_check2" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 44.0
-margin_right = 126.0
-margin_bottom = 62.0
+layout_mode = 2
 text = "borderless"
 
 [node name="vsync_check3" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 66.0
-margin_right = 126.0
-margin_bottom = 84.0
+layout_mode = 2
 text = "vsync"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 130.0
-margin_right = 256.0
-margin_bottom = 84.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VideoLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 126.0
-margin_bottom = 18.0
+layout_mode = 2
 text = "video"
-align = 1
-valign = 1
 
 [node name="video_sliders" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 22.0
-margin_right = 126.0
-margin_bottom = 84.0
+layout_mode = 2
 
 [node name="labels" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/video_sliders"]
-margin_right = 50.0
-margin_bottom = 62.0
+layout_mode = 2
 
 [node name="master_label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/video_sliders/labels"]
-margin_right = 50.0
-margin_bottom = 18.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "master"
 
 [node name="music_label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/video_sliders/labels"]
-margin_top = 22.0
-margin_right = 50.0
-margin_bottom = 40.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "music"
 
 [node name="sfx_label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/video_sliders/labels"]
-margin_top = 44.0
-margin_right = 50.0
-margin_bottom = 62.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "sfx"
 
 [node name="sliders" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/video_sliders"]
-margin_left = 54.0
-margin_right = 126.0
-margin_bottom = 62.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="master_slider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/video_sliders/sliders"]
-margin_right = 72.0
-margin_bottom = 18.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 1.0
 step = 0.05
-script = ExtResource( 4 )
+script = ExtResource("4")
 
 [node name="music_slider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/video_sliders/sliders"]
-margin_top = 22.0
-margin_right = 72.0
-margin_bottom = 40.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 1.0
 step = 0.05
-script = ExtResource( 4 )
+script = ExtResource("4")
 audio_bus_name = "Music"
 
 [node name="sfx_slider" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/video_sliders/sliders"]
-margin_top = 44.0
-margin_right = 72.0
-margin_bottom = 62.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 1.0
 step = 0.05
-script = ExtResource( 4 )
+script = ExtResource("4")
 audio_bus_name = "SoundFX"
 
 [node name="spacer2" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
-margin_top = 166.0
-margin_right = 256.0
-margin_bottom = 218.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="BackButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
-margin_top = 222.0
-margin_right = 256.0
-margin_bottom = 240.0
+layout_mode = 2
 text = "back"
 
 [connection signal="toggled" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/fullscreen_check" to="." method="_on_fullscreen_check_toggled"]

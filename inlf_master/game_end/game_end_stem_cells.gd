@@ -1,17 +1,17 @@
-extends Spatial
+extends Node3D
 
-onready var loading_screen = $LoadingScreen
+@onready var loading_screen = $LoadingScreen
 
-var player_stem_cells setget set_player_stem_cells
+var player_stem_cells : set = set_player_stem_cells
 
 func _ready():
 	self.player_stem_cells = 10
 # warning-ignore:return_value_discarded
-	Gamestate.connect("on_player_death", self, "on_death")
+	Gamestate.connect("on_player_death", Callable(self, "on_death"))
 # warning-ignore:return_value_discarded
-	Gamestate.connect("on_player_spawn", self, "on_spawn")
+	Gamestate.connect("on_player_spawn", Callable(self, "on_spawn"))
 # warning-ignore:return_value_discarded
-	Gamestate.connect("game_over", loading_screen, "change_scene", ["res://scenes/Menu.tscn"])
+	Gamestate.connect("game_over", Callable(loading_screen, "change_scene_to_file").bind("res://scenes/Menu.tscn"))
 
 func on_death():
 	self.player_stem_cells -= 1
@@ -26,4 +26,4 @@ func set_player_stem_cells(value):
 	if player_stem_cells <= 0:
 		Gamestate.emit_signal("game_over")
 		# fade out to black screen, display text: YOU RAN OUT OF STEM CELLS
-		loading_screen.change_scene("res://scenes/Menu.tscn")
+		loading_screen.change_scene_to_file("res://scenes/Menu.tscn")

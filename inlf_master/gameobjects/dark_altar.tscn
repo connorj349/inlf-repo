@@ -1,120 +1,127 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://g1mvcy0m3yua"]
 
-[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://gameobjects/dark_altar.gd" type="Script" id=3]
+[ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://fonts/scribbles.ttf" id="2"]
+[ext_resource type="Script" path="res://gameobjects/dark_altar.gd" id="3"]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="DynamicFont" id=2]
-size = 40
-font_data = ExtResource( 2 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("2")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:custom_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label2:custom_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label2:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:custom_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label2:custom_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label2:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[node name="dark_altar" type="StaticBody"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fof11"]
+_data = {
+"RESET": SubResource("3"),
+"fade_in": SubResource("4")
+}
+
+[node name="dark_altar" type="StaticBody3D"]
 collision_layer = 2
 collision_mask = 8
-script = ExtResource( 3 )
+script = ExtResource("3")
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 1 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Info" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -298.0
-margin_top = -69.0
-margin_right = 298.0
-margin_bottom = 69.0
+offset_left = -298.0
+offset_top = -69.0
+offset_right = 298.0
+offset_bottom = 69.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-margin_right = 596.0
-margin_bottom = 35.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
-custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 2 )
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_fonts/font = SubResource("2")
 text = "dark altar"
-align = 1
-valign = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-margin_top = 39.0
-margin_right = 596.0
-margin_bottom = 138.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 2 )
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_fonts/font = SubResource("2")
 text = "interact with to start a gruesome ritual"
-align = 1
-valign = 1
-autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 3 )
-anims/fade_in = SubResource( 4 )
+libraries = {
+"": SubResource("AnimationLibrary_fof11")
+}

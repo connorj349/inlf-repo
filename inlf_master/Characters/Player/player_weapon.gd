@@ -1,11 +1,11 @@
-extends Spatial
+extends Node3D
 
-export(bool) var is_melee = false #determines if we need to play onhit sounds
-export(Resource) var item_weapon_data = null
+@export var is_melee: bool = false #determines if we need to play onhit sounds
+@export var item_weapon_data: Resource = null
 
-onready var anim_player = $AnimationPlayer
-onready var raycast = $RangeRayCast
-onready var sprite = $CanvasLayer/Control/Sprite
+@onready var anim_player = $AnimationPlayer
+@onready var raycast = $RangeRayCast
+@onready var sprite = $CanvasLayer/Control/Sprite2D
 
 var ammo = 0
 var item_weapon_damage = Damage.new()
@@ -36,9 +36,3 @@ func reload(inventory_data: InventoryData): #need to play sound somewhere
 					ammo += 1
 				else:
 					return #stop trying to take ammo
-
-func hide():
-	sprite.visible = false
-
-func show():
-	sprite.visible = true

@@ -1,15 +1,15 @@
-extends Spatial
+extends Node3D
 
-export var instructions = "none" # generic talk to give the item a mood
-export(Resource) var role
-export(Array, Resource) var required_items = []
-export(Array, Resource) var optional_random_items = []
-export(int) var random_amount_of_items_to_give = 0
+@export var instructions = "none" # generic talk to give the item a mood
+@export var role: Resource
+@export var required_items = [] # (Array, Resource)
+@export var optional_random_items = [] # (Array, Resource)
+@export var random_amount_of_items_to_give: int = 0
 
-onready var role_label = $Viewport/VBoxContainer/RoleLabel
-onready var instruction_label = $Viewport/VBoxContainer/InstrucLabel
-onready var description_label = $Viewport/VBoxContainer/DescLabel
-onready var cooldown_timer = $Timer
+@onready var role_label = $SubViewport/VBoxContainer/RoleLabel
+@onready var instruction_label = $SubViewport/VBoxContainer/InstrucLabel
+@onready var description_label = $SubViewport/VBoxContainer/DescLabel
+@onready var cooldown_timer = $Timer
 
 var player_prefab = preload("res://Characters/Player/Player.tscn") #player base prefab
 var random_item_count
@@ -29,7 +29,7 @@ func _on_Area_body_entered(body):
 			if body.is_in_group("Ghost"):
 				random_item_count = rng.randi_range(0, random_amount_of_items_to_give)
 				cooldown_timer.start()
-				var player = player_prefab.instance()
+				var player = player_prefab.instantiate()
 				get_tree().get_root().add_child(player)
 				player.global_transform = global_transform
 				player.set_role(role)

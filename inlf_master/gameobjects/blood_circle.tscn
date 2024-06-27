@@ -1,19 +1,19 @@
 [gd_scene load_steps=32 format=2]
 
-[ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://effects/textures/summon_circle.png" type="Texture" id=2]
+[ext_resource path="res://fonts/scribbles.ttf" type="FontFile" id=1]
+[ext_resource path="res://effects/textures/summon_circle.png" type="Texture2D" id=2]
 [ext_resource path="res://gameobjects/blood_circle.gd" type="Script" id=3]
 [ext_resource path="res://sound/sounds/ambience/chant.wav" type="AudioStream" id=4]
-[ext_resource path="res://effects/textures/cloud_circle.png" type="Texture" id=5]
-[ext_resource path="res://effects/textures/skull.png" type="Texture" id=6]
+[ext_resource path="res://effects/textures/cloud_circle.png" type="Texture2D" id=5]
+[ext_resource path="res://effects/textures/skull.png" type="Texture2D" id=6]
 
 
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.0869565, 0.496894, 0.919255 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.455078, 0, 0, 1, 0, 0, 0, 1 )
+offsets = PackedFloat32Array( 0.0869565, 0.496894, 0.919255 )
+colors = PackedColorArray( 0, 0, 0, 1, 0.455078, 0, 0, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=2]
+[sub_resource type="GradientTexture2D" id=2]
 gradient = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
@@ -22,12 +22,12 @@ _data = [ Vector2( 0, 0.684091 ), 0.0, 0.0, 0, 0, Vector2( 0.494565, 0.902273 ),
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticleProcessMaterial" id=5]
 gravity = Vector3( 0, 0, 0 )
 scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="StandardMaterial3D" id=6]
 flags_transparent = true
 flags_unshaded = true
 params_blend_mode = 1
@@ -39,7 +39,7 @@ albedo_texture = ExtResource( 2 )
 material = SubResource( 6 )
 size = Vector2( 5, 5 )
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="StandardMaterial3D" id=14]
 flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
@@ -47,10 +47,10 @@ params_blend_mode = 1
 albedo_texture = ExtResource( 5 )
 
 [sub_resource type="Gradient" id=15]
-offsets = PoolRealArray( 0, 0.558824, 1 )
-colors = PoolColorArray( 0.126465, 0, 0, 1, 0.215686, 0, 0.27451, 0.243137, 1, 0.0153846, 0, 1 )
+offsets = PackedFloat32Array( 0, 0.558824, 1 )
+colors = PackedColorArray( 0.126465, 0, 0, 1, 0.215686, 0, 0.27451, 0.243137, 1, 0.0153846, 0, 1 )
 
-[sub_resource type="GradientTexture" id=16]
+[sub_resource type="GradientTexture2D" id=16]
 gradient = SubResource( 15 )
 
 [sub_resource type="Curve" id=17]
@@ -59,7 +59,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.511364 ), 0.0, 0.0, 0, 
 [sub_resource type="CurveTexture" id=18]
 curve = SubResource( 17 )
 
-[sub_resource type="ParticlesMaterial" id=19]
+[sub_resource type="ParticleProcessMaterial" id=19]
 gravity = Vector3( 0, 0, 0 )
 scale = 5.0
 scale_random = 1.0
@@ -68,7 +68,7 @@ color_ramp = SubResource( 16 )
 
 [sub_resource type="QuadMesh" id=20]
 
-[sub_resource type="SpatialMaterial" id=21]
+[sub_resource type="StandardMaterial3D" id=21]
 flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
@@ -84,7 +84,7 @@ _data = [ Vector2( 0, 0.876498 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.440134 ), 0.0, 0
 [sub_resource type="CurveTexture" id=23]
 curve = SubResource( 22 )
 
-[sub_resource type="ParticlesMaterial" id=24]
+[sub_resource type="ParticleProcessMaterial" id=24]
 emission_shape = 1
 emission_sphere_radius = 1.5
 direction = Vector3( 0, 1, 0 )
@@ -99,39 +99,39 @@ color = Color( 0.47451, 0, 0, 0.878431 )
 
 [sub_resource type="QuadMesh" id=25]
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape3D" id=8]
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="FontFile" id=9]
 size = 40
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="FontFile" id=10]
 size = 35
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Label2:custom_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Label2:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:custom_colors/font_color")
+tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -140,46 +140,46 @@ tracks/1/keys = {
 resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Label2:custom_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Label2:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:custom_colors/font_color")
+tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="BoxShape" id=13]
+[sub_resource type="BoxShape3D" id=13]
 extents = Vector3( 7, 2, 7 )
 
-[node name="blood_circle" type="StaticBody"]
+[node name="blood_circle" type="StaticBody3D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 3 )
 
 [node name="circle" type="Particles" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.3, 0 )
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.3, 0 )
 amount = 1
 process_material = SubResource( 5 )
 draw_pass_1 = SubResource( 7 )
 
 [node name="cloud" type="Particles" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.15, 0 )
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.15, 0 )
 material_override = SubResource( 14 )
 amount = 10
 process_material = SubResource( 19 )
@@ -198,8 +198,8 @@ pitch_scale = 0.75
 autoplay = true
 bus = "SoundFX"
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 8 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -215,28 +215,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -208.0
-margin_top = -69.0
-margin_right = 208.0
-margin_bottom = 69.0
+offset_left = -208.0
+offset_top = -69.0
+offset_right = 208.0
+offset_bottom = 69.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-margin_right = 416.0
-margin_bottom = 69.0
+offset_right = 416.0
+offset_bottom = 69.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 9 )
+theme_override_colors/font_color = Color( 1, 1, 1, 0 )
+theme_override_fonts/font = SubResource( 9 )
 text = "BLOOD CIRCLE"
 align = 1
 valign = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-margin_top = 73.0
-margin_right = 416.0
-margin_bottom = 138.0
-custom_colors/font_color = Color( 1, 1, 1, 0 )
-custom_fonts/font = SubResource( 10 )
+offset_top = 73.0
+offset_right = 416.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color( 1, 1, 1, 0 )
+theme_override_fonts/font = SubResource( 10 )
 text = "unholy circle used to sew chaos"
 align = 1
 valign = 1
@@ -246,10 +246,10 @@ autowrap = true
 anims/RESET = SubResource( 11 )
 anims/fade_in = SubResource( 12 )
 
-[node name="Area" type="Area" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 13 )
 
-[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_Area_body_exited"]

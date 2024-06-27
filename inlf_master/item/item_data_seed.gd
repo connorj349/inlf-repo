@@ -1,9 +1,9 @@
 extends ItemData
 class_name ItemDataSeed
 
-export(int) var blood = 0
-export(int) var water = 0
-export(int) var fertilizer = 0
-export(int) var exotic = 0
-export(Array, Resource) var output_item_data # the item(s) that is produced when successfully grown
-export(int) var growth_needed = 0
+@export var blood: int = 0
+@export var water: int = 0
+@export var fertilizer: int = 0
+@export var exotic: int = 0
+@export var output_item_data: Array[ItemData] # the item(s) that is produced when successfully grown # (Array, Resource)
+@export var growth_needed: int = 0

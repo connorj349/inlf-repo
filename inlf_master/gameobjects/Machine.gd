@@ -1,31 +1,31 @@
 extends Interactable
 
-export(Array, Resource) var input_item_datas #input item
-export(Array, Resource) var output_item_datas #output item
-export(String) var machine_name = "NULL"
-export(float) var production_time = 3.0 # time it takes to make item
-export(int) var payday = 0 # how much the player is paid out, maybe make this a constant in globals
-export(Role.Role_Type) var required_role = Role.Role_Type.Worker
+@export var input_item_datas: Array[ItemData] #input item # (Array, Resource)
+@export var output_item_datas: Array[ItemData] #output item # (Array, Resource)
+@export var machine_name: String = "NULL"
+@export var production_time: float = 3.0 # time it takes to make item
+@export var payday: int = 0 # how much the player is paid out, maybe make this a constant in globals
+@export var required_role = Role.Role_Type.Worker # (Role.Role_Type)
 
-onready var timer = $ManufactureTimer
+@onready var timer = $ManufactureTimer
 
 # UI Elements
-onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-onready var name_plate = $CanvasLayer/Info/VBoxContainer/NameLabel
-onready var materials_label = $CanvasLayer/Info/VBoxContainer/MaterialsLabel
-onready var panel = $CanvasLayer/PanelContainer
-onready var next_action_label = $CanvasLayer/PanelContainer/VBoxContainer/Label
+@onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
+@onready var name_plate = $CanvasLayer/Info/VBoxContainer/NameLabel
+@onready var materials_label = $CanvasLayer/Info/VBoxContainer/MaterialsLabel
+@onready var panel = $CanvasLayer/PanelContainer
+@onready var next_action_label = $CanvasLayer/PanelContainer/VBoxContainer/Label
 
 # Sounds
-onready var accept_input = $AcceptSound
-onready var machine_loop = $MachineLoop
+@onready var accept_input = $AcceptSound
+@onready var machine_loop = $MachineLoop
 
 var rng = RandomNumberGenerator.new()
 
-var current_index setget set_current_index
+var current_index : set = set_current_index
 var button_presses_remaining = 5
 var queued_items = 0
-var materials = 0 setget set_materials
+var materials = 0: set = set_materials
 
 func _ready():
 	self.current_index = 0
@@ -34,7 +34,7 @@ func _ready():
 	prog_bar.init(0, production_time) # init progress bar
 	rng.randomize()
 # warning-ignore:return_value_discarded
-	Globals.connect("on_inventory_toggle", panel, "hide")
+	Globals.connect("on_inventory_toggle", Callable(panel, "hide"))
 	if !is_in_group("machine"):
 		add_to_group("machine")
 
