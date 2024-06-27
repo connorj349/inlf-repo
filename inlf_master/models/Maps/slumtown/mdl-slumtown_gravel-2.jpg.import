@@ -3,19 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl4sbj1veulpy"
-path.s3tc="res://.godot/imported/mdl-slumtown_gravel-2.jpg-3d402aa3193167b6401341d35c058095.s3tc.ctex"
+path.s3tc="res://.godot/imported/mdl-slumtown_gravel-2.jpg-f9d7ae425bacc4d0f754ba4e30ec3193.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d7d9bd555bdbe0d28781711bcd61e42e"
+"md5": "a8ec6017073cad2b7ef662b23042618e"
 }
 
 [deps]
 
-source_file="res://models/Maps/slumtown/mdl-slumtown_gravel-2.jpg"
-dest_files=["res://.godot/imported/mdl-slumtown_gravel-2.jpg-3d402aa3193167b6401341d35c058095.s3tc.ctex"]
+source_file="res://models/maps/slumtown/mdl-slumtown_gravel-2.jpg"
+dest_files=["res://.godot/imported/mdl-slumtown_gravel-2.jpg-f9d7ae425bacc4d0f754ba4e30ec3193.s3tc.ctex"]
 
 [params]
 

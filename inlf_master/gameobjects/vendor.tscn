@@ -68,10 +68,11 @@ _data = {
 "fade_in": SubResource("6")
 }
 
-[node name="vendor" type="StaticBody3D"]
+[node name="vendor" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("2")
+anim_player = NodePath("AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -98,6 +99,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1")
 
@@ -134,6 +137,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]

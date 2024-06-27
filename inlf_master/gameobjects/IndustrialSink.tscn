@@ -68,10 +68,11 @@ _data = {
 "fade_in": SubResource("6")
 }
 
-[node name="IndustrialSink" type="StaticBody3D"]
+[node name="IndustrialSink" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1")
+anim_player = NodePath("AnimationPlayer")
 
 [node name="mdl-sink" parent="." instance=ExtResource("3")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
@@ -97,6 +98,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]

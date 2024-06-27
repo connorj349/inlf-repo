@@ -387,10 +387,11 @@ _data = {
 "fade_in": SubResource("12")
 }
 
-[node name="BioGrower" type="StaticBody3D"]
+[node name="BioGrower" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("2")
+anim_player = NodePath("AnimationPlayer")
 
 [node name="mdl-processor" parent="." instance=ExtResource("5")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -423,6 +424,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]

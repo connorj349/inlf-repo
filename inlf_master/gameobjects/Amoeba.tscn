@@ -239,13 +239,14 @@ size = Vector3(3, 1, 3)
 [sub_resource type="BoxShape3D" id="12"]
 size = Vector3(3, 1, 3)
 
-[node name="Amoeba" type="RigidBody3D"]
+[node name="Amoeba" type="RigidBody3D" node_paths=PackedStringArray("anim_player")]
 collision_layer = 2
 collision_mask = 11
 script = ExtResource("1")
 accepted_biomass_item_data = ExtResource("7")
 dropped_seeds = Array[Resource("res://item/item_data.gd")]([ExtResource("9")])
 slime_item_data = ExtResource("8")
+anim_player = NodePath("AnimationPlayer")
 
 [node name="mdl-amoeba" parent="." instance=ExtResource("2")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.2, 0)
@@ -268,6 +269,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("3")
 

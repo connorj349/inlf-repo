@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemDataOrgan" load_steps=4 format=3 uid="uid://c0vosmi030n6n"]
 
 [ext_resource type="Script" path="res://item/item_data_organ.gd" id="1"]
-[ext_resource type="PackedScene" path="res://effects/spell effects/spell_effect_viletouch.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b0h5yhwltpbru" path="res://effects/spell effects/spell_effect_viletouch.tscn" id="3"]
 
 [sub_resource type="AtlasTexture" id="1"]
 region = Rect2(648, 1850, 54, 40)

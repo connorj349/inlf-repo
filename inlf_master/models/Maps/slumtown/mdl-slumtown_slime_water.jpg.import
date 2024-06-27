@@ -3,19 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://14wx50xsm4c7"
-path.s3tc="res://.godot/imported/mdl-slumtown_slime_water.jpg-f62059579c73ace7a6dc431dc683b3b7.s3tc.ctex"
+path.s3tc="res://.godot/imported/mdl-slumtown_slime_water.jpg-e8d9339d28dcca73e3559284c57d6a5e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b6729574133a944c2b372e64861f738e"
+"md5": "784f8115363acfa9430fa83d4b21cae8"
 }
 
 [deps]
 
-source_file="res://models/Maps/slumtown/mdl-slumtown_slime_water.jpg"
-dest_files=["res://.godot/imported/mdl-slumtown_slime_water.jpg-f62059579c73ace7a6dc431dc683b3b7.s3tc.ctex"]
+source_file="res://models/maps/slumtown/mdl-slumtown_slime_water.jpg"
+dest_files=["res://.godot/imported/mdl-slumtown_slime_water.jpg-e8d9339d28dcca73e3559284c57d6a5e.s3tc.ctex"]
 
 [params]
 

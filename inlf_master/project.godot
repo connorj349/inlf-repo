@@ -32,8 +32,7 @@ window/size/viewport_width=320
 window/size/viewport_height=240
 window/size/window_width_override=1280
 window/size/window_height_override=860
-window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -126,6 +125,12 @@ right_click={
 3d_render/layer_4="player"
 3d_render/layer_5="water"
 3d_render/layer_6="nodraw"
+3d_physics/layer_1="ground"
+3d_physics/layer_2="interactable"
+3d_physics/layer_3="dead"
+3d_physics/layer_4="player"
+3d_physics/layer_5="water"
+3d_physics/layer_6="nodraw"
 
 [physics]
 

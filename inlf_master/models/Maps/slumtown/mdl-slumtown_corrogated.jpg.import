@@ -3,19 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://pdajig32ny6k"
-path.s3tc="res://.godot/imported/mdl-slumtown_corrogated.jpg-437cb761318229ee7f4c1e9d63d0b1bb.s3tc.ctex"
+path.s3tc="res://.godot/imported/mdl-slumtown_corrogated.jpg-93b982114b7a07f2a7b43c57387cfd2f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "df246bed6c5becbad62bcbbfc2b70158"
+"md5": "bcba6539fe860fddcc78d97db3876d8d"
 }
 
 [deps]
 
-source_file="res://models/Maps/slumtown/mdl-slumtown_corrogated.jpg"
-dest_files=["res://.godot/imported/mdl-slumtown_corrogated.jpg-437cb761318229ee7f4c1e9d63d0b1bb.s3tc.ctex"]
+source_file="res://models/maps/slumtown/mdl-slumtown_corrogated.jpg"
+dest_files=["res://.godot/imported/mdl-slumtown_corrogated.jpg-93b982114b7a07f2a7b43c57387cfd2f.s3tc.ctex"]
 
 [params]
 

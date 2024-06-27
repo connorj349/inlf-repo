@@ -1,20 +1,20 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://beum46j8otu7m"]
 
-[ext_resource path="res://Characters/Player/Player_Ghost.gd" type="Script" id=1]
-[ext_resource path="res://sound/sounds/ghost/ghost_ambience.ogg" type="AudioStream" id=2]
-[ext_resource path="res://sound/sounds/ghost/ghost_ambient/ghost4.ogg" type="AudioStream" id=3]
-[ext_resource path="res://sound/sounds/ghost/ghost_ambient/ghost1.ogg" type="AudioStream" id=4]
-[ext_resource path="res://sound/sounds/ghost/ghost_ambient/ghost3.ogg" type="AudioStream" id=5]
-[ext_resource path="res://sound/sounds/ghost/ghost_ambient/ghost2.ogg" type="AudioStream" id=6]
-[ext_resource path="res://sound/SoundPool.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sound/SoundQueue.tscn" type="PackedScene" id=8]
+[ext_resource type="Script" path="res://Characters/Player/Player_Ghost.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://c6ra4607ehcw7" path="res://sound/sounds/ghost/ghost_ambience.ogg" id="2"]
+[ext_resource type="AudioStream" uid="uid://q3t10tddqyd8" path="res://sound/sounds/ghost/ghost_ambient/ghost4.ogg" id="3"]
+[ext_resource type="AudioStream" uid="uid://cx6svo3mmj2dq" path="res://sound/sounds/ghost/ghost_ambient/ghost1.ogg" id="4"]
+[ext_resource type="AudioStream" uid="uid://cn2cquekieamh" path="res://sound/sounds/ghost/ghost_ambient/ghost3.ogg" id="5"]
+[ext_resource type="AudioStream" uid="uid://bhb8hi3e1l4jf" path="res://sound/sounds/ghost/ghost_ambient/ghost2.ogg" id="6"]
+[ext_resource type="PackedScene" path="res://sound/SoundPool.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://sound/SoundQueue.tscn" id="8"]
 
-[sub_resource type="SphereShape3D" id=1]
+[sub_resource type="SphereShape3D" id="1"]
 
 [node name="Player_Ghost" type="CharacterBody3D"]
 collision_layer = 4
-script = ExtResource( 1 )
-possible_noises = [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ) ]
+script = ExtResource("1")
+possible_noises = Array[AudioStream]([ExtResource("4"), ExtResource("6"), ExtResource("5"), ExtResource("3")])
 mouse_sensitivity = 0.3
 
 [node name="Head" type="Node3D" parent="."]
@@ -22,48 +22,48 @@ mouse_sensitivity = 0.3
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Ghost"]]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="GhostAmbience" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource("2")
 volume_db = -10.487
 pitch_scale = 0.77
 autoplay = true
-bus = "Music"
+bus = &"Music"
 
-[node name="SoundPool" parent="." instance=ExtResource( 7 )]
+[node name="SoundPool" parent="." instance=ExtResource("7")]
 
-[node name="SoundQueue" parent="SoundPool" instance=ExtResource( 8 )]
+[node name="SoundQueue" parent="SoundPool" instance=ExtResource("8")]
 
 [node name="GhostNoises" type="AudioStreamPlayer" parent="SoundPool/SoundQueue"]
-stream = ExtResource( 4 )
+stream = ExtResource("4")
 volume_db = -12.236
 pitch_scale = 0.75
-bus = "SoundFX"
+bus = &"SoundFX"
 
-[node name="SoundQueue2" parent="SoundPool" instance=ExtResource( 8 )]
+[node name="SoundQueue2" parent="SoundPool" instance=ExtResource("8")]
 
 [node name="GhostNoises2" type="AudioStreamPlayer" parent="SoundPool/SoundQueue2"]
-stream = ExtResource( 6 )
+stream = ExtResource("6")
 volume_db = -12.236
 pitch_scale = 0.75
-bus = "SoundFX"
+bus = &"SoundFX"
 
-[node name="SoundQueue3" parent="SoundPool" instance=ExtResource( 8 )]
+[node name="SoundQueue3" parent="SoundPool" instance=ExtResource("8")]
 
 [node name="GhostNoises3" type="AudioStreamPlayer" parent="SoundPool/SoundQueue3"]
-stream = ExtResource( 5 )
+stream = ExtResource("5")
 volume_db = -12.236
 pitch_scale = 0.75
-bus = "SoundFX"
+bus = &"SoundFX"
 
-[node name="SoundQueue4" parent="SoundPool" instance=ExtResource( 8 )]
+[node name="SoundQueue4" parent="SoundPool" instance=ExtResource("8")]
 
 [node name="GhostNoises4" type="AudioStreamPlayer" parent="SoundPool/SoundQueue4"]
-stream = ExtResource( 3 )
+stream = ExtResource("3")
 volume_db = -12.236
 pitch_scale = 0.75
-bus = "SoundFX"
+bus = &"SoundFX"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

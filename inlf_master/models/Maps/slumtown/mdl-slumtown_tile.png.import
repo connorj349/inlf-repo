@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c871dihb25bkg"
-path.s3tc="res://.godot/imported/mdl-slumtown_tile.png-239321a97c26be2212146bca6d132910.s3tc.ctex"
+path.s3tc="res://.godot/imported/mdl-slumtown_tile.png-59fdef57c01b64be6041c8b0a69663c4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/Maps/slumtown/mdl-slumtown_tile.png"
-dest_files=["res://.godot/imported/mdl-slumtown_tile.png-239321a97c26be2212146bca6d132910.s3tc.ctex"]
+source_file="res://models/maps/slumtown/mdl-slumtown_tile.png"
+dest_files=["res://.godot/imported/mdl-slumtown_tile.png-59fdef57c01b64be6041c8b0a69663c4.s3tc.ctex"]
 
 [params]
 

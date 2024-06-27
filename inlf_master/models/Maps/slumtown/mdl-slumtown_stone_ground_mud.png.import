@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://boyfom5uuo8qk"
-path.s3tc="res://.godot/imported/mdl-slumtown_stone_ground_mud.png-f20cbe6c91089ac5e692baf5e1c34ee9.s3tc.ctex"
+path.s3tc="res://.godot/imported/mdl-slumtown_stone_ground_mud.png-14b7361727a97330c8c96840fb9543ec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/Maps/slumtown/mdl-slumtown_stone_ground_mud.png"
-dest_files=["res://.godot/imported/mdl-slumtown_stone_ground_mud.png-f20cbe6c91089ac5e692baf5e1c34ee9.s3tc.ctex"]
+source_file="res://models/maps/slumtown/mdl-slumtown_stone_ground_mud.png"
+dest_files=["res://.godot/imported/mdl-slumtown_stone_ground_mud.png-14b7361727a97330c8c96840fb9543ec.s3tc.ctex"]
 
 [params]
 

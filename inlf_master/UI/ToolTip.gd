@@ -11,9 +11,9 @@ extends Node
 @export_range(0, 100, 1.0) var padding_y: float # (float, 0, 100, 1)
 
 @onready var owner_node = get_node(owner_path)
-@onready var offset = Vector2(offset_x, offset_y)
-@onready var padding = Vector2(padding_x, padding_y)
-@onready var extents
+@onready var offset: Vector2 = Vector2(offset_x, offset_y)
+@onready var padding: Vector2i = Vector2(padding_x, padding_y)
+@onready var extents: Vector2
 
 var _visuals
 var timer

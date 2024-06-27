@@ -16,13 +16,13 @@ region = Rect2(2204, 3050, 196, 48)
 
 [resource]
 script = ExtResource("1")
+max_ammo = 4
+ammo_slot = SubResource("1")
+damage = 5
+damage_type = 1
 name = "pump shotgun"
 description = "simple lead thrower that holds a couple shells, shreds and peppers the target with lead."
 stackable = false
 texture = SubResource("2")
 price = 350
 item_type = 4
-max_ammo = 4
-ammo_slot = SubResource("1")
-damage = 5
-damage_type = 1

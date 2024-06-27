@@ -31,4 +31,4 @@ func remove_notification():
 func update_notifications():
 	notifications_text.text = ""
 	for text in info:
-		notifications_text.append_bbcode(text + "\n")
+		notifications_text.append_text(text + "\n")

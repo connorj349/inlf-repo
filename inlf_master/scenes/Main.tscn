@@ -1,11 +1,11 @@
 [gd_scene load_steps=76 format=3 uid="uid://c0pk63nn4wv3b"]
 
-[ext_resource type="PackedScene" path="res://Characters/Player/Player_Ghost.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://Characters/Player/Player_Ghost.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://inventory/Inventory.tscn" id="2"]
 [ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="3"]
 [ext_resource type="PackedScene" path="res://inventory/inventory_slot.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://csuicjdgh3olp" path="res://models/Maps/slumtown/mdl-slumtown.glb" id="5"]
-[ext_resource type="PackedScene" path="res://gameobjects/FertilizerProducer.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://csuicjdgh3olp" path="res://models/maps/slumtown/mdl-slumtown.glb" id="5"]
+[ext_resource type="PackedScene" uid="uid://xt4fnaxbc2mi" path="res://gameobjects/FertilizerProducer.tscn" id="7"]
 [ext_resource type="Resource" uid="uid://bfv04trnoslqs" path="res://item/items/slop_skull.tres" id="8"]
 [ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://gameobjects/BioGrower.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://djfc66jt8vqe2" path="res://gameobjects/IndustrialSink.tscn" id="10"]
@@ -33,19 +33,19 @@
 [ext_resource type="Script" path="res://inventory/inventory_data.gd" id="32"]
 [ext_resource type="PackedScene" path="res://inventory/Storage.tscn" id="33"]
 [ext_resource type="Resource" uid="uid://db0owt46j8wpd" path="res://item/items/heal_1.tres" id="34"]
-[ext_resource type="PackedScene" path="res://gameobjects/rot_telecom.tscn" id="36"]
-[ext_resource type="PackedScene" path="res://gameobjects/autostitcher.tscn" id="37"]
+[ext_resource type="PackedScene" uid="uid://hxe1g3invfrc" path="res://gameobjects/rot_telecom.tscn" id="36"]
+[ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://gameobjects/autostitcher.tscn" id="37"]
 [ext_resource type="PackedScene" uid="uid://r1okymmde6l8" path="res://gameobjects/Generator.tscn" id="38"]
 [ext_resource type="PackedScene" path="res://Characters/NPCs/BaseNPC.tscn" id="39"]
 [ext_resource type="PackedScene" uid="uid://b3gsycxg1xafb" path="res://gameobjects/resource_nodes/boulder.tscn" id="40"]
 [ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://gameobjects/metastabilizer.tscn" id="41"]
-[ext_resource type="PackedScene" path="res://gameobjects/sawblade.tscn" id="42"]
+[ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://gameobjects/sawblade.tscn" id="42"]
 [ext_resource type="Texture2D" uid="uid://byyhtjiwrhrv8" path="res://UI/elements/panel_square.png" id="43"]
 [ext_resource type="MeshLibrary" uid="uid://dpw65kax8agox" path="res://models/objects/gridmap_props_meshlib.tres" id="44"]
 [ext_resource type="PackedScene" path="res://Characters/Health.tscn" id="45"]
 [ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://UI/themes/hint_object_theme.tres" id="46"]
 [ext_resource type="PackedScene" uid="uid://bu0ib6h238inm" path="res://gameobjects/tumor.tscn" id="47"]
-[ext_resource type="PackedScene" path="res://game_end/TicketMachine.tscn" id="48"]
+[ext_resource type="PackedScene" uid="uid://cvonrv45p2y4y" path="res://game_end/TicketMachine.tscn" id="48"]
 [ext_resource type="Script" path="res://UI/update_player_stats.gd" id="49"]
 [ext_resource type="PackedScene" path="res://models/ladder/mdl-ladder-segment-end.tscn" id="50"]
 [ext_resource type="PackedScene" path="res://models/ladder/mdl-ladder-segment.tscn" id="51"]
@@ -201,7 +201,7 @@ size = Vector3(2, 2, 10)
 [sub_resource type="Resource" id="387"]
 resource_local_to_scene = true
 script = ExtResource("32")
-slot_datas = [null, null, null, null, null, null]
+slot_datas = Array[Resource("res://inventory/slot_data.gd")]([null, null, null, null, null, null])
 
 [sub_resource type="BoxShape3D" id="397"]
 resource_local_to_scene = true
@@ -242,7 +242,7 @@ size = Vector3(2, 2, 10)
 [sub_resource type="Resource" id="405"]
 resource_local_to_scene = true
 script = ExtResource("32")
-slot_datas = [null, null, null]
+slot_datas = Array[Resource("res://inventory/slot_data.gd")]([null, null, null])
 
 [sub_resource type="StyleBoxTexture" id="392"]
 texture = ExtResource("43")
@@ -553,24 +553,21 @@ transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819
 [node name="CollisionShape3D" parent="GameObjects/ToolFactory/Generator" index="1"]
 shape = SubResource("394")
 
-[node name="LoopSound" parent="GameObjects/ToolFactory/Generator" index="2"]
-bus = &"SoundFX"
-
-[node name="Info" parent="GameObjects/ToolFactory/Generator/CanvasLayer" index="0"]
-layout_mode = 3
-anchors_preset = 8
-
 [node name="VBoxContainer" parent="GameObjects/ToolFactory/Generator/CanvasLayer/Info" index="0"]
-layout_mode = 0
-
-[node name="Name" parent="GameObjects/ToolFactory/Generator/CanvasLayer/Info/VBoxContainer" index="0"]
-layout_mode = 2
-
-[node name="ProgressBar" parent="GameObjects/ToolFactory/Generator/CanvasLayer/Info/VBoxContainer" index="1"]
-layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 186.0
+offset_bottom = 32.0
 
 [node name="Label" parent="GameObjects/ToolFactory/Generator/CanvasLayer/Info/VBoxContainer/ProgressBar" index="0"]
-layout_mode = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1.0
+offset_bottom = 23.0
 
 [node name="AnimationPlayer" parent="GameObjects/ToolFactory/Generator" index="5"]
 libraries = {
@@ -681,24 +678,21 @@ transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 
 [node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator" index="1"]
 shape = SubResource("397")
 
-[node name="LoopSound" parent="GameObjects/WeaponFactory/Generator" index="2"]
-bus = &"SoundFX"
-
-[node name="Info" parent="GameObjects/WeaponFactory/Generator/CanvasLayer" index="0"]
-layout_mode = 3
-anchors_preset = 8
-
 [node name="VBoxContainer" parent="GameObjects/WeaponFactory/Generator/CanvasLayer/Info" index="0"]
-layout_mode = 0
-
-[node name="Name" parent="GameObjects/WeaponFactory/Generator/CanvasLayer/Info/VBoxContainer" index="0"]
-layout_mode = 2
-
-[node name="ProgressBar" parent="GameObjects/WeaponFactory/Generator/CanvasLayer/Info/VBoxContainer" index="1"]
-layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 186.0
+offset_bottom = 32.0
 
 [node name="Label" parent="GameObjects/WeaponFactory/Generator/CanvasLayer/Info/VBoxContainer/ProgressBar" index="0"]
-layout_mode = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1.0
+offset_bottom = 23.0
 
 [node name="AnimationPlayer" parent="GameObjects/WeaponFactory/Generator" index="5"]
 libraries = {
@@ -741,24 +735,21 @@ transform = Transform3D(0.75, 7.45058e-09, 0, 0, 0.75, -9.31323e-10, 1.49012e-08
 [node name="CollisionShape3D" parent="GameObjects/Quarry/Generator" index="1"]
 shape = SubResource("400")
 
-[node name="LoopSound" parent="GameObjects/Quarry/Generator" index="2"]
-bus = &"SoundFX"
-
-[node name="Info" parent="GameObjects/Quarry/Generator/CanvasLayer" index="0"]
-layout_mode = 3
-anchors_preset = 8
-
 [node name="VBoxContainer" parent="GameObjects/Quarry/Generator/CanvasLayer/Info" index="0"]
-layout_mode = 0
-
-[node name="Name" parent="GameObjects/Quarry/Generator/CanvasLayer/Info/VBoxContainer" index="0"]
-layout_mode = 2
-
-[node name="ProgressBar" parent="GameObjects/Quarry/Generator/CanvasLayer/Info/VBoxContainer" index="1"]
-layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 186.0
+offset_bottom = 32.0
 
 [node name="Label" parent="GameObjects/Quarry/Generator/CanvasLayer/Info/VBoxContainer/ProgressBar" index="0"]
-layout_mode = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1.0
+offset_bottom = 23.0
 
 [node name="AnimationPlayer" parent="GameObjects/Quarry/Generator" index="5"]
 libraries = {
@@ -808,6 +799,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("46")
 script = ExtResource("3")
 
@@ -882,6 +875,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("20")
 script = ExtResource("29")
@@ -938,6 +933,8 @@ text = "exit to desktop"
 [node name="Options" parent="UI/PauseMenu" instance=ExtResource("31")]
 visible = false
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 
 [node name="LoadingScreen" parent="UI/PauseMenu" instance=ExtResource("30")]
 visible = false
@@ -947,6 +944,8 @@ anchors_preset = 0
 visible = false
 layout_mode = 3
 anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="dead" from="Environment/mdl-slumtown/shops_grate/Health" to="Environment/mdl-slumtown/shops_grate" method="queue_free"]
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
