@@ -2,14 +2,14 @@
 
 [ext_resource path="res://fonts/scribbles.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/LoadingScreen.gd" type="Script" id=2]
-[ext_resource path="res://raw_assets/textures/main_level_background.png" type="Texture" id=3]
+[ext_resource path="res://raw_assets/textures/background_01.png" type="Texture" id=3]
 [ext_resource path="res://UI/elements/bar_fill.png" type="Texture" id=4]
 [ext_resource path="res://UI/elements/bar_border.png" type="Texture" id=5]
 [ext_resource path="res://UI/themes/main_menu_theme.tres" type="Theme" id=6]
 
 [sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 1024, 1024 )
+region_rect = Rect2( 0, 0, 256, 256 )
 modulate_color = Color( 0.482353, 0.478431, 0.478431, 1 )
 
 [sub_resource type="DynamicFont" id=1]

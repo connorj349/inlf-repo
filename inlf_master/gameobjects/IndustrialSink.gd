@@ -21,8 +21,9 @@ func _interact(_actor):
 	else:
 		var random_hit_result = randf()
 		if random_hit_result < 0.8:
-			# hurt the player
-			pass
+			var _damage = Damage.new()
+			_damage.amount = 2
+			Globals.current_player.deal_damage(_damage)
 		elif random_hit_result < 0.95: #15% chance of being returned
 			health = 100
 			self.is_broken = false

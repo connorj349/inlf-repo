@@ -26,8 +26,6 @@ func _ready():
 
 func on_death(): #spawn item, delete self
 	dead = true
-	# play the break effect
-	# turn model visible = false
 	var new_item = SlotData.new()
 	new_item.item_data = item_data
 	if optional_item_spawn_point:

@@ -1,10 +1,10 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Characters/Player/Player_Ghost.tscn" type="PackedScene" id=1]
 [ext_resource path="res://inventory/Inventory.tscn" type="PackedScene" id=2]
 [ext_resource path="res://inventory/inventory_interface.gd" type="Script" id=3]
 [ext_resource path="res://inventory/inventory_slot.tscn" type="PackedScene" id=4]
-[ext_resource path="res://models/maps/slumtown/mdl-slumtown.tscn" type="PackedScene" id=5]
+[ext_resource path="res://models/Maps/slumtown/mdl-slumtown.glb" type="PackedScene" id=5]
 [ext_resource path="res://skybox/skybox_apoc_01.png" type="Texture" id=6]
 [ext_resource path="res://gameobjects/FertilizerProducer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://item/items/slop_skull.tres" type="Resource" id=8]
@@ -43,6 +43,8 @@
 [ext_resource path="res://gameobjects/metastabilizer.tscn" type="PackedScene" id=41]
 [ext_resource path="res://gameobjects/sawblade.tscn" type="PackedScene" id=42]
 [ext_resource path="res://UI/elements/panel_square.png" type="Texture" id=43]
+[ext_resource path="res://models/objects/gridmap_props_meshlib.tres" type="MeshLibrary" id=44]
+[ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=45]
 [ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=46]
 [ext_resource path="res://gameobjects/tumor.tscn" type="PackedScene" id=47]
 [ext_resource path="res://game_end/TicketMachine.tscn" type="PackedScene" id=48]
@@ -50,7 +52,6 @@
 [ext_resource path="res://models/ladder/mdl-ladder-segment-end.tscn" type="PackedScene" id=50]
 [ext_resource path="res://models/ladder/mdl-ladder-segment.tscn" type="PackedScene" id=51]
 [ext_resource path="res://gameobjects/ExplodingMushroom.tscn" type="PackedScene" id=52]
-[ext_resource path="res://models/objects/objects_tileset.tres" type="MeshLibrary" id=53]
 [ext_resource path="res://Characters/WaterArea.tscn" type="PackedScene" id=54]
 [ext_resource path="res://item/items/amoeba_slime.tres" type="Resource" id=55]
 
@@ -151,18 +152,19 @@ script = ExtResource( 14 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource( 2 )
 
-[node name="slumtown" parent="Environment" instance=ExtResource( 5 )]
-
 [node name="GridMap" type="GridMap" parent="Environment"]
-mesh_library = ExtResource( 53 )
+mesh_library = ExtResource( 44 )
 cell_size = Vector3( 1, 1, 1 )
 cell_octant_size = 15
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
 data = {
-"cells": PoolIntArray( -1441841, 3, 458754, -1441857, 4, 196610, -393208, 9, 0, -393208, 11, 2, -393208, 13, 0, -262136, 13, 0, -851932, 65503, 2, -1441844, 65526, 983042, -393178, 65527, 1048576, -262108, 65527, 0, -262106, 65527, 1048578, -1441849, 65528, 1, -393181, 65528, 1048576, -1441846, 65531, 196610, -1441858, 65532, 1 )
+"cells": PoolIntArray( -1376323, 1, 1, -1376297, 1, 851970, -1376322, 7, 589826, -1376307, 12, 1, -1376317, 13, 851970, 27, 16, 655362, -1376317, 16, 1, 65563, 17, 655369, -196581, 17, 655369, 29, 18, 655360, 65563, 18, 655368, -196581, 18, 655368, 131131, 65486, 458760, 131131, 65490, 458760, 57, 65491, 655364, 57, 65492, 1048582, 58, 65494, 4, 59, 65494, 655366, 131131, 65494, 458760, 57, 65496, 655362, 59, 65496, 1441797, 59, 65497, 6, 57, 65498, 655360, 65528, 65498, 655367, 131131, 65498, 458760, 327672, 65498, 655367, 589816, 65498, 655367, 851960, 65498, 655367, 1048564, 65498, 589831, 57, 65499, 655366, 59, 65499, 1441796, 65532, 65499, 655360, 65534, 65499, 655362, 57, 65500, 1441796, 1, 65501, 655360, 131131, 65502, 458760, 131073, 65503, 655360, -851932, 65503, 2, 1, 65504, 655360, 262204, 65504, 65543, 3, 65505, 655362, 1, 65506, 655362, 131131, 65506, 458760, 196610, 65506, 655361, 3, 65507, 655362, 262201, 65508, 851975, 131072, 65509, 589825, 327720, 65509, 655365, 131131, 65510, 458760, 327719, 65510, 6, 327721, 65510, 655366, 131128, 65511, 196616, 327718, 65511, 655364, 262201, 65512, 851975, 327719, 65512, 1048582, 131131, 65514, 458760, 131132, 65514, 65544, 262201, 65516, 851975, 327722, 65517, 655368, 589866, 65517, 655368, 40, 65519, 1441798, 327718, 65519, 655369, 589862, 65519, 655369, 13, 65520, 655362, 41, 65520, 1048581, 327719, 65520, 655369, 589863, 65520, 655369, -1376306, 65520, 1, 39, 65521, 6, 40, 65521, 1048582, 7, 65522, 655360, 9, 65522, 655362, 12, 65522, 655362, 37, 65522, 1441794, 39, 65522, 4, 41, 65522, 1441795, 11, 65523, 655369, 262155, 65523, 655369, 524299, 65523, 655369, 786443, 65523, 655369, 9, 65524, 655368, 12, 65524, 655368, 262153, 65524, 655368, 262156, 65524, 655368, 458752, 65524, 589832, 458756, 65524, 589832, 458760, 65524, 589832, 524300, 65524, 655368, 786444, 65524, 655368, 262116, 65526, 458761, 327651, 65526, 458760, -327644, 65527, 1441792, -327642, 65527, 1441792, -327640, 65527, 1441794, -196570, 65527, 1441792, -1376328, 65529, 589826, -1376323, 65529, 327682, 262116, 65530, 458761, 327651, 65530, 458760, -1376297, 65530, 65538, -1376313, 65532, 65538, 262116, 65534, 458761, 327651, 65534, 458760, -1376312, 65535, 327682 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, -6, 0 )
+"_editor_floor_": Vector3( 0, 0, 0 )
 }
 
 [node name="Lighting" type="Spatial" parent="Environment"]
@@ -224,6 +226,22 @@ light_specular = 0.0
 shadow_enabled = true
 omni_range = 8.0
 
+[node name="OmniLight14" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -12, -24 )
+light_color = Color( 1, 0.168627, 0.168627, 1 )
+light_energy = 5.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="OmniLight15" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -6, 6 )
+light_color = Color( 1, 0.168627, 0.168627, 1 )
+light_energy = 3.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 10.0
+
 [node name="OmniLight9" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -10, -45.3 )
 light_color = Color( 0.309804, 1, 0.168627, 1 )
@@ -238,6 +256,13 @@ light_energy = 0.5
 light_specular = 0.0
 shadow_enabled = true
 omni_range = 7.0
+
+[node name="OmniLight16" type="OmniLight" parent="Environment/Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 7.7, -17.5 )
+light_color = Color( 0.858824, 0.168627, 1, 1 )
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 25.0
 
 [node name="OmniLight3" type="OmniLight" parent="Environment/Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -30 )
@@ -270,6 +295,48 @@ light_color = Color( 0.92549, 1, 0.611765, 1 )
 light_energy = 0.5
 light_specular = 0.0
 omni_range = 20.0
+
+[node name="mdl-slumtown" parent="Environment" instance=ExtResource( 5 )]
+
+[node name="Health" parent="Environment/mdl-slumtown/split_wall_corridor001" index="1" instance=ExtResource( 45 )]
+
+[node name="prole_spawn001" parent="Environment/mdl-slumtown" index="12"]
+layers = 3
+
+[node name="Health" parent="Environment/mdl-slumtown/prole_spawn001" index="1" instance=ExtResource( 45 )]
+
+[node name="canal_walls001" parent="Environment/mdl-slumtown" index="13"]
+layers = 3
+
+[node name="Health" parent="Environment/mdl-slumtown/canal_walls001" index="1" instance=ExtResource( 45 )]
+
+[node name="canal_walls002" parent="Environment/mdl-slumtown" index="14"]
+layers = 3
+
+[node name="Health" parent="Environment/mdl-slumtown/canal_walls002" index="1" instance=ExtResource( 45 )]
+allowed_max_health = 2
+
+[node name="Health" parent="Environment/mdl-slumtown/canal_walls003" index="1" instance=ExtResource( 45 )]
+
+[node name="canal_walls004" parent="Environment/mdl-slumtown" index="16"]
+layers = 3
+
+[node name="Health" parent="Environment/mdl-slumtown/canal_walls004" index="1" instance=ExtResource( 45 )]
+
+[node name="shops_grate" parent="Environment/mdl-slumtown" index="34"]
+layers = 3
+
+[node name="Health" parent="Environment/mdl-slumtown/shops_grate" index="1" instance=ExtResource( 45 )]
+
+[node name="tool_factory_floor_02001" parent="Environment/mdl-slumtown" index="43"]
+layers = 3
+
+[node name="Health" parent="Environment/mdl-slumtown/tool_factory_floor_02001" index="1" instance=ExtResource( 45 )]
+
+[node name="tool_factory_floor_02002" parent="Environment/mdl-slumtown" index="44"]
+layers = 3
+
+[node name="Health" parent="Environment/mdl-slumtown/tool_factory_floor_02002" index="1" instance=ExtResource( 45 )]
 
 [node name="GameObjects" type="Spatial" parent="."]
 
@@ -729,6 +796,15 @@ visible = false
 [node name="LoadingScreen" parent="." instance=ExtResource( 30 )]
 visible = false
 
+[connection signal="dead" from="Environment/mdl-slumtown/split_wall_corridor001/Health" to="Environment/mdl-slumtown/split_wall_corridor001" method="queue_free"]
+[connection signal="dead" from="Environment/mdl-slumtown/prole_spawn001/Health" to="Environment/mdl-slumtown/prole_spawn001" method="queue_free"]
+[connection signal="dead" from="Environment/mdl-slumtown/canal_walls001/Health" to="Environment/mdl-slumtown/canal_walls001" method="queue_free"]
+[connection signal="dead" from="Environment/mdl-slumtown/canal_walls002/Health" to="Environment/mdl-slumtown/canal_walls002" method="queue_free"]
+[connection signal="dead" from="Environment/mdl-slumtown/canal_walls003/Health" to="Environment/mdl-slumtown/canal_walls003" method="queue_free"]
+[connection signal="dead" from="Environment/mdl-slumtown/canal_walls004/Health" to="Environment/mdl-slumtown/canal_walls004" method="queue_free"]
+[connection signal="dead" from="Environment/mdl-slumtown/shops_grate/Health" to="Environment/mdl-slumtown/shops_grate" method="queue_free"]
+[connection signal="dead" from="Environment/mdl-slumtown/tool_factory_floor_02001/Health" to="Environment/mdl-slumtown/tool_factory_floor_02001" method="queue_free"]
+[connection signal="dead" from="Environment/mdl-slumtown/tool_factory_floor_02002/Health" to="Environment/mdl-slumtown/tool_factory_floor_02002" method="queue_free"]
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
@@ -736,6 +812,7 @@ visible = false
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 
+[editable path="Environment/mdl-slumtown"]
 [editable path="GameObjects/ToolFactory/Generator"]
 [editable path="GameObjects/WeaponFactory/Generator"]
 [editable path="GameObjects/Quarry/Generator"]
