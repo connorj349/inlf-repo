@@ -31,7 +31,7 @@ func switch_to_weapon_slot(slot_id: int):
 	if !Gamestate.weapon_player_inventory.slot_datas[0] or weapons[slot_id] == fists: # if the player has no weapon equipped or they are switching to fists, switch to fists
 		disable_all_weapons()
 		curr_weapon = fists #equip fists
-		curr_weapon.visible = true
+		curr_weapon.toggle_visibility(true)
 		return
 	if weapons[slot_id].item_weapon_data != Gamestate.weapon_player_inventory.slot_datas[0].item_data: # if the weapon's data doesn't match the player's weapon's data, discontinue
 		return
@@ -39,8 +39,8 @@ func switch_to_weapon_slot(slot_id: int):
 		return
 	disable_all_weapons()
 	curr_weapon = weapons[slot_id]
-	curr_weapon.visible = true
+	curr_weapon.toggle_visibility(true)
 
 func disable_all_weapons(): #hides visual elements of all weapons
 	for weapon in weapons:
-		weapon.visible = false
+		weapon.toggle_visibility(false)

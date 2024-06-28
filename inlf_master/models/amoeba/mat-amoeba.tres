@@ -1,8 +1,8 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=2]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dtkvj2rgon4e6"]
 
-[ext_resource path="res://models/amoeba/ameoba.png" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://c1ci7c33xsfaj" path="res://models/amoeba/ameoba.png" id="1"]
 
 [resource]
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource( 1 )
+albedo_texture = ExtResource("1")
 metallic_specular = 0.0

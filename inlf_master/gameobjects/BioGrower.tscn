@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://UI/elements/bar_border.png" id="9"]
 
 [sub_resource type="BoxShape3D" id="1"]
-size = Vector3(3, 2, 5)
+size = Vector3(3, 3, 5)
 
 [sub_resource type="BoxShape3D" id="2"]
 
@@ -400,7 +400,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("1")
 
 [node name="GrowTimer" type="Timer" parent="."]

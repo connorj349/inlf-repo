@@ -1,7 +1,8 @@
-[gd_scene load_steps=76 format=3 uid="uid://c0pk63nn4wv3b"]
+[gd_scene load_steps=78 format=3 uid="uid://c0pk63nn4wv3b"]
 
 [ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://Characters/Player/Player_Ghost.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://inventory/Inventory.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://bo7oso3slm23o" path="res://skybox/skybox_02.png" id="2_5lvo0"]
 [ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="3"]
 [ext_resource type="PackedScene" path="res://inventory/inventory_slot.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://csuicjdgh3olp" path="res://models/maps/slumtown/mdl-slumtown.glb" id="5"]
@@ -31,7 +32,7 @@
 [ext_resource type="PackedScene" path="res://UI/LoadingScreen.tscn" id="30"]
 [ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://UI/Options.tscn" id="31"]
 [ext_resource type="Script" path="res://inventory/inventory_data.gd" id="32"]
-[ext_resource type="PackedScene" path="res://inventory/Storage.tscn" id="33"]
+[ext_resource type="PackedScene" uid="uid://bt1svnjwmtnf3" path="res://inventory/Storage.tscn" id="33"]
 [ext_resource type="Resource" uid="uid://db0owt46j8wpd" path="res://item/items/heal_1.tres" id="34"]
 [ext_resource type="PackedScene" uid="uid://hxe1g3invfrc" path="res://gameobjects/rot_telecom.tscn" id="36"]
 [ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://gameobjects/autostitcher.tscn" id="37"]
@@ -47,8 +48,8 @@
 [ext_resource type="PackedScene" uid="uid://bu0ib6h238inm" path="res://gameobjects/tumor.tscn" id="47"]
 [ext_resource type="PackedScene" uid="uid://cvonrv45p2y4y" path="res://game_end/TicketMachine.tscn" id="48"]
 [ext_resource type="Script" path="res://UI/update_player_stats.gd" id="49"]
-[ext_resource type="PackedScene" path="res://models/ladder/mdl-ladder-segment-end.tscn" id="50"]
-[ext_resource type="PackedScene" path="res://models/ladder/mdl-ladder-segment.tscn" id="51"]
+[ext_resource type="PackedScene" uid="uid://b0hhnv4ej604f" path="res://models/ladder/mdl-ladder-segment-end.tscn" id="50"]
+[ext_resource type="PackedScene" uid="uid://bxaje7cp7aj7i" path="res://models/ladder/mdl-ladder-segment.tscn" id="51"]
 [ext_resource type="PackedScene" uid="uid://dr8hsko7ayhd4" path="res://gameobjects/ExplodingMushroom.tscn" id="52"]
 [ext_resource type="PackedScene" path="res://Characters/WaterArea.tscn" id="54"]
 [ext_resource type="Resource" uid="uid://o0eqj1gg7bn4" path="res://item/items/amoeba_slime.tres" id="55"]
@@ -60,7 +61,11 @@ colors = PackedColorArray(0, 0, 0, 1, 0.562988, 0.509173, 0.268299, 1, 0.683179,
 [sub_resource type="GradientTexture2D" id="404"]
 gradient = SubResource("403")
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hdi1g"]
+panorama = ExtResource("2_5lvo0")
+
 [sub_resource type="Sky" id="366"]
+sky_material = SubResource("PanoramaSkyMaterial_hdi1g")
 
 [sub_resource type="Environment" id="2"]
 background_mode = 2
@@ -70,7 +75,6 @@ ambient_light_sky_contribution = 0.0
 ambient_light_energy = 3.02
 tonemap_mode = 2
 tonemap_white = 16.0
-fog_enabled = true
 adjustment_enabled = true
 adjustment_brightness = 1.2
 adjustment_contrast = 1.23
@@ -406,23 +410,6 @@ omni_range = 20.0
 layers = 3
 
 [node name="Health" parent="Environment/mdl-slumtown/shops_grate" index="1" instance=ExtResource("45")]
-
-[node name="Environment_mdl-slumtown_tool_factory_floor_02002#Health" parent="." instance=ExtResource("45")]
-
-[node name="Environment_mdl-slumtown_tool_factory_floor_02001#Health" parent="." instance=ExtResource("45")]
-
-[node name="Environment_mdl-slumtown_canal_walls004#Health" parent="." instance=ExtResource("45")]
-
-[node name="Environment_mdl-slumtown_canal_walls003#Health" parent="." instance=ExtResource("45")]
-
-[node name="Environment_mdl-slumtown_canal_walls002#Health" parent="." instance=ExtResource("45")]
-allowed_max_health = 2
-
-[node name="Environment_mdl-slumtown_canal_walls001#Health" parent="." instance=ExtResource("45")]
-
-[node name="Environment_mdl-slumtown_prole_spawn001#Health" parent="." instance=ExtResource("45")]
-
-[node name="Environment_mdl-slumtown_split_wall_corridor001#Health" parent="." instance=ExtResource("45")]
 
 [node name="GameObjects" type="Node3D" parent="."]
 
@@ -932,9 +919,9 @@ text = "exit to desktop"
 
 [node name="Options" parent="UI/PauseMenu" instance=ExtResource("31")]
 visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
+layout_mode = 1
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="LoadingScreen" parent="UI/PauseMenu" instance=ExtResource("30")]
 visible = false

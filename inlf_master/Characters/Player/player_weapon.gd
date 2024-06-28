@@ -17,6 +17,9 @@ func _ready():
 	item_weapon_damage.amount = item_weapon_data.damage
 	item_weapon_damage.source = Globals.current_player
 
+func toggle_visibility(_visible: bool):
+	sprite.visible = _visible
+
 func on_attack():
 	if item_weapon_data:
 		if !anim_player.is_playing(): #this allows the animplayer to be kinda like the attackspeed

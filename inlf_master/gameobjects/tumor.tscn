@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bu0ib6h238inm"]
+[gd_scene load_steps=12 format=3 uid="uid://bu0ib6h238inm"]
 
 [ext_resource type="PackedScene" path="res://Characters/Health.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://UI/themes/hint_object_theme.tres" id="2"]
@@ -10,9 +10,6 @@
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1, 2, 1)
-
-[sub_resource type="BoxShape3D" id="2"]
-size = Vector3(4, 4, 4)
 
 [sub_resource type="Animation" id="7"]
 length = 0.001
@@ -140,12 +137,6 @@ allowed_max_health = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("1")
 
-[node name="HurtArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtArea"]
-shape = SubResource("2")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Info" type="Control" parent="CanvasLayer"]
@@ -155,6 +146,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]

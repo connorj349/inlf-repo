@@ -116,8 +116,9 @@ func _process(delta):
 
 func _physics_process(_delta): #only used for hintobject
 	var coll = hint_raycast.get_collider()
-	if hint_raycast.is_colliding() and coll.has_method("_look_at"): #shows the info from the hintobject onscreen
-		coll._look_at()
+	if is_instance_valid(coll):
+		if hint_raycast.is_colliding() and coll.has_method("_look_at"): #shows the info from the hintobject onscreen
+			coll._look_at()
 
 func update_health_and_pox_text_placement(_val):
 	for element in $UI/Bars/health_pox/pox_bar/VBoxContainer.get_children():

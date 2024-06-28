@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dh21lv4hfv085"]
 
-[ext_resource path="res://models/generator/mat-generator.tres" type="Material" id=1]
-[ext_resource path="res://models/generator/mdl-generator.glb" type="PackedScene" id=2]
+[ext_resource type="Material" path="res://models/generator/mat-generator.tres" id="1"]
+[ext_resource type="PackedScene" uid="uid://cpggf8tp1qgqv" path="res://models/generator/mdl-generator.glb" id="2"]
 
-[node name="mdl-generator" instance=ExtResource( 2 )]
+[node name="mdl-generator" instance=ExtResource("2")]
 
 [node name="obj-generator" parent="." index="0"]
-material/0 = ExtResource( 1 )
+material_override = ExtResource("1")

@@ -7,7 +7,6 @@ extends HintObject
 
 @onready var health = $Health
 @onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-@onready var hurt_area = $HurtArea
 
 var dead = false
 var tumor_damage = Damage.new()

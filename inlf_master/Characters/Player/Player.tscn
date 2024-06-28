@@ -398,6 +398,8 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="Head/Camera3D/WeaponManager/wep_fists/CanvasLayer/Control"]
 position = Vector2(0, -90)
@@ -429,6 +431,8 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="Head/Camera3D/WeaponManager/wep_shotgun/CanvasLayer/Control"]
 position = Vector2(0, -90)
@@ -567,6 +571,7 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("12")
 

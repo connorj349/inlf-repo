@@ -1,152 +1,159 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=3 uid="uid://cb1sy0vns2cwr"]
 
-[ext_resource path="res://UI/themes/hint_object_theme.tres" type="Theme" id=1]
-[ext_resource path="res://UI/elements/bar_border.png" type="Texture2D" id=2]
-[ext_resource path="res://UI/elements/bar_fill.png" type="Texture2D" id=3]
-[ext_resource path="res://Characters/Health.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Characters/corpse.gd" type="Script" id=5]
-[ext_resource path="res://UI/textured_ui_bar.gd" type="Script" id=6]
-[ext_resource path="res://inventory/slot_data.gd" type="Script" id=7]
-[ext_resource path="res://models/flesh_pile/mdl-flesh_pile.tscn" type="PackedScene" id=8]
-[ext_resource path="res://item/items/organ_ancientbrain.tres" type="Resource" id=9]
-[ext_resource path="res://item/items/organ_evileyes.tres" type="Resource" id=10]
-[ext_resource path="res://item/items/organ_vilegut.tres" type="Resource" id=12]
+[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://UI/themes/hint_object_theme.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://UI/elements/bar_border.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://UI/elements/bar_fill.png" id="3"]
+[ext_resource type="PackedScene" path="res://Characters/Health.tscn" id="4"]
+[ext_resource type="Script" path="res://Characters/corpse.gd" id="5"]
+[ext_resource type="Script" path="res://UI/textured_ui_bar.gd" id="6"]
+[ext_resource type="Script" path="res://inventory/slot_data.gd" id="7"]
+[ext_resource type="PackedScene" path="res://models/flesh_pile/mdl-flesh_pile.tscn" id="8"]
+[ext_resource type="Resource" uid="uid://c0vosmi030n6n" path="res://item/items/organ_ancientbrain.tres" id="9"]
+[ext_resource type="Resource" uid="uid://b04evq6pcjxsi" path="res://item/items/organ_evileyes.tres" id="10"]
+[ext_resource type="Resource" uid="uid://cbn8vt43cq2cu" path="res://item/items/organ_vilegut.tres" id="12"]
 
-[sub_resource type="Resource" id=14]
-script = ExtResource( 7 )
-item_data = ExtResource( 12 )
+[sub_resource type="Resource" id="14"]
+script = ExtResource("7")
+item_data = ExtResource("12")
 quantity = 1
 
-[sub_resource type="Resource" id=15]
-script = ExtResource( 7 )
-item_data = ExtResource( 10 )
+[sub_resource type="Resource" id="15"]
+script = ExtResource("7")
+item_data = ExtResource("10")
 quantity = 1
 
-[sub_resource type="Resource" id=16]
-script = ExtResource( 7 )
-item_data = ExtResource( 9 )
+[sub_resource type="Resource" id="16"]
+script = ExtResource("7")
+item_data = ExtResource("9")
 quantity = 1
 
-[sub_resource type="BoxShape3D" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ) ]
+"values": [Color(0.227451, 0.227451, 0.227451, 0)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 0.513726, 0, 0, 0 ) ]
+"values": [Color(0.513726, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id="7"]
 resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.5 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:theme_override_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.5 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.5 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 0.227451, 0.227451, 0.227451, 0 ), Color( 0.227451, 0.227451, 0.227451, 1 ) ]
+"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.5 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 0.513726, 0, 0, 0 ), Color( 0.513726, 0, 0, 1 ) ]
+"values": [Color(0.513726, 0, 0, 0), Color(0.513726, 0, 0, 1)]
 }
 
-[node name="corpse" type="StaticBody3D" groups=["corpse"]]
-collision_layer = 2
-script = ExtResource( 5 )
-common_organ = SubResource( 14 )
-uncommon_organ = SubResource( 15 )
-rare_organ = SubResource( 16 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sbq28"]
+_data = {
+"RESET": SubResource("6"),
+"fade_in": SubResource("7")
+}
 
-[node name="mdl-flesh_pile" parent="." instance=ExtResource( 8 )]
-transform = Transform3D( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+[node name="corpse" type="StaticBody3D" node_paths=PackedStringArray("anim_player") groups=["corpse"]]
+collision_layer = 2
+script = ExtResource("5")
+common_organ = SubResource("14")
+uncommon_organ = SubResource("15")
+rare_organ = SubResource("16")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="mdl-flesh_pile" parent="." instance=ExtResource("8")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0 )
-shape = SubResource( 1 )
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+shape = SubResource("1")
 
-[node name="Health" parent="." instance=ExtResource( 4 )]
+[node name="Health" parent="." instance=ExtResource("4")]
 allowed_max_health = 25
 
 [node name="DecayTimer" type="Timer" parent="."]
@@ -156,13 +163,16 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Info" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-theme = ExtResource( 1 )
+theme = ExtResource("1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -173,43 +183,38 @@ offset_right = 64.0
 offset_bottom = 16.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-offset_right = 128.0
-offset_bottom = 14.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme_override_colors/font_color = Color( 1, 1, 1, 0 )
+theme_override_colors/font_color = Color(1, 1, 1, 0)
 text = "A corpse"
-align = 1
-valign = 1
 
 [node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer/Info/VBoxContainer"]
-offset_top = 18.0
-offset_right = 128.0
-offset_bottom = 32.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 1 )
+theme = ExtResource("1")
 value = 50.0
-texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 3 )
-tint_under = Color( 0.227451, 0.227451, 0.227451, 0 )
-tint_progress = Color( 0.513726, 0, 0, 0 )
 nine_patch_stretch = true
-script = ExtResource( 6 )
+texture_under = ExtResource("2")
+texture_progress = ExtResource("3")
+tint_under = Color(0.227451, 0.227451, 0.227451, 0)
+tint_progress = Color(0.513726, 0, 0, 0)
+script = ExtResource("6")
 
 [node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer/ProgressBar"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_colors/font_color = Color( 1, 1, 1, 0 )
+theme_override_colors/font_color = Color(1, 1, 1, 0)
 text = "CORPSE_ROT_STAGE"
-align = 1
-valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 6 )
-anims/fade_in = SubResource( 7 )
+libraries = {
+"": SubResource("AnimationLibrary_sbq28")
+}
 
 [node name="organ_spawnpoint" type="Node3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [connection signal="timeout" from="DecayTimer" to="." method="_on_DecayTimer_timeout"]
