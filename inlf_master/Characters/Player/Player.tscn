@@ -1,10 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=40 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://Characters/Movement.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://Characters/Health.tscn" id="3"]
 [ext_resource type="Script" path="res://item/item_data_weapon.gd" id="4"]
-[ext_resource type="Script" path="res://UI/ui_bar.gd" id="5"]
 [ext_resource type="Resource" uid="uid://ct8lqjd8asf2c" path="res://item/items/shotgun.tres" id="6"]
 [ext_resource type="Texture2D" uid="uid://clgjw8wxkuusx" path="res://raw_assets/textures/shotgun-sheet.png" id="7"]
 [ext_resource type="PackedScene" path="res://inventory/HotBarInventory.tscn" id="8"]
@@ -16,7 +15,6 @@
 [ext_resource type="Script" path="res://Characters/Player/player_weapon_manager.gd" id="14"]
 [ext_resource type="Script" path="res://Characters/Player/Player.gd" id="15"]
 [ext_resource type="Theme" path="res://UI/themes/player_hud_bars_theme.tres" id="16"]
-[ext_resource type="PackedScene" path="res://Characters/Magick.tscn" id="17"]
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://UI/elements/bar_border.png" id="18"]
 [ext_resource type="Script" path="res://UI/textured_ui_bar.gd" id="19"]
 [ext_resource type="PackedScene" path="res://Characters/Armor.tscn" id="20"]
@@ -329,8 +327,6 @@ mouse_sensitivity = 0.3
 [node name="Health" parent="." instance=ExtResource("3")]
 allowed_max_health = 25
 
-[node name="Magick" parent="." instance=ExtResource("17")]
-
 [node name="Armor" parent="." instance=ExtResource("20")]
 max_armor = 25
 
@@ -378,7 +374,7 @@ item_weapon_data = SubResource("25")
 
 [node name="RangeRayCast" type="RayCast3D" parent="Head/Camera3D/WeaponManager/wep_fists"]
 target_position = Vector3(0, 0, -3)
-collision_mask = 3
+collision_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/WeaponManager/wep_fists"]
 libraries = {
@@ -546,19 +542,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_fonts/font = SubResource("8")
 text = "carapace"
-
-[node name="empty_bar" type="ProgressBar" parent="UI/Bars"]
-visible = false
-layout_mode = 2
-value = 50.0
-script = ExtResource("5")
-
-[node name="Label" type="Label" parent="UI/Bars/empty_bar"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_fonts/font = SubResource("8")
-text = "nothing"
 
 [node name="HotBarInventory" parent="UI" instance=ExtResource("8")]
 offset_left = 5.0

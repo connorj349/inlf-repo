@@ -7,7 +7,6 @@ extends CharacterBody3D
 @onready var interact_area = $Head/Camera3D/InteractArea
 @onready var movement = $Movement
 @onready var health = $Health
-@onready var magick = $Magick
 @onready var armor = $Armor
 @onready var hint_raycast = $Head/Camera3D/HintObjRayCast
 @onready var pickup_raycast = $Head/Camera3D/PickupRayCast
@@ -28,7 +27,6 @@ var blood_circle_prefab = preload("res://gameobjects/blood_circle.tscn") #to spa
 
 func _ready():
 	movement.init(self) #allow motion
-	#health.connect("hurt", something, "play_hurt_effects") #enable effects when player is damaged like sound/hud
 	health.init() #setup sarting health
 	health.connect("health_changed", Callable(health_bar, "update_bar")) #setup healthbar connection
 	health.connect("max_health_changed", Callable(health_bar, "init").bind(health.health))
@@ -69,9 +67,8 @@ func _process(delta):
 			pickup_object = null
 		if interact_area.monitoring:
 			for body in interact_area.get_overlapping_bodies():
-				if body.is_in_group("interactable"):
-					if body._interact(self): #calls the interact method on the interactable, passing self as arg
-						pass
+				if body._interact(self): #calls the interact method on the interactable, passing self as arg
+					pass
 	if !player_is_in_menu(): #only allow these actions when not in a menu
 		#attacking
 		if Input.is_action_just_pressed("left_click"):

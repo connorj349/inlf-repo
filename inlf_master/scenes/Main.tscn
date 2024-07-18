@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://c0pk63nn4wv3b"]
+[gd_scene load_steps=74 format=3 uid="uid://c0pk63nn4wv3b"]
 
 [ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://Characters/Player/Player_Ghost.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://inventory/Inventory.tscn" id="2"]
@@ -6,12 +6,11 @@
 [ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="3"]
 [ext_resource type="PackedScene" path="res://inventory/inventory_slot.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://csuicjdgh3olp" path="res://models/maps/slumtown/mdl-slumtown.glb" id="5"]
-[ext_resource type="PackedScene" uid="uid://xt4fnaxbc2mi" path="res://gameobjects/FertilizerProducer.tscn" id="7"]
 [ext_resource type="Resource" uid="uid://bfv04trnoslqs" path="res://item/items/slop_skull.tres" id="8"]
 [ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://gameobjects/BioGrower.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://djfc66jt8vqe2" path="res://gameobjects/IndustrialSink.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://diw2ptb001gas" path="res://gameobjects/vendor.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://gameobjects/Ladder.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://ccoi5qv045yl6" path="res://gameobjects/Ladder.tscn" id="12"]
 [ext_resource type="Resource" uid="uid://uf65hp2jic1g" path="res://item/items/metal_frag.tres" id="13"]
 [ext_resource type="Script" path="res://game_end/game_end_stem_cells.gd" id="14"]
 [ext_resource type="Resource" uid="uid://bd4s2o2c603oo" path="res://item/items/prole_suit.tres" id="15"]
@@ -37,13 +36,11 @@
 [ext_resource type="PackedScene" uid="uid://hxe1g3invfrc" path="res://gameobjects/rot_telecom.tscn" id="36"]
 [ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://gameobjects/autostitcher.tscn" id="37"]
 [ext_resource type="PackedScene" uid="uid://r1okymmde6l8" path="res://gameobjects/Generator.tscn" id="38"]
-[ext_resource type="PackedScene" path="res://Characters/NPCs/BaseNPC.tscn" id="39"]
 [ext_resource type="PackedScene" uid="uid://b3gsycxg1xafb" path="res://gameobjects/resource_nodes/boulder.tscn" id="40"]
 [ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://gameobjects/metastabilizer.tscn" id="41"]
 [ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://gameobjects/sawblade.tscn" id="42"]
 [ext_resource type="Texture2D" uid="uid://byyhtjiwrhrv8" path="res://UI/elements/panel_square.png" id="43"]
 [ext_resource type="MeshLibrary" uid="uid://dpw65kax8agox" path="res://models/objects/gridmap_props_meshlib.tres" id="44"]
-[ext_resource type="PackedScene" path="res://Characters/Health.tscn" id="45"]
 [ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://UI/themes/hint_object_theme.tres" id="46"]
 [ext_resource type="PackedScene" uid="uid://bu0ib6h238inm" path="res://gameobjects/tumor.tscn" id="47"]
 [ext_resource type="PackedScene" uid="uid://cvonrv45p2y4y" path="res://game_end/TicketMachine.tscn" id="48"]
@@ -243,11 +240,6 @@ size = Vector3(4, 4, 4)
 resource_local_to_scene = true
 size = Vector3(2, 2, 10)
 
-[sub_resource type="Resource" id="405"]
-resource_local_to_scene = true
-script = ExtResource("32")
-slot_datas = Array[Resource("res://inventory/slot_data.gd")]([null, null, null])
-
 [sub_resource type="StyleBoxTexture" id="392"]
 texture = ExtResource("43")
 region_rect = Rect2(0, 0, 128, 128)
@@ -406,10 +398,25 @@ omni_range = 20.0
 
 [node name="mdl-slumtown" parent="Environment" instance=ExtResource("5")]
 
-[node name="shops_grate" parent="Environment/mdl-slumtown" index="34"]
-layers = 3
+[node name="canal_walls_001" parent="Environment/mdl-slumtown" index="13"]
+visible = false
+layers = 0
 
-[node name="Health" parent="Environment/mdl-slumtown/shops_grate" index="1" instance=ExtResource("45")]
+[node name="canal_walls_002" parent="Environment/mdl-slumtown" index="14"]
+visible = false
+layers = 0
+
+[node name="canal_walls_004" parent="Environment/mdl-slumtown" index="16"]
+visible = false
+layers = 0
+
+[node name="shops_grate" parent="Environment/mdl-slumtown" index="34"]
+visible = false
+layers = 2
+
+[node name="tool_factory_floor_02_001" parent="Environment/mdl-slumtown" index="43"]
+visible = false
+layers = 0
 
 [node name="GameObjects" type="Node3D" parent="."]
 
@@ -423,9 +430,6 @@ optional_random_items = [ExtResource("25"), ExtResource("26"), ExtResource("27")
 random_amount_of_items_to_give = 2
 
 [node name="BiogrowthObjects" type="Node3D" parent="GameObjects"]
-
-[node name="FertilizerProducer" parent="GameObjects/BiogrowthObjects" instance=ExtResource("7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 6.3)
 
 [node name="IndustrialSink" parent="GameObjects/BiogrowthObjects" instance=ExtResource("10")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37, 0, 19.4)
@@ -773,10 +777,6 @@ bounds = Vector3(8, 1, 30)
 [node name="Player_Ghost" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 43, 2, -12)
 
-[node name="BaseNPC" parent="." instance=ExtResource("39")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4)
-inventory_data = SubResource("405")
-
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 3
 
@@ -934,13 +934,12 @@ anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="dead" from="Environment/mdl-slumtown/shops_grate/Health" to="Environment/mdl-slumtown/shops_grate" method="queue_free"]
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 
 [editable path="Environment/mdl-slumtown"]
 [editable path="GameObjects/ToolFactory/Generator"]

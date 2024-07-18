@@ -1,4 +1,3 @@
-@tool
 extends ProgressBar
 
 func init(current_value, m_value):

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://UI/elements/bar_border.png" id="1"]
 [ext_resource type="PackedScene" path="res://item/item_deposit/ItemDeposit.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://models/processor/mdl-processor.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bk4i8g2xtfo5b" path="res://models/processor/mdl-processor.tscn" id="3"]
 [ext_resource type="AudioStream" uid="uid://b28rn55hxvivr" path="res://sound/sounds/machine/machine_loop.wav" id="4"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://UI/elements/bar_fill.png" id="7"]
 [ext_resource type="Script" path="res://UI/textured_ui_bar.gd" id="8"]
@@ -125,8 +125,7 @@ _data = {
 }
 
 [node name="processor" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
-collision_layer = 2
-collision_mask = 8
+collision_mask = 0
 script = ExtResource("10")
 anim_player = NodePath("AnimationPlayer")
 

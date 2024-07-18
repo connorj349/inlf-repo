@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://UI/textured_ui_bar.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://UI/elements/bar_fill.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://UI/elements/bar_border.png" id="7"]
-[ext_resource type="PackedScene" path="res://models/distiller/mdl-distiller.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://bxvvdxtfn50dq" path="res://models/distiller/mdl-distiller.tscn" id="8"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(2.5, 4, 2)
@@ -68,34 +68,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/VBoxContainer/ProductionProgressBar:theme_override_styles/fg:modulate_color")
+tracks/4/path = NodePath("CanvasLayer/Control/VBoxContainer/ProductionProgressBar:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.329412, 0.447059, 0.294118, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Control/VBoxContainer/ProductionProgressBar:theme_override_styles/bg:modulate_color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/Control/VBoxContainer/ProductionProgressBar:theme_override_colors/font_color")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -156,34 +132,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/VBoxContainer/ProductionProgressBar:theme_override_styles/fg:modulate_color")
+tracks/4/path = NodePath("CanvasLayer/Control/VBoxContainer/ProductionProgressBar:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.329412, 0.447059, 0.294118, 0), Color(0.329412, 0.447059, 0.294118, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Control/VBoxContainer/ProductionProgressBar:theme_override_styles/bg:modulate_color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/Control/VBoxContainer/ProductionProgressBar:theme_override_colors/font_color")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -197,8 +149,8 @@ _data = {
 }
 
 [node name="FertilizerProducer" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
-collision_layer = 2
-collision_mask = 8
+collision_layer = 3
+collision_mask = 0
 script = ExtResource("2")
 anim_player = NodePath("AnimationPlayer")
 
@@ -275,6 +227,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 0)
 text = "biomass"
 
 [node name="ProductionProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
