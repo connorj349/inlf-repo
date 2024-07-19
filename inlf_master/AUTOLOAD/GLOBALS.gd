@@ -7,8 +7,8 @@ signal on_pop_notification
 # warning-ignore:unused_signal
 signal blood_circle_removed
 
-const pickup = preload("res://item/pick_up/Pickup.tscn")
-const corpse = preload("res://Characters/corpse.tscn")
+const pickup = preload("res://scenes/game/item/pick_up/pickup.tscn")
+const corpse = preload("res://scenes/game/characters/corpse.tscn")
 
 const rot_max_value = 1000 # global value that may be able to be changed by the player at runtime for diff setting?
 const meta_repair_reward_amount = 25 # how much money the player gets when repairing metastabilizers

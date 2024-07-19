@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Texture2D" uid="uid://byyhtjiwrhrv8" path="res://assets/textures/panel_square.png" id="1"]
+[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="2"]
+[ext_resource type="Script" path="res://scenes/game/inventory/inventory_slot.gd" id="3"]
+[ext_resource type="PackedScene" path="res://ui/base_tool_tip.tscn" id="4"]
+[ext_resource type="Script" path="res://ui/tool_tip.gd" id="5"]
+
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 128, 128 )
+modulate_color = Color( 0.427451, 0.435294, 1, 1 )
+
+[node name="inventory_slot" type="PanelContainer"]
+offset_right = 16.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 16, 16 )
+theme_override_styles/panel = SubResource( 2 )
+script = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 12.0
+offset_bottom = 12.0
+mouse_filter = 2
+expand = true
+stretch_mode = 6
+
+[node name="QuantityLabel" type="Label" parent="."]
+visible = false
+offset_right = 16.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource( 2 )
+text = "x99"
+align = 2
+
+[node name="ToolTip" type="Node" parent="."]
+script = ExtResource( 5 )
+visuals_res = ExtResource( 4 )
+owner_path = NodePath("..")
+
+[connection signal="gui_input" from="." to="." method="_on_inventory_slot_gui_input"]

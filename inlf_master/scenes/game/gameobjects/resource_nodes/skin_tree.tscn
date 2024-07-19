@@ -1,0 +1,209 @@
+[gd_scene load_steps=15 format=3 uid="uid://qjy7yga6koi4"]
+
+[ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
+[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="2"]
+[ext_resource type="Script" path="res://ui/textured_ui_bar.gd" id="3"]
+[ext_resource type="Script" path="res://scenes/game/gameobjects/resource_nodes/resource_node.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://b0a3y4a4sw1bl" path="res://scenes/game/item/pick_up/pickup.tscn" id="4_pq6mi"]
+[ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://bo7n1x6tvna66" path="res://models/skin_tree/mdl-skin-tree.tscn" id="7"]
+[ext_resource type="Resource" uid="uid://rlhqy62f00o8" path="res://scenes/game/item/items/fetid_wood.tres" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/game/effects/blood_spray.tscn" id="9"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(1, 4, 1)
+
+[sub_resource type="Animation" id="6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.227451, 0.227451, 0.227451, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.513726, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="7"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.513726, 0, 0, 0), Color(0.513726, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cgb4n"]
+_data = {
+"RESET": SubResource("6"),
+"fade_in": SubResource("7")
+}
+
+[node name="skin_tree" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
+collision_layer = 2
+collision_mask = 10
+script = ExtResource("4")
+item_data = ExtResource("8")
+display_name = "skin tree"
+blocked_damage_types = Array[int]([1, 2])
+punching_hurts = true
+optional_item_spawn_point = NodePath("ItemSpawnPoint")
+hit_effect = ExtResource("9")
+item_prefab = ExtResource("4_pq6mi")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="ItemSpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="mdl-skin-tree" parent="." instance=ExtResource("7")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Health" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6372, 0.227377)
+allowed_max_health = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Info" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -16.0
+offset_right = 64.0
+offset_bottom = 16.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+text = "Resource Name"
+
+[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer/Info/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("2")
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("6")
+texture_progress = ExtResource("5")
+tint_under = Color(0.227451, 0.227451, 0.227451, 0)
+tint_progress = Color(0.513726, 0, 0, 0)
+script = ExtResource("3")
+
+[node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer/ProgressBar"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+text = "Integrity"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cgb4n")
+}

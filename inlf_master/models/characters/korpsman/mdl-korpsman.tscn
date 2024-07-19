@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c05v1piaik7i7"]
 
-[ext_resource type="PackedScene" uid="uid://dnogeu8op23lm" path="res://models/characters/korpsman/mdl-korpsman.glb" id="1"]
-[ext_resource type="Material" path="res://models/characters/korpsman/Texture.material" id="2_n7l03"]
+[ext_resource type="PackedScene" uid="uid://dnogeu8op23lm" path="res://assets/models/korpsman.glb" id="1"]
+[ext_resource type="Material" path="res://assets/materials/korpsman.material" id="2_n7l03"]
 
 [node name="mdl-korpsman" instance=ExtResource("1")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)

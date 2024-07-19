@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cysufwgv31qbe"]
 
-[ext_resource type="PackedScene" uid="uid://cnuypwq4ask1a" path="res://models/flesh_pile/mdl-flesh_pile.glb" id="1"]
-[ext_resource type="Material" path="res://models/flesh_pile/mat-flesh_pile.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://cnuypwq4ask1a" path="res://assets/models/flesh_pile.glb" id="1"]
+[ext_resource type="Material" path="res://assets/materials/flesh_pile.tres" id="2"]
 
 [node name="mdl-flesh_pile" instance=ExtResource("1")]
 

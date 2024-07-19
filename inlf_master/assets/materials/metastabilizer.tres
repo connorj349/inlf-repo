@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bf2cdemhpc4vg"]
+
+[ext_resource type="Texture2D" uid="uid://dybo612gqp3l3" path="res://assets/textures/metastabilizer.png" id="1_eggk1"]
+
+[resource]
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_eggk1")
+metallic_specular = 0.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bo7n1x6tvna66"]
 
-[ext_resource type="PackedScene" uid="uid://c32xlm3mmk1le" path="res://models/skin_tree/mdl-skin-tree.glb" id="1"]
-[ext_resource type="Material" path="res://models/skin_tree/mat-skin_tree.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://c32xlm3mmk1le" path="res://assets/models/skin-tree.glb" id="1"]
+[ext_resource type="Material" path="res://assets/materials/skin_tree.tres" id="2"]
 
 [node name="mdl-skin-tree" instance=ExtResource("1")]
 

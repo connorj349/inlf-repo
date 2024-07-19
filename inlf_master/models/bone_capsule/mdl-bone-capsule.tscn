@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://jrn8etdq58gt"]
 
-[ext_resource type="PackedScene" uid="uid://c3ot0blfmo38q" path="res://models/bone_capsule/mdl-bone-capsule.glb" id="1"]
-[ext_resource type="Material" path="res://models/bone_capsule/mat-bone-capsule.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://c3ot0blfmo38q" path="res://assets/models/bone-capsule.glb" id="1"]
+[ext_resource type="Material" path="res://assets/materials/bone-capsule.tres" id="2"]
 
 [node name="mdl-bone-capsule" instance=ExtResource("1")]
 

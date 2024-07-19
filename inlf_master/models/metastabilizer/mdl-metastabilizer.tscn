@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource path="res://models/metastabilizer/mdl-metastabilizer.glb" type="PackedScene" id=1]
-[ext_resource path="res://models/rot_telecom/mat-screen.tres" type="Material" id=2]
-[ext_resource path="res://models/rot_telecom/mat-metastabilizer.tres" type="Material" id=3]
+[ext_resource type="PackedScene" uid="uid://bm27v7syy6y7x" path="res://assets/models/metastabilizer.glb" id="1"]
+[ext_resource type="Material" path="res://assets/materials/screen.tres" id="2"]
+[ext_resource type="Material" path="res://assets/materials/metastabilizer.tres" id="3"]
+
 
 [node name="mdl-metastabilizer" instance=ExtResource( 1 )]
 

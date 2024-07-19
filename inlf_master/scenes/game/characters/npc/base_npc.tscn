@@ -1,0 +1,46 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
+[ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://c05v1piaik7i7" path="res://models/characters/korpsman/mdl-korpsman.tscn" id="3"]
+[ext_resource type="Script" path="res://scenes/game/characters/npc/base_npc.gd" id="4"]
+[ext_resource type="Resource" uid="uid://d3xxh2xlpl08s" path="res://scenes/game/item/items/sanitar_suit.tres" id="5"]
+[ext_resource type="Resource" uid="uid://bd4s2o2c603oo" path="res://scenes/game/item/items/prole_suit.tres" id="6"]
+[ext_resource type="Resource" uid="uid://db0owt46j8wpd" path="res://scenes/game/item/items/heal_1.tres" id="7"]
+
+
+[sub_resource type="Resource" id=1]
+resource_local_to_scene = true
+script = ExtResource( 2 )
+slot_datas = [ null, null, null ]
+
+[sub_resource type="CapsuleShape3D" id=2]
+radius = 0.5
+height = 2.0
+
+[sub_resource type="SphereShape3D" id=3]
+radius = 2.0
+
+[node name="BaseNPC" type="CharacterBody3D"]
+script = ExtResource( 4 )
+inventory_data = SubResource( 1 )
+loot_table = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
+
+[node name="Health" parent="." instance=ExtResource( 1 )]
+allowed_max_health = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, 0 )
+shape = SubResource( 2 )
+
+[node name="mdl-korpsman" parent="." instance=ExtResource( 3 )]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_Area_body_entered"]

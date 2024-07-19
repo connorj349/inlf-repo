@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/game/characters/water_handler.gd" id="1"]
+
+
+[node name="WaterHandler" type="Area3D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 1 )

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxvvdxtfn50dq"]
 
-[ext_resource type="PackedScene" uid="uid://c67pvc4lw7inc" path="res://models/distiller/mdl-distiller.glb" id="1"]
-[ext_resource type="Material" path="res://models/distiller/mat-distiller.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://c67pvc4lw7inc" path="res://assets/models/distiller.glb" id="1"]
+[ext_resource type="Material" path="res://assets/materials/distiller.tres" id="2"]
 
 [node name="mdl-distiller" instance=ExtResource("1")]
 

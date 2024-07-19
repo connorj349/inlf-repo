@@ -12,19 +12,19 @@ config_version=5
 
 config/name="Industrial Nightmare: Liver Failure"
 config/description="Post apocalyptic role playing game with roguelite elements."
-run/main_scene="res://scenes/Menu.tscn"
+run/main_scene="res://scenes/menu/menu.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
 [audio]
 
-buses/default_bus_layout="res://sound/default_bus_layout.tres"
+buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
 [autoload]
 
-Globals="*res://AUTOLOAD/GLOBALS.gd"
-Gamestate="*res://AUTOLOAD/GAMESTATE.gd"
-SoundManager="*res://sound/SoundManager.tscn"
+Globals="*res://autoload/globals.gd"
+Gamestate="*res://autoload/gamestate.gd"
+SoundManager="*res://autoload/sound_manager.tscn"
 
 [display]
 
@@ -138,4 +138,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/defaults/default_environment="res://skybox/default_env.tres"
+environment/defaults/default_environment="res://assets/default_env.tres"

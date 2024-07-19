@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://chb740cqwan5e"]
 
-[ext_resource type="PackedScene" uid="uid://dush77b771m5u" path="res://models/bitumeat_buldge/mdl-bitumeat-buldge.glb" id="1"]
-[ext_resource type="Texture2D" uid="uid://dnsfnqvweeubc" path="res://models/bitumeat_buldge/bitumeat.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://dush77b771m5u" path="res://assets/models/bitumeat-buldge.glb" id="1"]
+[ext_resource type="Texture2D" uid="uid://dnsfnqvweeubc" path="res://assets/textures/bitumeat.png" id="2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4ofk"]
 albedo_texture = ExtResource("2")

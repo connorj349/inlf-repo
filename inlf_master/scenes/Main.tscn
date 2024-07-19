@@ -1,55 +1,55 @@
 [gd_scene load_steps=74 format=3 uid="uid://c0pk63nn4wv3b"]
 
-[ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://Characters/Player/Player_Ghost.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://inventory/Inventory.tscn" id="2"]
-[ext_resource type="Texture2D" uid="uid://bo7oso3slm23o" path="res://skybox/skybox_02.png" id="2_5lvo0"]
-[ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="3"]
-[ext_resource type="PackedScene" path="res://inventory/inventory_slot.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://scenes/game/characters/player/player_ghost.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/game/inventory/inventory.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://bo7oso3slm23o" path="res://assets/textures/skybox/skybox_02.png" id="2_5lvo0"]
+[ext_resource type="Script" path="res://scenes/game/inventory/inventory_interface.gd" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/game/inventory/inventory_slot.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://csuicjdgh3olp" path="res://models/maps/slumtown/mdl-slumtown.glb" id="5"]
-[ext_resource type="Resource" uid="uid://bfv04trnoslqs" path="res://item/items/slop_skull.tres" id="8"]
-[ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://gameobjects/BioGrower.tscn" id="9"]
-[ext_resource type="PackedScene" uid="uid://djfc66jt8vqe2" path="res://gameobjects/IndustrialSink.tscn" id="10"]
-[ext_resource type="PackedScene" uid="uid://diw2ptb001gas" path="res://gameobjects/vendor.tscn" id="11"]
-[ext_resource type="PackedScene" uid="uid://ccoi5qv045yl6" path="res://gameobjects/Ladder.tscn" id="12"]
-[ext_resource type="Resource" uid="uid://uf65hp2jic1g" path="res://item/items/metal_frag.tres" id="13"]
-[ext_resource type="Script" path="res://game_end/game_end_stem_cells.gd" id="14"]
-[ext_resource type="Resource" uid="uid://bd4s2o2c603oo" path="res://item/items/prole_suit.tres" id="15"]
-[ext_resource type="Resource" uid="uid://d3xxh2xlpl08s" path="res://item/items/sanitar_suit.tres" id="16"]
-[ext_resource type="PackedScene" path="res://gameobjects/resource_node_spawner.tscn" id="17"]
-[ext_resource type="PackedScene" uid="uid://p3pw5s5y3hqr" path="res://gameobjects/resource_nodes/bitumeat.tscn" id="18"]
-[ext_resource type="PackedScene" uid="uid://bsqr7oaxve8ba" path="res://gameobjects/production_machine.tscn" id="19"]
-[ext_resource type="Theme" uid="uid://cnq43lwu6wk48" path="res://UI/themes/main_menu_theme.tres" id="20"]
-[ext_resource type="PackedScene" uid="uid://qjy7yga6koi4" path="res://gameobjects/resource_nodes/skin_tree.tscn" id="21"]
-[ext_resource type="PackedScene" uid="uid://cow88ggfrlbxw" path="res://gameobjects/Amoeba.tscn" id="22"]
-[ext_resource type="Resource" path="res://role/roles/proletariat.tres" id="23"]
-[ext_resource type="PackedScene" uid="uid://b1k30jhststhn" path="res://gameobjects/resource_nodes/bone_capsule.tscn" id="24"]
-[ext_resource type="Resource" uid="uid://dtnywridk3h05" path="res://item/items/spine.tres" id="25"]
-[ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://item/items/bio_fuel.tres" id="26"]
-[ext_resource type="Resource" uid="uid://bmlxg0rxh6idp" path="res://item/items/shells.tres" id="27"]
-[ext_resource type="PackedScene" uid="uid://b7nxt2hc5tvjo" path="res://gameobjects/processor.tscn" id="28"]
-[ext_resource type="Script" path="res://UI/PauseMenu.gd" id="29"]
-[ext_resource type="PackedScene" path="res://UI/LoadingScreen.tscn" id="30"]
-[ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://UI/Options.tscn" id="31"]
-[ext_resource type="Script" path="res://inventory/inventory_data.gd" id="32"]
-[ext_resource type="PackedScene" uid="uid://bt1svnjwmtnf3" path="res://inventory/Storage.tscn" id="33"]
-[ext_resource type="Resource" uid="uid://db0owt46j8wpd" path="res://item/items/heal_1.tres" id="34"]
-[ext_resource type="PackedScene" uid="uid://hxe1g3invfrc" path="res://gameobjects/rot_telecom.tscn" id="36"]
-[ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://gameobjects/autostitcher.tscn" id="37"]
-[ext_resource type="PackedScene" uid="uid://r1okymmde6l8" path="res://gameobjects/Generator.tscn" id="38"]
-[ext_resource type="PackedScene" uid="uid://b3gsycxg1xafb" path="res://gameobjects/resource_nodes/boulder.tscn" id="40"]
-[ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://gameobjects/metastabilizer.tscn" id="41"]
-[ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://gameobjects/sawblade.tscn" id="42"]
-[ext_resource type="Texture2D" uid="uid://byyhtjiwrhrv8" path="res://UI/elements/panel_square.png" id="43"]
-[ext_resource type="MeshLibrary" uid="uid://dpw65kax8agox" path="res://models/objects/gridmap_props_meshlib.tres" id="44"]
-[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://UI/themes/hint_object_theme.tres" id="46"]
-[ext_resource type="PackedScene" uid="uid://bu0ib6h238inm" path="res://gameobjects/tumor.tscn" id="47"]
-[ext_resource type="PackedScene" uid="uid://cvonrv45p2y4y" path="res://game_end/TicketMachine.tscn" id="48"]
-[ext_resource type="Script" path="res://UI/update_player_stats.gd" id="49"]
+[ext_resource type="Resource" uid="uid://bfv04trnoslqs" path="res://scenes/game/item/items/slop_skull.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://scenes/game/gameobjects/biogrower.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://djfc66jt8vqe2" path="res://scenes/game/gameobjects/industrial_sink.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://diw2ptb001gas" path="res://scenes/game/gameobjects/vendor.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://ccoi5qv045yl6" path="res://scenes/game/gameobjects/ladder.tscn" id="12"]
+[ext_resource type="Resource" uid="uid://uf65hp2jic1g" path="res://scenes/game/item/items/metal_frag.tres" id="13"]
+[ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="14"]
+[ext_resource type="Resource" uid="uid://bd4s2o2c603oo" path="res://scenes/game/item/items/prole_suit.tres" id="15"]
+[ext_resource type="Resource" uid="uid://d3xxh2xlpl08s" path="res://scenes/game/item/items/sanitar_suit.tres" id="16"]
+[ext_resource type="PackedScene" path="res://scenes/game/gameobjects/resource_node_spawner.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://p3pw5s5y3hqr" path="res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn" id="18"]
+[ext_resource type="PackedScene" uid="uid://bsqr7oaxve8ba" path="res://scenes/game/gameobjects/production_machine.tscn" id="19"]
+[ext_resource type="Theme" uid="uid://cnq43lwu6wk48" path="res://assets/themes/main_menu_theme.tres" id="20"]
+[ext_resource type="PackedScene" uid="uid://qjy7yga6koi4" path="res://scenes/game/gameobjects/resource_nodes/skin_tree.tscn" id="21"]
+[ext_resource type="PackedScene" uid="uid://cow88ggfrlbxw" path="res://scenes/game/gameobjects/amoeba.tscn" id="22"]
+[ext_resource type="Resource" path="res://scenes/game/role/roles/proletariat.tres" id="23"]
+[ext_resource type="PackedScene" uid="uid://b1k30jhststhn" path="res://scenes/game/gameobjects/resource_nodes/bone_capsule.tscn" id="24"]
+[ext_resource type="Resource" uid="uid://dtnywridk3h05" path="res://scenes/game/item/items/spine.tres" id="25"]
+[ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://scenes/game/item/items/bio_fuel.tres" id="26"]
+[ext_resource type="Resource" uid="uid://bmlxg0rxh6idp" path="res://scenes/game/item/items/shells.tres" id="27"]
+[ext_resource type="PackedScene" uid="uid://b7nxt2hc5tvjo" path="res://scenes/game/gameobjects/processor.tscn" id="28"]
+[ext_resource type="Script" path="res://scenes/menu/options/pause_menu.gd" id="29"]
+[ext_resource type="PackedScene" path="res://global/loading_screen/loading_screen.tscn" id="30"]
+[ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="31"]
+[ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="32"]
+[ext_resource type="PackedScene" uid="uid://bt1svnjwmtnf3" path="res://scenes/game/inventory/storage.tscn" id="33"]
+[ext_resource type="Resource" uid="uid://db0owt46j8wpd" path="res://scenes/game/item/items/heal_1.tres" id="34"]
+[ext_resource type="PackedScene" uid="uid://hxe1g3invfrc" path="res://scenes/game/gameobjects/rot_telecom.tscn" id="36"]
+[ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://scenes/game/gameobjects/autostitcher.tscn" id="37"]
+[ext_resource type="PackedScene" uid="uid://r1okymmde6l8" path="res://scenes/game/gameobjects/generator.tscn" id="38"]
+[ext_resource type="PackedScene" uid="uid://b3gsycxg1xafb" path="res://scenes/game/gameobjects/resource_nodes/boulder.tscn" id="40"]
+[ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://scenes/game/gameobjects/metastabilizer.tscn" id="41"]
+[ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://scenes/game/gameobjects/sawblade.tscn" id="42"]
+[ext_resource type="Texture2D" uid="uid://byyhtjiwrhrv8" path="res://assets/textures/panel_square.png" id="43"]
+[ext_resource type="MeshLibrary" uid="uid://dpw65kax8agox" path="res://assets/textures/gridmap_props_meshlib.tres" id="44"]
+[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="46"]
+[ext_resource type="PackedScene" uid="uid://bu0ib6h238inm" path="res://scenes/game/gameobjects/tumor.tscn" id="47"]
+[ext_resource type="PackedScene" uid="uid://cvonrv45p2y4y" path="res://scenes/game/game_end/ticket_machine.tscn" id="48"]
+[ext_resource type="Script" path="res://scenes/game/characters/player/update_player_stats.gd" id="49"]
 [ext_resource type="PackedScene" uid="uid://b0hhnv4ej604f" path="res://models/ladder/mdl-ladder-segment-end.tscn" id="50"]
 [ext_resource type="PackedScene" uid="uid://bxaje7cp7aj7i" path="res://models/ladder/mdl-ladder-segment.tscn" id="51"]
-[ext_resource type="PackedScene" uid="uid://dr8hsko7ayhd4" path="res://gameobjects/ExplodingMushroom.tscn" id="52"]
-[ext_resource type="PackedScene" path="res://Characters/WaterArea.tscn" id="54"]
-[ext_resource type="Resource" uid="uid://o0eqj1gg7bn4" path="res://item/items/amoeba_slime.tres" id="55"]
+[ext_resource type="PackedScene" uid="uid://dr8hsko7ayhd4" path="res://scenes/game/gameobjects/exploding_mushroom.tscn" id="52"]
+[ext_resource type="PackedScene" path="res://scenes/game/characters/water_area.tscn" id="54"]
+[ext_resource type="Resource" uid="uid://o0eqj1gg7bn4" path="res://scenes/game/item/items/amoeba_slime.tres" id="55"]
 
 [sub_resource type="Gradient" id="403"]
 offsets = PackedFloat32Array(0, 0.66879, 1)
@@ -202,7 +202,7 @@ size = Vector3(2, 2, 10)
 [sub_resource type="Resource" id="387"]
 resource_local_to_scene = true
 script = ExtResource("32")
-slot_datas = Array[Resource("res://inventory/slot_data.gd")]([null, null, null, null, null, null])
+slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null, null, null, null])
 
 [sub_resource type="BoxShape3D" id="397"]
 resource_local_to_scene = true
@@ -533,8 +533,8 @@ node_to_spawn = ExtResource("22")
 
 [node name="production_machine" parent="GameObjects/ToolFactory" instance=ExtResource("19")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5.5, -23.9)
-input_item_datas = Array[Resource("res://item/item_data.gd")]([ExtResource("13")])
-output_item_datas = Array[Resource("res://item/item_data.gd")]([ExtResource("16"), ExtResource("15")])
+input_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("13")])
+output_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("16"), ExtResource("15")])
 machine_name = "tool factory"
 payday = 3
 
@@ -658,7 +658,7 @@ transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 27.5, 0, -
 
 [node name="production_machine" parent="GameObjects/WeaponFactory" instance=ExtResource("19")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.7, 5.5, -30)
-input_item_datas = Array[Resource("res://item/item_data.gd")]([ExtResource("13")])
+input_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("13")])
 machine_name = "weapon factory"
 production_time = 5.0
 payday = 10
@@ -758,8 +758,8 @@ shape = SubResource("402")
 
 [node name="production_machine" parent="GameObjects/Quarry" instance=ExtResource("19")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71, 5, 21)
-input_item_datas = Array[Resource("res://item/item_data.gd")]([ExtResource("8"), ExtResource("55")])
-output_item_datas = Array[Resource("res://item/item_data.gd")]([ExtResource("34")])
+input_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("8"), ExtResource("55")])
+output_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("34")])
 machine_name = "lunch factory"
 payday = 2
 
@@ -938,8 +938,8 @@ grow_vertical = 2
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 
 [editable path="Environment/mdl-slumtown"]
 [editable path="GameObjects/ToolFactory/Generator"]

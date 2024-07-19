@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDataOrgan" load_steps=4 format=3 uid="uid://c0vosmi030n6n"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data_organ.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://b0h5yhwltpbru" path="res://scenes/game/effects/spell effects/spell_effect_viletouch.tscn" id="3"]
+
+[sub_resource type="AtlasTexture" id="1"]
+region = Rect2(648, 1850, 54, 40)
+
+[resource]
+script = ExtResource("1")
+mana_regen = 4
+magic_effect = ExtResource("3")
+name = "ancient brain"
+description = "an ancient, decrepit brain. Used in rituals and provides plenty of magick replenishment"
+stackable = false
+texture = SubResource("1")
+price = 100
+item_type = 4

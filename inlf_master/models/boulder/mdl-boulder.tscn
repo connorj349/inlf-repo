@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://duver3cf0vopt"]
 
-[ext_resource type="PackedScene" uid="uid://o7bujdwcauyn" path="res://models/boulder/mdl-boulder.glb" id="1"]
-[ext_resource type="Material" path="res://models/boulder/mat-boulder.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://o7bujdwcauyn" path="res://assets/models/boulder.glb" id="1"]
+[ext_resource type="Material" path="res://assets/materials/boulder.tres" id="2"]
 
 [node name="mdl-boulder" instance=ExtResource("1")]
 

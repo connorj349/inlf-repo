@@ -12,14 +12,15 @@ signal infections_count_changed
 # warning-ignore:unused_signal
 signal game_over
 
+# each of these should be created at runtime instead of referenced like this
 # player's inventory
-var player_inventory = load("res://inventory/player_inventory.tres")
+var player_inventory = load("res://scenes/game/inventory/player_inventory.tres")
 # player's clothing equipment slot
-var equip_player_inventory = load("res://inventory/player_equipment_inventory.tres")
+var equip_player_inventory = load("res://scenes/game/inventory/player_equipment_inventory.tres")
 # player's weapon slot
-var weapon_player_inventory = load("res://inventory/player_weapon_inventory.tres")
+var weapon_player_inventory = load("res://scenes/game/inventory/player_weapon_inventory.tres")
 # global merchant inventory for all vendors to reference
-var merchant_inventory = load("res://inventory/merchant_inventory.tres")
+var merchant_inventory = load("res://scenes/game/inventory/merchant_inventory.tres")
 
 var rot = 0: set = set_rot
 var bones = 0: set = set_bones

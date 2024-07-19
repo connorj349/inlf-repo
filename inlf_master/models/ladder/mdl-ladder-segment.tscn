@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxaje7cp7aj7i"]
 
-[ext_resource type="PackedScene" uid="uid://c7r28yunvlbyb" path="res://models/ladder/mdl-ladder-segment.glb" id="1"]
-[ext_resource type="Material" path="res://models/ladder/mat-ladder.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://c7r28yunvlbyb" path="res://assets/models/ladder-segment.glb" id="1"]
+[ext_resource type="Material" path="res://assets/materials/ladder.tres" id="2"]
 
 [node name="mdl-ladder-segment" instance=ExtResource("1")]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0hvmkathob61"]
 
-[ext_resource type="Material" path="res://models/locker/mat-locker.tres" id="1"]
-[ext_resource type="PackedScene" uid="uid://c1c8i1vyuyr5v" path="res://models/locker/mdl-locker.glb" id="2"]
+[ext_resource type="Material" path="res://assets/materials/locker.tres" id="1"]
+[ext_resource type="PackedScene" uid="uid://c1c8i1vyuyr5v" path="res://assets/models/locker.glb" id="2"]
 
 [node name="mdl-locker" instance=ExtResource("2")]
 

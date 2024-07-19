@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scenes/game/characters/Movement.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://6etyiwvj6pj" path="res://assets/audio/footsteps/mud.wav" id="2"]
+[ext_resource type="AudioStream" uid="uid://cjc46l16nfmhc" path="res://assets/audio/footsteps/stone.wav" id="3"]
+[ext_resource type="AudioStream" uid="uid://bfs1bq6fc111s" path="res://assets/audio/footsteps/broken_tile.wav" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_pool.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue_3d.tscn" id="6"]
+
+
+[node name="Movement" type="Node3D"]
+script = ExtResource( 1 )
+
+[node name="GroundRayCast" type="RayCast3D" parent="."]
+enabled = true
+target_position = Vector3( 0, -999, 0 )
+
+[node name="step_stone_SoundPool" parent="." instance=ExtResource( 5 )]
+
+[node name="SoundQueue3D" parent="step_stone_SoundPool" instance=ExtResource( 6 )]
+Count = 2
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="step_stone_SoundPool/SoundQueue3D"]
+stream = ExtResource( 3 )
+bus = "SoundFX"
+
+[node name="step_transition_SoundPool" parent="." instance=ExtResource( 5 )]
+
+[node name="SoundQueue3D" parent="step_transition_SoundPool" instance=ExtResource( 6 )]
+Count = 2
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="step_transition_SoundPool/SoundQueue3D"]
+stream = ExtResource( 4 )
+bus = "SoundFX"
+
+[node name="step_mud_SoundPool" parent="." instance=ExtResource( 5 )]
+
+[node name="SoundQueue3D" parent="step_mud_SoundPool" instance=ExtResource( 6 )]
+Count = 2
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="step_mud_SoundPool/SoundQueue3D"]
+stream = ExtResource( 2 )
+bus = "SoundFX"

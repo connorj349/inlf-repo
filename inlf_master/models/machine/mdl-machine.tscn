@@ -1,5 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://dobb0lqq3s5ih"]
 
-[ext_resource type="PackedScene" uid="uid://dl612dx4odxl0" path="res://models/machine/mdl-machine.glb" id="2"]
+[ext_resource type="PackedScene" uid="uid://dl612dx4odxl0" path="res://assets/models/machine.glb" id="2"]
 
 [node name="mdl-machine" instance=ExtResource("2")]

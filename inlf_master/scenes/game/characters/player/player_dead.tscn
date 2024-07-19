@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdoq8vp2mm8u1"]
+
+[ext_resource type="Script" path="res://scenes/game/characters/player/player_dead.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/game/characters/Movement.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://scenes/game/characters/player/player_ghost.tscn" id="2_46pit"]
+
+[sub_resource type="BoxShape3D" id="1"]
+
+[node name="PlayerDead" type="CharacterBody3D"]
+collision_layer = 4
+script = ExtResource("1")
+mouse_sensitivity = 0.3
+player_ghost_prefab = ExtResource("2_46pit")
+
+[node name="OuterGimbal" type="Node3D" parent="."]
+
+[node name="InnerGimbal" type="Node3D" parent="OuterGimbal"]
+
+[node name="Camera3D" type="Camera3D" parent="OuterGimbal/InnerGimbal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="PlayerSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("1")
+
+[node name="Movement" parent="." instance=ExtResource("2")]
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+bus = &"SoundFX"
+
+[connection signal="timeout" from="PlayerSpawnTimer" to="." method="_on_PlayerSpawnTimer_timeout"]
