@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://r1okymmde6l8"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/generator.gd" id="1"]
-[ext_resource type="Script" path="res://ui/textured_ui_bar.gd" id="2"]
+[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="2"]
 [ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="3"]
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="4"]
 [ext_resource type="PackedScene" uid="uid://dh21lv4hfv085" path="res://models/generator/mdl-generator.tscn" id="5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://scenes/game/item/items/bio_fuel.tres" id="7"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="8"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/show_area_bounds.gd" id="9"]
+
 
 [sub_resource type="BoxShape3D" id="1"]
 resource_local_to_scene = true

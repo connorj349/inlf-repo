@@ -1,11 +1,11 @@
-[gd_scene load_steps=74 format=3 uid="uid://c0pk63nn4wv3b"]
+[gd_scene load_steps=73 format=3 uid="uid://c0pk63nn4wv3b"]
 
 [ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://scenes/game/characters/player/player_ghost.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/inventory/inventory.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://bo7oso3slm23o" path="res://assets/textures/skybox/skybox_02.png" id="2_5lvo0"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_interface.gd" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/game/inventory/inventory_slot.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://csuicjdgh3olp" path="res://models/maps/slumtown/mdl-slumtown.glb" id="5"]
+[ext_resource type="PackedScene" uid="uid://csuicjdgh3olp" path="res://models/Maps/slumtown/mdl-slumtown.glb" id="5"]
 [ext_resource type="Resource" uid="uid://bfv04trnoslqs" path="res://scenes/game/item/items/slop_skull.tres" id="8"]
 [ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://scenes/game/gameobjects/biogrower.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://djfc66jt8vqe2" path="res://scenes/game/gameobjects/industrial_sink.tscn" id="10"]
@@ -21,7 +21,6 @@
 [ext_resource type="Theme" uid="uid://cnq43lwu6wk48" path="res://assets/themes/main_menu_theme.tres" id="20"]
 [ext_resource type="PackedScene" uid="uid://qjy7yga6koi4" path="res://scenes/game/gameobjects/resource_nodes/skin_tree.tscn" id="21"]
 [ext_resource type="PackedScene" uid="uid://cow88ggfrlbxw" path="res://scenes/game/gameobjects/amoeba.tscn" id="22"]
-[ext_resource type="Resource" path="res://scenes/game/role/roles/proletariat.tres" id="23"]
 [ext_resource type="PackedScene" uid="uid://b1k30jhststhn" path="res://scenes/game/gameobjects/resource_nodes/bone_capsule.tscn" id="24"]
 [ext_resource type="Resource" uid="uid://dtnywridk3h05" path="res://scenes/game/item/items/spine.tres" id="25"]
 [ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://scenes/game/item/items/bio_fuel.tres" id="26"]
@@ -424,9 +423,8 @@ layers = 0
 
 [node name="prole_spawn_01" parent="GameObjects/player_role_spawns" instance=ExtResource("42")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0.1, -40)
-role = ExtResource("23")
-required_items = [ExtResource("8")]
-optional_random_items = [ExtResource("25"), ExtResource("26"), ExtResource("27")]
+required_items = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("8")])
+optional_random_items = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("25"), ExtResource("26"), ExtResource("27")])
 random_amount_of_items_to_give = 2
 
 [node name="BiogrowthObjects" type="Node3D" parent="GameObjects"]
@@ -446,7 +444,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -13)
 
 [node name="Ladder" parent="GameObjects/Ladders" instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9, 4, 11.2)
-bounds = Vector3(0.5, 3, 1)
 
 [node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder" instance=ExtResource("51")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -4, 0)
@@ -459,7 +456,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 
 [node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7)
-bounds = Vector3(1, 4, 0.25)
 
 [node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder2" instance=ExtResource("51")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -0.3)
@@ -475,7 +471,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.3)
 
 [node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4)
-bounds = Vector3(0.25, 4, 1)
 
 [node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder3" instance=ExtResource("51")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.200005, -3, 0)
@@ -488,7 +483,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.2000
 
 [node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6)
-bounds = Vector3(0.5, 8, 1)
 
 [node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -7, 0)
@@ -898,6 +892,7 @@ size_flags_vertical = 3
 [node name="PauseLabel" type="Label" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "paused"
+horizontal_alignment = 1
 
 [node name="options_button" type="Button" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -938,8 +933,8 @@ grow_vertical = 2
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 
 [editable path="Environment/mdl-slumtown"]
 [editable path="GameObjects/ToolFactory/Generator"]

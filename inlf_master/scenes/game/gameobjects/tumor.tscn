@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="2"]
-[ext_resource type="Script" path="res://ui/textured_ui_bar.gd" id="3"]
+[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="3"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/tumor.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://chg45rumgktac" path="res://models/tumor/mdl-tumor.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="7"]
+
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1, 2, 1)

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://durjl4t2uoonr"
-path.s3tc="res://.godot/imported/mdl-slumtown_roof.png-ded528a17f4d7e196b7468687e08ceec.s3tc.ctex"
+path.s3tc="res://.godot/imported/mdl-slumtown_roof.png-a1e84b9919865686021789ad7a6ff4c2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/maps/slumtown/mdl-slumtown_roof.png"
-dest_files=["res://.godot/imported/mdl-slumtown_roof.png-ded528a17f4d7e196b7468687e08ceec.s3tc.ctex"]
+source_file="res://models/Maps/slumtown/mdl-slumtown_roof.png"
+dest_files=["res://.godot/imported/mdl-slumtown_roof.png-a1e84b9919865686021789ad7a6ff4c2.s3tc.ctex"]
 
 [params]
 

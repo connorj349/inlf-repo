@@ -2,13 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dobb0lqq3s5ih" path="res://models/machine/mdl-machine.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="3"]
-[ext_resource type="Script" path="res://ui/textured_ui_bar.gd" id="4"]
+[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="4"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/production_machine.gd" id="5"]
 [ext_resource type="AudioStream" uid="uid://b28rn55hxvivr" path="res://assets/audio/machine/machine_loop.wav" id="6"]
 [ext_resource type="AudioStream" uid="uid://bkbonr5n6iila" path="res://assets/audio/machine/machine_accept_item.wav" id="7"]
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="10"]
+
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.5, 3, 1.5)

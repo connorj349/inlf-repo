@@ -4,18 +4,20 @@ extends Node
 signal on_inventory_toggle
 # warning-ignore:unused_signal
 signal on_pop_notification
-# warning-ignore:unused_signal
-signal blood_circle_removed
 
 const pickup = preload("res://scenes/game/item/pick_up/pickup.tscn")
 const corpse = preload("res://scenes/game/characters/corpse.tscn")
+# global value that may be able to be changed by the player at runtime for diff setting?
+const rot_max_value = 1000
+# how much money the player gets when repairing metastabilizers
+const meta_repair_reward_amount = 25
+# how much health metastabilizers get when they are repaired using a kit
+const meta_repair_amount = 40
 
-const rot_max_value = 1000 # global value that may be able to be changed by the player at runtime for diff setting?
-const meta_repair_reward_amount = 25 # how much money the player gets when repairing metastabilizers
-const meta_repair_amount = 40 # how much health metastabilizers get when they are repaired using a kit
-
-var current_player #allows other objects to reference the player like setting target/etc.
-var current_ui #player inventory global reference for other scripts
+# allows other objects to reference the player like setting target/etc.
+var current_player
+# player inventory global reference for other scripts
+var current_ui
 
 func _ready():
 	#begin game with mouse mode captured

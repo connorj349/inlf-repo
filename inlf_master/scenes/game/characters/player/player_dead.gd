@@ -2,13 +2,9 @@ extends Node3D
 
 @export var mouse_sensitivity = 0.1
 @export var player_ghost_prefab: PackedScene
-
-@onready var outer_gimbal = $OuterGimbal
-@onready var inner_gimbal = $OuterGimbal/InnerGimbal
-@onready var death = $Death
-
-func _ready():
-	$Movement.init(self)
+@export var outer_gimbal: Node3D
+@export var inner_gimbal: Node3D
+@export var death_sound: AudioStreamPlayer
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -17,7 +13,7 @@ func _input(event):
 		inner_gimbal.rotation.x = clamp(inner_gimbal.rotation.x, deg_to_rad(-89), deg_to_rad(0))
 
 func play_death_sound():
-	death.play()
+	death_sound.play()
 
 func _on_PlayerSpawnTimer_timeout():
 	var ghost = player_ghost_prefab.instantiate()

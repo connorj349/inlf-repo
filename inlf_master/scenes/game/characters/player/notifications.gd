@@ -2,7 +2,7 @@ extends Control
 
 const MAX_LINES = 5
 
-@onready var notifications_text = $PanelContainer/MarginContainer/RichTextLabel
+@export var notifications_text: RichTextLabel
 
 var info = []
 var remove_info_timer : Timer

@@ -5,13 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="4"]
 [ext_resource type="Script" path="res://scenes/game/characters/corpse.gd" id="5"]
-[ext_resource type="Script" path="res://ui/textured_ui_bar.gd" id="6"]
+[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/game/effects/blood_spray.tscn" id="6_f2vqa"]
 [ext_resource type="Script" path="res://scenes/game/inventory/slot_data.gd" id="7"]
 [ext_resource type="PackedScene" uid="uid://cysufwgv31qbe" path="res://models/flesh_pile/mdl-flesh_pile.tscn" id="8"]
 [ext_resource type="Resource" uid="uid://c0vosmi030n6n" path="res://scenes/game/item/items/organ_ancientbrain.tres" id="9"]
 [ext_resource type="Resource" uid="uid://b04evq6pcjxsi" path="res://scenes/game/item/items/organ_evileyes.tres" id="10"]
 [ext_resource type="Resource" uid="uid://cbn8vt43cq2cu" path="res://scenes/game/item/items/organ_vilegut.tres" id="12"]
+
 
 [sub_resource type="Resource" id="14"]
 script = ExtResource("7")

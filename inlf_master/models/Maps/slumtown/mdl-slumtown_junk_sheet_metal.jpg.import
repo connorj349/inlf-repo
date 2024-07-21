@@ -3,19 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ck0h5xufgopqr"
-path.s3tc="res://.godot/imported/mdl-slumtown_junk_sheet_metal.jpg-365492938db9005464a9e9769ea0457e.s3tc.ctex"
+path.s3tc="res://.godot/imported/mdl-slumtown_junk_sheet_metal.jpg-c8ad230c5c93ce4601ce1ce06b714c86.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "f5ce24438e0bec8072c3021f2b05f626"
+"md5": "f2b18f75f874eafbfee3d1904bbc150b"
 }
 
 [deps]
 
-source_file="res://models/maps/slumtown/mdl-slumtown_junk_sheet_metal.jpg"
-dest_files=["res://.godot/imported/mdl-slumtown_junk_sheet_metal.jpg-365492938db9005464a9e9769ea0457e.s3tc.ctex"]
+source_file="res://models/Maps/slumtown/mdl-slumtown_junk_sheet_metal.jpg"
+dest_files=["res://.godot/imported/mdl-slumtown_junk_sheet_metal.jpg-c8ad230c5c93ce4601ce1ce06b714c86.s3tc.ctex"]
 
 [params]
 

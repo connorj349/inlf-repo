@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://byyhtjiwrhrv8" path="res://assets/textures/panel_square.png" id="1"]
 [ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="2"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_slot.gd" id="3"]
-[ext_resource type="PackedScene" path="res://ui/base_tool_tip.tscn" id="4"]
-[ext_resource type="Script" path="res://ui/tool_tip.gd" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/game/tooltip/base_tool_tip.tscn" id="4"]
+[ext_resource type="Script" path="res://scenes/game/tooltip/tool_tip.gd" id="5"]
+
 
 
 [sub_resource type="StyleBoxTexture" id=2]

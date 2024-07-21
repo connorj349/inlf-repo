@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://csuicjdgh3olp"
-path="res://.godot/imported/mdl-slumtown.glb-57bb4ee599d7735d284c0885e41e1f47.scn"
+path="res://.godot/imported/mdl-slumtown.glb-ffac753208d003a14d5fe44974f8fe3b.scn"
 
 [deps]
 
-source_file="res://models/maps/slumtown/mdl-slumtown.glb"
-dest_files=["res://.godot/imported/mdl-slumtown.glb-57bb4ee599d7735d284c0885e41e1f47.scn"]
+source_file="res://models/Maps/slumtown/mdl-slumtown.glb"
+dest_files=["res://.godot/imported/mdl-slumtown.glb-ffac753208d003a14d5fe44974f8fe3b.scn"]
 
 [params]
 

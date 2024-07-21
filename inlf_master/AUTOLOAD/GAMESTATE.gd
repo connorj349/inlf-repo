@@ -1,4 +1,10 @@
 extends Node
+## gamestate should really only keep track of player progress
+## like if the player has unlocked maps, how many wins/loss, etc.
+##
+## when player loads up game, read save file that holds data about
+## what maps the player has unlocked from completing certain win conditions
+## i.e. cultist win, worker win, etc.
 
 signal rot_changed
 signal bones_changed
@@ -22,11 +28,35 @@ var weapon_player_inventory = load("res://scenes/game/inventory/player_weapon_in
 # global merchant inventory for all vendors to reference
 var merchant_inventory = load("res://scenes/game/inventory/merchant_inventory.tres")
 
-var rot = 0: set = set_rot
-var bones = 0: set = set_bones
-var bloaters = 0: set = set_bloaters
-var tumors = 0: set = set_tumors
-var infections : get = get_infections
+var rot: int = 0 :
+	set(value):
+		rot = clamp(value, 0, Globals.rot_max_value)
+		if rot >= Globals.rot_max_value:
+			emit_signal("game_over")
+		emit_signal("rot_changed")
+
+var bones: int = 0 :
+	set(value):
+		bones = clamp(value, 0, 9999)
+		emit_signal("bones_changed", bones)
+		if value > 0:
+			Globals.emit_signal("on_pop_notification", "I received some bones.")
+		elif value < 0:
+			Globals.emit_signal("on_pop_notification", "I have lost some bones.")
+
+var bloaters: int = 0 :
+	set(value):
+		bloaters = clamp(value, 0, 9999)
+		emit_signal("infections_count_changed")
+
+var tumors: int = 0 :
+	set(value):
+		tumors = clamp(value, 0, 9999)
+		emit_signal("infections_count_changed")
+
+var infections: int :
+	get:
+		return bloaters + tumors
 
 var spawn_queue = []
 var cache = {}
@@ -74,28 +104,3 @@ func reset_player_state():
 		equip_player_inventory.take_item(i)
 	for i in weapon_player_inventory.slot_datas:
 		weapon_player_inventory.take_item(i)
-
-func set_rot(value):
-	rot = clamp(value, 0, Globals.rot_max_value)
-	if rot >= Globals.rot_max_value:
-		emit_signal("game_over")
-	emit_signal("rot_changed")
-
-func set_bones(value):
-	bones = clamp(value, 0, 9999)
-	emit_signal("bones_changed", bones)
-	if value > 0:
-		Globals.emit_signal("on_pop_notification", "I received some bones.")
-	elif value < 0:
-		Globals.emit_signal("on_pop_notification", "I have lost some bones.")
-
-func set_bloaters(value):
-	bloaters = clamp(value, 0, 9999)
-	emit_signal("infections_count_changed")
-
-func set_tumors(value):
-	tumors = clamp(value, 0, 9999)
-	emit_signal("infections_count_changed")
-
-func get_infections():
-	return bloaters + tumors

@@ -15,7 +15,6 @@ func _ready():
 		add_to_group("pickup")
 
 func _interact(_actor):
-	print("success")
 	if Gamestate.player_inventory.pick_up_slot_data(slot_data):
 		queue_free()
 

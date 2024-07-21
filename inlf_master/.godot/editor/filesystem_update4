@@ -5,7 +5,6 @@ res://scenes/game/item/items/organ_ancientbrain.tres
 res://scenes/game/item/items/organ_evileyes.tres
 res://scenes/game/item/items/organ_vilegut.tres
 res://assets/themes/main_menu_theme.tres
-res://scenes/main.tscn
 res://scenes/game/item/items/slop_skull.tres
 res://scenes/game/item/items/dirty_water.tres
 res://scenes/game/item/items/metal_frag.tres
@@ -20,6 +19,24 @@ res://scenes/game/item/items/shells.tres
 res://scenes/game/item/items/heal_1.tres
 res://scenes/game/item/items/shotgun.tres
 res://assets/textures/gridmap_props_meshlib.tres
-res://scenes/menu/options/pause_menu.gd
-res://scenes/game/game_end/game_end_stem_cells.gd
-res://global/loading_screen/loading_screen.gd
+res://scenes/main.tscn
+res://scenes/game/characters/player/player.tscn
+res://scenes/game/characters/player/player.gd
+res://scenes/game/characters/player/notifications.gd
+res://scenes/game/characters/Movement.tscn
+res://autoload/globals.gd
+res://scenes/game/gameobjects/sawblade.tscn
+res://scenes/game/gameobjects/sawblade.gd
+res://scenes/game/gameobjects/ladder.tscn
+res://scenes/game/gameobjects/ladder.gd
+res://scenes/game/characters/player/player_ghost.tscn
+res://scenes/game/characters/player/player_dead.tscn
+res://scenes/game/characters/player/player_dead.gd
+res://autoload/gamestate.gd
+res://scenes/game/gameobjects/exploding_mushroom.gd
+res://scenes/game/gameobjects/exploding_mushroom.tscn
+res://scenes/game/effects/spell effects/spell_effect_viletouch.tscn
+res://scenes/game/effects/spell effects/spell_effect_viletouch.gd
+res://scenes/game/inventory/storage.tscn
+res://scenes/game/inventory/storage.gd
+res://scenes/game/item/pick_up/pickup.gd

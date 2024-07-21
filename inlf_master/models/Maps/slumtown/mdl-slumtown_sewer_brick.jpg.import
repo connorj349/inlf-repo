@@ -3,19 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5xs46jd0bdyb"
-path.s3tc="res://.godot/imported/mdl-slumtown_sewer_brick.jpg-73086ce2c28a5427bda655dbb9540460.s3tc.ctex"
+path.s3tc="res://.godot/imported/mdl-slumtown_sewer_brick.jpg-fda2641731a6dafd252bf4af790de637.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "db6ded753e33560355fafdf75aaef9bc"
+"md5": "30e57657c0a0e1a81fe543afa21a7db9"
 }
 
 [deps]
 
-source_file="res://models/maps/slumtown/mdl-slumtown_sewer_brick.jpg"
-dest_files=["res://.godot/imported/mdl-slumtown_sewer_brick.jpg-73086ce2c28a5427bda655dbb9540460.s3tc.ctex"]
+source_file="res://models/Maps/slumtown/mdl-slumtown_sewer_brick.jpg"
+dest_files=["res://.godot/imported/mdl-slumtown_sewer_brick.jpg-fda2641731a6dafd252bf4af790de637.s3tc.ctex"]
 
 [params]
 

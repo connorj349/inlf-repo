@@ -1,15 +1,13 @@
-[gd_scene load_steps=42 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=37 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/game/characters/Movement.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
 [ext_resource type="PackedScene" uid="uid://cdoq8vp2mm8u1" path="res://scenes/game/characters/player/player_dead.tscn" id="2_lucr1"]
-[ext_resource type="PackedScene" uid="uid://iqh4xsy8co44" path="res://scenes/game/gameobjects/blood_circle.tscn" id="3_phwr5"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/armor.tscn" id="3_rixhc"]
 [ext_resource type="Script" path="res://scenes/game/item/item_data_weapon.gd" id="4"]
 [ext_resource type="Resource" uid="uid://ct8lqjd8asf2c" path="res://scenes/game/item/items/shotgun.tres" id="6"]
 [ext_resource type="Texture2D" uid="uid://clgjw8wxkuusx" path="res://assets/textures/shotgun-sheet.png" id="7"]
-[ext_resource type="PackedScene" path="res://scenes/game/inventory/hotbar_inventory.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://dxrcx1liop62p" path="res://scenes/game/inventory/hotbar_inventory.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://csgmb3e5wy837" path="res://assets/textures/punch-sheet.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://br5grrh1ej20j" path="res://assets/textures/panel_rect.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="11"]
@@ -19,14 +17,14 @@
 [ext_resource type="Script" path="res://scenes/game/characters/player/player.gd" id="15"]
 [ext_resource type="Theme" path="res://assets/themes/player_hud_bars_theme.tres" id="16"]
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="18"]
-[ext_resource type="Script" path="res://ui/textured_ui_bar.gd" id="19"]
+[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="18_fpf0a"]
 [ext_resource type="AudioStream" uid="uid://74ffi73b3myc" path="res://assets/audio/player/weapons/player_fists_swing.wav" id="21"]
 [ext_resource type="AudioStream" uid="uid://s3aac53x8yi1" path="res://assets/audio/player/weapons/shotgun/player_shotgun_shot.wav" id="22"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
-radius = 1.0
 
 [sub_resource type="BoxShape3D" id="2"]
+size = Vector3(0.5, 0.5, 1)
 
 [sub_resource type="Resource" id="25"]
 script = ExtResource("4")
@@ -201,91 +199,6 @@ _data = {
 "idle": SubResource("15")
 }
 
-[sub_resource type="Animation" id="23"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:shape:height")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape3D:shape:radius")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-
-[sub_resource type="Animation" id="24"]
-resource_name = "crouch"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 1, 0), Vector3(0, 0.25, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:shape:height")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape3D:shape:radius")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.5]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_iv7wh"]
-_data = {
-"RESET": SubResource("23"),
-"crouch": SubResource("24")
-}
-
 [sub_resource type="StyleBoxFlat" id="27"]
 bg_color = Color(0, 0, 0, 0.705882)
 
@@ -321,24 +234,30 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "interact_area", "health", "armor", "hint_raycast", "pickup_raycast", "hold_object_pos", "weapon_manager", "health_bar", "pox_bar", "armor_bar")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health", "armor", "head", "camera", "camera_smooth", "interact_area", "hint_raycast", "pickup_raycast", "hold_object_pos", "weapon_manager", "health_bar", "pox_bar", "armor_bar", "ground_raycast", "stairs_ahead_raycast", "stairs_below_raycast")]
 collision_layer = 8
 script = ExtResource("15")
-mouse_sensitivity = 0.3
-head = NodePath("Head")
-camera = NodePath("Head/Camera3D")
-interact_area = NodePath("Head/Camera3D/InteractArea")
 health = NodePath("Health")
 armor = NodePath("Armor")
-hint_raycast = NodePath("Head/Camera3D/HintObjRayCast")
-pickup_raycast = NodePath("Head/Camera3D/PickupRayCast")
-hold_object_pos = NodePath("Head/Camera3D/PickupRayCast/HoldObjectPosition")
-weapon_manager = NodePath("Head/Camera3D/WeaponManager")
+head = NodePath("HeadOriginalPosition")
+camera = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D")
+camera_smooth = NodePath("HeadOriginalPosition/Head/CameraSmooth")
+interact_area = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D/InteractArea")
+hint_raycast = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D/HintObjRayCast")
+pickup_raycast = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D/PickupRayCast")
+hold_object_pos = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D/PickupRayCast/HoldObjectPosition")
+weapon_manager = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager")
 health_bar = NodePath("UI/Bars/health_pox/health_bar")
 pox_bar = NodePath("UI/Bars/health_pox/pox_bar")
 armor_bar = NodePath("UI/Bars/health_pox/armor_bar")
 player_dead_prefab = ExtResource("2_lucr1")
-blood_circle_prefab = ExtResource("3_phwr5")
+ground_raycast = NodePath("GroundRaycast")
+stairs_ahead_raycast = NodePath("StairsAheadRaycast3D")
+stairs_below_raycast = NodePath("StairsBelowRaycast3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("1")
 
 [node name="Health" parent="." instance=ExtResource("2_7n873")]
 allowed_max_health = 25
@@ -346,64 +265,71 @@ allowed_max_health = 25
 [node name="Armor" parent="." instance=ExtResource("3_rixhc")]
 max_armor = 25
 
-[node name="Movement" parent="." instance=ExtResource("2")]
+[node name="GroundRaycast" type="RayCast3D" parent="."]
+target_position = Vector3(0, -999, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("1")
+[node name="StairsAheadRaycast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.55, 0)
 
-[node name="feet" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+[node name="StairsBelowRaycast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, -0.75, 0)
 
-[node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="HeadOriginalPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
+[node name="Head" type="Node3D" parent="HeadOriginalPosition"]
+unique_name_in_owner = true
+
+[node name="CameraSmooth" type="Node3D" parent="HeadOriginalPosition/Head"]
+
+[node name="Camera3D" type="Camera3D" parent="HeadOriginalPosition/Head/CameraSmooth"]
 cull_mask = 1048571
 far = 75.0
 
-[node name="HintObjRayCast" type="RayCast3D" parent="Head/Camera3D"]
+[node name="HintObjRayCast" type="RayCast3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D"]
 target_position = Vector3(0, 0, -3)
 collision_mask = 2
 
-[node name="PickupRayCast" type="RayCast3D" parent="Head/Camera3D"]
+[node name="PickupRayCast" type="RayCast3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D"]
 target_position = Vector3(0, 0, -3)
 collision_mask = 2
 
-[node name="HoldObjectPosition" type="Node3D" parent="Head/Camera3D/PickupRayCast"]
+[node name="HoldObjectPosition" type="Node3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/PickupRayCast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -1.5)
 
-[node name="InteractArea" type="Area3D" parent="Head/Camera3D"]
+[node name="InteractArea" type="Area3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/InteractArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/InteractArea"]
 shape = SubResource("2")
 
-[node name="WeaponManager" type="Node3D" parent="Head/Camera3D"]
+[node name="WeaponManager" type="Node3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D"]
 script = ExtResource("14")
 
-[node name="wep_fists" type="Node3D" parent="Head/Camera3D/WeaponManager"]
+[node name="wep_fists" type="Node3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager"]
 script = ExtResource("13")
 is_melee = true
 item_weapon_data = SubResource("25")
 
-[node name="RangeRayCast" type="RayCast3D" parent="Head/Camera3D/WeaponManager/wep_fists"]
+[node name="RangeRayCast" type="RayCast3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_fists"]
 target_position = Vector3(0, 0, -3)
 collision_mask = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/WeaponManager/wep_fists"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_fists"]
 libraries = {
 "": SubResource("AnimationLibrary_1i5p2")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager/wep_fists"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_fists"]
 stream = ExtResource("21")
 bus = &"SoundFX"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera3D/WeaponManager/wep_fists"]
+[node name="CanvasLayer" type="CanvasLayer" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_fists"]
 
-[node name="Control" type="Control" parent="Head/Camera3D/WeaponManager/wep_fists/CanvasLayer"]
+[node name="Control" type="Control" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_fists/CanvasLayer"]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -413,30 +339,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Head/Camera3D/WeaponManager/wep_fists/CanvasLayer/Control"]
+[node name="Sprite2D" type="Sprite2D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_fists/CanvasLayer/Control"]
 position = Vector2(0, -90)
 texture = ExtResource("9")
 hframes = 4
 
-[node name="wep_shotgun" type="Node3D" parent="Head/Camera3D/WeaponManager"]
+[node name="wep_shotgun" type="Node3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager"]
 script = ExtResource("13")
 item_weapon_data = ExtResource("6")
 
-[node name="RangeRayCast" type="RayCast3D" parent="Head/Camera3D/WeaponManager/wep_shotgun"]
+[node name="RangeRayCast" type="RayCast3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_shotgun"]
 target_position = Vector3(0, 0, -10)
 collision_mask = 3
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Head/Camera3D/WeaponManager/wep_shotgun"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_shotgun"]
 stream = ExtResource("22")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/WeaponManager/wep_shotgun"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_shotgun"]
 libraries = {
 "": SubResource("AnimationLibrary_ecwd5")
 }
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera3D/WeaponManager/wep_shotgun"]
+[node name="CanvasLayer" type="CanvasLayer" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_shotgun"]
 
-[node name="Control" type="Control" parent="Head/Camera3D/WeaponManager/wep_shotgun/CanvasLayer"]
+[node name="Control" type="Control" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_shotgun/CanvasLayer"]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -446,22 +372,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Head/Camera3D/WeaponManager/wep_shotgun/CanvasLayer/Control"]
+[node name="Sprite2D" type="Sprite2D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_shotgun/CanvasLayer/Control"]
 position = Vector2(0, -90)
 texture = ExtResource("7")
 hframes = 5
 
-[node name="muzzle_flash" type="OmniLight3D" parent="Head/Camera3D"]
+[node name="muzzle_flash" type="OmniLight3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.3)
 visible = false
 light_color = Color(1, 0.87451, 0.572549, 1)
 light_energy = 5.0
 omni_range = 10.0
-
-[node name="CrouchAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_iv7wh")
-}
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 0
@@ -492,7 +413,7 @@ texture_under = ExtResource("18")
 texture_progress = ExtResource("11")
 tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0.627451, 0.0901961, 0.0901961, 1)
-script = ExtResource("19")
+script = ExtResource("18_fpf0a")
 
 [node name="pox_bar" type="TextureProgressBar" parent="UI/Bars/health_pox"]
 layout_mode = 2
@@ -504,7 +425,7 @@ fill_mode = 1
 nine_patch_stretch = true
 texture_progress = ExtResource("11")
 tint_progress = Color(0.623529, 0.67451, 0, 1)
-script = ExtResource("19")
+script = ExtResource("18_fpf0a")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="UI/Bars/health_pox/pox_bar"]
 layout_mode = 0
@@ -550,7 +471,7 @@ texture_under = ExtResource("18")
 texture_progress = ExtResource("11")
 tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0, 0.0352941, 0.513726, 1)
-script = ExtResource("19")
+script = ExtResource("18_fpf0a")
 
 [node name="Label" type="Label" parent="UI/Bars/health_pox/armor_bar"]
 layout_mode = 0
@@ -565,7 +486,7 @@ offset_top = 5.0
 offset_right = 21.0
 offset_bottom = 21.0
 
-[node name="Notifications" type="Control" parent="UI"]
+[node name="Notifications" type="Control" parent="UI" node_paths=PackedStringArray("notifications_text")]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
@@ -573,6 +494,7 @@ anchor_bottom = 1.0
 grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("12")
+notifications_text = NodePath("PanelContainer/MarginContainer/RichTextLabel")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/Notifications"]
 layout_mode = 0

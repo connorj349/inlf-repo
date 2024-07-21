@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="2"]
-[ext_resource type="Script" path="res://ui/textured_ui_bar.gd" id="3"]
+[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="3"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/resource_nodes/resource_node.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://b0a3y4a4sw1bl" path="res://scenes/game/item/pick_up/pickup.tscn" id="4_jus50"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://duver3cf0vopt" path="res://models/boulder/mdl-boulder.tscn" id="7"]
 [ext_resource type="Resource" uid="uid://uf65hp2jic1g" path="res://scenes/game/item/items/metal_frag.tres" id="8"]
 [ext_resource type="PackedScene" path="res://scenes/game/effects/blood_spray.tscn" id="9"]
+
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.2, 1.2, 1.2)

@@ -134,6 +134,7 @@ right_click={
 
 [physics]
 
+3d/default_gravity=12.0
 common/enable_pause_aware_picking=true
 
 [rendering]

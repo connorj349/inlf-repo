@@ -3,19 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhjm8iquj4xa4"
-path.s3tc="res://.godot/imported/mdl-slumtown_grass.jpg-93ade23b11b8b81747171c59bbfe1d7d.s3tc.ctex"
+path.s3tc="res://.godot/imported/mdl-slumtown_grass.jpg-4bccf253f9d88a18654d23664738508f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "0d16ebadc2828bb5c7261da4af0c3459"
+"md5": "1720936515289f710f583f2a7171cdcd"
 }
 
 [deps]
 
-source_file="res://models/maps/slumtown/mdl-slumtown_grass.jpg"
-dest_files=["res://.godot/imported/mdl-slumtown_grass.jpg-93ade23b11b8b81747171c59bbfe1d7d.s3tc.ctex"]
+source_file="res://models/Maps/slumtown/mdl-slumtown_grass.jpg"
+dest_files=["res://.godot/imported/mdl-slumtown_grass.jpg-4bccf253f9d88a18654d23664738508f.s3tc.ctex"]
 
 [params]
 

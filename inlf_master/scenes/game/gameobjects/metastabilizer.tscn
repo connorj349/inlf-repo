@@ -2,13 +2,14 @@
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="2"]
-[ext_resource type="Script" path="res://ui/textured_ui_bar.gd" id="3"]
+[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="3"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/metastabilizer.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="5"]
 [ext_resource type="PackedScene" path="res://models/metastabilizer/mdl-metastabilizer.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="7"]
 [ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://scenes/game/item/items/bio_fuel.tres" id="8"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="9"]
+
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.5, 2, 1.5)

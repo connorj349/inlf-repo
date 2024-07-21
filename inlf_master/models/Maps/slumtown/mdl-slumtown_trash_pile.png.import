@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3fwuer2rbqmd"
-path.s3tc="res://.godot/imported/mdl-slumtown_trash_pile.png-fd8665d5ad201a9ab97623898cd4e39b.s3tc.ctex"
+path.s3tc="res://.godot/imported/mdl-slumtown_trash_pile.png-0d85d6bfbbd0dc210c167fd270e9b58c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://models/maps/slumtown/mdl-slumtown_trash_pile.png"
-dest_files=["res://.godot/imported/mdl-slumtown_trash_pile.png-fd8665d5ad201a9ab97623898cd4e39b.s3tc.ctex"]
+source_file="res://models/Maps/slumtown/mdl-slumtown_trash_pile.png"
+dest_files=["res://.godot/imported/mdl-slumtown_trash_pile.png-0d85d6bfbbd0dc210c167fd270e9b58c.s3tc.ctex"]
 
 [params]
 

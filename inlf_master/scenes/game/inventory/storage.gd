@@ -6,7 +6,7 @@ signal toggle_inventory(external_inventory_owner)
 @export var inventory_data: Resource
 @export var item_datas: Array[ItemData] # change to loot_table # (Array, Resource)
 @export var reset_time: float = 300.0 # time until the inventory resets itself; default to 5 minutes
-@export var does_reset: bool = false # determines if this storage container will reset its inventory and repopulate with new
+@export var does_reset = false # determines if this storage container will reset its inventory and repopulate with new
 
 @onready var sound_queue = $SoundQueue
 
