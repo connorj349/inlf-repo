@@ -1,9 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=36 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
 [ext_resource type="PackedScene" uid="uid://cdoq8vp2mm8u1" path="res://scenes/game/characters/player/player_dead.tscn" id="2_lucr1"]
-[ext_resource type="PackedScene" path="res://scenes/game/characters/armor.tscn" id="3_rixhc"]
 [ext_resource type="Script" path="res://scenes/game/item/item_data_weapon.gd" id="4"]
 [ext_resource type="Resource" uid="uid://ct8lqjd8asf2c" path="res://scenes/game/item/items/shotgun.tres" id="6"]
 [ext_resource type="Texture2D" uid="uid://clgjw8wxkuusx" path="res://assets/textures/shotgun-sheet.png" id="7"]
@@ -210,6 +209,24 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/35/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/35/0 = Vector2(0, 0)
+cache/0/35/0/ascent = 0.0
+cache/0/35/0/descent = 0.0
+cache/0/35/0/underline_position = 0.0
+cache/0/35/0/underline_thickness = 0.0
+cache/0/35/0/scale = 1.0
+cache/0/35/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/35/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/35/0/kerning_overrides/35/0 = Vector2(0, 0)
 
 [sub_resource type="FontFile" id="28"]
 fallbacks = Array[Font]([ExtResource("1")])
@@ -219,6 +236,14 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/35/0 = Vector2(0, 0)
+cache/0/35/0/ascent = 0.0
+cache/0/35/0/descent = 0.0
+cache/0/35/0/underline_position = 0.0
+cache/0/35/0/underline_thickness = 0.0
+cache/0/35/0/scale = 1.0
+cache/0/35/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/35/0/kerning_overrides/35/0 = Vector2(0, 0)
 
 [sub_resource type="StyleBoxTexture" id="29"]
 texture = ExtResource("10")
@@ -233,12 +258,71 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/35/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/45/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/35/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/45/0 = Vector2(0, 0)
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/25/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/35/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/45/0 = Vector2(0, 0)
+cache/0/35/0/ascent = 0.0
+cache/0/35/0/descent = 0.0
+cache/0/35/0/underline_position = 0.0
+cache/0/35/0/underline_thickness = 0.0
+cache/0/35/0/scale = 1.0
+cache/0/35/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/35/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/35/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/35/0/kerning_overrides/35/0 = Vector2(0, 0)
+cache/0/35/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/35/0/kerning_overrides/45/0 = Vector2(0, 0)
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+cache/0/40/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/35/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/40/0/kerning_overrides/45/0 = Vector2(0, 0)
+cache/0/45/0/ascent = 0.0
+cache/0/45/0/descent = 0.0
+cache/0/45/0/underline_position = 0.0
+cache/0/45/0/underline_thickness = 0.0
+cache/0/45/0/scale = 1.0
+cache/0/45/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/45/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/45/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/45/0/kerning_overrides/35/0 = Vector2(0, 0)
+cache/0/45/0/kerning_overrides/40/0 = Vector2(0, 0)
+cache/0/45/0/kerning_overrides/45/0 = Vector2(0, 0)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health", "armor", "head", "camera", "camera_smooth", "interact_area", "hint_raycast", "pickup_raycast", "hold_object_pos", "weapon_manager", "health_bar", "pox_bar", "armor_bar", "ground_raycast", "stairs_ahead_raycast", "stairs_below_raycast")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health", "head", "camera", "camera_smooth", "interact_area", "hint_raycast", "pickup_raycast", "hold_object_pos", "weapon_manager", "health_bar", "pox_bar", "armor_bar", "ground_raycast", "stairs_ahead_raycast", "stairs_below_raycast")]
 collision_layer = 8
 script = ExtResource("15")
 health = NodePath("Health")
-armor = NodePath("Armor")
 head = NodePath("HeadOriginalPosition")
 camera = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D")
 camera_smooth = NodePath("HeadOriginalPosition/Head/CameraSmooth")
@@ -261,9 +345,6 @@ shape = SubResource("1")
 
 [node name="Health" parent="." instance=ExtResource("2_7n873")]
 allowed_max_health = 25
-
-[node name="Armor" parent="." instance=ExtResource("3_rixhc")]
-max_armor = 25
 
 [node name="GroundRaycast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -999, 0)
@@ -290,6 +371,7 @@ far = 75.0
 [node name="HintObjRayCast" type="RayCast3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D"]
 target_position = Vector3(0, 0, -3)
 collision_mask = 2
+collide_with_areas = true
 
 [node name="PickupRayCast" type="RayCast3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D"]
 target_position = Vector3(0, 0, -3)
@@ -340,7 +422,8 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_fists/CanvasLayer/Control"]
-position = Vector2(0, -90)
+position = Vector2(0, -270)
+scale = Vector2(3, 3)
 texture = ExtResource("9")
 hframes = 4
 
@@ -373,7 +456,8 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_shotgun/CanvasLayer/Control"]
-position = Vector2(0, -90)
+position = Vector2(0, -269)
+scale = Vector2(3, 3)
 texture = ExtResource("7")
 hframes = 5
 
@@ -391,10 +475,11 @@ layer = 0
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -140.0
-offset_top = 10.0
-offset_right = -12.0
-offset_bottom = 26.0
+offset_left = -430.0
+offset_top = 32.0
+offset_right = -30.0
+offset_bottom = 64.0
+grow_horizontal = 0
 
 [node name="health_pox" type="PanelContainer" parent="UI/Bars"]
 layout_mode = 2
@@ -449,6 +534,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme_override_fonts/font = SubResource("28")
+theme_override_font_sizes/font_size = 35
 text = "blood"
 
 [node name="Label4" type="Label" parent="UI/Bars/health_pox/pox_bar/VBoxContainer"]
@@ -474,11 +560,17 @@ tint_progress = Color(0, 0.0352941, 0.513726, 1)
 script = ExtResource("18_fpf0a")
 
 [node name="Label" type="Label" parent="UI/Bars/health_pox/armor_bar"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = SubResource("8")
+theme_override_font_sizes/font_size = 35
 text = "carapace"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HotBarInventory" parent="UI" instance=ExtResource("8")]
 offset_left = 5.0
@@ -497,11 +589,13 @@ script = ExtResource("12")
 notifications_text = NodePath("PanelContainer/MarginContainer/RichTextLabel")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI/Notifications"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -50.0
-offset_right = 100.0
+offset_top = -200.0
+offset_right = 550.0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("29")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Notifications/PanelContainer"]
@@ -512,4 +606,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme_override_fonts/normal_font = SubResource("20")
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
+text = "test text here"

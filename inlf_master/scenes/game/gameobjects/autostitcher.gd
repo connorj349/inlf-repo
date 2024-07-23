@@ -1,23 +1,21 @@
 extends Interactable
 
-@export var heal_cost: int = 50 #how many bones to heal
-@export var heal_amount: int = 1 #amount to heal player per tick
+@export var heal_cost: int = 50 # how many bones to heal
+@export var heal_amount: int = 1 # amount to heal player per tick
+@export var blood_effect: PackedScene
 
 @onready var heal_area = $Area3D
 @onready var timer = $Timer
 @onready var healing_loop = $HealingLoop
 @onready var hit_sound = $SoundQueue3D
 
-@export var blood_effect: PackedScene
-
 func _ready():
 	heal_area.connect("body_exited", Callable(self, "stop_healing")) #stop the healing process if anything leaves area
 	randomize()
 
-func on_hurt(_amount): #if caught will be attacked by sanitars
+func on_hurt(_amount): # if caught will be attacked by sanitars
 	hit_sound.PlaySoundRange(0.9, 1.1)
-	#spawn spark particle effect
-	# add an animation to the stitchers on the machine
+	# spawn spark particle effect
 	var random_hit_result = randf()
 	if random_hit_result < 0.8:
 		# 80% chance of being returned; nothing happens

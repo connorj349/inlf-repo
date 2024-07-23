@@ -1,11 +1,12 @@
 extends HintObject
 
-@onready var timer = $ProcessTimer
-@onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-@onready var item_spawn_point = $ItemSpawnPoint
+@export var prog_bar: ProgressBar
 
 var current_item_data
 var count
+
+@onready var timer = $ProcessTimer
+@onready var item_spawn_point = $ItemSpawnPoint
 
 func _ready():
 	prog_bar.init(0, timer.wait_time)

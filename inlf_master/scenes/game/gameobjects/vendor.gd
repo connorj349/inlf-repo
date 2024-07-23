@@ -17,7 +17,6 @@ func _interact(_actor):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 func toggle_window():
-	#if Globals.current_ui.visible:
 	#SoundManager.PlayVendorUI_Open
 	panel.hide()
 

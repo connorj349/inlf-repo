@@ -11,10 +11,10 @@ func _ready():
 # warning-ignore:return_value_discarded
 	Globals.connect("on_pop_notification", Callable(self, "add_notification"))
 	remove_info_timer = Timer.new()
+	add_child(remove_info_timer)
 	remove_info_timer.wait_time = 5.0
 # warning-ignore:return_value_discarded
 	remove_info_timer.connect("timeout", Callable(self, "remove_notification"))
-	add_child(remove_info_timer)
 
 func add_notification(text):
 	remove_info_timer.start()

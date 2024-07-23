@@ -1,49 +1,55 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://p07bx43idc15"]
 
 [ext_resource type="Texture2D" uid="uid://bwvlhuc6m5th2" path="res://assets/textures/eff_splat_grnd.png" id="1"]
 
-
-[sub_resource type="StandardMaterial3D" id=1]
-flags_transparent = true
-flags_unshaded = true
+[sub_resource type="StandardMaterial3D" id="1"]
+transparency = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-params_billboard_mode = 1
-albedo_texture = ExtResource( 1 )
+albedo_texture = ExtResource("1")
+billboard_mode = 1
 
-[sub_resource type="Gradient" id=2]
-colors = PackedColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
+[sub_resource type="Curve" id="Curve_t38k0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.637681, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="GradientTexture2D" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="CurveTexture" id="CurveTexture_8qqv7"]
+curve = SubResource("Curve_t38k0")
 
-[sub_resource type="Curve" id=4]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.481481, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.56126, 0.0, 0, 0 ]
+[sub_resource type="Gradient" id="Gradient_td1q0"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qee21"]
+gradient = SubResource("Gradient_td1q0")
 
-[sub_resource type="ParticleProcessMaterial" id=6]
-direction = Vector3( 0, 1, 0 )
-initial_velocity = 5.0
-scale = 0.2
-scale_curve = SubResource( 5 )
-color = Color( 0.109804, 0, 0, 1 )
-color_ramp = SubResource( 3 )
+[sub_resource type="Curve" id="4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.543478, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.56126, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="QuadMesh" id=7]
+[sub_resource type="CurveTexture" id="5"]
+curve = SubResource("4")
+
+[sub_resource type="ParticleProcessMaterial" id="6"]
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_curve = SubResource("5")
+color = Color(0.637542, 0, 0.058102, 1)
+color_ramp = SubResource("GradientTexture1D_qee21")
+alpha_curve = SubResource("CurveTexture_8qqv7")
+
+[sub_resource type="QuadMesh" id="7"]
 
 [node name="blood_spray" type="Node3D"]
 
-[node name="Particles" type="Particles" parent="."]
-material_override = SubResource( 1 )
+[node name="Particles" type="GPUParticles3D" parent="."]
+material_override = SubResource("1")
 emitting = false
-amount = 16
 one_shot = true
 explosiveness = 0.76
 fixed_fps = 60
-local_coords = false
-process_material = SubResource( 6 )
-draw_pass_1 = SubResource( 7 )
+process_material = SubResource("6")
+draw_pass_1 = SubResource("7")
 
 [node name="DestroyTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -56,4 +62,4 @@ one_shot = true
 autostart = true
 
 [connection signal="timeout" from="DestroyTimer" to="." method="queue_free"]
-[connection signal="timeout" from="StartTimer" to="Particles" method="set_emitting" binds= [ true ]]
+[connection signal="timeout" from="StartTimer" to="Particles" method="set_emitting" binds= [true]]

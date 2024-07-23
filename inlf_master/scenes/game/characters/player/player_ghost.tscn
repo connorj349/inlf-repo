@@ -15,7 +15,6 @@
 collision_layer = 4
 script = ExtResource("1")
 possible_noises = Array[AudioStream]([ExtResource("4"), ExtResource("6"), ExtResource("5"), ExtResource("3")])
-mouse_sensitivity = 0.3
 
 [node name="Head" type="Node3D" parent="."]
 

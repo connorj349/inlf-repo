@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://diw2ptb001gas"]
 
-[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/vendor.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/game/inventory/inventory_slot.tscn" id="2_pgt2d"]
+[ext_resource type="PackedScene" uid="uid://cpok7107bwsa8" path="res://scenes/game/inventory/inventory_slot.tscn" id="2_pgt2d"]
+[ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_d5qj8"]
 [ext_resource type="PackedScene" uid="uid://t6wdb2br7u17" path="res://assets/models/ticket-machine.glb" id="5"]
 
 [sub_resource type="BoxShape3D" id="1"]
@@ -13,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Charges:theme_override_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,23 +25,24 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Name:theme_override_colors/font_color")
+tracks/1/path = NodePath("CanvasLayer:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="6"]
 resource_name = "fade_in"
 length = 0.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Charges:theme_override_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,14 +54,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/Name:theme_override_colors/font_color")
+tracks/1/path = NodePath("CanvasLayer:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eq81x"]
@@ -74,7 +75,7 @@ collision_layer = 2
 collision_mask = 8
 script = ExtResource("2")
 Slot = ExtResource("2_pgt2d")
-anim_player = NodePath("AnimationPlayer")
+anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -82,55 +83,28 @@ shape = SubResource("1")
 
 [node name="obj-ticket-machine" parent="." instance=ExtResource("5")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_eq81x")
-}
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)
 light_color = Color(0.054902, 1, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 4
+visible = false
 
-[node name="Info" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("1")
+[node name="HintObjectInterface" parent="CanvasLayer" instance=ExtResource("4_d5qj8")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -17.0
-offset_right = 75.0
-offset_bottom = 17.0
-mouse_filter = 2
+[node name="CanvasModulate" parent="CanvasLayer/HintObjectInterface" index="0"]
+color = Color(1, 1, 1, 0)
 
-[node name="Name" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "capitalist contraption"
+[node name="TitleLabel" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="0"]
+text = "capitalist contraption
+purchase goods"
 
-[node name="Charges" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "spend your hard earned bones on goods here"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HintObjectInterface"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_eq81x")
+}
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -145,24 +119,31 @@ mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
 visible = false
-layout_mode = 0
-anchor_left = 0.4
-anchor_top = 0.4
-anchor_right = 0.4
-anchor_bottom = 0.4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -15.0
 offset_top = -15.0
 offset_right = 15.0
 offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/PanelContainer/MarginContainer"]
 layout_mode = 2
 columns = 6
 
 [editable path="obj-ticket-machine"]
+[editable path="CanvasLayer/HintObjectInterface"]

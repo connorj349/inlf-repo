@@ -10,6 +10,8 @@ material_override = ExtResource("2")
 
 [node name="obj-boulder-rotting" parent="." index="1"]
 visible = false
+surface_material_override/0 = ExtResource("2")
 
 [node name="obj-boulder-rotten" parent="." index="2"]
 visible = false
+surface_material_override/0 = ExtResource("2")

@@ -18,11 +18,11 @@ func change_scene_to_file(path): # need to pass current scene to remove it
 	
 	if tips and tips.size() > 0:
 		var random_index = rng.randi_range(0, tips.size() - 1)
-		$Control/VBoxContainer2/TipValue.text = tips[random_index]
+		$MarginContainer/VBoxContainer3/VBoxContainer2/TipValue.text = tips[random_index]
 	
 	var level_name = path.rsplit("/", true, 1)
 	var level_name_without_ext = level_name[1].rsplit(".", true, 1)
-	$Control/VBoxContainer/LevelName.text = level_name_without_ext[0] # level_list_with_ext[0]
+	$MarginContainer/VBoxContainer3/VBoxContainer/LevelName.text = level_name_without_ext[0] # level_list_with_ext[0]
 	
 	while Time.get_ticks_msec() - t < max_load_time: # run loop until max_load_time has been reached(loading takes too long)
 		var err = ResourceLoader.load_threaded_get_status(path)

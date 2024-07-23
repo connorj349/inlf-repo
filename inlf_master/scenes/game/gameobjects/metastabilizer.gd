@@ -1,10 +1,10 @@
 extends Interactable
 
 @export var repair_item_data: Resource
+@export var bar: ProgressBar
+@export var status_label: Label
 
 @onready var health = $Health
-@onready var bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-@onready var status_label = $CanvasLayer/Info/VBoxContainer/Label
 @onready var spot_light = $SpotLight3D
 
 var active = true

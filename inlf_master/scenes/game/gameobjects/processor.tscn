@@ -1,14 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b7nxt2hc5tvjo"]
+[gd_scene load_steps=11 format=3 uid="uid://b7nxt2hc5tvjo"]
 
-[ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bk4i8g2xtfo5b" path="res://models/processor/mdl-processor.tscn" id="3"]
 [ext_resource type="AudioStream" uid="uid://b28rn55hxvivr" path="res://assets/audio/machine/machine_loop.wav" id="4"]
-[ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="7"]
-[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="8"]
-[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="9"]
+[ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_j733o"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/processor.gd" id="10"]
-
 
 [sub_resource type="BoxShape3D" id="9"]
 size = Vector3(3, 3, 5)
@@ -21,7 +17,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Name:theme_override_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,42 +25,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0.639216, 0.129412, 0)]
 }
 
 [sub_resource type="Animation" id="8"]
@@ -73,7 +33,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Name:theme_override_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,42 +42,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0.639216, 0.129412, 0), Color(0, 0.639216, 0.129412, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uy4op"]
 _data = {
@@ -125,10 +49,12 @@ _data = {
 "fade_in": SubResource("8")
 }
 
-[node name="processor" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
+[node name="processor" type="StaticBody3D" node_paths=PackedStringArray("prog_bar", "anim_player")]
+collision_layer = 3
 collision_mask = 0
 script = ExtResource("10")
-anim_player = NodePath("AnimationPlayer")
+prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
+anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="mdl-processor" parent="." instance=ExtResource("3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -151,60 +77,22 @@ one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Info" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("9")
+[node name="HintObjectInterface" parent="CanvasLayer" instance=ExtResource("4_j733o")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -118.5
-offset_top = -32.0
-offset_right = 118.5
-offset_bottom = 32.0
-mouse_filter = 2
+[node name="CanvasModulate" parent="CanvasLayer/HintObjectInterface" index="0"]
+color = Color(1, 1, 1, 0)
 
-[node name="Name" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "processor
-insert certain items to be processed into other more useful items"
+[node name="TitleLabel" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="0"]
+text = "processor"
 
-[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer/Info/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-step = 0.05
-value = 50.0
-nine_patch_stretch = true
-texture_under = ExtResource("1")
-texture_progress = ExtResource("7")
-tint_under = Color(0.227451, 0.227451, 0.227451, 0)
-tint_progress = Color(0, 0.639216, 0.129412, 0)
-script = ExtResource("8")
+[node name="StatBar" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="1"]
+visible = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer/ProgressBar"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "progress"
+[node name="Label" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar" index="0"]
+text = ""
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HintObjectInterface"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_uy4op")
 }
@@ -218,3 +106,5 @@ bus = &"SoundFX"
 
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]
 [connection signal="timeout" from="ProcessTimer" to="." method="_on_ProcessTimer_timeout"]
+
+[editable path="CanvasLayer/HintObjectInterface"]

@@ -1,15 +1,16 @@
 extends CharacterBody3D
 
+signal armor_changed
+
 const SPEED_WALK: float = 10.0
 const JUMP_VELOCITY: float = 5.0
 const FOOTSTEP_FREQUENCY: float = 25
-const SENSITIVITY: float = 0.3
+const SENSITIVITY: float = 0.1
 const MAX_STEP_HEIGHT: float = 0.5
 const CROUCH_TRANSLATE: float = 0.7
 const CROUCH_JUMP_ADD: float = CROUCH_TRANSLATE * 0.9
 
 @export var health: Node3D
-@export var armor: Node3D # make armor into a base var on the player
 @export var head: Node3D
 @export var camera: Camera3D
 @export var camera_smooth: Node3D
@@ -26,6 +27,11 @@ const CROUCH_JUMP_ADD: float = CROUCH_TRANSLATE * 0.9
 @export var stairs_ahead_raycast: RayCast3D
 @export var stairs_below_raycast: RayCast3D
 
+var armor: int = 0 :
+	set(_value):
+		armor = clampi(_value, 0, 100)
+		armor_changed.emit()
+		update_armor_bar_visibility()
 var pickup_object = null
 var speed
 var gravity = 9.8
@@ -38,8 +44,8 @@ var _saved_camera_global_pos = null
 @onready var _original_capsule_height = $CollisionShape3D.shape.height
 
 func _ready():
-	health.init() #setup sarting health
-	health.connect("health_changed", Callable(health_bar, "update_bar")) #setup healthbar connection
+	health.init()
+	health.connect("health_changed", Callable(health_bar, "update_bar"))
 	health.connect("max_health_changed", Callable(health_bar, "init").bind(health.health))
 	health.connect("max_health_changed", Callable(self, "update_health_and_pox_text_placement"))
 	health.connect("pox_changed", Callable(pox_bar, "update_bar"))
@@ -49,11 +55,9 @@ func _ready():
 	health_bar.init(health.health, health.max_health)
 	pox_bar.init(health.pox, health.allowed_max_health)
 	
-	armor.init()
-	armor_bar.init(armor.armor, armor.max_armor)
-	armor.connect("armor_changed", Callable(armor_bar, "update_bar"))
-	armor.connect("armor_changed", Callable(self, "update_armor_bar_visibility"))
-	update_armor_bar_visibility(armor.armor)
+	connect("armor_changed", Callable(armor_bar, "update_bar").bind(armor))
+	connect("armor_changed", Callable(self, "update_armor_bar_visibility"))
+	update_armor_bar_visibility()
 	
 	Globals.current_player = self
 
@@ -165,7 +169,7 @@ func _physics_process(delta):
 		if hint_raycast.is_colliding() and coll.has_method("_look_at"):
 			coll._look_at()
 
-# need to redo this, maybe use some lambdas?
+# need to redo this
 func update_health_and_pox_text_placement(_val):
 	for element in $UI/Bars/health_pox/pox_bar/VBoxContainer.get_children():
 		element.text = ""
@@ -183,16 +187,16 @@ func update_health_and_pox_text_placement(_val):
 		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label5.text = "POX"
 
 # use a lambda expression and connect to bar value changed
-func update_armor_bar_visibility(_val):
-	if armor.armor <= 0:
+func update_armor_bar_visibility():
+	if armor <= 0:
 		armor_bar.visible = false
 	else:
 		armor_bar.visible = true
 
 # used by all other objects that want to hurt the player
 func on_hurt(damage):
-	if armor.armor > 0:
-		armor.armor -= damage.amount
+	if armor > 0:
+		armor -= damage.amount
 	else:
 		deal_damage(damage)
 
@@ -206,7 +210,7 @@ func on_heal(amount):
 
 # used by some consumables
 func give_armor(amount):
-	armor.armor += amount
+	armor += amount
 
 # use functionality of items
 func use_slot_data(slot_data):

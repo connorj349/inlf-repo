@@ -1,12 +1,15 @@
 extends HintObject
 
 @export var fertilizer_item_data: ItemData
+@export var biomass_prog_bar: ProgressBar
+@export var production_prog_bar: ProgressBar
 
-@onready var biomass_prog_bar = $CanvasLayer/Control/VBoxContainer/ProgressBar
-@onready var production_prog_bar = $CanvasLayer/Control/VBoxContainer/ProductionProgressBar
+var biomass :
+	set(value):
+		biomass = clamp(value, 0, 100)
+		biomass_prog_bar.update_bar(biomass)
+
 @onready var timer = $CreateFertilizerTimer
-
-var biomass : set = set_biomass
 
 func _ready():
 	self.biomass = 0
@@ -36,7 +39,3 @@ func _on_CreateFertilizerTimer_timeout():
 			timer.stop()
 	else:
 		timer.stop()
-
-func set_biomass(value):
-	biomass = clamp(value, 0, 100)
-	biomass_prog_bar.update_bar(biomass)

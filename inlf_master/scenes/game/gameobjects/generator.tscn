@@ -1,15 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://r1okymmde6l8"]
+[gd_scene load_steps=13 format=3 uid="uid://r1okymmde6l8"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/generator.gd" id="1"]
-[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="2"]
-[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="3"]
-[ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="4"]
+[ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_f2ult"]
 [ext_resource type="PackedScene" uid="uid://dh21lv4hfv085" path="res://models/generator/mdl-generator.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="6"]
 [ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://scenes/game/item/items/bio_fuel.tres" id="7"]
-[ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="8"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/show_area_bounds.gd" id="9"]
-
 
 [sub_resource type="BoxShape3D" id="1"]
 resource_local_to_scene = true
@@ -20,7 +16,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
+tracks/0/path = NodePath("HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,42 +24,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Info/VBoxContainer/Name:theme_override_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Info/VBoxContainer/ProgressBar:tint_under")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Info/VBoxContainer/ProgressBar:tint_progress")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.901961, 0.784314, 0, 0)]
 }
 
 [sub_resource type="Animation" id="7"]
@@ -72,7 +32,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
+tracks/0/path = NodePath("HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,42 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Info/VBoxContainer/Name:theme_override_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Info/VBoxContainer/ProgressBar:tint_under")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Info/VBoxContainer/ProgressBar:tint_progress")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.901961, 0.784314, 0, 0), Color(0.901961, 0.784314, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_147cu"]
@@ -132,12 +56,13 @@ size = Vector3(4, 4, 4)
 resource_local_to_scene = true
 size = Vector3(2, 2, 2)
 
-[node name="Generator" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
+[node name="Generator" type="StaticBody3D" node_paths=PackedStringArray("prog_bar", "anim_player")]
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1")
 fuel_item_data = ExtResource("7")
-anim_player = NodePath("AnimationPlayer")
+prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
+anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="mdl-generator" parent="." instance=ExtResource("5")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
@@ -151,66 +76,29 @@ bus = &"SoundFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Info" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("3")
+[node name="HintObjectInterface" parent="CanvasLayer" instance=ExtResource("4_f2ult")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -93.0
-offset_top = -16.0
-offset_right = 93.0
-offset_bottom = 16.0
-mouse_filter = 2
+[node name="CanvasModulate" parent="CanvasLayer/HintObjectInterface" index="0"]
+color = Color(1, 1, 1, 0)
 
-[node name="Name" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-theme_override_colors/font_color = Color(1, 1, 1, 0)
+[node name="TitleLabel" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="0"]
 text = "generator
-give biofuel and interact with to startup machinery"
+fuel with biofuel"
 
-[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer/Info/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-step = 0.1
-nine_patch_stretch = true
-texture_under = ExtResource("4")
-texture_progress = ExtResource("8")
-tint_under = Color(0.227451, 0.227451, 0.227451, 0)
-tint_progress = Color(0.901961, 0.784314, 0, 0)
-script = ExtResource("2")
+[node name="StatBar" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="1"]
+visible = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer/ProgressBar"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
+[node name="Label" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar" index="0"]
 text = "fuel"
 
-[node name="FuelConsumeTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../CanvasLayer")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HintObjectInterface"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_147cu")
 }
+
+[node name="FuelConsumeTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="ItemDeposit" parent="." instance=ExtResource("6")]
 collision_layer = 0
@@ -231,3 +119,5 @@ shape = SubResource("9")
 
 [connection signal="timeout" from="FuelConsumeTimer" to="." method="_on_FuelConsumeTimer_timeout"]
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]
+
+[editable path="CanvasLayer/HintObjectInterface"]

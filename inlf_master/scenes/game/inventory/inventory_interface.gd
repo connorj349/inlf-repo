@@ -2,11 +2,11 @@ extends Control
 
 signal drop_slot_data(slot_data)
 
-@onready var player_inventory = $PlayerInventory
+@onready var player_inventory = $VBoxContainer/PlayerInventory
 @onready var grabbed_slot = $GrabbedSlot
 @onready var external_inventory = $ExternalInventory
-@onready var equip_inventory = $EquipInventory
-@onready var weapon_inventory = $WeaponInventory
+@onready var equip_inventory = $VBoxContainer/HBoxContainer/EquipInventory
+@onready var weapon_inventory = $VBoxContainer/HBoxContainer/WeaponInventory
 
 var grabbed_slot_data: SlotData = null
 var external_inventory_owner

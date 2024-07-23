@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/game/inventory/storage.gd" id="1"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://c0hvmkathob61" path="res://models/locker/mdl-locker.tscn" id="3"]
-[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_r74js"]
 [ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue.tscn" id="5"]
 
 [sub_resource type="Resource" id="5"]
@@ -19,7 +19,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Name:theme_override_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -35,7 +35,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/Name:theme_override_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,11 +52,11 @@ _data = {
 }
 
 [node name="Storage" type="StaticBody3D" node_paths=PackedStringArray("anim_player") groups=["external_inventory"]]
-collision_layer = 2
-collision_mask = 8
+collision_layer = 3
+collision_mask = 0
 script = ExtResource("1")
 inventory_data = SubResource("5")
-anim_player = NodePath("AnimationPlayer")
+anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="mdl-locker" parent="." instance=ExtResource("3")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
@@ -67,37 +67,16 @@ shape = SubResource("454")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Info" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4")
+[node name="HintObjectInterface" parent="CanvasLayer" instance=ExtResource("4_r74js")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -208.0
-offset_top = -69.0
-offset_right = 208.0
-offset_bottom = 69.0
-mouse_filter = 2
+[node name="CanvasModulate" parent="CanvasLayer/HintObjectInterface" index="0"]
+color = Color(1, 1, 1, 0)
 
-[node name="Name" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "Storage"
+[node name="TitleLabel" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="0"]
+text = "storage"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HintObjectInterface"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_vppli")
 }
@@ -112,3 +91,5 @@ Count = 3
 bus = &"SoundFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="CanvasLayer/HintObjectInterface"]

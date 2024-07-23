@@ -3,15 +3,13 @@ extends HintObject
 @export var accepted_biomass_item_data: Resource
 @export var dropped_seeds: Array[ItemData]
 @export var slime_item_data: Resource
+@export var hydration_prog_bar: ProgressBar
+@export var bio_prog_bar: ProgressBar
 
-@onready var hydration_prog_bar = $CanvasLayer/Control/VBoxContainer/HydrationProgressBar
-@onready var bio_prog_bar = $CanvasLayer/Control/VBoxContainer/BioProgressBar
 @onready var timer = $HydrationTimer
-
 @onready var water_handler = $WaterHandler
 
 var current_biomass = 0: set = set_current_biomass
-
 var rng = RandomNumberGenerator.new()
 
 func _ready():

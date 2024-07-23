@@ -2,35 +2,40 @@ extends Interactable
 
 @export var input_item_datas: Array[ItemData] #input item # (Array, Resource)
 @export var output_item_datas: Array[ItemData] #output item # (Array, Resource)
-@export var machine_name: String = "NULL"
 @export var production_time: float = 3.0 # time it takes to make item
 @export var payday: int = 0 # how much the player is paid out, maybe make this a constant in globals
-@export var required_role = Role.Role_Type.Worker # (Role.Role_Type)
+@export var prog_bar: ProgressBar
+@export var materials_label: Label
 
-@onready var timer = $ManufactureTimer
-
-# UI Elements
-@onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-@onready var name_plate = $CanvasLayer/Info/VBoxContainer/NameLabel
-@onready var materials_label = $CanvasLayer/Info/VBoxContainer/MaterialsLabel
 @onready var panel = $CanvasLayer/PanelContainer
 @onready var next_action_label = $CanvasLayer/PanelContainer/VBoxContainer/Label
-
-# Sounds
 @onready var accept_input = $AcceptSound
 @onready var machine_loop = $MachineLoop
+@onready var timer = $ManufactureTimer
 
 var rng = RandomNumberGenerator.new()
 
-var current_index : set = set_current_index
-var button_presses_remaining = 5
-var queued_items = 0
-var materials = 0: set = set_materials
+var current_index: int :
+	set(value):
+		match(value):
+			0:
+				next_action_label.text = "ASSEMBLE"
+			1:
+				next_action_label.text = "ALIGN"
+			2:
+				next_action_label.text = "CAUTERIZE"
+		current_index = clamp(value, 0, 2)
+
+var button_presses_remaining: int = 5
+var queued_items: int = 0
+var materials: int = 0 :
+	set(value):
+		materials = clamp(value, 0, 999)
+		materials_label.text = "Material: " + str(materials)
 
 func _ready():
 	self.current_index = 0
 	timer.wait_time = production_time # setup timer limit
-	name_plate.text = machine_name # setup nameplate
 	prog_bar.init(0, production_time) # init progress bar
 	rng.randomize()
 # warning-ignore:return_value_discarded
@@ -42,14 +47,15 @@ func _process(_delta): #update the manufacture progress bar onscreen
 	if timer.time_left > 0:
 		prog_bar.update_bar(timer.time_left)
 
+@warning_ignore("unused_parameter")
 func _interact(actor):
 	if can_interact:
-		if actor.role.role_type == required_role:
+		#if actor is PlayerWorker
 			panel.show()
 			if panel.visible:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-		else:
-			Globals.emit_signal("on_pop_notification", "I don't know how to use this machine.")
+		#else:
+			#Globals.emit_signal("on_pop_notification", "I don't know how to use this machine.")
 
 func button_press(index):
 	if !can_interact:
@@ -70,20 +76,6 @@ func button_press(index):
 		else:
 			pass
 			#Globals.current_player.hurt(damage)
-
-func set_current_index(value):
-	match(value):
-		0:
-			next_action_label.text = "ASSEMBLE"
-		1:
-			next_action_label.text = "ALIGN"
-		2:
-			next_action_label.text = "CAUTERIZE"
-	current_index = clamp(value, 0, 2)
-
-func set_materials(value):
-	materials = clamp(value, 0, 999)
-	materials_label.text = "Material: " + str(materials)
 
 func _on_ManufactureTimer_timeout():
 	queued_items -= 1

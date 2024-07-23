@@ -1,27 +1,41 @@
 extends Interactable
 
-# horizontal bars
-@onready var blood_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar
-@onready var water_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar
-@onready var fertilizer_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar
-@onready var exotic_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar
+@export var blood_prog_bar: ProgressBar
+@export var water_prog_bar: ProgressBar
+@export var fertilizer_prog_bar: ProgressBar
+@export var exotic_prog_bar: ProgressBar
+@export var growth_prog_bar: ProgressBar
+@export var player_use_damage: Damage
 
-#vertical bar
-@onready var growth_prog_bar = $CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar
+var blood :
+	set(value):
+		blood = clamp(value, 0, 100)
+		blood_prog_bar.update_bar(blood)
+
+var water :
+	set(value):
+		water = clamp(value, 0, 100)
+		water_prog_bar.update_bar(water)
+
+var fertilizer :
+	set(value):
+		fertilizer = clamp(value, 0, 100)
+		fertilizer_prog_bar.update_bar(fertilizer)
+
+var exotic :
+	set(value):
+		exotic = clamp(value, 0, 100)
+		exotic_prog_bar.update_bar(exotic)
+
+var growth :
+	set(value):
+		growth = clamp(value, 0, 100)
+		growth_prog_bar.update_bar(growth)
+
+var current_growing_seed_item_data = null
 
 @onready var spawn_point = $SpawnPoint
-
 @onready var resource_consume_timer = $ResourceConsumeTimer
-
-var blood : set = set_blood
-var water : set = set_water
-var fertilizer : set = set_fertilizer
-var exotic : set = set_exotic
-var growth : set = set_growth
-
-var current_growing_seed_item_data
-
-var player_use_damage = Damage.new()
 
 func _ready():
 	self.blood = 0
@@ -33,11 +47,10 @@ func _ready():
 	water_prog_bar.init(0, 100)
 	fertilizer_prog_bar.init(0, 100)
 	exotic_prog_bar.init(0, 100)
-	player_use_damage.amount = 10
 
 func _interact(_actor):
 	Globals.current_player.on_hurt(player_use_damage)
-	self.blood += 10
+	self.blood += player_use_damage.amount
 
 func _on_ItemDeposit_body_entered(body):
 	if body.is_in_group("pickup"):
@@ -95,23 +108,3 @@ func _on_ResourceConsumeTimer_timeout(): # also counts the vars that are not nee
 		self.growth += 1
 	else:
 		self.growth -= 2
-
-func set_blood(value):
-	blood = clamp(value, 0, 100)
-	blood_prog_bar.update_bar(blood)
-
-func set_water(value):
-	water = clamp(value, 0, 100)
-	water_prog_bar.update_bar(water)
-
-func set_fertilizer(value):
-	fertilizer = clamp(value, 0, 100)
-	fertilizer_prog_bar.update_bar(fertilizer)
-
-func set_exotic(value):
-	exotic = clamp(value, 0, 100)
-	exotic_prog_bar.update_bar(exotic)
-
-func set_growth(value):
-	growth = clamp(value, 0, 100)
-	growth_prog_bar.update_bar(growth)

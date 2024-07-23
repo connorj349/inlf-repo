@@ -1,25 +1,29 @@
-[gd_scene load_steps=15 format=3 uid="uid://bsqr7oaxve8ba"]
+[gd_scene load_steps=14 format=3 uid="uid://bsqr7oaxve8ba"]
 
 [ext_resource type="PackedScene" uid="uid://dobb0lqq3s5ih" path="res://models/machine/mdl-machine.tscn" id="1"]
-[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="3"]
-[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="4"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/production_machine.gd" id="5"]
 [ext_resource type="AudioStream" uid="uid://b28rn55hxvivr" path="res://assets/audio/machine/machine_loop.wav" id="6"]
+[ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="6_fr3as"]
 [ext_resource type="AudioStream" uid="uid://bkbonr5n6iila" path="res://assets/audio/machine/machine_accept_item.wav" id="7"]
+[ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="7_ahmk3"]
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="8"]
-[ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="9"]
-[ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="10"]
-
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.5, 3, 1.5)
+
+[sub_resource type="BoxShape3D" id="8"]
+size = Vector3(2.5, 3, 2.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4c0tk"]
+font = ExtResource("7_ahmk3")
+font_size = 25
 
 [sub_resource type="Animation" id="6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,54 +31,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/NameLabel:theme_override_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/MaterialsLabel:theme_override_colors/font_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.513726, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="7"]
@@ -83,7 +39,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar/Label:theme_override_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -92,54 +48,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Info/VBoxContainer/NameLabel:theme_override_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Info/VBoxContainer/MaterialsLabel:theme_override_colors/font_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_under")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Info/VBoxContainer/ProgressBar:tint_progress")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.513726, 0, 0, 0), Color(0.513726, 0, 0, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_imrx8"]
 _data = {
@@ -147,14 +55,13 @@ _data = {
 "fade_in": SubResource("7")
 }
 
-[sub_resource type="BoxShape3D" id="8"]
-size = Vector3(2.5, 3, 2.5)
-
-[node name="production_machine" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
-collision_layer = 2
-collision_mask = 8
+[node name="production_machine" type="StaticBody3D" node_paths=PackedStringArray("prog_bar", "materials_label", "anim_player")]
+collision_layer = 3
+collision_mask = 0
 script = ExtResource("5")
-anim_player = NodePath("AnimationPlayer")
+prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
+materials_label = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/TitleLabel2")
+anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="mdl-machine" parent="." instance=ExtResource("1")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
@@ -162,11 +69,6 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("1")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_imrx8")
-}
 
 [node name="ManufactureTimer" type="Timer" parent="."]
 
@@ -190,64 +92,32 @@ shape = SubResource("8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Info" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("3")
+[node name="HintObjectInterface" parent="CanvasLayer" instance=ExtResource("6_fr3as")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Info"]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -32.0
-offset_right = 75.0
-offset_bottom = 32.0
-mouse_filter = 2
+[node name="CanvasModulate" parent="CanvasLayer/HintObjectInterface" index="0"]
+color = Color(1, 1, 1, 0)
 
-[node name="NameLabel" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
+[node name="TitleLabel" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="0"]
+text = "machine_name
+creates good_name's"
+
+[node name="TitleLabel2" type="Label" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "machine name"
+label_settings = SubResource("LabelSettings_4c0tk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MaterialsLabel" type="Label" parent="CanvasLayer/Info/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 7
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "materials remaining: 0"
+[node name="StatBar" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="2"]
+visible = true
 
-[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer/Info/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-step = 0.1
-value = 50.0
-nine_patch_stretch = true
-texture_under = ExtResource("9")
-texture_progress = ExtResource("10")
-tint_under = Color(0.227451, 0.227451, 0.227451, 0)
-tint_progress = Color(0.513726, 0, 0, 0)
-script = ExtResource("4")
+[node name="Label" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar" index="0"]
+text = ""
 
-[node name="Label" type="Label" parent="CanvasLayer/Info/VBoxContainer/ProgressBar"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "progress"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HintObjectInterface"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_imrx8")
+}
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 visible = false
@@ -260,7 +130,6 @@ offset_left = -116.5
 offset_top = -32.0
 offset_right = 116.5
 offset_bottom = 32.0
-theme = ExtResource("3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
@@ -270,6 +139,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "Next Button to Press"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -298,3 +169,5 @@ text = "CAUTERIZE"
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Button" to="." method="button_press" binds= [0]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Button2" to="." method="button_press" binds= [1]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Button3" to="." method="button_press" binds= [2]]
+
+[editable path="CanvasLayer/HintObjectInterface"]

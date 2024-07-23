@@ -1,12 +1,12 @@
 extends Interactable
 
 @export var slot_data: Resource
-
-@onready var sprite_3d = $Sprite3D
-@onready var name_plate = $CanvasLayer/Info/VBoxContainer/Name
-@onready var sound_queue = $SoundQueue3D
+@export var name_plate: Label
 
 var factor = 1
+
+@onready var sprite_3d = $Sprite3D
+@onready var sound_queue = $SoundQueue3D
 
 func _ready():
 	sprite_3d.texture = slot_data.item_data.texture

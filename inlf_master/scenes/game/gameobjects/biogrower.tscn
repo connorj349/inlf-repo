@@ -2,26 +2,32 @@
 
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/biogrower.gd" id="2"]
-[ext_resource type="Theme" uid="uid://bssttqva474rg" path="res://assets/themes/hint_object_theme.tres" id="3"]
-[ext_resource type="Texture2D" uid="uid://cnh1v2mvn0d6h" path="res://assets/textures/window.png" id="4"]
+[ext_resource type="Script" path="res://global/data/damage.gd" id="2_1f7x4"]
 [ext_resource type="PackedScene" uid="uid://bk4i8g2xtfo5b" path="res://models/processor/mdl-processor.tscn" id="5"]
-[ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="6"]
-[ext_resource type="Texture2D" uid="uid://byyhtjiwrhrv8" path="res://assets/textures/panel_square.png" id="7"]
-[ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="8"]
-[ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="9"]
+[ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="5_imjnq"]
+[ext_resource type="Script" path="res://scenes/game/ui_bar.gd" id="6_xv4hy"]
+[ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="7_igao5"]
 
+[sub_resource type="Resource" id="Resource_jpqke"]
+script = ExtResource("2_1f7x4")
+type = 3
+amount = 5
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(3, 3, 5)
 
 [sub_resource type="BoxShape3D" id="2"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4c0tk"]
+font = ExtResource("7_igao5")
+font_size = 25
+
 [sub_resource type="Animation" id="6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/VBoxContainer/NameLabel:theme_override_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,174 +35,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar/Label:theme_override_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar/Label:theme_override_colors/font_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar/Label:theme_override_colors/font_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar/Label:theme_override_colors/font_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:tint_under")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:tint_progress")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.513726, 0, 0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar:tint_under")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar:tint_progress")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0.905882, 1, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar:tint_under")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar:tint_progress")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.65098, 0.458824, 0, 0)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar:tint_under")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar:tint_progress")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.87451, 0, 1, 0)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:tint_under")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:tint_progress")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.423529, 0.717647, 0.192157, 0)]
 }
 
 [sub_resource type="Animation" id="12"]
@@ -204,7 +42,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/VBoxContainer/NameLabel:theme_override_colors/font_color")
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -212,174 +50,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar/Label:theme_override_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar/Label:theme_override_colors/font_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar/Label:theme_override_colors/font_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar/Label:theme_override_colors/font_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:tint_under")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar:tint_progress")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.513726, 0, 0, 0), Color(0.513726, 0, 0, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar:tint_under")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar:tint_progress")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0.905882, 1, 0), Color(0, 0.905882, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar:tint_under")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar:tint_progress")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.65098, 0.458824, 0, 0), Color(0.65098, 0.458824, 0, 1)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar:tint_under")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar:tint_progress")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.87451, 0, 1, 0), Color(0.87451, 0, 1, 1)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:tint_under")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.227451, 0.227451, 0.227451, 0), Color(0.227451, 0.227451, 0.227451, 1)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/GrowthProgressBar:tint_progress")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.423529, 0.717647, 0.192157, 0), Color(0.423529, 0.717647, 0.192157, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pg7gf"]
@@ -388,11 +58,17 @@ _data = {
 "fade_in": SubResource("12")
 }
 
-[node name="BioGrower" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
-collision_layer = 2
-collision_mask = 8
+[node name="BioGrower" type="StaticBody3D" node_paths=PackedStringArray("blood_prog_bar", "water_prog_bar", "fertilizer_prog_bar", "exotic_prog_bar", "growth_prog_bar", "anim_player")]
+collision_layer = 3
+collision_mask = 0
 script = ExtResource("2")
-anim_player = NodePath("AnimationPlayer")
+blood_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
+water_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar3")
+fertilizer_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar2")
+exotic_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar4")
+growth_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VerticalBar")
+player_use_damage = SubResource("Resource_jpqke")
+anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="mdl-processor" parent="." instance=ExtResource("5")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -411,6 +87,8 @@ one_shot = true
 [node name="ResourceConsumeTimer" type="Timer" parent="."]
 
 [node name="ItemDeposit" parent="." instance=ExtResource("1")]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemDeposit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -1)
@@ -418,139 +96,89 @@ shape = SubResource("2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3")
+[node name="HintObjectInterface" parent="CanvasLayer" instance=ExtResource("5_imjnq")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -48.0
-offset_right = 75.0
-offset_bottom = 48.0
-mouse_filter = 2
+[node name="CanvasModulate" parent="CanvasLayer/HintObjectInterface" index="0"]
+color = Color(1, 1, 1, 0)
 
-[node name="NameLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "biogrower
-insert seeds to begin growing mushrooms"
+[node name="VBoxContainer" parent="CanvasLayer/HintObjectInterface/HBoxContainer" index="0"]
+size_flags_vertical = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
+[node name="TitleLabel" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="0"]
+size_flags_vertical = 6
+text = "biogrower"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="StatBar" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="1"]
+visible = true
 
-[node name="BloodProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-step = 0.1
-nine_patch_stretch = true
-texture_under = ExtResource("9")
-texture_progress = ExtResource("8")
-tint_under = Color(0.227451, 0.227451, 0.227451, 0)
-tint_progress = Color(0.513726, 0, 0, 0)
-script = ExtResource("6")
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/BloodProgressBar"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
+[node name="Label" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar" index="0"]
 text = "blood"
 
-[node name="WaterProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="StatBar2" type="ProgressBar" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="2"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-step = 0.1
-nine_patch_stretch = true
-texture_under = ExtResource("9")
-texture_progress = ExtResource("8")
-tint_under = Color(0.227451, 0.227451, 0.227451, 0)
-tint_progress = Color(0, 0.905882, 1, 0)
-script = ExtResource("6")
+size_flags_vertical = 4
+value = 50.0
+show_percentage = false
+script = ExtResource("6_xv4hy")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/WaterProgressBar"]
-layout_mode = 0
+[node name="Label" type="Label" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar2"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "water"
-
-[node name="FertilizerProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-step = 0.1
-nine_patch_stretch = true
-texture_under = ExtResource("9")
-texture_progress = ExtResource("8")
-tint_under = Color(0.227451, 0.227451, 0.227451, 0)
-tint_progress = Color(0.65098, 0.458824, 0, 0)
-script = ExtResource("6")
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/FertilizerProgressBar"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
+grow_horizontal = 2
+grow_vertical = 2
 text = "fertilizer"
+label_settings = SubResource("LabelSettings_4c0tk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ExoticProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="StatBar3" type="ProgressBar" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="3"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-step = 0.1
-nine_patch_stretch = true
-texture_under = ExtResource("9")
-texture_progress = ExtResource("8")
-tint_under = Color(0.227451, 0.227451, 0.227451, 0)
-tint_progress = Color(0.87451, 0, 1, 0)
-script = ExtResource("6")
+size_flags_vertical = 4
+value = 50.0
+show_percentage = false
+script = ExtResource("6_xv4hy")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/VBoxContainer/ExoticProgressBar"]
-layout_mode = 0
+[node name="Label" type="Label" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar3"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_colors/font_color = Color(1, 1, 1, 0)
-text = "exotic"
+grow_horizontal = 2
+grow_vertical = 2
+text = "moisture"
+label_settings = SubResource("LabelSettings_4c0tk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="GrowthProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 0)
+[node name="StatBar4" type="ProgressBar" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="4"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-mouse_filter = 2
-fill_mode = 3
-nine_patch_stretch = true
-texture_under = ExtResource("4")
-texture_progress = ExtResource("7")
-tint_under = Color(0.227451, 0.227451, 0.227451, 0)
-tint_progress = Color(0.423529, 0.717647, 0.192157, 0)
-script = ExtResource("6")
+size_flags_vertical = 4
+value = 50.0
+show_percentage = false
+script = ExtResource("6_xv4hy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Label" type="Label" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "exotic"
+label_settings = SubResource("LabelSettings_4c0tk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VerticalBar" parent="CanvasLayer/HintObjectInterface/HBoxContainer" index="1"]
+visible = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HintObjectInterface"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_pg7gf")
 }
@@ -558,3 +186,5 @@ libraries = {
 [connection signal="timeout" from="GrowTimer" to="." method="_on_GrowTimer_timeout"]
 [connection signal="timeout" from="ResourceConsumeTimer" to="." method="_on_ResourceConsumeTimer_timeout"]
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]
+
+[editable path="CanvasLayer/HintObjectInterface"]

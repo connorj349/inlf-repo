@@ -1,18 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxrcx1liop62p"]
+[gd_scene load_steps=3 format=3 uid="uid://dxrcx1liop62p"]
 
 [ext_resource type="Script" path="res://scenes/game/inventory/hotbar_inventory.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://br5grrh1ej20j" path="res://assets/textures/panel_rect.png" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/game/inventory/inventory_slot.tscn" id="3_dpwk1"]
-
-[sub_resource type="StyleBoxTexture" id="1"]
-texture = ExtResource("2")
-region_rect = Rect2(0, 0, 256, 128)
+[ext_resource type="PackedScene" uid="uid://cpok7107bwsa8" path="res://scenes/game/inventory/inventory_slot.tscn" id="3_dpwk1"]
 
 [node name="HotBarInventory" type="PanelContainer"]
 custom_minimum_size = Vector2(32, 32)
 offset_right = 32.0
 offset_bottom = 32.0
-theme_override_styles/panel = SubResource("1")
 script = ExtResource("1")
 Slot = ExtResource("3_dpwk1")
 

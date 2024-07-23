@@ -3,8 +3,8 @@ extends Interactable
 signal on_fuel_changed
 
 @export var fuel_item_data: Resource
+@export var prog_bar: ProgressBar
 
-@onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
 @onready var timer = $FuelConsumeTimer
 @onready var connected_machines = $CheckForMachinesArea
 

@@ -4,23 +4,20 @@ extends HintObject
 #export(int) var number_of_roaches_to_spawn = 3
 @export var rot_increase_amount: int = 1
 @export var rot_inrease_frequency: int = 5
-
-@onready var health = $Health
-@onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
+@export var prog_bar: ProgressBar
+@export var tumor_damage: Damage
 
 var dead = false
-var tumor_damage = Damage.new()
+
+@onready var health = $Health
 
 func _ready():
-	tumor_damage.amount = 5
 	randomize()
 	health.init()
 	health.connect("dead", Callable(self, "on_death"))
 	health.connect("health_changed", Callable(prog_bar, "update_bar"))
 	prog_bar.init(health.health, health.max_health)
 	$RotTimer.wait_time = rot_inrease_frequency #set frequency by which rot is increased
-	#anim_player.play("RESET")
-	#anim_player.seek(0, true)
 	Gamestate.tumors += 1
 
 func on_hurt(damage):
@@ -45,4 +42,4 @@ func on_death():
 	queue_free() # delete this object
 
 func _on_RotTimer_timeout():
-	Gamestate.rot += rot_increase_amount # make global const var
+	Gamestate.rot += rot_increase_amount
