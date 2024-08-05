@@ -1,46 +1,70 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://c7uvmolrux4mh"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://c05v1piaik7i7" path="res://models/characters/korpsman/mdl-korpsman.tscn" id="3"]
 [ext_resource type="Script" path="res://scenes/game/characters/npc/base_npc.gd" id="4"]
-[ext_resource type="Resource" uid="uid://d3xxh2xlpl08s" path="res://scenes/game/item/items/sanitar_suit.tres" id="5"]
-[ext_resource type="Resource" uid="uid://bd4s2o2c603oo" path="res://scenes/game/item/items/prole_suit.tres" id="6"]
-[ext_resource type="Resource" uid="uid://db0owt46j8wpd" path="res://scenes/game/item/items/heal_1.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://dnogeu8op23lm" path="res://assets/models/korpsman.glb" id="7_efqk2"]
+[ext_resource type="Material" path="res://assets/materials/korpsman.material" id="8_6lvap"]
 
-
-[sub_resource type="Resource" id=1]
+[sub_resource type="Resource" id="1"]
 resource_local_to_scene = true
-script = ExtResource( 2 )
-slot_datas = [ null, null, null ]
+script = ExtResource("2")
+slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null])
 
-[sub_resource type="CapsuleShape3D" id=2]
-radius = 0.5
-height = 2.0
+[sub_resource type="CapsuleShape3D" id="2"]
 
-[sub_resource type="SphereShape3D" id=3]
+[sub_resource type="SphereShape3D" id="3"]
 radius = 2.0
 
 [node name="BaseNPC" type="CharacterBody3D"]
-script = ExtResource( 4 )
-inventory_data = SubResource( 1 )
-loot_table = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
+script = ExtResource("4")
+inventory_data = SubResource("1")
 
-[node name="Health" parent="." instance=ExtResource( 1 )]
+[node name="Health" parent="." instance=ExtResource("1")]
 allowed_max_health = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.5, 0 )
-shape = SubResource( 2 )
-
-[node name="mdl-korpsman" parent="." instance=ExtResource( 3 )]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.5, 0)
+shape = SubResource("2")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource( 3 )
+shape = SubResource("3")
+
+[node name="korpsman" parent="." instance=ExtResource("7_efqk2")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="korpsman/Rig" index="0"]
+bones/0/position = Vector3(0.00221363, 0.939216, -0.0796021)
+bones/1/rotation = Quaternion(0.0280488, 0, 0, 0.999607)
+bones/2/rotation = Quaternion(-0.0557784, 0, 0, 0.998443)
+bones/4/rotation = Quaternion(-0.000889292, -0.00126478, -0.025595, 0.999671)
+bones/5/position = Vector3(0.204155, 0.122795, 0.00111554)
+bones/5/rotation = Quaternion(0.0125415, -0.0954867, 0.983386, -0.153872)
+bones/6/rotation = Quaternion(0.111013, -0.000149843, -0.0374914, 0.993111)
+bones/8/position = Vector3(-0.208582, 0.122795, 0.00111554)
+bones/8/rotation = Quaternion(-0.0122659, -0.0956626, 0.984591, 0.14587)
+bones/9/rotation = Quaternion(0.111013, 0.000149843, 0.0374914, 0.993111)
+bones/11/rotation = Quaternion(0.69522, 0.0772397, 0.711588, 0.0659219)
+bones/11/scale = Vector3(1.00003, 0.999999, 1.00001)
+bones/12/rotation = Quaternion(-0.0183998, 0.0183805, 0.20133, 0.979178)
+bones/13/rotation = Quaternion(-0.69525, 0.0773744, 0.711557, -0.0657864)
+bones/13/scale = Vector3(1.00003, 0.999999, 1.00001)
+bones/14/rotation = Quaternion(-0.0187403, -0.0184255, -0.201318, 0.979173)
+bones/16/position = Vector3(0.108615, -0.0344428, -0.0908521)
+bones/16/rotation = Quaternion(-0.458846, 0.540837, -0.48572, 0.510913)
+bones/17/position = Vector3(-0.0434397, 0.013911, -0.00247556)
+bones/19/position = Vector3(-0.108615, -0.0344428, -0.0908521)
+bones/19/rotation = Quaternion(-0.458846, -0.540837, 0.48572, 0.510913)
+bones/20/position = Vector3(0.0434438, 0.0139111, -0.00247183)
+
+[node name="Korpsman" parent="korpsman/Rig/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("8_6lvap")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_Area_body_entered"]
+
+[editable path="korpsman"]

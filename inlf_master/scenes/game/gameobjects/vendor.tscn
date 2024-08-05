@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://diw2ptb001gas"]
+[gd_scene load_steps=11 format=3 uid="uid://diw2ptb001gas"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/vendor.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://cpok7107bwsa8" path="res://scenes/game/inventory/inventory_slot.tscn" id="2_pgt2d"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_d5qj8"]
+[ext_resource type="Material" uid="uid://c32yjoodg4d4m" path="res://assets/materials/screen.tres" id="4_vjevv"]
 [ext_resource type="PackedScene" uid="uid://t6wdb2br7u17" path="res://assets/models/ticket-machine.glb" id="5"]
+[ext_resource type="Material" uid="uid://b73s0v4anr5dp" path="res://assets/materials/distiller.tres" id="5_pqfm1"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(3, 4, 2)
@@ -82,6 +84,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("1")
 
 [node name="obj-ticket-machine" parent="." instance=ExtResource("5")]
+
+[node name="obj-ticket_machine" parent="obj-ticket-machine" index="0"]
+surface_material_override/0 = ExtResource("4_vjevv")
+surface_material_override/1 = ExtResource("5_pqfm1")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)

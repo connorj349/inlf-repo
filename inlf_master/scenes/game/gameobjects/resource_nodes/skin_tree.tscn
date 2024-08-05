@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://qjy7yga6koi4"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b03aitsnlcjwg" path="res://scenes/game/item/items/seeds/skin_fruit.tres" id="2_fnf82"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/resource_nodes/resource_node.gd" id="4"]
-[ext_resource type="PackedScene" uid="uid://b0a3y4a4sw1bl" path="res://scenes/game/item/pick_up/pickup.tscn" id="4_pq6mi"]
-[ext_resource type="PackedScene" uid="uid://bo7n1x6tvna66" path="res://models/skin_tree/mdl-skin-tree.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://c32xlm3mmk1le" path="res://assets/models/skin-tree.glb" id="6_5qr1y"]
+[ext_resource type="Material" path="res://assets/materials/skin_tree.tres" id="7_8vj6m"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="7_vpjpc"]
-[ext_resource type="Resource" uid="uid://rlhqy62f00o8" path="res://scenes/game/item/items/fetid_wood.tres" id="8"]
-[ext_resource type="PackedScene" path="res://scenes/game/effects/blood_spray.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://p07bx43idc15" path="res://scenes/game/effects/blood_spray.tscn" id="9"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1, 4, 1)
@@ -52,24 +52,26 @@ _data = {
 collision_layer = 2
 collision_mask = 10
 script = ExtResource("4")
-item_data = ExtResource("8")
+item_data = ExtResource("2_fnf82")
 blocked_damage_types = Array[int]([1, 2])
 punching_hurts = true
 optional_item_spawn_point = NodePath("ItemSpawnPoint")
 hit_effect = ExtResource("9")
-item_prefab = ExtResource("4_pq6mi")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="ItemSpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="mdl-skin-tree" parent="." instance=ExtResource("7")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
 [node name="Health" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6372, 0.227377)
 allowed_max_health = 5
+
+[node name="skin-tree" parent="." instance=ExtResource("6_5qr1y")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="obj-skin_tree" parent="skin-tree" index="0"]
+material_override = ExtResource("7_8vj6m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -97,4 +99,5 @@ libraries = {
 "": SubResource("AnimationLibrary_cgb4n")
 }
 
+[editable path="skin-tree"]
 [editable path="CanvasLayer/HintObjectInterface"]

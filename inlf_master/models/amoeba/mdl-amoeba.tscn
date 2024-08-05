@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://befpqtmum2fwb"]
-
-[ext_resource type="Material" uid="uid://dtkvj2rgon4e6" path="res://assets/materials/amoeba.tres" id="1"]
-[ext_resource type="PackedScene" uid="uid://b0d73f5lcrrgy" path="res://assets/models/amoeba.glb" id="2"]
-
-[node name="mdl-amoeba" instance=ExtResource("2")]
-
-[node name="obj-ameoba" parent="." index="0"]
-material_override = ExtResource("1")

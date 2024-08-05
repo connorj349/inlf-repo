@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemDataSeed" load_steps=5 format=3 uid="uid://crp7iv4cumjjv"]
+
+[ext_resource type="Resource" uid="uid://b3avgvbakndmf" path="res://scenes/game/item/items/rot_shroom.tres" id="1_fokyd"]
+[ext_resource type="Script" path="res://scenes/game/item/item_data_seed.gd" id="1_racre"]
+[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="3_lhf5c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfnqh"]
+atlas = ExtResource("3_lhf5c")
+region = Rect2(512, 0, 128, 128)
+
+[resource]
+script = ExtResource("1_racre")
+blood = 1
+water = 2
+fertilizer = 0
+exotic = 2
+output_item_data = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("1_fokyd")])
+growth_needed = 100
+name = "Rotshroom Seed"
+description = "a seed that, when grown, produces a delicous rotshroom that can be eaten for a curative effect."
+stackable = false
+texture = SubResource("AtlasTexture_bfnqh")
+price = 0
+item_type = 4

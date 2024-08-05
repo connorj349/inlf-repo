@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/resource_nodes/resource_node.gd" id="4"]
-[ext_resource type="PackedScene" uid="uid://b0a3y4a4sw1bl" path="res://scenes/game/item/pick_up/pickup.tscn" id="4_o3fhf"]
-[ext_resource type="PackedScene" uid="uid://jrn8etdq58gt" path="res://models/bone_capsule/mdl-bone-capsule.tscn" id="5"]
-[ext_resource type="Resource" uid="uid://dtnywridk3h05" path="res://scenes/game/item/items/spine.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://c3ot0blfmo38q" path="res://assets/models/bone-capsule.glb" id="6_qc1ye"]
+[ext_resource type="Resource" uid="uid://dhqv8muda5qxg" path="res://scenes/game/item/items/spine.tres" id="7"]
+[ext_resource type="Material" path="res://assets/materials/bone-capsule.tres" id="7_6dwbw"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="7_b4msf"]
-[ext_resource type="PackedScene" path="res://scenes/game/effects/blood_spray.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://p07bx43idc15" path="res://scenes/game/effects/blood_spray.tscn" id="8"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.5, 2, 1.5)
@@ -49,14 +49,13 @@ _data = {
 }
 
 [node name="bone_capsule" type="StaticBody3D" node_paths=PackedStringArray("prog_bar", "anim_player")]
-collision_layer = 2
-collision_mask = 11
+collision_layer = 3
+collision_mask = 0
 script = ExtResource("4")
 item_data = ExtResource("7")
 blocked_damage_types = Array[int]([1])
 optional_item_spawn_point = NodePath("ItemSpawnPoint")
 hit_effect = ExtResource("8")
-item_prefab = ExtResource("4_o3fhf")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
@@ -66,12 +65,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="Health" parent="." instance=ExtResource("1")]
 allowed_max_health = 4
 
-[node name="mdl-bone-capsule" parent="." instance=ExtResource("5")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("1")
+
+[node name="bone-capsule" parent="." instance=ExtResource("6_qc1ye")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="obj-bone_capsule" parent="bone-capsule" index="0"]
+material_override = ExtResource("7_6dwbw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -95,4 +97,5 @@ libraries = {
 "": SubResource("AnimationLibrary_8ee3j")
 }
 
+[editable path="bone-capsule"]
 [editable path="CanvasLayer/HintObjectInterface"]

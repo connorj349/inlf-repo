@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bah6ed0re4f45"]
-
-[ext_resource type="Material" path="res://assets/materials/industrial_sink.tres" id="1"]
-[ext_resource type="PackedScene" uid="uid://dtuls8f7u6ypf" path="res://assets/models/industrial_sink.glb" id="2"]
-
-[node name="mdl-sink" instance=ExtResource("2")]
-
-[node name="obj-sink" parent="." index="0"]
-material_override = ExtResource("1")

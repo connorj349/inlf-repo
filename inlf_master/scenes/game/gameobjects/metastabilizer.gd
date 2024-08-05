@@ -1,13 +1,13 @@
 extends Interactable
 
-@export var repair_item_data: Resource
+@export var repair_item_data: ItemData
 @export var bar: ProgressBar
 @export var status_label: Label
 
+var active = true
+
 @onready var health = $Health
 @onready var spot_light = $SpotLight3D
-
-var active = true
 
 func _ready():
 	health.init()

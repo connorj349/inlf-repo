@@ -1,17 +1,17 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dfpln714g1d8y"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cfca7q7atvdxp"]
 
 [ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bcv1hi0j6isel" path="res://assets/textures/ui-icon-equipment.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="2_h4s4i"]
 
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("2")
-region = Rect2(0, 1520, 48, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ackl3"]
+atlas = ExtResource("2_h4s4i")
+region = Rect2(384, 0, 128, 128)
 
 [resource]
 script = ExtResource("1")
-name = "fertilizer"
-description = "used in biogrowing and to grow amoebas and moldstooling. can be made at a fertilizier in the growing shack."
+name = "Fertilizer"
+description = "used in the biogrower to fertilize and grow certain seeds."
 stackable = false
-texture = SubResource("1")
-price = 100
+texture = SubResource("AtlasTexture_ackl3")
+price = 0
 item_type = 1

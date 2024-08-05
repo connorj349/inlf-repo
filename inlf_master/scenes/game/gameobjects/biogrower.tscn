@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/biogrower.gd" id="2"]
 [ext_resource type="Script" path="res://global/data/damage.gd" id="2_1f7x4"]
-[ext_resource type="PackedScene" uid="uid://bk4i8g2xtfo5b" path="res://models/processor/mdl-processor.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://bbavnvhdyv0se" path="res://assets/models/processor.glb" id="3_i1u8v"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="5_imjnq"]
 [ext_resource type="Script" path="res://scenes/game/ui_bar.gd" id="6_xv4hy"]
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="7_igao5"]
@@ -17,6 +17,7 @@ amount = 5
 size = Vector3(3, 3, 5)
 
 [sub_resource type="BoxShape3D" id="2"]
+size = Vector3(4, 2, 5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4c0tk"]
 font = ExtResource("7_igao5")
@@ -70,15 +71,15 @@ growth_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/Vertic
 player_use_damage = SubResource("Resource_jpqke")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
-[node name="mdl-processor" parent="." instance=ExtResource("5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-
 [node name="SpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("1")
+
+[node name="processor" parent="." instance=ExtResource("3_i1u8v")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="GrowTimer" type="Timer" parent="."]
 wait_time = 30.0
@@ -91,7 +92,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemDeposit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bfv04trnoslqs"]
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://dwgvghaavgdju"]
 
-[ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bcv1hi0j6isel" path="res://assets/textures/ui-icon-equipment.png" id="2"]
+[ext_resource type="Script" path="res://scenes/game/item/item_data_consumable.gd" id="1_jaitp"]
+[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="2_7f7c2"]
 
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("2")
-region = Rect2(148, 1852, 52, 36)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdclj"]
+atlas = ExtResource("2_7f7c2")
+region = Rect2(512, 128, 128, 128)
 
 [resource]
-script = ExtResource("1")
-name = "slop skull"
-description = "skull with rancid slime oozing from the eyes, used in food production."
+script = ExtResource("1_jaitp")
+heal_value = -5
+consumable_type = 0
+name = "Slop Skull"
+description = "a crude skull filled with black icor. used to manufacture certain goods. can be eaten, but why?"
 stackable = false
-texture = SubResource("1")
+texture = SubResource("AtlasTexture_rdclj")
 price = 0
 item_type = 0

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxvvdxtfn50dq"]
-
-[ext_resource type="PackedScene" uid="uid://c67pvc4lw7inc" path="res://assets/models/distiller.glb" id="1"]
-[ext_resource type="Material" path="res://assets/materials/distiller.tres" id="2"]
-
-[node name="mdl-distiller" instance=ExtResource("1")]
-
-[node name="obj-distiller" parent="." index="0"]
-material_override = ExtResource("2")

@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmktkgaw0ufi7"]
+[gd_scene load_steps=16 format=3 uid="uid://dmktkgaw0ufi7"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/metastabilizer.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://bm27v7syy6y7x" path="res://assets/models/metastabilizer.glb" id="4_xmukk"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="5_aq0il"]
-[ext_resource type="PackedScene" path="res://models/metastabilizer/mdl-metastabilizer.tscn" id="6"]
+[ext_resource type="Material" uid="uid://bf2cdemhpc4vg" path="res://assets/materials/metastabilizer.tres" id="5_s66hx"]
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="6_j72ey"]
+[ext_resource type="Material" uid="uid://c32yjoodg4d4m" path="res://assets/materials/screen.tres" id="6_mxxde"]
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="7"]
-[ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://scenes/game/item/items/bio_fuel.tres" id="8"]
+[ext_resource type="Resource" uid="uid://d1fjvdo0nh06v" path="res://scenes/game/item/items/bio_fuel.tres" id="8"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.5, 2, 1.5)
@@ -63,9 +65,6 @@ bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/Stat
 status_label = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/TitleLabel2")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
-[node name="mdl-metastabilizer" parent="." instance=ExtResource("6")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-
 [node name="Health" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 allowed_max_health = 50
@@ -73,6 +72,13 @@ allowed_max_health = 50
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("1")
+
+[node name="metastabilizer" parent="." instance=ExtResource("4_xmukk")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="GMOBJ-metastabilizer" parent="metastabilizer" index="0"]
+surface_material_override/0 = ExtResource("5_s66hx")
+surface_material_override/1 = ExtResource("6_mxxde")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -128,4 +134,5 @@ bus = &"SoundFX"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]
 
+[editable path="metastabilizer"]
 [editable path="CanvasLayer/HintObjectInterface"]

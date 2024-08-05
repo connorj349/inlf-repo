@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://b3gsycxg1xafb"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://b8u65yry4d7la" path="res://scenes/game/item/items/slag_metal.tres" id="2_y5ndi"]
 [ext_resource type="PackedScene" uid="uid://cqmmvpxmty23f" path="res://scenes/game/effects/rock_gibs.tscn" id="3_hwt16"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/resource_nodes/resource_node.gd" id="4"]
-[ext_resource type="PackedScene" uid="uid://b0a3y4a4sw1bl" path="res://scenes/game/item/pick_up/pickup.tscn" id="4_jus50"]
-[ext_resource type="PackedScene" uid="uid://duver3cf0vopt" path="res://models/boulder/mdl-boulder.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://o7bujdwcauyn" path="res://assets/models/boulder.glb" id="6_37tx8"]
+[ext_resource type="Material" path="res://assets/materials/boulder.tres" id="7_81fro"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="7_w7sq0"]
-[ext_resource type="Resource" uid="uid://uf65hp2jic1g" path="res://scenes/game/item/items/metal_frag.tres" id="8"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.2, 1.2, 1.2)
@@ -53,11 +53,10 @@ collision_layer = 2
 collision_mask = 9
 gravity_scale = 2.0
 script = ExtResource("4")
-item_data = ExtResource("8")
+item_data = ExtResource("2_y5ndi")
 blocked_damage_types = Array[int]([1, 3])
 punching_hurts = true
 hit_effect = ExtResource("3_hwt16")
-item_prefab = ExtResource("4_jus50")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
@@ -66,15 +65,25 @@ wait_time = 120.0
 one_shot = true
 autostart = true
 
-[node name="mdl-boulder" parent="." instance=ExtResource("7")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.6, 0.1)
-
 [node name="Health" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0181818, 0)
 allowed_max_health = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("1")
+
+[node name="boulder" parent="." instance=ExtResource("6_37tx8")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="obj-boulder" parent="boulder" index="0"]
+surface_material_override/0 = ExtResource("7_81fro")
+
+[node name="obj-boulder-rotting" parent="boulder" index="1"]
+visible = false
+
+[node name="obj-boulder-rotten" parent="boulder" index="2"]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -100,5 +109,5 @@ libraries = {
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]
 
-[editable path="mdl-boulder"]
+[editable path="boulder"]
 [editable path="CanvasLayer/HintObjectInterface"]

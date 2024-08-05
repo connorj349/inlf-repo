@@ -2,14 +2,14 @@ extends Interactable
 
 signal on_fuel_changed
 
-@export var fuel_item_data: Resource
+@export var fuel_item_data: ItemData
 @export var prog_bar: ProgressBar
-
-@onready var timer = $FuelConsumeTimer
-@onready var connected_machines = $CheckForMachinesArea
 
 var fuel = 0: set = set_fuel
 var is_on = false
+
+@onready var timer = $FuelConsumeTimer
+@onready var connected_machines = $CheckForMachinesArea
 
 func _ready():
 	prog_bar.init(0, 100)

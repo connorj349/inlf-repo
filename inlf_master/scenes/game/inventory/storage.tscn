@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt1svnjwmtnf3"]
+[gd_scene load_steps=12 format=3 uid="uid://bt1svnjwmtnf3"]
 
 [ext_resource type="Script" path="res://scenes/game/inventory/storage.gd" id="1"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://c0hvmkathob61" path="res://models/locker/mdl-locker.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://c1c8i1vyuyr5v" path="res://assets/models/locker.glb" id="3_uycou"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_r74js"]
+[ext_resource type="Material" path="res://assets/materials/locker.tres" id="4_rq514"]
 [ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue.tscn" id="5"]
 
 [sub_resource type="Resource" id="5"]
@@ -58,12 +59,14 @@ script = ExtResource("1")
 inventory_data = SubResource("5")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
-[node name="mdl-locker" parent="." instance=ExtResource("3")]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
 shape = SubResource("454")
+
+[node name="locker" parent="." instance=ExtResource("3_uycou")]
+
+[node name="obj-locker" parent="locker" index="0"]
+surface_material_override/0 = ExtResource("4_rq514")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -92,4 +95,5 @@ bus = &"SoundFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
+[editable path="locker"]
 [editable path="CanvasLayer/HintObjectInterface"]

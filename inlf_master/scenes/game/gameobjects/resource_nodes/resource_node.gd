@@ -1,16 +1,16 @@
 extends Interactable
 
-@export var item_data: Resource #resource item to drop on death
+@export var item_data: ItemData #resource item to drop on death
 @export var blocked_damage_types: Array[Damage.DamageType] # (Array, Damage.DamageType)
 @export var punching_hurts: bool = false
 @export var optional_item_spawn_point: NodePath
 @export var hit_effect: PackedScene
-@export var item_prefab: PackedScene
 @export var prog_bar: ProgressBar
 
 var dead = false
 
 @onready var health = $Health
+@onready var item_prefab = load("res://scenes/game/item/pick_up/pickup.tscn")
 
 func _ready():
 	health.init()

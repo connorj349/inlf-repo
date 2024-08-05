@@ -1,54 +1,43 @@
-[gd_scene load_steps=69 format=3 uid="uid://c0pk63nn4wv3b"]
+[gd_scene load_steps=55 format=3 uid="uid://c0pk63nn4wv3b"]
 
-[ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://scenes/game/characters/player/player_ghost.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://dw14to73k4hid" path="res://scenes/game/inventory/inventory.tscn" id="2"]
-[ext_resource type="Texture2D" uid="uid://bo7oso3slm23o" path="res://assets/textures/skybox/skybox_02.png" id="2_5lvo0"]
-[ext_resource type="Script" path="res://scenes/game/inventory/inventory_interface.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://cpok7107bwsa8" path="res://scenes/game/inventory/inventory_slot.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://csuicjdgh3olp" path="res://models/Maps/slumtown/mdl-slumtown.glb" id="5"]
-[ext_resource type="Shader" path="res://assets/shaders/simple_water.gdshader" id="5_86vpo"]
-[ext_resource type="Texture2D" uid="uid://14wx50xsm4c7" path="res://models/Maps/slumtown/mdl-slumtown_slime_water.jpg" id="6_etikf"]
-[ext_resource type="Resource" uid="uid://bfv04trnoslqs" path="res://scenes/game/item/items/slop_skull.tres" id="8"]
-[ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://scenes/game/gameobjects/biogrower.tscn" id="9"]
-[ext_resource type="PackedScene" uid="uid://djfc66jt8vqe2" path="res://scenes/game/gameobjects/industrial_sink.tscn" id="10"]
-[ext_resource type="PackedScene" uid="uid://diw2ptb001gas" path="res://scenes/game/gameobjects/vendor.tscn" id="11"]
-[ext_resource type="PackedScene" uid="uid://ccoi5qv045yl6" path="res://scenes/game/gameobjects/ladder.tscn" id="12"]
-[ext_resource type="PackedScene" uid="uid://xt4fnaxbc2mi" path="res://scenes/game/gameobjects/fertilizer_producer.tscn" id="12_wwlnr"]
-[ext_resource type="Resource" uid="uid://uf65hp2jic1g" path="res://scenes/game/item/items/metal_frag.tres" id="13"]
-[ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="14"]
-[ext_resource type="Resource" uid="uid://bd4s2o2c603oo" path="res://scenes/game/item/items/prole_suit.tres" id="15"]
-[ext_resource type="Resource" uid="uid://d3xxh2xlpl08s" path="res://scenes/game/item/items/sanitar_suit.tres" id="16"]
-[ext_resource type="PackedScene" uid="uid://bwpcm1xv1hxel" path="res://scenes/game/gameobjects/resource_node_spawner.tscn" id="17"]
-[ext_resource type="PackedScene" uid="uid://p3pw5s5y3hqr" path="res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn" id="18"]
-[ext_resource type="PackedScene" uid="uid://bsqr7oaxve8ba" path="res://scenes/game/gameobjects/production_machine.tscn" id="19"]
-[ext_resource type="PackedScene" uid="uid://qjy7yga6koi4" path="res://scenes/game/gameobjects/resource_nodes/skin_tree.tscn" id="21"]
-[ext_resource type="PackedScene" uid="uid://cow88ggfrlbxw" path="res://scenes/game/gameobjects/amoeba.tscn" id="22"]
-[ext_resource type="PackedScene" uid="uid://b1k30jhststhn" path="res://scenes/game/gameobjects/resource_nodes/bone_capsule.tscn" id="24"]
-[ext_resource type="Resource" uid="uid://dtnywridk3h05" path="res://scenes/game/item/items/spine.tres" id="25"]
-[ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://scenes/game/item/items/bio_fuel.tres" id="26"]
-[ext_resource type="Resource" uid="uid://bmlxg0rxh6idp" path="res://scenes/game/item/items/shells.tres" id="27"]
-[ext_resource type="PackedScene" uid="uid://b7nxt2hc5tvjo" path="res://scenes/game/gameobjects/processor.tscn" id="28"]
-[ext_resource type="Script" path="res://scenes/menu/options/pause_menu.gd" id="29"]
-[ext_resource type="PackedScene" uid="uid://bglomiqv0hee6" path="res://global/loading_screen/loading_screen.tscn" id="30"]
-[ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="31"]
-[ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="32"]
-[ext_resource type="PackedScene" uid="uid://bt1svnjwmtnf3" path="res://scenes/game/inventory/storage.tscn" id="33"]
-[ext_resource type="Resource" uid="uid://db0owt46j8wpd" path="res://scenes/game/item/items/heal_1.tres" id="34"]
-[ext_resource type="PackedScene" uid="uid://hxe1g3invfrc" path="res://scenes/game/gameobjects/rot_telecom.tscn" id="36"]
-[ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://scenes/game/gameobjects/autostitcher.tscn" id="37"]
-[ext_resource type="PackedScene" uid="uid://r1okymmde6l8" path="res://scenes/game/gameobjects/generator.tscn" id="38"]
-[ext_resource type="PackedScene" uid="uid://b3gsycxg1xafb" path="res://scenes/game/gameobjects/resource_nodes/boulder.tscn" id="40"]
-[ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://scenes/game/gameobjects/metastabilizer.tscn" id="41"]
-[ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://scenes/game/gameobjects/sawblade.tscn" id="42"]
-[ext_resource type="MeshLibrary" uid="uid://dpw65kax8agox" path="res://assets/textures/gridmap_props_meshlib.tres" id="44"]
-[ext_resource type="PackedScene" uid="uid://bu0ib6h238inm" path="res://scenes/game/gameobjects/tumor.tscn" id="47"]
-[ext_resource type="PackedScene" uid="uid://cvonrv45p2y4y" path="res://scenes/game/game_end/ticket_machine.tscn" id="48"]
-[ext_resource type="Script" path="res://scenes/game/characters/player/update_player_stats.gd" id="49"]
-[ext_resource type="PackedScene" uid="uid://b0hhnv4ej604f" path="res://models/ladder/mdl-ladder-segment-end.tscn" id="50"]
-[ext_resource type="PackedScene" uid="uid://bxaje7cp7aj7i" path="res://models/ladder/mdl-ladder-segment.tscn" id="51"]
-[ext_resource type="PackedScene" uid="uid://dr8hsko7ayhd4" path="res://scenes/game/gameobjects/exploding_mushroom.tscn" id="52"]
-[ext_resource type="PackedScene" path="res://scenes/game/characters/water_area.tscn" id="54"]
-[ext_resource type="Resource" uid="uid://o0eqj1gg7bn4" path="res://scenes/game/item/items/amoeba_slime.tres" id="55"]
+[ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_51kix"]
+[ext_resource type="Texture2D" uid="uid://bo7oso3slm23o" path="res://assets/textures/skybox/skybox_02.png" id="2_env10"]
+[ext_resource type="MeshLibrary" uid="uid://c078ienggynju" path="res://assets/slumtown_props_meshlibrary.tres" id="3_o5qf3"]
+[ext_resource type="PackedScene" uid="uid://ue0fy4t6c0py" path="res://scenes/levels/slumtown.tscn" id="3_xr5ce"]
+[ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://scenes/game/gameobjects/sawblade.tscn" id="7_kcis8"]
+[ext_resource type="Resource" uid="uid://d1fjvdo0nh06v" path="res://scenes/game/item/items/bio_fuel.tres" id="10_0cwef"]
+[ext_resource type="PackedScene" uid="uid://djfc66jt8vqe2" path="res://scenes/game/gameobjects/industrial_sink.tscn" id="12_x6u75"]
+[ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://scenes/game/gameobjects/biogrower.tscn" id="13_0sig4"]
+[ext_resource type="PackedScene" uid="uid://xt4fnaxbc2mi" path="res://scenes/game/gameobjects/fertilizer_producer.tscn" id="14_00131"]
+[ext_resource type="PackedScene" uid="uid://diw2ptb001gas" path="res://scenes/game/gameobjects/vendor.tscn" id="15_si8js"]
+[ext_resource type="PackedScene" uid="uid://ccoi5qv045yl6" path="res://scenes/game/gameobjects/ladder.tscn" id="16_kb58a"]
+[ext_resource type="PackedScene" uid="uid://bwpcm1xv1hxel" path="res://scenes/game/gameobjects/resource_node_spawner.tscn" id="19_peecc"]
+[ext_resource type="PackedScene" uid="uid://qjy7yga6koi4" path="res://scenes/game/gameobjects/resource_nodes/skin_tree.tscn" id="20_1tbt4"]
+[ext_resource type="PackedScene" uid="uid://cow88ggfrlbxw" path="res://scenes/game/gameobjects/amoeba.tscn" id="21_h8bnv"]
+[ext_resource type="PackedScene" uid="uid://bsqr7oaxve8ba" path="res://scenes/game/gameobjects/production_machine.tscn" id="22_twuh0"]
+[ext_resource type="PackedScene" uid="uid://r1okymmde6l8" path="res://scenes/game/gameobjects/generator.tscn" id="26_1l71f"]
+[ext_resource type="PackedScene" uid="uid://p3pw5s5y3hqr" path="res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn" id="27_lo41r"]
+[ext_resource type="PackedScene" uid="uid://b1k30jhststhn" path="res://scenes/game/gameobjects/resource_nodes/bone_capsule.tscn" id="28_mxmen"]
+[ext_resource type="PackedScene" uid="uid://bu0ib6h238inm" path="res://scenes/game/gameobjects/tumor.tscn" id="29_x0wsm"]
+[ext_resource type="PackedScene" uid="uid://dr8hsko7ayhd4" path="res://scenes/game/gameobjects/exploding_mushroom.tscn" id="30_glavk"]
+[ext_resource type="PackedScene" path="res://scenes/game/characters/water_area.tscn" id="31_qbyeb"]
+[ext_resource type="PackedScene" uid="uid://b7nxt2hc5tvjo" path="res://scenes/game/gameobjects/processor.tscn" id="32_lj5ug"]
+[ext_resource type="PackedScene" uid="uid://bt1svnjwmtnf3" path="res://scenes/game/inventory/storage.tscn" id="33_36mq1"]
+[ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="34_vd00i"]
+[ext_resource type="PackedScene" uid="uid://hxe1g3invfrc" path="res://scenes/game/gameobjects/rot_telecom.tscn" id="35_f8gim"]
+[ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://scenes/game/gameobjects/metastabilizer.tscn" id="36_bwgsb"]
+[ext_resource type="Resource" uid="uid://cfca7q7atvdxp" path="res://scenes/game/item/items/fertilizer.tres" id="37_02js4"]
+[ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://scenes/game/gameobjects/autostitcher.tscn" id="37_s32rw"]
+[ext_resource type="PackedScene" uid="uid://b3gsycxg1xafb" path="res://scenes/game/gameobjects/resource_nodes/boulder.tscn" id="38_qo15y"]
+[ext_resource type="PackedScene" uid="uid://cvonrv45p2y4y" path="res://scenes/game/game_end/ticket_machine.tscn" id="41_wevrb"]
+[ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://scenes/game/characters/player/player_ghost.tscn" id="42_rbyii"]
+[ext_resource type="Script" path="res://scenes/game/inventory/inventory_interface.gd" id="43_vfleq"]
+[ext_resource type="PackedScene" uid="uid://dw14to73k4hid" path="res://scenes/game/inventory/inventory.tscn" id="44_ydhrg"]
+[ext_resource type="Script" path="res://scenes/game/characters/player/update_player_stats.gd" id="45_exrrf"]
+[ext_resource type="PackedScene" uid="uid://cpok7107bwsa8" path="res://scenes/game/inventory/inventory_slot.tscn" id="46_td2ek"]
+[ext_resource type="Script" path="res://scenes/menu/options/pause_menu.gd" id="47_dvm7s"]
+[ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="48_38cdl"]
+[ext_resource type="PackedScene" uid="uid://bglomiqv0hee6" path="res://global/loading_screen/loading_screen.tscn" id="49_afaad"]
 
 [sub_resource type="Gradient" id="403"]
 offsets = PackedFloat32Array(0, 0.66879, 1)
@@ -58,7 +47,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.562988, 0.509173, 0.268299, 1, 0.683179,
 gradient = SubResource("403")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hdi1g"]
-panorama = ExtResource("2_5lvo0")
+panorama = ExtResource("2_env10")
 
 [sub_resource type="Sky" id="366"]
 sky_material = SubResource("PanoramaSkyMaterial_hdi1g")
@@ -77,25 +66,6 @@ adjustment_contrast = 1.23
 adjustment_saturation = 2.07
 adjustment_color_correction = SubResource("404")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_pje4g"]
-fractal_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6bvmx"]
-width = 32
-height = 32
-seamless = true
-as_normal_map = true
-noise = SubResource("FastNoiseLite_pje4g")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_waolt"]
-render_priority = 0
-shader = ExtResource("5_86vpo")
-shader_parameter/water_color = Color(0.362792, 0.414823, 0.436708, 1)
-shader_parameter/time_scale = 2.5
-shader_parameter/alpha_slider = 0.6
-shader_parameter/water_texture = ExtResource("6_etikf")
-shader_parameter/water_normal_noise = SubResource("NoiseTexture2D_6bvmx")
-
 [sub_resource type="BoxShape3D" id="394"]
 resource_local_to_scene = true
 size = Vector3(2.7, 3, 3)
@@ -110,7 +80,7 @@ size = Vector3(2, 2, 10)
 
 [sub_resource type="Resource" id="387"]
 resource_local_to_scene = true
-script = ExtResource("32")
+script = ExtResource("34_vd00i")
 slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null, null, null, null])
 
 [sub_resource type="BoxShape3D" id="397"]
@@ -141,7 +111,7 @@ size = Vector3(2, 2, 10)
 bg_color = Color(0, 0, 0, 0.270588)
 
 [node name="Main" type="Node3D"]
-script = ExtResource("14")
+script = ExtResource("1_51kix")
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -149,7 +119,7 @@ script = ExtResource("14")
 environment = SubResource("2")
 
 [node name="GridMap" type="GridMap" parent="Environment"]
-mesh_library = ExtResource("44")
+mesh_library = ExtResource("3_o5qf3")
 cell_size = Vector3(1, 1, 1)
 cell_octant_size = 15
 cell_center_x = false
@@ -283,158 +253,75 @@ light_energy = 0.5
 light_specular = 0.0
 omni_range = 20.0
 
-[node name="mdl-slumtown" parent="Environment" instance=ExtResource("5")]
-
-[node name="canal_walls_001" parent="Environment/mdl-slumtown" index="13"]
-visible = false
-layers = 0
-
-[node name="canal_walls_002" parent="Environment/mdl-slumtown" index="14"]
-visible = false
-layers = 0
-
-[node name="canal_walls_004" parent="Environment/mdl-slumtown" index="16"]
-visible = false
-layers = 0
-
-[node name="shops_grate" parent="Environment/mdl-slumtown" index="34"]
-visible = false
-layers = 2
-
-[node name="tool_factory_floor_02_001" parent="Environment/mdl-slumtown" index="43"]
-visible = false
-layers = 0
-
-[node name="water-quarry" parent="Environment/mdl-slumtown" index="74"]
-surface_material_override/0 = SubResource("ShaderMaterial_waolt")
-
-[node name="water-canal" parent="Environment/mdl-slumtown" index="83"]
-surface_material_override/0 = SubResource("ShaderMaterial_waolt")
-
-[node name="water-sewer" parent="Environment/mdl-slumtown" index="84"]
-surface_material_override/0 = SubResource("ShaderMaterial_waolt")
+[node name="slumtown" parent="Environment" instance=ExtResource("3_xr5ce")]
 
 [node name="GameObjects" type="Node3D" parent="."]
 
 [node name="player_role_spawns" type="Node3D" parent="GameObjects"]
 
-[node name="prole_spawn_01" parent="GameObjects/player_role_spawns" instance=ExtResource("42")]
+[node name="prole_spawn_01" parent="GameObjects/player_role_spawns" instance=ExtResource("7_kcis8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0.1, -40)
-required_items = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("8")])
-optional_random_items = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("25"), ExtResource("26"), ExtResource("27")])
+required_items = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("10_0cwef"), ExtResource("37_02js4")])
 random_amount_of_items_to_give = 2
 
 [node name="BiogrowthObjects" type="Node3D" parent="GameObjects"]
 
-[node name="IndustrialSink" parent="GameObjects/BiogrowthObjects" instance=ExtResource("10")]
+[node name="IndustrialSink" parent="GameObjects/BiogrowthObjects" instance=ExtResource("12_x6u75")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37, 0, 19.4)
 
-[node name="BioGrower" parent="GameObjects/BiogrowthObjects" instance=ExtResource("9")]
+[node name="BioGrower" parent="GameObjects/BiogrowthObjects" instance=ExtResource("13_0sig4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 9)
 
-[node name="FertilizerProducer" parent="GameObjects/BiogrowthObjects" instance=ExtResource("12_wwlnr")]
+[node name="FertilizerProducer" parent="GameObjects/BiogrowthObjects" instance=ExtResource("14_00131")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7599, 0, 6)
 
 [node name="Store" type="Node3D" parent="GameObjects"]
 
-[node name="vendor" parent="GameObjects/Store" instance=ExtResource("11")]
+[node name="vendor" parent="GameObjects/Store" instance=ExtResource("15_si8js")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -13)
 
 [node name="Ladders" type="Node3D" parent="GameObjects"]
 
-[node name="Ladder" parent="GameObjects/Ladders" instance=ExtResource("12")]
+[node name="Ladder" parent="GameObjects/Ladders" instance=ExtResource("16_kb58a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9, 4, 11.2)
 
-[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder" instance=ExtResource("51")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -4, 0)
-
-[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder" instance=ExtResource("51")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -2, 0)
-
-[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder" instance=ExtResource("50")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource("12")]
+[node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource("16_kb58a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7)
 
-[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder2" instance=ExtResource("51")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -0.3)
-
-[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder2" instance=ExtResource("51")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -0.3)
-
-[node name="mdl-ladder-segment3" parent="GameObjects/Ladders/Ladder2" instance=ExtResource("51")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
-
-[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder2" instance=ExtResource("50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.3)
-
-[node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource("12")]
+[node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource("16_kb58a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4)
 
-[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder3" instance=ExtResource("51")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.200005, -3, 0)
-
-[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder3" instance=ExtResource("51")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.200005, -1, 0)
-
-[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder3" instance=ExtResource("50")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.200005, 1, 0)
-
-[node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource("12")]
+[node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource("16_kb58a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6)
-
-[node name="mdl-ladder-segment" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -7, 0)
-
-[node name="mdl-ladder-segment2" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -5, 0)
-
-[node name="mdl-ladder-segment3" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -3, 0)
-
-[node name="mdl-ladder-segment4" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, -1, 0)
-
-[node name="mdl-ladder-segment5" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, 1, 0)
-
-[node name="mdl-ladder-segment6" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("51")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, 3, 0)
-
-[node name="mdl-ladder-segment-end" parent="GameObjects/Ladders/Ladder4" instance=ExtResource("50")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.500004, 5, 0)
 
 [node name="WoodedArea" type="Node3D" parent="GameObjects"]
 
-[node name="TreeSpawner" parent="GameObjects/WoodedArea" instance=ExtResource("17")]
+[node name="TreeSpawner" parent="GameObjects/WoodedArea" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -28)
-node_to_spawn = ExtResource("21")
+node_to_spawn = ExtResource("20_1tbt4")
 
-[node name="TreeSpawner2" parent="GameObjects/WoodedArea" instance=ExtResource("17")]
+[node name="TreeSpawner2" parent="GameObjects/WoodedArea" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, -36)
-node_to_spawn = ExtResource("21")
+node_to_spawn = ExtResource("20_1tbt4")
 
-[node name="TreeSpawner3" parent="GameObjects/WoodedArea" instance=ExtResource("17")]
+[node name="TreeSpawner3" parent="GameObjects/WoodedArea" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -28)
-node_to_spawn = ExtResource("21")
+node_to_spawn = ExtResource("20_1tbt4")
 
-[node name="AmoebaSpawner" parent="GameObjects/WoodedArea" instance=ExtResource("17")]
+[node name="AmoebaSpawner" parent="GameObjects/WoodedArea" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -31)
-node_to_spawn = ExtResource("22")
+node_to_spawn = ExtResource("21_h8bnv")
 
 [node name="ToolFactory" type="Node3D" parent="GameObjects"]
 
-[node name="production_machine" parent="GameObjects/ToolFactory" instance=ExtResource("19")]
+[node name="production_machine" parent="GameObjects/ToolFactory" instance=ExtResource("22_twuh0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5.5, -23.9)
-input_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("13")])
-output_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("16"), ExtResource("15")])
 payday = 3
 
-[node name="Generator" parent="GameObjects/ToolFactory" instance=ExtResource("38")]
+[node name="Generator" parent="GameObjects/ToolFactory" instance=ExtResource("26_1l71f")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 20, 5.5, -22)
 
-[node name="CollisionShape3D" parent="GameObjects/ToolFactory/Generator" index="1"]
+[node name="CollisionShape3D" parent="GameObjects/ToolFactory/Generator" index="0"]
 shape = SubResource("394")
 
 [node name="CollisionShape3D" parent="GameObjects/ToolFactory/Generator/ItemDeposit" index="0"]
@@ -448,96 +335,95 @@ shape = SubResource("396")
 
 [node name="Canal" type="Node3D" parent="GameObjects"]
 
-[node name="BitumeatSpawner" parent="GameObjects/Canal" instance=ExtResource("17")]
+[node name="BitumeatSpawner" parent="GameObjects/Canal" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5)
-node_to_spawn = ExtResource("18")
+node_to_spawn = ExtResource("27_lo41r")
 spawn_frequency = 120.0
 
-[node name="BitumeatSpawner2" parent="GameObjects/Canal" instance=ExtResource("17")]
+[node name="BitumeatSpawner2" parent="GameObjects/Canal" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -2)
-node_to_spawn = ExtResource("18")
+node_to_spawn = ExtResource("27_lo41r")
 spawn_frequency = 120.0
 
-[node name="BitumeatSpawner3" parent="GameObjects/Canal" instance=ExtResource("17")]
+[node name="BitumeatSpawner3" parent="GameObjects/Canal" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, -8)
-node_to_spawn = ExtResource("18")
+node_to_spawn = ExtResource("27_lo41r")
 spawn_frequency = 120.0
 
-[node name="BoneCapsuleSpawner" parent="GameObjects/Canal" instance=ExtResource("17")]
+[node name="BoneCapsuleSpawner" parent="GameObjects/Canal" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -5, -2)
-node_to_spawn = ExtResource("24")
+node_to_spawn = ExtResource("28_mxmen")
 spawn_frequency = 120.0
 
-[node name="BoneCapsuleSpawner2" parent="GameObjects/Canal" instance=ExtResource("17")]
+[node name="BoneCapsuleSpawner2" parent="GameObjects/Canal" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, -5, -7)
-node_to_spawn = ExtResource("24")
+node_to_spawn = ExtResource("28_mxmen")
 spawn_frequency = 120.0
 
-[node name="tumor" parent="GameObjects/Canal" instance=ExtResource("47")]
+[node name="tumor" parent="GameObjects/Canal" instance=ExtResource("29_x0wsm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -13, -30)
 
-[node name="tumor3" parent="GameObjects/Canal" instance=ExtResource("47")]
+[node name="tumor3" parent="GameObjects/Canal" instance=ExtResource("29_x0wsm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -11, -38)
 
-[node name="tumor2" parent="GameObjects/Canal" instance=ExtResource("47")]
+[node name="tumor2" parent="GameObjects/Canal" instance=ExtResource("29_x0wsm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, -5, -8)
 
-[node name="MushroomSpawner" parent="GameObjects/Canal" instance=ExtResource("17")]
+[node name="MushroomSpawner" parent="GameObjects/Canal" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -9)
-node_to_spawn = ExtResource("52")
+node_to_spawn = ExtResource("30_glavk")
 spawn_frequency = 120.0
 
-[node name="MushroomSpawner2" parent="GameObjects/Canal" instance=ExtResource("17")]
+[node name="MushroomSpawner2" parent="GameObjects/Canal" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -4.2, -1)
-node_to_spawn = ExtResource("52")
+node_to_spawn = ExtResource("30_glavk")
 spawn_frequency = 120.0
 
-[node name="MushroomSpawner3" parent="GameObjects/Canal" instance=ExtResource("17")]
+[node name="MushroomSpawner3" parent="GameObjects/Canal" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -4.4, -1)
-node_to_spawn = ExtResource("52")
+node_to_spawn = ExtResource("30_glavk")
 spawn_frequency = 120.0
 
-[node name="WaterArea" parent="GameObjects/Canal" instance=ExtResource("54")]
+[node name="WaterArea" parent="GameObjects/Canal" instance=ExtResource("31_qbyeb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -4, -5)
 bounds = Vector3(40, 1, 5)
 
 [node name="ProleSpawn" type="Node3D" parent="GameObjects"]
 
-[node name="processor" parent="GameObjects/ProleSpawn" instance=ExtResource("28")]
+[node name="processor" parent="GameObjects/ProleSpawn" instance=ExtResource("32_lj5ug")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 53, 0, -44)
 
-[node name="Storage" parent="GameObjects/ProleSpawn" instance=ExtResource("33")]
+[node name="Storage" parent="GameObjects/ProleSpawn" instance=ExtResource("33_36mq1")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 54, 0, -29)
 inventory_data = SubResource("387")
 reset_time = 120.0
 does_reset = true
 
-[node name="rot_telecom" parent="GameObjects/ProleSpawn" instance=ExtResource("36")]
+[node name="rot_telecom" parent="GameObjects/ProleSpawn" instance=ExtResource("35_f8gim")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55, 1, -35)
 
-[node name="metastabilizer" parent="GameObjects/ProleSpawn" instance=ExtResource("41")]
+[node name="metastabilizer" parent="GameObjects/ProleSpawn" instance=ExtResource("36_bwgsb")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 53.5, 0, -38.5)
 
 [node name="MedicalArea" type="Node3D" parent="GameObjects"]
 
-[node name="autostitcher" parent="GameObjects/MedicalArea" instance=ExtResource("37")]
+[node name="autostitcher" parent="GameObjects/MedicalArea" instance=ExtResource("37_s32rw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1.5, -24.5)
 
-[node name="metastabilizer2" parent="GameObjects/MedicalArea" instance=ExtResource("41")]
+[node name="metastabilizer2" parent="GameObjects/MedicalArea" instance=ExtResource("36_bwgsb")]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 27.5, 0, -22.5)
 
 [node name="WeaponFactory" type="Node3D" parent="GameObjects"]
 
-[node name="production_machine" parent="GameObjects/WeaponFactory" instance=ExtResource("19")]
+[node name="production_machine" parent="GameObjects/WeaponFactory" instance=ExtResource("22_twuh0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.7, 5.5, -30)
-input_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("13")])
 production_time = 5.0
 payday = 10
 
-[node name="Generator" parent="GameObjects/WeaponFactory" instance=ExtResource("38")]
+[node name="Generator" parent="GameObjects/WeaponFactory" instance=ExtResource("26_1l71f")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -7, 5.5, -34)
 
-[node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator" index="1"]
+[node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator" index="0"]
 shape = SubResource("397")
 
 [node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator/ItemDeposit" index="0"]
@@ -549,31 +435,28 @@ bounds = Vector3(1, 1, 5)
 [node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator/CheckForMachinesArea" index="0"]
 shape = SubResource("399")
 
-[node name="WaterArea" parent="GameObjects/WeaponFactory" instance=ExtResource("54")]
+[node name="WaterArea" parent="GameObjects/WeaponFactory" instance=ExtResource("31_qbyeb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4.5, -24)
 bounds = Vector3(2, 0.5, 15)
 
 [node name="Quarry" type="Node3D" parent="GameObjects"]
 
-[node name="RockSpawner" parent="GameObjects/Quarry" instance=ExtResource("17")]
+[node name="RockSpawner" parent="GameObjects/Quarry" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, -19.4, -25)
-node_to_spawn = ExtResource("40")
+node_to_spawn = ExtResource("38_qo15y")
 
-[node name="RockSpawner2" parent="GameObjects/Quarry" instance=ExtResource("17")]
+[node name="RockSpawner2" parent="GameObjects/Quarry" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -18.5, -22)
-node_to_spawn = ExtResource("40")
+node_to_spawn = ExtResource("38_qo15y")
 
-[node name="RockSpawner3" parent="GameObjects/Quarry" instance=ExtResource("17")]
+[node name="RockSpawner3" parent="GameObjects/Quarry" instance=ExtResource("19_peecc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, -19, -26)
-node_to_spawn = ExtResource("40")
+node_to_spawn = ExtResource("38_qo15y")
 
-[node name="Generator" parent="GameObjects/Quarry" instance=ExtResource("38")]
+[node name="Generator" parent="GameObjects/Quarry" instance=ExtResource("26_1l71f")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -66, 5, 22)
 
-[node name="mdl-generator" parent="GameObjects/Quarry/Generator" index="0"]
-transform = Transform3D(0.75, 7.45058e-09, 0, 0, 0.75, -9.31323e-10, 1.49012e-08, 0, 0.75, 0, 0, 0)
-
-[node name="CollisionShape3D" parent="GameObjects/Quarry/Generator" index="1"]
+[node name="CollisionShape3D" parent="GameObjects/Quarry/Generator" index="0"]
 shape = SubResource("400")
 
 [node name="CollisionShape3D" parent="GameObjects/Quarry/Generator/ItemDeposit" index="0"]
@@ -585,24 +468,22 @@ bounds = Vector3(1, 1, 5)
 [node name="CollisionShape3D" parent="GameObjects/Quarry/Generator/CheckForMachinesArea" index="0"]
 shape = SubResource("402")
 
-[node name="production_machine" parent="GameObjects/Quarry" instance=ExtResource("19")]
+[node name="production_machine" parent="GameObjects/Quarry" instance=ExtResource("22_twuh0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71, 5, 21)
-input_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("8"), ExtResource("55")])
-output_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("34")])
 payday = 2
 
 [node name="GameEnd" type="Node3D" parent="GameObjects"]
 
-[node name="TicketMachine" parent="GameObjects/GameEnd" instance=ExtResource("48")]
+[node name="TicketMachine" parent="GameObjects/GameEnd" instance=ExtResource("41_wevrb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23)
 
 [node name="Sewer" type="Node3D" parent="GameObjects"]
 
-[node name="WaterArea" parent="GameObjects/Sewer" instance=ExtResource("54")]
+[node name="WaterArea" parent="GameObjects/Sewer" instance=ExtResource("31_qbyeb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -11, -19)
 bounds = Vector3(8, 1, 30)
 
-[node name="Player_Ghost" parent="." instance=ExtResource("1")]
+[node name="Player_Ghost" parent="." instance=ExtResource("42_rbyii")]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 43, 2, -12)
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -616,44 +497,49 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3")
+script = ExtResource("43_vfleq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/InventoryInterface"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="UI/InventoryInterface"]
+layout_mode = 1
+offset_right = 109.0
+offset_bottom = 122.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
 
-[node name="PlayerInventory" parent="UI/InventoryInterface/VBoxContainer" instance=ExtResource("2")]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InventoryInterface/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/InventoryInterface/VBoxContainer"]
+[node name="PlayerInventory" parent="UI/InventoryInterface/MarginContainer/VBoxContainer" instance=ExtResource("44_ydhrg")]
 layout_mode = 2
 
-[node name="EquipInventory" parent="UI/InventoryInterface/VBoxContainer/HBoxContainer" instance=ExtResource("2")]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InventoryInterface/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="WeaponInventory" parent="UI/InventoryInterface/VBoxContainer/HBoxContainer" instance=ExtResource("2")]
+[node name="EquipInventory" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("44_ydhrg")]
 layout_mode = 2
 
-[node name="PlayerStats" type="PanelContainer" parent="UI/InventoryInterface/VBoxContainer"]
-layout_mode = 2
-script = ExtResource("49")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/InventoryInterface/VBoxContainer/PlayerStats"]
+[node name="WeaponInventory" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("44_ydhrg")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/InventoryInterface/VBoxContainer/PlayerStats/MarginContainer"]
+[node name="PlayerStats" type="PanelContainer" parent="UI/InventoryInterface/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("45_exrrf")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/PlayerStats"]
 layout_mode = 2
 
-[node name="bones" type="Label" parent="UI/InventoryInterface/VBoxContainer/PlayerStats/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/PlayerStats/MarginContainer"]
+layout_mode = 2
+
+[node name="bones" type="Label" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/PlayerStats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "bones 999"
 
-[node name="stems" type="Label" parent="UI/InventoryInterface/VBoxContainer/PlayerStats/MarginContainer/VBoxContainer"]
+[node name="stems" type="Label" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/PlayerStats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "stem cells 999"
 
-[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("2")]
+[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("44_ydhrg")]
 visible = false
 layout_mode = 0
 anchor_left = 0.5
@@ -665,7 +551,7 @@ offset_top = -15.0
 offset_right = 17.0
 offset_bottom = 19.0
 
-[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("4")]
+[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("46_td2ek")]
 visible = false
 modulate = Color(1, 1, 1, 0.439216)
 self_modulate = Color(1, 1, 1, 0)
@@ -683,7 +569,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("29")
+script = ExtResource("47_dvm7s")
 
 [node name="Panel" type="Panel" parent="UI/PauseMenu"]
 layout_mode = 0
@@ -738,32 +624,34 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "exit to desktop"
 
-[node name="Options" parent="UI/PauseMenu" instance=ExtResource("31")]
+[node name="Options" parent="UI/PauseMenu" instance=ExtResource("48_38cdl")]
 visible = false
 layout_mode = 1
 
-[node name="LoadingScreen" parent="UI/PauseMenu" instance=ExtResource("30")]
+[node name="LoadingScreen" parent="UI/PauseMenu" instance=ExtResource("49_afaad")]
 visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="LoadingScreen" parent="." instance=ExtResource("30")]
+[node name="LoadingScreen" parent="." instance=ExtResource("49_afaad")]
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 
-[editable path="Environment/mdl-slumtown"]
 [editable path="GameObjects/ToolFactory/Generator"]
+[editable path="GameObjects/ToolFactory/Generator/generator"]
 [editable path="GameObjects/ToolFactory/Generator/CanvasLayer/HintObjectInterface"]
 [editable path="GameObjects/WeaponFactory/Generator"]
+[editable path="GameObjects/WeaponFactory/Generator/generator"]
 [editable path="GameObjects/WeaponFactory/Generator/CanvasLayer/HintObjectInterface"]
 [editable path="GameObjects/Quarry/Generator"]
+[editable path="GameObjects/Quarry/Generator/generator"]
 [editable path="GameObjects/Quarry/Generator/CanvasLayer/HintObjectInterface"]

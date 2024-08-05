@@ -1,8 +1,7 @@
 extends HintObject
 
-@export var accepted_biomass_item_data: Resource
 @export var dropped_seeds: Array[ItemData]
-@export var slime_item_data: Resource
+@export var slime_item_data: ItemData
 @export var hydration_prog_bar: ProgressBar
 @export var bio_prog_bar: ProgressBar
 
@@ -26,7 +25,7 @@ func _on_ItemDeposit_body_entered(body):
 	if current_biomass >= 10:
 		return
 	if body.is_in_group("pickup"):
-		if accepted_biomass_item_data and body.slot_data.item_data == accepted_biomass_item_data:
+		if body.slot_data.item_data.ItemType == ItemData.ItemType.Biomass:
 			for n in body.slot_data.quantity:
 				self.current_biomass += 2
 			body.queue_free()

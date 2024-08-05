@@ -39,13 +39,13 @@ func _interact(_actor):
 
 func start_healing():
 	if timer.is_stopped():
-		$mdl_autostitcher/AnimationPlayer.play("active")
+		$autostitcher/AutosticherAnimations.play("active")
 		healing_loop.play(0) #start the healing loop at the beginning
 		can_interact = false
 		timer.start()
 
 func stop_healing(_body):
-	$mdl_autostitcher/AnimationPlayer.play("idle", 1)
+	$autostitcher/AutosticherAnimations.play("idle", 1)
 	can_interact = true
 	timer.stop()
 	healing_loop.stop()

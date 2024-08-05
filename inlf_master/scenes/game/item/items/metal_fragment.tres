@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://q7w2vsr68otk"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1_mi371"]
+[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="2_tstv3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xngk5"]
+atlas = ExtResource("2_tstv3")
+region = Rect2(640, 0, 128, 128)
+
+[resource]
+script = ExtResource("1_mi371")
+name = "Metal Bar"
+description = "a small metal bar. can be used to produce certain goods."
+stackable = false
+texture = SubResource("AtlasTexture_xngk5")
+price = 0
+item_type = 4

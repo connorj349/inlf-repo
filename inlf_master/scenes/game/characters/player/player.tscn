@@ -1,26 +1,27 @@
-[gd_scene load_steps=36 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=39 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
 [ext_resource type="PackedScene" uid="uid://cdoq8vp2mm8u1" path="res://scenes/game/characters/player/player_dead.tscn" id="2_lucr1"]
 [ext_resource type="Script" path="res://scenes/game/item/item_data_weapon.gd" id="4"]
-[ext_resource type="Resource" uid="uid://ct8lqjd8asf2c" path="res://scenes/game/item/items/shotgun.tres" id="6"]
 [ext_resource type="Texture2D" uid="uid://clgjw8wxkuusx" path="res://assets/textures/shotgun-sheet.png" id="7"]
 [ext_resource type="PackedScene" uid="uid://dxrcx1liop62p" path="res://scenes/game/inventory/hotbar_inventory.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://csgmb3e5wy837" path="res://assets/textures/punch-sheet.png" id="9"]
+[ext_resource type="Script" path="res://scenes/game/inventory/slot_data.gd" id="9_8be04"]
+[ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="9_kwuh7"]
 [ext_resource type="Texture2D" uid="uid://br5grrh1ej20j" path="res://assets/textures/panel_rect.png" id="10"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="11"]
 [ext_resource type="Script" path="res://scenes/game/characters/player/notifications.gd" id="12"]
 [ext_resource type="Script" path="res://scenes/game/characters/player/player_weapon.gd" id="13"]
 [ext_resource type="Script" path="res://scenes/game/characters/player/player_weapon_manager.gd" id="14"]
 [ext_resource type="Script" path="res://scenes/game/characters/player/player.gd" id="15"]
-[ext_resource type="Theme" path="res://assets/themes/player_hud_bars_theme.tres" id="16"]
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="18"]
 [ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="18_fpf0a"]
 [ext_resource type="AudioStream" uid="uid://74ffi73b3myc" path="res://assets/audio/player/weapons/player_fists_swing.wav" id="21"]
 [ext_resource type="AudioStream" uid="uid://s3aac53x8yi1" path="res://assets/audio/player/weapons/shotgun/player_shotgun_shot.wav" id="22"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
+height = 2.5
 
 [sub_resource type="BoxShape3D" id="2"]
 size = Vector3(0.5, 0.5, 1)
@@ -104,6 +105,31 @@ _data = {
 "attack": SubResource("4"),
 "idle": SubResource("5")
 }
+
+[sub_resource type="Resource" id="Resource_i1tml"]
+script = ExtResource("9_kwuh7")
+name = "test_ammo_delete"
+description = "test ammo, delete"
+stackable = false
+price = 999
+item_type = 4
+
+[sub_resource type="Resource" id="Resource_v44b8"]
+script = ExtResource("9_8be04")
+item_data = SubResource("Resource_i1tml")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_71jn7"]
+script = ExtResource("4")
+max_ammo = 4
+ammo_slot = SubResource("Resource_v44b8")
+damage = 5
+damage_type = 1
+name = "test weapon"
+description = "test, delete"
+stackable = true
+price = 999
+item_type = 4
 
 [sub_resource type="Animation" id="13"]
 length = 0.001
@@ -340,7 +366,7 @@ stairs_ahead_raycast = NodePath("StairsAheadRaycast3D")
 stairs_below_raycast = NodePath("StairsBelowRaycast3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 shape = SubResource("1")
 
 [node name="Health" parent="." instance=ExtResource("2_7n873")]
@@ -357,7 +383,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 target_position = Vector3(0, -0.75, 0)
 
 [node name="HeadOriginalPosition" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
 
 [node name="Head" type="Node3D" parent="HeadOriginalPosition"]
 unique_name_in_owner = true
@@ -429,7 +455,7 @@ hframes = 4
 
 [node name="wep_shotgun" type="Node3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager"]
 script = ExtResource("13")
-item_weapon_data = ExtResource("6")
+item_weapon_data = SubResource("Resource_71jn7")
 
 [node name="RangeRayCast" type="RayCast3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_shotgun"]
 target_position = Vector3(0, 0, -10)
@@ -491,7 +517,6 @@ theme_override_styles/panel = SubResource("27")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("16")
 value = 35.0
 nine_patch_stretch = true
 texture_under = ExtResource("18")
@@ -504,7 +529,6 @@ script = ExtResource("18_fpf0a")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("16")
 value = 44.0
 fill_mode = 1
 nine_patch_stretch = true
@@ -522,12 +546,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme_override_fonts/font = SubResource("8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="UI/Bars/health_pox/pox_bar/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme_override_fonts/font = SubResource("8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="UI/Bars/health_pox/pox_bar/VBoxContainer"]
 layout_mode = 2
@@ -536,18 +564,24 @@ size_flags_vertical = 7
 theme_override_fonts/font = SubResource("28")
 theme_override_font_sizes/font_size = 35
 text = "blood"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="UI/Bars/health_pox/pox_bar/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme_override_fonts/font = SubResource("8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label5" type="Label" parent="UI/Bars/health_pox/pox_bar/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme_override_fonts/font = SubResource("8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="armor_bar" type="TextureProgressBar" parent="UI/Bars/health_pox"]
 layout_mode = 2

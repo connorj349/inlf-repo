@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://hxe1g3invfrc"]
+[gd_scene load_steps=12 format=3 uid="uid://hxe1g3invfrc"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/rot_telecom.gd" id="2"]
-[ext_resource type="PackedScene" path="res://models/rot_telecom/mdl-rot_telecom.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://con6nrg1gg12u" path="res://assets/models/rot_telecom.glb" id="2_vuykr"]
+[ext_resource type="Material" uid="uid://bf2cdemhpc4vg" path="res://assets/materials/metastabilizer.tres" id="3_pcxwu"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="3_teodr"]
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="4_3ji5j"]
+[ext_resource type="Material" uid="uid://c32yjoodg4d4m" path="res://assets/materials/screen.tres" id="4_oe6qa"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(2, 2, 0.5)
@@ -56,12 +58,16 @@ script = ExtResource("2")
 info_label = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/TitleLabel2")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
-[node name="mdl-rot_telecom" parent="." instance=ExtResource("3")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("1")
+
+[node name="rot_telecom" parent="." instance=ExtResource("2_vuykr")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="obj-rot_telecom" parent="rot_telecom" index="0"]
+surface_material_override/0 = ExtResource("3_pcxwu")
+surface_material_override/1 = ExtResource("4_oe6qa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -94,4 +100,5 @@ light_energy = 2.0
 spot_range = 8.997
 spot_angle = 49.96
 
+[editable path="rot_telecom"]
 [editable path="CanvasLayer/HintObjectInterface"]

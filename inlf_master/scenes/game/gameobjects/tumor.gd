@@ -1,6 +1,6 @@
 extends HintObject
 
-#export(Resource) var slot_data # cancer item to spawn for player
+@export var cancer_item_data: ItemData # cancer item to spawn for player
 #export(int) var number_of_roaches_to_spawn = 3
 @export var rot_increase_amount: int = 1
 @export var rot_inrease_frequency: int = 5
@@ -38,7 +38,9 @@ func on_death():
 	dead = true
 	# spawn tumor bloody pop effect
 	# spawn rotroach hive(this hive spawns 3 roaches, then dissapears)
-	#Globals.create_pickup(slot_data, self)
+	var new_item = SlotData.new()
+	new_item.item_data = cancer_item_data
+	Globals.create_pickup(new_item, self)
 	queue_free() # delete this object
 
 func _on_RotTimer_timeout():

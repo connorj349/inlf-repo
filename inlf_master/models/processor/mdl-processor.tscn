@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk4i8g2xtfo5b"]
-
-[ext_resource type="Material" path="res://assets/materials/processor.tres" id="1"]
-[ext_resource type="PackedScene" uid="uid://dttcef5xs5fwl" path="res://assets/models/processor.glb" id="2"]
-
-[node name="mdl-processor" instance=ExtResource("2")]
-
-[node name="obj-processor" parent="." index="0"]
-material_override = ExtResource("1")

@@ -5,10 +5,10 @@ extends Interactable
 @export var uncommon_organ: Resource
 @export var rare_organ: Resource
 @export var blood_spray: PackedScene
+@export var prog_bar: ProgressBar
+@export var state_text: Label
 
 @onready var health = $Health
-@onready var prog_bar = $CanvasLayer/Info/VBoxContainer/ProgressBar
-@onready var state_text = $CanvasLayer/Info/VBoxContainer/ProgressBar/Label
 @onready var organ_spawn = $organ_spawnpoint
 
 var corpse_damage = Damage.new()

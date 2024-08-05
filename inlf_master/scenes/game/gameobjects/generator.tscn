@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://r1okymmde6l8"]
+[gd_scene load_steps=14 format=3 uid="uid://r1okymmde6l8"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/generator.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cpggf8tp1qgqv" path="res://assets/models/generator.glb" id="3_2qs2n"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_f2ult"]
-[ext_resource type="PackedScene" uid="uid://dh21lv4hfv085" path="res://models/generator/mdl-generator.tscn" id="5"]
+[ext_resource type="Material" path="res://assets/materials/generator.tres" id="4_pmhs0"]
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="6"]
-[ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://scenes/game/item/items/bio_fuel.tres" id="7"]
+[ext_resource type="Resource" uid="uid://d1fjvdo0nh06v" path="res://scenes/game/item/items/bio_fuel.tres" id="7"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/show_area_bounds.gd" id="9"]
 
 [sub_resource type="BoxShape3D" id="1"]
@@ -64,12 +65,15 @@ fuel_item_data = ExtResource("7")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
-[node name="mdl-generator" parent="." instance=ExtResource("5")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.1)
 shape = SubResource("1")
+
+[node name="generator" parent="." instance=ExtResource("3_2qs2n")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="obj-generator" parent="generator" index="0"]
+surface_material_override/0 = ExtResource("4_pmhs0")
 
 [node name="LoopSound" type="AudioStreamPlayer3D" parent="."]
 bus = &"SoundFX"
@@ -120,4 +124,5 @@ shape = SubResource("9")
 [connection signal="timeout" from="FuelConsumeTimer" to="." method="_on_FuelConsumeTimer_timeout"]
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]
 
+[editable path="generator"]
 [editable path="CanvasLayer/HintObjectInterface"]

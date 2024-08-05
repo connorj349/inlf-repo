@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var is_melee: bool = false #determines if we need to play onhit sounds
-@export var item_weapon_data: Resource = null
+@export var item_weapon_data: ItemDataWeapon = null
 
 @onready var anim_player = $AnimationPlayer
 @onready var raycast = $RangeRayCast
@@ -11,8 +11,6 @@ var ammo = 0
 var item_weapon_damage = Damage.new()
 
 func _ready():
-	# set collision masks to 1, 2, and NPC
-	# raycast.collision_mask
 	item_weapon_damage.type = item_weapon_data.damage_type
 	item_weapon_damage.amount = item_weapon_data.damage
 	item_weapon_damage.source = Globals.current_player

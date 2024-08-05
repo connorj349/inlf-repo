@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=2 format=3 uid="uid://cd3247qn1jotw"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data_consumable.gd" id="1_eptqo"]
+
+[resource]
+script = ExtResource("1_eptqo")
+heal_value = 4
+consumable_type = 0
+name = "Soylent"
+description = "mystery meat, bread? eatible"
+stackable = false
+price = 25
+item_type = 4

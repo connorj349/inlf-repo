@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bsqr7oaxve8ba"]
+[gd_scene load_steps=15 format=3 uid="uid://bsqr7oaxve8ba"]
 
-[ext_resource type="PackedScene" uid="uid://dobb0lqq3s5ih" path="res://models/machine/mdl-machine.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dl612dx4odxl0" path="res://assets/models/machine.glb" id="2_k2f0e"]
+[ext_resource type="Material" path="res://assets/materials/processor.tres" id="3_lblde"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/production_machine.gd" id="5"]
 [ext_resource type="AudioStream" uid="uid://b28rn55hxvivr" path="res://assets/audio/machine/machine_loop.wav" id="6"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="6_fr3as"]
@@ -63,12 +64,15 @@ prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer
 materials_label = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/TitleLabel2")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
-[node name="mdl-machine" parent="." instance=ExtResource("1")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("1")
+
+[node name="machine" parent="." instance=ExtResource("2_k2f0e")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="obj-production_machine" parent="machine" index="0"]
+surface_material_override/0 = ExtResource("3_lblde")
 
 [node name="ManufactureTimer" type="Timer" parent="."]
 
@@ -170,4 +174,5 @@ text = "CAUTERIZE"
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Button2" to="." method="button_press" binds= [1]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Button3" to="." method="button_press" binds= [2]]
 
+[editable path="machine"]
 [editable path="CanvasLayer/HintObjectInterface"]

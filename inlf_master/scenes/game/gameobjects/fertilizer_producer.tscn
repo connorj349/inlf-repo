@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://xt4fnaxbc2mi"]
+[gd_scene load_steps=15 format=3 uid="uid://xt4fnaxbc2mi"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/fertilizer_producer.gd" id="2"]
-[ext_resource type="Resource" uid="uid://dfpln714g1d8y" path="res://scenes/game/item/items/fertilizer.tres" id="2_rxpdi"]
+[ext_resource type="Resource" uid="uid://cfca7q7atvdxp" path="res://scenes/game/item/items/fertilizer.tres" id="2_rxpdi"]
+[ext_resource type="PackedScene" uid="uid://c67pvc4lw7inc" path="res://assets/models/distiller.glb" id="3_3how7"]
 [ext_resource type="Script" path="res://scenes/game/ui_bar.gd" id="4"]
+[ext_resource type="Material" uid="uid://b73s0v4anr5dp" path="res://assets/materials/distiller.tres" id="4_3i85c"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="5_dqrqr"]
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="7_bwrvc"]
-[ext_resource type="PackedScene" uid="uid://bxvvdxtfn50dq" path="res://models/distiller/mdl-distiller.tscn" id="8"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(2.5, 4, 2)
@@ -64,15 +65,17 @@ biomass_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxC
 production_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar2")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
-[node name="mdl-distiller" parent="." instance=ExtResource("8")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-
 [node name="ItemSpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2, 0)
 shape = SubResource("1")
+
+[node name="distiller" parent="." instance=ExtResource("3_3how7")]
+
+[node name="obj-distiller" parent="distiller" index="0"]
+surface_material_override/0 = ExtResource("4_3i85c")
 
 [node name="CreateFertilizerTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -128,4 +131,5 @@ libraries = {
 [connection signal="timeout" from="CreateFertilizerTimer" to="." method="_on_CreateFertilizerTimer_timeout"]
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]
 
+[editable path="distiller"]
 [editable path="CanvasLayer/HintObjectInterface"]

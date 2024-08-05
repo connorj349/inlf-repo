@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://d2h0ajf8msb5c"]
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://d1fjvdo0nh06v"]
 
-[ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bcv1hi0j6isel" path="res://assets/textures/ui-icon-equipment.png" id="2"]
+[ext_resource type="Script" path="res://scenes/game/item/item_data_consumable.gd" id="1_gdvar"]
+[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="2_dn0pa"]
 
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("2")
-region = Rect2(110, 1500, 80, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hugka"]
+atlas = ExtResource("2_dn0pa")
+region = Rect2(128, 0, 128, 128)
 
 [resource]
-script = ExtResource("1")
-name = "biofuel"
-description = "used to power generators"
+script = ExtResource("1_gdvar")
+heal_value = -24
+consumable_type = 0
+name = "Biofuel"
+description = "a crude oil used to power generators. can be consumed. good luck"
 stackable = false
-texture = SubResource("1")
+texture = SubResource("AtlasTexture_hugka")
 price = 0
 item_type = 4

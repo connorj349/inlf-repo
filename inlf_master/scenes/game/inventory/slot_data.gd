@@ -3,7 +3,7 @@ class_name SlotData
 
 const MAX_STACK_SIZE = 99
 
-@export var item_data: Resource
+@export var item_data: ItemData
 @export var quantity = 1: set = set_quantity
 
 func can_merge_with(other_slot_data):

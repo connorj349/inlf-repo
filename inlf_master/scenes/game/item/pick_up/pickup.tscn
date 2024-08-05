@@ -59,6 +59,7 @@ anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
+shaded = true
 double_sided = false
 texture = ExtResource("2")
 
@@ -76,7 +77,6 @@ bus = &"SoundFX"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HintObjectInterface" parent="CanvasLayer" instance=ExtResource("5_jf81d")]
-mouse_filter = 2
 
 [node name="CanvasModulate" parent="CanvasLayer/HintObjectInterface" index="0"]
 color = Color(1, 1, 1, 0)

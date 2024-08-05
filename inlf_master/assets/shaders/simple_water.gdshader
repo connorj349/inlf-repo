@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode shadows_disabled;
+//render_mode shadows_disabled;
 
 uniform vec3 water_color : source_color;
 uniform sampler2D water_texture;

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b7nxt2hc5tvjo"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://bk4i8g2xtfo5b" path="res://models/processor/mdl-processor.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bbavnvhdyv0se" path="res://assets/models/processor.glb" id="2_fwq0a"]
 [ext_resource type="AudioStream" uid="uid://b28rn55hxvivr" path="res://assets/audio/machine/machine_loop.wav" id="4"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_j733o"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/processor.gd" id="10"]
@@ -56,12 +56,12 @@ script = ExtResource("10")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
-[node name="mdl-processor" parent="." instance=ExtResource("3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("9")
+
+[node name="processor" parent="." instance=ExtResource("2_fwq0a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="ItemDeposit" parent="." instance=ExtResource("2")]
 collision_layer = 0
@@ -98,7 +98,7 @@ libraries = {
 }
 
 [node name="ItemSpawnPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 3.6)
 
 [node name="ProcessingSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4")

@@ -11,7 +11,7 @@ func _ready():
 	rng.randomize()
 
 func _interact(_actor): # can only use if player is an antagonist
-	if _actor.role.role_type == Role.Role_Type.Cultist:
+	#if _actor is PlayerCultist:
 		if current_active_required_mat:
 			if Gamestate.player_inventory.take_item(current_active_required_mat):
 				Globals.current_player.magick.increase_max_magick(1) # increase max magick +1

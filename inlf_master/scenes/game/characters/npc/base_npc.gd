@@ -3,7 +3,7 @@ extends CharacterBody3D
 enum STATE { IDLE, PATROL, ATTACK }
 
 @export var inventory_data: Resource
-@export var loot_table: Array[ItemData] # (Array, Resource)
+@export var loot_table: Array[ItemData]
 @export var will_retaliate: bool = false
 
 @onready var health = $Health

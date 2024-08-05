@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://chg45rumgktac"]
-
-[ext_resource type="Material" path="res://assets/materials/tumor.tres" id="1"]
-[ext_resource type="PackedScene" uid="uid://c1j33a074i1e" path="res://assets/models/tumor.glb" id="2"]
-
-[node name="mdl-tumor" instance=ExtResource("2")]
-
-[node name="obj-tumor" parent="." index="0"]
-material_override = ExtResource("1")

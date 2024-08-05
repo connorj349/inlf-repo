@@ -1,19 +1,21 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://dtnywridk3h05"]
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=5 format=3 uid="uid://dhqv8muda5qxg"]
 
-[ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1"]
-[ext_resource type="Resource" uid="uid://d2h0ajf8msb5c" path="res://scenes/game/item/items/bio_fuel.tres" id="2"]
-[ext_resource type="Texture2D" uid="uid://bcv1hi0j6isel" path="res://assets/textures/ui-icon-equipment.png" id="3"]
+[ext_resource type="Script" path="res://scenes/game/item/item_data_consumable.gd" id="1_waeoa"]
+[ext_resource type="Resource" uid="uid://d1fjvdo0nh06v" path="res://scenes/game/item/items/bio_fuel.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="3_uiq7b"]
 
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("3")
-region = Rect2(800, 1800, 50, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h71m"]
+atlas = ExtResource("3_uiq7b")
+region = Rect2(384, 128, 128, 128)
 
 [resource]
-script = ExtResource("1")
-name = "spine"
-description = "used to create biofuel, found in bone caspules"
+script = ExtResource("1_waeoa")
+heal_value = -2
+consumable_type = 0
+name = "Spine"
+description = "a spine. can be processed into biofuel to power generators. can be eaten, but why?"
 stackable = false
-texture = SubResource("1")
+texture = SubResource("AtlasTexture_0h71m")
 price = 0
 processed_item_data = ExtResource("2")
 item_type = 4

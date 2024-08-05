@@ -1,16 +1,37 @@
-[gd_scene load_steps=19 format=3 uid="uid://cow88ggfrlbxw"]
+[gd_scene load_steps=22 format=3 uid="uid://cow88ggfrlbxw"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/amoeba.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://befpqtmum2fwb" path="res://models/amoeba/mdl-amoeba.tscn" id="2"]
+[ext_resource type="Resource" uid="uid://crp7iv4cumjjv" path="res://scenes/game/item/items/seeds/rot_shroom_seed.tres" id="2_und5m"]
+[ext_resource type="Resource" uid="uid://b03aitsnlcjwg" path="res://scenes/game/item/items/seeds/skin_fruit.tres" id="3_a0jev"]
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://b0d73f5lcrrgy" path="res://assets/models/amoeba.glb" id="5_i4cu2"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/water_handler.tscn" id="6"]
+[ext_resource type="Material" uid="uid://dtkvj2rgon4e6" path="res://assets/materials/amoeba.tres" id="6_ewq4s"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="6_ynlu0"]
-[ext_resource type="Resource" uid="uid://bfv04trnoslqs" path="res://scenes/game/item/items/slop_skull.tres" id="7"]
 [ext_resource type="Script" path="res://scenes/game/ui_bar.gd" id="7_abvhb"]
-[ext_resource type="Resource" uid="uid://o0eqj1gg7bn4" path="res://scenes/game/item/items/amoeba_slime.tres" id="8"]
-[ext_resource type="Resource" uid="uid://y8rfvyq60b63" path="res://scenes/game/item/items/seeds/seed_mushroom.tres" id="9"]
+[ext_resource type="Resource" uid="uid://ewgw8vk53l6f" path="res://scenes/game/item/items/amoeba_slime.tres" id="8"]
+[ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="8_eul1b"]
 
-[sub_resource type="Animation" id="13"]
+[sub_resource type="BoxShape3D" id="7"]
+size = Vector3(2, 0.5, 2)
+
+[sub_resource type="Animation" id="Animation_h774b"]
+resource_name = "pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.75, 0.75, 0.75), Vector3(0.7, 0.7, 0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_qomnb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -25,30 +46,15 @@ tracks/0/keys = {
 "values": [Vector3(0.75, 0.75, 0.75)]
 }
 
-[sub_resource type="Animation" id="14"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.75, 0.75, 0.75), Vector3(0.65, 0.65, 0.65), Vector3(0.75, 0.75, 0.75)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_f584r"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nilw6"]
 _data = {
-"RESET": SubResource("13"),
-"idle": SubResource("14")
+"RESET": SubResource("Animation_qomnb"),
+"pulse": SubResource("Animation_h774b")
 }
 
-[sub_resource type="BoxShape3D" id="7"]
-size = Vector3(2, 0.5, 2)
+[sub_resource type="LabelSettings" id="LabelSettings_psv5d"]
+font = ExtResource("8_eul1b")
+font_size = 25
 
 [sub_resource type="Animation" id="9"]
 length = 0.001
@@ -94,27 +100,29 @@ size = Vector3(3, 1, 3)
 size = Vector3(3, 1, 3)
 
 [node name="Amoeba" type="RigidBody3D" node_paths=PackedStringArray("hydration_prog_bar", "bio_prog_bar", "anim_player")]
-collision_layer = 2
+collision_layer = 3
 script = ExtResource("1")
-accepted_biomass_item_data = ExtResource("7")
-dropped_seeds = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("9")])
+dropped_seeds = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("2_und5m"), ExtResource("3_a0jev")])
 slime_item_data = ExtResource("8")
 hydration_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar2")
 bio_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
-[node name="mdl-amoeba" parent="." instance=ExtResource("2")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 7.45058e-09, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="mdl-amoeba"]
-libraries = {
-"": SubResource("AnimationLibrary_f584r")
-}
-autoplay = "idle"
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 shape = SubResource("7")
+
+[node name="amoeba" parent="." instance=ExtResource("5_i4cu2")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="obj-ameoba" parent="amoeba" index="0"]
+surface_material_override/0 = ExtResource("6_ewq4s")
+
+[node name="AmoebaAnimation" type="AnimationPlayer" parent="amoeba"]
+libraries = {
+"": SubResource("AnimationLibrary_nilw6")
+}
+autoplay = "pulse"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -149,6 +157,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "moisture"
+label_settings = SubResource("LabelSettings_psv5d")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -185,4 +194,5 @@ autostart = true
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="queue_free"]
 
+[editable path="amoeba"]
 [editable path="CanvasLayer/HintObjectInterface"]

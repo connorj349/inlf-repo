@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bglomiqv0hee6"]
+[gd_scene load_steps=10 format=3 uid="uid://bglomiqv0hee6"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="Script" path="res://global/loading_screen/loading_screen.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bay0tgp46sfbw" path="res://assets/textures/background_01.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="5"]
-[ext_resource type="Theme" uid="uid://cnq43lwu6wk48" path="res://assets/themes/main_menu_theme.tres" id="6"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("1")])
@@ -112,7 +111,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource("6")
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2")
 tips = Array[String](["tumors produce rot over time. destroy them", "insert certain items in a processor to receive special material used in machines", "machines are used to create goods that are bought at the vendor", "get seeds from amoebas", "bones are the only way to leave the nightmare"])
 

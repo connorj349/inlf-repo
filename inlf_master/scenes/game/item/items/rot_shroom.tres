@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://b3avgvbakndmf"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data_consumable.gd" id="1_kyvx4"]
+[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="2_bu7cp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpb7v"]
+atlas = ExtResource("2_bu7cp")
+region = Rect2(128, 128, 128, 128)
+
+[resource]
+script = ExtResource("1_kyvx4")
+heal_value = 25
+consumable_type = 0
+name = "Rotshroom"
+description = "a potent rot shroom with sickness healing capabilities. a rare good."
+stackable = false
+texture = SubResource("AtlasTexture_gpb7v")
+price = 0
+item_type = 4

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cysufwgv31qbe"]
-
-[ext_resource type="PackedScene" uid="uid://cnuypwq4ask1a" path="res://assets/models/flesh_pile.glb" id="1"]
-[ext_resource type="Material" path="res://assets/materials/flesh_pile.tres" id="2"]
-
-[node name="mdl-flesh_pile" instance=ExtResource("1")]
-
-[node name="obj-fleshpile" parent="." index="0"]
-material_override = ExtResource("2")

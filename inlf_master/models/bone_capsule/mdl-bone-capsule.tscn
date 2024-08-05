@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://jrn8etdq58gt"]
-
-[ext_resource type="PackedScene" uid="uid://c3ot0blfmo38q" path="res://assets/models/bone-capsule.glb" id="1"]
-[ext_resource type="Material" path="res://assets/materials/bone-capsule.tres" id="2"]
-
-[node name="mdl-bone-capsule" instance=ExtResource("1")]
-
-[node name="obj-bone_capsule" parent="." index="0"]
-material_override = ExtResource("2")

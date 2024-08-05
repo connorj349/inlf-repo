@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu0ib6h238inm"]
+[gd_scene load_steps=14 format=3 uid="uid://bu0ib6h238inm"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://bptrs3t6i1dep" path="res://scenes/game/item/items/cancer.tres" id="2_6w58c"]
 [ext_resource type="Script" path="res://global/data/damage.gd" id="2_ytsae"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/tumor.gd" id="4"]
+[ext_resource type="PackedScene" uid="uid://c1j33a074i1e" path="res://assets/models/tumor.glb" id="4_1360l"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_gp15w"]
-[ext_resource type="PackedScene" uid="uid://chg45rumgktac" path="res://models/tumor/mdl-tumor.tscn" id="5"]
+[ext_resource type="Texture2D" uid="uid://cbses0ai42myl" path="res://assets/textures/pustile-light.png" id="5_oph3r"]
 
 [sub_resource type="Resource" id="Resource_yum53"]
 script = ExtResource("2_ytsae")
@@ -13,6 +15,10 @@ amount = 5
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_up65r"]
+albedo_texture = ExtResource("5_oph3r")
+metallic_specular = 0.0
 
 [sub_resource type="Animation" id="7"]
 length = 0.001
@@ -55,12 +61,10 @@ _data = {
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("4")
+cancer_item_data = ExtResource("2_6w58c")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 tumor_damage = SubResource("Resource_yum53")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
-
-[node name="mdl-tumor" parent="." instance=ExtResource("5")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
 [node name="Health" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23512, 0)
@@ -69,6 +73,12 @@ allowed_max_health = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("1")
+
+[node name="tumor" parent="." instance=ExtResource("4_1360l")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="obj-tumor" parent="tumor" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_up65r")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -97,4 +107,5 @@ autostart = true
 
 [connection signal="timeout" from="RotTimer" to="." method="_on_RotTimer_timeout"]
 
+[editable path="tumor"]
 [editable path="CanvasLayer/HintObjectInterface"]

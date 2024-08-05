@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh21lv4hfv085"]
-
-[ext_resource type="Material" path="res://assets/materials/generator.tres" id="1"]
-[ext_resource type="PackedScene" uid="uid://cpggf8tp1qgqv" path="res://assets/models/generator.glb" id="2"]
-
-[node name="mdl-generator" instance=ExtResource("2")]
-
-[node name="obj-generator" parent="." index="0"]
-material_override = ExtResource("1")

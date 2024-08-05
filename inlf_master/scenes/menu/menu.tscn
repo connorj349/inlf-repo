@@ -76,8 +76,6 @@ visible = false
 
 [node name="LoadingScreen" parent="CanvasLayer" instance=ExtResource("6_3ba5x")]
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
 tips = Array[String](["tumors produce rot over time. destroy them", "cultists can create a circle of blood by pressing the Z key", "you can harvest a resource like a tree or boulder by hitting it"])
 
 [connection signal="button_down" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_button_down"]

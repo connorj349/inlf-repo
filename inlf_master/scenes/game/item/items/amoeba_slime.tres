@@ -1,17 +1,11 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://o0eqj1gg7bn4"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://ewgw8vk53l6f"]
 
 [ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bcv1hi0j6isel" path="res://assets/textures/ui-icon-equipment.png" id="2"]
-
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("2")
-region = Rect2(1454, 3658, 44, 36)
 
 [resource]
 script = ExtResource("1")
-name = "amoeba slime"
-description = "used as biomass in machine	"
+name = "Amoeba Slime"
+description = "a sticky, nasty goo that comes from submerging amoebas. some machines take them as biomass material"
 stackable = false
-texture = SubResource("1")
 price = 0
 item_type = 0

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0hhnv4ej604f"]
-
-[ext_resource type="PackedScene" uid="uid://drdad0r46rt54" path="res://assets/models/ladder-segment-end.glb" id="1"]
-[ext_resource type="Material" path="res://assets/materials/ladder.tres" id="2"]
-
-[node name="mdl-ladder-segment-end" instance=ExtResource("1")]
-
-[node name="mdl-ladder_segment-end" parent="." index="0"]
-material_override = ExtResource("2")

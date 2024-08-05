@@ -1,0 +1,156 @@
+[gd_scene load_steps=13 format=3 uid="uid://ue0fy4t6c0py"]
+
+[ext_resource type="PackedScene" uid="uid://cm35hrjo1wj0m" path="res://assets/models/slumtown.glb" id="1_wsrbg"]
+[ext_resource type="Shader" path="res://assets/shaders/simple_water.gdshader" id="2_8igkp"]
+[ext_resource type="Texture2D" uid="uid://b7udeq5u45c0o" path="res://assets/textures/slumtown/slumtown_grate_floor.png" id="2_wdr5n"]
+[ext_resource type="Material" uid="uid://c13irl0ddgf2k" path="res://assets/materials/metal_grate.tres" id="3_4ip50"]
+[ext_resource type="Texture2D" uid="uid://cmdtcoyucamwd" path="res://assets/textures/slumtown/slumtown_slime_water.jpg" id="3_cwwg2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jelc"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("2_wdr5n")
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_da7ks"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("2_wdr5n")
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mn6b1"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("2_wdr5n")
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b62c7"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("2_wdr5n")
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jdqed"]
+frequency = 0.008
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cqwcw"]
+noise = SubResource("FastNoiseLite_jdqed")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4jigv"]
+render_priority = 0
+shader = ExtResource("2_8igkp")
+shader_parameter/water_color = Color(1, 1, 1, 1)
+shader_parameter/time_scale = 2.0
+shader_parameter/alpha_slider = 0.3
+shader_parameter/water_texture = ExtResource("3_cwwg2")
+shader_parameter/water_normal_noise = SubResource("NoiseTexture2D_cqwcw")
+
+[node name="slumtown" instance=ExtResource("1_wsrbg")]
+
+[node name="split_wall_corridor_001" parent="." index="10"]
+visible = false
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="StaticBody3D" parent="split_wall_corridor_001" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="prole_spawn_001" parent="." index="11"]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_2jelc")
+
+[node name="StaticBody3D" parent="prole_spawn_001" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="canal_walls_002" parent="." index="12"]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_da7ks")
+
+[node name="StaticBody3D" parent="canal_walls_002" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="canal_walls_003" parent="." index="13"]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_mn6b1")
+
+[node name="StaticBody3D" parent="canal_walls_003" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="canal_walls_004" parent="." index="14"]
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_2jelc")
+
+[node name="StaticBody3D" parent="canal_walls_004" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="bar_stairs" parent="." index="28"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="bar_stairs_001" parent="." index="33"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="bar_stairs_002" parent="." index="34"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="shops_railing" parent="." index="35"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="shops_grate" parent="." index="36"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="broken-stairs" parent="." index="44"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="tool_factory_floor_02_001" parent="." index="45"]
+visible = false
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="StaticBody3D" parent="tool_factory_floor_02_001" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="tool_factory_floor_02_002" parent="." index="46"]
+surface_material_override/0 = SubResource("StandardMaterial3D_b62c7")
+
+[node name="wep_factory_catwalk" parent="." index="52"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="catwalk_to_tool_factory" parent="." index="54"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="garden_stairs" parent="." index="57"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="grate" parent="." index="68"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="water-quarry" parent="." index="73"]
+surface_material_override/0 = SubResource("ShaderMaterial_4jigv")
+
+[node name="factory-platform" parent="." index="74"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="water-canal" parent="." index="82"]
+surface_material_override/0 = SubResource("ShaderMaterial_4jigv")
+
+[node name="potential_grate" parent="." index="85"]
+surface_material_override/0 = ExtResource("3_4ip50")
+
+[node name="tool_factory_underbelly_001" parent="." index="100"]
+layers = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_2jelc")
+
+[node name="StaticBody3D" parent="tool_factory_underbelly_001" index="0"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="sewer-water" parent="." index="103"]
+surface_material_override/0 = SubResource("ShaderMaterial_4jigv")
