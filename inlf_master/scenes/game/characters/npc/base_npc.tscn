@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7uvmolrux4mh"]
+[gd_scene load_steps=8 format=3 uid="uid://c7uvmolrux4mh"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="2"]
@@ -12,11 +12,11 @@ script = ExtResource("2")
 slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null])
 
 [sub_resource type="CapsuleShape3D" id="2"]
-
-[sub_resource type="SphereShape3D" id="3"]
-radius = 2.0
+radius = 0.25
+height = 1.75
 
 [node name="BaseNPC" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("4")
 inventory_data = SubResource("1")
 
@@ -24,47 +24,52 @@ inventory_data = SubResource("1")
 allowed_max_health = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.5, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.3, 0)
 shape = SubResource("2")
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("3")
-
 [node name="korpsman" parent="." instance=ExtResource("7_efqk2")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="korpsman/Rig" index="0"]
-bones/0/position = Vector3(0.00221363, 0.939216, -0.0796021)
-bones/1/rotation = Quaternion(0.0280488, 0, 0, 0.999607)
-bones/2/rotation = Quaternion(-0.0557784, 0, 0, 0.998443)
-bones/4/rotation = Quaternion(-0.000889292, -0.00126478, -0.025595, 0.999671)
-bones/5/position = Vector3(0.204155, 0.122795, 0.00111554)
-bones/5/rotation = Quaternion(0.0125415, -0.0954867, 0.983386, -0.153872)
+bones/5/position = Vector3(0.204155, 0.104939, -1.65657e-08)
+bones/5/rotation = Quaternion(0.0132364, -0.0950127, 0.980043, -0.174107)
+bones/5/scale = Vector3(1, 1, 1)
 bones/6/rotation = Quaternion(0.111013, -0.000149843, -0.0374914, 0.993111)
-bones/8/position = Vector3(-0.208582, 0.122795, 0.00111554)
-bones/8/rotation = Quaternion(-0.0122659, -0.0956626, 0.984591, 0.14587)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(-0.208582, 0.104939, -1.65657e-08)
+bones/8/rotation = Quaternion(-0.0132364, -0.0950127, 0.980043, 0.174107)
+bones/8/scale = Vector3(1, 1, 1)
 bones/9/rotation = Quaternion(0.111013, 0.000149843, 0.0374914, 0.993111)
-bones/11/rotation = Quaternion(0.69522, 0.0772397, 0.711588, 0.0659219)
+bones/10/rotation = Quaternion(0.00560927, 0.00441052, 0.106614, 0.994275)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.699483, 0.0491255, 0.711289, 0.0487809)
 bones/11/scale = Vector3(1.00003, 0.999999, 1.00001)
-bones/12/rotation = Quaternion(-0.0183998, 0.0183805, 0.20133, 0.979178)
-bones/13/rotation = Quaternion(-0.69525, 0.0773744, 0.711557, -0.0657864)
+bones/12/rotation = Quaternion(-0.00327978, 0.0217266, 0.158724, 0.987078)
+bones/13/rotation = Quaternion(-0.699442, 0.0483469, 0.711326, -0.0495832)
 bones/13/scale = Vector3(1.00003, 0.999999, 1.00001)
-bones/14/rotation = Quaternion(-0.0187403, -0.0184255, -0.201318, 0.979173)
+bones/14/rotation = Quaternion(-0.00124805, -0.0213809, -0.158814, 0.987076)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.485696, 0.513396, 0.521115, 0.478501)
 bones/16/position = Vector3(0.108615, -0.0344428, -0.0908521)
 bones/16/rotation = Quaternion(-0.458846, 0.540837, -0.48572, 0.510913)
-bones/17/position = Vector3(-0.0434397, 0.013911, -0.00247556)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/position = Vector3(-0.0561789, 0.0140325, -0.00332309)
+bones/17/rotation = Quaternion(-0.0196493, 0.000106615, 0.999803, -0.00286306)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.485696, 0.513396, 0.521115, -0.478501)
 bones/19/position = Vector3(-0.108615, -0.0344428, -0.0908521)
 bones/19/rotation = Quaternion(-0.458846, -0.540837, 0.48572, 0.510913)
-bones/20/position = Vector3(0.0434438, 0.0139111, -0.00247183)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(0.0561864, 0.0140327, -0.00335929)
+bones/20/rotation = Quaternion(0.0196493, 0.000106615, 0.999803, 0.00286306)
+bones/20/scale = Vector3(1, 1, 1)
 
 [node name="Korpsman" parent="korpsman/Rig/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("8_6lvap")
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_Area_body_entered"]
+[node name="AnimationPlayer" parent="korpsman" index="1"]
+autoplay = "Idle"
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [editable path="korpsman"]

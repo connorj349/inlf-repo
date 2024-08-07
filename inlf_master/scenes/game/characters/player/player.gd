@@ -85,8 +85,9 @@ func _process(delta):
 		
 		if interact_area.monitoring:
 			for body in interact_area.get_overlapping_bodies():
-				if body._interact(self): #calls the interact method on the interactable, passing self as arg
-					pass
+				if body.has_method("_interact"):
+					if body._interact(self): #calls the interact method on the interactable, passing self as arg
+						pass
 	
 	if !player_is_in_menu():
 		if Input.is_action_just_pressed("left_click"):

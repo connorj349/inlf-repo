@@ -5,64 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://blrtyiobay61p" path="res://assets/models/autostitcher.glb" id="3_jdawm"]
 [ext_resource type="AudioStream" uid="uid://dt63b0m7jp7u6" path="res://assets/audio/autostitcher/autostitcher_heal_loop.wav" id="4"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_71k1s"]
-[ext_resource type="Material" path="res://assets/materials/processor.tres" id="4_q3bkc"]
+[ext_resource type="Material" uid="uid://bbiqg1ds6lwaf" path="res://assets/materials/processor.tres" id="4_q3bkc"]
 [ext_resource type="AudioStream" uid="uid://d4khbrqy67d41" path="res://assets/audio/autostitcher/autostitcher_hit.wav" id="5"]
 [ext_resource type="Material" path="res://assets/materials/flesh_pile.tres" id="5_sb603"]
 [ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue_3d.tscn" id="6"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1, 1, 0.5)
-
-[sub_resource type="Animation" id="Animation_vn3q5"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("autostitcher/obj-autostitcher-arm-01:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("autostitcher/obj-autostitcher-arm-02:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("autostitcher/obj-autostitcher-arm-03:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("autostitcher/obj-autostitcher-arm-04:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_i4bwl"]
 length = 0.001
@@ -167,6 +116,57 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0.261799, 0, 0), Vector3(-0.261799, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_vn3q5"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("autostitcher/obj-autostitcher-arm-01:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("autostitcher/obj-autostitcher-arm-02:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("autostitcher/obj-autostitcher-arm-03:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("autostitcher/obj-autostitcher-arm-04:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ux5vo"]
 _data = {
 "RESET": SubResource("Animation_i4bwl"),
@@ -215,8 +215,8 @@ _data = {
 }
 
 [node name="autostitcher" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
-collision_layer = 2
-collision_mask = 8
+collision_layer = 3
+collision_mask = 0
 script = ExtResource("1")
 blood_effect = ExtResource("2_33nva")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
@@ -232,19 +232,15 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 surface_material_override/0 = ExtResource("4_q3bkc")
 
 [node name="obj-autostitcher-arm-01" parent="autostitcher" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0.3)
 surface_material_override/0 = ExtResource("5_sb603")
 
 [node name="obj-autostitcher-arm-02" parent="autostitcher" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0.3)
 surface_material_override/0 = ExtResource("5_sb603")
 
 [node name="obj-autostitcher-arm-03" parent="autostitcher" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0.3)
 surface_material_override/0 = ExtResource("5_sb603")
 
 [node name="obj-autostitcher-arm-04" parent="autostitcher" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0.3)
 surface_material_override/0 = ExtResource("5_sb603")
 
 [node name="AutosticherAnimations" type="AnimationPlayer" parent="autostitcher"]

@@ -10,10 +10,10 @@
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="7_bwrvc"]
 
 [sub_resource type="BoxShape3D" id="1"]
-size = Vector3(2.5, 4, 2)
+size = Vector3(4, 4, 1.5)
 
 [sub_resource type="BoxShape3D" id="2"]
-size = Vector3(3, 3, 3)
+size = Vector3(4, 4, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4c0tk"]
 font = ExtResource("7_bwrvc")
@@ -65,16 +65,17 @@ biomass_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxC
 production_prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar2")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
-[node name="ItemSpawnPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2, 0)
 shape = SubResource("1")
 
+[node name="ItemSpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.7)
+
 [node name="distiller" parent="." instance=ExtResource("3_3how7")]
 
 [node name="obj-distiller" parent="distiller" index="0"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 surface_material_override/0 = ExtResource("4_3i85c")
 
 [node name="CreateFertilizerTimer" type="Timer" parent="."]
@@ -86,7 +87,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ItemDeposit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 2, 0.2)
 shape = SubResource("2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

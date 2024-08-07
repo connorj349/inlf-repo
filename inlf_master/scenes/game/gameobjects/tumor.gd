@@ -40,7 +40,7 @@ func on_death():
 	# spawn rotroach hive(this hive spawns 3 roaches, then dissapears)
 	var new_item = SlotData.new()
 	new_item.item_data = cancer_item_data
-	Globals.create_pickup(new_item, self)
+	Globals.create_pickup(new_item, $ItemSpawnPosition)
 	queue_free() # delete this object
 
 func _on_RotTimer_timeout():

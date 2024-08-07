@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bsqr7oaxve8ba"]
 
 [ext_resource type="PackedScene" uid="uid://dl612dx4odxl0" path="res://assets/models/machine.glb" id="2_k2f0e"]
-[ext_resource type="Material" path="res://assets/materials/processor.tres" id="3_lblde"]
+[ext_resource type="Material" uid="uid://bbiqg1ds6lwaf" path="res://assets/materials/processor.tres" id="3_lblde"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/production_machine.gd" id="5"]
 [ext_resource type="AudioStream" uid="uid://b28rn55hxvivr" path="res://assets/audio/machine/machine_loop.wav" id="6"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="6_fr3as"]

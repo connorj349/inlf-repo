@@ -1,10 +1,14 @@
-[gd_scene load_steps=55 format=3 uid="uid://c0pk63nn4wv3b"]
+[gd_scene load_steps=60 format=3 uid="uid://c0pk63nn4wv3b"]
 
 [ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_51kix"]
 [ext_resource type="Texture2D" uid="uid://bo7oso3slm23o" path="res://assets/textures/skybox/skybox_02.png" id="2_env10"]
 [ext_resource type="MeshLibrary" uid="uid://c078ienggynju" path="res://assets/slumtown_props_meshlibrary.tres" id="3_o5qf3"]
 [ext_resource type="PackedScene" uid="uid://ue0fy4t6c0py" path="res://scenes/levels/slumtown.tscn" id="3_xr5ce"]
+[ext_resource type="PackedScene" uid="uid://c7uvmolrux4mh" path="res://scenes/game/characters/npc/base_npc.tscn" id="5_w8hir"]
 [ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://scenes/game/gameobjects/sawblade.tscn" id="7_kcis8"]
+[ext_resource type="Resource" uid="uid://bdeyubgyo5i8q" path="res://scenes/game/item/items/leather.tres" id="7_root2"]
+[ext_resource type="Resource" uid="uid://dl43xi6td3ut5" path="res://scenes/game/item/items/crapple.tres" id="8_to50o"]
+[ext_resource type="Resource" uid="uid://cdwd7eync5mlp" path="res://scenes/game/item/items/skin.tres" id="9_h0q15"]
 [ext_resource type="Resource" uid="uid://d1fjvdo0nh06v" path="res://scenes/game/item/items/bio_fuel.tres" id="10_0cwef"]
 [ext_resource type="PackedScene" uid="uid://djfc66jt8vqe2" path="res://scenes/game/gameobjects/industrial_sink.tscn" id="12_x6u75"]
 [ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://scenes/game/gameobjects/biogrower.tscn" id="13_0sig4"]
@@ -65,6 +69,11 @@ adjustment_brightness = 1.2
 adjustment_contrast = 1.23
 adjustment_saturation = 2.07
 adjustment_color_correction = SubResource("404")
+
+[sub_resource type="Resource" id="Resource_efabi"]
+resource_local_to_scene = true
+script = ExtResource("34_vd00i")
+slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null])
 
 [sub_resource type="BoxShape3D" id="394"]
 resource_local_to_scene = true
@@ -255,6 +264,11 @@ omni_range = 20.0
 
 [node name="slumtown" parent="Environment" instance=ExtResource("3_xr5ce")]
 
+[node name="BaseNPC" parent="Environment" instance=ExtResource("5_w8hir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -26)
+inventory_data = SubResource("Resource_efabi")
+loot_table = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("7_root2"), ExtResource("8_to50o"), ExtResource("9_h0q15")])
+
 [node name="GameObjects" type="Node3D" parent="."]
 
 [node name="player_role_spawns" type="Node3D" parent="GameObjects"]
@@ -273,7 +287,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 9)
 
 [node name="FertilizerProducer" parent="GameObjects/BiogrowthObjects" instance=ExtResource("14_00131")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.7599, 0, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 6.2)
 
 [node name="Store" type="Node3D" parent="GameObjects"]
 
@@ -643,8 +657,8 @@ visible = false
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 
 [editable path="GameObjects/ToolFactory/Generator"]
 [editable path="GameObjects/ToolFactory/Generator/generator"]

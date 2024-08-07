@@ -132,6 +132,10 @@ right_click={
 3d_physics/layer_5="water"
 3d_physics/layer_6="nodraw"
 
+[navigation]
+
+3d/default_cell_height=0.1
+
 [physics]
 
 3d/default_gravity=12.0
