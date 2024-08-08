@@ -9,12 +9,6 @@ class_name HintObject
 var is_viewing = false
 var should_display = true
 
-func _ready(): #setup animation player reference in baseclass
-	for child in get_children():
-		if child is AnimationPlayer:
-			anim_player = child
-			return
-
 func _process(_delta):
 	if is_viewing:
 		if should_display:
@@ -29,8 +23,8 @@ func _process(_delta):
 func _look_at(): #handles info display when being viewed
 	is_viewing = true
 
-func _display_info(): #overridable method
+func _display_info():
 	anim_player.play("fade_in")
 
-func _hide_info(): #overridable method
+func _hide_info():
 	anim_player.play_backwards("fade_in")

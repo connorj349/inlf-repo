@@ -43,7 +43,8 @@ func _ready():
 	if !is_in_group("machine"):
 		add_to_group("machine")
 
-func _process(_delta): #update the manufacture progress bar onscreen
+func _process(delta): #update the manufacture progress bar onscreen
+	super(delta)
 	if timer.time_left > 0:
 		prog_bar.update_bar(timer.time_left)
 

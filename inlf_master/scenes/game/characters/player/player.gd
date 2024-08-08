@@ -97,11 +97,13 @@ func _process(delta):
 		if Input.is_action_just_pressed("right_click"):
 			if is_instance_valid(pickup_object):
 				pickup_object.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
+				pickup_object.freeze = false
 				pickup_object.collision_mask = 1 | 2
 				pickup_object = null
 			elif pickup_raycast.get_collider() and pickup_raycast.get_collider() is RigidBody3D:
 				pickup_object = pickup_raycast.get_collider()
 				pickup_object.freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
+				pickup_object.freeze = true
 				pickup_object.collision_mask = 0
 		
 		# update the pickup object position as long as the object is valid

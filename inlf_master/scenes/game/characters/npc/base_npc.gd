@@ -20,8 +20,11 @@ func _ready():
 	
 	# prevents error on startup from processing finding new paths in physics_process
 	set_physics_process(false)
+	set_process(false)
 	await get_tree().physics_frame
+	await get_tree().process_frame
 	set_physics_process(true)
+	set_process(true)
 	
 	call_deferred("setup_actor")
 
@@ -36,9 +39,6 @@ func _process(delta):
 
 func _physics_process(_delta):
 	if navigation_agent.is_navigation_finished():
-		$korpsman/AnimationPlayer.play("Idle")
-		await get_tree().create_timer(2.0).timeout
-		setup_actor()
 		return
 	
 	var current_agent_position: Vector3 = global_position
@@ -55,13 +55,6 @@ func setup_actor():
 	await get_tree().physics_frame
 	
 	var random_target_position = global_position + Vector3(randi_range(-5, 5), 0, randi_range(-5, 5))
-	
-	# turn towards target location using delta
-	# once within a specific angle of target location, allow movement
-	# this should prevent constantly looking for a new position and moving
-	
-	if (global_transform.origin - random_target_position).length() < 1:
-		print("target too close")
 	
 	set_target_movement(random_target_position)
 
@@ -106,8 +99,12 @@ func on_hurt(damage):
 
 # virtual method
 func process_idle_state(_delta):
-	# move to starting position
-	pass
+	await navigation_agent.navigation_finished
+	if navigation_agent.is_navigation_finished():
+		$korpsman/AnimationPlayer.play("Idle")
+		await get_tree().create_timer(2.0).timeout
+		setup_actor()
+		return
 
 # virtual method
 func process_patrol_state(_delta):

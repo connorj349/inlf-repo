@@ -11,7 +11,8 @@ var count
 func _ready():
 	prog_bar.init(0, timer.wait_time)
 
-func _process(_delta):
+func _process(delta):
+	super(delta)
 	if timer.time_left > 0:
 		prog_bar.update_bar(timer.time_left)
 

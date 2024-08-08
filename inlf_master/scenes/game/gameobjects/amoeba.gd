@@ -17,7 +17,8 @@ func _ready():
 	timer.paused = true
 	rng.randomize()
 
-func _process(_delta):
+func _process(delta):
+	super(delta)
 	if timer.time_left > 0:
 		hydration_prog_bar.update_bar(timer.wait_time - timer.time_left)
 

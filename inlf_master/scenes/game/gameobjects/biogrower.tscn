@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cyd6tpkvik6b3"]
+[gd_scene load_steps=16 format=3 uid="uid://cyd6tpkvik6b3"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/biogrower.gd" id="2"]
 [ext_resource type="Script" path="res://global/data/damage.gd" id="2_1f7x4"]
 [ext_resource type="PackedScene" uid="uid://bbavnvhdyv0se" path="res://assets/models/processor.glb" id="3_i1u8v"]
+[ext_resource type="Material" uid="uid://bbiqg1ds6lwaf" path="res://assets/materials/processor.tres" id="4_0vpya"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="5_imjnq"]
 [ext_resource type="Script" path="res://scenes/game/ui_bar.gd" id="6_xv4hy"]
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="7_igao5"]
@@ -80,6 +81,9 @@ shape = SubResource("1")
 
 [node name="processor" parent="." instance=ExtResource("3_i1u8v")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="obj-processor" parent="processor" index="0"]
+surface_material_override/0 = ExtResource("4_0vpya")
 
 [node name="GrowTimer" type="Timer" parent="."]
 wait_time = 30.0
@@ -188,4 +192,5 @@ libraries = {
 [connection signal="timeout" from="ResourceConsumeTimer" to="." method="_on_ResourceConsumeTimer_timeout"]
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]
 
+[editable path="processor"]
 [editable path="CanvasLayer/HintObjectInterface"]

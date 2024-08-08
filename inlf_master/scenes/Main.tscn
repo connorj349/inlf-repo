@@ -404,9 +404,6 @@ bounds = Vector3(40, 1, 5)
 
 [node name="ProleSpawn" type="Node3D" parent="GameObjects"]
 
-[node name="processor" parent="GameObjects/ProleSpawn" instance=ExtResource("32_lj5ug")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 53, 0, -44)
-
 [node name="Storage" parent="GameObjects/ProleSpawn" instance=ExtResource("33_36mq1")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 54, 0, -29)
 inventory_data = SubResource("387")
@@ -418,6 +415,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55, 1,
 
 [node name="metastabilizer" parent="GameObjects/ProleSpawn" instance=ExtResource("36_bwgsb")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 53.5, 0, -38.5)
+
+[node name="processor" parent="GameObjects/ProleSpawn" instance=ExtResource("32_lj5ug")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 53, 0, -44)
 
 [node name="MedicalArea" type="Node3D" parent="GameObjects"]
 
@@ -599,10 +599,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -51.0
-offset_right = 68.0
-offset_bottom = 51.0
+offset_left = -62.0
+offset_top = -64.0
+offset_right = 62.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
