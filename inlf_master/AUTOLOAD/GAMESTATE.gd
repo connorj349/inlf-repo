@@ -35,7 +35,8 @@ var rot: int = 0 :
 			emit_signal("game_over")
 		emit_signal("rot_changed")
 
-var bones: int = 0 :
+# reduce below to 0 when done testing
+var bones: int = 100 :
 	set(value):
 		bones = clamp(value, 0, 9999)
 		emit_signal("bones_changed", bones)

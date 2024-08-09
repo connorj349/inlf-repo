@@ -104,6 +104,5 @@ autostart = true
 [node name="TickTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_Area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_TickTimer_timeout"]

@@ -2,9 +2,6 @@ extends Node3D
 
 @export var area: Area3D
 
-func _on_Area_body_entered(body):
-	body.health.pox += 1
-
 func _on_Timer_timeout():
 	$cloud.emitting = false
 	$drips.emitting = false

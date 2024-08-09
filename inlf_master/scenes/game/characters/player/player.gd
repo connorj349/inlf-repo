@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-signal armor_changed
+signal armor_changed(armor: int)
 
 const SPEED_WALK: float = 10.0
 const JUMP_VELOCITY: float = 5.0
@@ -30,7 +30,7 @@ const CROUCH_JUMP_ADD: float = CROUCH_TRANSLATE * 0.9
 var armor: int = 0 :
 	set(_value):
 		armor = clampi(_value, 0, 100)
-		armor_changed.emit()
+		armor_changed.emit(armor)
 		update_armor_bar_visibility()
 var pickup_object = null
 var speed
@@ -46,20 +46,25 @@ var _saved_camera_global_pos = null
 func _ready():
 	health.init()
 	health.connect("health_changed", Callable(health_bar, "update_bar"))
-	health.connect("max_health_changed", Callable(health_bar, "init").bind(health.health))
-	health.connect("max_health_changed", Callable(self, "update_health_and_pox_text_placement"))
+	#health.connect("max_health_changed", Callable(health_bar, "init"))
+	health.connect("max_health_changed", Callable(func(player_health, player_max_health):
+		health_bar.init(player_health, player_max_health + health.pox)))
+	health.connect("max_health_changed", Callable(self, "update_health_and_pox_text_placement").unbind(2))
 	health.connect("pox_changed", Callable(pox_bar, "update_bar"))
-	health.connect("pox_changed", Callable(self, "update_health_and_pox_text_placement"))
+	health.connect("pox_changed", Callable(self, "update_health_and_pox_text_placement").unbind(1))
 	health.connect("dead", Callable(self, "kill"))
 	
 	health_bar.init(health.health, health.max_health)
 	pox_bar.init(health.pox, health.allowed_max_health)
 	
-	connect("armor_changed", Callable(armor_bar, "update_bar").bind(armor))
-	connect("armor_changed", Callable(self, "update_armor_bar_visibility"))
+	connect("armor_changed", Callable(armor_bar, "update_bar"))
+	connect("armor_changed", Callable(self, "update_armor_bar_visibility").unbind(1))
 	update_armor_bar_visibility()
 	
 	Globals.current_player = self
+	
+	health.connect("health_changed",
+		Callable(func(_value): print("max health: " + str(health.max_health) + "\nhealth: " + str(health.health) + "\npox: " + str(health.pox))))
 
 func _input(event):
 	if !player_is_in_menu():
@@ -79,7 +84,7 @@ func _process(delta):
 		Globals.emit_signal("on_inventory_toggle")
 	
 	#interacting
-	if Input.is_action_just_pressed("interact") and !player_is_in_menu():#change this so it's a raycast instead of area
+	if Input.is_action_just_pressed("interact") and !player_is_in_menu():
 		if pickup_object:
 			pickup_object = null
 		
@@ -173,7 +178,7 @@ func _physics_process(delta):
 			coll._look_at()
 
 # need to redo this
-func update_health_and_pox_text_placement(_val):
+func update_health_and_pox_text_placement():
 	for element in $UI/Bars/health_pox/pox_bar/VBoxContainer.get_children():
 		element.text = ""
 	if health.max_health > health.allowed_max_health * 0.5:

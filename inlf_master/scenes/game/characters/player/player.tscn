@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=43 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
@@ -227,6 +227,26 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="27"]
 bg_color = Color(0, 0, 0, 0.705882)
 
+[sub_resource type="LabelSettings" id="LabelSettings_a1e3n"]
+font = ExtResource("1")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_ecj5b"]
+font = ExtResource("1")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_rl7ch"]
+font = ExtResource("1")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_wbsqx"]
+font = ExtResource("1")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_uehl5"]
+font = ExtResource("1")
+font_size = 35
+
 [sub_resource type="FontFile" id="8"]
 fallbacks = Array[Font]([ExtResource("1")])
 cache/0/16/0/ascent = 0.0
@@ -252,23 +272,6 @@ cache/0/35/0/underline_thickness = 0.0
 cache/0/35/0/scale = 1.0
 cache/0/35/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/35/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/35/0/kerning_overrides/35/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="28"]
-fallbacks = Array[Font]([ExtResource("1")])
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/35/0 = Vector2(0, 0)
-cache/0/35/0/ascent = 0.0
-cache/0/35/0/descent = 0.0
-cache/0/35/0/underline_position = 0.0
-cache/0/35/0/underline_thickness = 0.0
-cache/0/35/0/scale = 1.0
-cache/0/35/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/35/0/kerning_overrides/35/0 = Vector2(0, 0)
 
 [sub_resource type="StyleBoxTexture" id="29"]
@@ -407,7 +410,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -1.5)
 
 [node name="InteractArea" type="Area3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.3)
 collision_layer = 0
 collision_mask = 2
 
@@ -545,7 +548,7 @@ anchor_bottom = 1.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme_override_fonts/font = SubResource("8")
+label_settings = SubResource("LabelSettings_a1e3n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -553,7 +556,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme_override_fonts/font = SubResource("8")
+label_settings = SubResource("LabelSettings_ecj5b")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -561,9 +564,8 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme_override_fonts/font = SubResource("28")
-theme_override_font_sizes/font_size = 35
 text = "blood"
+label_settings = SubResource("LabelSettings_rl7ch")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -571,7 +573,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme_override_fonts/font = SubResource("8")
+label_settings = SubResource("LabelSettings_wbsqx")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -579,11 +581,12 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme_override_fonts/font = SubResource("8")
+label_settings = SubResource("LabelSettings_uehl5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="armor_bar" type="TextureProgressBar" parent="UI/Bars/health_pox"]
+visible = false
 layout_mode = 2
 value = 50.0
 nine_patch_stretch = true

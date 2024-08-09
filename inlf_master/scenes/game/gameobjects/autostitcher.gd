@@ -50,9 +50,10 @@ func stop_healing(_body):
 	timer.stop()
 	healing_loop.stop()
 
-func _on_Timer_timeout(): # this technically heals ALL bodies within the vicinity
+func _on_Timer_timeout():
 	for body in heal_area.get_overlapping_bodies():
-		if body.has_method("on_heal") and body != self:
+		print(body)
+		if body.has_method("on_heal"):
 			body.on_heal(heal_amount)
 			var heal_effect = blood_effect.instantiate()
 			get_tree().get_root().add_child(heal_effect)

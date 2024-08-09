@@ -26,10 +26,22 @@ func _on_ItemDeposit_body_entered(body):
 	if current_biomass >= 10:
 		return
 	if body.is_in_group("pickup"):
-		if body.slot_data.item_data.ItemType == ItemData.ItemType.Biomass:
-			for n in body.slot_data.quantity:
-				self.current_biomass += 2
-			body.queue_free()
+		#if body.slot_data.item_data.item_type == ItemData.ItemType.Biomass or body.slot_data.item_data.item_type == ItemData.ItemType.Fertilizer:
+			#for n in body.slot_data.quantity:
+				#self.current_biomass += 2
+			#body.queue_free()
+		match(body.slot_data.item_data.item_type):
+			ItemData.ItemType.Biomass:
+				for n in body.slot_data.quantity:
+					self.current_biomass += 2
+				body.queue_free()
+			ItemData.ItemType.Fertilizer:
+				for n in body.slot_data.quantity:
+					self.current_biomass += 10
+				body.queue_free()
+			_:
+				# do nothing otherwise
+				pass
 
 func _on_HydrationTimer_timeout():
 	var new_slot = SlotData.new()
