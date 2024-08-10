@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7uvmolrux4mh"]
+[gd_scene load_steps=9 format=3 uid="uid://c7uvmolrux4mh"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="2"]
@@ -15,6 +15,9 @@ slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, 
 radius = 0.25
 height = 1.75
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_lw857"]
+radius = 2.0
+
 [node name="BaseNPC" type="CharacterBody3D"]
 collision_layer = 3
 script = ExtResource("4")
@@ -26,6 +29,14 @@ allowed_max_health = 5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.3, 0)
 shape = SubResource("2")
+
+[node name="InspectArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InspectArea"]
+shape = SubResource("SphereShape3D_lw857")
 
 [node name="korpsman" parent="." instance=ExtResource("7_efqk2")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
@@ -71,5 +82,8 @@ surface_material_override/0 = ExtResource("8_6lvap")
 autoplay = "Idle"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[connection signal="body_entered" from="InspectArea" to="." method="_on_inspect_area_body_entered"]
+[connection signal="body_exited" from="InspectArea" to="." method="_on_inspect_area_body_exited"]
 
 [editable path="korpsman"]

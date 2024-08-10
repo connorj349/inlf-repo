@@ -1,12 +1,13 @@
 extends CharacterBody3D
 
-enum STATE { IDLE, PATROL, ATTACK }
+enum State { IDLE, PATROL, ATTACK, INSPECT }
 
 @export var inventory_data: Resource
 @export var loot_table: Array[ItemData]
-@export var will_retaliate: bool = false
+@export var will_retaliate = false
+@export var will_inspect = true
 
-var current_state = STATE.IDLE
+var current_state = State.IDLE
 var target = null
 
 @onready var health = $Health
@@ -30,12 +31,14 @@ func _ready():
 
 func _process(delta):
 	match(current_state):
-		STATE.IDLE:
+		State.IDLE:
 			process_idle_state(delta)
-		STATE.PATROL:
+		State.PATROL:
 			process_patrol_state(delta)
-		STATE.ATTACK:
+		State.ATTACK:
 			process_attack_state(delta)
+		State.INSPECT:
+			process_inspect_state(delta)
 
 func _physics_process(_delta):
 	if navigation_agent.is_navigation_finished():
@@ -95,7 +98,7 @@ func on_hurt(damage):
 	health.health -= damage.amount
 	if damage.source and will_retaliate:
 		target = damage.source
-		current_state = STATE.ATTACK
+		current_state = State.ATTACK
 
 # virtual method
 func process_idle_state(_delta):
@@ -116,6 +119,16 @@ func process_attack_state(_delta):
 	# if target is valid, move within attack range and perform attack based on accuracy(if ranged)
 	pass
 
+# virtual
+func process_inspect_state(_delta):
+	if !navigation_agent.is_navigation_finished():
+		# stop moving
+		set_target_movement(global_transform.origin)
+		$korpsman/AnimationPlayer.play("Idle")
+	
+	# THIS DOESN'T FACE THE CORRECT DIRECTION
+	_safe_look_at(self, target.position)
+
 func kill():
 	var corpse = Globals.create_corpse(self)
 	corpse.global_transform.origin = global_transform.origin
@@ -132,3 +145,14 @@ func randomize_loot():
 		var random_item = loot_table[randi() % loot_table.size()] # choose a random item
 		new_slot.item_data = random_item
 		inventory_data.add_item(new_slot)
+
+func _on_inspect_area_body_entered(body):
+	if will_inspect:
+		current_state = State.INSPECT
+		target = body
+
+func _on_inspect_area_body_exited(_body):
+	if current_state == State.INSPECT:
+		current_state = State.IDLE
+		target = null
+		setup_actor()
