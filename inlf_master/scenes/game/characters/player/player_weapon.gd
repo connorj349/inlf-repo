@@ -3,17 +3,20 @@ extends Node3D
 @export var is_melee: bool = false #determines if we need to play onhit sounds
 @export var item_weapon_data: ItemDataWeapon = null
 
-@onready var anim_player = $AnimationPlayer
-@onready var raycast = $RangeRayCast
-@onready var sprite = $CanvasLayer/Control/Sprite2D
-
 var ammo = 0
 var item_weapon_damage = Damage.new()
 
+@onready var anim_player = $AnimationPlayer
+@onready var raycast = $RangeRayCast
+@onready var sprite = $CanvasLayer/Control/Sprite2D
+@onready var player = $"../../../../../.."
+
 func _ready():
-	item_weapon_damage.type = item_weapon_data.damage_type
-	item_weapon_damage.amount = item_weapon_data.damage
-	item_weapon_damage.source = Globals.current_player
+	#item_weapon_damage.type = item_weapon_data.damage_type
+	#item_weapon_damage.amount = item_weapon_data.damage
+	#item_weapon_damage.source = player
+	
+	call_deferred("_setup_damage_source")
 
 func toggle_visibility(_visible: bool):
 	sprite.visible = _visible
@@ -37,3 +40,10 @@ func reload(inventory_data: InventoryData): #need to play sound somewhere
 					ammo += 1
 				else:
 					return #stop trying to take ammo
+
+func _setup_damage_source():
+	await get_tree().physics_frame
+	
+	item_weapon_damage.type = item_weapon_data.damage_type
+	item_weapon_damage.amount = item_weapon_data.damage
+	item_weapon_damage.source = player

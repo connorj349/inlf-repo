@@ -9,5 +9,5 @@ enum DamageType {
 }
 
 @export var type: DamageType # the type of damage
-@export var amount: int # the amount of damage to be dealt
+@export var amount: int = 0 # the amount of damage to be dealt
 var source = null # set by the damage dealer

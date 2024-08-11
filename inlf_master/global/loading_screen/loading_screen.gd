@@ -28,6 +28,7 @@ func change_scene_to_file(path): # need to pass current scene to remove it
 		var err = ResourceLoader.load_threaded_get_status(path)
 		# the below errors when the player dies too many times and fails, returning to the menu
 		# has something to do with the scene not existing when it goes to get the root
+		# this should be handled from a global scene and scenes should be loaded back and forth
 		var root_node = get_tree().get_root()
 		if err == ResourceLoader.THREAD_LOAD_LOADED: # loading complete
 			for item in get_tree().get_root().get_children():

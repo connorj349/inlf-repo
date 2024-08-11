@@ -264,10 +264,26 @@ omni_range = 20.0
 
 [node name="slumtown" parent="Environment" instance=ExtResource("3_xr5ce")]
 
-[node name="BaseNPC" parent="Environment" instance=ExtResource("5_w8hir")]
+[node name="BaseNPC" parent="Environment" node_paths=PackedStringArray("patrol_points") instance=ExtResource("5_w8hir")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -26)
 inventory_data = SubResource("Resource_efabi")
 loot_table = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("7_root2"), ExtResource("8_to50o"), ExtResource("9_h0q15")])
+patrol_points = [NodePath("Node3D"), NodePath("Node3D2"), NodePath("Node3D3"), NodePath("Node3D4"), NodePath("Node3D5")]
+
+[node name="Node3D" type="Node3D" parent="Environment/BaseNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 30)
+
+[node name="Node3D2" type="Node3D" parent="Environment/BaseNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 52)
+
+[node name="Node3D3" type="Node3D" parent="Environment/BaseNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.5, 55)
+
+[node name="Node3D4" type="Node3D" parent="Environment/BaseNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.5, 31)
+
+[node name="Node3D5" type="Node3D" parent="Environment/BaseNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.5, 9)
 
 [node name="GameObjects" type="Node3D" parent="."]
 
@@ -657,8 +673,8 @@ visible = false
 [connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 
 [editable path="GameObjects/ToolFactory/Generator"]
 [editable path="GameObjects/ToolFactory/Generator/generator"]

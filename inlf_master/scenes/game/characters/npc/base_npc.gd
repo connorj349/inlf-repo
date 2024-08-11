@@ -2,22 +2,35 @@ extends CharacterBody3D
 
 enum State { IDLE, PATROL, ATTACK, INSPECT }
 
+const FOOTSTEP_FREQUENCY: float = 75.0
+
 @export var inventory_data: Resource
 @export var loot_table: Array[ItemData]
-@export var will_retaliate = false
+@export var will_retaliate = true
 @export var will_inspect = true
+@export var patrol_points: Array[Node3D]
+# maybe just use a collision shape and detect on_enter and on_exit?
+#@export var attack_range: float = 1.5
+@export var damage: Damage
 
 var current_state = State.IDLE
 var target = null
+var patrol_index: int = 0
+# use current_speed with constants for idle_speed, run_speed, etc.
+var speed: float = 2.0
+var attack_time: float = 0.0
+var footstep_time: float = 0.0
 
 @onready var health = $Health
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var attack_range_area: CollisionShape3D = $AttackRangeArea/CollisionShape3D
+@onready var npc_animations_player: AnimationPlayer = $korpsman/AnimationPlayer
 
 func _ready():
 	randomize()
 	health.init()
-	health.connect("dead", Callable(self, "kill"))
-	randomize_loot()
+	health.connect("dead", Callable(self, "_kill"))
+	_randomize_loot()
 	
 	# prevents error on startup from processing finding new paths in physics_process
 	set_physics_process(false)
@@ -27,7 +40,7 @@ func _ready():
 	set_physics_process(true)
 	set_process(true)
 	
-	call_deferred("setup_actor")
+	call_deferred("_wander_to_random_position")
 
 func _process(delta):
 	match(current_state):
@@ -47,23 +60,127 @@ func _physics_process(_delta):
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 	
-	velocity = current_agent_position.direction_to(next_path_position) * 2.0
+	velocity = current_agent_position.direction_to(next_path_position) * speed
 	
 	_safe_look_at(self, next_path_position)
 	rotate_object_local(Vector3.UP, PI)
 	
 	move_and_slide()
+	
+	if velocity.length() > 0:
+		footstep_time += velocity.length()
+		
+		if footstep_time >= FOOTSTEP_FREQUENCY:
+			footstep_time = 0.0
+			$FootstepSound.play()
 
-func setup_actor():
+##
+## state methods
+##
+
+# virtual method
+func process_idle_state(_delta):
+	await navigation_agent.navigation_finished
+	
+	if navigation_agent.is_navigation_finished():
+		npc_animations_player.play("Idle")
+		await get_tree().create_timer(2.0).timeout
+		_wander_to_random_position()
+		return
+
+# virtual method
+func process_patrol_state(_delta):
+	if navigation_agent.is_navigation_finished():
+		if patrol_points.size() > 0:
+			#var random_index = randi_range(0, patrol_points.size() - 1)
+			
+			_set_target_movement(patrol_points[patrol_index].global_transform.origin)
+			patrol_index = (patrol_index + 1) % patrol_points.size()
+		else:
+			# if there are no patrol points, default to IDLE state
+			current_state = State.IDLE
+
+# virtual method
+func process_attack_state(delta):
+	attack_time -= delta
+	
+	# this doesn't work and is never the case, the AI never goes back to IDLE
+	if target == null:
+		current_state = State.IDLE
+		_wander_to_random_position()
+		return
+	
+	if navigation_agent.is_navigation_finished():
+		_safe_look_at(self, target.position)
+		rotate_object_local(Vector3.UP, PI)
+		
+		if attack_time <= 0.0:
+			_attack()
+			# reset attack interval
+			attack_time = 1.0
+
+# virtual method
+func process_inspect_state(_delta):
+	# turn the below into a method
+	if !navigation_agent.is_navigation_finished():
+		# stop moving
+		_set_target_movement(global_transform.origin)
+		npc_animations_player.play("Idle")
+	
+	_safe_look_at(self, target.position)
+	rotate_object_local(Vector3.UP, PI)
+
+##
+## base fuctionality methods
+##
+
+# overridable to allow for certain npcs to process damage differently/set targets
+func on_hurt(_damage):
+	health.health -= _damage.amount
+	if _damage.source and will_retaliate:
+		target = _damage.source
+		current_state = State.ATTACK
+
+func _chase():
+	if is_instance_valid(target):
+		if target and global_transform.origin.distance_to(target.position) > attack_range_area.shape.radius:
+			_set_target_movement(target.position)
+			# set chase speed
+			speed = 4.0
+		else:
+			_attack()
+	else:
+		current_state = State.IDLE
+		speed = 2.0
+		_wander_to_random_position()
+
+# overridable to allow for different npcs to use different attacks (melee/ranged)
+func _attack():
+	if is_instance_valid(target):
+		if global_transform.origin.distance_to(target.position) < attack_range_area.shape.radius:
+			# stop moving
+			_set_target_movement(global_transform.origin)
+			
+			if target.has_method("on_hurt"):
+				target.on_hurt(damage)
+				npc_animations_player.play("Shooting")
+		else:
+			_chase()
+	else:
+		current_state = State.IDLE
+		speed = 2.0
+		_wander_to_random_position()
+
+func _wander_to_random_position():
 	await get_tree().physics_frame
 	
 	var random_target_position = global_position + Vector3(randi_range(-5, 5), 0, randi_range(-5, 5))
 	
-	set_target_movement(random_target_position)
+	_set_target_movement(random_target_position)
 
-func set_target_movement(movement_target: Vector3):
+func _set_target_movement(movement_target: Vector3):
 	navigation_agent.set_target_position(_get_point_on_map(movement_target, 0.5))
-	$korpsman/AnimationPlayer.play("Run")
+	npc_animations_player.play("Run")
 
 # checks if a certain point is on the navigation map, returns a point
 func _get_point_on_map(target_point: Vector3, min_distance_from_edge: float):
@@ -76,6 +193,9 @@ func _get_point_on_map(target_point: Vector3, min_distance_from_edge: float):
 		closest_point += delta * min_distance_from_edge
 	return closest_point
 
+# prevents weird behavior and allows npc to look at target position
+# should also call rotate_object_local(Vector3.UP, PI) after this method
+# to allow the npc to also rotate the model in the correct direction
 func _safe_look_at(_node: Node3D, _target: Vector3):
 	var origin: Vector3 = _node.global_transform.origin
 	var v_z := (origin - _target).normalized()
@@ -93,43 +213,8 @@ func _safe_look_at(_node: Node3D, _target: Vector3):
 	if up != Vector3.ZERO:
 		_node.look_at(_target, up)
 
-# overridable to allow for certain npcs to process damage differently/set targets
-func on_hurt(damage):
-	health.health -= damage.amount
-	if damage.source and will_retaliate:
-		target = damage.source
-		current_state = State.ATTACK
-
-# virtual method
-func process_idle_state(_delta):
-	await navigation_agent.navigation_finished
-	if navigation_agent.is_navigation_finished():
-		$korpsman/AnimationPlayer.play("Idle")
-		await get_tree().create_timer(2.0).timeout
-		setup_actor()
-		return
-
-# virtual method
-func process_patrol_state(_delta):
-	# choose random patrol point in PatrolPoints node and move to it
-	pass
-
-# virtual method
-func process_attack_state(_delta):
-	# if target is valid, move within attack range and perform attack based on accuracy(if ranged)
-	pass
-
-# virtual
-func process_inspect_state(_delta):
-	if !navigation_agent.is_navigation_finished():
-		# stop moving
-		set_target_movement(global_transform.origin)
-		$korpsman/AnimationPlayer.play("Idle")
-	
-	# THIS DOESN'T FACE THE CORRECT DIRECTION
-	_safe_look_at(self, target.position)
-
-func kill():
+# do not want to override this method
+func _kill():
 	var corpse = Globals.create_corpse(self)
 	corpse.global_transform.origin = global_transform.origin
 	corpse.init_inventory_size(inventory_data.slot_datas.size())
@@ -138,7 +223,8 @@ func kill():
 			corpse.inventory.add_item(item)
 	queue_free()
 
-func randomize_loot():
+# setups random loot on this npc using loot_table/ do not want to override this method
+func _randomize_loot():
 	var random_amount = randi() % loot_table.size()
 	for _i in range(0, random_amount):
 		var new_slot = SlotData.new()
@@ -146,13 +232,37 @@ func randomize_loot():
 		new_slot.item_data = random_item
 		inventory_data.add_item(new_slot)
 
+# virtual method?
 func _on_inspect_area_body_entered(body):
+	if current_state == State.ATTACK:
+		# don't bother insepcting if attacking
+		return
+	
 	if will_inspect:
 		current_state = State.INSPECT
 		target = body
 
+# virtual method?
 func _on_inspect_area_body_exited(_body):
+	if current_state == State.ATTACK:
+		return
+	
+	# turn the below into a match statement
 	if current_state == State.INSPECT:
 		current_state = State.IDLE
 		target = null
-		setup_actor()
+		_wander_to_random_position()
+
+# virtual method?
+func _on_attack_range_area_body_entered(_body):
+	if current_state != State.ATTACK:
+		return
+	
+	_attack()
+
+# virtual method?
+func _on_attack_range_area_body_exited(_body):
+	if current_state != State.ATTACK:
+		return
+	
+	_chase()

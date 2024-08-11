@@ -62,9 +62,6 @@ func _ready():
 	update_armor_bar_visibility()
 	
 	Globals.current_player = self
-	
-	health.connect("health_changed",
-		Callable(func(_value): print("max health: " + str(health.max_health) + "\nhealth: " + str(health.health) + "\npox: " + str(health.pox))))
 
 func _input(event):
 	if !player_is_in_menu():
@@ -210,7 +207,8 @@ func on_hurt(damage):
 
 # used by armor to actually deal damage to the player, does this when no more armor
 func deal_damage(damage):
-	health.health -= damage.amount
+	if health.health > 0:
+		health.health -= damage.amount
 
 # mainly used by slotdataconsumable and autostitcher
 func on_heal(amount):
@@ -338,12 +336,14 @@ func kill():
 	Globals.current_ui.visible = false
 	
 	# hide player mouse if visible
-	if Globals.current_ui.visible:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	# create the player corpse
 	var corpse = Globals.create_corpse(self)
-	corpse.global_transform.origin = ground_raycast.get_collision_point()
+	if is_on_floor():
+		corpse.global_transform.origin = global_transform.origin
+	else:
+		corpse.global_transform.origin = ground_raycast.get_collision_point()
 	corpse.init_inventory_size(Gamestate.player_inventory.slot_datas.size() + Gamestate.equip_player_inventory.slot_datas.size() + Gamestate.weapon_player_inventory.slot_datas.size())
 	
 	# create the player dead gameobject
