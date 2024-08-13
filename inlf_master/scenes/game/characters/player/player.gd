@@ -79,6 +79,7 @@ func _process(delta):
 	#toggle inventory menu
 	if Input.is_action_just_pressed("inventory"):
 		Globals.emit_signal("on_inventory_toggle")
+		$Sounds/InventoryOpenSound.play()
 	
 	#interacting
 	if Input.is_action_just_pressed("interact") and !player_is_in_menu():
@@ -107,6 +108,8 @@ func _process(delta):
 				pickup_object.freeze_mode = RigidBody3D.FREEZE_MODE_KINEMATIC
 				pickup_object.freeze = true
 				pickup_object.collision_mask = 0
+				if pickup_object.has_method("play_pickup_sound"):
+					pickup_object.play_pickup_sound()
 		
 		# update the pickup object position as long as the object is valid
 		if is_instance_valid(pickup_object):
@@ -123,7 +126,7 @@ func _process(delta):
 		#jumping
 		if Input.is_action_just_pressed("jump") and (is_on_floor() or _snapped_to_stairs_last_frame):
 			velocity.y = JUMP_VELOCITY
-			# play jump sound effect
+			$Sounds/JumpSound.play()
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -202,8 +205,10 @@ func update_armor_bar_visibility():
 func on_hurt(damage):
 	if armor > 0:
 		armor -= damage.amount
+		$Sounds/ArmorHitSound.play()
 	else:
 		deal_damage(damage)
+		$Sounds/HurtSound.play()
 
 # used by armor to actually deal damage to the player, does this when no more armor
 func deal_damage(damage):
@@ -213,10 +218,12 @@ func deal_damage(damage):
 # mainly used by slotdataconsumable and autostitcher
 func on_heal(amount):
 	health.health += amount
+	$Sounds/HealSound.play()
 
 # used by some consumables
 func give_armor(amount):
 	armor += amount
+	$Sounds/GainArmorSound.play()
 
 # use functionality of items
 func use_slot_data(slot_data):
@@ -320,17 +327,16 @@ func _footstep():
 	var coll_tileset = ground_raycast.get_collider()
 	if ground_raycast.is_colliding():
 		if coll_tileset.is_in_group("ground_stone"):
-			#step_stone.PlayRandomSoundRange(0.7, 1.3)
-			pass
+			$Sounds/Footsteps/StoneFootstep.play()
 		elif coll_tileset.is_in_group("ground_transition"):
-			#step_transition.PlayRandomSoundRange(0.7, 1.3)
-			pass
+			$Sounds/Footsteps/TileFootstep.play()
 		elif coll_tileset.is_in_group("ground_mud"):
-			#step_mud.PlayRandomSoundRange(0.7, 1.3)
-			pass
+			$Sounds/Footsteps/MudFootstep.play()
 
 func kill():
 	Gamestate.emit_signal("on_player_death")
+	
+	$Sounds/DeathSound.play()
 	
 	# hides the player's inventory screen on death
 	Globals.current_ui.visible = false
@@ -371,6 +377,8 @@ func kill():
 	player_dead.get_node("PlayerSpawnTimer").wait_time = corpse.get_node("DecayTimer").wait_time #reset spawn time
 	# inculde in the above function
 	player_dead.play_death_sound()
+	
+	await $Sounds/DeathSound.finished
 	
 	queue_free() #remove the player
 

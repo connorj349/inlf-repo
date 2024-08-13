@@ -5,6 +5,8 @@ extends Interactable
 var is_broken = false: set = set_is_broken
 var health = 100
 
+@onready var use_sound: AudioStreamPlayer3D = $UseSound
+
 func _ready():
 	randomize()
 
@@ -13,9 +15,12 @@ func _interact(_actor):
 		var new_item = SlotData.new()
 		new_item.item_data = water_item_data
 		Globals.create_pickup(new_item, $SpawnPoint)
+		
 		# implement this only for world sinks that the player can drink from
 		#health = clamp(health - 10, 0, 100)
-		$UseSound.play()
+		use_sound.play()
+		
+		# not currently implemented
 		if health <= 0:
 			self.is_broken = true
 			$BreakSound.play()

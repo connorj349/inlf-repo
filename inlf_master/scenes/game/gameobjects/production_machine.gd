@@ -9,8 +9,8 @@ extends Interactable
 
 @onready var panel = $CanvasLayer/PanelContainer
 @onready var next_action_label = $CanvasLayer/PanelContainer/VBoxContainer/Label
-@onready var accept_input = $AcceptSound
-@onready var machine_loop = $MachineLoop
+@onready var accept_input: AudioStreamPlayer3D = $AcceptSound
+@onready var machine_loop: AudioStreamPlayer3D = $MachineLoop
 @onready var timer = $ManufactureTimer
 
 var rng = RandomNumberGenerator.new()

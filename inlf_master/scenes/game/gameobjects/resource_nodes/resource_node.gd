@@ -6,6 +6,8 @@ extends Interactable
 @export var optional_item_spawn_point: NodePath
 @export var hit_effect: PackedScene
 @export var prog_bar: ProgressBar
+@export var pickup_sound: AudioStreamPlayer3D
+@export var hurt_sound: AudioStreamPlayer3D
 
 var dead = false
 
@@ -20,6 +22,10 @@ func _ready():
 	anim_player.play("RESET")
 	anim_player.seek(0, true)
 	randomize()
+
+func play_pickup_sound():
+	if pickup_sound:
+		pickup_sound.play()
 
 func on_death(): #spawn item, delete self
 	dead = true

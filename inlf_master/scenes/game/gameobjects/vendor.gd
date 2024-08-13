@@ -4,26 +4,33 @@ extends Interactable
 
 @onready var panel = $CanvasLayer/Control/PanelContainer
 @onready var merchant_list = $CanvasLayer/Control/PanelContainer/MarginContainer/GridContainer
+@onready var use_sound: AudioStreamPlayer3D = $UseSound
+@onready var buy_sound: AudioStreamPlayer3D = $BuySound
 
 func _ready():
 	set_inventory_data(Gamestate.merchant_inventory)
+	
 # warning-ignore:return_value_discarded
 	Globals.connect("on_inventory_toggle", Callable(self, "toggle_window"))
 
 func _interact(_actor):
 	panel.show()
+	
 	Globals.current_ui.show()
+	
 	if panel.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		use_sound.play()
 
 func toggle_window():
-	#SoundManager.PlayVendorUI_Open
 	panel.hide()
 
 func set_inventory_data(inventory_data: InventoryData):
 # warning-ignore:return_value_discarded
 	inventory_data.connect("inventory_updated", Callable(self, "populate_item_list"))
+	
 	populate_item_list(inventory_data)
+	
 # warning-ignore:return_value_discarded
 	inventory_data.connect("inventory_interact", Callable(self, "buy_item"))
 
@@ -44,8 +51,8 @@ func buy_item(inventory_data, index, button):
 	match [button]:
 		[MOUSE_BUTTON_LEFT]: # try to buy the item in the slot at index
 			inventory_data.buy_slot_data(index)
-			#for extra immersion, maybe put more pop notifications here for if player can't buy item or
-			#when the player is successful
+			
+			buy_sound.play()
 		[MOUSE_BUTTON_RIGHT]: # display the name and price of the item
 			if inventory_data.slot_datas[index]:
 				Globals.emit_signal("on_pop_notification", "%s is worth %s bones." % [inventory_data.slot_datas[index].item_data.name, inventory_data.slot_datas[index].item_data.price])

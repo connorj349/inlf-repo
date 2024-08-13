@@ -48,7 +48,7 @@ _data = {
 "fade_in": SubResource("7")
 }
 
-[node name="boulder" type="RigidBody3D" node_paths=PackedStringArray("prog_bar", "anim_player")]
+[node name="boulder" type="RigidBody3D" node_paths=PackedStringArray("prog_bar", "pickup_sound", "hurt_sound", "anim_player")]
 collision_layer = 2
 collision_mask = 9
 gravity_scale = 2.0
@@ -58,6 +58,8 @@ blocked_damage_types = Array[int]([1, 3])
 punching_hurts = true
 hit_effect = ExtResource("3_hwt16")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
+pickup_sound = NodePath("PickupSound")
+hurt_sound = NodePath("HurtSound")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="Timer" type="Timer" parent="."]
@@ -106,6 +108,12 @@ root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_my3ft")
 }
+
+[node name="PickupSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]
 

@@ -51,7 +51,7 @@ _data = {
 "fade_in": SubResource("7")
 }
 
-[node name="bitumeat" type="RigidBody3D" node_paths=PackedStringArray("prog_bar", "anim_player")]
+[node name="bitumeat" type="RigidBody3D" node_paths=PackedStringArray("prog_bar", "pickup_sound", "hurt_sound", "anim_player")]
 collision_layer = 2
 collision_mask = 11
 gravity_scale = 2.0
@@ -60,6 +60,8 @@ item_data = ExtResource("7")
 blocked_damage_types = Array[int]([1])
 hit_effect = ExtResource("8")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
+pickup_sound = NodePath("PickupSound")
+hurt_sound = NodePath("HurtSound")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -101,6 +103,12 @@ libraries = {
 wait_time = 120.0
 one_shot = true
 autostart = true
+
+[node name="PickupSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]
 

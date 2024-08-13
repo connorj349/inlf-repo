@@ -48,7 +48,7 @@ _data = {
 "fade_in": SubResource("7")
 }
 
-[node name="skin_tree" type="StaticBody3D" node_paths=PackedStringArray("prog_bar", "anim_player")]
+[node name="skin_tree" type="StaticBody3D" node_paths=PackedStringArray("prog_bar", "hurt_sound", "anim_player")]
 collision_layer = 2
 collision_mask = 10
 script = ExtResource("4")
@@ -58,6 +58,7 @@ punching_hurts = true
 optional_item_spawn_point = NodePath("ItemSpawnPoint")
 hit_effect = ExtResource("9")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
+hurt_sound = NodePath("HurtSound")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="ItemSpawnPoint" type="Node3D" parent="."]
@@ -98,6 +99,9 @@ root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_cgb4n")
 }
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
 
 [editable path="skin-tree"]
 [editable path="CanvasLayer/HintObjectInterface"]

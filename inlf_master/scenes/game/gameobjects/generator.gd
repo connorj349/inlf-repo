@@ -10,6 +10,10 @@ var is_on = false
 
 @onready var timer = $FuelConsumeTimer
 @onready var connected_machines = $CheckForMachinesArea
+@onready var startup_sound: AudioStreamPlayer3D = $StartupSound
+@onready var loop_sound: AudioStreamPlayer3D = $LoopSound
+@onready var spindown_sound: AudioStreamPlayer3D = $SpindownSound
+@onready var click_empty_sound: AudioStreamPlayer3D = $ClickSound
 
 func _ready():
 	prog_bar.init(0, 100)
@@ -20,18 +24,22 @@ func _ready():
 
 func _interact(_actor):
 	if fuel <= 0:
+		click_empty_sound.play()
 		return
-	# turnover/click sound
+	
 	self.is_on = !self.is_on
+	
 	if is_on:
 		self.fuel -= 1
 		timer.start()
 		change_active_status_of_machines(true)
-		$LoopSound.play()
+		startup_sound.play()
+		loop_sound.play(0)
 	else:
 		timer.stop()
 		change_active_status_of_machines(false)
-		$LoopSound.stop()
+		spindown_sound.play()
+		loop_sound.stop()
 
 func change_active_status_of_machines(is_active):
 	for body in connected_machines.get_overlapping_bodies():

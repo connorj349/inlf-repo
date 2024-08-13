@@ -188,6 +188,18 @@ libraries = {
 "": SubResource("AnimationLibrary_pg7gf")
 }
 
+[node name="DepositSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="GrowthTimeoutSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="GrowthTimeoutFailSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="GrowingSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
 [connection signal="timeout" from="GrowTimer" to="." method="_on_GrowTimer_timeout"]
 [connection signal="timeout" from="ResourceConsumeTimer" to="." method="_on_ResourceConsumeTimer_timeout"]
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]

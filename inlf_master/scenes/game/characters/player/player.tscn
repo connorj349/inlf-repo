@@ -1,9 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=44 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
 [ext_resource type="PackedScene" uid="uid://cdoq8vp2mm8u1" path="res://scenes/game/characters/player/player_dead.tscn" id="2_lucr1"]
 [ext_resource type="Script" path="res://scenes/game/item/item_data_weapon.gd" id="4"]
+[ext_resource type="AudioStream" uid="uid://cpcb725rq2wyl" path="res://assets/audio/spawn/role_prole.wav" id="4_t2uh4"]
 [ext_resource type="Texture2D" uid="uid://clgjw8wxkuusx" path="res://assets/textures/shotgun-sheet.png" id="7"]
 [ext_resource type="PackedScene" uid="uid://dxrcx1liop62p" path="res://scenes/game/inventory/hotbar_inventory.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://csgmb3e5wy837" path="res://assets/textures/punch-sheet.png" id="9"]
@@ -374,6 +375,40 @@ shape = SubResource("1")
 
 [node name="Health" parent="." instance=ExtResource("2_7n873")]
 allowed_max_health = 25
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
+bus = &"SoundFX"
+
+[node name="ArmorHitSound" type="AudioStreamPlayer" parent="Sounds"]
+bus = &"SoundFX"
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="Sounds"]
+bus = &"SoundFX"
+
+[node name="GainArmorSound" type="AudioStreamPlayer" parent="Sounds"]
+bus = &"SoundFX"
+
+[node name="HealSound" type="AudioStreamPlayer" parent="Sounds"]
+bus = &"SoundFX"
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_t2uh4")
+bus = &"SoundFX"
+
+[node name="InventoryOpenSound" type="AudioStreamPlayer" parent="Sounds"]
+
+[node name="Footsteps" type="Node3D" parent="Sounds"]
+
+[node name="StoneFootstep" type="AudioStreamPlayer" parent="Sounds/Footsteps"]
+bus = &"SoundFX"
+
+[node name="TileFootstep" type="AudioStreamPlayer" parent="Sounds/Footsteps"]
+bus = &"SoundFX"
+
+[node name="MudFootstep" type="AudioStreamPlayer" parent="Sounds/Footsteps"]
+bus = &"SoundFX"
 
 [node name="GroundRaycast" type="RayCast3D" parent="."]
 target_position = Vector3(0, -999, 0)

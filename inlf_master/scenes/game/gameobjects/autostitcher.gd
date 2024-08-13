@@ -6,8 +6,10 @@ extends Interactable
 
 @onready var heal_area = $Area3D
 @onready var timer = $Timer
-@onready var healing_loop = $HealingLoop
-@onready var hit_sound = $SoundQueue3D
+@onready var healing_loop: AudioStreamPlayer3D = $HealingLoop
+@onready var hit_sound: AudioStreamPlayer3D = $SoundQueue3D
+@onready var use_sound: AudioStreamPlayer3D = $UseSound
+@onready var pox_use_sound: AudioStreamPlayer3D = $PoxHealUseSound
 
 func _ready():
 	heal_area.connect("body_exited", Callable(self, "stop_healing")) #stop the healing process if anything leaves area
@@ -32,10 +34,12 @@ func _interact(_actor):
 	if can_interact and Gamestate.bones >= heal_cost:
 		start_healing()
 		Gamestate.bones -= heal_cost
+		use_sound.play()
 	else:
 		if Gamestate.bones >= heal_cost:
 			Gamestate.bones -= heal_cost
 			Globals.current_player.health.pox = 0
+			pox_use_sound.play()
 
 func start_healing():
 	if timer.is_stopped():

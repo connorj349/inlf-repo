@@ -10,6 +10,8 @@ extends Node3D
 var random_item_count: int
 var rng = RandomNumberGenerator.new()
 
+@onready var role_available_sound: AudioStreamPlayer = $RoleAvailableSound
+
 func _ready():
 	rng.randomize()
 
@@ -40,4 +42,4 @@ func _on_Area_body_entered(body):
 					Gamestate.player_inventory.add_item(new_item)
 
 func _on_Timer_timeout():
-	pass #nothing for now, maybe play a special distant sound to alert the player subconsiously when a role is available
+	role_available_sound.play()

@@ -108,6 +108,12 @@ libraries = {
 [node name="RotTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="AmbientSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
 [connection signal="timeout" from="RotTimer" to="." method="_on_RotTimer_timeout"]
 
 [editable path="tumor"]

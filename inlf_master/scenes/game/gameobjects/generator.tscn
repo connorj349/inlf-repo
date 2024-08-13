@@ -75,9 +75,6 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 [node name="obj-generator" parent="generator" index="0"]
 surface_material_override/0 = ExtResource("4_pmhs0")
 
-[node name="LoopSound" type="AudioStreamPlayer3D" parent="."]
-bus = &"SoundFX"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HintObjectInterface" parent="CanvasLayer" instance=ExtResource("4_f2ult")]
@@ -120,6 +117,17 @@ script = ExtResource("9")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CheckForMachinesArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("9")
+
+[node name="StartupSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="LoopSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="SpindownSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="ClickSound" type="AudioStreamPlayer3D" parent="."]
 
 [connection signal="timeout" from="FuelConsumeTimer" to="." method="_on_FuelConsumeTimer_timeout"]
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]

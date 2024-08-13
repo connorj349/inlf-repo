@@ -7,6 +7,7 @@ extends HintObject
 
 @onready var timer = $HydrationTimer
 @onready var water_handler = $WaterHandler
+@onready var pickup_sound: AudioStreamPlayer3D = $PickupSound
 
 var current_biomass = 0: set = set_current_biomass
 var rng = RandomNumberGenerator.new()
@@ -21,6 +22,9 @@ func _process(delta):
 	super(delta)
 	if timer.time_left > 0:
 		hydration_prog_bar.update_bar(timer.wait_time - timer.time_left)
+
+func play_pickup_sound():
+	pickup_sound.play()
 
 func _on_ItemDeposit_body_entered(body):
 	if current_biomass >= 10:

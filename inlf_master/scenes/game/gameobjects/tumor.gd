@@ -1,7 +1,6 @@
 extends HintObject
 
 @export var cancer_item_data: ItemData # cancer item to spawn for player
-#export(int) var number_of_roaches_to_spawn = 3
 @export var rot_increase_amount: int = 1
 @export var rot_inrease_frequency: int = 5
 @export var prog_bar: ProgressBar
@@ -10,6 +9,8 @@ extends HintObject
 var dead = false
 
 @onready var health = $Health
+@onready var hit_sound: AudioStreamPlayer3D = $HitSound
+@onready var ambient_sound: AudioStreamPlayer3D = $AmbientSound
 
 func _ready():
 	randomize()
@@ -19,6 +20,7 @@ func _ready():
 	prog_bar.init(health.health, health.max_health)
 	$RotTimer.wait_time = rot_inrease_frequency #set frequency by which rot is increased
 	Gamestate.tumors += 1
+	ambient_sound.play()
 
 func on_hurt(damage):
 	if dead:
@@ -31,13 +33,12 @@ func on_hurt(damage):
 				health.health -= damage.amount # takes damage half the time from fists
 		_:
 			health.health -= damage.amount # takes damage in all cases
-	# spawn a Rotroach(s) that immediately attack the player
+			ambient_sound.play()
 
 func on_death():
 	Gamestate.tumors -= 1
 	dead = true
 	# spawn tumor bloody pop effect
-	# spawn rotroach hive(this hive spawns 3 roaches, then dissapears)
 	var new_item = SlotData.new()
 	new_item.item_data = cancer_item_data
 	Globals.create_pickup(new_item, $ItemSpawnPosition)

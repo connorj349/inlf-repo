@@ -4,6 +4,9 @@ extends HintObject
 @export var biomass_prog_bar: ProgressBar
 @export var production_prog_bar: ProgressBar
 
+@onready var deposit_sound: AudioStreamPlayer3D = $DepositSound
+@onready var producing_sound_loop: AudioStreamPlayer3D = $ProducingSound
+
 var biomass :
 	set(value):
 		biomass = clamp(value, 0, 100)
@@ -24,11 +27,14 @@ func _process(delta):
 func _on_ItemDeposit_body_entered(body):
 	if body.is_in_group("pickup"):
 		if body.slot_data.item_data.item_type == ItemData.ItemType.Biomass:
+			deposit_sound.play()
 			body.queue_free()
 			for i in body.slot_data.quantity:
 				self.biomass += 2
 			if biomass >= 10:
 				timer.start()
+				# looping sound
+				producing_sound_loop.play(0)
 
 func _on_CreateFertilizerTimer_timeout():
 	if biomass >= 10:
@@ -38,5 +44,7 @@ func _on_CreateFertilizerTimer_timeout():
 		self.biomass -= 10
 		if biomass < 10:
 			timer.stop()
+			producing_sound_loop.stop()
 	else:
 		timer.stop()
+		producing_sound_loop.stop()

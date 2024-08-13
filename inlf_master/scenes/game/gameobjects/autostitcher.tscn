@@ -290,6 +290,12 @@ Count = 4
 stream = ExtResource("5")
 bus = &"SoundFX"
 
+[node name="UseSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="PoxHealUseSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="autostitcher"]

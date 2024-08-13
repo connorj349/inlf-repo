@@ -129,6 +129,12 @@ libraries = {
 "": SubResource("AnimationLibrary_q04l6")
 }
 
+[node name="DepositSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="ProducingSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
 [connection signal="timeout" from="CreateFertilizerTimer" to="." method="_on_CreateFertilizerTimer_timeout"]
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]
 

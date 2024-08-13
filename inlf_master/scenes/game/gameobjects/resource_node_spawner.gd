@@ -16,6 +16,7 @@ func spawn():
 	if node_to_spawn: #only spawn if we have set the node to spawn an item
 		if area.get_overlapping_bodies().size() > 0:
 			return
+		
 		var new_spawn = node_to_spawn.instantiate()
 		get_tree().get_root().add_child(new_spawn)
 		new_spawn.global_transform = global_transform

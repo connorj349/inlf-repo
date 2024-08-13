@@ -100,5 +100,9 @@ light_energy = 2.0
 spot_range = 8.997
 spot_angle = 49.96
 
+[node name="UpdateSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.8)
+bus = &"SoundFX"
+
 [editable path="rot_telecom"]
 [editable path="CanvasLayer/HintObjectInterface"]

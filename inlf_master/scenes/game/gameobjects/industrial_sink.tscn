@@ -86,6 +86,7 @@ libraries = {
 bus = &"SoundFX"
 
 [node name="BreakSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
 
 [editable path="industrial_sink"]
 [editable path="CanvasLayer/HintObjectInterface"]

@@ -151,5 +151,11 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 columns = 6
 
+[node name="UseSound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
+[node name="BuySound" type="AudioStreamPlayer3D" parent="."]
+bus = &"SoundFX"
+
 [editable path="obj-ticket-machine"]
 [editable path="CanvasLayer/HintObjectInterface"]

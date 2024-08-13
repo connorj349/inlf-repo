@@ -36,6 +36,10 @@ var current_growing_seed_item_data = null
 
 @onready var spawn_point = $SpawnPoint
 @onready var resource_consume_timer = $ResourceConsumeTimer
+@onready var deposit_sound = $DepositSound
+@onready var growth_timeout_sound: AudioStreamPlayer3D = $GrowthTimeoutSound
+@onready var growth_timeout_fail_sound: AudioStreamPlayer3D = $GrowthTimeoutFailSound
+@onready var growing_sound: AudioStreamPlayer3D = $GrowingSound
 
 func _ready():
 	self.blood = 0
@@ -56,9 +60,19 @@ func _on_ItemDeposit_body_entered(body):
 	if body.is_in_group("pickup"):
 		if body.slot_data.item_data is ItemDataSeed:
 			current_growing_seed_item_data = body.slot_data.item_data
+			
+			# begin growth timer that, when ended, will produce finished good or explode
 			$GrowTimer.start()
+			
+			# begin timer that consumes resources based on seed item_data
 			resource_consume_timer.start()
+			
+			# remove the pickup
 			body.queue_free()
+			
+			deposit_sound.play()
+			# looping sound
+			growing_sound.play(0)
 			return
 		match(body.slot_data.item_data.item_type):
 			ItemData.ItemType.Fertilizer:
@@ -80,12 +94,15 @@ func _on_GrowTimer_timeout():
 			var new_slot = SlotData.new()
 			new_slot.item_data = item_data
 			Globals.create_pickup(new_slot, spawn_point)
+			growth_timeout_sound.play()
 	else:
-		pass
+		growth_timeout_fail_sound.play()
 		# create explosion
+	
 	resource_consume_timer.stop()
 	current_growing_seed_item_data = null
 	self.growth = 0
+	growing_sound.stop()
 
 func _on_ResourceConsumeTimer_timeout(): # also counts the vars that are not needed to increase growth like exotic
 	if blood >= current_growing_seed_item_data.blood:
