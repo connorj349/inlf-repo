@@ -2,13 +2,18 @@ extends Interactable
 
 @export var Slot: PackedScene
 
+var merchant_inventory: InventoryData
+
 @onready var panel = $CanvasLayer/Control/PanelContainer
 @onready var merchant_list = $CanvasLayer/Control/PanelContainer/MarginContainer/GridContainer
 @onready var use_sound: AudioStreamPlayer3D = $UseSound
 @onready var buy_sound: AudioStreamPlayer3D = $BuySound
 
 func _ready():
-	set_inventory_data(Gamestate.merchant_inventory)
+	merchant_inventory = InventoryData.new()
+	merchant_inventory.slot_datas.resize(18)
+	
+	set_inventory_data(merchant_inventory)
 	
 # warning-ignore:return_value_discarded
 	Globals.connect("on_inventory_toggle", Callable(self, "toggle_window"))

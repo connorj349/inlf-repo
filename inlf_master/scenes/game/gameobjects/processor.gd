@@ -33,5 +33,10 @@ func _on_ProcessTimer_timeout():
 	var new_slot_data = SlotData.new()
 	new_slot_data.item_data = current_item_data
 	new_slot_data.quantity = count
-	Globals.create_pickup(new_slot_data, item_spawn_point)
+	
+	var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
+	new_pickup.slot_data = new_slot_data
+	get_tree().current_scene.game_world.add_child(new_pickup)
+	new_pickup.global_transform.origin = item_spawn_point.global_transform.origin
+	
 	processing_sound.stop()

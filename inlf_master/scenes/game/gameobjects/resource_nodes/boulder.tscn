@@ -48,7 +48,7 @@ _data = {
 "fade_in": SubResource("7")
 }
 
-[node name="boulder" type="RigidBody3D" node_paths=PackedStringArray("prog_bar", "pickup_sound", "hurt_sound", "anim_player")]
+[node name="boulder" type="RigidBody3D" node_paths=PackedStringArray("optional_item_spawn_point", "prog_bar", "pickup_sound", "hurt_sound", "anim_player")]
 collision_layer = 2
 collision_mask = 9
 gravity_scale = 2.0
@@ -56,6 +56,7 @@ script = ExtResource("4")
 item_data = ExtResource("2_y5ndi")
 blocked_damage_types = Array[int]([1, 3])
 punching_hurts = true
+optional_item_spawn_point = NodePath("ItemSpawnPoint")
 hit_effect = ExtResource("3_hwt16")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 pickup_sound = NodePath("PickupSound")
@@ -74,6 +75,9 @@ allowed_max_health = 7
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("1")
+
+[node name="ItemSpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
 [node name="boulder" parent="." instance=ExtResource("6_37tx8")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

@@ -40,7 +40,12 @@ func _on_CreateFertilizerTimer_timeout():
 	if biomass >= 10:
 		var new_slot_data = SlotData.new()
 		new_slot_data.item_data = fertilizer_item_data
-		Globals.create_pickup(new_slot_data, $ItemSpawnPoint)
+		
+		var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
+		new_pickup.slot_data = new_slot_data
+		get_tree().current_scene.game_world.add_child(new_pickup)
+		new_pickup.global_transform.origin = $ItemSpawnPoint.global_transform.origin
+		
 		self.biomass -= 10
 		if biomass < 10:
 			timer.stop()

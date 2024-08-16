@@ -52,8 +52,8 @@ func _ready():
 	fertilizer_prog_bar.init(0, 100)
 	exotic_prog_bar.init(0, 100)
 
-func _interact(_actor):
-	Globals.current_player.on_hurt(player_use_damage)
+func _interact(actor):
+	actor.on_hurt(player_use_damage)
 	self.blood += player_use_damage.amount
 
 func _on_ItemDeposit_body_entered(body):
@@ -93,7 +93,11 @@ func _on_GrowTimer_timeout():
 		for item_data in current_growing_seed_item_data.output_item_data:
 			var new_slot = SlotData.new()
 			new_slot.item_data = item_data
-			Globals.create_pickup(new_slot, spawn_point)
+			
+			var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
+			new_pickup.global_transform.origin = $SpawnPoint.global_transform.origin
+			get_tree().current_scene.game_world.add_child(new_pickup)
+			
 			growth_timeout_sound.play()
 	else:
 		growth_timeout_fail_sound.play()

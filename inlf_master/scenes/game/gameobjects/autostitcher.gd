@@ -7,7 +7,7 @@ extends Interactable
 @onready var heal_area = $Area3D
 @onready var timer = $Timer
 @onready var healing_loop: AudioStreamPlayer3D = $HealingLoop
-@onready var hit_sound: AudioStreamPlayer3D = $SoundQueue3D
+@onready var hit_sound: SoundQueue3D = $SoundQueue3D
 @onready var use_sound: AudioStreamPlayer3D = $UseSound
 @onready var pox_use_sound: AudioStreamPlayer3D = $PoxHealUseSound
 
@@ -30,7 +30,7 @@ func on_hurt(_amount): # if caught will be attacked by sanitars
 		# 5% chance of being returned
 		pass
 
-func _interact(_actor):
+func _interact(actor):
 	if can_interact and Gamestate.bones >= heal_cost:
 		start_healing()
 		Gamestate.bones -= heal_cost
@@ -38,7 +38,7 @@ func _interact(_actor):
 	else:
 		if Gamestate.bones >= heal_cost:
 			Gamestate.bones -= heal_cost
-			Globals.current_player.health.pox = 0
+			actor.health.pox = 0
 			pox_use_sound.play()
 
 func start_healing():
@@ -60,5 +60,5 @@ func _on_Timer_timeout():
 		if body.has_method("on_heal"):
 			body.on_heal(heal_amount)
 			var heal_effect = blood_effect.instantiate()
-			get_tree().get_root().add_child(heal_effect)
+			get_tree().current_scene.game_world.add_child(heal_effect)
 			heal_effect.global_transform.origin = body.global_transform.origin

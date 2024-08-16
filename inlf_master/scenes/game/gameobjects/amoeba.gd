@@ -54,13 +54,21 @@ func _on_HydrationTimer_timeout():
 		if dropped_seeds.size() > 0:
 			for i in 3:
 				var random_index = rng.randi_range(0, dropped_seeds.size() - 1)
+				var new_seed_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
 				new_slot.item_data = dropped_seeds[random_index]
-				Globals.create_pickup(new_slot, self)
+				new_seed_pickup.slot_data = new_slot
+				get_tree().current_scene.game_world.add_child(new_seed_pickup)
+				new_seed_pickup.global_transform.origin = $ItemSpawnPoint.global_transform.origin
+				# maybe create some sort of force that pushes all the seeds about in random directions
+				# simulating a "bursting" of the seeds from the amoeba
 			queue_free()
 		return
 	
+	var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
 	new_slot.item_data = slime_item_data
-	Globals.create_pickup(new_slot, self)
+	new_pickup.slot_data = new_slot
+	get_tree().current_scene.game_world.add_child(new_pickup)
+	new_pickup.global_transform.origin = $ItemSpawnPoint.global_transform.origin
 	queue_free()
 
 func _on_WaterHandler_submerged_status_changed():

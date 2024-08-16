@@ -10,11 +10,15 @@ var health = 100
 func _ready():
 	randomize()
 
-func _interact(_actor):
+func _interact(actor):
 	if !is_broken:
 		var new_item = SlotData.new()
 		new_item.item_data = water_item_data
-		Globals.create_pickup(new_item, $SpawnPoint)
+		
+		var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
+		new_pickup.slot_data = new_item
+		get_tree().current_scene.game_level.add_child(new_pickup)
+		new_pickup.global_transform.origin = $SpawnPoint.global_transform.origin
 		
 		# implement this only for world sinks that the player can drink from
 		#health = clamp(health - 10, 0, 100)
@@ -29,7 +33,7 @@ func _interact(_actor):
 		if random_hit_result < 0.8:
 			var _damage = Damage.new()
 			_damage.amount = 2
-			Globals.current_player.deal_damage(_damage)
+			actor.deal_damage(_damage)
 		elif random_hit_result < 0.95: #15% chance of being returned
 			health = 100
 			self.is_broken = false

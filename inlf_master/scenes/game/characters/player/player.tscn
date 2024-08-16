@@ -1,9 +1,11 @@
-[gd_scene load_steps=44 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=50 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
-[ext_resource type="PackedScene" uid="uid://cdoq8vp2mm8u1" path="res://scenes/game/characters/player/player_dead.tscn" id="2_lucr1"]
+[ext_resource type="Resource" path="res://scenes/game/inventory/player_inventory.tres" id="2_taws3"]
+[ext_resource type="Resource" path="res://scenes/game/inventory/player_weapon_inventory.tres" id="3_wydts"]
 [ext_resource type="Script" path="res://scenes/game/item/item_data_weapon.gd" id="4"]
+[ext_resource type="Resource" path="res://scenes/game/inventory/player_equipment_inventory.tres" id="4_f1372"]
 [ext_resource type="AudioStream" uid="uid://cpcb725rq2wyl" path="res://assets/audio/spawn/role_prole.wav" id="4_t2uh4"]
 [ext_resource type="Texture2D" uid="uid://clgjw8wxkuusx" path="res://assets/textures/shotgun-sheet.png" id="7"]
 [ext_resource type="PackedScene" uid="uid://dxrcx1liop62p" path="res://scenes/game/inventory/hotbar_inventory.tscn" id="8"]
@@ -17,8 +19,12 @@
 [ext_resource type="Script" path="res://scenes/game/characters/player/player_weapon_manager.gd" id="14"]
 [ext_resource type="Script" path="res://scenes/game/characters/player/player.gd" id="15"]
 [ext_resource type="Texture2D" uid="uid://bxf0efd2q4qmn" path="res://assets/textures/bar_border.png" id="18"]
+[ext_resource type="Script" path="res://scenes/game/inventory/inventory_interface.gd" id="18_ayuow"]
 [ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="18_fpf0a"]
+[ext_resource type="PackedScene" uid="uid://dw14to73k4hid" path="res://scenes/game/inventory/inventory.tscn" id="19_1jsfi"]
+[ext_resource type="Script" path="res://scenes/game/characters/player/update_player_stats.gd" id="20_5y5km"]
 [ext_resource type="AudioStream" uid="uid://74ffi73b3myc" path="res://assets/audio/player/weapons/player_fists_swing.wav" id="21"]
+[ext_resource type="PackedScene" uid="uid://cpok7107bwsa8" path="res://scenes/game/inventory/inventory_slot.tscn" id="21_nkns1"]
 [ext_resource type="AudioStream" uid="uid://s3aac53x8yi1" path="res://assets/audio/player/weapons/shotgun/player_shotgun_shot.wav" id="22"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
@@ -349,25 +355,12 @@ cache/0/45/0/kerning_overrides/35/0 = Vector2(0, 0)
 cache/0/45/0/kerning_overrides/40/0 = Vector2(0, 0)
 cache/0/45/0/kerning_overrides/45/0 = Vector2(0, 0)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health", "head", "camera", "camera_smooth", "interact_area", "hint_raycast", "pickup_raycast", "hold_object_pos", "weapon_manager", "health_bar", "pox_bar", "armor_bar", "ground_raycast", "stairs_ahead_raycast", "stairs_below_raycast")]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 8
 script = ExtResource("15")
-health = NodePath("Health")
-head = NodePath("HeadOriginalPosition")
-camera = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D")
-camera_smooth = NodePath("HeadOriginalPosition/Head/CameraSmooth")
-interact_area = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D/InteractArea")
-hint_raycast = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D/HintObjRayCast")
-pickup_raycast = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D/PickupRayCast")
-hold_object_pos = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D/PickupRayCast/HoldObjectPosition")
-weapon_manager = NodePath("HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager")
-health_bar = NodePath("UI/Bars/health_pox/health_bar")
-pox_bar = NodePath("UI/Bars/health_pox/pox_bar")
-armor_bar = NodePath("UI/Bars/health_pox/armor_bar")
-player_dead_prefab = ExtResource("2_lucr1")
-ground_raycast = NodePath("GroundRaycast")
-stairs_ahead_raycast = NodePath("StairsAheadRaycast3D")
-stairs_below_raycast = NodePath("StairsBelowRaycast3D")
+inventory_data = ExtResource("2_taws3")
+weapon_inventory_data = ExtResource("3_wydts")
+armor_inventory_data = ExtResource("4_f1372")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
@@ -533,7 +526,6 @@ light_energy = 5.0
 omni_range = 10.0
 
 [node name="UI" type="CanvasLayer" parent="."]
-layer = 0
 
 [node name="Bars" type="VBoxContainer" parent="UI"]
 anchors_preset = 1
@@ -645,10 +637,80 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HotBarInventory" parent="UI" instance=ExtResource("8")]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 21.0
-offset_bottom = 21.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_ayuow")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InventoryInterface"]
+layout_mode = 1
+offset_right = 109.0
+offset_bottom = 122.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InventoryInterface/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerInventory" parent="UI/InventoryInterface/MarginContainer/VBoxContainer" instance=ExtResource("19_1jsfi")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InventoryInterface/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EquipInventory" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("19_1jsfi")]
+layout_mode = 2
+
+[node name="WeaponInventory" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("19_1jsfi")]
+layout_mode = 2
+
+[node name="PlayerStats" type="PanelContainer" parent="UI/InventoryInterface/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("20_5y5km")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/PlayerStats"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/PlayerStats/MarginContainer"]
+layout_mode = 2
+
+[node name="bones" type="Label" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/PlayerStats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "bones 999"
+
+[node name="stems" type="Label" parent="UI/InventoryInterface/MarginContainer/VBoxContainer/PlayerStats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "stem cells 999"
+
+[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("19_1jsfi")]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.0
+offset_top = -15.0
+offset_right = 17.0
+offset_bottom = 19.0
+
+[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("21_nkns1")]
+visible = false
+modulate = Color(1, 1, 1, 0.439216)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
 
 [node name="Notifications" type="Control" parent="UI" node_paths=PackedStringArray("notifications_text")]
 layout_mode = 3
@@ -681,3 +743,6 @@ theme_override_fonts/normal_font = SubResource("20")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "test text here"
+
+[connection signal="gui_input" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_gui_input"]
+[connection signal="visibility_changed" from="UI/InventoryInterface" to="UI/InventoryInterface" method="_on_InventoryInterface_visibility_changed"]

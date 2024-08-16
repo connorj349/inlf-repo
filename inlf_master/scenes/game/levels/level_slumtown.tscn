@@ -1,0 +1,613 @@
+[gd_scene load_steps=56 format=3 uid="uid://c0pk63nn4wv3b"]
+
+[ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_1bevl"]
+[ext_resource type="Texture2D" uid="uid://bo7oso3slm23o" path="res://assets/textures/skybox/skybox_02.png" id="2_r2v4a"]
+[ext_resource type="MeshLibrary" uid="uid://c078ienggynju" path="res://assets/slumtown_props_meshlibrary.tres" id="3_3layd"]
+[ext_resource type="PackedScene" uid="uid://ue0fy4t6c0py" path="res://scenes/game/levels/mdl_navmesh_slumtown.tscn" id="4_xkhqh"]
+[ext_resource type="PackedScene" uid="uid://c7uvmolrux4mh" path="res://scenes/game/characters/npc/base_npc.tscn" id="5_epehp"]
+[ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="6_cw0oq"]
+[ext_resource type="Resource" uid="uid://bdeyubgyo5i8q" path="res://scenes/game/item/items/leather.tres" id="7_vn6in"]
+[ext_resource type="Resource" uid="uid://dl43xi6td3ut5" path="res://scenes/game/item/items/crapple.tres" id="8_3aj2l"]
+[ext_resource type="Resource" uid="uid://cdwd7eync5mlp" path="res://scenes/game/item/items/skin.tres" id="9_m0et7"]
+[ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://scenes/game/gameobjects/sawblade.tscn" id="10_h737m"]
+[ext_resource type="Resource" uid="uid://d1fjvdo0nh06v" path="res://scenes/game/item/items/bio_fuel.tres" id="11_i7dus"]
+[ext_resource type="Resource" uid="uid://cfca7q7atvdxp" path="res://scenes/game/item/items/fertilizer.tres" id="12_1eii1"]
+[ext_resource type="PackedScene" uid="uid://djfc66jt8vqe2" path="res://scenes/game/gameobjects/industrial_sink.tscn" id="13_vrj3u"]
+[ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://scenes/game/gameobjects/biogrower.tscn" id="14_qvge1"]
+[ext_resource type="PackedScene" uid="uid://xt4fnaxbc2mi" path="res://scenes/game/gameobjects/fertilizer_producer.tscn" id="15_vmf7g"]
+[ext_resource type="PackedScene" uid="uid://diw2ptb001gas" path="res://scenes/game/gameobjects/vendor.tscn" id="16_ux0yg"]
+[ext_resource type="PackedScene" uid="uid://ccoi5qv045yl6" path="res://scenes/game/gameobjects/ladder.tscn" id="17_25hjq"]
+[ext_resource type="PackedScene" uid="uid://bwpcm1xv1hxel" path="res://scenes/game/gameobjects/resource_node_spawner.tscn" id="18_lfhhe"]
+[ext_resource type="PackedScene" uid="uid://qjy7yga6koi4" path="res://scenes/game/gameobjects/resource_nodes/skin_tree.tscn" id="19_xt80x"]
+[ext_resource type="PackedScene" uid="uid://cow88ggfrlbxw" path="res://scenes/game/gameobjects/amoeba.tscn" id="20_6ud0e"]
+[ext_resource type="PackedScene" uid="uid://bsqr7oaxve8ba" path="res://scenes/game/gameobjects/production_machine.tscn" id="21_bde8q"]
+[ext_resource type="PackedScene" uid="uid://r1okymmde6l8" path="res://scenes/game/gameobjects/generator.tscn" id="22_r3644"]
+[ext_resource type="PackedScene" uid="uid://p3pw5s5y3hqr" path="res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn" id="23_e7bsr"]
+[ext_resource type="PackedScene" uid="uid://b1k30jhststhn" path="res://scenes/game/gameobjects/resource_nodes/bone_capsule.tscn" id="24_d5gjp"]
+[ext_resource type="PackedScene" uid="uid://bu0ib6h238inm" path="res://scenes/game/gameobjects/tumor.tscn" id="25_oefji"]
+[ext_resource type="PackedScene" uid="uid://dr8hsko7ayhd4" path="res://scenes/game/gameobjects/exploding_mushroom.tscn" id="26_f1dgg"]
+[ext_resource type="PackedScene" path="res://scenes/game/characters/water_area.tscn" id="27_awhem"]
+[ext_resource type="PackedScene" uid="uid://bt1svnjwmtnf3" path="res://scenes/game/inventory/storage.tscn" id="28_noycf"]
+[ext_resource type="PackedScene" uid="uid://hxe1g3invfrc" path="res://scenes/game/gameobjects/rot_telecom.tscn" id="29_heb4g"]
+[ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://scenes/game/gameobjects/metastabilizer.tscn" id="30_pwyrc"]
+[ext_resource type="PackedScene" uid="uid://b7nxt2hc5tvjo" path="res://scenes/game/gameobjects/processor.tscn" id="31_wm7sa"]
+[ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://scenes/game/gameobjects/autostitcher.tscn" id="32_kskp8"]
+[ext_resource type="PackedScene" uid="uid://b3gsycxg1xafb" path="res://scenes/game/gameobjects/resource_nodes/boulder.tscn" id="33_q6fkn"]
+[ext_resource type="PackedScene" uid="uid://cvonrv45p2y4y" path="res://scenes/game/game_end/ticket_machine.tscn" id="34_cdkn7"]
+[ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://scenes/game/characters/player/player_ghost.tscn" id="35_0d46y"]
+[ext_resource type="Script" path="res://scenes/menu/options/pause_menu.gd" id="40_hurge"]
+[ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="41_lljnt"]
+[ext_resource type="PackedScene" uid="uid://bglomiqv0hee6" path="res://global/loading_screen/loading_screen.tscn" id="42_lcv5x"]
+
+[sub_resource type="Gradient" id="403"]
+offsets = PackedFloat32Array(0, 0.66879, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.562988, 0.509173, 0.268299, 1, 0.683179, 0.898926, 0.603966, 1)
+
+[sub_resource type="GradientTexture2D" id="404"]
+gradient = SubResource("403")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hdi1g"]
+panorama = ExtResource("2_r2v4a")
+
+[sub_resource type="Sky" id="366"]
+sky_material = SubResource("PanoramaSkyMaterial_hdi1g")
+
+[sub_resource type="Environment" id="2"]
+background_mode = 2
+sky = SubResource("366")
+ambient_light_color = Color(0.360784, 0.360784, 0.360784, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 3.02
+tonemap_mode = 2
+tonemap_white = 16.0
+adjustment_enabled = true
+adjustment_brightness = 1.2
+adjustment_contrast = 1.23
+adjustment_saturation = 2.07
+adjustment_color_correction = SubResource("404")
+
+[sub_resource type="Resource" id="Resource_efabi"]
+resource_local_to_scene = true
+script = ExtResource("6_cw0oq")
+slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null])
+
+[sub_resource type="BoxShape3D" id="394"]
+resource_local_to_scene = true
+size = Vector3(2.7, 3, 3)
+
+[sub_resource type="BoxShape3D" id="395"]
+resource_local_to_scene = true
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxShape3D" id="396"]
+resource_local_to_scene = true
+size = Vector3(2, 2, 10)
+
+[sub_resource type="Resource" id="387"]
+resource_local_to_scene = true
+script = ExtResource("6_cw0oq")
+slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null, null, null, null])
+
+[sub_resource type="BoxShape3D" id="397"]
+resource_local_to_scene = true
+size = Vector3(2.7, 3, 3)
+
+[sub_resource type="BoxShape3D" id="398"]
+resource_local_to_scene = true
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxShape3D" id="399"]
+resource_local_to_scene = true
+size = Vector3(2, 2, 10)
+
+[sub_resource type="BoxShape3D" id="400"]
+resource_local_to_scene = true
+size = Vector3(2.7, 3, 3)
+
+[sub_resource type="BoxShape3D" id="401"]
+resource_local_to_scene = true
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxShape3D" id="402"]
+resource_local_to_scene = true
+size = Vector3(2, 2, 10)
+
+[sub_resource type="StyleBoxFlat" id="380"]
+bg_color = Color(0, 0, 0, 0.270588)
+
+[node name="SlumTown" type="Node3D"]
+script = ExtResource("1_1bevl")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("2")
+
+[node name="LevelPropsGridMap" type="GridMap" parent="Environment"]
+mesh_library = ExtResource("3_3layd")
+cell_size = Vector3(1, 1, 1)
+cell_octant_size = 15
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PackedInt32Array(-1376323, 1, 1, -1376297, 1, 851970, -1376322, 7, 589826, -1376307, 12, 1, -1376317, 13, 851970, 27, 16, 655362, -1376317, 16, 1, 65563, 17, 655369, -196581, 17, 655369, 29, 18, 655360, 65563, 18, 655368, -196581, 18, 655368, 131131, 65486, 458760, 131131, 65490, 458760, 57, 65491, 655364, 57, 65492, 1048582, 58, 65494, 4, 59, 65494, 655366, 131131, 65494, 458760, 57, 65496, 655362, 59, 65496, 1441797, 59, 65497, 6, 57, 65498, 655360, 65528, 65498, 655367, 131131, 65498, 458760, 327672, 65498, 655367, 589816, 65498, 655367, 851960, 65498, 655367, 1048564, 65498, 589831, 57, 65499, 655366, 59, 65499, 1441796, 65532, 65499, 655360, 65534, 65499, 655362, 57, 65500, 1441796, 131131, 65502, 458760, -851932, 65503, 2, 262204, 65504, 65543, 131131, 65506, 458760, 262201, 65508, 851975, 327720, 65509, 655365, 131131, 65510, 458760, 327719, 65510, 6, 327721, 65510, 655366, 131128, 65511, 196616, 327718, 65511, 655364, 262201, 65512, 851975, 327719, 65512, 1048582, 131131, 65514, 458760, 131132, 65514, 65544, 262201, 65516, 851975, 327722, 65517, 655368, 589866, 65517, 655368, 40, 65519, 1441798, 327718, 65519, 655369, 589862, 65519, 655369, 13, 65520, 655362, 41, 65520, 1048581, 327719, 65520, 655369, 589863, 65520, 655369, -1376306, 65520, 1, 39, 65521, 6, 40, 65521, 1048582, 7, 65522, 655360, 9, 65522, 655362, 12, 65522, 655362, 37, 65522, 1441794, 39, 65522, 4, 41, 65522, 1441795, 11, 65523, 655369, 262155, 65523, 655369, 524299, 65523, 655369, 786443, 65523, 655369, 9, 65524, 655368, 12, 65524, 655368, 262153, 65524, 655368, 262156, 65524, 655368, 458752, 65524, 589832, 458756, 65524, 589832, 458760, 65524, 589832, 524300, 65524, 655368, 786444, 65524, 655368, 262116, 65526, 458761, 327651, 65526, 458760, -327644, 65527, 1441792, -327642, 65527, 1441792, -327640, 65527, 1441794, -196570, 65527, 1441792, -1376328, 65529, 589826, -1376323, 65529, 327682, 262116, 65530, 458761, 327651, 65530, 458760, -1376297, 65530, 65538, -1376313, 65532, 65538, 262116, 65534, 458761, 327651, 65534, 458760, -1376312, 65535, 327682, -327674, 65508, 2, -327674, 65510, 0, -327671, 65497, 655366, -327671, 65499, 1048582, -327679, 65503, 6, -327675, 65500, 1441798, -327675, 65520, 655366, -327671, 65520, 655366)
+}
+metadata/_editor_floor_ = Vector3(0, -5, 0)
+
+[node name="Lighting" type="Node3D" parent="Environment"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+light_color = Color(1, 0.976471, 0.858824, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 2, 13)
+light_color = Color(1, 0.94902, 0.168627, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight12" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -20, 0)
+light_color = Color(0.254902, 1, 0.168627, 1)
+light_energy = 4.798
+light_specular = 0.0
+omni_range = 21.461
+
+[node name="OmniLight10" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 2, -18)
+light_color = Color(0.168627, 0.843137, 1, 1)
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 17.473
+
+[node name="OmniLight5" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2, -26)
+light_color = Color(0.741176, 1, 0.168627, 1)
+light_energy = 2.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight6" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2, -36)
+light_color = Color(0.741176, 1, 0.168627, 1)
+light_energy = 2.0
+light_specular = 0.0
+omni_range = 10.0
+
+[node name="OmniLight7" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2, -47)
+light_color = Color(0.819608, 0.168627, 1, 1)
+light_energy = 2.0
+light_specular = 0.0
+
+[node name="OmniLight8" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, -5, -35)
+light_color = Color(0.309804, 1, 0.168627, 1)
+light_energy = 5.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="OmniLight14" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -12, -24)
+light_color = Color(1, 0.168627, 0.168627, 1)
+light_energy = 5.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="OmniLight15" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -6, 6)
+light_color = Color(1, 0.168627, 0.168627, 1)
+light_energy = 3.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight9" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, -10, -45.3)
+light_color = Color(0.309804, 1, 0.168627, 1)
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 3.0
+
+[node name="OmniLight2" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 8, 14)
+light_color = Color(1, 0.94902, 0.168627, 1)
+light_energy = 0.5
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 7.0
+
+[node name="OmniLight16" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 7.7, -17.5)
+light_color = Color(0.858824, 0.168627, 1, 1)
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 25.0
+
+[node name="OmniLight3" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8, -30)
+light_color = Color(0.996078, 1, 0.482353, 1)
+light_energy = 2.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 11.98
+
+[node name="OmniLight11" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 8, -18)
+light_color = Color(1, 0.772549, 0.482353, 1)
+light_energy = 2.0
+light_specular = 0.0
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="OmniLight4" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 8, 35)
+light_color = Color(1, 0.482353, 0.482353, 1)
+light_specular = 0.0
+omni_range = 15.0
+
+[node name="OmniLight13" type="OmniLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 7, -32)
+light_color = Color(0.92549, 1, 0.611765, 1)
+light_energy = 0.5
+light_specular = 0.0
+omni_range = 20.0
+
+[node name="slumtown" parent="Environment" instance=ExtResource("4_xkhqh")]
+
+[node name="BaseNPC" parent="Environment" node_paths=PackedStringArray("patrol_points") instance=ExtResource("5_epehp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -26)
+inventory_data = SubResource("Resource_efabi")
+loot_table = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("7_vn6in"), ExtResource("8_3aj2l"), ExtResource("9_m0et7")])
+patrol_points = [NodePath("Node3D"), NodePath("Node3D2"), NodePath("Node3D3"), NodePath("Node3D4"), NodePath("Node3D5")]
+
+[node name="Node3D" type="Node3D" parent="Environment/BaseNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 30)
+
+[node name="Node3D2" type="Node3D" parent="Environment/BaseNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 52)
+
+[node name="Node3D3" type="Node3D" parent="Environment/BaseNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.5, 55)
+
+[node name="Node3D4" type="Node3D" parent="Environment/BaseNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.5, 31)
+
+[node name="Node3D5" type="Node3D" parent="Environment/BaseNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.5, 9)
+
+[node name="GameObjects" type="Node3D" parent="."]
+
+[node name="player_role_spawns" type="Node3D" parent="GameObjects"]
+
+[node name="prole_spawn_01" parent="GameObjects/player_role_spawns" instance=ExtResource("10_h737m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0.1, -40)
+random_amount_of_items_to_give = 2
+required_items = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("11_i7dus"), ExtResource("12_1eii1")])
+
+[node name="BiogrowthObjects" type="Node3D" parent="GameObjects"]
+
+[node name="IndustrialSink" parent="GameObjects/BiogrowthObjects" instance=ExtResource("13_vrj3u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37, 0, 19.4)
+
+[node name="BioGrower" parent="GameObjects/BiogrowthObjects" instance=ExtResource("14_qvge1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 9)
+
+[node name="FertilizerProducer" parent="GameObjects/BiogrowthObjects" instance=ExtResource("15_vmf7g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 6.2)
+
+[node name="Store" type="Node3D" parent="GameObjects"]
+
+[node name="vendor" parent="GameObjects/Store" instance=ExtResource("16_ux0yg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -13)
+
+[node name="Ladders" type="Node3D" parent="GameObjects"]
+
+[node name="Ladder" parent="GameObjects/Ladders" instance=ExtResource("17_25hjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9, 4, 11.2)
+
+[node name="Ladder2" parent="GameObjects/Ladders" instance=ExtResource("17_25hjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7)
+
+[node name="Ladder3" parent="GameObjects/Ladders" instance=ExtResource("17_25hjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4)
+
+[node name="Ladder4" parent="GameObjects/Ladders" instance=ExtResource("17_25hjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6)
+
+[node name="WoodedArea" type="Node3D" parent="GameObjects"]
+
+[node name="TreeSpawner" parent="GameObjects/WoodedArea" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -28)
+node_to_spawn = ExtResource("19_xt80x")
+
+[node name="TreeSpawner2" parent="GameObjects/WoodedArea" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, -36)
+node_to_spawn = ExtResource("19_xt80x")
+
+[node name="TreeSpawner3" parent="GameObjects/WoodedArea" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -28)
+node_to_spawn = ExtResource("19_xt80x")
+
+[node name="AmoebaSpawner" parent="GameObjects/WoodedArea" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -31)
+node_to_spawn = ExtResource("20_6ud0e")
+
+[node name="ToolFactory" type="Node3D" parent="GameObjects"]
+
+[node name="production_machine" parent="GameObjects/ToolFactory" node_paths=PackedStringArray("merchant") instance=ExtResource("21_bde8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5.5, -23.9)
+payday = 3
+merchant = NodePath("../../Store/vendor")
+
+[node name="Generator" parent="GameObjects/ToolFactory" instance=ExtResource("22_r3644")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 20, 5.5, -22)
+
+[node name="CollisionShape3D" parent="GameObjects/ToolFactory/Generator" index="0"]
+shape = SubResource("394")
+
+[node name="CollisionShape3D" parent="GameObjects/ToolFactory/Generator/ItemDeposit" index="0"]
+shape = SubResource("395")
+
+[node name="CheckForMachinesArea" parent="GameObjects/ToolFactory/Generator" index="5"]
+bounds = Vector3(1, 1, 5)
+
+[node name="CollisionShape3D" parent="GameObjects/ToolFactory/Generator/CheckForMachinesArea" index="0"]
+shape = SubResource("396")
+
+[node name="Canal" type="Node3D" parent="GameObjects"]
+
+[node name="BitumeatSpawner" parent="GameObjects/Canal" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -5)
+node_to_spawn = ExtResource("23_e7bsr")
+spawn_frequency = 120.0
+
+[node name="BitumeatSpawner2" parent="GameObjects/Canal" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -2)
+node_to_spawn = ExtResource("23_e7bsr")
+spawn_frequency = 120.0
+
+[node name="BitumeatSpawner3" parent="GameObjects/Canal" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, -8)
+node_to_spawn = ExtResource("23_e7bsr")
+spawn_frequency = 120.0
+
+[node name="BoneCapsuleSpawner" parent="GameObjects/Canal" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -5, -2)
+node_to_spawn = ExtResource("24_d5gjp")
+spawn_frequency = 120.0
+
+[node name="BoneCapsuleSpawner2" parent="GameObjects/Canal" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, -5, -7)
+node_to_spawn = ExtResource("24_d5gjp")
+spawn_frequency = 120.0
+
+[node name="tumor" parent="GameObjects/Canal" instance=ExtResource("25_oefji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -13, -30)
+
+[node name="tumor3" parent="GameObjects/Canal" instance=ExtResource("25_oefji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -11, -38)
+
+[node name="tumor2" parent="GameObjects/Canal" instance=ExtResource("25_oefji")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, -5, -8)
+
+[node name="MushroomSpawner" parent="GameObjects/Canal" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, -9)
+node_to_spawn = ExtResource("26_f1dgg")
+spawn_frequency = 120.0
+
+[node name="MushroomSpawner2" parent="GameObjects/Canal" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -4.2, -1)
+node_to_spawn = ExtResource("26_f1dgg")
+spawn_frequency = 120.0
+
+[node name="MushroomSpawner3" parent="GameObjects/Canal" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, -4.4, -1)
+node_to_spawn = ExtResource("26_f1dgg")
+spawn_frequency = 120.0
+
+[node name="WaterArea" parent="GameObjects/Canal" instance=ExtResource("27_awhem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -4, -5)
+bounds = Vector3(40, 1, 5)
+
+[node name="ProleSpawn" type="Node3D" parent="GameObjects"]
+
+[node name="Storage" parent="GameObjects/ProleSpawn" instance=ExtResource("28_noycf")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 54, 0, -29)
+inventory_data = SubResource("387")
+reset_time = 120.0
+does_reset = true
+
+[node name="rot_telecom" parent="GameObjects/ProleSpawn" instance=ExtResource("29_heb4g")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55, 1, -35)
+
+[node name="metastabilizer" parent="GameObjects/ProleSpawn" instance=ExtResource("30_pwyrc")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 53.5, 0, -38.5)
+
+[node name="processor" parent="GameObjects/ProleSpawn" instance=ExtResource("31_wm7sa")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 53, 0, -44)
+
+[node name="MedicalArea" type="Node3D" parent="GameObjects"]
+
+[node name="autostitcher" parent="GameObjects/MedicalArea" instance=ExtResource("32_kskp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1.5, -24.5)
+
+[node name="metastabilizer2" parent="GameObjects/MedicalArea" instance=ExtResource("30_pwyrc")]
+transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 27.5, 0, -22.5)
+
+[node name="WeaponFactory" type="Node3D" parent="GameObjects"]
+
+[node name="production_machine" parent="GameObjects/WeaponFactory" node_paths=PackedStringArray("merchant") instance=ExtResource("21_bde8q")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.7, 5.5, -30)
+production_time = 5.0
+payday = 10
+merchant = NodePath("../../Store/vendor")
+
+[node name="Generator" parent="GameObjects/WeaponFactory" instance=ExtResource("22_r3644")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -7, 5.5, -34)
+
+[node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator" index="0"]
+shape = SubResource("397")
+
+[node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator/ItemDeposit" index="0"]
+shape = SubResource("398")
+
+[node name="CheckForMachinesArea" parent="GameObjects/WeaponFactory/Generator" index="5"]
+bounds = Vector3(1, 1, 5)
+
+[node name="CollisionShape3D" parent="GameObjects/WeaponFactory/Generator/CheckForMachinesArea" index="0"]
+shape = SubResource("399")
+
+[node name="WaterArea" parent="GameObjects/WeaponFactory" instance=ExtResource("27_awhem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4.5, -24)
+bounds = Vector3(2, 0.5, 15)
+
+[node name="Quarry" type="Node3D" parent="GameObjects"]
+
+[node name="RockSpawner" parent="GameObjects/Quarry" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, -19.4, -25)
+node_to_spawn = ExtResource("33_q6fkn")
+
+[node name="RockSpawner2" parent="GameObjects/Quarry" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -18.5, -22)
+node_to_spawn = ExtResource("33_q6fkn")
+
+[node name="RockSpawner3" parent="GameObjects/Quarry" instance=ExtResource("18_lfhhe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, -19, -26)
+node_to_spawn = ExtResource("33_q6fkn")
+
+[node name="Generator" parent="GameObjects/Quarry" instance=ExtResource("22_r3644")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -66, 5, 22)
+
+[node name="CollisionShape3D" parent="GameObjects/Quarry/Generator" index="0"]
+shape = SubResource("400")
+
+[node name="CollisionShape3D" parent="GameObjects/Quarry/Generator/ItemDeposit" index="0"]
+shape = SubResource("401")
+
+[node name="CheckForMachinesArea" parent="GameObjects/Quarry/Generator" index="5"]
+bounds = Vector3(1, 1, 5)
+
+[node name="CollisionShape3D" parent="GameObjects/Quarry/Generator/CheckForMachinesArea" index="0"]
+shape = SubResource("402")
+
+[node name="production_machine" parent="GameObjects/Quarry" node_paths=PackedStringArray("merchant") instance=ExtResource("21_bde8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71, 5, 21)
+payday = 2
+merchant = NodePath("../../Store/vendor")
+
+[node name="GameEnd" type="Node3D" parent="GameObjects"]
+
+[node name="TicketMachine" parent="GameObjects/GameEnd" node_paths=PackedStringArray("game_level") instance=ExtResource("34_cdkn7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23)
+game_level = NodePath("../../..")
+
+[node name="Sewer" type="Node3D" parent="GameObjects"]
+
+[node name="WaterArea" parent="GameObjects/Sewer" instance=ExtResource("27_awhem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -11, -19)
+bounds = Vector3(8, 1, 30)
+
+[node name="Player_Ghost" parent="." instance=ExtResource("35_0d46y")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 43, 2, -12)
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="PauseMenu" type="Control" parent="UI"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("40_hurge")
+
+[node name="Panel" type="Panel" parent="UI/PauseMenu"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("380")
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -64.0
+offset_right = 62.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PauseMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseMenu/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PauseLabel" type="Label" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "paused"
+horizontal_alignment = 1
+
+[node name="options_button" type="Button" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "options"
+
+[node name="menu_exit_button" type="Button" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "exit to menu"
+
+[node name="exit_button" type="Button" parent="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "exit to desktop"
+
+[node name="Options" parent="UI/PauseMenu" instance=ExtResource("41_lljnt")]
+visible = false
+layout_mode = 1
+
+[node name="LoadingScreen" parent="UI/PauseMenu" instance=ExtResource("42_lcv5x")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+
+[editable path="GameObjects/ToolFactory/Generator"]
+[editable path="GameObjects/ToolFactory/Generator/generator"]
+[editable path="GameObjects/ToolFactory/Generator/CanvasLayer/HintObjectInterface"]
+[editable path="GameObjects/WeaponFactory/Generator"]
+[editable path="GameObjects/WeaponFactory/Generator/generator"]
+[editable path="GameObjects/WeaponFactory/Generator/CanvasLayer/HintObjectInterface"]
+[editable path="GameObjects/Quarry/Generator"]
+[editable path="GameObjects/Quarry/Generator/generator"]
+[editable path="GameObjects/Quarry/Generator/CanvasLayer/HintObjectInterface"]

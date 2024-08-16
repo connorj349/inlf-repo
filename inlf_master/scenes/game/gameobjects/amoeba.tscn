@@ -112,6 +112,8 @@ anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 shape = SubResource("7")
 
+[node name="ItemSpawnPoint" type="Node3D" parent="."]
+
 [node name="amoeba" parent="." instance=ExtResource("5_i4cu2")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 

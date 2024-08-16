@@ -1,5 +1,8 @@
 extends Interactable
 
+const meta_repair_amount: int = 40
+const meta_repair_reward_amount: int = 5
+
 @export var repair_item_data: ItemData
 @export var bar: ProgressBar
 @export var status_label: Label
@@ -35,8 +38,8 @@ func _on_Timer_timeout():
 func _on_ItemDeposit_body_entered(body):
 	if body.is_in_group("pickup"):
 		if body.slot_data.item_data == repair_item_data:
-			health.health += Globals.meta_repair_amount
-			Gamestate.bones += Globals.meta_repair_reward_amount
+			health.health += meta_repair_amount
+			Gamestate.bones += meta_repair_reward_amount
 			body.queue_free()
 			$ItemAddedSound.play()
 			if not active:

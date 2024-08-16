@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcmi41k08823h"]
+
+[ext_resource type="Script" path="res://scenes/game/game_world.gd" id="1_jtdd6"]
+
+[node name="GameWorld" type="Node3D"]
+script = ExtResource("1_jtdd6")
+start_scene_path = "res://scenes/game/levels/level_slumtown.tscn"
+
+[node name="Levels" type="Node3D" parent="."]

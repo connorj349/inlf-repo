@@ -6,12 +6,7 @@ extends Interactable
 @export var payday: int = 0 # how much the player is paid out, maybe make this a constant in globals
 @export var prog_bar: ProgressBar
 @export var materials_label: Label
-
-@onready var panel = $CanvasLayer/PanelContainer
-@onready var next_action_label = $CanvasLayer/PanelContainer/VBoxContainer/Label
-@onready var accept_input: AudioStreamPlayer3D = $AcceptSound
-@onready var machine_loop: AudioStreamPlayer3D = $MachineLoop
-@onready var timer = $ManufactureTimer
+@export var merchant: Node3D
 
 var rng = RandomNumberGenerator.new()
 
@@ -33,13 +28,24 @@ var materials: int = 0 :
 		materials = clamp(value, 0, 999)
 		materials_label.text = "Material: " + str(materials)
 
+@onready var panel = $CanvasLayer/PanelContainer
+@onready var next_action_label = $CanvasLayer/PanelContainer/VBoxContainer/Label
+@onready var accept_input: AudioStreamPlayer3D = $AcceptSound
+@onready var machine_loop: AudioStreamPlayer3D = $MachineLoop
+@onready var timer = $ManufactureTimer
+
 func _ready():
 	self.current_index = 0
+	
 	timer.wait_time = production_time # setup timer limit
+	
 	prog_bar.init(0, production_time) # init progress bar
+	
 	rng.randomize()
+	
 # warning-ignore:return_value_discarded
 	Globals.connect("on_inventory_toggle", Callable(panel, "hide"))
+	
 	if !is_in_group("machine"):
 		add_to_group("machine")
 
@@ -62,28 +68,40 @@ func button_press(index):
 	if !can_interact:
 		panel.hide()
 		return
+	
 	if materials > 0:
 		if index == current_index:
 			button_presses_remaining -= 1
+			
 			self.materials -= 1
+			
 			Gamestate.bones += payday
+			
 			self.current_index = rng.randi_range(0, 2)
+			
 			if button_presses_remaining <= 0:
+				
 				button_presses_remaining = 5
+				
 				Gamestate.bones += payday * 2
+				
 				queued_items += 1
+				
 				timer.start()
+				
 				machine_loop.play()
 		else:
 			pass
-			#Globals.current_player.hurt(damage)
 
 func _on_ManufactureTimer_timeout():
 	queued_items -= 1
+	
 	var random_index = rng.randi_range(0, output_item_datas.size() - 1)
 	var new_slot = SlotData.new()
 	new_slot.item_data = output_item_datas[random_index]
-	Gamestate.merchant_inventory.add_item(new_slot)
+	
+	merchant.merchant_inventory.add_item(new_slot)
+	
 	if queued_items > 0:
 		timer.start()
 	else:
@@ -96,7 +114,10 @@ func _on_ItemDeposit_body_entered(body):
 			if body.slot_data.item_data == item:
 				for i in body.slot_data.quantity:
 					Gamestate.bones += payday
+					
 					self.materials += 1
+				
 				accept_input.play()
+				
 				body.queue_free()
 				return

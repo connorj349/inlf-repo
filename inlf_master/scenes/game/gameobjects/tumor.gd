@@ -27,7 +27,7 @@ func on_hurt(damage):
 		return
 	match(damage):
 		Damage.DamageType.Fists:
-			Globals.current_player.on_hurt(tumor_damage) # damage the player back when struck
+			damage.source.on_hurt(tumor_damage) # damage the player back when struck
 			var random_result = randf()
 			if random_result < .5:
 				health.health -= damage.amount # takes damage half the time from fists
@@ -41,8 +41,13 @@ func on_death():
 	# spawn tumor bloody pop effect
 	var new_item = SlotData.new()
 	new_item.item_data = cancer_item_data
-	Globals.create_pickup(new_item, $ItemSpawnPosition)
-	queue_free() # delete this object
+	
+	var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
+	new_pickup.slot_data = new_item
+	get_tree().current_scene.game_world.add_child(new_pickup)
+	new_pickup.global_transform.origin = $ItemSpawnPosition.global_transform.origin
+	
+	queue_free()
 
 func _on_RotTimer_timeout():
 	Gamestate.rot += rot_increase_amount

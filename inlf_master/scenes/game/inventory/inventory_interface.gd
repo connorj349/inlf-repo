@@ -2,22 +2,30 @@ extends Control
 
 signal drop_slot_data(slot_data)
 
+var grabbed_slot_data: SlotData = null
+var external_inventory_owner
+
 @onready var player_inventory = $MarginContainer/VBoxContainer/PlayerInventory
 @onready var grabbed_slot = $GrabbedSlot
 @onready var external_inventory = $ExternalInventory
 @onready var equip_inventory = $MarginContainer/VBoxContainer/HBoxContainer/EquipInventory
 @onready var weapon_inventory = $MarginContainer/VBoxContainer/HBoxContainer/WeaponInventory
 
-var grabbed_slot_data: SlotData = null
-var external_inventory_owner
-
 func _ready():
 	Globals.current_ui = self
-	set_player_inventory_data(Gamestate.player_inventory)
-	set_equip_inventory_data(Gamestate.equip_player_inventory)
-	set_weapon_inventory_data(Gamestate.weapon_player_inventory)
+	set_player_inventory_data($"../..".inventory_data)
+	set_equip_inventory_data($"../..".armor_inventory_data)
+	set_weapon_inventory_data($"../..".weapon_inventory_data)
+	
+	# may need to create lambda for this
 # warning-ignore:return_value_discarded
-	connect("drop_slot_data", Callable(Globals, "create_pickup"))
+	connect("drop_slot_data", Callable(func(slot_data):
+			var _pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
+			_pickup.slot_data = SlotData.new()
+			_pickup.slot_data.item_data = slot_data.item_data
+			_pickup.slot_data.quantity = slot_data.quantity
+			get_tree().current_scene.game_world.add_child(_pickup)
+			_pickup.global_transform.origin = $"../..".get_drop_position()))
 
 func _physics_process(_delta): #update the position of the grabbed_slot on the ui
 	if grabbed_slot.visible:

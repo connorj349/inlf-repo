@@ -62,7 +62,7 @@ hurt_sound = NodePath("HurtSound")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="ItemSpawnPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Health" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6372, 0.227377)

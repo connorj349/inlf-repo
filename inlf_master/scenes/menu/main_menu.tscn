@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb2m2lett6jts"]
+
+[ext_resource type="Texture2D" uid="uid://bay0tgp46sfbw" path="res://assets/textures/background_01.png" id="1_u8i6o"]
+[ext_resource type="Script" path="res://scenes/menu/menu.gd" id="2_vqi0w"]
+[ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="3_k6nhk"]
+[ext_resource type="AudioStream" uid="uid://cd0khr2a83qta" path="res://assets/audio/ambience/music/new_area.wav" id="4_od6fe"]
+[ext_resource type="AudioStream" uid="uid://chsjg5igqysvu" path="res://assets/audio/menu_open.wav" id="5_ri88x"]
+
+[node name="MainMenu" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_u8i6o")
+script = ExtResource("2_vqi0w")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -50.5
+offset_right = 125.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Options" parent="." instance=ExtResource("3_k6nhk")]
+visible = false
+layout_mode = 1
+
+[node name="StartFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_od6fe")
+bus = &"SoundFX"
+
+[node name="ButtonPressSoundFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ri88x")
+bus = &"SoundFX"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_button_down"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

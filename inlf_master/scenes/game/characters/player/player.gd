@@ -10,23 +10,11 @@ const MAX_STEP_HEIGHT: float = 0.5
 const CROUCH_TRANSLATE: float = 0.7
 const CROUCH_JUMP_ADD: float = CROUCH_TRANSLATE * 0.9
 
-@export var health: Node3D
-@export var head: Node3D
-@export var camera: Camera3D
-@export var camera_smooth: Node3D
-@export var interact_area: Area3D
-@export var hint_raycast: RayCast3D
-@export var pickup_raycast: RayCast3D
-@export var hold_object_pos: Node3D
-@export var weapon_manager: Node3D
-@export var health_bar: TextureProgressBar
-@export var pox_bar: TextureProgressBar
-@export var armor_bar: TextureProgressBar
-@export var player_dead_prefab: PackedScene
-@export var ground_raycast: RayCast3D
-@export var stairs_ahead_raycast: RayCast3D
-@export var stairs_below_raycast: RayCast3D
+@export var inventory_data: InventoryData
+@export var weapon_inventory_data: InventoryDataWeapon
+@export var armor_inventory_data: InventoryDataEquip
 
+var level: Node3D
 var armor: int = 0 :
 	set(_value):
 		armor = clampi(_value, 0, 100)
@@ -34,7 +22,7 @@ var armor: int = 0 :
 		update_armor_bar_visibility()
 var pickup_object = null
 var speed
-var gravity = 9.8
+var gravity: float = 9.8
 var footstep_time = 0
 var is_crouched = false
 var _snapped_to_stairs_last_frame = false
@@ -43,10 +31,32 @@ var _saved_camera_global_pos = null
 
 @onready var _original_capsule_height = $CollisionShape3D.shape.height
 
+@onready var camera: Camera3D = $HeadOriginalPosition/Head/CameraSmooth/Camera3D
+
+@onready var health: Node3D = $Health
+@onready var head: Node3D = $HeadOriginalPosition
+@onready var camera_smooth: Node3D = $HeadOriginalPosition/Head/CameraSmooth
+@onready var hold_object_pos: Node3D = $HeadOriginalPosition/Head/CameraSmooth/Camera3D/PickupRayCast/HoldObjectPosition
+@onready var weapon_manager: Node3D = $HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager
+
+@onready var interact_area: Area3D = $HeadOriginalPosition/Head/CameraSmooth/Camera3D/InteractArea
+
+@onready var hint_raycast: RayCast3D = $HeadOriginalPosition/Head/CameraSmooth/Camera3D/HintObjRayCast
+@onready var pickup_raycast: RayCast3D = $HeadOriginalPosition/Head/CameraSmooth/Camera3D/PickupRayCast
+@onready var ground_raycast: RayCast3D = $GroundRaycast
+@onready var stairs_ahead_raycast: RayCast3D = $StairsAheadRaycast3D
+@onready var stairs_below_raycast: RayCast3D = $StairsBelowRaycast3D
+
+@onready var health_bar: TextureProgressBar = $UI/Bars/health_pox/health_bar
+@onready var pox_bar: TextureProgressBar = $UI/Bars/health_pox/pox_bar
+@onready var armor_bar: TextureProgressBar = $UI/Bars/health_pox/armor_bar
+
+@onready var player_dead_prefab: PackedScene = load("res://scenes/game/characters/player/player_dead.tscn")
+
+
 func _ready():
 	health.init()
 	health.connect("health_changed", Callable(health_bar, "update_bar"))
-	#health.connect("max_health_changed", Callable(health_bar, "init"))
 	health.connect("max_health_changed", Callable(func(player_health, player_max_health):
 		health_bar.init(player_health, player_max_health + health.pox)))
 	health.connect("max_health_changed", Callable(self, "update_health_and_pox_text_placement").unbind(2))
@@ -72,13 +82,10 @@ func _input(event):
 
 @warning_ignore("unused_parameter")
 func _process(delta):
-	#debug kill
-	if Input.is_action_just_pressed("debug_kill"):
-		kill()
-	
 	#toggle inventory menu
 	if Input.is_action_just_pressed("inventory"):
 		Globals.emit_signal("on_inventory_toggle")
+		
 		$Sounds/InventoryOpenSound.play()
 	
 	#interacting
@@ -126,6 +133,7 @@ func _process(delta):
 		#jumping
 		if Input.is_action_just_pressed("jump") and (is_on_floor() or _snapped_to_stairs_last_frame):
 			velocity.y = JUMP_VELOCITY
+			
 			$Sounds/JumpSound.play()
 
 func _physics_process(delta):
@@ -160,6 +168,7 @@ func _physics_process(delta):
 		# this should be fine since we ensure with the body_test_motion that it doesnt'
 		# collide with anything except the stairs it's moving up to.
 		move_and_slide()
+		
 		_snap_down_to_stairs_check()
 	
 	_slide_camera_smooth_back_to_origin(delta)
@@ -167,6 +176,7 @@ func _physics_process(delta):
 	#footstep calculating
 	if direction.length() > 0:
 		footstep_time += direction.length()
+		
 		if footstep_time >= FOOTSTEP_FREQUENCY:
 			footstep_time = 0
 			_footstep()
@@ -334,8 +344,6 @@ func _footstep():
 			$Sounds/Footsteps/MudFootstep.play()
 
 func kill():
-	Gamestate.emit_signal("on_player_death")
-	
 	$Sounds/DeathSound.play()
 	
 	# hides the player's inventory screen on death
@@ -345,17 +353,21 @@ func kill():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	# create the player corpse
-	var corpse = Globals.create_corpse(self)
+	var corpse = load("res://scenes/game/characters/corpse.tscn").instantiate()
+	get_tree().current_scene.game_world.add_child(corpse)
+	
 	if is_on_floor():
 		corpse.global_transform.origin = global_transform.origin
 	else:
 		corpse.global_transform.origin = ground_raycast.get_collision_point()
+	
 	corpse.init_inventory_size(Gamestate.player_inventory.slot_datas.size() + Gamestate.equip_player_inventory.slot_datas.size() + Gamestate.weapon_player_inventory.slot_datas.size())
 	
 	# create the player dead gameobject
 	var player_dead = player_dead_prefab.instantiate()
-	get_tree().get_root().add_child(player_dead)
+	level.add_child(player_dead)
 	player_dead.global_transform.origin = corpse.global_transform.origin + Vector3.UP
+	player_dead.level = level
 	
 	# add player armor into corpse inventory(maybe remove this?)
 	if Gamestate.equip_player_inventory.slot_datas[0]: # prevent errors
@@ -370,8 +382,6 @@ func kill():
 	for item in Gamestate.player_inventory.slot_datas:
 		if item:
 			corpse.inventory.add_item(item)
-	
-	Gamestate.reset_player_state()
 	
 	# call a setup function instead
 	player_dead.get_node("PlayerSpawnTimer").wait_time = corpse.get_node("DecayTimer").wait_time #reset spawn time

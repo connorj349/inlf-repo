@@ -215,12 +215,16 @@ func _safe_look_at(_node: Node3D, _target: Vector3):
 
 # do not want to override this method
 func _kill():
-	var corpse = Globals.create_corpse(self)
+	var corpse = load("res://scenes/game/characters/corpse.tscn").instantiate()
+	get_tree().current_scene.game_world.add_child(corpse)
 	corpse.global_transform.origin = global_transform.origin
+	
 	corpse.init_inventory_size(inventory_data.slot_datas.size())
+	
 	for item in inventory_data.slot_datas:
 		if item:
 			corpse.inventory.add_item(item)
+	
 	queue_free()
 
 # setups random loot on this npc using loot_table/ do not want to override this method

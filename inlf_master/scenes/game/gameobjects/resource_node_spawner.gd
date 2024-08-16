@@ -18,8 +18,5 @@ func spawn():
 			return
 		
 		var new_spawn = node_to_spawn.instantiate()
-		get_tree().get_root().add_child(new_spawn)
+		get_tree().current_scene.game_world.add_child(new_spawn)
 		new_spawn.global_transform = global_transform
-
-func _on_Timer_timeout():
-	Gamestate.request_spawn(self)
