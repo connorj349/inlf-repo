@@ -13,7 +13,7 @@ func _ready():
 func _interact(actor): # can only use if player is an antagonist
 	#if _actor is PlayerCultist:
 		if current_active_required_mat:
-			if Gamestate.player_inventory.take_item(current_active_required_mat):
+			if actor.inventory_data.take_item(current_active_required_mat):
 				actor.magick.increase_max_magick(1) # increase max magick +1
 				
 				Gamestate.rot_modify(1) # increase rot

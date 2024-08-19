@@ -4,7 +4,7 @@ class_name InventoryData
 signal inventory_updated(inventory_data)
 signal inventory_interact(inventory_data, index, button)
 
-@export var slot_datas: Array[SlotData] # (Array, Resource)
+@export var slot_datas: Array[SlotData]
 
 func grab_slot_data(index):
 	var slot_data = slot_datas[index]

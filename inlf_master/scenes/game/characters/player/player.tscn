@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
-[ext_resource type="Resource" path="res://scenes/game/inventory/player_inventory.tres" id="2_taws3"]
-[ext_resource type="Resource" path="res://scenes/game/inventory/player_weapon_inventory.tres" id="3_wydts"]
+[ext_resource type="Resource" uid="uid://bc3rj334q8h1y" path="res://scenes/game/inventory/player_inventory.tres" id="2_taws3"]
+[ext_resource type="Resource" uid="uid://bocxnlmhf41mj" path="res://scenes/game/inventory/player_weapon_inventory.tres" id="3_wydts"]
 [ext_resource type="Script" path="res://scenes/game/item/item_data_weapon.gd" id="4"]
 [ext_resource type="Resource" path="res://scenes/game/inventory/player_equipment_inventory.tres" id="4_f1372"]
 [ext_resource type="AudioStream" uid="uid://cpcb725rq2wyl" path="res://assets/audio/spawn/role_prole.wav" id="4_t2uh4"]
@@ -392,6 +392,9 @@ bus = &"SoundFX"
 
 [node name="InventoryOpenSound" type="AudioStreamPlayer" parent="Sounds"]
 
+[node name="WeaponSwitchSound" type="AudioStreamPlayer" parent="Sounds"]
+bus = &"SoundFX"
+
 [node name="Footsteps" type="Node3D" parent="Sounds"]
 
 [node name="StoneFootstep" type="AudioStreamPlayer" parent="Sounds/Footsteps"]
@@ -734,6 +737,10 @@ theme_override_styles/panel = SubResource("29")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Notifications/PanelContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/Notifications/PanelContainer/MarginContainer"]
 layout_mode = 2

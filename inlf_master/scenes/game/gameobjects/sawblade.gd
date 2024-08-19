@@ -40,7 +40,7 @@ func _on_Area_body_entered(body):
 					new_item.item_data = optional_random_items[rng.randi_range(0, optional_random_items.size() - 1)]
 					
 					# player.inventory.add_item(new_item) should be adding items to inventory directly on player
-					Gamestate.player_inventory.add_item(new_item)
+					player.inventory_data.add_item(new_item)
 			
 			if required_items.size() > 0:
 				for i in required_items.size():
@@ -48,7 +48,7 @@ func _on_Area_body_entered(body):
 					new_item.item_data = required_items[i]
 					
 					# player.inventory.add_item(new_item) should be adding items to inventory directly on player
-					Gamestate.player_inventory.add_item(new_item)
+					player.inventory_data.add_item(new_item)
 
 func _on_Timer_timeout():
 	role_available_sound.play()

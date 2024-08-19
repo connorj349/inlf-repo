@@ -1,7 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=2 format=3 uid="uid://bc3rj334q8h1y"]
 
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="1"]
 
 [resource]
-script = ExtResource( 1 )
-slot_datas = [ null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null ]
+script = ExtResource("1")
+slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

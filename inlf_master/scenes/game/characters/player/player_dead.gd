@@ -19,4 +19,5 @@ func _on_PlayerSpawnTimer_timeout():
 	var ghost = player_ghost_prefab.instantiate()
 	get_tree().current_scene.game_world.add_child(ghost)
 	ghost.global_transform = global_transform
+	
 	queue_free()

@@ -17,7 +17,7 @@ func _interact(actor):
 		
 		var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
 		new_pickup.slot_data = new_item
-		get_tree().current_scene.game_level.add_child(new_pickup)
+		get_tree().current_scene.game_world.add_child(new_pickup)
 		new_pickup.global_transform.origin = $SpawnPoint.global_transform.origin
 		
 		# implement this only for world sinks that the player can drink from

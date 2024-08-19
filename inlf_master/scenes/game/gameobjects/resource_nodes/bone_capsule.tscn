@@ -48,7 +48,7 @@ _data = {
 "fade_in": SubResource("7")
 }
 
-[node name="bone_capsule" type="StaticBody3D" node_paths=PackedStringArray("prog_bar", "hurt_sound", "anim_player")]
+[node name="bone_capsule" type="StaticBody3D" node_paths=PackedStringArray("optional_item_spawn_point", "prog_bar", "hurt_sound", "anim_player")]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("4")

@@ -48,9 +48,9 @@ _data = {
 "fade_in": SubResource("7")
 }
 
-[node name="skin_tree" type="StaticBody3D" node_paths=PackedStringArray("prog_bar", "hurt_sound", "anim_player")]
-collision_layer = 2
-collision_mask = 10
+[node name="skin_tree" type="StaticBody3D" node_paths=PackedStringArray("optional_item_spawn_point", "prog_bar", "hurt_sound", "anim_player")]
+collision_layer = 3
+collision_mask = 2
 script = ExtResource("4")
 item_data = ExtResource("2_fnf82")
 blocked_damage_types = Array[int]([1, 2])

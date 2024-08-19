@@ -36,12 +36,8 @@ func on_death():
 	var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
 	new_pickup.slot_data = new_item
 	get_tree().current_scene.game_world.add_child(new_pickup)
+	new_pickup.global_transform.origin = optional_item_spawn_point.global_transform.origin
 	
-	if optional_item_spawn_point:
-		new_pickup.global_transform.origin = optional_item_spawn_point.global_transform.origin
-	else:
-		new_pickup.global_transform.origin = global_transform.origin
-		
 	queue_free()
 
 func on_hurt(damage):

@@ -53,6 +53,7 @@ func on_hurt(damage):
 
 func _interact(actor):
 	if can_interact:
+		# need to rewrite how eating corpses work
 		if health.health > health.max_health * 0.5:
 			actor.on_heal(25)
 			spawn_blood()

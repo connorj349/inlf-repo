@@ -7,7 +7,7 @@ signal hot_bar_use(index)
 @onready var h_box_container = $MarginContainer/HBoxContainer
 
 func _ready():
-	set_inventory_data(Gamestate.player_inventory)
+	set_inventory_data($"../..".inventory_data)
 # warning-ignore:return_value_discarded
 	Globals.connect("on_inventory_toggle", Callable(self, "toggle_hotbar"))
 

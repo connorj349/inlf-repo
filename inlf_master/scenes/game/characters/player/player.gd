@@ -14,7 +14,6 @@ const CROUCH_JUMP_ADD: float = CROUCH_TRANSLATE * 0.9
 @export var weapon_inventory_data: InventoryDataWeapon
 @export var armor_inventory_data: InventoryDataEquip
 
-var level: Node3D
 var armor: int = 0 :
 	set(_value):
 		armor = clampi(_value, 0, 100)
@@ -82,13 +81,13 @@ func _input(event):
 
 @warning_ignore("unused_parameter")
 func _process(delta):
-	#toggle inventory menu
+	# toggle inventory menu
 	if Input.is_action_just_pressed("inventory"):
 		Globals.emit_signal("on_inventory_toggle")
 		
 		$Sounds/InventoryOpenSound.play()
 	
-	#interacting
+	# interacting
 	if Input.is_action_just_pressed("interact") and !player_is_in_menu():
 		if pickup_object:
 			pickup_object = null
@@ -103,7 +102,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("left_click"):
 			weapon_manager.attack()
 		
-		#picking up interactable physicsbodies, later add alternate firemodes for weapons
+		# picking up interactable physicsbodies, later add alternate firemodes for weapons
 		if Input.is_action_just_pressed("right_click"):
 			if is_instance_valid(pickup_object):
 				pickup_object.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
@@ -122,15 +121,15 @@ func _process(delta):
 		if is_instance_valid(pickup_object):
 			pickup_object.global_transform.origin = hold_object_pos.global_transform.origin
 		
-		#weapon switching
+		# weapon switching
 		if Input.is_action_just_pressed("switch_weapons"):
 			weapon_manager.switch_to_next_weapon()
 		
-		#reloading
+		# reloading
 		if Input.is_action_just_pressed("reload"):
 			weapon_manager.reload()
 		
-		#jumping
+		# jumping
 		if Input.is_action_just_pressed("jump") and (is_on_floor() or _snapped_to_stairs_last_frame):
 			velocity.y = JUMP_VELOCITY
 			
@@ -204,7 +203,6 @@ func update_health_and_pox_text_placement():
 	elif health.pox > 0:
 		$UI/Bars/health_pox/pox_bar/VBoxContainer/Label5.text = "POX"
 
-# use a lambda expression and connect to bar value changed
 func update_armor_bar_visibility():
 	if armor <= 0:
 		armor_bar.visible = false
@@ -332,7 +330,7 @@ func _slide_camera_smooth_back_to_origin(delta):
 	if camera_smooth.position.y == 0:
 		_saved_camera_global_pos = null # stop smoothing camera
 
-#check the tile, play the sound, all timing is done in _process
+# check the tile, play the sound, all timing is done in _process
 func _footstep():
 	var coll_tileset = ground_raycast.get_collider()
 	if ground_raycast.is_colliding():
@@ -356,39 +354,39 @@ func kill():
 	var corpse = load("res://scenes/game/characters/corpse.tscn").instantiate()
 	get_tree().current_scene.game_world.add_child(corpse)
 	
+	# place the corpse correctly on the ground
 	if is_on_floor():
 		corpse.global_transform.origin = global_transform.origin
 	else:
 		corpse.global_transform.origin = ground_raycast.get_collision_point()
 	
-	corpse.init_inventory_size(Gamestate.player_inventory.slot_datas.size() + Gamestate.equip_player_inventory.slot_datas.size() + Gamestate.weapon_player_inventory.slot_datas.size())
+	corpse.init_inventory_size(inventory_data.slot_datas.size() + armor_inventory_data.slot_datas.size() + weapon_inventory_data.slot_datas.size())
 	
 	# create the player dead gameobject
 	var player_dead = player_dead_prefab.instantiate()
-	level.add_child(player_dead)
+	get_tree().current_scene.game_world.add_child(player_dead)
 	player_dead.global_transform.origin = corpse.global_transform.origin + Vector3.UP
-	player_dead.level = level
 	
-	# add player armor into corpse inventory(maybe remove this?)
-	if Gamestate.equip_player_inventory.slot_datas[0]: # prevent errors
-		corpse.inventory.add_item(Gamestate.equip_player_inventory.slot_datas[0])
+	# add armor to corpse inventory and reset armor slot
+	if armor_inventory_data.slot_datas[0]: # prevent errors
+		corpse.inventory.add_item(armor_inventory_data.slot_datas[0])
+		armor_inventory_data.take_item(armor_inventory_data.slot_datas[0])
 	
-	# add all weapons to the corpse inventory
-	for wep in Gamestate.weapon_player_inventory.slot_datas:
+	# add all weapons to the corpse inventory and reset weapon slots
+	for wep in weapon_inventory_data.slot_datas:
 		if wep:
 			corpse.inventory.add_item(wep)
+			weapon_inventory_data.take_item(wep)
 	
-	# add all items to the corpse inventory
-	for item in Gamestate.player_inventory.slot_datas:
+	# add all items to the corpse inventory and reset inventory
+	for item in inventory_data.slot_datas:
 		if item:
 			corpse.inventory.add_item(item)
+			inventory_data.take_item(item)
 	
-	# call a setup function instead
-	player_dead.get_node("PlayerSpawnTimer").wait_time = corpse.get_node("DecayTimer").wait_time #reset spawn time
-	# inculde in the above function
+	# reset spawn time and play the player's death sound
+	player_dead.get_node("PlayerSpawnTimer").wait_time = corpse.get_node("DecayTimer").wait_time
 	player_dead.play_death_sound()
-	
-	await $Sounds/DeathSound.finished
 	
 	queue_free() #remove the player
 

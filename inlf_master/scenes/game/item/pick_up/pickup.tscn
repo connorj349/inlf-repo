@@ -59,7 +59,6 @@ anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
-shaded = true
 double_sided = false
 texture = ExtResource("2")
 

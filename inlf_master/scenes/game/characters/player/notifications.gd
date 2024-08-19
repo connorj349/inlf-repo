@@ -1,6 +1,7 @@
 extends Control
 
-const MAX_LINES = 5
+const MAX_LINES: int = 5
+const DELETE_LINE_AFTER_TIME: float = 4.0
 
 @export var notifications_text: RichTextLabel
 
@@ -15,21 +16,23 @@ func _ready():
 	
 	remove_info_timer = Timer.new()
 	add_child(remove_info_timer)
-	remove_info_timer.wait_time = 5.0
+	remove_info_timer.wait_time = DELETE_LINE_AFTER_TIME
+	
 # warning-ignore:return_value_discarded
 	remove_info_timer.connect("timeout", Callable(self, "remove_notification"))
+	
+	update_notifications()
 
-func add_notification(text):
+func add_notification(text: String):
 	remove_info_timer.start()
 	
 	info.push_back(text)
 	
-	while info.size() >= MAX_LINES:
+	if info.size() > MAX_LINES:
 		info.pop_front()
 	
 	update_notifications()
 
-# for some reason the remove_notification isn't working as intended, not sure why
 func remove_notification():
 	if info.size() > 0:
 		info.pop_front()
@@ -37,7 +40,9 @@ func remove_notification():
 	update_notifications()
 
 func update_notifications():
-	notifications_text.text = ""
+	var _new_text = ""
 	
 	for text in info:
-		notifications_text.append_text(text + "\n")
+		_new_text += text + "\n"
+	
+	notifications_text.text = _new_text

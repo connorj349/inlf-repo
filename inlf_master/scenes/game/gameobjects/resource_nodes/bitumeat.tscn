@@ -51,13 +51,14 @@ _data = {
 "fade_in": SubResource("7")
 }
 
-[node name="bitumeat" type="RigidBody3D" node_paths=PackedStringArray("prog_bar", "pickup_sound", "hurt_sound", "anim_player")]
+[node name="bitumeat" type="RigidBody3D" node_paths=PackedStringArray("optional_item_spawn_point", "prog_bar", "pickup_sound", "hurt_sound", "anim_player")]
 collision_layer = 2
 collision_mask = 11
 gravity_scale = 2.0
 script = ExtResource("4")
 item_data = ExtResource("7")
 blocked_damage_types = Array[int]([1])
+optional_item_spawn_point = NodePath(".")
 hit_effect = ExtResource("8")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 pickup_sound = NodePath("PickupSound")

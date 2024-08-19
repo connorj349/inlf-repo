@@ -56,7 +56,6 @@ func stop_healing(_body):
 
 func _on_Timer_timeout():
 	for body in heal_area.get_overlapping_bodies():
-		print(body)
 		if body.has_method("on_heal"):
 			body.on_heal(heal_amount)
 			var heal_effect = blood_effect.instantiate()
