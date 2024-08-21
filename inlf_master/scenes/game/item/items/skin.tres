@@ -2,9 +2,9 @@
 
 [ext_resource type="Resource" uid="uid://bdeyubgyo5i8q" path="res://scenes/game/item/items/leather.tres" id="1_1oums"]
 [ext_resource type="Script" path="res://scenes/game/item/item_data_consumable.gd" id="1_neoq8"]
-[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="3_irdyy"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="3_irdyy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_afn4w"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_04ao4"]
 atlas = ExtResource("3_irdyy")
 region = Rect2(896, 0, 128, 128)
 
@@ -15,7 +15,7 @@ consumable_type = 0
 name = "skin"
 description = "can be slathered on onto your skin for a soothing effect. further processing may cause a different effect."
 stackable = false
-texture = SubResource("AtlasTexture_afn4w")
+texture = SubResource("AtlasTexture_04ao4")
 price = 0
 processed_item_data = ExtResource("1_1oums")
 item_type = 4

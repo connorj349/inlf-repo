@@ -11,10 +11,6 @@ signal infections_count_changed
 # each of these should be created at runtime instead of referenced like this
 # player's inventory
 var player_inventory = load("res://scenes/game/inventory/player_inventory.tres")
-# player's clothing equipment slot
-var equip_player_inventory = load("res://scenes/game/inventory/player_equipment_inventory.tres")
-# player's weapon slot
-var weapon_player_inventory = load("res://scenes/game/inventory/player_weapon_inventory.tres")
 
 var rot: int = 0 :
 	set(value):

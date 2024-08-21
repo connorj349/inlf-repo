@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bptrs3t6i1dep"]
 
 [ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1_7elab"]
-[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="2_dau78"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="2_dau78"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hcaik"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_42bak"]
 atlas = ExtResource("2_dau78")
 region = Rect2(256, 128, 128, 128)
 
@@ -12,6 +12,6 @@ script = ExtResource("1_7elab")
 name = "Cancer"
 description = "a small cancer cell. illegal material, could be used in the biogrower. but for what?"
 stackable = false
-texture = SubResource("AtlasTexture_hcaik")
+texture = SubResource("AtlasTexture_42bak")
 price = 0
 item_type = 3

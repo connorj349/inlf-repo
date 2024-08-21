@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cfca7q7atvdxp"]
 
 [ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="2_h4s4i"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="2_h4s4i"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ackl3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu3b6"]
 atlas = ExtResource("2_h4s4i")
 region = Rect2(384, 0, 128, 128)
 
@@ -12,6 +12,6 @@ script = ExtResource("1")
 name = "Fertilizer"
 description = "used in the biogrower to fertilize and grow certain seeds."
 stackable = false
-texture = SubResource("AtlasTexture_ackl3")
+texture = SubResource("AtlasTexture_xu3b6")
 price = 0
 item_type = 1

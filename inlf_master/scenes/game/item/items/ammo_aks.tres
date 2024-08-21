@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://ci27eht4md5ou"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1_7rmih"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="2_m713s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00g4c"]
+atlas = ExtResource("2_m713s")
+region = Rect2(256, 256, 128, 128)
+
+[resource]
+script = ExtResource("1_7rmih")
+name = "7.62x39 Cartridge"
+description = "a powerful, intermediate cartridge fired out of rifles"
+stackable = true
+texture = SubResource("AtlasTexture_00g4c")
+price = 10
+item_type = 4

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://dwgvghaavgdju"]
 
 [ext_resource type="Script" path="res://scenes/game/item/item_data_consumable.gd" id="1_jaitp"]
-[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="2_7f7c2"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="2_7f7c2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rdclj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_16jrs"]
 atlas = ExtResource("2_7f7c2")
 region = Rect2(512, 128, 128, 128)
 
@@ -14,6 +14,6 @@ consumable_type = 0
 name = "Slop Skull"
 description = "a crude skull filled with black icor. used to manufacture certain goods. can be eaten, but why?"
 stackable = false
-texture = SubResource("AtlasTexture_rdclj")
+texture = SubResource("AtlasTexture_16jrs")
 price = 0
 item_type = 0

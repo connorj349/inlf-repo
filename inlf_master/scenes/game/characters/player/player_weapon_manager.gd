@@ -29,17 +29,20 @@ func switch_to_next_weapon():
 			$"../../../../../Sounds/WeaponSwitchSound".play()
 
 func switch_to_weapon_slot(slot_id: int):
-	if !$"../../../../..".weapon_inventory_data.slot_datas[0] or weapons[slot_id] == fists: # if the player has no weapon equipped or they are switching to fists, switch to fists
+	# if the player has no weapon equipped or they are switching to fists, switch to fists
+	if !$"../../../../..".weapon_inventory_data.slot_datas[0] or weapons[slot_id] == fists:
 		disable_all_weapons()
 		
 		curr_weapon = fists # equip fists
 		curr_weapon.toggle_visibility(true)
 		return
 	
-	if weapons[slot_id].item_weapon_data != $"../../../../..".weapon_inventory_data.slot_datas[0].item_data: # if the weapon's data doesn't match the player's weapon's data, discontinue
-		return
+	# if the weapon's data doesn't match the player's weapon's data, discontinue
+	#if weapons[slot_id].item_weapon_data != $"../../../../..".weapon_inventory_data.slot_datas[0].item_data:
+		#return
 	
-	if !weapons[slot_id]: # if a weapon doesn't exist dont continue
+	# if a weapon doesn't exist dont continue
+	if !weapons[slot_id]:
 		return
 	
 	disable_all_weapons()

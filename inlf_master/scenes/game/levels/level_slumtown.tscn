@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c0pk63nn4wv3b"]
+[gd_scene load_steps=64 format=3 uid="uid://c0pk63nn4wv3b"]
 
 [ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_1bevl"]
 [ext_resource type="Texture2D" uid="uid://bo7oso3slm23o" path="res://assets/textures/skybox/skybox_02.png" id="2_r2v4a"]
@@ -28,16 +28,20 @@
 [ext_resource type="PackedScene" uid="uid://dr8hsko7ayhd4" path="res://scenes/game/gameobjects/exploding_mushroom.tscn" id="26_f1dgg"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/water_area.tscn" id="27_awhem"]
 [ext_resource type="PackedScene" uid="uid://bt1svnjwmtnf3" path="res://scenes/game/inventory/storage.tscn" id="28_noycf"]
+[ext_resource type="Resource" uid="uid://diakavtovmh15" path="res://scenes/game/item/items/ammo_makarov.tres" id="29_0gvgb"]
 [ext_resource type="PackedScene" uid="uid://hxe1g3invfrc" path="res://scenes/game/gameobjects/rot_telecom.tscn" id="29_heb4g"]
+[ext_resource type="Resource" uid="uid://vva1j8lgjumd" path="res://scenes/game/item/items/wep_makarov.tres" id="30_db70o"]
 [ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://scenes/game/gameobjects/metastabilizer.tscn" id="30_pwyrc"]
+[ext_resource type="Script" path="res://scenes/game/inventory/slot_data.gd" id="30_qktmy"]
 [ext_resource type="PackedScene" uid="uid://b7nxt2hc5tvjo" path="res://scenes/game/gameobjects/processor.tscn" id="31_wm7sa"]
+[ext_resource type="Resource" uid="uid://n1tf63bmly" path="res://scenes/game/item/items/wep_aks.tres" id="32_g0v7j"]
 [ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://scenes/game/gameobjects/autostitcher.tscn" id="32_kskp8"]
+[ext_resource type="Resource" uid="uid://ci27eht4md5ou" path="res://scenes/game/item/items/ammo_aks.tres" id="33_cjabh"]
 [ext_resource type="PackedScene" uid="uid://b3gsycxg1xafb" path="res://scenes/game/gameobjects/resource_nodes/boulder.tscn" id="33_q6fkn"]
 [ext_resource type="PackedScene" uid="uid://cvonrv45p2y4y" path="res://scenes/game/game_end/ticket_machine.tscn" id="34_cdkn7"]
 [ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://scenes/game/characters/player/player_ghost.tscn" id="35_0d46y"]
 [ext_resource type="Script" path="res://scenes/menu/options/pause_menu.gd" id="40_hurge"]
 [ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="41_lljnt"]
-[ext_resource type="PackedScene" uid="uid://bglomiqv0hee6" path="res://global/loading_screen/loading_screen.tscn" id="42_lcv5x"]
 
 [sub_resource type="Gradient" id="403"]
 offsets = PackedFloat32Array(0, 0.66879, 1)
@@ -69,7 +73,7 @@ adjustment_color_correction = SubResource("404")
 [sub_resource type="Resource" id="Resource_efabi"]
 resource_local_to_scene = true
 script = ExtResource("6_cw0oq")
-slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null])
+slot_datas = Array[ExtResource("30_qktmy")]([null, null, null])
 
 [sub_resource type="BoxShape3D" id="394"]
 resource_local_to_scene = true
@@ -83,10 +87,30 @@ size = Vector3(4, 4, 4)
 resource_local_to_scene = true
 size = Vector3(2, 2, 10)
 
+[sub_resource type="Resource" id="Resource_nmecp"]
+script = ExtResource("30_qktmy")
+item_data = ExtResource("29_0gvgb")
+quantity = 99
+
+[sub_resource type="Resource" id="Resource_14yqe"]
+script = ExtResource("30_qktmy")
+item_data = ExtResource("30_db70o")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_4ew06"]
+script = ExtResource("30_qktmy")
+item_data = ExtResource("32_g0v7j")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_1haeo"]
+script = ExtResource("30_qktmy")
+item_data = ExtResource("33_cjabh")
+quantity = 999
+
 [sub_resource type="Resource" id="387"]
 resource_local_to_scene = true
 script = ExtResource("6_cw0oq")
-slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null, null, null, null])
+slot_datas = Array[ExtResource("30_qktmy")]([SubResource("Resource_nmecp"), SubResource("Resource_14yqe"), SubResource("Resource_4ew06"), SubResource("Resource_1haeo"), null])
 
 [sub_resource type="BoxShape3D" id="397"]
 resource_local_to_scene = true
@@ -421,8 +445,7 @@ bounds = Vector3(40, 1, 5)
 [node name="Storage" parent="GameObjects/ProleSpawn" instance=ExtResource("28_noycf")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 54, 0, -29)
 inventory_data = SubResource("387")
-reset_time = 120.0
-does_reset = true
+reset_time = 30.0
 
 [node name="rot_telecom" parent="GameObjects/ProleSpawn" instance=ExtResource("29_heb4g")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55, 1, -35)
@@ -588,14 +611,6 @@ text = "exit to desktop"
 [node name="Options" parent="UI/PauseMenu" instance=ExtResource("41_lljnt")]
 visible = false
 layout_mode = 1
-
-[node name="LoadingScreen" parent="UI/PauseMenu" instance=ExtResource("42_lcv5x")]
-visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://diakavtovmh15"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1_r1r4m"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="2_aopip"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htc6v"]
+atlas = ExtResource("2_aopip")
+region = Rect2(0, 256, 128, 128)
+
+[resource]
+script = ExtResource("1_r1r4m")
+name = "9mm makarov"
+description = "small ammo especially designed for use in the makarov firearm."
+stackable = true
+texture = SubResource("AtlasTexture_htc6v")
+price = 5
+item_type = 4

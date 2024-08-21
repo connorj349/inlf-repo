@@ -2,9 +2,9 @@
 
 [ext_resource type="Resource" uid="uid://cdwd7eync5mlp" path="res://scenes/game/item/items/skin.tres" id="1_kj0bx"]
 [ext_resource type="Script" path="res://scenes/game/item/item_data_seed.gd" id="1_pbtcn"]
-[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="3_23jqy"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="3_23jqy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ykkgg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5n8k"]
 atlas = ExtResource("3_23jqy")
 region = Rect2(640, 128, 128, 128)
 
@@ -19,7 +19,7 @@ growth_needed = 25
 name = "Skin Fruit"
 description = "an unedible fruit from a skin tree. can be processed into skin."
 stackable = false
-texture = SubResource("AtlasTexture_ykkgg")
+texture = SubResource("AtlasTexture_h5n8k")
 price = 0
 processed_item_data = ExtResource("1_kj0bx")
 item_type = 4

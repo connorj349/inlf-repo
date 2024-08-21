@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" load_steps=7 format=3 uid="uid://n1tf63bmly"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data_weapon.gd" id="1_frn4j"]
+[ext_resource type="Resource" uid="uid://ci27eht4md5ou" path="res://scenes/game/item/items/ammo_aks.tres" id="1_hwo76"]
+[ext_resource type="Script" path="res://scenes/game/inventory/slot_data.gd" id="2_2ga32"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="2_i7sl0"]
+
+[sub_resource type="Resource" id="Resource_np5vf"]
+script = ExtResource("2_2ga32")
+item_data = ExtResource("1_hwo76")
+quantity = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qfwl"]
+atlas = ExtResource("2_i7sl0")
+region = Rect2(128, 256, 128, 128)
+
+[resource]
+script = ExtResource("1_frn4j")
+max_ammo = 30
+ammo_slot = SubResource("Resource_np5vf")
+damage = 7
+damage_type = 1
+name = "aks74-u"
+description = "carbine that fires intermediate cartridges"
+stackable = false
+texture = SubResource("AtlasTexture_2qfwl")
+price = 550
+item_type = 4

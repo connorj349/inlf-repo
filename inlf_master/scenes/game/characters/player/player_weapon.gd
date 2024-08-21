@@ -1,13 +1,13 @@
 extends Node3D
 
-@export var is_melee: bool = false #determines if we need to play onhit sounds
+@export var is_melee: bool = false # determines if we need to play onhit sounds
 @export var item_weapon_data: ItemDataWeapon = null
 @export var fire_sound: AudioStreamPlayer
 
 var ammo = 0
 var item_weapon_damage = Damage.new()
 
-@onready var anim_player = $AnimationPlayer
+@onready var anim_player = $WeaponAnimations
 @onready var raycast = $RangeRayCast
 @onready var sprite = $CanvasLayer/Control/Sprite2D
 @onready var player = $"../../../../../.."
@@ -35,6 +35,8 @@ func on_attack():
 func reload(inventory_data: InventoryData):
 	if item_weapon_data:
 		if !anim_player.is_playing():
+			anim_player.play("reload")
+			
 			var ammo_needed = item_weapon_data.max_ammo - ammo
 			for i in ammo_needed:
 				if inventory_data.take_item(item_weapon_data.ammo_slot):

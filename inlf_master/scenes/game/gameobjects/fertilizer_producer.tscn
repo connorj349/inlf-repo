@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xt4fnaxbc2mi"]
+[gd_scene load_steps=16 format=3 uid="uid://xt4fnaxbc2mi"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/fertilizer_producer.gd" id="2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://b73s0v4anr5dp" path="res://assets/materials/distiller.tres" id="4_3i85c"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="5_dqrqr"]
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="7_bwrvc"]
+[ext_resource type="AudioStream" uid="uid://bkbonr5n6iila" path="res://assets/audio/machine/machine_accept_item.wav" id="9_u31bq"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(4, 4, 1.5)
@@ -130,6 +131,7 @@ libraries = {
 }
 
 [node name="DepositSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_u31bq")
 bus = &"SoundFX"
 
 [node name="ProducingSound" type="AudioStreamPlayer3D" parent="."]

@@ -16,7 +16,7 @@ const CROUCH_JUMP_ADD: float = CROUCH_TRANSLATE * 0.9
 
 var armor: int = 0 :
 	set(_value):
-		armor = clampi(_value, 0, 100)
+		armor = clampi(_value, 0, 25)
 		armor_changed.emit(armor)
 		update_armor_bar_visibility()
 var pickup_object = null

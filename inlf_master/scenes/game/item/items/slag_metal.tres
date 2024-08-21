@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/game/item/item_data.gd" id="1_2b5t7"]
 [ext_resource type="Resource" uid="uid://q7w2vsr68otk" path="res://scenes/game/item/items/metal_fragment.tres" id="1_mesgp"]
-[ext_resource type="Texture2D" uid="uid://b1fon3ls1jhls" path="res://assets/textures/item_sheet.png" id="3_fbos4"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="3_fbos4"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_67qwo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f667g"]
 atlas = ExtResource("3_fbos4")
 region = Rect2(0, 0, 128, 128)
 
@@ -13,7 +13,7 @@ script = ExtResource("1_2b5t7")
 name = "Slag Meta"
 description = "unrefined metal. can be used in manufacture but needs to be processed first."
 stackable = false
-texture = SubResource("AtlasTexture_67qwo")
+texture = SubResource("AtlasTexture_f667g")
 price = 0
 processed_item_data = ExtResource("1_mesgp")
 item_type = 4
