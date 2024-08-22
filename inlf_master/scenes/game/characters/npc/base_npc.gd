@@ -9,8 +9,6 @@ const FOOTSTEP_FREQUENCY: float = 75.0
 @export var will_retaliate = true
 @export var will_inspect = true
 @export var patrol_points: Array[Node3D]
-# maybe just use a collision shape and detect on_enter and on_exit?
-#@export var attack_range: float = 1.5
 @export var damage: Damage
 
 var current_state = State.IDLE
@@ -118,6 +116,9 @@ func process_attack_state(delta):
 			_attack()
 			# reset attack interval
 			attack_time = 1.0
+	else:
+		if global_transform.origin.distance_to(target.position) < attack_range_area.shape.radius:
+			_set_target_movement(global_transform.origin)
 
 # virtual method
 func process_inspect_state(_delta):
@@ -137,6 +138,7 @@ func process_inspect_state(_delta):
 # overridable to allow for certain npcs to process damage differently/set targets
 func on_hurt(_damage):
 	health.health -= _damage.amount
+	
 	if _damage.source and will_retaliate:
 		target = _damage.source
 		current_state = State.ATTACK
@@ -162,8 +164,11 @@ func _attack():
 			_set_target_movement(global_transform.origin)
 			
 			if target.has_method("on_hurt"):
-				target.on_hurt(damage)
 				npc_animations_player.play("Shooting")
+				
+				await npc_animations_player.animation_finished
+				
+				target.on_hurt(damage)
 		else:
 			_chase()
 	else:

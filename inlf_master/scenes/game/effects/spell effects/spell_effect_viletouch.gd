@@ -3,9 +3,15 @@ extends Node3D
 @export var area: Area3D
 
 @onready var gestating_sound = $GestatingSound
+@onready var clouds = $cloud
+@onready var drips = $drips
 
 func _ready():
 	gestating_sound.play()
+	clouds.connect("finished", Callable(clouds, "restart"))
+	drips.connect("finished", Callable(drips, "restart"))
+	clouds.emitting = true
+	drips.emitting = true
 
 func _on_Timer_timeout():
 	$cloud.emitting = false

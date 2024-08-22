@@ -362,6 +362,8 @@ node_to_spawn = ExtResource("19_xt80x")
 [node name="AmoebaSpawner" parent="GameObjects/WoodedArea" instance=ExtResource("18_lfhhe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5, -31)
 node_to_spawn = ExtResource("20_6ud0e")
+spawn_frequency = 30.0
+apply_impulse_force = true
 
 [node name="ToolFactory" type="Node3D" parent="GameObjects"]
 
@@ -405,7 +407,7 @@ spawn_frequency = 120.0
 [node name="BoneCapsuleSpawner" parent="GameObjects/Canal" instance=ExtResource("18_lfhhe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -5, -2)
 node_to_spawn = ExtResource("24_d5gjp")
-spawn_frequency = 120.0
+spawn_frequency = 10.0
 
 [node name="BoneCapsuleSpawner2" parent="GameObjects/Canal" instance=ExtResource("18_lfhhe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, -5, -7)
@@ -494,16 +496,19 @@ bounds = Vector3(2, 0.5, 15)
 [node name="Quarry" type="Node3D" parent="GameObjects"]
 
 [node name="RockSpawner" parent="GameObjects/Quarry" instance=ExtResource("18_lfhhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, -19.4, -25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44, -16.4, -25)
 node_to_spawn = ExtResource("33_q6fkn")
+apply_impulse_force = true
 
 [node name="RockSpawner2" parent="GameObjects/Quarry" instance=ExtResource("18_lfhhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -18.5, -22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, -15.5, -22)
 node_to_spawn = ExtResource("33_q6fkn")
+apply_impulse_force = true
 
 [node name="RockSpawner3" parent="GameObjects/Quarry" instance=ExtResource("18_lfhhe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, -19, -26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, -16, -26)
 node_to_spawn = ExtResource("33_q6fkn")
+apply_impulse_force = true
 
 [node name="Generator" parent="GameObjects/Quarry" instance=ExtResource("22_r3644")]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -66, 5, 22)

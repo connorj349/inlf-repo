@@ -61,6 +61,10 @@ prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer
 hurt_sound = NodePath("HurtSound")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("1")
+
 [node name="ItemSpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
@@ -73,10 +77,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="obj-skin_tree" parent="skin-tree" index="0"]
 material_override = ExtResource("7_8vj6m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shape = SubResource("1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

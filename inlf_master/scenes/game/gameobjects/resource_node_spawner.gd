@@ -2,6 +2,7 @@ extends Node3D
 
 @export var node_to_spawn: PackedScene
 @export var spawn_frequency: float = 60.0
+@export var apply_impulse_force = false # off normally by default
 
 @onready var timer = $Timer
 @onready var area = $Area3D
@@ -20,3 +21,6 @@ func spawn():
 		var new_spawn = node_to_spawn.instantiate()
 		get_tree().current_scene.game_world.add_child(new_spawn)
 		new_spawn.global_transform = global_transform
+		
+		if apply_impulse_force:
+			new_spawn.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 5,)

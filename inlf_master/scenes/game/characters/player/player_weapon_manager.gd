@@ -37,9 +37,10 @@ func switch_to_weapon_slot(slot_id: int):
 		curr_weapon.toggle_visibility(true)
 		return
 	
-	# if the weapon's data doesn't match the player's weapon's data, discontinue
-	#if weapons[slot_id].item_weapon_data != $"../../../../..".weapon_inventory_data.slot_datas[0].item_data:
-		#return
+	# DOES NOT ALLOW PLAYER TO SWITCH TO SECONDARY WEAPON; MUST BE REDONE
+	# removing this allows the player to switch to weapons they don't actually have
+	if weapons[slot_id].item_weapon_data != $"../../../../..".weapon_inventory_data.slot_datas[0].item_data:
+		return
 	
 	# if a weapon doesn't exist dont continue
 	if !weapons[slot_id]:

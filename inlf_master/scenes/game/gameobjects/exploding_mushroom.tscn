@@ -1,16 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr8hsko7ayhd4"]
+[gd_scene load_steps=7 format=3 uid="uid://dr8hsko7ayhd4"]
 
 [ext_resource type="Texture2D" uid="uid://c1ci7c33xsfaj" path="res://assets/textures/ameoba.png" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/exploding_mushroom.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://b0h5yhwltpbru" path="res://scenes/game/effects/spell effects/spell_effect_viletouch.tscn" id="2_ahgki"]
+[ext_resource type="AudioStream" uid="uid://chsjg5igqysvu" path="res://assets/audio/menu_open.wav" id="4_u33ua"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oeohh"]
 
 [sub_resource type="SphereShape3D" id="1"]
 radius = 1.0
 
-[node name="ExplodingMushroom" type="Node3D" node_paths=PackedStringArray("area")]
+[node name="ExplodingMushroom" type="StaticBody3D" node_paths=PackedStringArray("area")]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("2")
 effect = ExtResource("2_ahgki")
 area = NodePath("Area3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_oeohh")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -25,6 +33,7 @@ collision_mask = 8
 shape = SubResource("1")
 
 [node name="PopSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_u33ua")
 bus = &"SoundFX"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_Area_body_entered"]

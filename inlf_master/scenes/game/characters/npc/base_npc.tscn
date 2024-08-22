@@ -22,11 +22,11 @@ amount = 3
 radius = 0.25
 height = 1.75
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_lw857"]
-radius = 2.0
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_3sp8r"]
 radius = 7.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lw857"]
+radius = 2.0
 
 [node name="BaseNPC" type="CharacterBody3D"]
 collision_layer = 3
@@ -44,6 +44,14 @@ shape = SubResource("2")
 [node name="FootstepSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_wfiy1")
 bus = &"SoundFX"
+
+[node name="AttackRangeArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRangeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+shape = SubResource("SphereShape3D_3sp8r")
 
 [node name="InspectArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
@@ -98,17 +106,9 @@ autoplay = "Idle"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="AttackRangeArea" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRangeArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
-shape = SubResource("SphereShape3D_3sp8r")
-
-[connection signal="body_entered" from="InspectArea" to="." method="_on_inspect_area_body_entered"]
-[connection signal="body_exited" from="InspectArea" to="." method="_on_inspect_area_body_exited"]
 [connection signal="body_entered" from="AttackRangeArea" to="." method="_on_attack_range_area_body_entered"]
 [connection signal="body_exited" from="AttackRangeArea" to="." method="_on_attack_range_area_body_exited"]
+[connection signal="body_entered" from="InspectArea" to="." method="_on_inspect_area_body_entered"]
+[connection signal="body_exited" from="InspectArea" to="." method="_on_inspect_area_body_exited"]
 
 [editable path="korpsman"]
