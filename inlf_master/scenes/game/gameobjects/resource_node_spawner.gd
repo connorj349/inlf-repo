@@ -6,12 +6,17 @@ extends Node3D
 
 @onready var timer = $Timer
 @onready var area = $Area3D
+@onready var pos = global_position
 
 func _ready():
 	if spawn_frequency <= 0: #if the spawn frequency is zero, don't use a timer(represents a 1-time spawn)
 		timer.queue_free()
 	else:
 		timer.wait_time = spawn_frequency
+
+# the entire purpose of this is so that this respawner can detect staticbodies due to an engine bug :(
+func _physics_process(_delta):
+	global_position = pos + Vector3(randf_range(-0.1, 0.1), randf_range(-0.1, 0.1), randf_range(-0.1, 0.1)) * .001
 
 func spawn():
 	if node_to_spawn: #only spawn if we have set the node to spawn an item
