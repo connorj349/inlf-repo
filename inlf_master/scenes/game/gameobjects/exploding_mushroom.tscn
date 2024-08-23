@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr8hsko7ayhd4"]
+[gd_scene load_steps=10 format=3 uid="uid://dr8hsko7ayhd4"]
 
 [ext_resource type="Texture2D" uid="uid://c1ci7c33xsfaj" path="res://assets/textures/ameoba.png" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/exploding_mushroom.gd" id="2"]
@@ -9,6 +9,44 @@
 
 [sub_resource type="SphereShape3D" id="1"]
 radius = 1.0
+
+[sub_resource type="Animation" id="Animation_cf2mu"]
+resource_name = "jiggle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(0.6, 0.6, 0.6), Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_twqg2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3hs6"]
+_data = {
+"RESET": SubResource("Animation_twqg2"),
+"jiggle": SubResource("Animation_cf2mu")
+}
 
 [node name="ExplodingMushroom" type="StaticBody3D" node_paths=PackedStringArray("area")]
 collision_layer = 2
@@ -35,5 +73,10 @@ shape = SubResource("1")
 [node name="PopSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_u33ua")
 bus = &"SoundFX"
+
+[node name="DisturbedAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i3hs6")
+}
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_Area_body_entered"]

@@ -8,17 +8,13 @@ extends Node3D
 
 func _ready():
 	gestating_sound.play()
-	clouds.connect("finished", Callable(clouds, "restart"))
-	drips.connect("finished", Callable(drips, "restart"))
-	clouds.emitting = true
-	drips.emitting = true
 
 func _on_Timer_timeout():
 	$cloud.emitting = false
 	$drips.emitting = false
 	gestating_sound.stop()
 	
-	await $cloud.finished
+	await get_tree().create_timer(1.0).timeout
 	
 	queue_free()
 

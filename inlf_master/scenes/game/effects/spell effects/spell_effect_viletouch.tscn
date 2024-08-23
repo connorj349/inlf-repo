@@ -11,19 +11,21 @@ shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("2")
 billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_wy5nq"]
-offsets = PackedFloat32Array(0, 0.772727, 1)
-colors = PackedColorArray(0.375472, 0.729057, 1.54018e-06, 1, 0.39556, 0.637691, 0, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.545455, 1)
+colors = PackedColorArray(0.324479, 0.636179, 1.34766e-06, 1, 0.431806, 0.603058, 1.92523e-07, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_tgabh"]
 gradient = SubResource("Gradient_wy5nq")
 
 [sub_resource type="Curve" id="4"]
-_data = [Vector2(0, 0.351648), 0.0, 0.0, 0, 0, Vector2(0.502203, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.296703), 0.0, 0.0, 0, 0]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.492754, 3.57143), 0.0, 0.0, 0, 0, Vector2(1, 5), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="5"]
@@ -35,8 +37,8 @@ emission_sphere_radius = 0.35
 angular_velocity_min = -52.05
 angular_velocity_max = 86.74
 gravity = Vector3(0, 0, 0)
-scale_min = 0.0
 scale_curve = SubResource("5")
+color = Color(0.403922, 0.701961, 0, 1)
 color_ramp = SubResource("GradientTexture1D_tgabh")
 
 [sub_resource type="QuadMesh" id="7"]
@@ -63,7 +65,7 @@ point_count = 2
 curve = SubResource("13")
 
 [sub_resource type="ParticleProcessMaterial" id="9"]
-emission_shape_scale = Vector3(0.35, 0.35, 0.35)
+emission_shape_scale = Vector3(0.7, 0.7, 0.7)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 0)
 gravity = Vector3(0, 0, 0)
@@ -83,8 +85,6 @@ area = NodePath("Area3D")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
 material_override = SubResource("1")
 cast_shadow = 0
-emitting = false
-one_shot = true
 process_material = SubResource("6")
 draw_pass_1 = SubResource("7")
 
@@ -92,8 +92,6 @@ draw_pass_1 = SubResource("7")
 transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0.05, 0)
 material_override = SubResource("8")
 cast_shadow = 0
-emitting = false
-one_shot = true
 process_material = SubResource("9")
 draw_pass_1 = SubResource("10")
 

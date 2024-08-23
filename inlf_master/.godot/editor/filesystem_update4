@@ -1,5 +1,5 @@
 res://assets/default_env.tres
-res://scenes/game/characters/player/player.tscn
+res://scenes/game/effects/spell effects/spell_effect_viletouch.tscn
 res://assets/slumtown_props_meshlibrary.tres
 res://assets/shaders/simple_water.gdshader
 res://assets/materials/metal_grate.tres
@@ -25,11 +25,12 @@ res://scenes/game/item/items/spine.tres
 res://scenes/game/item/items/cancer.tres
 res://scenes/game/item/items/metal_fragment.tres
 res://scenes/game/item/items/slag_metal.tres
-res://scenes/game/characters/player/player.gd
-res://scenes/game/characters/player/player_weapon_manager.gd
+res://scenes/game/effects/spell effects/spell_effect_viletouch.gd
 res://scenes/main.tscn
 res://scenes/game/game_world.tscn
 res://scenes/game/levels/level_slumtown.tscn
+res://scenes/game/characters/player/player.tscn
 res://scenes/game/gameobjects/resource_node_spawner.tscn
 res://scenes/game/gameobjects/exploding_mushroom.tscn
-res://scenes/game/effects/spell effects/spell_effect_viletouch.tscn
+res://scenes/game/gameobjects/exploding_mushroom.gd
+res://scenes/game/characters/player/player_weapon_manager.gd
