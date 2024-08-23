@@ -10,6 +10,7 @@ const MAX_STEP_HEIGHT: float = 0.5
 const CROUCH_TRANSLATE: float = 0.7
 const CROUCH_JUMP_ADD: float = CROUCH_TRANSLATE * 0.9
 
+# need to reset these on gameover as well
 @export var inventory_data: InventoryData
 @export var weapon_inventory_data: InventoryDataWeapon
 @export var armor_inventory_data: InventoryDataEquip

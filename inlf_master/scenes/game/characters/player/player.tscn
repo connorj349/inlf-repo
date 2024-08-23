@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=65 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
@@ -59,6 +59,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/Sprite2D:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 60)]
+}
 
 [sub_resource type="Animation" id="4"]
 resource_name = "attack"
@@ -93,6 +105,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="5"]
 resource_name = "idle"
+length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -107,11 +120,28 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_4mcvq"]
+resource_name = "unholster"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 60), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1i5p2"]
 _data = {
 "RESET": SubResource("3"),
 "attack": SubResource("4"),
-"idle": SubResource("5")
+"idle": SubResource("5"),
+"unholster": SubResource("Animation_4mcvq")
 }
 
 [sub_resource type="Animation" id="13"]
@@ -139,6 +169,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(65, 0)]
 }
 
 [sub_resource type="Animation" id="14"]
@@ -202,12 +244,29 @@ tracks/0/keys = {
 "values": [8, 0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_up266"]
+resource_name = "unholster"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(65, 0), Vector2(65, -128)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ecwd5"]
 _data = {
 "RESET": SubResource("13"),
 "attack": SubResource("14"),
 "idle": SubResource("15"),
-"reload": SubResource("Animation_81lga")
+"reload": SubResource("Animation_81lga"),
+"unholster": SubResource("Animation_up266")
 }
 
 [sub_resource type="Animation" id="Animation_18cvw"]
@@ -291,6 +350,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Control/Sprite2D:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -25)]
+}
 
 [sub_resource type="Animation" id="Animation_1w36v"]
 resource_name = "attack"
@@ -352,12 +423,29 @@ tracks/0/keys = {
 "values": [8, 0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
+[sub_resource type="Animation" id="Animation_v8gk4"]
+resource_name = "unholster"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/Sprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -25), Vector2(0, -100)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rqg53"]
 _data = {
 "RESET": SubResource("Animation_6fiyp"),
 "attack": SubResource("Animation_1w36v"),
 "idle": SubResource("Animation_gl37g"),
-"reload": SubResource("Animation_n58gq")
+"reload": SubResource("Animation_n58gq"),
+"unholster": SubResource("Animation_v8gk4")
 }
 
 [sub_resource type="Animation" id="Animation_83wy8"]
@@ -648,6 +736,7 @@ collision_mask = 2
 libraries = {
 "": SubResource("AnimationLibrary_1i5p2")
 }
+autoplay = "idle"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_fists"]
 stream = ExtResource("21")
@@ -669,6 +758,7 @@ grow_vertical = 0
 position = Vector2(0, -270)
 scale = Vector2(3, 3)
 texture = ExtResource("9")
+offset = Vector2(0, 60)
 hframes = 4
 
 [node name="wep_aks" type="Node3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager" node_paths=PackedStringArray("fire_sound")]
@@ -705,17 +795,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 960.0
-offset_top = 1080.0
-offset_right = 960.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_aks/CanvasLayer/Control"]
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 texture = ExtResource("13_4qs7t")
-offset = Vector2(65, -128)
+offset = Vector2(65, 0)
 hframes = 8
 vframes = 2
 
@@ -753,17 +839,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 960.0
-offset_top = 1080.0
-offset_right = 960.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_makarov/CanvasLayer/Control"]
 scale = Vector2(5, 5)
 texture = ExtResource("17_yi3ey")
-offset = Vector2(0, -100)
+offset = Vector2(0, -25)
 hframes = 8
 vframes = 2
 
