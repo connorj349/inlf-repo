@@ -38,30 +38,38 @@ func switch_to_weapon_slot(slot_id: int):
 		
 		curr_weapon = fists # equip fists
 		curr_weapon.toggle_visibility(true)
-		#curr_weapon.anim_player.play("unholster")
+		curr_weapon.anim_player.play("unholster")
 		return
 	
-	#curr_weapon.anim_player.play_backwards("unholster")
+	curr_weapon.anim_player.play_backwards("unholster")
 	
-	#await(curr_weapon.anim_player.animation_finished)
+	await(curr_weapon.anim_player.animation_finished)
 	
 	# DOES NOT ALLOW PLAYER TO SWITCH TO SECONDARY WEAPON; MUST BE REDONE
 	# removing this allows the player to switch to weapons they don't actually have
 	#if weapons[slot_id].item_weapon_data != $"../../../../..".weapon_inventory_data.slot_datas[0].item_data:
 		#return
 	
-	for _weapon_item_data in $"../../../../..".weapon_inventory_data.slot_datas:
-		if weapons[slot_id].item_weapon_data != _weapon_item_data:
-			return
-	
 	# if a weapon doesn't exist dont continue
 	if !weapons[slot_id]:
 		return
 	
-	disable_all_weapons()
+	for _weapon in $"../../../../..".weapon_inventory_data.slot_datas:
+		# prevent errors
+		if _weapon != null:
+			#print(_weapon.item_data.name)
+			if weapons[slot_id].item_weapon_data == _weapon.item_data:
+				disable_all_weapons()
+		
+				curr_weapon = weapons[slot_id]
+				curr_weapon.toggle_visibility(true)
+				curr_weapon.anim_player.play("unholster")
+				return
 	
-	curr_weapon = weapons[slot_id]
-	curr_weapon.toggle_visibility(true)
+	#disable_all_weapons()
+	
+	#curr_weapon = weapons[slot_id]
+	#curr_weapon.toggle_visibility(true)
 	
 	#curr_weapon.anim_player.play("unholster")
 
