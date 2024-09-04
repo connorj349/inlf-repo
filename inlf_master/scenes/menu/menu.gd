@@ -1,26 +1,37 @@
 extends TextureRect
 
-signal starting
+signal starting(level_name: String)
 
 @onready var start_fx: AudioStreamPlayer = $StartFX
 @onready var button_press: AudioStreamPlayer = $ButtonPressSoundFX
+@onready var level_select: Control = $LevelSelect
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	ScreenFader.fade_in()
+	level_select.connect("selected_level", Callable(self, "level_selected"))
 
-func _on_StartButton_button_down():
+func level_selected(level_name: String):
 	ScreenFader.fade_out()
 	start_fx.play()
-	starting.emit()
+	starting.emit(level_name)
 	button_press.play()
 	
 	await start_fx.finished
 	
 	queue_free()
+
+func _on_StartButton_button_down():
+	level_select.visible = true
 	
-	#$CanvasLayer/LoadingScreen.change_scene_to_file("res://scenes/main.tscn") # change scene, passing menu as current_scene
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#ScreenFader.fade_out()
+	#start_fx.play()
+	#starting.emit()
+	#button_press.play()
+	
+	#await start_fx.finished
+	
+	#queue_free()
 
 func _on_ExitButton_pressed():
 	get_tree().quit()

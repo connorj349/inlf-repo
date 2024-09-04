@@ -1,7 +1,5 @@
 extends HintObject
 
-@export var prog_bar: ProgressBar
-
 var current_item_data
 var count
 
@@ -9,6 +7,7 @@ var count
 @onready var item_spawn_point = $ItemSpawnPoint
 @onready var processing_sound: AudioStreamPlayer3D = $ProcessingSound
 @onready var deposit_sound: AudioStreamPlayer3D = $DepositSound
+@onready var prog_bar: ProgressBar = $CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar
 
 func _ready():
 	prog_bar.init(0, timer.wait_time)

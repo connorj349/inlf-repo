@@ -1,9 +1,11 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c32yjoodg4d4m"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://c32yjoodg4d4m"]
 
 [ext_resource type="Texture2D" uid="uid://2ymyra228wqq" path="res://assets/textures/screen.png" id="1_w4nj5"]
+[ext_resource type="Texture2D" uid="uid://dx5yvjnbfvovk" path="res://assets/textures/metastabilizer_screen.png" id="2_kyvd2"]
 
 [resource]
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_w4nj5")
 emission_enabled = true
 emission = Color(0, 0.411765, 0.482353, 1)
+emission_texture = ExtResource("2_kyvd2")

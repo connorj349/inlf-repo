@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_xljdc"]
 [ext_resource type="PackedScene" uid="uid://bb2m2lett6jts" path="res://scenes/menu/main_menu.tscn" id="2_0w0ip"]
-[ext_resource type="AudioStream" uid="uid://cieibj1loloj2" path="res://assets/audio/ambience/music/menu_music.wav" id="3_kabtp"]
+[ext_resource type="AudioStream" uid="uid://b2pe5cyq0qch8" path="res://assets/audio/ambience/music/ost_main_menu.wav" id="3_c33ct"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_xljdc")
@@ -11,7 +11,7 @@ game_scene_path = "res://scenes/game/game_world.tscn"
 [node name="MainMenu" parent="." instance=ExtResource("2_0w0ip")]
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_kabtp")
+stream = ExtResource("3_c33ct")
 autoplay = true
 bus = &"Music"
 

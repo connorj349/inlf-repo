@@ -4,6 +4,5 @@
 
 [node name="GameWorld" type="Node3D"]
 script = ExtResource("1_jtdd6")
-start_scene_path = "res://scenes/game/levels/level_slumtown.tscn"
 
 [node name="Levels" type="Node3D" parent="."]

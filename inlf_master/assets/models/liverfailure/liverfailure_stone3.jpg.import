@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://lusuvd1vnu5y"
+path.s3tc="res://.godot/imported/liverfailure_stone3.jpg-b0a18cb58afa5097fec717b278b41839.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "e61d622d15e3ad28f8167a7a68288bb4"
+}
+
+[deps]
+
+source_file="res://assets/models/liverfailure/liverfailure_stone3.jpg"
+dest_files=["res://.godot/imported/liverfailure_stone3.jpg-b0a18cb58afa5097fec717b278b41839.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

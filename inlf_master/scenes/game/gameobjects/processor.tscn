@@ -50,11 +50,10 @@ _data = {
 "fade_in": SubResource("Animation_vsc5k")
 }
 
-[node name="processor" type="StaticBody3D" node_paths=PackedStringArray("prog_bar", "anim_player")]
+[node name="processor" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("10")
-prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/HintObjectAnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

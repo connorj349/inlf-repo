@@ -49,7 +49,7 @@ var _saved_camera_global_pos = null
 
 @onready var health_bar: TextureProgressBar = $UI/Bars/health_pox/health_bar
 @onready var pox_bar: TextureProgressBar = $UI/Bars/health_pox/pox_bar
-@onready var armor_bar: TextureProgressBar = $UI/Bars/health_pox/armor_bar
+@onready var armor_bar: TextureProgressBar = $UI/Bars/health_pox/armor_background/armor_bar
 
 @onready var player_dead_prefab: PackedScene = load("res://scenes/game/characters/player/player_dead.tscn")
 
@@ -206,9 +206,9 @@ func update_health_and_pox_text_placement():
 
 func update_armor_bar_visibility():
 	if armor <= 0:
-		armor_bar.visible = false
+		$UI/Bars/health_pox/armor_background.visible = false
 	else:
-		armor_bar.visible = true
+		$UI/Bars/health_pox/armor_background.visible = true
 
 # used by all other objects that want to hurt the player
 func on_hurt(damage):

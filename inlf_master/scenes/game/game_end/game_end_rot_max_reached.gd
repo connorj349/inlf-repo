@@ -1,4 +1,6 @@
 extends Node3D
+## remove this script and include functionality inside extended level scripts
+##
 
 @onready var loading_screen = $LoadingScreen
 

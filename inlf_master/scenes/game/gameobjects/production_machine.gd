@@ -1,9 +1,9 @@
 extends Interactable
 
-@export var input_item_datas: Array[ItemData] #input item # (Array, Resource)
-@export var output_item_datas: Array[ItemData] #output item # (Array, Resource)
+@export var input_item_datas: Array[ItemData] # items that can be inserted
+@export var output_item_datas: Array[ItemData] # items created and put into vendors
 @export var production_time: float = 3.0 # time it takes to make item
-@export var payday: int = 0 # how much the player is paid out, maybe make this a constant in globals
+@export var payday: int = 0 # how much the player is paid out
 @export var prog_bar: ProgressBar
 @export var materials_label: Label
 @export var merchant: Node3D

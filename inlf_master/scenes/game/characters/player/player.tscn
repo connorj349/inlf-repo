@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=66 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
@@ -334,7 +334,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [0]
 }
 tracks/1/type = "value"
@@ -346,7 +346,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/2/type = "value"
@@ -524,6 +524,9 @@ font_size = 35
 [sub_resource type="LabelSettings" id="LabelSettings_uehl5"]
 font = ExtResource("1")
 font_size = 35
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ku6of"]
+bg_color = Color(0, 0, 0, 0.760784)
 
 [sub_resource type="FontFile" id="8"]
 fallbacks = Array[Font]([ExtResource("1")])
@@ -794,6 +797,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 1080.0
+offset_right = 960.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -838,6 +845,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = 960.0
+offset_top = 1080.0
+offset_right = 960.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -868,6 +879,7 @@ offset_bottom = 64.0
 grow_horizontal = 0
 
 [node name="health_pox" type="PanelContainer" parent="UI/Bars"]
+custom_minimum_size = Vector2(400, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -942,10 +954,15 @@ label_settings = SubResource("LabelSettings_uehl5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="armor_bar" type="TextureProgressBar" parent="UI/Bars/health_pox"]
+[node name="armor_background" type="PanelContainer" parent="UI/Bars/health_pox"]
 visible = false
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ku6of")
+
+[node name="armor_bar" type="TextureProgressBar" parent="UI/Bars/health_pox/armor_background"]
+layout_mode = 2
 max_value = 25.0
+value = 15.0
 nine_patch_stretch = true
 texture_under = ExtResource("18")
 texture_progress = ExtResource("11")
@@ -953,7 +970,7 @@ tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0, 0.0352941, 0.513726, 1)
 script = ExtResource("18_fpf0a")
 
-[node name="Label" type="Label" parent="UI/Bars/health_pox/armor_bar"]
+[node name="Label" type="Label" parent="UI/Bars/health_pox/armor_background/armor_bar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

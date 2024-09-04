@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb2m2lett6jts"]
+[gd_scene load_steps=7 format=3 uid="uid://bb2m2lett6jts"]
 
 [ext_resource type="Texture2D" uid="uid://bay0tgp46sfbw" path="res://assets/textures/background_01.png" id="1_u8i6o"]
 [ext_resource type="Script" path="res://scenes/menu/menu.gd" id="2_vqi0w"]
 [ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="3_k6nhk"]
+[ext_resource type="PackedScene" uid="uid://c30ccdixc1t5i" path="res://scenes/menu/level_select/level_select.tscn" id="4_6hdo3"]
 [ext_resource type="AudioStream" uid="uid://cd0khr2a83qta" path="res://assets/audio/ambience/music/new_area.wav" id="4_od6fe"]
 [ext_resource type="AudioStream" uid="uid://chsjg5igqysvu" path="res://assets/audio/menu_open.wav" id="5_ri88x"]
 
@@ -48,6 +49,10 @@ layout_mode = 2
 text = "Exit"
 
 [node name="Options" parent="." instance=ExtResource("3_k6nhk")]
+visible = false
+layout_mode = 1
+
+[node name="LevelSelect" parent="." instance=ExtResource("4_6hdo3")]
 visible = false
 layout_mode = 1
 

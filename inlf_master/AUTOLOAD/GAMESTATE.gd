@@ -8,7 +8,6 @@ signal rot_changed
 signal bones_changed
 signal infections_count_changed
 
-# each of these should be created at runtime instead of referenced like this
 # player's inventory
 var player_inventory = load("res://scenes/game/inventory/player_inventory.tres")
 
@@ -19,8 +18,7 @@ var rot: int = 0 :
 			emit_signal("game_over")
 		emit_signal("rot_changed")
 
-# reduce below to 0 when done testing
-var bones: int = 100 :
+var bones: int = 0 :
 	set(value):
 		bones = clamp(value, 0, 9999)
 		emit_signal("bones_changed", bones)
