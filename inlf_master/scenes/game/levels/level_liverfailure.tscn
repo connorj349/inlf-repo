@@ -1,4 +1,4 @@
-[gd_scene load_steps=228 format=3 uid="uid://cic10016h7at2"]
+[gd_scene load_steps=247 format=3 uid="uid://cic10016h7at2"]
 
 [ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_s7jca"]
 [ext_resource type="Texture2D" uid="uid://dixjojrmk5l6k" path="res://assets/models/liverfailure/liverfailure_cracked_concrete.jpg" id="1_u16vm"]
@@ -26,11 +26,15 @@
 [ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://scenes/game/gameobjects/sawblade.tscn" id="24_vv6mr"]
 [ext_resource type="Shader" path="res://assets/shaders/simple_water.gdshader" id="25_0cf38"]
 [ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://scenes/game/characters/player/player_ghost.tscn" id="25_2ftcv"]
+[ext_resource type="Script" path="res://scenes/game/levels/destroyable.gd" id="25_exdqb"]
 [ext_resource type="Script" path="res://scenes/menu/options/pause_menu.gd" id="26_7udgx"]
+[ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="26_d6q5n"]
 [ext_resource type="Texture2D" uid="uid://3vfbqw4eywhx" path="res://assets/models/slumtown_slime_water.jpg" id="26_xrrb0"]
 [ext_resource type="Texture2D" uid="uid://d3pc6ep66bgug" path="res://assets/textures/skybox/skybox_apoc_01.png" id="27_cogl1"]
+[ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="27_e3mjh"]
 [ext_resource type="PackedScene" uid="uid://r1okymmde6l8" path="res://scenes/game/gameobjects/generator.tscn" id="27_lyd7p"]
 [ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="27_otwxu"]
+[ext_resource type="AudioStream" uid="uid://bfs1bq6fc111s" path="res://assets/audio/footsteps/broken_tile.wav" id="27_wewnk"]
 [ext_resource type="PackedScene" uid="uid://bsqr7oaxve8ba" path="res://scenes/game/gameobjects/production_machine.tscn" id="28_roymd"]
 [ext_resource type="PackedScene" uid="uid://b7nxt2hc5tvjo" path="res://scenes/game/gameobjects/processor.tscn" id="29_o7ef1"]
 [ext_resource type="PackedScene" uid="uid://bwpcm1xv1hxel" path="res://scenes/game/gameobjects/resource_node_spawner.tscn" id="30_vr0xo"]
@@ -38,7 +42,10 @@
 [ext_resource type="PackedScene" uid="uid://p3pw5s5y3hqr" path="res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn" id="32_t74e1"]
 [ext_resource type="Resource" uid="uid://ewgw8vk53l6f" path="res://scenes/game/item/items/amoeba_slime.tres" id="33_4gi0k"]
 [ext_resource type="PackedScene" uid="uid://qjy7yga6koi4" path="res://scenes/game/gameobjects/resource_nodes/skin_tree.tscn" id="33_f1y3b"]
+[ext_resource type="PackedScene" uid="uid://b2ite2f0nkj2c" path="res://scenes/game/sound/soundscape.tscn" id="33_gcjcf"]
+[ext_resource type="AudioStream" uid="uid://b2pe5cyq0qch8" path="res://assets/audio/ambience/music/ost_main_menu.wav" id="34_h34gg"]
 [ext_resource type="PackedScene" uid="uid://cow88ggfrlbxw" path="res://scenes/game/gameobjects/amoeba.tscn" id="34_xws5c"]
+[ext_resource type="AudioStream" uid="uid://c3sbmar11u1sb" path="res://assets/audio/ambience/music/industrial-01.wav" id="35_popb5"]
 [ext_resource type="PackedScene" uid="uid://cyd6tpkvik6b3" path="res://scenes/game/gameobjects/biogrower.tscn" id="36_5lek5"]
 [ext_resource type="PackedScene" uid="uid://b1k30jhststhn" path="res://scenes/game/gameobjects/resource_nodes/bone_capsule.tscn" id="36_mftv6"]
 [ext_resource type="PackedScene" uid="uid://xt4fnaxbc2mi" path="res://scenes/game/gameobjects/fertilizer_producer.tscn" id="37_kj5es"]
@@ -50,6 +57,7 @@
 [ext_resource type="PackedScene" uid="uid://bt1svnjwmtnf3" path="res://scenes/game/inventory/storage.tscn" id="43_sjja0"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="44_w30sw"]
 [ext_resource type="Resource" uid="uid://n1tf63bmly" path="res://scenes/game/item/items/wep_aks.tres" id="45_bysp1"]
+[ext_resource type="PackedScene" uid="uid://dr8hsko7ayhd4" path="res://scenes/game/gameobjects/exploding_mushroom.tscn" id="45_h6xdy"]
 [ext_resource type="Resource" uid="uid://vva1j8lgjumd" path="res://scenes/game/item/items/wep_makarov.tres" id="46_thyim"]
 [ext_resource type="Resource" uid="uid://ci27eht4md5ou" path="res://scenes/game/item/items/ammo_aks.tres" id="47_nueaf"]
 [ext_resource type="Resource" uid="uid://diakavtovmh15" path="res://scenes/game/item/items/ammo_makarov.tres" id="48_l4wap"]
@@ -1912,6 +1920,43 @@ shadow_mesh = SubResource("ArrayMesh_2un18")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5cna2"]
 data = PackedVector3Array(1.49012e-08, -0.0500002, 0.913483, 0.64593, 0.0499998, 0.64593, 0.64593, -0.0500002, 0.64593, 1.49012e-08, -0.0500002, 0.913483, 1.23757e-08, 0.0499998, 0.913483, 0.64593, 0.0499998, 0.64593, 0.913483, 0.0499998, 0, 1.23757e-08, 0.0499998, -0.913483, 0.64593, 0.0499998, -0.64593, 1.23757e-08, 0.0499998, -0.913483, -0.913483, 0.0499998, 0, -0.64593, 0.0499998, -0.64593, -0.913483, 0.0499998, 0, 1.23757e-08, 0.0499998, 0.913483, -0.64593, 0.0499998, 0.64593, 1.23757e-08, 0.0499998, 0.913483, 0.913483, 0.0499998, 0, 0.64593, 0.0499998, 0.64593, 0.913483, 0.0499998, 0, -0.913483, 0.0499998, 0, 1.23757e-08, 0.0499998, -0.913483, -0.913483, 0.0499998, 0, 0.913483, 0.0499998, 0, 1.23757e-08, 0.0499998, 0.913483, 0.64593, -0.0500002, 0.64593, 0.913483, 0.0499998, 0, 0.913483, -0.0500002, 0, 0.64593, -0.0500002, 0.64593, 0.64593, 0.0499998, 0.64593, 0.913483, 0.0499998, 0, 0.913483, -0.0500002, 0, 0.64593, 0.0499998, -0.64593, 0.64593, -0.0500002, -0.64593, 0.913483, -0.0500002, 0, 0.913483, 0.0499998, 0, 0.64593, 0.0499998, -0.64593, 0.64593, -0.0500002, -0.64593, 1.23757e-08, 0.0499998, -0.913483, 1.49012e-08, -0.0500002, -0.913483, 0.64593, -0.0500002, -0.64593, 0.64593, 0.0499998, -0.64593, 1.23757e-08, 0.0499998, -0.913483, 1.49012e-08, -0.0500002, -0.913483, -0.64593, 0.0499998, -0.64593, -0.64593, -0.0500002, -0.64593, 1.49012e-08, -0.0500002, -0.913483, 1.23757e-08, 0.0499998, -0.913483, -0.64593, 0.0499998, -0.64593, -0.64593, -0.0500002, -0.64593, -0.913483, 0.0499998, 0, -0.913483, -0.0500002, 0, -0.64593, -0.0500002, -0.64593, -0.64593, 0.0499998, -0.64593, -0.913483, 0.0499998, 0, -0.913483, -0.0500002, 0, -0.64593, 0.0499998, 0.64593, -0.64593, -0.0500002, 0.64593, -0.913483, -0.0500002, 0, -0.913483, 0.0499998, 0, -0.64593, 0.0499998, 0.64593, -0.64593, -0.0500002, 0.64593, 1.23757e-08, 0.0499998, 0.913483, 1.49012e-08, -0.0500002, 0.913483, -0.64593, -0.0500002, 0.64593, -0.64593, 0.0499998, 0.64593, 1.23757e-08, 0.0499998, 0.913483, 1.49012e-08, -0.0500002, -0.913483, 0.913483, -0.0500002, 0, 0.64593, -0.0500002, -0.64593, 0.913483, -0.0500002, 0, 1.49012e-08, -0.0500002, 0.913483, 0.64593, -0.0500002, 0.64593, 1.49012e-08, -0.0500002, 0.913483, -0.913483, -0.0500002, 0, -0.64593, -0.0500002, 0.64593, -0.913483, -0.0500002, 0, 1.49012e-08, -0.0500002, -0.913483, -0.64593, -0.0500002, -0.64593, 1.49012e-08, -0.0500002, -0.913483, 1.49012e-08, -0.0500002, 0.913483, 0.913483, -0.0500002, 0, 1.49012e-08, -0.0500002, 0.913483, 1.49012e-08, -0.0500002, -0.913483, -0.913483, -0.0500002, 0)
 
+[sub_resource type="Animation" id="Animation_0mmn8"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/HintObjectInterface/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vbpx7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/HintObjectInterface/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4jw8k"]
+_data = {
+"RESET": SubResource("Animation_vbpx7"),
+"fade_in": SubResource("Animation_0mmn8")
+}
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4ypy"]
 resource_name = "wallpaper"
 cull_mode = 2
@@ -2502,6 +2547,85 @@ adjustment_enabled = true
 adjustment_saturation = 1.34
 adjustment_color_correction = SubResource("GradientTexture2D_d0kf3")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_mwvx4"]
+radius = 15.0
+
+[sub_resource type="Animation" id="Animation_l1qkr"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3ybli"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26ujt"]
+_data = {
+"RESET": SubResource("Animation_3ybli"),
+"fade_in": SubResource("Animation_l1qkr")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_527fr"]
+radius = 10.0
+
+[sub_resource type="Animation" id="Animation_2h2pg"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_iov38"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ny3v6"]
+_data = {
+"RESET": SubResource("Animation_iov38"),
+"fade_in": SubResource("Animation_2h2pg")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_bs5qk"]
 resource_local_to_scene = true
 size = Vector3(2.7, 3, 3)
@@ -2853,15 +2977,51 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/canal_catwalk/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2tk0e")
 
-[node name="manhole_cover" type="MeshInstance3D" parent="Geometry"]
+[node name="ManholeCover" type="StaticBody3D" parent="Geometry" node_paths=PackedStringArray("health", "hurt_sound", "death_sound", "anim_player")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.5, 0.1, -37.5)
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("25_exdqb")
+health = NodePath("Health")
+hurt_sound = NodePath("HurtSound")
+death_sound = NodePath("DeathSound")
+anim_player = NodePath("CanvasLayer/AnimationPlayer")
+
+[node name="manhole_cover" type="MeshInstance3D" parent="Geometry/ManholeCover"]
 mesh = SubResource("ArrayMesh_mb4g4")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/manhole_cover"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/manhole_cover/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/ManholeCover"]
 shape = SubResource("ConcavePolygonShape3D_5cna2")
+
+[node name="Health" parent="Geometry/ManholeCover" instance=ExtResource("26_d6q5n")]
+allowed_max_health = 5
+
+[node name="HurtSound" type="AudioStreamPlayer3D" parent="Geometry/ManholeCover"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+stream = ExtResource("27_wewnk")
+bus = &"SoundFX"
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="Geometry/ManholeCover"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+stream = ExtResource("27_wewnk")
+bus = &"SoundFX"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Geometry/ManholeCover"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Geometry/ManholeCover/CanvasLayer"]
+root_node = NodePath("../../manhole_cover")
+libraries = {
+"": SubResource("AnimationLibrary_4jw8k")
+}
+
+[node name="HintObjectInterface" parent="Geometry/ManholeCover/CanvasLayer" instance=ExtResource("27_e3mjh")]
+
+[node name="CanvasModulate" parent="Geometry/ManholeCover/CanvasLayer/HintObjectInterface" index="0"]
+color = Color(1, 1, 1, 0)
+
+[node name="TitleLabel" parent="Geometry/ManholeCover/CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="0"]
+text = "manhole cover"
 
 [node name="apartment_unit_003" type="MeshInstance3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 5, 10)
@@ -3181,6 +3341,47 @@ spot_range = 24.38
 spot_attenuation = 0.0915054
 spot_angle = 75.86
 
+[node name="SoundScapes" type="Node" parent="."]
+
+[node name="TownCenterSoundscape" parent="SoundScapes" node_paths=PackedStringArray("audio_stream_player", "collision_shape", "fade_out_sound_animation_player") instance=ExtResource("33_gcjcf")]
+audio_stream_player = NodePath("AudioStreamPlayer")
+collision_shape = NodePath("CollisionShape3D")
+fade_out_sound_animation_player = NodePath("AnimationPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundScapes/TownCenterSoundscape"]
+stream = ExtResource("34_h34gg")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundScapes/TownCenterSoundscape"]
+shape = SubResource("SphereShape3D_mwvx4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SoundScapes/TownCenterSoundscape"]
+libraries = {
+"": SubResource("AnimationLibrary_26ujt")
+}
+
+[node name="FactorySoundscape" parent="SoundScapes" node_paths=PackedStringArray("audio_stream_player", "collision_shape", "fade_out_sound_animation_player") instance=ExtResource("33_gcjcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 0, -41)
+reverb_bus_enabled = true
+reverb_bus_amount = 0.25
+audio_stream_player = NodePath("AudioStreamPlayer")
+collision_shape = NodePath("CollisionShape3D")
+fade_out_sound_animation_player = NodePath("AnimationPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="SoundScapes/FactorySoundscape"]
+stream = ExtResource("35_popb5")
+volume_db = -80.0
+bus = &"SoundFX"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundScapes/FactorySoundscape"]
+shape = SubResource("SphereShape3D_527fr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SoundScapes/FactorySoundscape"]
+libraries = {
+"": SubResource("AnimationLibrary_ny3v6")
+}
+
 [node name="Other" type="Node" parent="."]
 
 [node name="TicketMachine" parent="Other" instance=ExtResource("40_r7new")]
@@ -3351,6 +3552,106 @@ node_to_spawn = ExtResource("36_mftv6")
 [node name="bone_cap_spawner3" parent="Spawners" instance=ExtResource("30_vr0xo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -22, -35)
 node_to_spawn = ExtResource("36_mftv6")
+
+[node name="exploding_mushroom_spawner" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 2)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner17" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -10, 2)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner18" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -10, 12)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner19" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -10, 18)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner20" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -10, 22)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner2" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -10, -3)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner6" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -10, -2)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner7" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -10, 3)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner8" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -10, 10)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner12" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -10, 2)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner13" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, -10, -2)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner14" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, -11, -2)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner15" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, -11, 4)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner16" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -11, 1)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner9" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -10, 17)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner10" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -10, 23)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner11" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -10, 23)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner3" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -9, -16)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner4" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -10, -21)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
+
+[node name="exploding_mushroom_spawner5" parent="Spawners" instance=ExtResource("30_vr0xo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -9, -15)
+node_to_spawn = ExtResource("45_h6xdy")
+spawn_frequency = 80.0
 
 [node name="BioGrowers" type="Node" parent="."]
 
@@ -3553,6 +3854,7 @@ layout_mode = 1
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 
+[editable path="Geometry/ManholeCover/CanvasLayer/HintObjectInterface"]
 [editable path="Generators/Generator"]
 [editable path="Generators/Generator/generator"]
 [editable path="Generators/Generator/CanvasLayer/HintObjectInterface"]

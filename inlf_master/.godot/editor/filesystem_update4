@@ -29,3 +29,6 @@ res://scenes/game/characters/player/player.tscn
 res://scenes/game/levels/level_slumtown.tscn
 res://scenes/game/characters/npc/base_npc.tscn
 res://scenes/game/gameobjects/interactables/hint_object_interface.tscn
+res://scenes/game/levels/destroyable.gd
+res://scenes/game/sound/soundscape.gd
+res://scenes/game/sound/soundscape.tscn

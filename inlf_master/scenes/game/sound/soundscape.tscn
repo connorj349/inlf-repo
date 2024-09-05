@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2ite2f0nkj2c"]
+
+[ext_resource type="Script" path="res://scenes/game/sound/soundscape.gd" id="1_dnnts"]
+
+[node name="Soundscape" type="Area3D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_dnnts")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
