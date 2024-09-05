@@ -59,7 +59,7 @@ func use_slot_data(index): #use up the item, then apply effects to player
 	Globals.current_player.use_slot_data(slot_data) #use the item on the player
 	emit_signal("inventory_updated", self)
 
-func buy_slot_data(index): # use money to put item from vendor inv directly into player inventory
+func buy_slot_data(index, inventory_data_to_insert_into): # use money to put item from vendor inv directly into player inventory
 	var slot_data = slot_datas[index]
 	var new_added_slot_data
 	
@@ -74,7 +74,7 @@ func buy_slot_data(index): # use money to put item from vendor inv directly into
 		slot_data.quantity -= 1 #reducing what's left in the actual inventory
 		if slot_data.quantity < 1:
 			slot_datas[index] = null
-		Gamestate.player_inventory.add_item(new_added_slot_data) # adding the new item to player inv
+		inventory_data_to_insert_into.add_item(new_added_slot_data) # adding the new item to player inv
 		emit_signal("inventory_updated", self) #updating the merchant inventory list ui menu
 	else:
 		Globals.emit_signal("on_pop_notification", "I cant afford %s right now." % slot_data.item_data.name)

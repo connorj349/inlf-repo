@@ -1,5 +1,7 @@
 extends HintObject
 
+signal increase_rot(amount: int)
+
 @export var cancer_item_data: ItemData # cancer item to spawn for player
 @export var rot_increase_amount: int = 1
 @export var rot_inrease_frequency: int = 5
@@ -13,13 +15,16 @@ var dead = false
 @onready var ambient_sound: AudioStreamPlayer3D = $AmbientSound
 
 func _ready():
+	if !is_in_group("rot_producers"):
+		add_to_group("rot_producers")
+	
 	randomize()
 	health.init()
 	health.connect("dead", Callable(self, "on_death"))
 	health.connect("health_changed", Callable(prog_bar, "update_bar"))
 	prog_bar.init(health.health, health.max_health)
 	$RotTimer.wait_time = rot_inrease_frequency #set frequency by which rot is increased
-	Gamestate.tumors += 1
+	get_tree().current_scene.game_world.current_level.tumors += 1
 	ambient_sound.play()
 
 func on_hurt(damage):
@@ -36,7 +41,7 @@ func on_hurt(damage):
 			ambient_sound.play()
 
 func on_death():
-	Gamestate.tumors -= 1
+	get_tree().current_scene.game_world.current_level.tumors -= 1
 	dead = true
 	# spawn tumor bloody pop effect
 	var new_item = SlotData.new()
@@ -50,4 +55,4 @@ func on_death():
 	queue_free()
 
 func _on_RotTimer_timeout():
-	Gamestate.rot += rot_increase_amount
+	increase_rot.emit(rot_increase_amount)

@@ -12,6 +12,6 @@ func _ready():
 	spawn_timer.connect("timeout", Callable(self, "check_rot"))
 
 func check_rot():
-	#if get_tree().current_scene.game_world.current_level.rot
-	if float(Gamestate.rot) / float(Globals.rot_max_value) >= rot_percentage_to_spawn_on:
+	var current_level = get_tree().current_scene.game_world.current_level
+	if float(current_level.rot) / float(current_level.rot_max_value) >= rot_percentage_to_spawn_on:
 		resource_node_spawner.spawn()

@@ -21,7 +21,7 @@ func _ready():
 	timer.wait_time = incubation_frequency_amount
 	anim_player.play("RESET")
 	anim_player.seek(0, true)
-	Gamestate.bloaters += 1
+	get_tree().current_scene.game_world.current_level.bloaters += 1
 
 func on_hurt(damage):
 	if dead:
@@ -29,7 +29,7 @@ func on_hurt(damage):
 	health.hurt(damage.amount) # just take damage, no additional calculations required
 
 func on_death():
-	Gamestate.bloaters -= 1
+	get_tree().current_scene.game_world.current_level.bloaters -= 1
 	dead = true
 	await health.death_sound.finished #wait until the death sound is finished
 	#drop random cancer item
@@ -39,6 +39,6 @@ func _on_Timer_timeout():
 	incubation = clamp(incubation + incubation_increase_amount, 0, 100)
 	incu_bar.update_bar(incubation)
 	if incubation == 100:
-		Gamestate.rot_modify(5) #increaes rot
+		#Gamestate.rot_modify(5) #increaes rot
 		on_death()
 		timer.stop() # prevents rot from being modified more than once before death

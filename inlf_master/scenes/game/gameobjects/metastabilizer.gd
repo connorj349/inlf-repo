@@ -1,5 +1,7 @@
 extends Interactable
 
+signal reduce_rot(amount: int)
+
 const meta_repair_amount: int = 40
 const meta_repair_reward_amount: int = 5
 
@@ -13,6 +15,9 @@ var active = true
 @onready var spot_light = $SpotLight3D
 
 func _ready():
+	if !is_in_group("rot_reducers"):
+		add_to_group("rot_reducers")
+	
 	health.init()
 	bar.init(health.health, health.max_health)
 	health.connect("health_changed", Callable(bar, "update_bar"))
@@ -32,7 +37,7 @@ func _on_Timer_timeout():
 	if active:
 		if health.health > 0:
 			status_label.text = "Status: operational"
-			Gamestate.rot -= 1
+			reduce_rot.emit(1)
 			health.health -= 1
 
 func _on_ItemDeposit_body_entered(body):

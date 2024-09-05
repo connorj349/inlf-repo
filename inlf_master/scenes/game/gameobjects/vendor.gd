@@ -3,6 +3,7 @@ extends Interactable
 @export var Slot: PackedScene
 
 var merchant_inventory: InventoryData
+var current_actor_interacting = null
 
 @onready var panel = $CanvasLayer/Control/PanelContainer
 @onready var merchant_list = $CanvasLayer/Control/PanelContainer/MarginContainer/GridContainer
@@ -19,6 +20,8 @@ func _ready():
 	Globals.connect("on_inventory_toggle", Callable(self, "toggle_window"))
 
 func _interact(_actor):
+	current_actor_interacting = _actor
+	
 	panel.show()
 	
 	Globals.current_ui.show()
@@ -55,7 +58,7 @@ func populate_item_list(inventory_data: InventoryData):
 func buy_item(inventory_data, index, button):
 	match [button]:
 		[MOUSE_BUTTON_LEFT]: # try to buy the item in the slot at index
-			inventory_data.buy_slot_data(index)
+			inventory_data.buy_slot_data(index, current_actor_interacting.inventory_data)
 			
 			buy_sound.play()
 		[MOUSE_BUTTON_RIGHT]: # display the name and price of the item

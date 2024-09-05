@@ -1,5 +1,7 @@
 extends Interactable
 
+signal increase_rot(amount: int)
+
 # needs to be slot data
 @export var common_organ: ItemData
 @export var uncommon_organ: ItemData
@@ -8,14 +10,17 @@ extends Interactable
 @export var prog_bar: ProgressBar
 @export var state_text: Label
 
-@onready var health = $Health
-@onready var organ_spawn = $organ_spawnpoint
-
 var corpse_damage = Damage.new()
 var corpse_eat_damage = Damage.new()
 var inventory = InventoryData.new()
 
+@onready var health = $Health
+@onready var organ_spawn = $organ_spawnpoint
+
 func _ready():
+	if !is_in_group("rot_producers"):
+		add_to_group("rot_producers")
+	
 	corpse_damage.amount = 1
 	corpse_damage.type = Damage.DamageType.Blunt
 	
@@ -79,7 +84,7 @@ func spawn_blood():
 
 func _on_DecayTimer_timeout():
 	on_hurt(corpse_damage)
-	Gamestate.rot += 1
+	increase_rot.emit(1)
 
 func spawn_organ():
 	var new_slot_data = SlotData.new()
