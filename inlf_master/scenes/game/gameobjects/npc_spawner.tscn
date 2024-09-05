@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://88hph4ji15s3"]
+
+[ext_resource type="Script" path="res://scenes/game/gameobjects/npc_spawner.gd" id="1_qjsas"]
+[ext_resource type="PackedScene" uid="uid://bwpcm1xv1hxel" path="res://scenes/game/gameobjects/resource_node_spawner.tscn" id="2_lia03"]
+
+[node name="NPCSpawner" type="Node3D"]
+script = ExtResource("1_qjsas")
+
+[node name="resource_node_spawner" parent="." instance=ExtResource("2_lia03")]
+spawn_frequency = 0.0

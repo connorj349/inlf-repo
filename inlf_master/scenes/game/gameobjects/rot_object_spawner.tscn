@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5d5xssqft6ks"]
+
+[ext_resource type="Script" path="res://scenes/game/gameobjects/rot_object_spawner.gd" id="1_ssc47"]
+[ext_resource type="PackedScene" uid="uid://bwpcm1xv1hxel" path="res://scenes/game/gameobjects/resource_node_spawner.tscn" id="2_8wbvw"]
+
+[node name="RotObjectSpawner" type="Node3D"]
+script = ExtResource("1_ssc47")
+
+[node name="resource_node_spawner" parent="." instance=ExtResource("2_8wbvw")]
+spawn_frequency = 0.0

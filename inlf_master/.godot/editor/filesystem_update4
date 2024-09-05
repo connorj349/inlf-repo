@@ -32,3 +32,8 @@ res://scenes/game/gameobjects/interactables/hint_object_interface.tscn
 res://scenes/game/levels/destroyable.gd
 res://scenes/game/sound/soundscape.gd
 res://scenes/game/sound/soundscape.tscn
+res://scenes/game/gameobjects/rot_object_spawner.gd
+res://scenes/game/gameobjects/rot_object_spawner.tscn
+res://scenes/game/characters/npc/base_npc.gd
+res://scenes/game/gameobjects/npc_spawner.gd
+res://scenes/game/gameobjects/npc_spawner.tscn

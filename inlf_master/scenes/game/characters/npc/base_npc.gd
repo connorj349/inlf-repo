@@ -25,6 +25,9 @@ var footstep_time: float = 0.0
 @onready var npc_animations_player: AnimationPlayer = $korpsman/AnimationPlayer
 
 func _ready():
+	if !is_in_group("npc"):
+		add_to_group("npc")
+	
 	randomize()
 	health.init()
 	health.connect("dead", Callable(self, "_kill"))
