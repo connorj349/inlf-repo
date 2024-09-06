@@ -31,9 +31,8 @@ var player_stem_cells : set = set_player_stem_cells
 
 func _ready():
 	self.player_stem_cells = 10
-	for rot_object in get_tree().get_nodes_in_group("rot_producers"):
-		rot_object.connect("increase_rot", Callable(func(arg): self.rot += arg))
 	
+	# connect metastabilizers
 	for rot_reducer in get_tree().get_nodes_in_group("rot_reducers"):
 		rot_reducer.connect("reduce_rot", Callable(func(arg): self.rot -= arg))
 

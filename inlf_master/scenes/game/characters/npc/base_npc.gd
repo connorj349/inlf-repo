@@ -31,6 +31,7 @@ func _ready():
 	randomize()
 	health.init()
 	health.connect("dead", Callable(self, "_kill"))
+	
 	_randomize_loot()
 	
 	# prevents error on startup from processing finding new paths in physics_process

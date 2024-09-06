@@ -18,6 +18,8 @@ func _ready():
 	if !is_in_group("rot_producers"):
 		add_to_group("rot_producers")
 	
+	connect("increase_rot", Callable(func(arg): get_tree().current_scene.game_world.current_level.rot += arg))
+	
 	randomize()
 	health.init()
 	health.connect("dead", Callable(self, "on_death"))

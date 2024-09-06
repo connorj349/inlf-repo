@@ -18,6 +18,7 @@ func _ready():
 func _physics_process(_delta):
 	global_position = pos + Vector3(randf_range(-0.1, 0.1), randf_range(-0.1, 0.1), randf_range(-0.1, 0.1)) * .001
 
+# return the spawned object to modify/connect signals
 func spawn():
 	if node_to_spawn: #only spawn if we have set the node to spawn an item
 		if area.get_overlapping_bodies().size() > 0:
@@ -28,4 +29,4 @@ func spawn():
 		new_spawn.global_transform = global_transform
 		
 		if apply_impulse_force:
-			new_spawn.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 5,)
+			new_spawn.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 5)

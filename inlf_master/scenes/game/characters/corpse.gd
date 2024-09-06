@@ -21,6 +21,8 @@ func _ready():
 	if !is_in_group("rot_producers"):
 		add_to_group("rot_producers")
 	
+	connect("increase_rot", Callable(func(arg): get_tree().current_scene.game_world.current_level.rot += arg))
+	
 	corpse_damage.amount = 1
 	corpse_damage.type = Damage.DamageType.Blunt
 	
