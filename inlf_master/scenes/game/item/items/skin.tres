@@ -11,6 +11,7 @@ region = Rect2(896, 0, 128, 128)
 [resource]
 script = ExtResource("1_neoq8")
 heal_value = 2
+money_gain_value = 0
 consumable_type = 0
 name = "skin"
 description = "can be slathered on onto your skin for a soothing effect. further processing may cause a different effect."

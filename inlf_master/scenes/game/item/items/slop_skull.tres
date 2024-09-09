@@ -10,6 +10,7 @@ region = Rect2(512, 128, 128, 128)
 [resource]
 script = ExtResource("1_jaitp")
 heal_value = -5
+money_gain_value = 0
 consumable_type = 0
 name = "Slop Skull"
 description = "a crude skull filled with black icor. used to manufacture certain goods. can be eaten, but why?"

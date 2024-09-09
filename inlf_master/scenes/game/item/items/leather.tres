@@ -10,6 +10,7 @@ region = Rect2(0, 128, 128, 128)
 [resource]
 script = ExtResource("1_8hs0p")
 heal_value = 2
+money_gain_value = 0
 consumable_type = 1
 name = "Leather"
 description = "a hard leather. can be fitted to your skin to provide protection."

@@ -14,8 +14,9 @@ const FLEE_DISTANCE: float = 20.0
 @export var will_inspect = true
 # used for antagonist npcs that will attack the player/other npcs on sight
 @export var hostile = false
-@export var patrol_points: Array[Node3D]
 @export var damage: Damage
+# represents the state this ai will default to when not busy
+@export var default_state = State.IDLE
 
 var current_state = State.IDLE
 var target = null
@@ -24,6 +25,7 @@ var patrol_index: int = 0
 var speed: float = 2.0
 var attack_time: float = 0.0
 var footstep_time: float = 0.0
+var patrol_points: Array[Node3D]
 
 @onready var health = $Health
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -33,6 +35,9 @@ var footstep_time: float = 0.0
 func _ready():
 	if !is_in_group("npc"):
 		add_to_group("npc")
+	
+	for patrol_point in get_tree().get_nodes_in_group("patrol_points"):
+		patrol_points.append(patrol_point)
 	
 	randomize()
 	health.init()
@@ -91,6 +96,10 @@ func _physics_process(_delta):
 # virtual method
 func process_idle_state(_delta):
 	await navigation_agent.navigation_finished
+	
+	if default_state == State.PATROL:
+		current_state = State.PATROL
+		return
 	
 	if navigation_agent.is_navigation_finished():
 		npc_animations_player.play("Idle")

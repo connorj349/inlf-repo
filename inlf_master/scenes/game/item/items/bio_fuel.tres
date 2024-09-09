@@ -10,6 +10,7 @@ region = Rect2(128, 0, 128, 128)
 [resource]
 script = ExtResource("1_gdvar")
 heal_value = -24
+money_gain_value = 0
 consumable_type = 0
 name = "Biofuel"
 description = "a crude oil used to power generators. can be consumed. good luck"

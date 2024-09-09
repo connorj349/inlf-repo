@@ -10,6 +10,7 @@ region = Rect2(128, 128, 128, 128)
 [resource]
 script = ExtResource("1_kyvx4")
 heal_value = 25
+money_gain_value = 0
 consumable_type = 0
 name = "Rotshroom"
 description = "a potent rot shroom with sickness healing capabilities. a rare good."
