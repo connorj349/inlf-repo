@@ -2,25 +2,22 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4u34aww7egvf"
-path.s3tc="res://.godot/imported/liverfailure_wood_rotted.jpg-fb2a5625e35efd24474dd4ba8f3345dd.s3tc.ctex"
+uid="uid://cvni13pal7yns"
+path.bptc="res://.godot/imported/gloomy.png-c8e699ec31802f6e2f9157b02933f01c.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "aee2f5775903657a74a325266c39ab10"
-}
 
 [deps]
 
-source_file="res://assets/models/liverfailure/liverfailure_wood_rotted.jpg"
-dest_files=["res://.godot/imported/liverfailure_wood_rotted.jpg-fb2a5625e35efd24474dd4ba8f3345dd.s3tc.ctex"]
+source_file="res://assets/textures/skybox/gloomy.png"
+dest_files=["res://.godot/imported/gloomy.png-c8e699ec31802f6e2f9157b02933f01c.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

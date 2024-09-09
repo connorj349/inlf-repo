@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d1r8mx70ngt1t"
-path="res://.godot/imported/liverfailure.glb-65a6345bf3baf6d16ace7c8f0345c404.scn"
+uid="uid://bwrom3jrbwisj"
+path="res://.godot/imported/skybox_objects.glb-0cd16bf2ca4098a2545e0eb3a0d0a777.scn"
 
 [deps]
 
-source_file="res://assets/models/liverfailure/liverfailure.glb"
-dest_files=["res://.godot/imported/liverfailure.glb-65a6345bf3baf6d16ace7c8f0345c404.scn"]
+source_file="res://assets/models/skybox_objects/skybox_objects.glb"
+dest_files=["res://.godot/imported/skybox_objects.glb-0cd16bf2ca4098a2545e0eb3a0d0a777.scn"]
 
 [params]
 

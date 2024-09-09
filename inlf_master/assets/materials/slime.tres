@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://3rmyea42whfg"]
+
+[ext_resource type="Shader" path="res://assets/shaders/simple_water.gdshader" id="1_lw8yo"]
+[ext_resource type="Texture2D" uid="uid://3vfbqw4eywhx" path="res://assets/models/slumtown_slime_water.jpg" id="2_4cd4e"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g10tu"]
+noise_type = 0
+seed = 2
+frequency = 0.0143
+fractal_lacunarity = 1.0
+fractal_weighted_strength = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o0o13"]
+width = 128
+height = 128
+seamless = true
+seamless_blend_skirt = 1.0
+as_normal_map = true
+noise = SubResource("FastNoiseLite_g10tu")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lw8yo")
+shader_parameter/water_color = Color(1, 1, 1, 1)
+shader_parameter/time_scale = 10.0
+shader_parameter/alpha_slider = 0.2
+shader_parameter/water_texture = ExtResource("2_4cd4e")
+shader_parameter/water_normal_noise = SubResource("NoiseTexture2D_o0o13")

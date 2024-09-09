@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4u34aww7egvf"
-path.s3tc="res://.godot/imported/liverfailure_wood_rotted.jpg-fb2a5625e35efd24474dd4ba8f3345dd.s3tc.ctex"
+uid="uid://byt85tfnidgvi"
+path.s3tc="res://.godot/imported/skybox_objects_stone2.jpg-cc9990fc453a926404192f1a3025a7c3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "aee2f5775903657a74a325266c39ab10"
+"md5": "1cf380ca7082c3372f4654149c648a17"
 }
 
 [deps]
 
-source_file="res://assets/models/liverfailure/liverfailure_wood_rotted.jpg"
-dest_files=["res://.godot/imported/liverfailure_wood_rotted.jpg-fb2a5625e35efd24474dd4ba8f3345dd.s3tc.ctex"]
+source_file="res://assets/models/skybox_objects/skybox_objects_stone2.jpg"
+dest_files=["res://.godot/imported/skybox_objects_stone2.jpg-cc9990fc453a926404192f1a3025a7c3.s3tc.ctex"]
 
 [params]
 

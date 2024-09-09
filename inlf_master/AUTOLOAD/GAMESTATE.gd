@@ -11,6 +11,6 @@ var bones: int = 0 :
 		bones = clamp(value, 0, 9999)
 		emit_signal("bones_changed", bones)
 		if value > 0:
-			Globals.emit_signal("on_pop_notification", "I received some bones.")
+			Globals.emit_signal("on_pop_notification", "I received bones.")
 		elif value < 0:
-			Globals.emit_signal("on_pop_notification", "I have lost some bones.")
+			Globals.emit_signal("on_pop_notification", "I have lost bones.")

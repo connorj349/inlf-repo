@@ -11,6 +11,7 @@ region = Rect2(384, 128, 128, 128)
 [resource]
 script = ExtResource("1_waeoa")
 heal_value = -2
+money_gain_value = 5
 consumable_type = 0
 name = "Spine"
 description = "a spine. can be processed into biofuel to power generators. can be eaten, but why?"

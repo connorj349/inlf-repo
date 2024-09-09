@@ -6,7 +6,8 @@ enum ConsumableType {
 	ARMOR
 }
 
-@export var heal_value: int
+@export var heal_value: int = 0
+@export var money_gain_value: int
 @export var consumable_type: ConsumableType
 
 func use(target):
@@ -16,3 +17,6 @@ func use(target):
 				target.on_heal(heal_value) # use the on_heal method on the target
 			ConsumableType.ARMOR:
 				target.give_armor(heal_value) # use give_armor method on the target
+	
+	if money_gain_value != 0:
+		Gamestate.bones += money_gain_value

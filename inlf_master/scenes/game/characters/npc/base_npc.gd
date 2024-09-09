@@ -1,13 +1,19 @@
 extends CharacterBody3D
 
-enum State { IDLE, PATROL, ATTACK, INSPECT }
+enum State { IDLE, PATROL, ATTACK, INSPECT, RUN_AWAY }
 
 const FOOTSTEP_FREQUENCY: float = 75.0
+# how far away the player needs to be until this npc stops running away
+const FEAR_DISTANCE: float = 20.0
+# minimum distance to try to flee away from the player
+const FLEE_DISTANCE: float = 20.0
 
 @export var inventory_data: Resource
 @export var loot_table: Array[ItemData]
 @export var will_retaliate = true
 @export var will_inspect = true
+# used for antagonist npcs that will attack the player/other npcs on sight
+@export var hostile = false
 @export var patrol_points: Array[Node3D]
 @export var damage: Damage
 
@@ -54,6 +60,8 @@ func _process(delta):
 			process_attack_state(delta)
 		State.INSPECT:
 			process_inspect_state(delta)
+		State.RUN_AWAY:
+			process_run_away_state(delta)
 
 func _physics_process(_delta):
 	if navigation_agent.is_navigation_finished():
@@ -135,6 +143,22 @@ func process_inspect_state(_delta):
 	_safe_look_at(self, target.position)
 	rotate_object_local(Vector3.UP, PI)
 
+func process_run_away_state(_delta):
+	if target == null:
+		current_state = State.IDLE
+		_wander_to_random_position()
+		return
+	
+	if navigation_agent.is_navigation_finished():
+		if global_transform.origin.distance_to(target.position) <= FEAR_DISTANCE:
+			_run_away_from_target(target)
+			speed = 8
+		else:
+			current_state = State.IDLE
+			speed = 2
+			_wander_to_random_position()
+			target = null
+
 ##
 ## base fuctionality methods
 ##
@@ -144,8 +168,11 @@ func on_hurt(_damage):
 	health.health -= _damage.amount
 	
 	if _damage.source and will_retaliate:
-		target = _damage.source
 		current_state = State.ATTACK
+	else:
+		current_state = State.RUN_AWAY
+	
+	target = _damage.source
 
 func _chase():
 	if is_instance_valid(target):
@@ -179,6 +206,20 @@ func _attack():
 		current_state = State.IDLE
 		speed = 2.0
 		_wander_to_random_position()
+
+func _run_away_from_target(_target: Node3D):
+	var direction_to_target = (target.global_position - global_position).normalized()
+	var flee_direction = -direction_to_target
+	
+	var random_offset = Vector3(
+		randf_range(-1.0, 1.0),
+		0,
+		randf_range(-1.0, 1.0)
+	).normalized()
+	
+	var random_point = global_position + (flee_direction + random_offset).normalized() * FLEE_DISTANCE
+	
+	_set_target_movement(random_point)
 
 func _wander_to_random_position():
 	await get_tree().physics_frame
@@ -247,7 +288,7 @@ func _randomize_loot():
 
 # virtual method?
 func _on_inspect_area_body_entered(body):
-	if current_state == State.ATTACK:
+	if current_state != State.IDLE:
 		# don't bother insepcting if attacking
 		return
 	
@@ -257,7 +298,7 @@ func _on_inspect_area_body_entered(body):
 
 # virtual method?
 func _on_inspect_area_body_exited(_body):
-	if current_state == State.ATTACK:
+	if current_state == State.ATTACK or current_state == State.RUN_AWAY:
 		return
 	
 	# turn the below into a match statement
@@ -269,6 +310,11 @@ func _on_inspect_area_body_exited(_body):
 # virtual method?
 func _on_attack_range_area_body_entered(_body):
 	if current_state != State.ATTACK:
+		if hostile:
+			current_state = State.ATTACK
+			target = _body
+			_attack()
+			speed = 8
 		return
 	
 	_attack()

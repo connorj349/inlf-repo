@@ -1,0 +1,21 @@
+[gd_scene load_steps=9 format=3 uid="uid://digwfvtfnd652"]
+
+[ext_resource type="PackedScene" uid="uid://c7uvmolrux4mh" path="res://scenes/game/characters/npc/base_npc.tscn" id="1_o40eo"]
+[ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="2_qybuu"]
+[ext_resource type="Resource" uid="uid://dl43xi6td3ut5" path="res://scenes/game/item/items/crapple.tres" id="3_am4du"]
+[ext_resource type="Resource" uid="uid://q7w2vsr68otk" path="res://scenes/game/item/items/metal_fragment.tres" id="4_ofsqk"]
+[ext_resource type="Resource" uid="uid://dhqv8muda5qxg" path="res://scenes/game/item/items/spine.tres" id="5_25s4x"]
+[ext_resource type="Resource" uid="uid://cdwd7eync5mlp" path="res://scenes/game/item/items/skin.tres" id="6_f8mfo"]
+[ext_resource type="Resource" uid="uid://dwgvghaavgdju" path="res://scenes/game/item/items/slop_skull.tres" id="7_4ga88"]
+
+[sub_resource type="Resource" id="Resource_hkl87"]
+resource_local_to_scene = true
+script = ExtResource("2_qybuu")
+slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null])
+
+[node name="WorkerNPC" instance=ExtResource("1_o40eo")]
+inventory_data = SubResource("Resource_hkl87")
+loot_table = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("3_am4du"), ExtResource("4_ofsqk"), ExtResource("5_25s4x"), ExtResource("6_f8mfo"), ExtResource("6_f8mfo"), ExtResource("7_4ga88"), ExtResource("7_4ga88"), ExtResource("7_4ga88"), ExtResource("7_4ga88"), ExtResource("7_4ga88")])
+will_retaliate = false
+
+[editable path="korpsman"]

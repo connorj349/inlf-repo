@@ -38,7 +38,7 @@ func _ready():
 	
 	state_text.text = "Fresh"
 	
-	corpse_eat_damage.amount = health.max_health * 0.5
+	corpse_eat_damage.amount = health.max_health * 0.25
 	
 	spawn_blood()
 
@@ -51,6 +51,7 @@ func on_hurt(damage):
 			spawn_organ()
 		_:
 			health.health -= damage.amount
+	
 	if health.health > health.max_health * 0.9:
 		state_text.text = "fresh"
 	elif health.health < health.max_health * 0.9 and health.health > health.max_health * 0.25:
@@ -75,7 +76,7 @@ func _interact(actor):
 					get_tree().current_scene.game_world.add_child(new_pickup)
 					new_pickup.global_transform.origin = $organ_spawnpoint.global_transform.origin
 					inventory.take_item(item)
-					actor.health.pox += 5
+					actor.health.pox += 2
 					# actor.dispair += 10
 					return
 
