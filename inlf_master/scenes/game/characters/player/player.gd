@@ -343,8 +343,6 @@ func _footstep():
 			$Sounds/Footsteps/MudFootstep.play()
 
 func kill():
-	$Sounds/DeathSound.play()
-	
 	# hides the player's inventory screen on death
 	Globals.current_ui.visible = false
 	

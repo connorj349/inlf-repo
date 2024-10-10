@@ -1,13 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://beum46j8otu7m"]
+[gd_scene load_steps=12 format=3 uid="uid://beum46j8otu7m"]
 
 [ext_resource type="Script" path="res://scenes/game/characters/player/player_ghost.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://c6ra4607ehcw7" path="res://assets/audio/ghost/ghost_ambience.ogg" id="2"]
+[ext_resource type="Shader" path="res://assets/shaders/ghost_view.gdshader" id="2_wk03x"]
 [ext_resource type="AudioStream" uid="uid://q3t10tddqyd8" path="res://assets/audio/ghost/ghost_ambient/ghost4.ogg" id="3"]
 [ext_resource type="AudioStream" uid="uid://cx6svo3mmj2dq" path="res://assets/audio/ghost/ghost_ambient/ghost1.ogg" id="4"]
 [ext_resource type="AudioStream" uid="uid://cn2cquekieamh" path="res://assets/audio/ghost/ghost_ambient/ghost3.ogg" id="5"]
 [ext_resource type="AudioStream" uid="uid://bhb8hi3e1l4jf" path="res://assets/audio/ghost/ghost_ambient/ghost2.ogg" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/game/sound/sound_pool.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue.tscn" id="8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xcfmw"]
+shader = ExtResource("2_wk03x")
+shader_parameter/offset_amount = 3.0
+shader_parameter/mix_amount = 0.5
 
 [sub_resource type="SphereShape3D" id="1"]
 
@@ -18,6 +24,16 @@ script = ExtResource("1")
 [node name="Head" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Head"]
+
+[node name="ColorRect" type="ColorRect" parent="Head/CanvasLayer"]
+material = SubResource("ShaderMaterial_xcfmw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Ghost"]]
 shape = SubResource("1")

@@ -43,3 +43,4 @@ res://scenes/menu/options/pause_menu.gd
 res://scenes/menu/options/options.tscn
 res://scenes/menu/options/options.gd
 res://autoload/sound_manager.tscn
+res://scenes/game/characters/player/player.gd
