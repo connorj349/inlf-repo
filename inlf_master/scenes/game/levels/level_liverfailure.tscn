@@ -1,4 +1,4 @@
-[gd_scene load_steps=248 format=3 uid="uid://cic10016h7at2"]
+[gd_scene load_steps=251 format=3 uid="uid://cic10016h7at2"]
 
 [ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_s7jca"]
 [ext_resource type="Texture2D" uid="uid://dixjojrmk5l6k" path="res://assets/models/liverfailure/liverfailure_cracked_concrete.jpg" id="1_u16vm"]
@@ -63,7 +63,9 @@
 [ext_resource type="Resource" uid="uid://ci27eht4md5ou" path="res://scenes/game/item/items/ammo_aks.tres" id="47_nueaf"]
 [ext_resource type="Resource" uid="uid://diakavtovmh15" path="res://scenes/game/item/items/ammo_makarov.tres" id="48_l4wap"]
 [ext_resource type="Resource" uid="uid://dl43xi6td3ut5" path="res://scenes/game/item/items/crapple.tres" id="49_3l2et"]
+[ext_resource type="PackedScene" uid="uid://digwfvtfnd652" path="res://scenes/game/characters/npc/worker_npc.tscn" id="50_b7x65"]
 [ext_resource type="Resource" uid="uid://bdeyubgyo5i8q" path="res://scenes/game/item/items/leather.tres" id="50_s4ece"]
+[ext_resource type="PackedScene" uid="uid://c0hmks8r7eg8q" path="res://scenes/game/characters/npc/misfit_npc.tscn" id="51_3v0in"]
 [ext_resource type="Resource" uid="uid://q7w2vsr68otk" path="res://scenes/game/item/items/metal_fragment.tres" id="51_qmrfb"]
 [ext_resource type="Resource" uid="uid://dhqv8muda5qxg" path="res://scenes/game/item/items/spine.tres" id="52_3lail"]
 [ext_resource type="PackedScene" uid="uid://b5d5xssqft6ks" path="res://scenes/game/gameobjects/rot_object_spawner.tscn" id="53_7cnc2"]
@@ -2672,6 +2674,10 @@ size = Vector3(2.7, 3, 3)
 resource_local_to_scene = true
 size = Vector3(4, 4, 4)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_yjmv5"]
+resource_local_to_scene = true
+size = Vector3(2, 2, 8)
+
 [sub_resource type="Resource" id="Resource_f8fr1"]
 resource_local_to_scene = true
 script = ExtResource("44_w30sw")
@@ -3703,13 +3709,33 @@ spawn_timer = NodePath("Timer")
 wait_time = 120.0
 autostart = true
 
-[node name="TestNPCSpawner" parent="Spawners" node_paths=PackedStringArray("timer") instance=ExtResource("55_uhx5e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+[node name="SanitarSpawner" parent="Spawners" node_paths=PackedStringArray("timer") instance=ExtResource("55_uhx5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, 33)
 npc_to_spawn = ExtResource("62_fxcn7")
+timer = NodePath("Timer")
+max_npcs = 10
+
+[node name="Timer" type="Timer" parent="Spawners/SanitarSpawner"]
+wait_time = 30.0
+autostart = true
+
+[node name="WorkerWarhouseSpawner" parent="Spawners" node_paths=PackedStringArray("timer") instance=ExtResource("55_uhx5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 0, -40)
+npc_to_spawn = ExtResource("50_b7x65")
 timer = NodePath("Timer")
 max_npcs = 3
 
-[node name="Timer" type="Timer" parent="Spawners/TestNPCSpawner"]
+[node name="Timer" type="Timer" parent="Spawners/WorkerWarhouseSpawner"]
+wait_time = 5.0
+autostart = true
+
+[node name="MisfitCanalSpawner" parent="Spawners" node_paths=PackedStringArray("timer") instance=ExtResource("55_uhx5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, -5, 49)
+npc_to_spawn = ExtResource("51_3v0in")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Spawners/MisfitCanalSpawner"]
+wait_time = 60.0
 autostart = true
 
 [node name="Autostitchers" type="Node" parent="."]
@@ -3956,6 +3982,7 @@ bounds = Vector3(1, 1, 4)
 
 [node name="CollisionShape3D" parent="Generators/Generator3/CheckForMachinesArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -6)
+shape = SubResource("BoxShape3D_yjmv5")
 
 [node name="Processors" type="Node" parent="."]
 
@@ -4127,8 +4154,8 @@ layout_mode = 1
 
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 
 [editable path="Geometry/liverfailure/ManholeCover/CanvasLayer/HintObjectInterface"]
 [editable path="Machines/ToolFactoryProductionMachine2"]

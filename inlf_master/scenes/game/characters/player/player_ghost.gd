@@ -1,14 +1,13 @@
 extends CharacterBody3D
 
-@export var possible_noises: Array[AudioStream]
 @export var mouse_sensitivity = 0.1
 @export var speed = 15
 @export var accel = 7
 
+var movement : Vector3
+
 @onready var head = $Head
 @onready var noises = $SoundPool
-
-var movement : Vector3
 
 func _ready():
 	add_to_group("Ghost")

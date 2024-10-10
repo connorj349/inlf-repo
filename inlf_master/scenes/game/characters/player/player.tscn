@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=67 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/game/item/item_data_weapon.gd" id="4"]
 [ext_resource type="Resource" path="res://scenes/game/inventory/player_equipment_inventory.tres" id="4_f1372"]
 [ext_resource type="AudioStream" uid="uid://cpcb725rq2wyl" path="res://assets/audio/spawn/role_prole.wav" id="4_t2uh4"]
+[ext_resource type="AudioStream" uid="uid://cpjyti8ka8gtu" path="res://assets/audio/player_jump.wav" id="6_k7ex0"]
 [ext_resource type="PackedScene" uid="uid://dxrcx1liop62p" path="res://scenes/game/inventory/hotbar_inventory.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://csgmb3e5wy837" path="res://assets/textures/punch-sheet.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://br5grrh1ej20j" path="res://assets/textures/panel_rect.png" id="10"]
@@ -646,6 +647,7 @@ allowed_max_health = 25
 [node name="Sounds" type="Node3D" parent="."]
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_k7ex0")
 bus = &"SoundFX"
 
 [node name="ArmorHitSound" type="AudioStreamPlayer" parent="Sounds"]
@@ -797,10 +799,6 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 960.0
-offset_top = 1080.0
-offset_right = 960.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -845,10 +843,6 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 960.0
-offset_top = 1080.0
-offset_right = 960.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 

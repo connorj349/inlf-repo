@@ -4777,7 +4777,7 @@ shadow_mesh = SubResource("ArrayMesh_dwpxw")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="NavigationRegions"]
 navigation_mesh = SubResource("NavigationMesh_8yt4t")
 
-[node name="ground_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="ground_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 5)
 mesh = SubResource("ArrayMesh_8icc2")
 skeleton = NodePath("")

@@ -165,12 +165,12 @@ metadata/_editor_floor_ = Vector3(0, -5, 0)
 
 [node name="slumtown" parent="Geometry" instance=ExtResource("4_xkhqh")]
 
-[node name="Environment2" type="Node" parent="."]
+[node name="Environment" type="Node" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment2"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("2")
 
-[node name="WorldLigtingDirectionLight3D" type="DirectionalLight3D" parent="Environment2"]
+[node name="WorldLigtingDirectionLight3D" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
 light_color = Color(1, 0.976471, 0.858824, 1)
 shadow_enabled = true
@@ -346,11 +346,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, -5, -8)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23)
 game_level = NodePath("../..")
 
-[node name="BaseNPC" parent="Other" node_paths=PackedStringArray("patrol_points") instance=ExtResource("5_epehp")]
+[node name="BaseNPC" parent="Other" instance=ExtResource("5_epehp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -26)
 inventory_data = SubResource("Resource_efabi")
 loot_table = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("7_vn6in"), ExtResource("8_3aj2l"), ExtResource("9_m0et7")])
-patrol_points = [NodePath("Node3D"), NodePath("Node3D2"), NodePath("Node3D3"), NodePath("Node3D4"), NodePath("Node3D5")]
 
 [node name="Node3D" type="Node3D" parent="Other/BaseNPC"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 30)

@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scenes/menu/menu.gd" id="2_vqi0w"]
 [ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="3_k6nhk"]
 [ext_resource type="PackedScene" uid="uid://c30ccdixc1t5i" path="res://scenes/menu/level_select/level_select.tscn" id="4_6hdo3"]
-[ext_resource type="AudioStream" uid="uid://cd0khr2a83qta" path="res://assets/audio/ambience/music/new_area.wav" id="4_od6fe"]
-[ext_resource type="AudioStream" uid="uid://chsjg5igqysvu" path="res://assets/audio/menu_open.wav" id="5_ri88x"]
+[ext_resource type="AudioStream" uid="uid://vpmxkg78ld0a" path="res://assets/audio/game_start.wav" id="5_2037w"]
+[ext_resource type="AudioStream" uid="uid://tkp806fv8xbc" path="res://assets/audio/menu_button_press.wav" id="6_mxp0j"]
 
 [node name="MainMenu" type="TextureRect"]
 anchors_preset = 15
@@ -57,11 +57,11 @@ visible = false
 layout_mode = 1
 
 [node name="StartFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_od6fe")
+stream = ExtResource("5_2037w")
 bus = &"SoundFX"
 
 [node name="ButtonPressSoundFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_ri88x")
+stream = ExtResource("6_mxp0j")
 bus = &"SoundFX"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_button_down"]
