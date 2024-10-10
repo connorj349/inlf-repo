@@ -1,5 +1,7 @@
 extends Control
 
+@export var button_press_sound: AudioStreamPlayer
+
 func _process(_delta):
 	if Input.is_action_just_pressed("escape"):
 		toggle()
@@ -14,12 +16,12 @@ func toggle():
 
 func _on_options_button_pressed():
 	$Options.visible = true
-	SoundManager.Play_UI_ButtonPress()
+	button_press_sound.play()
 
 func _on_menu_exit_button_pressed():
 	toggle()
 	$"../..".goto_main.emit()
-	SoundManager.Play_UI_ButtonPress()
+	button_press_sound.play()
 
 func _on_exit_button_pressed():
 	get_tree().quit()

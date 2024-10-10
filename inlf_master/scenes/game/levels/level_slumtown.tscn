@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://c0pk63nn4wv3b"]
+[gd_scene load_steps=68 format=3 uid="uid://c0pk63nn4wv3b"]
 
 [ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_1bevl"]
 [ext_resource type="Texture2D" uid="uid://d3pc6ep66bgug" path="res://assets/textures/skybox/skybox_apoc_01.png" id="2_k8s38"]
@@ -45,6 +45,7 @@
 [ext_resource type="Resource" uid="uid://dwgvghaavgdju" path="res://scenes/game/item/items/slop_skull.tres" id="40_paov2"]
 [ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="41_lljnt"]
 [ext_resource type="Resource" uid="uid://ewgw8vk53l6f" path="res://scenes/game/item/items/amoeba_slime.tres" id="41_ywpg7"]
+[ext_resource type="AudioStream" uid="uid://tkp806fv8xbc" path="res://assets/audio/menu_button_press.wav" id="45_6wg7q"]
 
 [sub_resource type="Gradient" id="403"]
 offsets = PackedFloat32Array(0, 0.66879, 1)
@@ -610,7 +611,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6)
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 3
 
-[node name="PauseMenu" type="Control" parent="UI"]
+[node name="PauseMenu" type="Control" parent="UI" node_paths=PackedStringArray("button_press_sound")]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -621,6 +622,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("40_hurge")
+button_press_sound = NodePath("ButtonPressSound")
+
+[node name="ButtonPressSound" type="AudioStreamPlayer" parent="UI/PauseMenu"]
+stream = ExtResource("45_6wg7q")
 
 [node name="Panel" type="Panel" parent="UI/PauseMenu"]
 layout_mode = 0
@@ -681,8 +686,8 @@ layout_mode = 1
 
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 
 [editable path="Machines/ToolFactoryProductionMachine"]
 [editable path="Machines/ToolFactoryProductionMachine/machine"]

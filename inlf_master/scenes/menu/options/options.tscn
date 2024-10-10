@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf510hosm884a"]
+[gd_scene load_steps=4 format=3 uid="uid://cf510hosm884a"]
 
 [ext_resource type="Script" path="res://scenes/menu/options/options.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://tkp806fv8xbc" path="res://assets/audio/menu_button_press.wav" id="2_p2eky"]
 [ext_resource type="Script" path="res://scenes/menu/options/audio_volume_slider.gd" id="4"]
 
 [node name="Options" type="Control"]
@@ -11,6 +12,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2")
+
+[node name="ButtonPressSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_p2eky")
 
 [node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 1
