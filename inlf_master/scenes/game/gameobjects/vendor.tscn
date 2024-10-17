@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://diw2ptb001gas"]
+[gd_scene load_steps=14 format=3 uid="uid://diw2ptb001gas"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/vendor.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://cpok7107bwsa8" path="res://scenes/game/inventory/inventory_slot.tscn" id="2_pgt2d"]
@@ -6,6 +6,9 @@
 [ext_resource type="Material" uid="uid://c32yjoodg4d4m" path="res://assets/materials/screen.tres" id="4_vjevv"]
 [ext_resource type="PackedScene" uid="uid://t6wdb2br7u17" path="res://assets/models/ticket-machine.glb" id="5"]
 [ext_resource type="Material" uid="uid://b73s0v4anr5dp" path="res://assets/materials/distiller.tres" id="5_pqfm1"]
+[ext_resource type="AudioStream" uid="uid://dg0kiv47n8vch" path="res://assets/audio/button_press_mechanical.wav" id="7_m16kw"]
+[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue.tscn" id="7_yeb6c"]
+[ext_resource type="AudioStream" uid="uid://vd3wmwxevagt" path="res://assets/audio/vendor_purchase.wav" id="8_5i15e"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(3, 4, 2)
@@ -151,10 +154,16 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 columns = 6
 
-[node name="UseSound" type="AudioStreamPlayer3D" parent="."]
+[node name="Use" parent="." instance=ExtResource("7_yeb6c")]
+
+[node name="UseSound" type="AudioStreamPlayer3D" parent="Use"]
+stream = ExtResource("7_m16kw")
 bus = &"SoundFX"
 
-[node name="BuySound" type="AudioStreamPlayer3D" parent="."]
+[node name="Buy" parent="." instance=ExtResource("7_yeb6c")]
+
+[node name="BuySound" type="AudioStreamPlayer3D" parent="Buy"]
+stream = ExtResource("8_5i15e")
 bus = &"SoundFX"
 
 [editable path="obj-ticket-machine"]

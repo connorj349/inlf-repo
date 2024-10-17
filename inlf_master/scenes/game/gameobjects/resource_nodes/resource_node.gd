@@ -7,7 +7,7 @@ extends Interactable
 @export var hit_effect: PackedScene
 @export var prog_bar: ProgressBar
 @export var pickup_sound: AudioStreamPlayer3D
-@export var hurt_sound: AudioStreamPlayer3D
+@export var hurt_sound: SoundQueue3D
 
 var dead = false
 
@@ -47,6 +47,8 @@ func on_hurt(damage):
 	var new_effect = hit_effect.instantiate()
 	get_tree().current_scene.game_world.add_child(new_effect)
 	new_effect.global_transform.origin = global_transform.origin
+	
+	hurt_sound.PlaySoundRange(0.8, 1.2)
 	
 	var random_result = randf()
 	for damage_type in blocked_damage_types:

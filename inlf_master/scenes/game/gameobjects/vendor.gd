@@ -7,8 +7,8 @@ var current_actor_interacting = null
 
 @onready var panel = $CanvasLayer/Control/PanelContainer
 @onready var merchant_list = $CanvasLayer/Control/PanelContainer/MarginContainer/GridContainer
-@onready var use_sound: AudioStreamPlayer3D = $UseSound
-@onready var buy_sound: AudioStreamPlayer3D = $BuySound
+@onready var use_sound = $Use
+@onready var buy_sound = $Buy
 
 func _ready():
 	merchant_inventory = InventoryData.new()
@@ -28,7 +28,7 @@ func _interact(_actor):
 	
 	if panel.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-		use_sound.play()
+		use_sound.PlaySoundRange(0.8, 1.2)
 
 func toggle_window():
 	panel.hide()
@@ -59,8 +59,10 @@ func buy_item(inventory_data, index, button):
 	match [button]:
 		[MOUSE_BUTTON_LEFT]: # try to buy the item in the slot at index
 			inventory_data.buy_slot_data(index, current_actor_interacting.inventory_data)
+			buy_sound.PlaySoundRange(0.8, 1.2)
 			
 			buy_sound.play()
 		[MOUSE_BUTTON_RIGHT]: # display the name and price of the item
 			if inventory_data.slot_datas[index]:
 				Globals.emit_signal("on_pop_notification", "%s is worth %s bones." % [inventory_data.slot_datas[index].item_data.name, inventory_data.slot_datas[index].item_data.price])
+				use_sound.PlaySoundRange(0.8, 1.2)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://b7nxt2hc5tvjo"]
+[gd_scene load_steps=13 format=3 uid="uid://b7nxt2hc5tvjo"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://bbavnvhdyv0se" path="res://assets/models/processor.glb" id="2_fwq0a"]
 [ext_resource type="Material" uid="uid://bbiqg1ds6lwaf" path="res://assets/materials/processor.tres" id="3_8f2b8"]
 [ext_resource type="AudioStream" uid="uid://b28rn55hxvivr" path="res://assets/audio/machine/machine_loop.wav" id="4"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_j733o"]
+[ext_resource type="AudioStream" uid="uid://bkbonr5n6iila" path="res://assets/audio/machine/machine_accept_item.wav" id="7_1wj28"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/processor.gd" id="10"]
 
 [sub_resource type="BoxShape3D" id="9"]
@@ -107,6 +108,7 @@ stream = ExtResource("4")
 bus = &"SoundFX"
 
 [node name="DepositSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_1wj28")
 bus = &"SoundFX"
 
 [connection signal="body_entered" from="ItemDeposit" to="." method="_on_ItemDeposit_body_entered"]

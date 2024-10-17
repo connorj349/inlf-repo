@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1k30jhststhn"]
+[gd_scene load_steps=14 format=3 uid="uid://b1k30jhststhn"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/resource_nodes/resource_node.gd" id="4"]
@@ -7,6 +7,8 @@
 [ext_resource type="Material" path="res://assets/materials/bone-capsule.tres" id="7_6dwbw"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="7_b4msf"]
 [ext_resource type="PackedScene" uid="uid://p07bx43idc15" path="res://scenes/game/effects/blood_spray.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue_3d.tscn" id="8_13150"]
+[ext_resource type="AudioStream" uid="uid://c6u5rip85ng7q" path="res://assets/audio/bone_capsule_hit.wav" id="9_f5dbh"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.5, 2, 1.5)
@@ -98,7 +100,10 @@ libraries = {
 "": SubResource("AnimationLibrary_8ee3j")
 }
 
-[node name="HurtSound" type="AudioStreamPlayer3D" parent="."]
+[node name="HurtSound" parent="." instance=ExtResource("8_13150")]
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="HurtSound"]
+stream = ExtResource("9_f5dbh")
 bus = &"SoundFX"
 
 [editable path="bone-capsule"]

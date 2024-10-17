@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=73 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
@@ -7,11 +7,18 @@
 [ext_resource type="Script" path="res://scenes/game/item/item_data_weapon.gd" id="4"]
 [ext_resource type="Resource" path="res://scenes/game/inventory/player_equipment_inventory.tres" id="4_f1372"]
 [ext_resource type="AudioStream" uid="uid://cpjyti8ka8gtu" path="res://assets/audio/player_jump.wav" id="6_k7ex0"]
+[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue.tscn" id="6_vd4w1"]
+[ext_resource type="AudioStream" uid="uid://bittjj6v1q7nj" path="res://assets/audio/player_hurt_armor.wav" id="7_qglbh"]
 [ext_resource type="PackedScene" uid="uid://dxrcx1liop62p" path="res://scenes/game/inventory/hotbar_inventory.tscn" id="8"]
+[ext_resource type="AudioStream" uid="uid://cfrxvsci4qr82" path="res://assets/audio/player_hurt.wav" id="8_a0ya4"]
 [ext_resource type="Texture2D" uid="uid://csgmb3e5wy837" path="res://assets/textures/punch-sheet.png" id="9"]
+[ext_resource type="AudioStream" uid="uid://cmeipf1rfql88" path="res://assets/audio/player_armor_pickup.wav" id="9_ko4t5"]
 [ext_resource type="Texture2D" uid="uid://br5grrh1ej20j" path="res://assets/textures/panel_rect.png" id="10"]
+[ext_resource type="AudioStream" uid="uid://5y5srxexw1j" path="res://assets/audio/player_heal.wav" id="10_briut"]
 [ext_resource type="Texture2D" uid="uid://we0sue4i3r05" path="res://assets/textures/bar_fill.png" id="11"]
+[ext_resource type="AudioStream" uid="uid://dbgmwlow7fpsl" path="res://assets/audio/inventory_open.wav" id="11_4cvab"]
 [ext_resource type="Script" path="res://scenes/game/characters/player/notifications.gd" id="12"]
+[ext_resource type="AudioStream" uid="uid://s2libficrgc" path="res://assets/audio/player_weapon_switch.wav" id="12_367nc"]
 [ext_resource type="Resource" uid="uid://n1tf63bmly" path="res://scenes/game/item/items/wep_aks.tres" id="12_jdvey"]
 [ext_resource type="Script" path="res://scenes/game/characters/player/player_weapon.gd" id="13"]
 [ext_resource type="Texture2D" uid="uid://ceu4x37u1jkwo" path="res://assets/textures/aks_anims.png" id="13_4qs7t"]
@@ -645,28 +652,33 @@ allowed_max_health = 25
 
 [node name="Sounds" type="Node3D" parent="."]
 
-[node name="JumpSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="JumpSoundQueue" parent="Sounds" instance=ExtResource("6_vd4w1")]
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="Sounds/JumpSoundQueue"]
 stream = ExtResource("6_k7ex0")
 bus = &"SoundFX"
 
 [node name="ArmorHitSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_qglbh")
 bus = &"SoundFX"
 
 [node name="HurtSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_a0ya4")
 bus = &"SoundFX"
 
 [node name="GainArmorSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("9_ko4t5")
 bus = &"SoundFX"
 
 [node name="HealSound" type="AudioStreamPlayer" parent="Sounds"]
-bus = &"SoundFX"
-
-[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_briut")
 bus = &"SoundFX"
 
 [node name="InventoryOpenSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("11_4cvab")
 
 [node name="WeaponSwitchSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("12_367nc")
 bus = &"SoundFX"
 
 [node name="Footsteps" type="Node3D" parent="Sounds"]

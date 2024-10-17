@@ -11,7 +11,7 @@ signal increase_rot(amount: int)
 var dead = false
 
 @onready var health = $Health
-@onready var hit_sound: AudioStreamPlayer3D = $HitSound
+@onready var hit_sound = $HitSound
 @onready var ambient_sound: AudioStreamPlayer3D = $AmbientSound
 
 func _ready():
@@ -27,7 +27,6 @@ func _ready():
 	prog_bar.init(health.health, health.max_health)
 	$RotTimer.wait_time = rot_inrease_frequency #set frequency by which rot is increased
 	get_tree().current_scene.game_world.current_level.tumors += 1
-	ambient_sound.play()
 
 func on_hurt(damage):
 	if dead:
@@ -40,7 +39,7 @@ func on_hurt(damage):
 				health.health -= damage.amount # takes damage half the time from fists
 		_:
 			health.health -= damage.amount # takes damage in all cases
-			ambient_sound.play()
+			hit_sound.PlaySoundRange(0.8, 1.2)
 
 func on_death():
 	get_tree().current_scene.game_world.current_level.tumors -= 1

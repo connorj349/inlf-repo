@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://qjy7yga6koi4"]
+[gd_scene load_steps=14 format=3 uid="uid://qjy7yga6koi4"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Resource" uid="uid://b03aitsnlcjwg" path="res://scenes/game/item/items/seeds/skin_fruit.tres" id="2_fnf82"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c32xlm3mmk1le" path="res://assets/models/skin-tree.glb" id="6_5qr1y"]
 [ext_resource type="Material" path="res://assets/materials/skin_tree.tres" id="7_8vj6m"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="7_vpjpc"]
+[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue_3d.tscn" id="8_slqsk"]
 [ext_resource type="PackedScene" uid="uid://p07bx43idc15" path="res://scenes/game/effects/blood_spray.tscn" id="9"]
+[ext_resource type="AudioStream" uid="uid://b7e7hukvtobls" path="res://assets/audio/skin_tree_hit.wav" id="9_5wg5d"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1, 4, 1)
@@ -100,7 +102,10 @@ libraries = {
 "": SubResource("AnimationLibrary_cgb4n")
 }
 
-[node name="HurtSound" type="AudioStreamPlayer3D" parent="."]
+[node name="HurtSound" parent="." instance=ExtResource("8_slqsk")]
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="HurtSound"]
+stream = ExtResource("9_5wg5d")
 bus = &"SoundFX"
 
 [editable path="skin-tree"]

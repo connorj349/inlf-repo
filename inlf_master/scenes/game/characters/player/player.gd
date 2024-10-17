@@ -96,8 +96,7 @@ func _process(delta):
 		if interact_area.monitoring:
 			for body in interact_area.get_overlapping_bodies():
 				if body.has_method("_interact"):
-					if body._interact(self): #calls the interact method on the interactable, passing self as arg
-						pass
+					body._interact(self) #calls the interact method on the interactable, passing self as arg
 	
 	if !player_is_in_menu():
 		if Input.is_action_just_pressed("left_click"):
@@ -134,7 +133,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("jump") and (is_on_floor() or _snapped_to_stairs_last_frame):
 			velocity.y = JUMP_VELOCITY
 			
-			$Sounds/JumpSound.play()
+			$Sounds/JumpSoundQueue.PlaySoundRange(0.9, 1.1)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -225,9 +224,10 @@ func deal_damage(damage):
 		health.health -= damage.amount
 
 # mainly used by slotdataconsumable and autostitcher
-func on_heal(amount):
+func on_heal(amount, play_sound = false):
 	health.health += amount
-	$Sounds/HealSound.play()
+	if play_sound:
+		$Sounds/HealSound.play()
 
 # used by some consumables
 func give_armor(amount):

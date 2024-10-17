@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dmktkgaw0ufi7"]
+[gd_scene load_steps=17 format=3 uid="uid://dmktkgaw0ufi7"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/metastabilizer.gd" id="4"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://c32yjoodg4d4m" path="res://assets/materials/screen.tres" id="6_mxxde"]
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="7"]
 [ext_resource type="Resource" uid="uid://d1fjvdo0nh06v" path="res://scenes/game/item/items/bio_fuel.tres" id="8"]
+[ext_resource type="AudioStream" uid="uid://bkbonr5n6iila" path="res://assets/audio/machine/machine_accept_item.wav" id="10_l8n5y"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.5, 2, 1.5)
@@ -129,6 +130,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("9")
 
 [node name="ItemAddedSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_l8n5y")
 bus = &"SoundFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

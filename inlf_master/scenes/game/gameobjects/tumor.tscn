@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bu0ib6h238inm"]
+[gd_scene load_steps=17 format=3 uid="uid://bu0ib6h238inm"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Resource" uid="uid://bptrs3t6i1dep" path="res://scenes/game/item/items/cancer.tres" id="2_6w58c"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://c1j33a074i1e" path="res://assets/models/tumor.glb" id="4_1360l"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_gp15w"]
 [ext_resource type="Texture2D" uid="uid://cbses0ai42myl" path="res://assets/textures/pustile-light.png" id="5_oph3r"]
+[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue_3d.tscn" id="8_jx6i2"]
+[ext_resource type="AudioStream" uid="uid://bittjj6v1q7nj" path="res://assets/audio/player_hurt_armor.wav" id="8_ybcu5"]
+[ext_resource type="AudioStream" uid="uid://4lcbtqc4k0h2" path="res://assets/audio/tumor_ambience.wav" id="9_a2j60"]
 
 [sub_resource type="Resource" id="Resource_yum53"]
 script = ExtResource("2_ytsae")
@@ -108,10 +111,16 @@ libraries = {
 [node name="RotTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
+[node name="HitSound" parent="." instance=ExtResource("8_jx6i2")]
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="HitSound"]
+stream = ExtResource("8_ybcu5")
 bus = &"SoundFX"
 
 [node name="AmbientSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_a2j60")
+autoplay = true
+max_distance = 7.0
 bus = &"SoundFX"
 
 [connection signal="timeout" from="RotTimer" to="." method="_on_RotTimer_timeout"]

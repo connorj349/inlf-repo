@@ -31,14 +31,23 @@ func _interact(_actor):
 	
 	if is_on:
 		self.fuel -= 1
+		
 		timer.start()
+		
 		change_active_status_of_machines(true)
+		
 		startup_sound.play()
+		
+		await startup_sound.finished
+		
 		loop_sound.play(0)
 	else:
 		timer.stop()
+		
 		change_active_status_of_machines(false)
+		
 		spindown_sound.play()
+		
 		loop_sound.stop()
 
 func change_active_status_of_machines(is_active):

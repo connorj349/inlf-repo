@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://r1okymmde6l8"]
+[gd_scene load_steps=17 format=3 uid="uid://r1okymmde6l8"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/generator.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cpggf8tp1qgqv" path="res://assets/models/generator.glb" id="3_2qs2n"]
@@ -6,7 +6,10 @@
 [ext_resource type="Material" path="res://assets/materials/generator.tres" id="4_pmhs0"]
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="6"]
 [ext_resource type="Resource" uid="uid://d1fjvdo0nh06v" path="res://scenes/game/item/items/bio_fuel.tres" id="7"]
+[ext_resource type="AudioStream" uid="uid://cxk8msufkw1wc" path="res://assets/audio/generator_start.wav" id="8_7o8dd"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/show_area_bounds.gd" id="9"]
+[ext_resource type="AudioStream" uid="uid://ck4tw5r4kn5q8" path="res://assets/audio/generator_loop.wav" id="9_bgk37"]
+[ext_resource type="AudioStream" uid="uid://bpdf1c23nv7ev" path="res://assets/audio/generator_stop.wav" id="10_ryrqj"]
 
 [sub_resource type="BoxShape3D" id="1"]
 resource_local_to_scene = true
@@ -119,12 +122,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("9")
 
 [node name="StartupSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_7o8dd")
 bus = &"SoundFX"
 
 [node name="LoopSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_bgk37")
 bus = &"SoundFX"
 
 [node name="SpindownSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_ryrqj")
 bus = &"SoundFX"
 
 [node name="ClickSound" type="AudioStreamPlayer3D" parent="."]

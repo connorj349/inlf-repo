@@ -65,5 +65,6 @@ stream = ExtResource("6_mxp0j")
 bus = &"SoundFX"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_button_down"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="ButtonPressSoundFX" method="play"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

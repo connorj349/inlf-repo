@@ -1,14 +1,12 @@
-[gd_scene load_steps=68 format=3 uid="uid://c0pk63nn4wv3b"]
+[gd_scene load_steps=65 format=3 uid="uid://c0pk63nn4wv3b"]
 
 [ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_1bevl"]
 [ext_resource type="Texture2D" uid="uid://d3pc6ep66bgug" path="res://assets/textures/skybox/skybox_apoc_01.png" id="2_k8s38"]
 [ext_resource type="MeshLibrary" uid="uid://c078ienggynju" path="res://assets/slumtown_props_meshlibrary.tres" id="3_3layd"]
 [ext_resource type="PackedScene" uid="uid://ue0fy4t6c0py" path="res://scenes/game/levels/mdl_navmesh_slumtown.tscn" id="4_xkhqh"]
-[ext_resource type="PackedScene" uid="uid://c7uvmolrux4mh" path="res://scenes/game/characters/npc/base_npc.tscn" id="5_epehp"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="6_cw0oq"]
 [ext_resource type="Resource" uid="uid://bdeyubgyo5i8q" path="res://scenes/game/item/items/leather.tres" id="7_vn6in"]
 [ext_resource type="Resource" uid="uid://dl43xi6td3ut5" path="res://scenes/game/item/items/crapple.tres" id="8_3aj2l"]
-[ext_resource type="Resource" uid="uid://cdwd7eync5mlp" path="res://scenes/game/item/items/skin.tres" id="9_m0et7"]
 [ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://scenes/game/gameobjects/sawblade.tscn" id="10_h737m"]
 [ext_resource type="Resource" uid="uid://d1fjvdo0nh06v" path="res://scenes/game/item/items/bio_fuel.tres" id="11_i7dus"]
 [ext_resource type="Resource" uid="uid://cfca7q7atvdxp" path="res://scenes/game/item/items/fertilizer.tres" id="12_1eii1"]
@@ -74,11 +72,6 @@ adjustment_brightness = 1.2
 adjustment_contrast = 1.23
 adjustment_saturation = 2.07
 adjustment_color_correction = SubResource("404")
-
-[sub_resource type="Resource" id="Resource_efabi"]
-resource_local_to_scene = true
-script = ExtResource("6_cw0oq")
-slot_datas = Array[ExtResource("30_qktmy")]([null, null, null])
 
 [sub_resource type="BoxShape3D" id="394"]
 resource_local_to_scene = true
@@ -347,26 +340,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, -5, -8)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23)
 game_level = NodePath("../..")
 
-[node name="BaseNPC" parent="Other" instance=ExtResource("5_epehp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -26)
-inventory_data = SubResource("Resource_efabi")
-loot_table = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("7_vn6in"), ExtResource("8_3aj2l"), ExtResource("9_m0et7")])
-
-[node name="Node3D" type="Node3D" parent="Other/BaseNPC"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 30)
-
-[node name="Node3D2" type="Node3D" parent="Other/BaseNPC"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 52)
-
-[node name="Node3D3" type="Node3D" parent="Other/BaseNPC"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0.5, 55)
-
-[node name="Node3D4" type="Node3D" parent="Other/BaseNPC"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.5, 31)
-
-[node name="Node3D5" type="Node3D" parent="Other/BaseNPC"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0.5, 9)
-
 [node name="PlayerRoleSpawns" type="Node" parent="."]
 
 [node name="prole_spawn_01" parent="PlayerRoleSpawns" instance=ExtResource("10_h737m")]
@@ -487,6 +460,8 @@ apply_impulse_force = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53, -16, -26)
 node_to_spawn = ExtResource("33_q6fkn")
 apply_impulse_force = true
+
+[node name="NPCSpawners" type="Node" parent="."]
 
 [node name="Vendors" type="Node" parent="."]
 

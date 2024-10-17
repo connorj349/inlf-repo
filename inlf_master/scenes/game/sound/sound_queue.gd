@@ -26,3 +26,10 @@ func PlaySound():
 		audio_stream_players[next].play()
 		next += 1
 		next %= audio_stream_players.size()
+
+func PlaySoundRange(_min, _max):
+	if !audio_stream_players[next].playing:
+		audio_stream_players[next].pitch_scale = randf_range(_min, _max)
+		audio_stream_players[next].play()
+		next += 1
+		next %= audio_stream_players.size()

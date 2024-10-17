@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3gsycxg1xafb"]
+[gd_scene load_steps=14 format=3 uid="uid://b3gsycxg1xafb"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
 [ext_resource type="Resource" uid="uid://b8u65yry4d7la" path="res://scenes/game/item/items/slag_metal.tres" id="2_y5ndi"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://o7bujdwcauyn" path="res://assets/models/boulder.glb" id="6_37tx8"]
 [ext_resource type="Material" path="res://assets/materials/boulder.tres" id="7_81fro"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="7_w7sq0"]
+[ext_resource type="AudioStream" uid="uid://bc0ftvrhvnxyy" path="res://assets/audio/boulder_hit.wav" id="8_bt77x"]
+[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue_3d.tscn" id="8_rlny2"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.2, 1.2, 1.2)
@@ -116,7 +118,10 @@ libraries = {
 [node name="PickupSound" type="AudioStreamPlayer3D" parent="."]
 bus = &"SoundFX"
 
-[node name="HurtSound" type="AudioStreamPlayer3D" parent="."]
+[node name="HurtSound" parent="." instance=ExtResource("8_rlny2")]
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="HurtSound"]
+stream = ExtResource("8_bt77x")
 bus = &"SoundFX"
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]

@@ -3,12 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://c1ci7c33xsfaj" path="res://assets/textures/ameoba.png" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/exploding_mushroom.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://b0h5yhwltpbru" path="res://scenes/game/effects/spell effects/spell_effect_viletouch.tscn" id="2_ahgki"]
-[ext_resource type="AudioStream" uid="uid://chsjg5igqysvu" path="res://assets/audio/menu_open.wav" id="4_u33ua"]
+[ext_resource type="AudioStream" uid="uid://cuhf4wep7labh" path="res://assets/audio/exploding_mushroom_pop.wav" id="4_l5mvm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_oeohh"]
 
 [sub_resource type="SphereShape3D" id="1"]
 radius = 1.0
+
+[sub_resource type="Animation" id="Animation_twqg2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5)]
+}
 
 [sub_resource type="Animation" id="Animation_cf2mu"]
 resource_name = "jiggle"
@@ -25,21 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0.5, 0.5, 0.5), Vector3(0.6, 0.6, 0.6), Vector3(0.5, 0.5, 0.5)]
-}
-
-[sub_resource type="Animation" id="Animation_twqg2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.5, 0.5, 0.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i3hs6"]
@@ -71,7 +71,7 @@ collision_mask = 8
 shape = SubResource("1")
 
 [node name="PopSound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_u33ua")
+stream = ExtResource("4_l5mvm")
 bus = &"SoundFX"
 
 [node name="DisturbedAnimations" type="AnimationPlayer" parent="."]

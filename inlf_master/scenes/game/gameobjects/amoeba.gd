@@ -40,10 +40,12 @@ func _on_ItemDeposit_body_entered(body):
 				for n in body.slot_data.quantity:
 					self.current_biomass += 2
 				body.queue_free()
+				$ConsumeBiomass.PlaySoundRange(0.8, 1.2)
 			ItemData.ItemType.Fertilizer:
 				for n in body.slot_data.quantity:
 					self.current_biomass += 10
 				body.queue_free()
+				$ConsumeBiomass.PlaySoundRange(0.8, 1.2)
 			_:
 				# do nothing otherwise
 				pass
@@ -68,6 +70,8 @@ func _on_HydrationTimer_timeout():
 		new_pickup.slot_data = new_slot
 		get_tree().current_scene.game_world.add_child(new_pickup)
 		new_pickup.global_transform.origin = $ItemSpawnPoint.global_transform.origin
+	
+	$PopSound.PlaySoundRange(0.8, 1.2)
 	
 	queue_free()
 

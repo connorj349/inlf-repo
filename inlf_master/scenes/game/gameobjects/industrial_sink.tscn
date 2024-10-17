@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://djfc66jt8vqe2"]
+[gd_scene load_steps=11 format=3 uid="uid://djfc66jt8vqe2"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/industrial_sink.gd" id="1"]
 [ext_resource type="Resource" uid="uid://daxl5llt1hvhm" path="res://scenes/game/item/items/hard_water.tres" id="2_ljbbj"]
 [ext_resource type="PackedScene" uid="uid://dtuls8f7u6ypf" path="res://assets/models/industrial_sink.glb" id="3_0jkwi"]
 [ext_resource type="Material" path="res://assets/materials/industrial_sink.tres" id="4_jyxjh"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_v61ll"]
+[ext_resource type="AudioStream" uid="uid://d16xyy5ib5tur" path="res://assets/audio/sink.wav" id="6_fesvp"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(5, 1.5, 2)
@@ -83,6 +84,7 @@ libraries = {
 }
 
 [node name="UseSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_fesvp")
 bus = &"SoundFX"
 
 [node name="BreakSound" type="AudioStreamPlayer3D" parent="."]
