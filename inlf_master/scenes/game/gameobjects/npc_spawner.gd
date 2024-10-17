@@ -4,6 +4,8 @@ extends Node3D
 @export var timer: Timer
 @export var max_npcs: int = 1
 
+var spawned_npcs = []
+
 @onready var resource_node_spawner: Node3D = $resource_node_spawner
 
 func _ready():
@@ -11,5 +13,11 @@ func _ready():
 	timer.connect("timeout", Callable(self, "spawn_npc"))
 
 func spawn_npc():
-	if get_tree().get_nodes_in_group("npc").size() < max_npcs:
-		resource_node_spawner.spawn()
+	if spawned_npcs.size() < max_npcs:
+		var new_npc = resource_node_spawner.spawn()
+		spawned_npcs.append(new_npc)
+	
+	# erase any non-valid entries
+	for npc in spawned_npcs:
+		if !is_instance_valid(npc):
+			spawned_npcs.erase(npc)

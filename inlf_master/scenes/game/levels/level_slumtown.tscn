@@ -5,6 +5,7 @@
 [ext_resource type="MeshLibrary" uid="uid://c078ienggynju" path="res://assets/slumtown_props_meshlibrary.tres" id="3_3layd"]
 [ext_resource type="PackedScene" uid="uid://ue0fy4t6c0py" path="res://scenes/game/levels/mdl_navmesh_slumtown.tscn" id="4_xkhqh"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_data.gd" id="6_cw0oq"]
+[ext_resource type="PackedScene" uid="uid://b5d5xssqft6ks" path="res://scenes/game/gameobjects/rot_object_spawner.tscn" id="7_m2jjx"]
 [ext_resource type="Resource" uid="uid://bdeyubgyo5i8q" path="res://scenes/game/item/items/leather.tres" id="7_vn6in"]
 [ext_resource type="Resource" uid="uid://dl43xi6td3ut5" path="res://scenes/game/item/items/crapple.tres" id="8_3aj2l"]
 [ext_resource type="PackedScene" uid="uid://dgyh4ly1kx2cx" path="res://scenes/game/gameobjects/sawblade.tscn" id="10_h737m"]
@@ -28,10 +29,12 @@
 [ext_resource type="PackedScene" path="res://scenes/game/characters/water_area.tscn" id="27_awhem"]
 [ext_resource type="PackedScene" uid="uid://bt1svnjwmtnf3" path="res://scenes/game/inventory/storage.tscn" id="28_noycf"]
 [ext_resource type="Resource" uid="uid://diakavtovmh15" path="res://scenes/game/item/items/ammo_makarov.tres" id="29_0gvgb"]
+[ext_resource type="PackedScene" uid="uid://88hph4ji15s3" path="res://scenes/game/gameobjects/npc_spawner.tscn" id="29_58pmt"]
 [ext_resource type="PackedScene" uid="uid://hxe1g3invfrc" path="res://scenes/game/gameobjects/rot_telecom.tscn" id="29_heb4g"]
+[ext_resource type="PackedScene" uid="uid://digwfvtfnd652" path="res://scenes/game/characters/npc/worker_npc.tscn" id="30_c1abk"]
 [ext_resource type="Resource" uid="uid://vva1j8lgjumd" path="res://scenes/game/item/items/wep_makarov.tres" id="30_db70o"]
 [ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://scenes/game/gameobjects/metastabilizer.tscn" id="30_pwyrc"]
-[ext_resource type="Script" path="res://scenes/game/inventory/slot_data.gd" id="30_qktmy"]
+[ext_resource type="PackedScene" uid="uid://c0hmks8r7eg8q" path="res://scenes/game/characters/npc/misfit_npc.tscn" id="31_e1jpq"]
 [ext_resource type="PackedScene" uid="uid://b7nxt2hc5tvjo" path="res://scenes/game/gameobjects/processor.tscn" id="31_wm7sa"]
 [ext_resource type="Resource" uid="uid://n1tf63bmly" path="res://scenes/game/item/items/wep_aks.tres" id="32_g0v7j"]
 [ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://scenes/game/gameobjects/autostitcher.tscn" id="32_kskp8"]
@@ -43,6 +46,7 @@
 [ext_resource type="Resource" uid="uid://dwgvghaavgdju" path="res://scenes/game/item/items/slop_skull.tres" id="40_paov2"]
 [ext_resource type="PackedScene" uid="uid://cf510hosm884a" path="res://scenes/menu/options/options.tscn" id="41_lljnt"]
 [ext_resource type="Resource" uid="uid://ewgw8vk53l6f" path="res://scenes/game/item/items/amoeba_slime.tres" id="41_ywpg7"]
+[ext_resource type="Resource" uid="uid://b8u65yry4d7la" path="res://scenes/game/item/items/slag_metal.tres" id="43_et84o"]
 [ext_resource type="AudioStream" uid="uid://tkp806fv8xbc" path="res://assets/audio/menu_button_press.wav" id="45_6wg7q"]
 
 [sub_resource type="Gradient" id="403"]
@@ -109,30 +113,10 @@ size = Vector3(4, 4, 4)
 resource_local_to_scene = true
 size = Vector3(2, 2, 10)
 
-[sub_resource type="Resource" id="Resource_nmecp"]
-script = ExtResource("30_qktmy")
-item_data = ExtResource("29_0gvgb")
-quantity = 99
-
-[sub_resource type="Resource" id="Resource_14yqe"]
-script = ExtResource("30_qktmy")
-item_data = ExtResource("30_db70o")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_4ew06"]
-script = ExtResource("30_qktmy")
-item_data = ExtResource("32_g0v7j")
-quantity = 1
-
-[sub_resource type="Resource" id="Resource_1haeo"]
-script = ExtResource("30_qktmy")
-item_data = ExtResource("33_cjabh")
-quantity = 999
-
 [sub_resource type="Resource" id="387"]
 resource_local_to_scene = true
 script = ExtResource("6_cw0oq")
-slot_datas = Array[ExtResource("30_qktmy")]([SubResource("Resource_nmecp"), SubResource("Resource_14yqe"), SubResource("Resource_4ew06"), SubResource("Resource_1haeo"), null])
+slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null, null, null])
 
 [sub_resource type="StyleBoxFlat" id="380"]
 bg_color = Color(0, 0, 0, 0.270588)
@@ -327,18 +311,37 @@ omni_range = 20.0
 
 [node name="Other" type="Node" parent="."]
 
-[node name="tumor" parent="Other" instance=ExtResource("25_oefji")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -13, -30)
-
-[node name="tumor3" parent="Other" instance=ExtResource("25_oefji")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, -11, -38)
-
-[node name="tumor2" parent="Other" instance=ExtResource("25_oefji")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, -5, -8)
-
 [node name="TicketMachine" parent="Other" node_paths=PackedStringArray("game_level") instance=ExtResource("34_cdkn7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23)
 game_level = NodePath("../..")
+
+[node name="TumorSpawner" parent="Other" node_paths=PackedStringArray("spawn_timer") instance=ExtResource("7_m2jjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -5, 37)
+rot_object_to_spawn = ExtResource("25_oefji")
+spawn_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Other/TumorSpawner"]
+
+[node name="TumorSpawner2" parent="Other" node_paths=PackedStringArray("spawn_timer") instance=ExtResource("7_m2jjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, -11, -37)
+rot_object_to_spawn = ExtResource("25_oefji")
+spawn_timer = NodePath("../TumorSpawner/Timer")
+
+[node name="Timer" type="Timer" parent="Other/TumorSpawner2"]
+
+[node name="TumorSpawner3" parent="Other" node_paths=PackedStringArray("spawn_timer") instance=ExtResource("7_m2jjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, -11, -35)
+rot_object_to_spawn = ExtResource("25_oefji")
+spawn_timer = NodePath("../TumorSpawner/Timer")
+
+[node name="Timer" type="Timer" parent="Other/TumorSpawner3"]
+
+[node name="TumorSpawner4" parent="Other" node_paths=PackedStringArray("spawn_timer") instance=ExtResource("7_m2jjx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -13, -32)
+rot_object_to_spawn = ExtResource("25_oefji")
+spawn_timer = NodePath("../TumorSpawner/Timer")
+
+[node name="Timer" type="Timer" parent="Other/TumorSpawner4"]
 
 [node name="PlayerRoleSpawns" type="Node" parent="."]
 
@@ -463,6 +466,23 @@ apply_impulse_force = true
 
 [node name="NPCSpawners" type="Node" parent="."]
 
+[node name="WorkerSpawner" parent="NPCSpawners" node_paths=PackedStringArray("timer") instance=ExtResource("29_58pmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -36)
+npc_to_spawn = ExtResource("30_c1abk")
+timer = NodePath("Timer")
+max_npcs = 10
+
+[node name="Timer" type="Timer" parent="NPCSpawners/WorkerSpawner"]
+autostart = true
+
+[node name="MisfitSpawner" parent="NPCSpawners" node_paths=PackedStringArray("timer") instance=ExtResource("29_58pmt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, -21, 5)
+npc_to_spawn = ExtResource("31_e1jpq")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="NPCSpawners/MisfitSpawner"]
+autostart = true
+
 [node name="Vendors" type="Node" parent="."]
 
 [node name="vendor" parent="Vendors" instance=ExtResource("16_ux0yg")]
@@ -553,7 +573,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55, 1,
 [node name="ProleSpawnStorage" parent="StorageContainers" instance=ExtResource("28_noycf")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 54, 0, -29)
 inventory_data = SubResource("387")
+loot_table_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("43_et84o"), ExtResource("43_et84o"), ExtResource("43_et84o"), ExtResource("32_g0v7j"), ExtResource("30_db70o")])
 reset_time = 30.0
+does_reset = true
 
 [node name="WaterSources" type="Node" parent="."]
 

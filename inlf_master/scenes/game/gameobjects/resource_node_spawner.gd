@@ -30,3 +30,5 @@ func spawn():
 		
 		if apply_impulse_force:
 			new_spawn.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 5)
+		
+		return new_spawn

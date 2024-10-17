@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=74 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scenes/game/characters/player/player_weapon.gd" id="13"]
 [ext_resource type="Texture2D" uid="uid://ceu4x37u1jkwo" path="res://assets/textures/aks_anims.png" id="13_4qs7t"]
 [ext_resource type="Script" path="res://scenes/game/characters/player/player_weapon_manager.gd" id="14"]
+[ext_resource type="AudioStream" uid="uid://d3yr2w75phe52" path="res://assets/audio/test_footstep_complete.wav" id="14_m0754"]
 [ext_resource type="Script" path="res://scenes/game/characters/player/player.gd" id="15"]
 [ext_resource type="Resource" uid="uid://vva1j8lgjumd" path="res://scenes/game/item/items/wep_makarov.tres" id="16_bj3b2"]
 [ext_resource type="Texture2D" uid="uid://boey5f7qdq38e" path="res://assets/textures/makarov_anims.png" id="17_yi3ey"]
@@ -684,6 +685,7 @@ bus = &"SoundFX"
 [node name="Footsteps" type="Node3D" parent="Sounds"]
 
 [node name="StoneFootstep" type="AudioStreamPlayer" parent="Sounds/Footsteps"]
+stream = ExtResource("14_m0754")
 bus = &"SoundFX"
 
 [node name="TileFootstep" type="AudioStreamPlayer" parent="Sounds/Footsteps"]

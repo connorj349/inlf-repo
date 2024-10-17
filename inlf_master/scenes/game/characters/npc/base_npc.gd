@@ -87,7 +87,7 @@ func _physics_process(_delta):
 		
 		if footstep_time >= FOOTSTEP_FREQUENCY:
 			footstep_time = 0.0
-			$FootstepSound.play()
+			$FootstepSound.PlaySoundRange(0.8, 1.2)
 
 ##
 ## state methods
