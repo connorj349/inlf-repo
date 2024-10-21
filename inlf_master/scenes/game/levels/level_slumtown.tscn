@@ -313,6 +313,7 @@ omni_range = 20.0
 
 [node name="TicketMachine" parent="Other" node_paths=PackedStringArray("game_level") instance=ExtResource("34_cdkn7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54, 0, -23)
+money_required_to_end_game = 500
 game_level = NodePath("../..")
 
 [node name="TumorSpawner" parent="Other" node_paths=PackedStringArray("spawn_timer") instance=ExtResource("7_m2jjx")]

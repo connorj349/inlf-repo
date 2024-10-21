@@ -6,8 +6,8 @@
 [ext_resource type="Material" uid="uid://c32yjoodg4d4m" path="res://assets/materials/screen.tres" id="4_vjevv"]
 [ext_resource type="PackedScene" uid="uid://t6wdb2br7u17" path="res://assets/models/ticket-machine.glb" id="5"]
 [ext_resource type="Material" uid="uid://b73s0v4anr5dp" path="res://assets/materials/distiller.tres" id="5_pqfm1"]
+[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue_3d.tscn" id="7_5j211"]
 [ext_resource type="AudioStream" uid="uid://dg0kiv47n8vch" path="res://assets/audio/button_press_mechanical.wav" id="7_m16kw"]
-[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue.tscn" id="7_yeb6c"]
 [ext_resource type="AudioStream" uid="uid://vd3wmwxevagt" path="res://assets/audio/vendor_purchase.wav" id="8_5i15e"]
 
 [sub_resource type="BoxShape3D" id="1"]
@@ -154,16 +154,16 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 columns = 6
 
-[node name="Use" parent="." instance=ExtResource("7_yeb6c")]
+[node name="BuySound" parent="." instance=ExtResource("7_5j211")]
 
-[node name="UseSound" type="AudioStreamPlayer3D" parent="Use"]
-stream = ExtResource("7_m16kw")
+[node name="Sound" type="AudioStreamPlayer3D" parent="BuySound"]
+stream = ExtResource("8_5i15e")
 bus = &"SoundFX"
 
-[node name="Buy" parent="." instance=ExtResource("7_yeb6c")]
+[node name="UseSound" parent="." instance=ExtResource("7_5j211")]
 
-[node name="BuySound" type="AudioStreamPlayer3D" parent="Buy"]
-stream = ExtResource("8_5i15e")
+[node name="Sound" type="AudioStreamPlayer3D" parent="UseSound"]
+stream = ExtResource("7_m16kw")
 bus = &"SoundFX"
 
 [editable path="obj-ticket-machine"]
