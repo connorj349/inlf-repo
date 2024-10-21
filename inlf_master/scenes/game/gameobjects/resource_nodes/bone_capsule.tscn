@@ -101,6 +101,7 @@ libraries = {
 }
 
 [node name="HurtSound" parent="." instance=ExtResource("8_13150")]
+Count = 4
 
 [node name="Sound" type="AudioStreamPlayer3D" parent="HurtSound"]
 stream = ExtResource("9_f5dbh")

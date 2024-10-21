@@ -115,6 +115,7 @@ Count = 4
 
 [node name="Sound" type="AudioStreamPlayer3D" parent="HurtSound"]
 stream = ExtResource("9_47j1t")
+volume_db = -13.0
 bus = &"SoundFX"
 
 [connection signal="timeout" from="Timer" to="." method="queue_free"]

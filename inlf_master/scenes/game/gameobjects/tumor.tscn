@@ -112,6 +112,7 @@ libraries = {
 autostart = true
 
 [node name="HitSound" parent="." instance=ExtResource("8_jx6i2")]
+Count = 4
 
 [node name="Sound" type="AudioStreamPlayer3D" parent="HitSound"]
 stream = ExtResource("8_ybcu5")
