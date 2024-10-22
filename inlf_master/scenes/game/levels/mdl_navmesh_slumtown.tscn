@@ -4787,7 +4787,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/ground_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hsghp")
 
-[node name="south_wall_corridor" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="south_wall_corridor" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4479, 10.1104, 8.83912)
 mesh = SubResource("ArrayMesh_farmp")
 skeleton = NodePath("")
@@ -4797,7 +4797,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/south_wall_corridor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fp6ps")
 
-[node name="catwalk_to_tool_factory" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="catwalk_to_tool_factory" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.7333, 10.5333, -13.1333)
 mesh = SubResource("ArrayMesh_f7xxk")
 skeleton = NodePath("")
@@ -4808,7 +4808,7 @@ surface_material_override/0 = ExtResource("3_4ip50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/catwalk_to_tool_factory/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_aayna")
 
-[node name="bar_stairs" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="bar_stairs" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6, 5)
 mesh = SubResource("ArrayMesh_ly638")
 skeleton = NodePath("")
@@ -4829,7 +4829,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/bio_walls_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wu670")
 
-[node name="bio_shanty" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="bio_shanty" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 13.5)
 mesh = SubResource("ArrayMesh_vcusj")
 skeleton = NodePath("")
@@ -4839,7 +4839,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/bio_shanty/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ppgd1")
 
-[node name="bar_stairs_001" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="bar_stairs_001" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9867, 2.73416, 22)
 mesh = SubResource("ArrayMesh_g385g")
 skeleton = NodePath("")
@@ -4850,7 +4850,7 @@ surface_material_override/0 = ExtResource("3_4ip50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/bar_stairs_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dehej")
 
-[node name="plank_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="plank_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 0.0342121, -5)
 mesh = SubResource("ArrayMesh_5qg2w")
 skeleton = NodePath("")
@@ -4860,7 +4860,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/plank_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_l8gkd")
 
-[node name="grate" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="grate" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6, 0, -5)
 mesh = SubResource("ArrayMesh_smo8u")
 skeleton = NodePath("")
@@ -4871,7 +4871,7 @@ surface_material_override/0 = ExtResource("3_4ip50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/grate/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_23a57")
 
-[node name="plank_02" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="plank_02" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.0342121, -5)
 mesh = SubResource("ArrayMesh_ciakf")
 skeleton = NodePath("")
@@ -4881,7 +4881,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/plank_02/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vaufo")
 
-[node name="tool_factory_underbelly" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="tool_factory_underbelly" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -3.11905, -29.8571)
 mesh = SubResource("ArrayMesh_nofcm")
 skeleton = NodePath("")
@@ -4891,7 +4891,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/tool_factory_underbelly/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4qwil")
 
-[node name="factory-platform" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="factory-platform" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 5, 26.5)
 mesh = SubResource("ArrayMesh_p1jk4")
 skeleton = NodePath("")
@@ -4902,7 +4902,7 @@ surface_material_override/0 = ExtResource("3_4ip50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/factory-platform/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nvcq0")
 
-[node name="bar_support_beams" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="bar_support_beams" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.5, -4, 7.5)
 mesh = SubResource("ArrayMesh_bkjip")
 skeleton = NodePath("")
@@ -4912,7 +4912,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/bar_support_beams/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_shu6k")
 
-[node name="bio_shanty_001" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="bio_shanty_001" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 39, 5, -49.5)
 mesh = SubResource("ArrayMesh_l31en")
 skeleton = NodePath("")
@@ -4922,7 +4922,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/bio_shanty_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_awrfo")
 
-[node name="bio_shanty_002" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="bio_shanty_002" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 37, 5, -20.5)
 mesh = SubResource("ArrayMesh_tyu34")
 skeleton = NodePath("")
@@ -4932,7 +4932,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/bio_shanty_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xad00")
 
-[node name="bar_floor_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="bar_floor_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6, 21)
 mesh = SubResource("ArrayMesh_d1vmk")
 skeleton = NodePath("")
@@ -4952,7 +4952,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/tool_factory_walls_floor_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_d0uub")
 
-[node name="tool_factory_floor_02" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="tool_factory_floor_02" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 5, -19.25)
 mesh = SubResource("ArrayMesh_oc0cy")
 skeleton = NodePath("")
@@ -4962,7 +4962,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/tool_factory_floor_02/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_eexeq")
 
-[node name="tool_factory_floor_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="tool_factory_floor_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, -0.5, -19.25)
 mesh = SubResource("ArrayMesh_po61s")
 skeleton = NodePath("")
@@ -4972,7 +4972,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/tool_factory_floor_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_tkq3h")
 
-[node name="wep_factory_roof_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="wep_factory_roof_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -25)
 mesh = SubResource("ArrayMesh_rmi24")
 skeleton = NodePath("")
@@ -4982,7 +4982,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/wep_factory_roof_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fk7w8")
 
-[node name="wep_factory_floor_02" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="wep_factory_floor_02" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28571, 5.28571, -29.1429)
 mesh = SubResource("ArrayMesh_ww5jd")
 skeleton = NodePath("")
@@ -4992,7 +4992,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/wep_factory_floor_02/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_tyfmu")
 
-[node name="wep_factor_floor_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="wep_factor_floor_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0625, 0, -26.375)
 mesh = SubResource("ArrayMesh_8ehuc")
 skeleton = NodePath("")
@@ -5002,7 +5002,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/wep_factor_floor_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hwcay")
 
-[node name="scaffolding" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="scaffolding" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5, 5, -30.5)
 mesh = SubResource("ArrayMesh_53flu")
 skeleton = NodePath("")
@@ -5012,7 +5012,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/scaffolding/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_am61u")
 
-[node name="slum_shelter" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="slum_shelter" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 5, -42.5)
 mesh = SubResource("ArrayMesh_o082u")
 skeleton = NodePath("")
@@ -5032,7 +5032,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/brick_wall/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_grjvn")
 
-[node name="plank_01_001" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="plank_01_001" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(0.0154292, 0, 0.812692, 0, 1, 0, -0.999841, 0, 0.0125412, 55, 5.03421, -23)
 mesh = SubResource("ArrayMesh_q04kc")
 skeleton = NodePath("")
@@ -5042,7 +5042,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/plank_01_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6y37o")
 
-[node name="slum_shelter_001" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="slum_shelter_001" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 52, 5, -48.5)
 mesh = SubResource("ArrayMesh_xxnyi")
 skeleton = NodePath("")
@@ -5102,7 +5102,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/platform_wall_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qr56c")
 
-[node name="nexus" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="nexus" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 25)
 mesh = SubResource("ArrayMesh_3lkqs")
 skeleton = NodePath("")
@@ -5112,7 +5112,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/nexus/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8ye5a")
 
-[node name="split_wall" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="split_wall" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.551, 7.55102, -17.7546)
 mesh = SubResource("ArrayMesh_t18up")
 skeleton = NodePath("")
@@ -5122,7 +5122,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/split_wall/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8axmx")
 
-[node name="split_wall_corridor" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="split_wall_corridor" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.125, 7.75, -17.5)
 mesh = SubResource("ArrayMesh_hxxsr")
 skeleton = NodePath("")
@@ -5132,7 +5132,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/split_wall_corridor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fun02")
 
-[node name="bio_roof_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="bio_roof_01" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 5, 10)
 mesh = SubResource("ArrayMesh_0lm5e")
 skeleton = NodePath("")
@@ -5142,7 +5142,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/bio_roof_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_a2pls")
 
-[node name="bar_stairs_002" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="bar_stairs_002" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 2, 5, -37.5)
 mesh = SubResource("ArrayMesh_oqpeg")
 skeleton = NodePath("")
@@ -5153,7 +5153,7 @@ surface_material_override/0 = ExtResource("3_4ip50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/bar_stairs_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dc7at")
 
-[node name="wep_factory_catwalk" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="wep_factory_catwalk" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.375, 5.5, -22.5)
 mesh = SubResource("ArrayMesh_lnidf")
 skeleton = NodePath("")
@@ -5164,7 +5164,7 @@ surface_material_override/0 = ExtResource("3_4ip50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/wep_factory_catwalk/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_eew4f")
 
-[node name="scaffolding_platforms" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="scaffolding_platforms" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 9.5, -28)
 mesh = SubResource("ArrayMesh_s30oh")
 skeleton = NodePath("")
@@ -5174,7 +5174,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegions/NavigationRegion3D/scaffolding_platforms/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_h6f6r")
 
-[node name="canal_ground_001" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D"]
+[node name="canal_ground_001" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -5, -5)
 mesh = SubResource("ArrayMesh_dxtow")
 skeleton = NodePath("")
@@ -5187,7 +5187,7 @@ shape = SubResource("ConcavePolygonShape3D_esgy6")
 [node name="NavigationRegion3D2" type="NavigationRegion3D" parent="NavigationRegions"]
 navigation_mesh = SubResource("NavigationMesh_iroft")
 
-[node name="canal_ground" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D2"]
+[node name="canal_ground" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D2" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1818, -5, 2.15152)
 mesh = SubResource("ArrayMesh_yxgvt")
 skeleton = NodePath("")
@@ -5200,7 +5200,7 @@ shape = SubResource("ConcavePolygonShape3D_viwo7")
 [node name="NavigationRegion3D3" type="NavigationRegion3D" parent="NavigationRegions"]
 navigation_mesh = SubResource("NavigationMesh_ctftc")
 
-[node name="quarry" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D3"]
+[node name="quarry" type="MeshInstance3D" parent="NavigationRegions/NavigationRegion3D3" groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, -20, -5)
 mesh = SubResource("ArrayMesh_waonw")
 skeleton = NodePath("")
@@ -5252,7 +5252,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="canal_walls/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_554ph")
 
-[node name="woods" type="MeshInstance3D" parent="."]
+[node name="woods" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -30)
 mesh = SubResource("ArrayMesh_0jrlx")
 skeleton = NodePath("")
@@ -5262,7 +5262,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="woods/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dh2ry")
 
-[node name="apartment_rooms" type="MeshInstance3D" parent="."]
+[node name="apartment_rooms" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 8.125, 4.5)
 mesh = SubResource("ArrayMesh_q6qc7")
 skeleton = NodePath("")
@@ -5355,7 +5355,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bio_walls_02/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rcu3i")
 
-[node name="bio_roof_02" type="MeshInstance3D" parent="."]
+[node name="bio_roof_02" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(-1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 30.0333, 10.5, 15.0333)
 mesh = SubResource("ArrayMesh_5le7y")
 skeleton = NodePath("")
@@ -5375,7 +5375,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bio_railing/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gjyyr")
 
-[node name="bio_roof_wood" type="MeshInstance3D" parent="."]
+[node name="bio_roof_wood" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(-1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 36.5333, 10.6, 6.03334)
 mesh = SubResource("ArrayMesh_kwv4u")
 skeleton = NodePath("")
@@ -5395,7 +5395,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bar_walls_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bdlr8")
 
-[node name="bar_roof_01" type="MeshInstance3D" parent="."]
+[node name="bar_roof_01" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 11.5, 21)
 mesh = SubResource("ArrayMesh_7i8ix")
 skeleton = NodePath("")
@@ -5405,7 +5405,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bar_roof_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_s47wd")
 
-[node name="bar_plank_01" type="MeshInstance3D" parent="."]
+[node name="bar_plank_01" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12689, 6.1, 12.5)
 mesh = SubResource("ArrayMesh_ynapa")
 skeleton = NodePath("")
@@ -5415,7 +5415,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bar_plank_01/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vsd3h")
 
-[node name="bar_plank_02" type="MeshInstance3D" parent="."]
+[node name="bar_plank_02" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15005, 6.1, 25.2)
 mesh = SubResource("ArrayMesh_pewtl")
 skeleton = NodePath("")
@@ -5435,7 +5435,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bar_walls_02/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_o7ouv")
 
-[node name="bar_roof_02" type="MeshInstance3D" parent="."]
+[node name="bar_roof_02" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 17, 21)
 mesh = SubResource("ArrayMesh_ad00b")
 skeleton = NodePath("")
@@ -5456,7 +5456,7 @@ surface_material_override/0 = ExtResource("3_4ip50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="shops_railing/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qv2jx")
 
-[node name="shops_grate" type="MeshInstance3D" parent="."]
+[node name="shops_grate" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 0, -5)
 mesh = SubResource("ArrayMesh_45osx")
 skeleton = NodePath("")
@@ -5477,7 +5477,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tool_factory_walls_floor_02/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_u2i3a")
 
-[node name="tool_factory_floor_03" type="MeshInstance3D" parent="."]
+[node name="tool_factory_floor_03" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 10.5, -19.25)
 mesh = SubResource("ArrayMesh_rhuo6")
 skeleton = NodePath("")
@@ -5487,7 +5487,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tool_factory_floor_03/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pygtu")
 
-[node name="tool_factory_roof" type="MeshInstance3D" parent="."]
+[node name="tool_factory_roof" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 16, -19.25)
 mesh = SubResource("ArrayMesh_oc5un")
 skeleton = NodePath("")
@@ -5507,7 +5507,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tool_factory_walls_floor_03/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_6p5rv")
 
-[node name="broken-stairs" type="MeshInstance3D" parent="."]
+[node name="broken-stairs" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 5.5, -9)
 mesh = SubResource("ArrayMesh_ngopx")
 skeleton = NodePath("")
@@ -5546,7 +5546,7 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tool_factory_floor_02_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bfoxl")
 
-[node name="wep_factory_roof_02" type="MeshInstance3D" parent="."]
+[node name="wep_factory_roof_02" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5, -30)
 mesh = SubResource("ArrayMesh_8fihd")
 skeleton = NodePath("")
@@ -5577,7 +5577,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wep_factory_walls_02/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jumim")
 
-[node name="garden_stairs" type="MeshInstance3D" parent="."]
+[node name="garden_stairs" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -31)
 mesh = SubResource("ArrayMesh_wkj1v")
 skeleton = NodePath("")
@@ -5598,7 +5598,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="woods_stairs_support/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_rdadd")
 
-[node name="woods_supportbeams" type="MeshInstance3D" parent="."]
+[node name="woods_supportbeams" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 9, -40)
 mesh = SubResource("ArrayMesh_hyert")
 skeleton = NodePath("")
@@ -5608,7 +5608,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="woods_supportbeams/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_mely6")
 
-[node name="woods_plank" type="MeshInstance3D" parent="."]
+[node name="woods_plank" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1793, 7.1, -36.9843)
 mesh = SubResource("ArrayMesh_kchuv")
 skeleton = NodePath("")
@@ -5618,7 +5618,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="woods_plank/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_r3io6")
 
-[node name="sewer_scaffolding" type="MeshInstance3D" parent="."]
+[node name="sewer_scaffolding" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -8.5, -30.5)
 mesh = SubResource("ArrayMesh_melfe")
 skeleton = NodePath("")
@@ -5628,7 +5628,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sewer_scaffolding/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_gmu00")
 
-[node name="sewer_platform" type="MeshInstance3D" parent="."]
+[node name="sewer_platform" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4726, -4.95463, -32.7324)
 mesh = SubResource("ArrayMesh_aipbd")
 skeleton = NodePath("")
@@ -5638,7 +5638,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sewer_platform/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qugs6")
 
-[node name="sewer_plank" type="MeshInstance3D" parent="."]
+[node name="sewer_plank" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, -7.01633, -34.1508)
 mesh = SubResource("ArrayMesh_7ee16")
 skeleton = NodePath("")
@@ -5648,7 +5648,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sewer_plank/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8xe4s")
 
-[node name="bar_plank" type="MeshInstance3D" parent="."]
+[node name="bar_plank" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02736, 5.78632, -5.94005)
 mesh = SubResource("ArrayMesh_nrbv3")
 skeleton = NodePath("")
@@ -5680,7 +5680,7 @@ mesh = SubResource("ArrayMesh_k7x65")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_4jigv")
 
-[node name="potential_spawn" type="MeshInstance3D" parent="."]
+[node name="potential_spawn" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.625, -7.875, 4.625)
 mesh = SubResource("ArrayMesh_7jp4t")
 skeleton = NodePath("")
@@ -5701,7 +5701,7 @@ surface_material_override/0 = ExtResource("3_4ip50")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="potential_grate/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xkooc")
 
-[node name="channel_to_misfit_spawn" type="MeshInstance3D" parent="."]
+[node name="channel_to_misfit_spawn" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -3.75, -31.5)
 mesh = SubResource("ArrayMesh_ysh28")
 skeleton = NodePath("")
@@ -5711,7 +5711,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="channel_to_misfit_spawn/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hpuy5")
 
-[node name="channel_from_split" type="MeshInstance3D" parent="."]
+[node name="channel_from_split" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, -4.66667, -17.5)
 mesh = SubResource("ArrayMesh_tkpln")
 skeleton = NodePath("")
@@ -5731,7 +5731,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="channel_to_sewers_prolespawn/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_dknyo")
 
-[node name="channel_outside_sewers" type="MeshInstance3D" parent="."]
+[node name="channel_outside_sewers" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -5.625, 5.5)
 mesh = SubResource("ArrayMesh_jo85c")
 skeleton = NodePath("")
@@ -5741,7 +5741,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="channel_outside_sewers/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ina1b")
 
-[node name="extra_comp" type="MeshInstance3D" parent="."]
+[node name="extra_comp" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5, -5.49286, 2.5)
 mesh = SubResource("ArrayMesh_kakqu")
 skeleton = NodePath("")
@@ -5751,7 +5751,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="extra_comp/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_enryu")
 
-[node name="secret_storage" type="MeshInstance3D" parent="."]
+[node name="secret_storage" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83333, -9.58333, -29.6667)
 mesh = SubResource("ArrayMesh_pgc4c")
 skeleton = NodePath("")
@@ -5761,7 +5761,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="secret_storage/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1avy0")
 
-[node name="channel_under_tool_factory" type="MeshInstance3D" parent="."]
+[node name="channel_under_tool_factory" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.16667, -5.08333, -16.2778)
 mesh = SubResource("ArrayMesh_1uvip")
 skeleton = NodePath("")
@@ -5771,7 +5771,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="channel_under_tool_factory/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jqbdp")
 
-[node name="pathway_to_secret" type="MeshInstance3D" parent="."]
+[node name="pathway_to_secret" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1667, -6.36111, -41.4444)
 mesh = SubResource("ArrayMesh_tk083")
 skeleton = NodePath("")
@@ -5781,7 +5781,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pathway_to_secret/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pat8k")
 
-[node name="tool_factory_exitgrate" type="MeshInstance3D" parent="."]
+[node name="tool_factory_exitgrate" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -2.8125, -15.625)
 mesh = SubResource("ArrayMesh_f20fe")
 skeleton = NodePath("")
@@ -5832,7 +5832,7 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tool_factory_underbelly_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_b64sh")
 
-[node name="misfit_spawn_002" type="MeshInstance3D" parent="."]
+[node name="misfit_spawn_002" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.8462, -6.38462, -36.1538)
 mesh = SubResource("ArrayMesh_ycudk")
 skeleton = NodePath("")
@@ -5842,7 +5842,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="misfit_spawn_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_lnsom")
 
-[node name="channel_under_tool_factory_001" type="MeshInstance3D" parent="."]
+[node name="channel_under_tool_factory_001" type="MeshInstance3D" parent="." groups=["ground_stone"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7879, -8.39394, -22.5569)
 mesh = SubResource("ArrayMesh_caadc")
 skeleton = NodePath("")

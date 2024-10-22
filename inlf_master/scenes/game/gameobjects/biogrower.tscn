@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyd6tpkvik6b3"]
+[gd_scene load_steps=20 format=3 uid="uid://cyd6tpkvik6b3"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/item/item_deposit/item_deposit.tscn" id="1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/biogrower.gd" id="2"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://scenes/game/ui_bar.gd" id="6_xv4hy"]
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="7_igao5"]
 [ext_resource type="AudioStream" uid="uid://bkbonr5n6iila" path="res://assets/audio/machine/machine_accept_item.wav" id="9_orwpt"]
+[ext_resource type="AudioStream" uid="uid://cny0p5y3owll" path="res://assets/audio/biogrower_complete.wav" id="10_x5uk6"]
+[ext_resource type="AudioStream" uid="uid://b0nxme2ddx4kp" path="res://assets/audio/biogrower_fail.wav" id="11_7rk4p"]
+[ext_resource type="AudioStream" uid="uid://b28rn55hxvivr" path="res://assets/audio/machine/machine_loop.wav" id="12_08b13"]
 
 [sub_resource type="Resource" id="Resource_jpqke"]
 script = ExtResource("2_1f7x4")
@@ -194,12 +197,15 @@ stream = ExtResource("9_orwpt")
 bus = &"SoundFX"
 
 [node name="GrowthTimeoutSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_x5uk6")
 bus = &"SoundFX"
 
 [node name="GrowthTimeoutFailSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_7rk4p")
 bus = &"SoundFX"
 
 [node name="GrowingSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("12_08b13")
 bus = &"SoundFX"
 
 [connection signal="timeout" from="GrowTimer" to="." method="_on_GrowTimer_timeout"]
