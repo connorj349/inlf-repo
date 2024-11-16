@@ -3487,6 +3487,7 @@ libraries = {
 [node name="PlayerSpawns" type="Node" parent="."]
 
 [node name="WorkerRoleSpawn" parent="PlayerSpawns" instance=ExtResource("24_vv6mr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
 [node name="CultistRoleSpawn" parent="PlayerSpawns" instance=ExtResource("24_vv6mr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 10, 4)
@@ -4159,8 +4160,8 @@ layout_mode = 1
 
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
 
 [editable path="Geometry/liverfailure/ManholeCover/CanvasLayer/HintObjectInterface"]
 [editable path="Machines/ToolFactoryProductionMachine2"]

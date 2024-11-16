@@ -714,7 +714,7 @@ unique_name_in_owner = true
 
 [node name="Camera3D" type="Camera3D" parent="HeadOriginalPosition/Head/CameraSmooth"]
 cull_mask = 1048571
-far = 75.0
+far = 1000.0
 
 [node name="HintObjRayCast" type="RayCast3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D"]
 target_position = Vector3(0, 0, -3)

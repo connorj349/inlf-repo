@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Industrial Nightmare: Liver Failure"
+config/name="Industrial Nightmare"
 config/description="Post apocalyptic role playing game with roguelite elements."
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2")
-config/icon="res://icon.png"
+config/icon="res://inlf_icon.png"
+config/windows_native_icon="res://inlf.ico"
 
 [audio]
 
@@ -126,10 +127,6 @@ right_click={
 3d_physics/layer_4="player"
 3d_physics/layer_5="water"
 3d_physics/layer_6="nodraw"
-
-[navigation]
-
-3d/default_cell_height=0.1
 
 [physics]
 
