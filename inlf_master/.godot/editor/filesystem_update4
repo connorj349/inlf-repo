@@ -4,8 +4,8 @@ res://scenes/game/item/items/ammo_aks.tres
 res://scenes/game/item/items/wep_aks.tres
 res://scenes/game/item/items/ammo_makarov.tres
 res://scenes/game/item/items/wep_makarov.tres
-res://assets/shaders/simple_water.gdshader
 res://assets/slumtown_props_meshlibrary.tres
+res://assets/shaders/simple_water.gdshader
 res://scenes/game/item/items/leather.tres
 res://scenes/game/item/items/crapple.tres
 res://scenes/game/item/items/bio_fuel.tres
@@ -25,14 +25,4 @@ res://scenes/game/item/items/cancer.tres
 res://scenes/game/item/items/slag_metal.tres
 res://scenes/game/game_world.tscn
 res://scenes/game/characters/player/player.tscn
-res://scenes/game/characters/player/player_ghost.tscn
 res://scenes/game/levels/level_slumtown.tscn
-res://scenes/menu/main_menu.tscn
-res://scenes/menu/menu.gd
-res://scenes/menu/level_select/level_select.tscn
-res://scenes/game/levels/level_liverfailure.tscn
-res://assets/models/skybox_objects/skybox_objects_meshlibrary.tres
-res://assets/materials/emissive_light_bulb.tres
-res://assets/materials/slime.tres
-res://scenes/game/levels/mdl_navmesh_slumtown.tscn
-res://scenes/menu/level_select/level_select.gd
