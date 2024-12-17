@@ -1,4 +1,8 @@
 extends Node
+## Main Scene
+##
+## used to instantiate the game world, main menu and connect signals that change
+## the game back and forth from gameplay to the main menu
 
 @export var game_scene_path: String
 

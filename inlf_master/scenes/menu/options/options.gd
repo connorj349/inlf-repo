@@ -1,4 +1,8 @@
 extends Control
+## Player Game Options
+##
+## modifies things like fullscreen mode, etc.
+## need to add options like key rebinding
 
 @onready var button_press: AudioStreamPlayer = $ButtonPressSound
 

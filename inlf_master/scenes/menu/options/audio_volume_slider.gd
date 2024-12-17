@@ -1,4 +1,8 @@
 extends HSlider
+## Audio Volume Slider
+##
+## Small script that is only used on the volume sliders
+## controls volume
 
 @export var audio_bus_name: String = "Master"
 

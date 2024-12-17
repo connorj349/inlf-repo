@@ -1,4 +1,7 @@
 extends Control
+## Pause Menu script
+##
+## Only controls showing/hiding the pause menu screen in-game and pauses the game state
 
 @export var button_press_sound: AudioStreamPlayer
 

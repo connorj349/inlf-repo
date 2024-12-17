@@ -1,4 +1,7 @@
 extends Control
+## Level Select
+##
+## Contains a method and signal for use during level selection in the main menu
 
 signal selected_level(level_name: String)
 

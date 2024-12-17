@@ -1,4 +1,7 @@
 extends TextureRect
+## Main Menu
+##
+## Controls which level the player can switch to and displays all available levels to the player
 
 signal starting(level_name: String)
 

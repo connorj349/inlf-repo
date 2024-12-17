@@ -1,4 +1,8 @@
 extends Node3D
+## Game World
+##
+## loads a level at scene_path that is set after a signal call
+## also handles going back to the main menu when requested by the level
 
 signal end_game
 
