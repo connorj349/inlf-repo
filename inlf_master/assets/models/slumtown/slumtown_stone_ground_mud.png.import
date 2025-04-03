@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://f4xl31urvaj4"
-path.s3tc="res://.godot/imported/slumtown_stone_ground_mud.png-9c4385944b2db8164e8cf88e3c5ae660.s3tc.ctex"
+path.bptc="res://.godot/imported/slumtown_stone_ground_mud.png-9c4385944b2db8164e8cf88e3c5ae660.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -15,12 +15,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/slumtown/slumtown_stone_ground_mud.png"
-dest_files=["res://.godot/imported/slumtown_stone_ground_mud.png-9c4385944b2db8164e8cf88e3c5ae660.s3tc.ctex"]
+dest_files=["res://.godot/imported/slumtown_stone_ground_mud.png-9c4385944b2db8164e8cf88e3c5ae660.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

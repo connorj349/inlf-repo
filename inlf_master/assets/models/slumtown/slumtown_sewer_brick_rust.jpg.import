@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7bq23qj2fwfn"
-path.s3tc="res://.godot/imported/slumtown_sewer_brick_rust.jpg-a1e9b8a75a499e21517077e92636ed5e.s3tc.ctex"
+path.bptc="res://.godot/imported/slumtown_sewer_brick_rust.jpg-a1e9b8a75a499e21517077e92636ed5e.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -15,12 +15,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/slumtown/slumtown_sewer_brick_rust.jpg"
-dest_files=["res://.godot/imported/slumtown_sewer_brick_rust.jpg-a1e9b8a75a499e21517077e92636ed5e.s3tc.ctex"]
+dest_files=["res://.godot/imported/slumtown_sewer_brick_rust.jpg-a1e9b8a75a499e21517077e92636ed5e.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm6bklgb4tae6"
-path.s3tc="res://.godot/imported/slumtown_junk_sheet_metal.jpg-032996e42bad97f254c0a8f8a2df0be8.s3tc.ctex"
+path.bptc="res://.godot/imported/slumtown_junk_sheet_metal.jpg-032996e42bad97f254c0a8f8a2df0be8.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -15,12 +15,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/slumtown/slumtown_junk_sheet_metal.jpg"
-dest_files=["res://.godot/imported/slumtown_junk_sheet_metal.jpg-032996e42bad97f254c0a8f8a2df0be8.s3tc.ctex"]
+dest_files=["res://.godot/imported/slumtown_junk_sheet_metal.jpg-032996e42bad97f254c0a8f8a2df0be8.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwo8u2aa1ygrn"
-path.s3tc="res://.godot/imported/slumtown_brick.png-29b3923d4db06113305c4c3f0b39e989.s3tc.ctex"
+path.bptc="res://.godot/imported/slumtown_brick.png-29b3923d4db06113305c4c3f0b39e989.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -15,12 +15,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/slumtown/slumtown_brick.png"
-dest_files=["res://.godot/imported/slumtown_brick.png-29b3923d4db06113305c4c3f0b39e989.s3tc.ctex"]
+dest_files=["res://.godot/imported/slumtown_brick.png-29b3923d4db06113305c4c3f0b39e989.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
