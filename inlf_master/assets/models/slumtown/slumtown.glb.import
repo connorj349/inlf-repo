@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cm35hrjo1wj0m"
-path="res://.godot/imported/slumtown.glb-c15edbf57b0901a38d4b0588cb0dd227.scn"
+uid="uid://c8j3klbbs7fmn"
+path="res://.godot/imported/slumtown.glb-d3d8d6f672591f2b289a7a878c125c99.scn"
 
 [deps]
 
-source_file="res://assets/models/slumtown.glb"
-dest_files=["res://.godot/imported/slumtown.glb-c15edbf57b0901a38d4b0588cb0dd227.scn"]
+source_file="res://assets/models/slumtown/slumtown.glb"
+dest_files=["res://.godot/imported/slumtown.glb-d3d8d6f672591f2b289a7a878c125c99.scn"]
 
 [params]
 

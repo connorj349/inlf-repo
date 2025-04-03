@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvy0eh7d6e6qn"
-path.s3tc="res://.godot/imported/slumtown_wood_rotted.jpg-678f363557411145c1236ae3b0bdd93d.s3tc.ctex"
+uid="uid://dbiyig2bp7f8g"
+path.s3tc="res://.godot/imported/slumtown_stone_wall.jpg-1ae0c3baca4e05793fdd573a775dfe97.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "aee2f5775903657a74a325266c39ab10"
+"md5": "1cf380ca7082c3372f4654149c648a17"
 }
 
 [deps]
 
-source_file="res://assets/models/slumtown_wood_rotted.jpg"
-dest_files=["res://.godot/imported/slumtown_wood_rotted.jpg-678f363557411145c1236ae3b0bdd93d.s3tc.ctex"]
+source_file="res://assets/models/slumtown/slumtown_stone_wall.jpg"
+dest_files=["res://.godot/imported/slumtown_stone_wall.jpg-1ae0c3baca4e05793fdd573a775dfe97.s3tc.ctex"]
 
 [params]
 

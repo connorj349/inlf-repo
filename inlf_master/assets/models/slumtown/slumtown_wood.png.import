@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdwjsvk70lvk1"
-path.s3tc="res://.godot/imported/slumtown_wood.png-734cbe5a1bad86e1ea2b980f54b12d5d.s3tc.ctex"
+uid="uid://bqoj1pmei1p1v"
+path.s3tc="res://.godot/imported/slumtown_wood.png-13c01324bd7df2959c6b3c9617cfdfce.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/slumtown_wood.png"
-dest_files=["res://.godot/imported/slumtown_wood.png-734cbe5a1bad86e1ea2b980f54b12d5d.s3tc.ctex"]
+source_file="res://assets/models/slumtown/slumtown_wood.png"
+dest_files=["res://.godot/imported/slumtown_wood.png-13c01324bd7df2959c6b3c9617cfdfce.s3tc.ctex"]
 
 [params]
 

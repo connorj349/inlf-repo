@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw5c5mxrxetqb"
-path.s3tc="res://.godot/imported/slumtown_roof.png-84752760dc503be4649f78dd9cbca760.s3tc.ctex"
+uid="uid://bop3rdp1ygub7"
+path.s3tc="res://.godot/imported/slumtown_metal-flooring.jpg-3b36d98ae797fd6955a48c9810f85e51.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "03525961c9505f2eb3bc69c2b0dd5754"
+"md5": "43b97a2a977b7e21a80d15ca028a0f98"
 }
 
 [deps]
 
-source_file="res://assets/models/slumtown_roof.png"
-dest_files=["res://.godot/imported/slumtown_roof.png-84752760dc503be4649f78dd9cbca760.s3tc.ctex"]
+source_file="res://assets/models/slumtown/slumtown_metal-flooring.jpg"
+dest_files=["res://.godot/imported/slumtown_metal-flooring.jpg-3b36d98ae797fd6955a48c9810f85e51.s3tc.ctex"]
 
 [params]
 

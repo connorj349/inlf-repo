@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn74hbnlgdu1w"
-path.s3tc="res://.godot/imported/slumtown_wood_wall.jpg-2c826d9edd7972bcc59d7f2b94d63d09.s3tc.ctex"
+uid="uid://bt6jdrblpiamo"
+path.s3tc="res://.godot/imported/slumtown_canal_wall.jpg-3a48a3ea1e3303544beb13c7fede0131.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "5dcc4a225354b1203800c39aa4677b76"
+"md5": "f86e7253e2e0c8261b6b561469724d28"
 }
 
 [deps]
 
-source_file="res://assets/models/slumtown_wood_wall.jpg"
-dest_files=["res://.godot/imported/slumtown_wood_wall.jpg-2c826d9edd7972bcc59d7f2b94d63d09.s3tc.ctex"]
+source_file="res://assets/models/slumtown/slumtown_canal_wall.jpg"
+dest_files=["res://.godot/imported/slumtown_canal_wall.jpg-3a48a3ea1e3303544beb13c7fede0131.s3tc.ctex"]
 
 [params]
 

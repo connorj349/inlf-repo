@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btds74pnv434"
-path.s3tc="res://.godot/imported/slumtown_grate_floor.png-1e445a27503b3c6f6d8d729a45051e1b.s3tc.ctex"
+uid="uid://crdd4sbtwq3g4"
+path.s3tc="res://.godot/imported/slumtown_factory_interior_wall.png-dad7705b33abd0bccb4ac65b7b2617b7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "74302766e872559fd65c33f65852ed48"
+"md5": "52036c00e77ad4605e48eac20fb50059"
 }
 
 [deps]
 
-source_file="res://assets/models/slumtown_grate_floor.png"
-dest_files=["res://.godot/imported/slumtown_grate_floor.png-1e445a27503b3c6f6d8d729a45051e1b.s3tc.ctex"]
+source_file="res://assets/models/slumtown/slumtown_factory_interior_wall.png"
+dest_files=["res://.godot/imported/slumtown_factory_interior_wall.png-dad7705b33abd0bccb4ac65b7b2617b7.s3tc.ctex"]
 
 [params]
 

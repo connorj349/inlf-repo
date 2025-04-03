@@ -29,3 +29,4 @@ res://scenes/game/levels/level_slumtown.tscn
 res://scenes/menu/level_select/level_select.tscn
 res://scenes/game/gameobjects/production_machine.tscn
 res://scenes/game/gameobjects/production_machine.gd
+res://assets/materials/slime.tres

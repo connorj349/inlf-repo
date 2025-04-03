@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqfopa6w5isvl"
-path.s3tc="res://.godot/imported/slumtown_wallpaper.png-a4428f5cddb2f275dca599ed1506a16e.s3tc.ctex"
+uid="uid://cm6bklgb4tae6"
+path.s3tc="res://.godot/imported/slumtown_junk_sheet_metal.jpg-032996e42bad97f254c0a8f8a2df0be8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "7cdd03c95764ddff717477f778cd8549"
+"md5": "f2b18f75f874eafbfee3d1904bbc150b"
 }
 
 [deps]
 
-source_file="res://assets/models/slumtown_wallpaper.png"
-dest_files=["res://.godot/imported/slumtown_wallpaper.png-a4428f5cddb2f275dca599ed1506a16e.s3tc.ctex"]
+source_file="res://assets/models/slumtown/slumtown_junk_sheet_metal.jpg"
+dest_files=["res://.godot/imported/slumtown_junk_sheet_metal.jpg-032996e42bad97f254c0a8f8a2df0be8.s3tc.ctex"]
 
 [params]
 

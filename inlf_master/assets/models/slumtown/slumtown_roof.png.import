@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8j0fnfmcrd1t"
-path.s3tc="res://.godot/imported/slumtown_grass.jpg-052a60e75515571d2afa57f83c21ae6e.s3tc.ctex"
+uid="uid://bwvd1ga1d0k0j"
+path.s3tc="res://.godot/imported/slumtown_roof.png-3b58deeb2389ea0769b84f967a558875.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "1720936515289f710f583f2a7171cdcd"
+"md5": "03525961c9505f2eb3bc69c2b0dd5754"
 }
 
 [deps]
 
-source_file="res://assets/models/slumtown_grass.jpg"
-dest_files=["res://.godot/imported/slumtown_grass.jpg-052a60e75515571d2afa57f83c21ae6e.s3tc.ctex"]
+source_file="res://assets/models/slumtown/slumtown_roof.png"
+dest_files=["res://.godot/imported/slumtown_roof.png-3b58deeb2389ea0769b84f967a558875.s3tc.ctex"]
 
 [params]
 

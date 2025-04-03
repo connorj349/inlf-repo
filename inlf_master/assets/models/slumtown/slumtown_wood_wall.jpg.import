@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beym5s44juu0g"
-path.s3tc="res://.godot/imported/slumtown_brick_wall_02.jpg-9170dce8fc7952adfeea0bca963bb2d5.s3tc.ctex"
+uid="uid://c0uculdg57xaj"
+path.s3tc="res://.godot/imported/slumtown_wood_wall.jpg-1ef56d805b9554491bfd649ea9b675f9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "239e38652d5b741acbe6944615435cf7"
+"md5": "5dcc4a225354b1203800c39aa4677b76"
 }
 
 [deps]
 
-source_file="res://assets/models/slumtown_brick_wall_02.jpg"
-dest_files=["res://.godot/imported/slumtown_brick_wall_02.jpg-9170dce8fc7952adfeea0bca963bb2d5.s3tc.ctex"]
+source_file="res://assets/models/slumtown/slumtown_wood_wall.jpg"
+dest_files=["res://.godot/imported/slumtown_wood_wall.jpg-1ef56d805b9554491bfd649ea9b675f9.s3tc.ctex"]
 
 [params]
 
