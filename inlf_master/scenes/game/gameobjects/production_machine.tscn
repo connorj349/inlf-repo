@@ -115,7 +115,6 @@ libraries = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -160,6 +159,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "CAUTERIZE"
 
+[node name="CloseButton" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
 [node name="AcceptSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 stream = ExtResource("7")
@@ -175,6 +178,7 @@ bus = &"SoundFX"
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Button" to="." method="button_press" binds= [0]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Button2" to="." method="button_press" binds= [1]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Button3" to="." method="button_press" binds= [2]]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/CloseButton" to="." method="toggle_panel"]
 
 [editable path="machine"]
 [editable path="CanvasLayer/HintObjectInterface"]

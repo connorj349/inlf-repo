@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name BaseNPC
 
 enum State { IDLE, PATROL, ATTACK, INSPECT, RUN_AWAY }
 

@@ -73,6 +73,7 @@ layout_mode = 2
 text = "Select"
 
 [node name="Selection2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Selections"]
+visible = false
 layout_mode = 2
 
 [node name="LevelTitle" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/Selections/Selection2"]

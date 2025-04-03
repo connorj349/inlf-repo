@@ -1,4 +1,4 @@
-[gd_scene load_steps=252 format=3 uid="uid://cic10016h7at2"]
+[gd_scene load_steps=253 format=3 uid="uid://cic10016h7at2"]
 
 [ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_s7jca"]
 [ext_resource type="Texture2D" uid="uid://dixjojrmk5l6k" path="res://assets/models/liverfailure/liverfailure_cracked_concrete.jpg" id="1_u16vm"]
@@ -1807,6 +1807,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_extmo")
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jkm56"]
+data = PackedVector3Array(-0.1111, 0, -1.1111, 1.8889, 0, -3.1111, 1.8889, 0, -1.1111, -0.1111, 0, -1.1111, -0.1111, 0, -3.1111, 1.8889, 0, -3.1111, 1.8889, 0, -1.1111, -0.1111, 0, 1.8888, -0.1111, 0, -1.1111, 1.8889, 0, -1.1111, 1.8889, 0, 1.8888, -0.1111, 0, 1.8888, 1.8889, 0, -3.1111, 4.8889, 0, -1.1111, 1.8889, 0, -1.1111, 1.8889, 0, -3.1111, 4.8889, 0, -3.1111, 4.8889, 0, -1.1111, 4.8889, 0, -3.1111, 9.8889, 0, -1.1111, 4.8889, 0, -1.1111, 4.8889, 0, -3.1111, 9.8889, 0, -3.1111, 9.8889, 0, -1.1111, 1.8889, 0, 1.8888, -0.1111, 0, 3.8889, -0.1111, 0, 1.8888, 1.8889, 0, 1.8888, 1.8889, 0, 3.8889, -0.1111, 0, 3.8889, -5.1111, 0, 3.8889, -7.1111, 0, 1.8888, -5.1111, 0, 1.8888, -5.1111, 0, 3.8889, -7.1111, 0, 3.8889, -7.1111, 0, 1.8888, -7.1111, 0, 1.8888, -5.1111, 0, -3.1111, -5.1111, 0, 1.8888, -7.1111, 0, 1.8888, -7.1111, 0, -3.1111, -5.1111, 0, -3.1111, -0.1111, -0.0968, -1.1111, 1.8889, -0.0968, -3.1111, -0.1111, -0.0968, -3.1111, -0.1111, -0.0968, -1.1111, 1.8889, -0.0968, -1.1111, 1.8889, -0.0968, -3.1111, 1.8889, -0.0968, -1.1111, -0.1111, -0.0968, 1.8888, 1.8889, -0.0968, 1.8888, 1.8889, -0.0968, -1.1111, -0.1111, -0.0968, -1.1111, -0.1111, -0.0968, 1.8888, 1.8889, -0.0968, -3.1111, 4.8889, -0.0968, -1.1111, 4.8889, -0.0968, -3.1111, 1.8889, -0.0968, -3.1111, 1.8889, -0.0968, -1.1111, 4.8889, -0.0968, -1.1111, 4.8889, -0.0968, -3.1111, 9.8889, -0.0968, -1.1111, 9.8889, -0.0968, -3.1111, 4.8889, -0.0968, -3.1111, 4.8889, -0.0968, -1.1111, 9.8889, -0.0968, -1.1111, 1.8889, -0.0968, 1.8888, -0.1111, -0.0968, 3.8889, 1.8889, -0.0968, 3.8889, 1.8889, -0.0968, 1.8888, -0.1111, -0.0968, 1.8888, -0.1111, -0.0968, 3.8889, -5.1111, -0.0968, 3.8889, -7.1111, -0.0968, 1.8888, -7.1111, -0.0968, 3.8889, -5.1111, -0.0968, 3.8889, -5.1111, -0.0968, 1.8888, -7.1111, -0.0968, 1.8888, -7.1111, -0.0968, 1.8888, -5.1111, -0.0968, -3.1111, -7.1111, -0.0968, -3.1111, -7.1111, -0.0968, 1.8888, -5.1111, -0.0968, 1.8888, -5.1111, -0.0968, -3.1111, -7.1111, 0, -3.1111, -7.1111, -0.0968, 1.8888, -7.1111, -0.0968, -3.1111, -7.1111, 0, -3.1111, -7.1111, 0, 1.8888, -7.1111, -0.0968, 1.8888, 1.8889, 0, 3.8889, 1.8889, -0.0968, 1.8888, 1.8889, -0.0968, 3.8889, 1.8889, 0, 3.8889, 1.8889, 0, 1.8888, 1.8889, -0.0968, 1.8888, 1.8889, 0, -1.1111, 4.8889, -0.0968, -1.1111, 1.8889, -0.0968, -1.1111, 1.8889, 0, -1.1111, 4.8889, 0, -1.1111, 4.8889, -0.0968, -1.1111, -7.1111, 0, 1.8888, -7.1111, -0.0968, 3.8889, -7.1111, -0.0968, 1.8888, -7.1111, 0, 1.8888, -7.1111, 0, 3.8889, -7.1111, -0.0968, 3.8889, 9.8889, 0, -1.1111, 9.8889, -0.0968, -3.1111, 9.8889, -0.0968, -1.1111, 9.8889, 0, -1.1111, 9.8889, 0, -3.1111, 9.8889, -0.0968, -3.1111, -7.1111, 0, 3.8889, -5.1111, -0.0968, 3.8889, -7.1111, -0.0968, 3.8889, -7.1111, 0, 3.8889, -5.1111, 0, 3.8889, -5.1111, -0.0968, 3.8889, 4.8889, 0, -1.1111, 9.8889, -0.0968, -1.1111, 4.8889, -0.0968, -1.1111, 4.8889, 0, -1.1111, 9.8889, 0, -1.1111, 9.8889, -0.0968, -1.1111, 1.8889, 0, 1.8888, 1.8889, -0.0968, -1.1111, 1.8889, -0.0968, 1.8888, 1.8889, 0, 1.8888, 1.8889, 0, -1.1111, 1.8889, -0.0968, -1.1111, -5.1111, 0, -3.1111, -7.1111, -0.0968, -3.1111, -5.1111, -0.0968, -3.1111, -5.1111, 0, -3.1111, -7.1111, 0, -3.1111, -7.1111, -0.0968, -3.1111, -0.1111, 0, 3.8889, 1.8889, -0.0968, 3.8889, -0.1111, -0.0968, 3.8889, -0.1111, 0, 3.8889, 1.8889, 0, 3.8889, 1.8889, -0.0968, 3.8889)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_lisxy"]
 _surfaces = [{
 "aabb": AABB(-8.98889, -4.22222, -10.4667, 18, 10, 16),
@@ -2551,7 +2554,6 @@ tonemap_mode = 3
 ssao_radius = 9.92
 ssao_intensity = 16.0
 ssao_power = 9.415
-ssil_enabled = true
 ssil_radius = 12.19
 ssil_intensity = 16.0
 ssil_sharpness = 1.0
@@ -3006,6 +3008,11 @@ shape = SubResource("ConcavePolygonShape3D_w8vsl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.8889, 6, 18.1111)
 mesh = SubResource("ArrayMesh_np8va")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Geometry/liverfailure/catwalk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/liverfailure/catwalk/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jkm56")
 
 [node name="canal_catwalk" type="MeshInstance3D" parent="Geometry/liverfailure"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.0111, 4.22222, 30.4667)
@@ -4160,8 +4167,8 @@ layout_mode = 1
 
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 
 [editable path="Geometry/liverfailure/ManholeCover/CanvasLayer/HintObjectInterface"]
 [editable path="Machines/ToolFactoryProductionMachine2"]

@@ -58,12 +58,18 @@ func _process(delta): #update the manufacture progress bar onscreen
 func _interact(actor):
 	if can_interact:
 		#if actor is PlayerWorker
-			panel.show()
-			if panel.visible:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+			toggle_panel()
 		#else:
 			#Globals.emit_signal("on_pop_notification", "I don't know how to use this machine.")
 
+func toggle_panel():
+	panel.visible = !panel.visible
+	if panel.visible:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+# processes input for creating goods
 func button_press(index):
 	if !can_interact:
 		panel.hide()
