@@ -30,3 +30,9 @@ res://scenes/menu/level_select/level_select.tscn
 res://scenes/game/gameobjects/production_machine.tscn
 res://scenes/game/gameobjects/production_machine.gd
 res://assets/materials/slime.tres
+res://scenes/game/gameobjects/vendor.tscn
+res://scenes/game/inventory/storage.tscn
+res://scenes/game/gameobjects/vendor.gd
+res://scenes/game/inventory/storage.gd
+res://autoload/globals.gd
+res://scenes/game/inventory/hotbar_inventory.gd

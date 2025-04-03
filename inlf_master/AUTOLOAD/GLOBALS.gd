@@ -2,6 +2,7 @@ extends Node
 
 # warning-ignore:unused_signal
 signal on_inventory_toggle
+signal inventory_finished_toggling
 # warning-ignore:unused_signal
 signal on_pop_notification
 
@@ -35,3 +36,5 @@ func toggle_inventory_interface(external_inventory_owner = null):
 		current_ui.set_external_inventory(external_inventory_owner)
 	else:
 		current_ui.clear_external_inventory()
+	
+	inventory_finished_toggling.emit()

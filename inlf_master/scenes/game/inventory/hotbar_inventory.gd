@@ -10,6 +10,7 @@ func _ready():
 	set_inventory_data($"../..".inventory_data)
 # warning-ignore:return_value_discarded
 	Globals.connect("on_inventory_toggle", Callable(self, "toggle_hotbar"))
+	Globals.connect("inventory_finished_toggling", Callable(self, "toggle_hotbar"))
 
 func _unhandled_key_input(event):
 	if not visible or not event.is_pressed():

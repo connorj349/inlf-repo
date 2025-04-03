@@ -24,6 +24,7 @@ func _interact(_actor):
 	
 	panel.show()
 	
+	Globals.on_inventory_toggle.emit()
 	Globals.current_ui.show()
 	
 	if panel.visible:
