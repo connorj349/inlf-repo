@@ -27,3 +27,5 @@ res://scenes/game/item/items/slag_metal.tres
 res://scenes/main.tscn
 res://scenes/game/game_world.tscn
 res://scenes/game/characters/player/player.tscn
+res://scenes/game/gameobjects/amoeba.tscn
+res://scenes/game/gameobjects/amoeba.gd

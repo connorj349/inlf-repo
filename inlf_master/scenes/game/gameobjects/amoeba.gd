@@ -38,7 +38,7 @@ func _on_ItemDeposit_body_entered(body):
 		match(body.slot_data.item_data.item_type):
 			ItemData.ItemType.Biomass:
 				for n in body.slot_data.quantity:
-					self.current_biomass += 2
+					self.current_biomass += 4
 				body.queue_free()
 				$ConsumeBiomass.PlaySoundRange(0.8, 1.2)
 			ItemData.ItemType.Fertilizer:
@@ -51,25 +51,25 @@ func _on_ItemDeposit_body_entered(body):
 				pass
 
 func _on_HydrationTimer_timeout():
-	var new_slot = SlotData.new()
-	
 	if current_biomass >= 10:
 		if dropped_seeds.size() > 0:
 			for i in 3:
+				var new_slot = SlotData.new()
 				var random_index = rng.randi_range(0, dropped_seeds.size() - 1)
 				var new_seed_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
 				new_slot.item_data = dropped_seeds[random_index]
 				new_seed_pickup.slot_data = new_slot
 				get_tree().current_scene.game_world.add_child(new_seed_pickup)
 				new_seed_pickup.global_transform.origin = $ItemSpawnPoint.global_transform.origin
-				# maybe create some sort of force that pushes all the seeds about in random directions
-				# simulating a "bursting" of the seeds from the amoeba
+				new_seed_pickup.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 5)
 	else:
+		var new_slot = SlotData.new()
 		var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
 		new_slot.item_data = slime_item_data
 		new_pickup.slot_data = new_slot
 		get_tree().current_scene.game_world.add_child(new_pickup)
 		new_pickup.global_transform.origin = $ItemSpawnPoint.global_transform.origin
+		new_pickup.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 5)
 	
 	$PopSound.PlaySoundRange(0.8, 1.2)
 	
