@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://c0pk63nn4wv3b"]
+[gd_scene load_steps=69 format=3 uid="uid://c0pk63nn4wv3b"]
 
 [ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_1bevl"]
 [ext_resource type="Texture2D" uid="uid://d3pc6ep66bgug" path="res://assets/textures/skybox/skybox_apoc_01.png" id="2_k8s38"]
@@ -125,6 +125,9 @@ adjustment_brightness = 1.2
 adjustment_contrast = 1.23
 adjustment_saturation = 2.07
 adjustment_color_correction = SubResource("404")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xxev3"]
+viewport_path = NodePath("PlayerRoleSpawns/prole_spawn_01/SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="380"]
 bg_color = Color(0, 0, 0, 0.270588)
@@ -544,6 +547,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0.1, -40)
 random_amount_of_items_to_give = 2
 required_items = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("11_i7dus"), ExtResource("12_1eii1")])
 
+[node name="RoleLabel" parent="PlayerRoleSpawns/prole_spawn_01/SubViewport/VBoxContainer" index="0"]
+text = "Essence of a proletariat"
+
+[node name="DescLabel" parent="PlayerRoleSpawns/prole_spawn_01/SubViewport/VBoxContainer" index="2"]
+text = "You will reincarnate with the flesh and blood of a proletariat"
+
+[node name="Sprite3DText" parent="PlayerRoleSpawns/prole_spawn_01" index="3"]
+texture = SubResource("ViewportTexture_xxev3")
+
 [node name="Spawners" type="Node" parent="."]
 
 [node name="TreeSpawner" parent="Spawners" instance=ExtResource("18_lfhhe")]
@@ -763,3 +775,4 @@ layout_mode = 1
 [editable path="NavigationMesh/LunchFactoryGenerator"]
 [editable path="NavigationMesh/LunchFactoryGenerator/generator"]
 [editable path="NavigationMesh/LunchFactoryGenerator/CanvasLayer/HintObjectInterface"]
+[editable path="PlayerRoleSpawns/prole_spawn_01"]

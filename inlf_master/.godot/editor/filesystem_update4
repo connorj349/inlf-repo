@@ -34,3 +34,6 @@ res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn
 res://scenes/game/gameobjects/fertilizer_producer.gd
 res://scenes/game/gameobjects/biogrower.tscn
 res://scenes/game/gameobjects/biogrower.gd
+res://scenes/game/inventory/player_inventory.tres
+res://scenes/game/gameobjects/sawblade.tscn
+res://scenes/game/gameobjects/vendor.gd

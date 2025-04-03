@@ -22,10 +22,10 @@ func _ready():
 func _interact(_actor):
 	current_actor_interacting = _actor
 	
-	panel.show()
-	
 	Globals.on_inventory_toggle.emit()
 	Globals.current_ui.show()
+	
+	panel.show()
 	
 	if panel.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
