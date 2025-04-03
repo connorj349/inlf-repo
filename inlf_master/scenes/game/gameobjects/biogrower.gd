@@ -95,13 +95,14 @@ func _on_GrowTimer_timeout():
 			new_slot.item_data = item_data
 			
 			var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
-			new_pickup.global_transform.origin = $SpawnPoint.global_transform.origin
+			new_pickup.slot_data = new_slot
 			get_tree().current_scene.game_world.add_child(new_pickup)
+			new_pickup.global_transform.origin = $SpawnPoint.global_transform.origin
+			new_pickup.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 5)
 			
 			growth_timeout_sound.play()
 	else:
 		growth_timeout_fail_sound.play()
-		# create explosion
 	
 	resource_consume_timer.stop()
 	current_growing_seed_item_data = null

@@ -36,6 +36,17 @@ func _on_ItemDeposit_body_entered(body):
 				timer.start()
 				
 				producing_sound_loop.play(0)
+	
+	# if the pickup is a bitumeat buldge
+	if body.scene_file_path == "res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn":
+		deposit_sound.play()
+		body.queue_free()
+		self.biomass += 5
+		
+		if biomass >= 10:
+			timer.start()
+			
+			producing_sound_loop.play(0)
 
 func _on_CreateFertilizerTimer_timeout():
 	if biomass >= 10:

@@ -29,3 +29,8 @@ res://scenes/game/game_world.tscn
 res://scenes/game/characters/player/player.tscn
 res://scenes/game/gameobjects/amoeba.tscn
 res://scenes/game/gameobjects/amoeba.gd
+res://scenes/game/gameobjects/fertilizer_producer.tscn
+res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn
+res://scenes/game/gameobjects/fertilizer_producer.gd
+res://scenes/game/gameobjects/biogrower.tscn
+res://scenes/game/gameobjects/biogrower.gd
