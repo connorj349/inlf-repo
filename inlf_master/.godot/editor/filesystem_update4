@@ -28,3 +28,8 @@ res://scenes/game/characters/player/player.tscn
 res://scenes/game/characters/player/player.gd
 res://scenes/main.tscn
 res://scenes/game/game_world.tscn
+res://scenes/game/characters/npc/bug.gd
+res://scenes/game/characters/npc/bug.tscn
+res://scenes/game/characters/npc/base_npc.tscn
+res://scenes/game/gameobjects/tumor.tscn
+res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn
