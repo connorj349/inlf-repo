@@ -59,6 +59,8 @@ func _ready():
 	health.connect("health_changed", Callable(health_bar, "update_bar"))
 	health.connect("max_health_changed", Callable(func(player_health, player_max_health):
 		health_bar.init(player_health, player_max_health + health.pox)))
+	health.connect("health_changed", Callable(func(_health):
+		$UI/HurtVignette/AnimationPlayer.play("show")))
 	health.connect("max_health_changed", Callable(self, "update_health_and_pox_text_placement").unbind(2))
 	health.connect("pox_changed", Callable(pox_bar, "update_bar"))
 	health.connect("pox_changed", Callable(self, "update_health_and_pox_text_placement").unbind(1))

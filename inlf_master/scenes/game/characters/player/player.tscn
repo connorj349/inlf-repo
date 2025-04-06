@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=78 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
@@ -35,6 +35,7 @@
 [ext_resource type="AudioStream" uid="uid://74ffi73b3myc" path="res://assets/audio/player/weapons/player_fists_swing.wav" id="21"]
 [ext_resource type="PackedScene" uid="uid://cpok7107bwsa8" path="res://scenes/game/inventory/inventory_slot.tscn" id="21_nkns1"]
 [ext_resource type="AudioStream" uid="uid://s3aac53x8yi1" path="res://assets/audio/player/weapons/shotgun/player_shotgun_shot.wav" id="22"]
+[ext_resource type="Texture2D" uid="uid://brycunicyjw4i" path="res://assets/textures/vignette.png" id="25_v68ip"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 height = 2.5
@@ -510,6 +511,44 @@ _data = {
 "walk": SubResource("Animation_jm061")
 }
 
+[sub_resource type="Animation" id="Animation_1ydbd"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.54902, 0, 0.121569, 0), Color(0.54902, 0, 0.121569, 1), Color(0.54902, 0, 0.121569, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7g6i4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.54902, 0, 0.121569, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_83sqi"]
+_data = {
+"RESET": SubResource("Animation_7g6i4"),
+"show": SubResource("Animation_1ydbd")
+}
+
 [sub_resource type="StyleBoxFlat" id="27"]
 bg_color = Color(0, 0, 0, 0.705882)
 
@@ -811,10 +850,6 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 960.0
-offset_top = 1080.0
-offset_right = 960.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -859,10 +894,6 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 960.0
-offset_top = 1080.0
-offset_right = 960.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -881,6 +912,21 @@ light_energy = 5.0
 omni_range = 10.0
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HurtVignette" type="TextureRect" parent="UI"]
+modulate = Color(0.54902, 0, 0.121569, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_v68ip")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/HurtVignette"]
+libraries = {
+"": SubResource("AnimationLibrary_83sqi")
+}
 
 [node name="Bars" type="VBoxContainer" parent="UI"]
 anchors_preset = 1
