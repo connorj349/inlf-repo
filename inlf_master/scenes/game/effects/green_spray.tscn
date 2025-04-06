@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://d0phswmgf6nn1"]
+
+[ext_resource type="Texture2D" uid="uid://bwvlhuc6m5th2" path="res://assets/textures/eff_splat_grnd.png" id="1_4a6ag"]
+
+[sub_resource type="StandardMaterial3D" id="1"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4a6ag")
+billboard_mode = 1
+
+[sub_resource type="Curve" id="Curve_t38k0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.711765, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8qqv7"]
+curve = SubResource("Curve_t38k0")
+
+[sub_resource type="Gradient" id="Gradient_td1q0"]
+colors = PackedColorArray(0.658322, 0.514343, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qee21"]
+gradient = SubResource("Gradient_td1q0")
+
+[sub_resource type="Curve" id="4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.543478, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.56126, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="5"]
+curve = SubResource("4")
+
+[sub_resource type="ParticleProcessMaterial" id="6"]
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_curve = SubResource("5")
+color = Color(0.695469, 0.517261, 0, 1)
+color_ramp = SubResource("GradientTexture1D_qee21")
+alpha_curve = SubResource("CurveTexture_8qqv7")
+
+[sub_resource type="QuadMesh" id="7"]
+
+[node name="blood_spray" type="Node3D"]
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+material_override = SubResource("1")
+emitting = false
+one_shot = true
+explosiveness = 0.76
+fixed_fps = 60
+process_material = SubResource("6")
+draw_pass_1 = SubResource("7")
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.06
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DestroyTimer" to="." method="queue_free"]
+[connection signal="timeout" from="StartTimer" to="Particles" method="set_emitting" binds= [true]]

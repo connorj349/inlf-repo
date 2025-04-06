@@ -1,5 +1,5 @@
 res://assets/default_env.tres
-res://scenes/game/levels/level_slumtown.tscn
+res://scenes/game/effects/green_spray.tscn
 res://scenes/game/item/items/ammo_aks.tres
 res://scenes/game/item/items/wep_aks.tres
 res://scenes/game/item/items/ammo_makarov.tres
@@ -24,12 +24,11 @@ res://scenes/game/item/items/slop_skull.tres
 res://scenes/game/item/items/spine.tres
 res://scenes/game/item/items/cancer.tres
 res://scenes/game/item/items/slag_metal.tres
-res://scenes/game/characters/player/player.tscn
-res://scenes/game/characters/player/player.gd
+res://scenes/game/characters/npc/bug.tscn
 res://scenes/main.tscn
 res://scenes/game/game_world.tscn
-res://scenes/game/characters/npc/bug.gd
-res://scenes/game/characters/npc/bug.tscn
+res://scenes/game/characters/player/player.tscn
+res://scenes/game/levels/level_slumtown.tscn
 res://scenes/game/characters/npc/base_npc.tscn
 res://scenes/game/gameobjects/tumor.tscn
 res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn

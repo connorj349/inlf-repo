@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/game/characters/npc/bug.gd" id="1_7qwrc"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_3csjj"]
-[ext_resource type="PackedScene" uid="uid://p07bx43idc15" path="res://scenes/game/effects/blood_spray.tscn" id="2_56im5"]
+[ext_resource type="PackedScene" uid="uid://d0phswmgf6nn1" path="res://scenes/game/effects/green_spray.tscn" id="2_fb3bt"]
 [ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue_3d.tscn" id="3_bb0yd"]
 [ext_resource type="AudioStream" uid="uid://b7e7hukvtobls" path="res://assets/audio/skin_tree_hit.wav" id="4_n5htc"]
 [ext_resource type="PackedScene" uid="uid://dccornfkfy6s6" path="res://assets/models/characters/pinchers/pinchers.glb" id="5_wnvii"]
@@ -17,7 +17,7 @@ radius = 5.0
 [node name="Bug" type="CharacterBody3D"]
 collision_layer = 2
 script = ExtResource("1_7qwrc")
-hit_effect = ExtResource("2_56im5")
+hit_effect = ExtResource("2_fb3bt")
 
 [node name="Health" parent="." instance=ExtResource("2_3csjj")]
 allowed_max_health = 3
