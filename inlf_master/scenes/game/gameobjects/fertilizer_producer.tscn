@@ -81,7 +81,7 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 surface_material_override/0 = ExtResource("4_3i85c")
 
 [node name="CreateFertilizerTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 25.0
 autostart = true
 
 [node name="ItemDeposit" parent="." instance=ExtResource("1")]

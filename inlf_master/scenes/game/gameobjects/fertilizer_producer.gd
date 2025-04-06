@@ -32,7 +32,7 @@ func _on_ItemDeposit_body_entered(body):
 			for i in body.slot_data.quantity:
 				self.biomass += 2
 			
-			if biomass >= 10:
+			if biomass >= 10 and timer.is_stopped():
 				timer.start()
 				
 				producing_sound_loop.play(0)
@@ -43,7 +43,7 @@ func _on_ItemDeposit_body_entered(body):
 		body.queue_free()
 		self.biomass += 5
 		
-		if biomass >= 10:
+		if biomass >= 10 and timer.is_stopped():
 			timer.start()
 			
 			producing_sound_loop.play(0)

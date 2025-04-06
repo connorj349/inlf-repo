@@ -32,3 +32,6 @@ res://scenes/game/levels/level_slumtown.tscn
 res://scenes/game/characters/npc/base_npc.tscn
 res://scenes/game/gameobjects/tumor.tscn
 res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn
+res://scenes/game/gameobjects/fertilizer_producer.tscn
+res://scenes/game/gameobjects/fertilizer_producer.gd
+res://scenes/game/gameobjects/biogrower.tscn
