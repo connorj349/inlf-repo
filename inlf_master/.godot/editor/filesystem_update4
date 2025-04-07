@@ -35,3 +35,4 @@ res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn
 res://scenes/game/gameobjects/fertilizer_producer.tscn
 res://scenes/game/gameobjects/fertilizer_producer.gd
 res://scenes/game/gameobjects/biogrower.tscn
+res://scenes/game/gameobjects/biogrower.gd

@@ -37,6 +37,7 @@ var current_growing_seed_item_data = null
 @onready var spawn_point = $SpawnPoint
 @onready var resource_consume_timer = $ResourceConsumeTimer
 @onready var deposit_sound = $DepositSound
+@onready var growth_timer: Timer = $GrowTimer
 @onready var growth_timeout_sound: AudioStreamPlayer3D = $GrowthTimeoutSound
 @onready var growth_timeout_fail_sound: AudioStreamPlayer3D = $GrowthTimeoutFailSound
 @onready var growing_sound: AudioStreamPlayer3D = $GrowingSound
@@ -58,11 +59,11 @@ func _interact(actor):
 
 func _on_ItemDeposit_body_entered(body):
 	if body.is_in_group("pickup"):
-		if body.slot_data.item_data is ItemDataSeed:
+		if body.slot_data.item_data is ItemDataSeed and growth_timer.is_stopped():
 			current_growing_seed_item_data = body.slot_data.item_data
 			
 			# begin growth timer that, when ended, will produce finished good or explode
-			$GrowTimer.start()
+			growth_timer.start()
 			
 			# begin timer that consumes resources based on seed item_data
 			resource_consume_timer.start()
@@ -74,6 +75,7 @@ func _on_ItemDeposit_body_entered(body):
 			# looping sound
 			growing_sound.play(0)
 			return
+		
 		match(body.slot_data.item_data.item_type):
 			ItemData.ItemType.Fertilizer:
 				for i in body.slot_data.quantity:
@@ -110,23 +112,30 @@ func _on_GrowTimer_timeout():
 	growing_sound.stop()
 
 func _on_ResourceConsumeTimer_timeout(): # also counts the vars that are not needed to increase growth like exotic
-	if blood >= current_growing_seed_item_data.blood:
-		self.blood -= current_growing_seed_item_data.blood
-		self.growth += 1
-	else:
-		self.growth -= 2
-	if water >= current_growing_seed_item_data.water:
-		self.water -= current_growing_seed_item_data.water
-		self.growth += 1
-	else:
-		self.growth -= 2
-	if fertilizer >= current_growing_seed_item_data.fertilizer:
-		self.fertilizer -= current_growing_seed_item_data.fertilizer
-		self.growth += 1
-	else:
-		self.growth -= 2
-	if exotic >= current_growing_seed_item_data.exotic:
-		self.exotic -= current_growing_seed_item_data.exotic
-		self.growth += 1
-	else:
-		self.growth -= 2
+	if current_growing_seed_item_data.blood > 0:
+		if blood >= current_growing_seed_item_data.blood:
+			self.blood -= current_growing_seed_item_data.blood
+			self.growth += 5
+		else:
+			self.growth -= 5
+	
+	if current_growing_seed_item_data.water > 0:
+		if water >= current_growing_seed_item_data.water:
+			self.water -= current_growing_seed_item_data.water
+			self.growth += 5
+		else:
+			self.growth -= 5
+	
+	if current_growing_seed_item_data.fertilizer > 0:
+		if fertilizer >= current_growing_seed_item_data.fertilizer:
+			self.fertilizer -= current_growing_seed_item_data.fertilizer
+			self.growth += 5
+		else:
+			self.growth -= 5
+	
+	if current_growing_seed_item_data.exotic > 0:
+		if exotic >= current_growing_seed_item_data.exotic:
+			self.exotic -= current_growing_seed_item_data.exotic
+			self.growth += 5
+		else:
+			self.growth -= 5
