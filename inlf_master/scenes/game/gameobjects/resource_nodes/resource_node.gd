@@ -12,7 +12,6 @@ extends Interactable
 var dead = false
 
 @onready var health = $Health
-@onready var item_prefab = load("res://scenes/game/item/pick_up/pickup.tscn")
 
 func _ready():
 	health.init()

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=5 format=3 uid="uid://cl4a3v1o7wm23"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data_consumable.gd" id="1_08v84"]
+[ext_resource type="Resource" uid="uid://q7w2vsr68otk" path="res://scenes/game/item/items/metal_fragment.tres" id="1_am7p2"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="3_ncfrn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcyha"]
+atlas = ExtResource("3_ncfrn")
+region = Rect2(0, 0, 128, 128)
+
+[resource]
+script = ExtResource("1_08v84")
+heal_value = 3
+money_gain_value = 0
+consumable_type = 0
+name = "meat slag"
+description = "metal infused with strange flesh. can be eaten or processed into metal fragments."
+stackable = false
+texture = SubResource("AtlasTexture_xcyha")
+price = 0
+processed_item_data = ExtResource("1_am7p2")
+item_type = 4

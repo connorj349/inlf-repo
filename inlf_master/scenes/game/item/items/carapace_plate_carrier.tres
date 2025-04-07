@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataConsumable" load_steps=4 format=3 uid="uid://qyoublp3fhvg"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data_consumable.gd" id="1_qkb61"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="2_i24jt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh3db"]
+atlas = ExtResource("2_i24jt")
+region = Rect2(768, 128, 128, 128)
+
+[resource]
+script = ExtResource("1_qkb61")
+heal_value = 20
+money_gain_value = 0
+consumable_type = 1
+name = "carapace plate carrier"
+description = ""
+stackable = false
+texture = SubResource("AtlasTexture_lh3db")
+price = 100
+item_type = 4

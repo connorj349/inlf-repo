@@ -9,11 +9,11 @@ region = Rect2(256, 0, 128, 128)
 
 [resource]
 script = ExtResource("1_j34ce")
-heal_value = 1
+heal_value = 5
 money_gain_value = 0
 consumable_type = 0
 name = "Crapple"
-description = "awful tasting fruit"
+description = "awful tasting fruit. can be eaten to heal your blood."
 stackable = false
 texture = SubResource("AtlasTexture_kkit7")
 price = 10

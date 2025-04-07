@@ -36,3 +36,9 @@ res://scenes/game/gameobjects/fertilizer_producer.tscn
 res://scenes/game/gameobjects/fertilizer_producer.gd
 res://scenes/game/gameobjects/biogrower.tscn
 res://scenes/game/gameobjects/biogrower.gd
+res://scenes/game/item/item_data_equip.gd
+res://scenes/game/inventory/inventory_data.gd
+res://scenes/game/levels/destroyable.gd
+res://scenes/game/gameobjects/resource_nodes/resource_node.gd
+res://scenes/game/item/items/meat_slag.tres
+res://scenes/game/item/items/carapace_plate_carrier.tres

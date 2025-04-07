@@ -16,5 +16,5 @@ name = "Leather"
 description = "a hard leather. can be fitted to your skin to provide protection."
 stackable = false
 texture = SubResource("AtlasTexture_nxkts")
-price = 0
+price = 5
 item_type = 4

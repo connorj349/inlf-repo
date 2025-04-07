@@ -54,7 +54,7 @@ func _ready():
 	exotic_prog_bar.init(0, 100)
 
 func _interact(actor):
-	actor.on_hurt(player_use_damage)
+	actor.deal_damage(player_use_damage)
 	self.blood += player_use_damage.amount
 
 func _on_ItemDeposit_body_entered(body):
