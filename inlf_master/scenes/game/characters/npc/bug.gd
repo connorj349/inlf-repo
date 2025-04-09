@@ -3,6 +3,7 @@ extends CharacterBody3D
 const SPEED: float = 2.5
 
 @export var hit_effect: PackedScene
+@export var dropped_item_data: ItemData
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var change_direction_interval: float = 2.0
@@ -20,8 +21,7 @@ var dead = false
 
 func _ready():
 	health.init()
-	health.connect("dead", Callable(func():
-		queue_free()))
+	health.connect("dead", Callable(self, "on_death"))
 	animation_player.connect("animation_finished", Callable(func(anim_name):
 		if anim_name == "Attack":
 			is_attacking = false))
@@ -65,6 +65,20 @@ func on_hurt(_damage):
 	hurt_sound.PlaySoundRange(0.8, 1.2)
 	
 	health.health -= _damage.amount
+
+func on_death():
+	dead = true
+	
+	var new_item = SlotData.new()
+	new_item.item_data = dropped_item_data
+	
+	var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
+	new_pickup.slot_data = new_item
+	get_tree().current_scene.game_world.add_child(new_pickup)
+	new_pickup.global_position = global_position
+	new_pickup.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 5)
+	
+	queue_free()
 
 func _chase_target(delta: float):
 	var chase_time: float = 10.0

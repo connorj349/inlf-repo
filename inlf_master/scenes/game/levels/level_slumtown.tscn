@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://c0pk63nn4wv3b"]
+[gd_scene load_steps=79 format=3 uid="uid://c0pk63nn4wv3b"]
 
 [ext_resource type="Script" path="res://scenes/game/game_end/game_end_stem_cells.gd" id="1_1bevl"]
 [ext_resource type="Texture2D" uid="uid://d3pc6ep66bgug" path="res://assets/textures/skybox/skybox_apoc_01.png" id="2_k8s38"]
@@ -22,7 +22,6 @@
 [ext_resource type="Resource" uid="uid://qyoublp3fhvg" path="res://scenes/game/item/items/carapace_plate_carrier.tres" id="15_bttaj"]
 [ext_resource type="PackedScene" uid="uid://xt4fnaxbc2mi" path="res://scenes/game/gameobjects/fertilizer_producer.tscn" id="15_vmf7g"]
 [ext_resource type="PackedScene" uid="uid://diw2ptb001gas" path="res://scenes/game/gameobjects/vendor.tscn" id="16_ux0yg"]
-[ext_resource type="PackedScene" uid="uid://ccoi5qv045yl6" path="res://scenes/game/gameobjects/ladder.tscn" id="17_25hjq"]
 [ext_resource type="PackedScene" uid="uid://bwpcm1xv1hxel" path="res://scenes/game/gameobjects/resource_node_spawner.tscn" id="18_lfhhe"]
 [ext_resource type="PackedScene" uid="uid://qjy7yga6koi4" path="res://scenes/game/gameobjects/resource_nodes/skin_tree.tscn" id="19_xt80x"]
 [ext_resource type="PackedScene" uid="uid://cow88ggfrlbxw" path="res://scenes/game/gameobjects/amoeba.tscn" id="20_6ud0e"]
@@ -40,10 +39,13 @@
 [ext_resource type="PackedScene" uid="uid://digwfvtfnd652" path="res://scenes/game/characters/npc/worker_npc.tscn" id="30_c1abk"]
 [ext_resource type="Resource" uid="uid://vva1j8lgjumd" path="res://scenes/game/item/items/wep_makarov.tres" id="30_db70o"]
 [ext_resource type="PackedScene" uid="uid://dmktkgaw0ufi7" path="res://scenes/game/gameobjects/metastabilizer.tscn" id="30_pwyrc"]
+[ext_resource type="Resource" uid="uid://dhqv8muda5qxg" path="res://scenes/game/item/items/spine.tres" id="31_wg5xm"]
 [ext_resource type="PackedScene" uid="uid://b7nxt2hc5tvjo" path="res://scenes/game/gameobjects/processor.tscn" id="31_wm7sa"]
 [ext_resource type="Resource" uid="uid://n1tf63bmly" path="res://scenes/game/item/items/wep_aks.tres" id="32_g0v7j"]
 [ext_resource type="PackedScene" uid="uid://1h3sbkjiimxw" path="res://scenes/game/gameobjects/autostitcher.tscn" id="32_kskp8"]
+[ext_resource type="Resource" uid="uid://cdwd7eync5mlp" path="res://scenes/game/item/items/skin.tres" id="32_nrjo6"]
 [ext_resource type="Resource" uid="uid://ci27eht4md5ou" path="res://scenes/game/item/items/ammo_aks.tres" id="33_cjabh"]
+[ext_resource type="Resource" uid="uid://bptrs3t6i1dep" path="res://scenes/game/item/items/cancer.tres" id="33_ktq4t"]
 [ext_resource type="PackedScene" uid="uid://b3gsycxg1xafb" path="res://scenes/game/gameobjects/resource_nodes/boulder.tscn" id="33_q6fkn"]
 [ext_resource type="PackedScene" uid="uid://cvonrv45p2y4y" path="res://scenes/game/game_end/ticket_machine.tscn" id="34_cdkn7"]
 [ext_resource type="PackedScene" uid="uid://beum46j8otu7m" path="res://scenes/game/characters/player/player_ghost.tscn" id="35_0d46y"]
@@ -61,6 +63,21 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 cell_height = 0.15
 agent_height = 2.0
 
+[sub_resource type="Animation" id="Animation_hkssi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_4myp8"]
 resource_name = "fade_in"
 length = 0.5
@@ -75,21 +92,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_hkssi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasModulate:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ab7ne"]
@@ -198,6 +200,9 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="slumtown" parent="NavigationMesh" instance=ExtResource("4_5mhwo")]
+
+[node name="split_wall_corridor_001" parent="NavigationMesh/slumtown" index="10"]
+surface_material_override/0 = ExtResource("5_ku3lv")
 
 [node name="prole_spawn_001" parent="NavigationMesh/slumtown" index="11"]
 surface_material_override/0 = ExtResource("5_ku3lv")
@@ -354,6 +359,9 @@ surface_material_override/0 = ExtResource("5_ku3lv")
 [node name="wep_factory_walls_01" parent="NavigationMesh/slumtown" index="53"]
 surface_material_override/2 = ExtResource("5_ku3lv")
 surface_material_override/3 = ExtResource("6_n8356")
+
+[node name="wep_factory_catwalk" parent="NavigationMesh/slumtown" index="56"]
+surface_material_override/0 = ExtResource("5_ku3lv")
 
 [node name="catwalk_to_tool_factory" parent="NavigationMesh/slumtown" index="58"]
 surface_material_override/0 = ExtResource("5_ku3lv")
@@ -522,7 +530,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37, 0,
 [node name="ProleSpawnStorage" parent="NavigationMesh" instance=ExtResource("28_noycf")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 54, 0, -29)
 inventory_data = SubResource("387")
-loot_table_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("43_et84o"), ExtResource("43_et84o"), ExtResource("43_et84o"), ExtResource("32_g0v7j"), ExtResource("30_db70o")])
+loot_table_item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("43_et84o"), ExtResource("43_et84o"), ExtResource("43_et84o"), ExtResource("31_wg5xm"), ExtResource("32_nrjo6"), ExtResource("8_3aj2l"), ExtResource("33_ktq4t")])
 reset_time = 30.0
 does_reset = true
 
@@ -867,20 +875,6 @@ bounds = Vector3(8, 1, 30)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4.5, -24)
 bounds = Vector3(2, 0.5, 15)
 
-[node name="Ladders" type="Node" parent="."]
-
-[node name="Ladder" parent="Ladders" instance=ExtResource("17_25hjq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9, 4, 11.2)
-
-[node name="Ladder2" parent="Ladders" instance=ExtResource("17_25hjq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 9.5, -14.7)
-
-[node name="Ladder3" parent="Ladders" instance=ExtResource("17_25hjq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8, -9, 4)
-
-[node name="Ladder4" parent="Ladders" instance=ExtResource("17_25hjq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.5, 7, 29.6)
-
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 3
 
@@ -959,8 +953,8 @@ layout_mode = 1
 
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/options_button" to="UI/PauseMenu" method="_on_options_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/menu_exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
-[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/PanelContainer/MarginContainer/VBoxContainer/exit_button" to="UI/PauseMenu" method="_on_menu_exit_button_pressed"]
 
 [editable path="NavigationMesh/slumtown"]
 [editable path="NavigationMesh/slumtown/prole_spawn_001/CanvasLayer/HintObjectInterface"]

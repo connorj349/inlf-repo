@@ -1,5 +1,6 @@
 extends Interactable
 
+@export var number_of_required_items: int = 3
 @export var input_item_datas: Array[ItemData] # items that can be inserted
 @export var output_item_datas: Array[ItemData] # items created and put into vendors
 @export var production_time: float = 3.0 # time it takes to make item
@@ -21,7 +22,7 @@ var current_index: int :
 				next_action_label.text = "CAUTERIZE"
 		current_index = clamp(value, 0, 2)
 
-var button_presses_remaining: int = 5
+var button_presses_remaining: int = number_of_required_items
 var queued_items: int = 0
 var materials: int = 0 :
 	set(value):
@@ -87,7 +88,7 @@ func button_press(index):
 			
 			if button_presses_remaining <= 0:
 				
-				button_presses_remaining = 5
+				button_presses_remaining = number_of_required_items
 				
 				Gamestate.bones += payday * 2
 				
