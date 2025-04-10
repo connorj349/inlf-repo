@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var role_name: String = "Essence of a Role"
+@export var description_text: String = "You will reincarnate with the flesh and blood of a role"
 @export var player_prefab: PackedScene
 @export var stem_cell_cost: int = 1
 @export var random_amount_of_items_to_give: int = 0
@@ -14,6 +16,8 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
+	$SubViewport/VBoxContainer/RoleLabel.text = role_name
+	$SubViewport/VBoxContainer/DescLabel.text = description_text
 
 func _on_Area_body_entered(body):
 	if cooldown_timer.time_left <= 0:

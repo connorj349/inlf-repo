@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDataOrgan" load_steps=4 format=3 uid="uid://dm4c8r51xhfbd"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data_organ.gd" id="1_eud5p"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="2_wsvt8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yii6"]
+atlas = ExtResource("2_wsvt8")
+region = Rect2(640, 128, 128, 128)
+
+[resource]
+script = ExtResource("1_eud5p")
+mana_regen = 1
+name = "vile gut"
+description = "a nasty, putrid gut filled with unknown black liquid. could only possibly be used a sinister ritual."
+stackable = false
+texture = SubResource("AtlasTexture_8yii6")
+price = 0
+item_type = 4

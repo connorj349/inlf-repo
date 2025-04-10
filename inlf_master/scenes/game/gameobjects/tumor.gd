@@ -31,6 +31,7 @@ func _ready():
 func on_hurt(damage):
 	if dead:
 		return
+	
 	match(damage):
 		Damage.DamageType.Fists:
 			damage.source.on_hurt(tumor_damage) # damage the player back when struck

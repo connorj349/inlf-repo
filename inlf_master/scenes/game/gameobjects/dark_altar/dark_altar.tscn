@@ -1,0 +1,102 @@
+[gd_scene load_steps=15 format=3 uid="uid://bd4b0k3xp84l4"]
+
+[ext_resource type="Script" path="res://scenes/game/gameobjects/dark_altar/dark_altar.gd" id="1_nkj1c"]
+[ext_resource type="Script" path="res://scenes/game/gameobjects/dark_altar/ritual_recipe.gd" id="2_6c8u0"]
+[ext_resource type="Resource" uid="uid://dm4c8r51xhfbd" path="res://scenes/game/item/items/organs/vilegut.tres" id="2_041cy"]
+[ext_resource type="Script" path="res://scenes/game/inventory/inventory_data_organ.gd" id="2_b1meh"]
+[ext_resource type="PackedScene" uid="uid://bdw6xxloqfkdr" path="res://assets/models/dark_altar.glb" id="3_cvwft"]
+[ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_a05gn"]
+[ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue.tscn" id="5_arej1"]
+
+[sub_resource type="Resource" id="Resource_ld0xh"]
+script = ExtResource("2_6c8u0")
+recipe_name = "2 organs"
+organs_needed = Array[Resource("res://scenes/game/item/item_data_organ.gd")]([ExtResource("2_041cy"), ExtResource("2_041cy")])
+
+[sub_resource type="Resource" id="Resource_fhx6j"]
+script = ExtResource("2_6c8u0")
+recipe_name = "1 organ"
+organs_needed = Array[Resource("res://scenes/game/item/item_data_organ.gd")]([ExtResource("2_041cy")])
+
+[sub_resource type="Resource" id="Resource_x2a2d"]
+script = ExtResource("2_b1meh")
+slot_datas = Array[Resource("res://scenes/game/inventory/slot_data.gd")]([null, null, null])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kethw"]
+size = Vector3(1.6, 1.3, 2.2)
+
+[sub_resource type="Animation" id="456"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="457"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HintObjectInterface/CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vppli"]
+_data = {
+"RESET": SubResource("456"),
+"fade_in": SubResource("457")
+}
+
+[node name="DarkAltar" type="StaticBody3D" node_paths=PackedStringArray("anim_player")]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_nkj1c")
+ritual_recipes = Array[ExtResource("2_6c8u0")]([SubResource("Resource_ld0xh"), SubResource("Resource_fhx6j")])
+inventory_data = SubResource("Resource_x2a2d")
+anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
+
+[node name="Model" parent="." instance=ExtResource("3_cvwft")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0.65, -1.19209e-07)
+shape = SubResource("BoxShape3D_kethw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HintObjectInterface" parent="CanvasLayer" instance=ExtResource("4_a05gn")]
+
+[node name="CanvasModulate" parent="CanvasLayer/HintObjectInterface" index="0"]
+color = Color(1, 1, 1, 0)
+
+[node name="TitleLabel" parent="CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer" index="0"]
+text = "dark altar"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HintObjectInterface"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_vppli")
+}
+
+[node name="SoundQueue" parent="." instance=ExtResource("5_arej1")]
+Count = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SoundQueue"]
+bus = &"SoundFX"
+
+[editable path="CanvasLayer/HintObjectInterface"]

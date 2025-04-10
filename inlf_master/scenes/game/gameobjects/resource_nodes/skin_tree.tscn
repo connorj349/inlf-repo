@@ -54,6 +54,7 @@ _data = {
 collision_layer = 3
 collision_mask = 2
 script = ExtResource("4")
+max_random_items_to_drop = 1
 item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("2_fnf82")])
 blocked_damage_types = Array[int]([1, 2])
 punching_hurts = true

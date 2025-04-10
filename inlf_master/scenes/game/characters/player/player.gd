@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name PlayerBase
 
 signal armor_changed(armor: int)
 
