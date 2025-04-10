@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://p3pw5s5y3hqr"]
+[gd_scene load_steps=16 format=3 uid="uid://p3pw5s5y3hqr"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://dhqv8muda5qxg" path="res://scenes/game/item/items/spine.tres" id="3_mw5g1"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/resource_nodes/resource_node.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://b8d0n7p7ssusa" path="res://assets/textures/bitumeat_bitumeat.png" id="5_o7lqq"]
 [ext_resource type="PackedScene" uid="uid://mmognlsxjsdc" path="res://assets/models/bitumeat.glb" id="5_tdluu"]
@@ -58,7 +59,7 @@ collision_layer = 2
 collision_mask = 11
 gravity_scale = 2.0
 script = ExtResource("4")
-item_data = ExtResource("7")
+item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("7"), ExtResource("7"), ExtResource("3_mw5g1")])
 blocked_damage_types = Array[int]([1])
 optional_item_spawn_point = NodePath(".")
 hit_effect = ExtResource("8")

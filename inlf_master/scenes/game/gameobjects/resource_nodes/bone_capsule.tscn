@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1k30jhststhn"]
+[gd_scene load_steps=15 format=3 uid="uid://b1k30jhststhn"]
 
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="1"]
+[ext_resource type="Resource" uid="uid://dwgvghaavgdju" path="res://scenes/game/item/items/slop_skull.tres" id="3_grjnh"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/resource_nodes/resource_node.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://c3ot0blfmo38q" path="res://assets/models/bone-capsule.glb" id="6_qc1ye"]
 [ext_resource type="Resource" uid="uid://dhqv8muda5qxg" path="res://scenes/game/item/items/spine.tres" id="7"]
@@ -54,7 +55,7 @@ _data = {
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("4")
-item_data = ExtResource("7")
+item_datas = Array[Resource("res://scenes/game/item/item_data.gd")]([ExtResource("7"), ExtResource("7"), ExtResource("3_grjnh")])
 blocked_damage_types = Array[int]([1])
 optional_item_spawn_point = NodePath("ItemSpawnPoint")
 hit_effect = ExtResource("8")

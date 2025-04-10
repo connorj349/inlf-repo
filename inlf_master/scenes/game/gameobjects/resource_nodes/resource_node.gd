@@ -1,6 +1,7 @@
 extends Interactable
 
-@export var item_data: ItemData #resource item to drop on death
+@export var max_random_items_to_drop: int = 3
+@export var item_datas: Array[ItemData] # item to drop
 @export var blocked_damage_types: Array[Damage.DamageType] # (Array, Damage.DamageType)
 @export var punching_hurts: bool = false
 @export var optional_item_spawn_point: Node3D
@@ -29,13 +30,19 @@ func play_pickup_sound():
 func on_death():
 	dead = true
 	
-	var new_item = SlotData.new()
-	new_item.item_data = item_data
-	
-	var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
-	new_pickup.slot_data = new_item
-	get_tree().current_scene.game_world.add_child(new_pickup)
-	new_pickup.global_transform.origin = optional_item_spawn_point.global_transform.origin
+	# randomly drop 1 - max_random_items_to_drop items
+	var random_amount_of_drops = max(1, randi() % max_random_items_to_drop)
+	for i in random_amount_of_drops:
+		# randomly select an item data
+		var random_item_data = item_datas[randi() % item_datas.size()]
+		# assign the item data
+		var new_item = SlotData.new()
+		new_item.item_data = random_item_data
+		var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
+		new_pickup.slot_data = new_item
+		get_tree().current_scene.game_world.add_child(new_pickup)
+		new_pickup.global_transform.origin = optional_item_spawn_point.global_transform.origin
+		new_pickup.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 5)
 	
 	queue_free()
 
