@@ -32,6 +32,8 @@ var _saved_camera_global_pos = null
 
 # represents all currently purchased mutations the player has
 var purchased_mutations: Array[Mutation] = []
+var can_double_jump = false
+var jump_count: int = 0
 
 @onready var _original_capsule_height = $CollisionShape3D.shape.height
 
@@ -136,10 +138,17 @@ func _process(delta):
 			weapon_manager.reload()
 		
 		# jumping
-		if Input.is_action_just_pressed("jump") and (is_on_floor() or _snapped_to_stairs_last_frame):
-			velocity.y = JUMP_VELOCITY
-			
-			$Sounds/JumpSoundQueue.PlaySoundRange(0.9, 1.1)
+		if Input.is_action_just_pressed("jump"):
+			if can_double_jump and jump_count < 2:
+				if jump_count == 1:
+					velocity.y = JUMP_VELOCITY * 4.0
+				else:
+					velocity.y = JUMP_VELOCITY
+				jump_count += 1
+				$Sounds/JumpSoundQueue.PlaySoundRange(0.9, 1.1)
+			elif is_on_floor() or _snapped_to_stairs_last_frame:
+				velocity.y = JUMP_VELOCITY
+				$Sounds/JumpSoundQueue.PlaySoundRange(0.9, 1.1)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -158,6 +167,7 @@ func _physics_process(delta):
 		speed = SPEED_WALK
 	
 	if is_on_floor() or _snapped_to_stairs_last_frame:
+		jump_count = 0
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
@@ -244,9 +254,9 @@ func give_armor(amount):
 func use_slot_data(slot_data):
 	slot_data.item_data.use(self)
 
-# expand, maybe override on player_cultist for additional effects?
-func on_use_organ(_organ):
-	pass
+# each player class will either have/not have this method
+#func on_use_organ(_organ):
+	#pass
 
 func _handle_crouch(delta):
 	var was_crouched_last_frame = is_crouched

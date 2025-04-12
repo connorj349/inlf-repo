@@ -3,23 +3,23 @@
 [ext_resource type="Script" path="res://scenes/game/gameobjects/mutation_station/mutation_station.gd" id="1_7ek1s"]
 [ext_resource type="PackedScene" uid="uid://bbavnvhdyv0se" path="res://assets/models/processor.glb" id="1_h8unq"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="2_fwvd3"]
-[ext_resource type="Script" path="res://scenes/game/gameobjects/mutation_station/mutation.gd" id="2_q5c2k"]
 [ext_resource type="Script" path="res://scenes/game/gameobjects/mutation_station/mutation_maxhealth.gd" id="4_4t2ww"]
+[ext_resource type="Script" path="res://scenes/game/gameobjects/mutation_station/mutation_multijump.gd" id="4_b1sql"]
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="4_nuwa7"]
 [ext_resource type="Texture2D" uid="uid://cwrb4ooevdxj7" path="res://inlf_icon.png" id="5_m4m0k"]
-
-[sub_resource type="Resource" id="Resource_gvi3y"]
-script = ExtResource("2_q5c2k")
-name = "Non-Mutation"
-description = "Does absolutely nothing."
-cost = 3
-icon = ExtResource("5_m4m0k")
 
 [sub_resource type="Resource" id="Resource_1ry4j"]
 script = ExtResource("4_4t2ww")
 added_health = 5
 name = "Enlarged Heart"
 description = "An enlarged heart which allows for more blood to be pumped throughout the body. Increases max blood."
+cost = 5
+icon = ExtResource("5_m4m0k")
+
+[sub_resource type="Resource" id="Resource_eq5wd"]
+script = ExtResource("4_b1sql")
+name = "Biospring Joints"
+description = "Allows for double jumping"
 cost = 5
 icon = ExtResource("5_m4m0k")
 
@@ -75,7 +75,7 @@ font_size = 35
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_7ek1s")
-mutations = Array[ExtResource("2_q5c2k")]([SubResource("Resource_gvi3y"), SubResource("Resource_1ry4j")])
+mutations = Array[Resource("res://scenes/game/gameobjects/mutation_station/mutation.gd")]([SubResource("Resource_1ry4j"), SubResource("Resource_eq5wd")])
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="Collision" type="CollisionShape3D" parent="."]

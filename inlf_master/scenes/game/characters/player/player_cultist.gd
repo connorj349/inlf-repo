@@ -20,7 +20,5 @@ func _process(delta):
 		else:
 			Globals.on_pop_notification.emit("I don't have enough blood to draw a ritual circle")
 
-# not sure what to make this do yet
-# idea: organs give temp health that drains over time?
 func on_use_organ(_organ):
 	pass

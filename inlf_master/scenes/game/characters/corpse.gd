@@ -68,6 +68,7 @@ func _interact(actor):
 			on_hurt(corpse_eat_damage)
 			actor.health.pox += 5
 		
+		# this is giving more pox than it should be; should rework this
 		if inventory.slot_datas.size() > 0:
 			for item in inventory.slot_datas:
 				if item:
@@ -77,7 +78,6 @@ func _interact(actor):
 					new_pickup.global_transform.origin = $organ_spawnpoint.global_transform.origin
 					inventory.take_item(item)
 					actor.health.pox += 2
-					# actor.dispair += 10
 					return
 
 func spawn_blood():

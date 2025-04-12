@@ -45,3 +45,7 @@ res://scenes/game/gameobjects/mutation_station/mutation_station.tscn
 res://scenes/game/gameobjects/mutation_station/mutation.gd
 res://scenes/game/gameobjects/mutation_station/mutation_station.gd
 res://scenes/game/gameobjects/mutation_station/mutation_maxhealth.gd
+res://scenes/game/item/item_data_organ.gd
+res://scenes/game/characters/corpse.tscn
+res://scenes/game/characters/corpse.gd
+res://scenes/game/gameobjects/mutation_station/mutation_multijump.gd

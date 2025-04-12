@@ -5,6 +5,8 @@ extends Interactable
 
 signal toggle_inventory(external_inventory_owner)
 
+# NOTICE: make sure to put ritual recipes that need the 'least' amount of materials
+# at the bottom of the list, so that they can be reached by searching from the below method
 @export var ritual_recipes: Array[RitualRecipe]
 @export var inventory_data: InventoryDataOrgan
 
