@@ -7,6 +7,5 @@ class_name RitualRecipe
 ## virtual methods
 
 # override in extended ritual recipes for specific ritual functionality
-func perform_ritual():
-	# ex. create an effect that heals the player/spawn a tumor/etc.
+func perform_ritual(_ritual_origin: Node3D):
 	pass

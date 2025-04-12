@@ -28,6 +28,7 @@ func _interact(actor):
 func begin_ritual():
 	var recipe = get_valid_recipe()
 	if recipe:
+		recipe.perform_ritual($RitualOrigin)
 		Globals.on_pop_notification.emit("I have performed a ritual successfully!")
 	else:
 		Globals.on_pop_notification.emit("I need the right combination of organs to perform a ritual.")

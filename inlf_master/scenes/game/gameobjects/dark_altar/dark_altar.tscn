@@ -1,21 +1,18 @@
 [gd_scene load_steps=15 format=3 uid="uid://bd4b0k3xp84l4"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/dark_altar/dark_altar.gd" id="1_nkj1c"]
-[ext_resource type="Script" path="res://scenes/game/gameobjects/dark_altar/ritual_recipe.gd" id="2_6c8u0"]
 [ext_resource type="Resource" uid="uid://dm4c8r51xhfbd" path="res://scenes/game/item/items/organs/vilegut.tres" id="2_041cy"]
 [ext_resource type="Script" path="res://scenes/game/inventory/inventory_data_organ.gd" id="2_b1meh"]
+[ext_resource type="Script" path="res://scenes/game/gameobjects/dark_altar/summon_ritual.gd" id="3_4w4tv"]
 [ext_resource type="PackedScene" uid="uid://bdw6xxloqfkdr" path="res://assets/models/dark_altar.glb" id="3_cvwft"]
 [ext_resource type="PackedScene" uid="uid://c7qyybqvmlu5y" path="res://scenes/game/gameobjects/interactables/hint_object_interface.tscn" id="4_a05gn"]
+[ext_resource type="PackedScene" uid="uid://p3pw5s5y3hqr" path="res://scenes/game/gameobjects/resource_nodes/bitumeat.tscn" id="4_a6eme"]
 [ext_resource type="PackedScene" path="res://scenes/game/sound/sound_queue.tscn" id="5_arej1"]
 
-[sub_resource type="Resource" id="Resource_ld0xh"]
-script = ExtResource("2_6c8u0")
-recipe_name = "2 organs"
-organs_needed = Array[Resource("res://scenes/game/item/item_data_organ.gd")]([ExtResource("2_041cy"), ExtResource("2_041cy")])
-
-[sub_resource type="Resource" id="Resource_fhx6j"]
-script = ExtResource("2_6c8u0")
-recipe_name = "1 organ"
+[sub_resource type="Resource" id="Resource_ogw48"]
+script = ExtResource("3_4w4tv")
+summonable_object = ExtResource("4_a6eme")
+recipe_name = "Summon Bitumeat Buldge"
 organs_needed = Array[Resource("res://scenes/game/item/item_data_organ.gd")]([ExtResource("2_041cy")])
 
 [sub_resource type="Resource" id="Resource_x2a2d"]
@@ -66,9 +63,12 @@ _data = {
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_nkj1c")
-ritual_recipes = Array[ExtResource("2_6c8u0")]([SubResource("Resource_ld0xh"), SubResource("Resource_fhx6j")])
+ritual_recipes = Array[Resource("res://scenes/game/gameobjects/dark_altar/ritual_recipe.gd")]([SubResource("Resource_ogw48")])
 inventory_data = SubResource("Resource_x2a2d")
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
+
+[node name="RitualOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="Model" parent="." instance=ExtResource("3_cvwft")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
