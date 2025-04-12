@@ -26,7 +26,8 @@ func _interact(actor):
 
 # this get's called by the circle the player draws
 func begin_ritual():
-	if get_valid_recipe():
+	var recipe = get_valid_recipe()
+	if recipe:
 		Globals.on_pop_notification.emit("I have performed a ritual successfully!")
 	else:
 		Globals.on_pop_notification.emit("I need the right combination of organs to perform a ritual.")

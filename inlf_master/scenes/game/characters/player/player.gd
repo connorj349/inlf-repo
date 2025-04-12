@@ -30,6 +30,9 @@ var _snapped_to_stairs_last_frame = false
 var _last_frame_was_on_floor = -INF
 var _saved_camera_global_pos = null
 
+# represents all currently purchased mutations the player has
+var purchased_mutations: Array[Mutation] = []
+
 @onready var _original_capsule_height = $CollisionShape3D.shape.height
 
 @onready var camera: Camera3D = $HeadOriginalPosition/Head/CameraSmooth/Camera3D
