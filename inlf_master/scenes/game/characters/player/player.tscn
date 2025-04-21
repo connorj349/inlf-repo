@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://d4atu3dhcoefp"]
+[gd_scene load_steps=79 format=3 uid="uid://d4atu3dhcoefp"]
 
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="2_7n873"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://scenes/game/textured_ui_bar.gd" id="18_fpf0a"]
 [ext_resource type="PackedScene" uid="uid://dw14to73k4hid" path="res://scenes/game/inventory/inventory.tscn" id="19_1jsfi"]
 [ext_resource type="Script" path="res://scenes/game/characters/player/update_player_stats.gd" id="20_5y5km"]
+[ext_resource type="Resource" uid="uid://b3ubx7sytyyyr" path="res://scenes/game/item/items/wep_claws.tres" id="20_66pik"]
 [ext_resource type="AudioStream" uid="uid://74ffi73b3myc" path="res://assets/audio/player/weapons/player_fists_swing.wav" id="21"]
 [ext_resource type="PackedScene" uid="uid://cpok7107bwsa8" path="res://scenes/game/inventory/inventory_slot.tscn" id="21_nkns1"]
 [ext_resource type="AudioStream" uid="uid://s3aac53x8yi1" path="res://assets/audio/player/weapons/shotgun/player_shotgun_shot.wav" id="22"]
@@ -810,6 +811,45 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_fists/CanvasLayer/Control"]
+position = Vector2(0, -270)
+scale = Vector2(3, 3)
+texture = ExtResource("9")
+offset = Vector2(0, 60)
+hframes = 4
+
+[node name="wep_claws" type="Node3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager"]
+script = ExtResource("13")
+is_melee = true
+item_weapon_data = ExtResource("20_66pik")
+
+[node name="RangeRayCast" type="RayCast3D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_claws"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 2
+
+[node name="WeaponAnimations" type="AnimationPlayer" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_claws"]
+libraries = {
+"": SubResource("AnimationLibrary_1i5p2")
+}
+autoplay = "idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_claws"]
+stream = ExtResource("21")
+bus = &"SoundFX"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_claws"]
+
+[node name="Control" type="Control" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_claws/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="HeadOriginalPosition/Head/CameraSmooth/Camera3D/WeaponManager/wep_claws/CanvasLayer/Control"]
+modulate = Color(0.939946, 0.161823, 0, 1)
 position = Vector2(0, -270)
 scale = Vector2(3, 3)
 texture = ExtResource("9")

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemDataWeapon" load_steps=4 format=3 uid="uid://b3ubx7sytyyyr"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data_weapon.gd" id="1_sqs3t"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="2_ptmcf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvj10"]
+atlas = ExtResource("2_ptmcf")
+region = Rect2(640, 0, 128, 128)
+
+[resource]
+script = ExtResource("1_sqs3t")
+max_ammo = 0
+damage = 2
+damage_type = 3
+name = "clawgrowth serum"
+description = "a special serum that will cause the hands of the patient to stiffen, and the blood coagulate at the tips of the fingers to form sharpened blades."
+stackable = false
+texture = SubResource("AtlasTexture_qvj10")
+price = 25
+item_type = 4

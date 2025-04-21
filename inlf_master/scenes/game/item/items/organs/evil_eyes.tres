@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDataOrgan" load_steps=4 format=3 uid="uid://dgrbdd63pqv5m"]
+
+[ext_resource type="Script" path="res://scenes/game/item/item_data_organ.gd" id="1_rx02b"]
+[ext_resource type="Texture2D" uid="uid://bflbtksed3le5" path="res://assets/textures/item_sheet.png" id="2_oful3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vlc1"]
+atlas = ExtResource("2_oful3")
+region = Rect2(640, 128, 128, 128)
+
+[resource]
+script = ExtResource("1_rx02b")
+mana_regen = 1
+name = "evil eyes"
+description = "evil eyes that see all evil"
+stackable = false
+texture = SubResource("AtlasTexture_6vlc1")
+price = 0
+item_type = 4

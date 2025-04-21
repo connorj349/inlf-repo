@@ -3,9 +3,9 @@ extends Interactable
 signal increase_rot(amount: int)
 
 # needs to be slot data
-@export var common_organ: ItemData
-@export var uncommon_organ: ItemData
-@export var rare_organ: ItemData
+@export var common_organ: ItemDataOrgan
+@export var uncommon_organ: ItemDataOrgan
+@export var rare_organ: ItemDataOrgan
 @export var blood_spray: PackedScene
 @export var prog_bar: ProgressBar
 @export var state_text: Label
@@ -53,9 +53,11 @@ func init_inventory_size(size):
 	inventory.slot_datas.resize(size)
 
 func on_hurt(damage):
-	match(damage):
+	match(damage.type):
 		Damage.DamageType.Sharp:
-			spawn_organ()
+			if health.health >= health.max_health / 2:
+				spawn_organ()
+				health.health -= (health.health / 3)
 		_:
 			health.health -= damage.amount
 	
@@ -102,9 +104,6 @@ func _on_DecayTimer_timeout():
 func spawn_organ():
 	var new_slot_data = SlotData.new()
 	var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
-	get_tree().current_scene.game_world.add_child(new_pickup)
-	new_pickup.global_transform.origin = $organ_spawnpoint.global_transform.origin
-	new_pickup.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 7)
 	
 	var random_result = randf()
 	if random_result < 0.8:
@@ -116,3 +115,7 @@ func spawn_organ():
 	else:
 		new_slot_data.item_data = rare_organ
 		new_pickup.slot_data = new_slot_data
+	
+	get_tree().current_scene.game_world.add_child(new_pickup)
+	new_pickup.global_transform.origin = $organ_spawnpoint.global_transform.origin
+	new_pickup.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 7)

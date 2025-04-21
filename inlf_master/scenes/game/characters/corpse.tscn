@@ -1,6 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cb1sy0vns2cwr"]
+[gd_scene load_steps=14 format=3 uid="uid://cb1sy0vns2cwr"]
 
+[ext_resource type="Resource" uid="uid://dm4c8r51xhfbd" path="res://scenes/game/item/items/organs/vilegut.tres" id="2_82spk"]
+[ext_resource type="Resource" uid="uid://dgrbdd63pqv5m" path="res://scenes/game/item/items/organs/evil_eyes.tres" id="3_jpfdt"]
 [ext_resource type="PackedScene" path="res://scenes/game/characters/health.tscn" id="4"]
+[ext_resource type="Resource" uid="uid://bbud4b1ditslo" path="res://scenes/game/item/items/organs/ancient_brain.tres" id="4_jcxdg"]
 [ext_resource type="Script" path="res://scenes/game/characters/corpse.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://p07bx43idc15" path="res://scenes/game/effects/blood_spray.tscn" id="6_f2vqa"]
 [ext_resource type="PackedScene" uid="uid://cnuypwq4ask1a" path="res://assets/models/flesh_pile.glb" id="7_dgpm2"]
@@ -50,6 +53,9 @@ _data = {
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("5")
+common_organ = ExtResource("2_82spk")
+uncommon_organ = ExtResource("3_jpfdt")
+rare_organ = ExtResource("4_jcxdg")
 blood_spray = ExtResource("6_f2vqa")
 prog_bar = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar")
 state_text = NodePath("CanvasLayer/HintObjectInterface/HBoxContainer/VBoxContainer/StatBar/Label")

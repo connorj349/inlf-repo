@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0lxovpor7if7"]
+[gd_scene load_steps=19 format=3 uid="uid://c0lxovpor7if7"]
 
 [ext_resource type="Script" path="res://scenes/game/gameobjects/mutation_station/mutation_station.gd" id="1_7ek1s"]
 [ext_resource type="PackedScene" uid="uid://bbavnvhdyv0se" path="res://assets/models/processor.glb" id="1_h8unq"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://scenes/game/gameobjects/mutation_station/mutation_multijump.gd" id="4_b1sql"]
 [ext_resource type="FontFile" uid="uid://qgku7moi1efd" path="res://assets/fonts/scribbles.ttf" id="4_nuwa7"]
 [ext_resource type="Texture2D" uid="uid://cwrb4ooevdxj7" path="res://inlf_icon.png" id="5_m4m0k"]
+[ext_resource type="Script" path="res://scenes/game/gameobjects/mutation_station/mutation_weapon.gd" id="5_og5a5"]
+[ext_resource type="Resource" uid="uid://b3ubx7sytyyyr" path="res://scenes/game/item/items/wep_claws.tres" id="6_t3h4b"]
 
 [sub_resource type="Resource" id="Resource_1ry4j"]
 script = ExtResource("4_4t2ww")
@@ -21,6 +23,14 @@ script = ExtResource("4_b1sql")
 name = "Biospring Joints"
 description = "Allows for double jumping"
 cost = 5
+icon = ExtResource("5_m4m0k")
+
+[sub_resource type="Resource" id="Resource_gfgpg"]
+script = ExtResource("5_og5a5")
+weapon_item_data = ExtResource("6_t3h4b")
+name = "Claws"
+description = "receive an injectable that causes claws to grow on the user's arms."
+cost = 1
 icon = ExtResource("5_m4m0k")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j3q1u"]
@@ -75,7 +85,7 @@ font_size = 35
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_7ek1s")
-mutations = Array[Resource("res://scenes/game/gameobjects/mutation_station/mutation.gd")]([SubResource("Resource_1ry4j"), SubResource("Resource_eq5wd")])
+mutations = Array[Resource("res://scenes/game/gameobjects/mutation_station/mutation.gd")]([SubResource("Resource_1ry4j"), SubResource("Resource_eq5wd"), SubResource("Resource_gfgpg")])
 anim_player = NodePath("CanvasLayer/HintObjectInterface/AnimationPlayer")
 
 [node name="Collision" type="CollisionShape3D" parent="."]

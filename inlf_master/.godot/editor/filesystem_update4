@@ -33,3 +33,10 @@ res://scenes/game/levels/level_slumtown.tscn
 res://scenes/game/characters/corpse.gd
 res://scenes/game/characters/corpse.tscn
 res://scenes/game/gameobjects/mutation_station/mutation_station.tscn
+res://scenes/game/item/items/wep_claws.tres
+res://scenes/game/gameobjects/mutation_station/mutation_weapon.gd
+res://scenes/game/item/items/organs/evil_eyes.tres
+res://scenes/game/item/items/organs/ancient_brain.tres
+res://scenes/game/characters/player/player_weapon.gd
+res://scenes/game/tooltip/base_tool_tip.tscn
+res://scenes/game/inventory/inventory_slot.tscn
