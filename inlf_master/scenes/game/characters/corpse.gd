@@ -16,6 +16,7 @@ var inventory = InventoryData.new()
 
 @onready var health = $Health
 @onready var organ_spawn = $organ_spawnpoint
+@onready var interaction_menu: PanelContainer = $CanvasLayer/InteractionMenu
 
 func _ready():
 	if !is_in_group("rot_producers"):
@@ -40,6 +41,12 @@ func _ready():
 	
 	corpse_eat_damage.amount = health.max_health * 0.25
 	
+	interaction_menu.connect("visibility_changed", Callable(func():
+		if interaction_menu.visible:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)))
+	
 	spawn_blood()
 
 func init_inventory_size(size):
@@ -59,26 +66,29 @@ func on_hurt(damage):
 	elif health.health < health.max_health * 0.25:
 		state_text.text = "husk"
 
-func _interact(actor):
+func _interact(_actor):
 	if can_interact:
-		# need to rewrite how eating corpses work
-		if health.health > health.max_health * 0.5:
-			actor.on_heal(25)
-			spawn_blood()
-			on_hurt(corpse_eat_damage)
-			actor.health.pox += 5
-		
-		# this is giving more pox than it should be; should rework this
-		if inventory.slot_datas.size() > 0:
-			for item in inventory.slot_datas:
-				if item:
-					var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
-					new_pickup.slot_data = item
-					get_tree().current_scene.game_world.add_child(new_pickup)
-					new_pickup.global_transform.origin = $organ_spawnpoint.global_transform.origin
-					inventory.take_item(item)
-					actor.health.pox += 2
-					return
+		interaction_menu.visible = !interaction_menu.visible
+
+func eat_corpse():
+	if health.health > health.max_health * 0.5:
+		Globals.current_player.on_heal(25)
+		spawn_blood()
+		on_hurt(corpse_eat_damage)
+		Globals.current_player.health.pox += 5
+
+func graverob():
+	if inventory.slot_datas.size() > 0:
+		for item in inventory.slot_datas:
+			if item:
+				var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
+				new_pickup.slot_data = item
+				get_tree().current_scene.game_world.add_child(new_pickup)
+				new_pickup.global_transform.origin = $organ_spawnpoint.global_transform.origin
+				new_pickup.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 7)
+				inventory.take_item(item)
+				Globals.current_player.health.pox += 2
+				return
 
 func spawn_blood():
 	var blood = blood_spray.instantiate()
@@ -94,6 +104,7 @@ func spawn_organ():
 	var new_pickup = load("res://scenes/game/item/pick_up/pickup.tscn").instantiate()
 	get_tree().current_scene.game_world.add_child(new_pickup)
 	new_pickup.global_transform.origin = $organ_spawnpoint.global_transform.origin
+	new_pickup.apply_impulse(Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * 7)
 	
 	var random_result = randf()
 	if random_result < 0.8:

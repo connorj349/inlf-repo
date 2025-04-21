@@ -94,10 +94,44 @@ libraries = {
 "": SubResource("AnimationLibrary_sbq28")
 }
 
+[node name="InteractionMenu" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/InteractionMenu"]
+layout_mode = 2
+
+[node name="Eat" type="Button" parent="CanvasLayer/InteractionMenu/VBoxContainer"]
+layout_mode = 2
+text = "Consume"
+
+[node name="Graverob" type="Button" parent="CanvasLayer/InteractionMenu/VBoxContainer"]
+layout_mode = 2
+text = "Grave Rob"
+
+[node name="Close" type="Button" parent="CanvasLayer/InteractionMenu/VBoxContainer"]
+layout_mode = 2
+text = "exit"
+
 [node name="organ_spawnpoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
 
 [connection signal="timeout" from="DecayTimer" to="." method="_on_DecayTimer_timeout"]
+[connection signal="pressed" from="CanvasLayer/InteractionMenu/VBoxContainer/Eat" to="." method="eat_corpse"]
+[connection signal="pressed" from="CanvasLayer/InteractionMenu/VBoxContainer/Eat" to="CanvasLayer/InteractionMenu" method="set_visible" binds= [false]]
+[connection signal="pressed" from="CanvasLayer/InteractionMenu/VBoxContainer/Graverob" to="." method="graverob"]
+[connection signal="pressed" from="CanvasLayer/InteractionMenu/VBoxContainer/Graverob" to="CanvasLayer/InteractionMenu" method="set_visible" binds= [false]]
+[connection signal="pressed" from="CanvasLayer/InteractionMenu/VBoxContainer/Close" to="CanvasLayer/InteractionMenu" method="set_visible" binds= [false]]
 
 [editable path="flesh_pile"]
 [editable path="CanvasLayer/HintObjectInterface"]
