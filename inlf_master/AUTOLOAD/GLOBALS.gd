@@ -6,8 +6,6 @@ signal inventory_finished_toggling
 # warning-ignore:unused_signal
 signal on_pop_notification
 
-const pickup = preload("res://scenes/game/item/pick_up/pickup.tscn")
-const corpse = preload("res://scenes/game/characters/corpse.tscn")
 # global value that may be able to be changed by the player at runtime for diff setting?
 const rot_max_value = 1000
 
