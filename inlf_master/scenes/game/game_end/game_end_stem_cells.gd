@@ -8,8 +8,8 @@ signal infections_count_changed
 
 var rot: int = 0 :
 	set(value):
-		rot = clamp(value, 0, Globals.rot_max_value)
-		if rot >= Globals.rot_max_value:
+		rot = clamp(value, 0, rot_max_value)
+		if rot >= rot_max_value:
 			goto_main.emit()
 		emit_signal("rot_changed")
 

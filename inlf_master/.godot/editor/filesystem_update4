@@ -35,3 +35,4 @@ res://scenes/main.tscn
 res://scenes/game/game_world.tscn
 res://scenes/game/levels/level_slumtown.tscn
 res://scenes/game/gameobjects/dark_altar/dark_altar.tscn
+res://scenes/game/game_end/game_end_stem_cells.gd

@@ -6,9 +6,6 @@ signal inventory_finished_toggling
 # warning-ignore:unused_signal
 signal on_pop_notification
 
-# global value that may be able to be changed by the player at runtime for diff setting?
-const rot_max_value = 1000
-
 # allows other objects to reference the player like setting target/etc.
 var current_player
 # player inventory global reference for other scripts
