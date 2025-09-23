@@ -23,9 +23,9 @@ buses/default_bus_layout="res://assets/default_bus_layout.tres"
 
 [autoload]
 
-Globals="*res://autoload/globals.gd"
-Gamestate="*res://autoload/gamestate.gd"
-ScreenFader="*res://autoload/screen_fader.tscn"
+Gamestate="*res://AUTOLOAD/gamestate.gd"
+Globals="*res://AUTOLOAD/globals.gd"
+ScreenFader="*res://AUTOLOAD/screen_fader.tscn"
 
 [display]
 
